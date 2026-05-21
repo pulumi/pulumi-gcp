@@ -287,6 +287,13 @@ type WorkloadIdentityPool struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules WorkloadIdentityPoolAttestationRuleArrayOutput `pulumi:"attestationRules"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -392,6 +399,13 @@ type workloadIdentityPoolState struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules []WorkloadIdentityPoolAttestationRule `pulumi:"attestationRules"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -465,6 +479,13 @@ type WorkloadIdentityPoolState struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules WorkloadIdentityPoolAttestationRuleArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -542,6 +563,13 @@ type workloadIdentityPoolArgs struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules []WorkloadIdentityPoolAttestationRule `pulumi:"attestationRules"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -603,6 +631,13 @@ type WorkloadIdentityPoolArgs struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules WorkloadIdentityPoolAttestationRuleArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use
@@ -752,6 +787,16 @@ func (o WorkloadIdentityPoolOutput) AttestationRules() WorkloadIdentityPoolAttes
 	return o.ApplyT(func(v *WorkloadIdentityPool) WorkloadIdentityPoolAttestationRuleArrayOutput {
 		return v.AttestationRules
 	}).(WorkloadIdentityPoolAttestationRuleArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkloadIdentityPoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the pool. Cannot exceed 256 characters.

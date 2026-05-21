@@ -202,6 +202,15 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dataSource: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The location for the backupplan association
      */
     declare public readonly location: pulumi.Output<string>;
@@ -250,6 +259,7 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
             resourceInputs["backupPlanAssociationId"] = state?.backupPlanAssociationId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataSource"] = state?.dataSource;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -276,6 +286,7 @@ export class BackupPlanAssociation extends pulumi.CustomResource {
             }
             resourceInputs["backupPlan"] = args?.backupPlan;
             resourceInputs["backupPlanAssociationId"] = args?.backupPlanAssociationId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["project"] = args?.project;
             resourceInputs["resource"] = args?.resource;
@@ -315,6 +326,15 @@ export interface BackupPlanAssociationState {
      * Resource name of data source which will be used as storage location for backups taken
      */
     dataSource?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The location for the backupplan association
      */
@@ -364,6 +384,15 @@ export interface BackupPlanAssociationArgs {
      * The id of backupplan association
      */
     backupPlanAssociationId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The location for the backupplan association
      */

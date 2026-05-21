@@ -20,7 +20,8 @@ __all__ = ['ServicePerimeterResourceArgs', 'ServicePerimeterResource']
 class ServicePerimeterResourceArgs:
     def __init__(__self__, *,
                  perimeter_name: pulumi.Input[_builtins.str],
-                 resource: pulumi.Input[_builtins.str]):
+                 resource: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServicePerimeterResource resource.
 
@@ -28,9 +29,17 @@ class ServicePerimeterResourceArgs:
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
                Format: projects/{project_number}
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "perimeter_name", perimeter_name)
         pulumi.set(__self__, "resource", resource)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter(name="perimeterName")
@@ -58,11 +67,29 @@ class ServicePerimeterResourceArgs:
     def resource(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "resource", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _ServicePerimeterResourceState:
     def __init__(__self__, *,
                  access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None):
@@ -70,6 +97,12 @@ class _ServicePerimeterResourceState:
         Input properties used for looking up and filtering ServicePerimeterResource resources.
 
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
@@ -78,6 +111,8 @@ class _ServicePerimeterResourceState:
         """
         if access_policy_id is not None:
             pulumi.set(__self__, "access_policy_id", access_policy_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if perimeter_name is not None:
@@ -96,6 +131,23 @@ class _ServicePerimeterResourceState:
     @access_policy_id.setter
     def access_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -142,6 +194,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -206,6 +259,12 @@ class ServicePerimeterResource(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
                Currently only projects are allowed.
@@ -291,6 +350,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
                  resource: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -302,6 +362,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServicePerimeterResourceArgs.__new__(ServicePerimeterResourceArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if perimeter_name is None and not opts.urn:
                 raise TypeError("Missing required property 'perimeter_name'")
             __props__.__dict__["perimeter_name"] = perimeter_name
@@ -321,6 +382,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             perimeter_name: pulumi.Input[Optional[_builtins.str]] = None,
             resource: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServicePerimeterResource':
@@ -332,6 +394,12 @@ class ServicePerimeterResource(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: The perimeter etag is internally used to prevent overwriting the list of perimeter resources on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of resources. The resource to add or remove is merged into that list and then this etag is sent with the PATCH call along with the updated resource list.
         :param pulumi.Input[_builtins.str] perimeter_name: The name of the Service Perimeter to add this resource to.
         :param pulumi.Input[_builtins.str] resource: A GCP resource that is inside of the service perimeter.
@@ -343,6 +411,7 @@ class ServicePerimeterResource(pulumi.CustomResource):
         __props__ = _ServicePerimeterResourceState.__new__(_ServicePerimeterResourceState)
 
         __props__.__dict__["access_policy_id"] = access_policy_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["etag"] = etag
         __props__.__dict__["perimeter_name"] = perimeter_name
         __props__.__dict__["resource"] = resource
@@ -355,6 +424,19 @@ class ServicePerimeterResource(pulumi.CustomResource):
         The name of the Access Policy this resource belongs to.
         """
         return pulumi.get(self, "access_policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

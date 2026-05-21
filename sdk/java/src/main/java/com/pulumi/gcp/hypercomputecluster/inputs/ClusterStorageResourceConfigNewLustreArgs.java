@@ -86,6 +86,31 @@ public final class ClusterStorageResourceConfigNewLustreArgs extends com.pulumi.
         return this.lustre;
     }
 
+    /**
+     * Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+     * 500, 1000. See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * 
+     * &lt;a name=&#34;nestedStorageResourcesFilestore&#34;&gt;&lt;/a&gt;The `filestore` block contains:
+     * 
+     */
+    @Import(name="perUnitStorageThroughput")
+    private @Nullable Output<String> perUnitStorageThroughput;
+
+    /**
+     * @return Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+     * 500, 1000. See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * 
+     * &lt;a name=&#34;nestedStorageResourcesFilestore&#34;&gt;&lt;/a&gt;The `filestore` block contains:
+     * 
+     */
+    public Optional<Output<String>> perUnitStorageThroughput() {
+        return Optional.ofNullable(this.perUnitStorageThroughput);
+    }
+
     private ClusterStorageResourceConfigNewLustreArgs() {}
 
     private ClusterStorageResourceConfigNewLustreArgs(ClusterStorageResourceConfigNewLustreArgs $) {
@@ -93,6 +118,7 @@ public final class ClusterStorageResourceConfigNewLustreArgs extends com.pulumi.
         this.description = $.description;
         this.filesystem = $.filesystem;
         this.lustre = $.lustre;
+        this.perUnitStorageThroughput = $.perUnitStorageThroughput;
     }
 
     public static Builder builder() {
@@ -205,6 +231,37 @@ public final class ClusterStorageResourceConfigNewLustreArgs extends com.pulumi.
          */
         public Builder lustre(String lustre) {
             return lustre(Output.of(lustre));
+        }
+
+        /**
+         * @param perUnitStorageThroughput Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+         * 500, 1000. See [Performance tiers and maximum storage
+         * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+         * for more information.
+         * 
+         * &lt;a name=&#34;nestedStorageResourcesFilestore&#34;&gt;&lt;/a&gt;The `filestore` block contains:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perUnitStorageThroughput(@Nullable Output<String> perUnitStorageThroughput) {
+            $.perUnitStorageThroughput = perUnitStorageThroughput;
+            return this;
+        }
+
+        /**
+         * @param perUnitStorageThroughput Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+         * 500, 1000. See [Performance tiers and maximum storage
+         * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+         * for more information.
+         * 
+         * &lt;a name=&#34;nestedStorageResourcesFilestore&#34;&gt;&lt;/a&gt;The `filestore` block contains:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perUnitStorageThroughput(String perUnitStorageThroughput) {
+            return perUnitStorageThroughput(Output.of(perUnitStorageThroughput));
         }
 
         public ClusterStorageResourceConfigNewLustreArgs build() {

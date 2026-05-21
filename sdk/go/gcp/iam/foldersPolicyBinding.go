@@ -139,6 +139,13 @@ type FoldersPolicyBinding struct {
 	Condition FoldersPolicyBindingConditionPtrOutput `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -247,6 +254,13 @@ type foldersPolicyBindingState struct {
 	Condition *FoldersPolicyBindingCondition `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -311,6 +325,13 @@ type FoldersPolicyBindingState struct {
 	Condition FoldersPolicyBindingConditionPtrInput
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -377,6 +398,13 @@ type foldersPolicyBindingArgs struct {
 	// additional information.
 	// Structure is documented below.
 	Condition *FoldersPolicyBindingCondition `pulumi:"condition"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The parent folder for the PolicyBinding.
@@ -428,6 +456,13 @@ type FoldersPolicyBindingArgs struct {
 	// additional information.
 	// Structure is documented below.
 	Condition FoldersPolicyBindingConditionPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName pulumi.StringPtrInput
 	// The parent folder for the PolicyBinding.
@@ -573,6 +608,16 @@ func (o FoldersPolicyBindingOutput) Condition() FoldersPolicyBindingConditionPtr
 // Output only. The time when the policy binding was created.
 func (o FoldersPolicyBindingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FoldersPolicyBinding) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FoldersPolicyBindingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FoldersPolicyBinding) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The description of the policy binding. Must be less than or equal to 63 characters.

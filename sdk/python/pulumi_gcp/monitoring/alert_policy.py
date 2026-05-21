@@ -25,6 +25,7 @@ class AlertPolicyArgs:
                  conditions: pulumi.Input[Sequence[pulumi.Input['AlertPolicyConditionArgs']]],
                  display_name: pulumi.Input[_builtins.str],
                  alert_strategy: pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional['AlertPolicyDocumentationArgs']] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  notification_channels: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -48,6 +49,12 @@ class AlertPolicyArgs:
                name is limited to 512 Unicode characters.
         :param pulumi.Input['AlertPolicyAlertStrategyArgs'] alert_strategy: Control over how this alert policy's notification channels are notified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AlertPolicyDocumentationArgs'] documentation: Documentation that is included with notifications and incidents related
                to this policy. Best practice is for the documentation to include information
                to help responders understand, mitigate, escalate, and correct the underlying
@@ -79,6 +86,8 @@ class AlertPolicyArgs:
         pulumi.set(__self__, "display_name", display_name)
         if alert_strategy is not None:
             pulumi.set(__self__, "alert_strategy", alert_strategy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if documentation is not None:
             pulumi.set(__self__, "documentation", documentation)
         if enabled is not None:
@@ -149,6 +158,23 @@ class AlertPolicyArgs:
     @alert_strategy.setter
     def alert_strategy(self, value: pulumi.Input[Optional['AlertPolicyAlertStrategyArgs']]):
         pulumi.set(self, "alert_strategy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -249,6 +275,7 @@ class _AlertPolicyState:
                  combiner: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionArgs']]]] = None,
                  creation_records: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional['AlertPolicyDocumentationArgs']] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -274,6 +301,12 @@ class _AlertPolicyState:
                If provided in a call to create or update, this field will
                be ignored.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A short name or phrase used to identify the policy in
                dashboards, notifications, and incidents. To avoid confusion, don't use
                the same display name for multiple policies in the same project. The
@@ -314,6 +347,8 @@ class _AlertPolicyState:
             pulumi.set(__self__, "conditions", conditions)
         if creation_records is not None:
             pulumi.set(__self__, "creation_records", creation_records)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if documentation is not None:
@@ -388,6 +423,23 @@ class _AlertPolicyState:
     @creation_records.setter
     def creation_records(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyCreationRecordArgs']]]]):
         pulumi.set(self, "creation_records", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -518,6 +570,7 @@ class AlertPolicy(pulumi.CustomResource):
                  alert_strategy: pulumi.Input[Optional[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
                  combiner: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -694,6 +747,12 @@ class AlertPolicy(pulumi.CustomResource):
                evaluate to true, then an incident is created. A policy can have from
                one to six conditions.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A short name or phrase used to identify the policy in
                dashboards, notifications, and incidents. To avoid confusion, don't use
                the same display name for multiple policies in the same project. The
@@ -904,6 +963,7 @@ class AlertPolicy(pulumi.CustomResource):
                  alert_strategy: pulumi.Input[Optional[Union['AlertPolicyAlertStrategyArgs', 'AlertPolicyAlertStrategyArgsDict']]] = None,
                  combiner: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  documentation: pulumi.Input[Optional[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -927,6 +987,7 @@ class AlertPolicy(pulumi.CustomResource):
             if conditions is None and not opts.urn:
                 raise TypeError("Missing required property 'conditions'")
             __props__.__dict__["conditions"] = conditions
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -952,6 +1013,7 @@ class AlertPolicy(pulumi.CustomResource):
             combiner: pulumi.Input[Optional[_builtins.str]] = None,
             conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyConditionArgs', 'AlertPolicyConditionArgsDict']]]]] = None,
             creation_records: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlertPolicyCreationRecordArgs', 'AlertPolicyCreationRecordArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             documentation: pulumi.Input[Optional[Union['AlertPolicyDocumentationArgs', 'AlertPolicyDocumentationArgsDict']]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -981,6 +1043,12 @@ class AlertPolicy(pulumi.CustomResource):
                If provided in a call to create or update, this field will
                be ignored.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A short name or phrase used to identify the policy in
                dashboards, notifications, and incidents. To avoid confusion, don't use
                the same display name for multiple policies in the same project. The
@@ -1021,6 +1089,7 @@ class AlertPolicy(pulumi.CustomResource):
         __props__.__dict__["combiner"] = combiner
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["creation_records"] = creation_records
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["documentation"] = documentation
         __props__.__dict__["enabled"] = enabled
@@ -1072,6 +1141,19 @@ class AlertPolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "creation_records")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

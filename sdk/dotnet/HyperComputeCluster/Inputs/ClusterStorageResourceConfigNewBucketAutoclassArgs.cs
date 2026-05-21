@@ -18,6 +18,15 @@ namespace Pulumi.Gcp.HyperComputeCluster.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Terminal storage class of the autoclass bucket
+        /// Possible values:
+        /// NEARLINE
+        /// ARCHIVE
+        /// </summary>
+        [Input("terminalStorageClass")]
+        public Input<string>? TerminalStorageClass { get; set; }
+
         public ClusterStorageResourceConfigNewBucketAutoclassArgs()
         {
         }

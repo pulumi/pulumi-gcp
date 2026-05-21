@@ -27,10 +27,13 @@ class GetCertificateMapResult:
     """
     A collection of values returned by getCertificateMap.
     """
-    def __init__(__self__, create_time=None, description=None, effective_labels=None, gclb_targets=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, update_time=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, description=None, effective_labels=None, gclb_targets=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -63,6 +66,11 @@ class GetCertificateMapResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -120,6 +128,7 @@ class AwaitableGetCertificateMapResult(GetCertificateMapResult):
             yield self
         return GetCertificateMapResult(
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             effective_labels=self.effective_labels,
             gclb_targets=self.gclb_targets,
@@ -161,6 +170,7 @@ def get_certificate_map(name: Optional[_builtins.str] = None,
 
     return AwaitableGetCertificateMapResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gclb_targets=pulumi.get(__ret__, 'gclb_targets'),
@@ -199,6 +209,7 @@ def get_certificate_map_output(name: pulumi.Input[Optional[_builtins.str]] = Non
     __ret__ = pulumi.runtime.invoke_output('gcp:certificatemanager/getCertificateMap:getCertificateMap', __args__, opts=opts, typ=GetCertificateMapResult)
     return __ret__.apply(lambda __response__: GetCertificateMapResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         gclb_targets=pulumi.get(__response__, 'gclb_targets'),

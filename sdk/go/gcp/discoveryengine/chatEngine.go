@@ -187,6 +187,13 @@ type ChatEngine struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds pulumi.StringArrayOutput `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The ID to use for chat engine.
@@ -272,6 +279,13 @@ type chatEngineState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The ID to use for chat engine.
@@ -310,6 +324,13 @@ type ChatEngineState struct {
 	CreateTime pulumi.StringPtrInput
 	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringPtrInput
 	// The ID to use for chat engine.
@@ -347,6 +368,13 @@ type chatEngineArgs struct {
 	CommonConfig *ChatEngineCommonConfig `pulumi:"commonConfig"`
 	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds []string `pulumi:"dataStoreIds"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName string `pulumi:"displayName"`
 	// The ID to use for chat engine.
@@ -374,6 +402,13 @@ type ChatEngineArgs struct {
 	CommonConfig ChatEngineCommonConfigPtrInput
 	// The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 	DataStoreIds pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
 	DisplayName pulumi.StringInput
 	// The ID to use for chat engine.
@@ -507,6 +542,16 @@ func (o ChatEngineOutput) CreateTime() pulumi.StringOutput {
 // The data stores associated with this engine. Multiple DataStores in the same Collection can be associated here. All listed DataStores must be `SOLUTION_TYPE_CHAT`.
 func (o ChatEngineOutput) DataStoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ChatEngine) pulumi.StringArrayOutput { return v.DataStoreIds }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ChatEngineOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ChatEngine) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.

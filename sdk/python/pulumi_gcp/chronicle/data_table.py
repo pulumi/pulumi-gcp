@@ -46,7 +46,14 @@ class DataTableArgs:
         :param pulumi.Input[_builtins.str] deletion_policy: The policy governing the deletion of the data table.
                If set to `FORCE`, allows the deletion of the data table even if it contains rows.
                If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-               Possible values: DEFAULT, FORCE
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] row_time_to_live: User-provided TTL of the data table.
@@ -140,7 +147,14 @@ class DataTableArgs:
         The policy governing the deletion of the data table.
         If set to `FORCE`, allows the deletion of the data table even if it contains rows.
         If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-        Possible values: DEFAULT, FORCE
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -225,7 +239,14 @@ class _DataTableState:
         :param pulumi.Input[_builtins.str] deletion_policy: The policy governing the deletion of the data table.
                If set to `FORCE`, allows the deletion of the data table even if it contains rows.
                If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-               Possible values: DEFAULT, FORCE
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] description: A user-provided description of the data table.
         :param pulumi.Input[_builtins.str] display_name: The unique display name of the data table.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -361,7 +382,14 @@ class _DataTableState:
         The policy governing the deletion of the data table.
         If set to `FORCE`, allows the deletion of the data table even if it contains rows.
         If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-        Possible values: DEFAULT, FORCE
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -663,7 +691,14 @@ class DataTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: The policy governing the deletion of the data table.
                If set to `FORCE`, allows the deletion of the data table even if it contains rows.
                If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-               Possible values: DEFAULT, FORCE
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] description: A user-provided description of the data table.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -887,7 +922,14 @@ class DataTable(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: The policy governing the deletion of the data table.
                If set to `FORCE`, allows the deletion of the data table even if it contains rows.
                If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-               Possible values: DEFAULT, FORCE
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         :param pulumi.Input[_builtins.str] description: A user-provided description of the data table.
         :param pulumi.Input[_builtins.str] display_name: The unique display name of the data table.
         :param pulumi.Input[_builtins.str] instance: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -984,12 +1026,19 @@ class DataTable(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         The policy governing the deletion of the data table.
         If set to `FORCE`, allows the deletion of the data table even if it contains rows.
         If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-        Possible values: DEFAULT, FORCE
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
         """
         return pulumi.get(self, "deletion_policy")
 

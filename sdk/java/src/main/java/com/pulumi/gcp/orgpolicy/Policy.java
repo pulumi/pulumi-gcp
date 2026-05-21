@@ -42,6 +42,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.orgpolicy.Policy;
  * import com.pulumi.gcp.orgpolicy.PolicyArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -90,6 +91,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.orgpolicy.Policy;
  * import com.pulumi.gcp.orgpolicy.PolicyArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -175,6 +177,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.orgpolicy.Policy;
  * import com.pulumi.gcp.orgpolicy.PolicyArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleConditionArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleValuesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -236,7 +241,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.orgpolicy.Policy;
  * import com.pulumi.gcp.orgpolicy.PolicyArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecRuleArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -251,7 +258,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var constraint = new CustomConstraint("constraint", CustomConstraintArgs.builder()
- *             .name("custom.disableGkeAutoUpgrade_41898")
+ *             .name("custom.disableGkeAutoUpgrade_97962")
  *             .parent("organizations/123456789")
  *             .displayName("Disable GKE auto upgrade")
  *             .description("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.")
@@ -296,6 +303,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.orgpolicy.Policy;
  * import com.pulumi.gcp.orgpolicy.PolicyArgs;
  * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecRuleArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -355,6 +363,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:orgpolicy/policy:Policy")
 public class Policy extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
      * Structure is documented below.

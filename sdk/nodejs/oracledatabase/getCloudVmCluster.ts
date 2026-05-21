@@ -63,6 +63,7 @@ export interface GetCloudVmClusterResult {
     readonly cidr: string;
     readonly cloudVmClusterId: string;
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};

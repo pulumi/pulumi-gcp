@@ -19,14 +19,14 @@ public final class ConnectionProfileMysqlArgs extends com.pulumi.resources.Resou
     public static final ConnectionProfileMysqlArgs Empty = new ConnectionProfileMysqlArgs();
 
     /**
-     * If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     @Import(name="cloudSqlId")
     private @Nullable Output<String> cloudSqlId;
 
     /**
-     * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * @return If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     public Optional<Output<String>> cloudSqlId() {
@@ -162,7 +162,7 @@ public final class ConnectionProfileMysqlArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param cloudSqlId If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+         * @param cloudSqlId If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class ConnectionProfileMysqlArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param cloudSqlId If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+         * @param cloudSqlId If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
          * 
          * @return builder
          * 

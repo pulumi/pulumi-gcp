@@ -147,6 +147,15 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly datasetConfigState: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -254,6 +263,7 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["datasetConfigId"] = state?.datasetConfigId;
             resourceInputs["datasetConfigState"] = state?.datasetConfigState;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["excludeCloudStorageBuckets"] = state?.excludeCloudStorageBuckets;
             resourceInputs["excludeCloudStorageLocations"] = state?.excludeCloudStorageLocations;
@@ -289,6 +299,7 @@ export class InsightsDatasetConfig extends pulumi.CustomResource {
             }
             resourceInputs["activityDataRetentionPeriodDays"] = args?.activityDataRetentionPeriodDays;
             resourceInputs["datasetConfigId"] = args?.datasetConfigId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["excludeCloudStorageBuckets"] = args?.excludeCloudStorageBuckets;
             resourceInputs["excludeCloudStorageLocations"] = args?.excludeCloudStorageLocations;
@@ -336,6 +347,15 @@ export interface InsightsDatasetConfigState {
      * State of the DatasetConfig.
      */
     datasetConfigState?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
      */
@@ -440,6 +460,15 @@ export interface InsightsDatasetConfigArgs {
      * The user-defined ID of the DatasetConfig
      */
     datasetConfigId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional user-provided description for the dataset configuration with a maximum length of 256 characters.
      */

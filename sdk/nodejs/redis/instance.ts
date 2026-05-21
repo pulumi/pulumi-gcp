@@ -302,6 +302,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly customerManagedKey: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether Terraform will be prevented from destroying the instance.
      * When a`terraform destroy` or `pulumi up` would delete the instance,
      * the command will fail if this field is not set to false in Terraform state.
@@ -499,6 +508,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["currentLocationId"] = state?.currentLocationId;
             resourceInputs["customerManagedKey"] = state?.customerManagedKey;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -539,6 +549,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["authorizedNetwork"] = args?.authorizedNetwork;
             resourceInputs["connectMode"] = args?.connectMode;
             resourceInputs["customerManagedKey"] = args?.customerManagedKey;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
@@ -631,6 +642,15 @@ export interface InstanceState {
      * instance. If this is provided, CMEK is enabled.
      */
     customerManagedKey?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the instance.
      * When a`terraform destroy` or `pulumi up` would delete the instance,
@@ -843,6 +863,15 @@ export interface InstanceArgs {
      * instance. If this is provided, CMEK is enabled.
      */
     customerManagedKey?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the instance.
      * When a`terraform destroy` or `pulumi up` would delete the instance,

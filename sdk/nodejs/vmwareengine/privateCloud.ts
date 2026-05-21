@@ -161,6 +161,15 @@ export class PrivateCloud extends pulumi.CustomResource {
      */
     declare public readonly deletionDelayHours: pulumi.Output<number | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-provided description for this private cloud.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -249,6 +258,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteTime"] = state?.deleteTime;
             resourceInputs["deletionDelayHours"] = state?.deletionDelayHours;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["expireTime"] = state?.expireTime;
             resourceInputs["hcxes"] = state?.hcxes;
@@ -276,6 +286,7 @@ export class PrivateCloud extends pulumi.CustomResource {
                 throw new Error("Missing required property 'networkConfig'");
             }
             resourceInputs["deletionDelayHours"] = args?.deletionDelayHours;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["location"] = args?.location;
             resourceInputs["managementCluster"] = args?.managementCluster;
@@ -319,6 +330,15 @@ export interface PrivateCloudState {
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
     deletionDelayHours?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this private cloud.
      */
@@ -401,6 +421,15 @@ export interface PrivateCloudArgs {
      * The number of hours to delay this request. You can set this value to an hour between 0 to 8, where setting it to 0 starts the deletion request immediately. If no value is set, a default value is set at the API Level.
      */
     deletionDelayHours?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description for this private cloud.
      */

@@ -14,6 +14,7 @@ import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobDumpFlags;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobError;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobObjectsConfig;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobPerformanceConfig;
+import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobPostgresHomogeneousConfig;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobReverseSshConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobStaticIpConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.MigrationJobVpcPeeringConnectivity;
@@ -63,6 +64,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobPerformanceConfigArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobVpcPeeringConnectivityArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobDumpFlagsArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobDumpFlagsDumpFlagArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -334,6 +336,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobStaticIpConnectivityArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigArgs;
  * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigSourceObjectsConfigArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs;
+ * import com.pulumi.gcp.databasemigrationservice.inputs.MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -662,6 +666,30 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * The name of the destination connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{destinationConnectionProfile}.
      * 
      */
@@ -880,6 +908,22 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> phase() {
         return this.phase;
+    }
+    /**
+     * PostgreSQL to PostgreSQL configuration.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="postgresHomogeneousConfig", refs={MigrationJobPostgresHomogeneousConfig.class}, tree="[0]")
+    private Output</* @Nullable */ MigrationJobPostgresHomogeneousConfig> postgresHomogeneousConfig;
+
+    /**
+     * @return PostgreSQL to PostgreSQL configuration.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<MigrationJobPostgresHomogeneousConfig>> postgresHomogeneousConfig() {
+        return Codegen.optional(this.postgresHomogeneousConfig);
     }
     /**
      * The ID of the project in which the resource belongs.

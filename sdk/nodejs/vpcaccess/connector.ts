@@ -105,6 +105,15 @@ export class Connector extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly connectedProjects: pulumi.Output<string[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     declare public readonly ipCidrRange: pulumi.Output<string | undefined>;
@@ -179,6 +188,7 @@ export class Connector extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
             resourceInputs["connectedProjects"] = state?.connectedProjects;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["ipCidrRange"] = state?.ipCidrRange;
             resourceInputs["machineType"] = state?.machineType;
             resourceInputs["maxInstances"] = state?.maxInstances;
@@ -194,6 +204,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["subnet"] = state?.subnet;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["ipCidrRange"] = args?.ipCidrRange;
             resourceInputs["machineType"] = args?.machineType;
             resourceInputs["maxInstances"] = args?.maxInstances;
@@ -222,6 +233,15 @@ export interface ConnectorState {
      * List of projects using the connector.
      */
     connectedProjects?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
@@ -288,6 +308,15 @@ export interface ConnectorState {
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */

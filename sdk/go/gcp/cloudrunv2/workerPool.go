@@ -823,6 +823,13 @@ type WorkerPool struct {
 	CustomAudiences pulumi.StringArrayOutput `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -970,6 +977,13 @@ type workerPoolState struct {
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// The deletion time.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1077,6 +1091,13 @@ type WorkerPoolState struct {
 	CustomAudiences pulumi.StringArrayInput
 	// The deletion time.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1179,6 +1200,13 @@ type workerPoolArgs struct {
 	//
 	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences []string `pulumi:"customAudiences"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1242,6 +1270,13 @@ type WorkerPoolArgs struct {
 	//
 	// Deprecated: `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
 	CustomAudiences pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1424,6 +1459,16 @@ func (o WorkerPoolOutput) CustomAudiences() pulumi.StringArrayOutput {
 // The deletion time.
 func (o WorkerPoolOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkerPoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkerPool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the service. Defaults to true.

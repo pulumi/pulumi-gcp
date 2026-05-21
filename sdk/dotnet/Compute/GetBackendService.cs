@@ -174,6 +174,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetBackendServiceCustomMetricResult> CustomMetrics;
         public readonly ImmutableArray<string> CustomRequestHeaders;
         public readonly ImmutableArray<string> CustomResponseHeaders;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Textual description for the Backend Service.
         /// </summary>
@@ -264,6 +265,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> customResponseHeaders,
 
+            string deletionPolicy,
+
             string description,
 
             ImmutableArray<Outputs.GetBackendServiceDynamicForwardingResult> dynamicForwardings,
@@ -339,6 +342,7 @@ namespace Pulumi.Gcp.Compute
             CustomMetrics = customMetrics;
             CustomRequestHeaders = customRequestHeaders;
             CustomResponseHeaders = customResponseHeaders;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DynamicForwardings = dynamicForwardings;
             EdgeSecurityPolicy = edgeSecurityPolicy;

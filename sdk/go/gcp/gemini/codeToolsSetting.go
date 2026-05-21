@@ -82,6 +82,13 @@ type CodeToolsSetting struct {
 	CodeToolsSettingId pulumi.StringOutput `pulumi:"codeToolsSettingId"`
 	// Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Represents the full set of enabled tools.
@@ -151,6 +158,13 @@ type codeToolsSettingState struct {
 	CodeToolsSettingId *string `pulumi:"codeToolsSettingId"`
 	// Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Represents the full set of enabled tools.
@@ -180,6 +194,13 @@ type CodeToolsSettingState struct {
 	CodeToolsSettingId pulumi.StringPtrInput
 	// Create time stamp.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Represents the full set of enabled tools.
@@ -211,6 +232,13 @@ func (CodeToolsSettingState) ElementType() reflect.Type {
 type codeToolsSettingArgs struct {
 	// Id of the Code Tools Setting.
 	CodeToolsSettingId string `pulumi:"codeToolsSettingId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Represents the full set of enabled tools.
 	// Structure is documented below.
 	EnabledTools []CodeToolsSettingEnabledTool `pulumi:"enabledTools"`
@@ -229,6 +257,13 @@ type codeToolsSettingArgs struct {
 type CodeToolsSettingArgs struct {
 	// Id of the Code Tools Setting.
 	CodeToolsSettingId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Represents the full set of enabled tools.
 	// Structure is documented below.
 	EnabledTools CodeToolsSettingEnabledToolArrayInput
@@ -338,6 +373,16 @@ func (o CodeToolsSettingOutput) CodeToolsSettingId() pulumi.StringOutput {
 // Create time stamp.
 func (o CodeToolsSettingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeToolsSetting) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CodeToolsSettingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CodeToolsSetting) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

@@ -683,6 +683,13 @@ type Connection struct {
 	CryptoKeyConfig ConnectionCryptoKeyConfigPtrOutput `pulumi:"cryptoKeyConfig"`
 	// Output only. [Output only] Delete timestamp
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
@@ -802,6 +809,13 @@ type connectionState struct {
 	CryptoKeyConfig *ConnectionCryptoKeyConfig `pulumi:"cryptoKeyConfig"`
 	// Output only. [Output only] Delete timestamp
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
@@ -881,6 +895,13 @@ type ConnectionState struct {
 	CryptoKeyConfig ConnectionCryptoKeyConfigPtrInput
 	// Output only. [Output only] Delete timestamp
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
@@ -960,6 +981,13 @@ type connectionArgs struct {
 	// encryption keys (CMEK) feature.
 	// Structure is documented below.
 	CryptoKeyConfig *ConnectionCryptoKeyConfig `pulumi:"cryptoKeyConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
@@ -1014,6 +1042,13 @@ type ConnectionArgs struct {
 	// encryption keys (CMEK) feature.
 	// Structure is documented below.
 	CryptoKeyConfig ConnectionCryptoKeyConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. If disabled is set to true, functionality is disabled for this connection.
 	// Repository based API methods and webhooks processing for repositories in
 	// this connection will be disabled.
@@ -1176,6 +1211,16 @@ func (o ConnectionOutput) CryptoKeyConfig() ConnectionCryptoKeyConfigPtrOutput {
 // Output only. [Output only] Delete timestamp
 func (o ConnectionOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConnectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. If disabled is set to true, functionality is disabled for this connection.

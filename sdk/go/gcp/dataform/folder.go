@@ -38,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dataform.NewFolder(ctx, "dataform_folder_basic", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Basic Folder-_8493"),
+//				DisplayName: pulumi.String("Basic Folder-_41819"),
 //			})
 //			if err != nil {
 //				return err
@@ -64,14 +64,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			dataformFolderRoot, err := dataform.NewFolder(ctx, "dataform_folder_root", &dataform.FolderArgs{
 //				Region:      pulumi.String("us-central1"),
-//				DisplayName: pulumi.String("Root Folder-_9106"),
+//				DisplayName: pulumi.String("Root Folder-_75092"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dataform.NewFolder(ctx, "dataform_folder_full", &dataform.FolderArgs{
 //				Region:           pulumi.String("us-central1"),
-//				DisplayName:      pulumi.String("Nested Folder-_27169"),
+//				DisplayName:      pulumi.String("Nested Folder-_2605"),
 //				ContainingFolder: dataformFolderRoot.ID(),
 //			})
 //			if err != nil {
@@ -108,6 +108,13 @@ type Folder struct {
 	// Optional. The containing Folder resource name.
 	// Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
 	ContainingFolder pulumi.StringPtrOutput `pulumi:"containingFolder"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Required. The Folder's user-friendly name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The unique identifier for the Folder.
@@ -160,6 +167,13 @@ type folderState struct {
 	// Optional. The containing Folder resource name.
 	// Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
 	ContainingFolder *string `pulumi:"containingFolder"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. The Folder's user-friendly name.
 	DisplayName *string `pulumi:"displayName"`
 	// The unique identifier for the Folder.
@@ -177,6 +191,13 @@ type FolderState struct {
 	// Optional. The containing Folder resource name.
 	// Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
 	ContainingFolder pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. The Folder's user-friendly name.
 	DisplayName pulumi.StringPtrInput
 	// The unique identifier for the Folder.
@@ -198,6 +219,13 @@ type folderArgs struct {
 	// Optional. The containing Folder resource name.
 	// Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
 	ContainingFolder *string `pulumi:"containingFolder"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. The Folder's user-friendly name.
 	DisplayName string `pulumi:"displayName"`
 	// The ID of the project in which the resource belongs.
@@ -212,6 +240,13 @@ type FolderArgs struct {
 	// Optional. The containing Folder resource name.
 	// Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
 	ContainingFolder pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. The Folder's user-friendly name.
 	DisplayName pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -312,6 +347,16 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 // Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
 func (o FolderOutput) ContainingFolder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringPtrOutput { return v.ContainingFolder }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FolderOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Required. The Folder's user-friendly name.

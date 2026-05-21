@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetExternalAddressResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string ExternalIp;
         /// <summary>
@@ -158,6 +159,8 @@ namespace Pulumi.Gcp.VMwareEngine
         [OutputConstructor]
         private GetExternalAddressResult(
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -178,6 +181,7 @@ namespace Pulumi.Gcp.VMwareEngine
             string updateTime)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             ExternalIp = externalIp;
             Id = id;

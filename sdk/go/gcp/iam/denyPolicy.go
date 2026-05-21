@@ -131,6 +131,13 @@ import (
 type DenyPolicy struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the rule.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The hash of the resource. Used internally during updates.
@@ -180,6 +187,13 @@ func GetDenyPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DenyPolicy resources.
 type denyPolicyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the rule.
 	DisplayName *string `pulumi:"displayName"`
 	// The hash of the resource. Used internally during updates.
@@ -194,6 +208,13 @@ type denyPolicyState struct {
 }
 
 type DenyPolicyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the rule.
 	DisplayName pulumi.StringPtrInput
 	// The hash of the resource. Used internally during updates.
@@ -212,6 +233,13 @@ func (DenyPolicyState) ElementType() reflect.Type {
 }
 
 type denyPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the rule.
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the policy.
@@ -225,6 +253,13 @@ type denyPolicyArgs struct {
 
 // The set of arguments for constructing a DenyPolicy resource.
 type DenyPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the rule.
 	DisplayName pulumi.StringPtrInput
 	// The name of the policy.
@@ -321,6 +356,16 @@ func (o DenyPolicyOutput) ToDenyPolicyOutput() DenyPolicyOutput {
 
 func (o DenyPolicyOutput) ToDenyPolicyOutputWithContext(ctx context.Context) DenyPolicyOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DenyPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DenyPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the rule.

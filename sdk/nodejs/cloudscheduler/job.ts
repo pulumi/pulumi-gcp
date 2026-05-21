@@ -234,6 +234,15 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly attemptDeadline: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-readable description for the job.
      * This string must not contain more than 500 characters.
      */
@@ -305,6 +314,7 @@ export class Job extends pulumi.CustomResource {
             const state = argsOrState as JobState | undefined;
             resourceInputs["appEngineHttpTarget"] = state?.appEngineHttpTarget;
             resourceInputs["attemptDeadline"] = state?.attemptDeadline;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["httpTarget"] = state?.httpTarget;
             resourceInputs["name"] = state?.name;
@@ -320,6 +330,7 @@ export class Job extends pulumi.CustomResource {
             const args = argsOrState as JobArgs | undefined;
             resourceInputs["appEngineHttpTarget"] = args?.appEngineHttpTarget;
             resourceInputs["attemptDeadline"] = args?.attemptDeadline;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["httpTarget"] = args?.httpTarget;
             resourceInputs["name"] = args?.name;
@@ -359,6 +370,15 @@ export interface JobState {
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     attemptDeadline?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description for the job.
      * This string must not contain more than 500 characters.
@@ -439,6 +459,15 @@ export interface JobArgs {
      * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
      */
     attemptDeadline?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description for the job.
      * This string must not contain more than 500 characters.

@@ -126,6 +126,13 @@ import (
 type WorkforcePoolProviderScimToken struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-specified display name for the scim token. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The location for the resource.
@@ -194,6 +201,13 @@ func GetWorkforcePoolProviderScimToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkforcePoolProviderScimToken resources.
 type workforcePoolProviderScimTokenState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified display name for the scim token. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The location for the resource.
@@ -218,6 +232,13 @@ type workforcePoolProviderScimTokenState struct {
 }
 
 type WorkforcePoolProviderScimTokenState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified display name for the scim token. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
 	// The location for the resource.
@@ -246,6 +267,13 @@ func (WorkforcePoolProviderScimTokenState) ElementType() reflect.Type {
 }
 
 type workforcePoolProviderScimTokenArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified display name for the scim token. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The location for the resource.
@@ -262,6 +290,13 @@ type workforcePoolProviderScimTokenArgs struct {
 
 // The set of arguments for constructing a WorkforcePoolProviderScimToken resource.
 type WorkforcePoolProviderScimTokenArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified display name for the scim token. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
 	// The location for the resource.
@@ -361,6 +396,16 @@ func (o WorkforcePoolProviderScimTokenOutput) ToWorkforcePoolProviderScimTokenOu
 
 func (o WorkforcePoolProviderScimTokenOutput) ToWorkforcePoolProviderScimTokenOutputWithContext(ctx context.Context) WorkforcePoolProviderScimTokenOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkforcePoolProviderScimTokenOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderScimToken) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-specified display name for the scim token. Cannot exceed 32 characters.

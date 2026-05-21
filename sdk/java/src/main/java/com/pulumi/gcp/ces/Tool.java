@@ -203,7 +203,20 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.Tool;
  * import com.pulumi.gcp.ces.ToolArgs;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigRewriterConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigRewriterConfigModelSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSummarizationConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolModalityConfigGroundingConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceDataStoreSourceArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -516,6 +529,30 @@ public class Tool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ToolDataStoreTool>> dataStoreTool() {
         return Codegen.optional(this.dataStoreTool);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * (Output)

@@ -26,6 +26,7 @@ class ToolArgs:
                  tool_id: pulumi.Input[_builtins.str],
                  client_function: pulumi.Input[Optional['ToolClientFunctionArgs']] = None,
                  data_store_tool: pulumi.Input[Optional['ToolDataStoreToolArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
                  google_search_tool: pulumi.Input[Optional['ToolGoogleSearchToolArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,6 +49,12 @@ class ToolArgs:
                See Vertex AI Search:
                https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] execution_type: Possible values:
                SYNCHRONOUS
                ASYNCHRONOUS
@@ -67,6 +74,8 @@ class ToolArgs:
             pulumi.set(__self__, "client_function", client_function)
         if data_store_tool is not None:
             pulumi.set(__self__, "data_store_tool", data_store_tool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if execution_type is not None:
             pulumi.set(__self__, "execution_type", execution_type)
         if google_search_tool is not None:
@@ -147,6 +156,23 @@ class ToolArgs:
         pulumi.set(self, "data_store_tool", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="executionType")
     def execution_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -209,6 +235,7 @@ class _ToolState:
                  client_function: pulumi.Input[Optional['ToolClientFunctionArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_store_tool: pulumi.Input[Optional['ToolDataStoreToolArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -237,6 +264,12 @@ class _ToolState:
                See Vertex AI Search:
                https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: (Output)
                The name of the allowed custom CA certificates. This
                can be used to disambiguate the custom CA certificates.
@@ -276,6 +309,8 @@ class _ToolState:
             pulumi.set(__self__, "create_time", create_time)
         if data_store_tool is not None:
             pulumi.set(__self__, "data_store_tool", data_store_tool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if etag is not None:
@@ -358,6 +393,23 @@ class _ToolState:
     @data_store_tool.setter
     def data_store_tool(self, value: pulumi.Input[Optional['ToolDataStoreToolArgs']]):
         pulumi.set(self, "data_store_tool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -542,6 +594,7 @@ class Tool(pulumi.CustomResource):
                  app: pulumi.Input[Optional[_builtins.str]] = None,
                  client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
                  data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
                  google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -846,6 +899,12 @@ class Tool(pulumi.CustomResource):
                See Vertex AI Search:
                https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] execution_type: Possible values:
                SYNCHRONOUS
                ASYNCHRONOUS
@@ -1170,6 +1229,7 @@ class Tool(pulumi.CustomResource):
                  app: pulumi.Input[Optional[_builtins.str]] = None,
                  client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
                  data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_type: pulumi.Input[Optional[_builtins.str]] = None,
                  google_search_tool: pulumi.Input[Optional[Union['ToolGoogleSearchToolArgs', 'ToolGoogleSearchToolArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1190,6 +1250,7 @@ class Tool(pulumi.CustomResource):
             __props__.__dict__["app"] = app
             __props__.__dict__["client_function"] = client_function
             __props__.__dict__["data_store_tool"] = data_store_tool
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["execution_type"] = execution_type
             __props__.__dict__["google_search_tool"] = google_search_tool
             if location is None and not opts.urn:
@@ -1222,6 +1283,7 @@ class Tool(pulumi.CustomResource):
             client_function: pulumi.Input[Optional[Union['ToolClientFunctionArgs', 'ToolClientFunctionArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_store_tool: pulumi.Input[Optional[Union['ToolDataStoreToolArgs', 'ToolDataStoreToolArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             execution_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1254,6 +1316,12 @@ class Tool(pulumi.CustomResource):
                See Vertex AI Search:
                https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: (Output)
                The name of the allowed custom CA certificates. This
                can be used to disambiguate the custom CA certificates.
@@ -1293,6 +1361,7 @@ class Tool(pulumi.CustomResource):
         __props__.__dict__["client_function"] = client_function
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_store_tool"] = data_store_tool
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["etag"] = etag
         __props__.__dict__["execution_type"] = execution_type
@@ -1347,6 +1416,19 @@ class Tool(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "data_store_tool")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

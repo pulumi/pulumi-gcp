@@ -324,6 +324,13 @@ type RestoreWorkload struct {
 	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
 	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrOutput `pulumi:"deleteRestoredInstance"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties RestoreWorkloadDiskRestorePropertiesPtrOutput `pulumi:"diskRestoreProperties"`
@@ -410,6 +417,13 @@ type restoreWorkloadState struct {
 	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
 	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance *bool `pulumi:"deleteRestoredInstance"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
@@ -455,6 +469,13 @@ type RestoreWorkloadState struct {
 	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
 	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties RestoreWorkloadDiskRestorePropertiesPtrInput
@@ -504,6 +525,13 @@ type restoreWorkloadArgs struct {
 	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
 	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance *bool `pulumi:"deleteRestoredInstance"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties *RestoreWorkloadDiskRestoreProperties `pulumi:"diskRestoreProperties"`
@@ -547,6 +575,13 @@ type RestoreWorkloadArgs struct {
 	// Optional. If true (default), running terraform destroy will delete the live resource in GCP.
 	// If false, only the restore record is removed from the state, leaving the resource active.
 	DeleteRestoredInstance pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Disk properties to be overridden during restore.
 	// Structure is documented below.
 	DiskRestoreProperties RestoreWorkloadDiskRestorePropertiesPtrInput
@@ -698,6 +733,16 @@ func (o RestoreWorkloadOutput) DataSourceId() pulumi.StringOutput {
 // If false, only the restore record is removed from the state, leaving the resource active.
 func (o RestoreWorkloadOutput) DeleteRestoredInstance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RestoreWorkload) pulumi.BoolPtrOutput { return v.DeleteRestoredInstance }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RestoreWorkloadOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RestoreWorkload) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. Disk properties to be overridden during restore.

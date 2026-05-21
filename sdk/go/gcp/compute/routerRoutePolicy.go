@@ -173,6 +173,13 @@ import (
 type RouterRoutePolicy struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
@@ -229,6 +236,13 @@ func GetRouterRoutePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterRoutePolicy resources.
 type routerRoutePolicyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
 	Fingerprint *string `pulumi:"fingerprint"`
@@ -250,6 +264,13 @@ type routerRoutePolicyState struct {
 }
 
 type RouterRoutePolicyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource.  Used
 	// internally during updates.
 	Fingerprint pulumi.StringPtrInput
@@ -275,6 +296,13 @@ func (RouterRoutePolicyState) ElementType() reflect.Type {
 }
 
 type routerRoutePolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -294,6 +322,13 @@ type routerRoutePolicyArgs struct {
 
 // The set of arguments for constructing a RouterRoutePolicy resource.
 type RouterRoutePolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the route policy. This policy's name, which must be a resource ID segment and unique within all policies owned by the Router
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -396,6 +431,16 @@ func (o RouterRoutePolicyOutput) ToRouterRoutePolicyOutput() RouterRoutePolicyOu
 
 func (o RouterRoutePolicyOutput) ToRouterRoutePolicyOutputWithContext(ctx context.Context) RouterRoutePolicyOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RouterRoutePolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterRoutePolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The fingerprint used for optimistic locking of this resource.  Used

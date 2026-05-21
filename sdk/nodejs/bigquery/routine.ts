@@ -346,6 +346,15 @@ export class Routine extends pulumi.CustomResource {
      */
     declare public readonly definitionBody: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The description of the routine if defined.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -449,6 +458,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["dataGovernanceType"] = state?.dataGovernanceType;
             resourceInputs["datasetId"] = state?.datasetId;
             resourceInputs["definitionBody"] = state?.definitionBody;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["determinismLevel"] = state?.determinismLevel;
             resourceInputs["externalRuntimeOptions"] = state?.externalRuntimeOptions;
@@ -482,6 +492,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["dataGovernanceType"] = args?.dataGovernanceType;
             resourceInputs["datasetId"] = args?.datasetId;
             resourceInputs["definitionBody"] = args?.definitionBody;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["determinismLevel"] = args?.determinismLevel;
             resourceInputs["externalRuntimeOptions"] = args?.externalRuntimeOptions;
@@ -532,6 +543,15 @@ export interface RoutineState {
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      */
     definitionBody?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the routine if defined.
      */
@@ -642,6 +662,15 @@ export interface RoutineArgs {
      * If language=SQL, it is the substring inside (but excluding) the parentheses.
      */
     definitionBody: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the routine if defined.
      */

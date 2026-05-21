@@ -22,6 +22,7 @@ __all__ = ['PolicyArgs', 'Policy']
 class PolicyArgs:
     def __init__(__self__, *,
                  alternative_name_server_config: pulumi.Input[Optional['PolicyAlternativeNameServerConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns64_config: pulumi.Input[Optional['PolicyDns64ConfigArgs']] = None,
                  enable_inbound_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -36,6 +37,12 @@ class PolicyArgs:
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input['PolicyDns64ConfigArgs'] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
@@ -53,6 +60,8 @@ class PolicyArgs:
         """
         if alternative_name_server_config is not None:
             pulumi.set(__self__, "alternative_name_server_config", alternative_name_server_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns64_config is not None:
@@ -82,6 +91,23 @@ class PolicyArgs:
     @alternative_name_server_config.setter
     def alternative_name_server_config(self, value: pulumi.Input[Optional['PolicyAlternativeNameServerConfigArgs']]):
         pulumi.set(self, "alternative_name_server_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -179,6 +205,7 @@ class PolicyArgs:
 class _PolicyState:
     def __init__(__self__, *,
                  alternative_name_server_config: pulumi.Input[Optional['PolicyAlternativeNameServerConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns64_config: pulumi.Input[Optional['PolicyDns64ConfigArgs']] = None,
                  enable_inbound_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -193,6 +220,12 @@ class _PolicyState:
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input['PolicyDns64ConfigArgs'] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
@@ -210,6 +243,8 @@ class _PolicyState:
         """
         if alternative_name_server_config is not None:
             pulumi.set(__self__, "alternative_name_server_config", alternative_name_server_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dns64_config is not None:
@@ -239,6 +274,23 @@ class _PolicyState:
     @alternative_name_server_config.setter
     def alternative_name_server_config(self, value: pulumi.Input[Optional['PolicyAlternativeNameServerConfigArgs']]):
         pulumi.set(self, "alternative_name_server_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -339,6 +391,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_name_server_config: pulumi.Input[Optional[Union['PolicyAlternativeNameServerConfigArgs', 'PolicyAlternativeNameServerConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns64_config: pulumi.Input[Optional[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']]] = None,
                  enable_inbound_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -419,6 +472,12 @@ class Policy(pulumi.CustomResource):
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
@@ -522,6 +581,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_name_server_config: pulumi.Input[Optional[Union['PolicyAlternativeNameServerConfigArgs', 'PolicyAlternativeNameServerConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns64_config: pulumi.Input[Optional[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']]] = None,
                  enable_inbound_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -539,6 +599,7 @@ class Policy(pulumi.CustomResource):
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
             __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["dns64_config"] = dns64_config
             __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding
@@ -557,6 +618,7 @@ class Policy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             alternative_name_server_config: pulumi.Input[Optional[Union['PolicyAlternativeNameServerConfigArgs', 'PolicyAlternativeNameServerConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dns64_config: pulumi.Input[Optional[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']]] = None,
             enable_inbound_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -575,6 +637,12 @@ class Policy(pulumi.CustomResource):
                When specified, all DNS queries are forwarded to a name server that you choose.
                Names such as .internal are not available when an alternative name server is specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[Union['PolicyDns64ConfigArgs', 'PolicyDns64ConfigArgsDict']] dns64_config: Configurations related to DNS64 for this Policy.
                Structure is documented below.
@@ -595,6 +663,7 @@ class Policy(pulumi.CustomResource):
         __props__ = _PolicyState.__new__(_PolicyState)
 
         __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dns64_config"] = dns64_config
         __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding
@@ -614,6 +683,19 @@ class Policy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "alternative_name_server_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

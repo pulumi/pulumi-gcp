@@ -150,6 +150,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.std.StdFunctions;
@@ -217,6 +218,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
  * import com.pulumi.gcp.sql.User;
  * import com.pulumi.gcp.sql.UserArgs;
  * import java.util.ArrayList;
@@ -315,30 +317,36 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.databaseRoles);
     }
     /**
-     * The deletion policy for the user.
-     * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
-     * Possible values are: `ABANDON`.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      * ***
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the user.
-     * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
-     * Possible values are: `ABANDON`.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      * ***
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The host the user can connect from. This is only supported

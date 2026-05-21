@@ -147,9 +147,16 @@ import (
 type Owner struct {
 	pulumi.CustomResourceState
 
-	// The email of the user to be added as an owner.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// The email of the user to be added as an owner.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
 	// such as `webResource/https://www.example.com/`
@@ -192,9 +199,16 @@ func GetOwner(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Owner resources.
 type ownerState struct {
-	// The email of the user to be added as an owner.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// The email of the user to be added as an owner.
 	Email *string `pulumi:"email"`
 	// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
 	// such as `webResource/https://www.example.com/`
@@ -202,9 +216,16 @@ type ownerState struct {
 }
 
 type OwnerState struct {
-	// The email of the user to be added as an owner.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
+	DeletionPolicy pulumi.StringPtrInput
+	// The email of the user to be added as an owner.
 	Email pulumi.StringPtrInput
 	// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
 	// such as `webResource/https://www.example.com/`
@@ -216,9 +237,16 @@ func (OwnerState) ElementType() reflect.Type {
 }
 
 type ownerArgs struct {
-	// The email of the user to be added as an owner.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// The email of the user to be added as an owner.
 	Email string `pulumi:"email"`
 	// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
 	// such as `webResource/https://www.example.com/`
@@ -227,9 +255,16 @@ type ownerArgs struct {
 
 // The set of arguments for constructing a Owner resource.
 type OwnerArgs struct {
-	// The email of the user to be added as an owner.
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// ***
+	DeletionPolicy pulumi.StringPtrInput
+	// The email of the user to be added as an owner.
 	Email pulumi.StringInput
 	// The id of of the web resource to which the owner will be added, in the form `webResource/<resource_id>`,
 	// such as `webResource/https://www.example.com/`
@@ -323,9 +358,19 @@ func (o OwnerOutput) ToOwnerOutputWithContext(ctx context.Context) OwnerOutput {
 	return o
 }
 
-// The email of the user to be added as an owner.
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
 //
 // ***
+func (o OwnerOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Owner) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// The email of the user to be added as an owner.
 func (o OwnerOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *Owner) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }

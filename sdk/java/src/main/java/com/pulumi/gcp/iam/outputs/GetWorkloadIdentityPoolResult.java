@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkloadIdentityPoolResult {
     private List<GetWorkloadIdentityPoolAttestationRule> attestationRules;
+    private String deletionPolicy;
     private String description;
     private Boolean disabled;
     private String displayName;
@@ -37,6 +38,9 @@ public final class GetWorkloadIdentityPoolResult {
     private GetWorkloadIdentityPoolResult() {}
     public List<GetWorkloadIdentityPoolAttestationRule> attestationRules() {
         return this.attestationRules;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -86,6 +90,7 @@ public final class GetWorkloadIdentityPoolResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetWorkloadIdentityPoolAttestationRule> attestationRules;
+        private String deletionPolicy;
         private String description;
         private Boolean disabled;
         private String displayName;
@@ -101,6 +106,7 @@ public final class GetWorkloadIdentityPoolResult {
         public Builder(GetWorkloadIdentityPoolResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.attestationRules = defaults.attestationRules;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.disabled = defaults.disabled;
     	      this.displayName = defaults.displayName;
@@ -124,6 +130,14 @@ public final class GetWorkloadIdentityPoolResult {
         }
         public Builder attestationRules(GetWorkloadIdentityPoolAttestationRule... attestationRules) {
             return attestationRules(List.of(attestationRules));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -220,6 +234,7 @@ public final class GetWorkloadIdentityPoolResult {
         public GetWorkloadIdentityPoolResult build() {
             final var _resultValue = new GetWorkloadIdentityPoolResult();
             _resultValue.attestationRules = attestationRules;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.disabled = disabled;
             _resultValue.displayName = displayName;

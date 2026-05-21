@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// config for secret manager auto rotation. Structure is docuemented below
+        /// config for secret manager auto rotation. Structure is documented below
         /// </summary>
         public readonly Outputs.ClusterSecretManagerConfigRotationConfig? RotationConfig;
 

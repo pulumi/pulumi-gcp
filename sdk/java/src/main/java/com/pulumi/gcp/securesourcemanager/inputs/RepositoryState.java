@@ -34,28 +34,24 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The deletion policy for the repository. Setting `ABANDON` allows the resource
-     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-     * by erroring out during plan.
-     * Default is `PREVENT`.  Possible values are:
-     * * DELETE
-     * * PREVENT
-     * * ABANDON
+     * Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the repository. Setting `ABANDON` allows the resource
-     * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-     * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-     * by erroring out during plan.
-     * Default is `PREVENT`.  Possible values are:
-     * * DELETE
-     * * PREVENT
-     * * ABANDON
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -275,14 +271,12 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the repository. Setting `ABANDON` allows the resource
-         * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-         * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-         * by erroring out during plan.
-         * Default is `PREVENT`.  Possible values are:
-         * * DELETE
-         * * PREVENT
-         * * ABANDON
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
          * @return builder
          * 
@@ -293,14 +287,12 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the repository. Setting `ABANDON` allows the resource
-         * to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-         * and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-         * by erroring out during plan.
-         * Default is `PREVENT`.  Possible values are:
-         * * DELETE
-         * * PREVENT
-         * * ABANDON
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
          * @return builder
          * 

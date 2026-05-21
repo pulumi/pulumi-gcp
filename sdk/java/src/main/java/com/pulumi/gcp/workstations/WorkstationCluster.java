@@ -31,6 +31,64 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Workstation Cluster Custom Urls
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network("defaultNetwork", NetworkArgs.builder()
+ *             .name("workstations-network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("workstations-network")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(defaultNetwork.name())
+ *             .build());
+ * 
+ *         var default_ = new WorkstationCluster("default", WorkstationClusterArgs.builder()
+ *             .workstationClusterId("custom-urls-cluster")
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location("us-central1")
+ *             .workstationAuthorizationUrl("https://workstations.cloud.google.com/ui/auth")
+ *             .workstationLaunchUrl("https://console.cloud.google.com/workstations/launch")
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Workstation Cluster Basic
  * 
  * <pre>
@@ -393,6 +451,30 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
         return this.degraded;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * Human-readable name for this resource.
      * 
      */
@@ -627,6 +709,22 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
         return this.uid;
     }
     /**
+     * Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+     * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+     * 
+     */
+    @Export(name="workstationAuthorizationUrl", refs={String.class}, tree="[0]")
+    private Output<String> workstationAuthorizationUrl;
+
+    /**
+     * @return Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+     * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+     * 
+     */
+    public Output<String> workstationAuthorizationUrl() {
+        return this.workstationAuthorizationUrl;
+    }
+    /**
      * ID to use for the workstation cluster.
      * 
      */
@@ -639,6 +737,22 @@ public class WorkstationCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> workstationClusterId() {
         return this.workstationClusterId;
+    }
+    /**
+     * Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+     * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation&#39;s host URL.
+     * 
+     */
+    @Export(name="workstationLaunchUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workstationLaunchUrl;
+
+    /**
+     * @return Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+     * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation&#39;s host URL.
+     * 
+     */
+    public Output<Optional<String>> workstationLaunchUrl() {
+        return Codegen.optional(this.workstationLaunchUrl);
     }
 
     /**

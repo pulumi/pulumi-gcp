@@ -55,6 +55,7 @@ export interface GetSSLPolicyResult {
      * attribute will be empty.
      */
     readonly customFeatures: string[];
+    readonly deletionPolicy: string;
     /**
      * Description of this SSL Policy.
      */

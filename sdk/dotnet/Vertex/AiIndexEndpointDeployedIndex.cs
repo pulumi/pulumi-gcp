@@ -305,6 +305,17 @@ namespace Pulumi.Gcp.Vertex
         public Output<Outputs.AiIndexEndpointDeployedIndexDedicatedResources?> DedicatedResources { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// If set, the authentication is enabled for the private endpoint.
         /// Structure is documented below.
         /// </summary>
@@ -450,6 +461,17 @@ namespace Pulumi.Gcp.Vertex
         public Input<Inputs.AiIndexEndpointDeployedIndexDedicatedResourcesArgs>? DedicatedResources { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// If set, the authentication is enabled for the private endpoint.
         /// Structure is documented below.
         /// </summary>
@@ -547,6 +569,17 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("dedicatedResources")]
         public Input<Inputs.AiIndexEndpointDeployedIndexDedicatedResourcesGetArgs>? DedicatedResources { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// If set, the authentication is enabled for the private endpoint.

@@ -126,6 +126,15 @@ export class MirroringDeployment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-provided description of the deployment.
      * Used as additional context for the deployment.
      */
@@ -216,6 +225,7 @@ export class MirroringDeployment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MirroringDeploymentState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["forwardingRule"] = state?.forwardingRule;
@@ -243,6 +253,7 @@ export class MirroringDeployment extends pulumi.CustomResource {
             if (args?.mirroringDeploymentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mirroringDeploymentId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["forwardingRule"] = args?.forwardingRule;
             resourceInputs["labels"] = args?.labels;
@@ -274,6 +285,15 @@ export interface MirroringDeploymentState {
      * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the deployment.
      * Used as additional context for the deployment.
@@ -356,6 +376,15 @@ export interface MirroringDeploymentState {
  * The set of arguments for constructing a MirroringDeployment resource.
  */
 export interface MirroringDeploymentArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the deployment.
      * Used as additional context for the deployment.

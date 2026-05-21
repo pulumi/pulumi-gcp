@@ -55,6 +55,59 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// });
     /// ```
+    /// ### Database Migration Service Private Connection Psc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
+    ///     {
+    ///         DisplayName = "dbms_pc",
+    ///         Location = "us-central1",
+    ///         PrivateConnectionId = "my-connection",
+    ///         Labels = 
+    ///         {
+    ///             { "key", "value" },
+    ///         },
+    ///         PscInterfaceConfig = new Gcp.DatabaseMigrationService.Inputs.PrivateConnectionPscInterfaceConfigArgs
+    ///         {
+    ///             NetworkAttachment = googleComputeNetworkAttachment.Default.Id,
+    ///         },
+    ///         CreateWithoutValidation = false,
+    ///     });
+    /// 
+    ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("default", new()
+    ///     {
+    ///         Name = "my-attachment",
+    ///         Region = "us-central1",
+    ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
+    ///         Subnetworks = new[]
+    ///         {
+    ///             googleComputeSubnetwork.Default.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "my-subnetwork",
+    ///         IpCidrRange = "10.0.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -80,6 +133,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Output("createWithoutValidation")]
         public Output<bool?> CreateWithoutValidation { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Display name.
@@ -134,6 +198,14 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The PSC Interface configuration is used to create PSC Interface
+        /// between DMS's internal VPC and the consumer's PSC.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pscInterfaceConfig")]
+        public Output<Outputs.PrivateConnectionPscInterfaceConfig?> PscInterfaceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The combination of labels configured directly on the resource
         ///  and default labels configured on the provider.
         /// </summary>
@@ -152,7 +224,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// Structure is documented below.
         /// </summary>
         [Output("vpcPeeringConfig")]
-        public Output<Outputs.PrivateConnectionVpcPeeringConfig> VpcPeeringConfig { get; private set; } = null!;
+        public Output<Outputs.PrivateConnectionVpcPeeringConfig?> VpcPeeringConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -212,6 +284,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Input<bool>? CreateWithoutValidation { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Display name.
         /// </summary>
         [Input("displayName")]
@@ -251,12 +334,20 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// The PSC Interface configuration is used to create PSC Interface
+        /// between DMS's internal VPC and the consumer's PSC.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscInterfaceConfig")]
+        public Input<Inputs.PrivateConnectionPscInterfaceConfigArgs>? PscInterfaceConfig { get; set; }
+
+        /// <summary>
         /// The VPC Peering configuration is used to create VPC peering
         /// between databasemigrationservice and the consumer's VPC.
         /// Structure is documented below.
         /// </summary>
-        [Input("vpcPeeringConfig", required: true)]
-        public Input<Inputs.PrivateConnectionVpcPeeringConfigArgs> VpcPeeringConfig { get; set; } = null!;
+        [Input("vpcPeeringConfig")]
+        public Input<Inputs.PrivateConnectionVpcPeeringConfigArgs>? VpcPeeringConfig { get; set; }
 
         public PrivateConnectionArgs()
         {
@@ -271,6 +362,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("createWithoutValidation")]
         public Input<bool>? CreateWithoutValidation { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Display name.
@@ -345,6 +447,14 @@ namespace Pulumi.Gcp.DatabaseMigrationService
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The PSC Interface configuration is used to create PSC Interface
+        /// between DMS's internal VPC and the consumer's PSC.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscInterfaceConfig")]
+        public Input<Inputs.PrivateConnectionPscInterfaceConfigGetArgs>? PscInterfaceConfig { get; set; }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

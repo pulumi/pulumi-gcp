@@ -319,6 +319,15 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -407,6 +416,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             const state = argsOrState as RegionTargetHttpsProxyState | undefined;
             resourceInputs["certificateManagerCertificates"] = state?.certificateManagerCertificates;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["httpKeepAliveTimeoutSec"] = state?.httpKeepAliveTimeoutSec;
             resourceInputs["name"] = state?.name;
@@ -424,6 +434,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'urlMap'");
             }
             resourceInputs["certificateManagerCertificates"] = args?.certificateManagerCertificates;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["httpKeepAliveTimeoutSec"] = args?.httpKeepAliveTimeoutSec;
             resourceInputs["name"] = args?.name;
@@ -456,6 +467,15 @@ export interface RegionTargetHttpsProxyState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -541,6 +561,15 @@ export interface RegionTargetHttpsProxyArgs {
      * Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificates/{resourceName}` or just the selfLink `projects/{project}/locations/{location}/certificates/{resourceName}`
      */
     certificateManagerCertificates?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

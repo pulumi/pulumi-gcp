@@ -168,6 +168,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         public readonly ImmutableArray<Outputs.GetEntitlementAdditionalNotificationTargetResult> AdditionalNotificationTargets;
         public readonly ImmutableArray<Outputs.GetEntitlementApprovalWorkflowResult> ApprovalWorkflows;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly ImmutableArray<Outputs.GetEntitlementEligibleUserResult> EligibleUsers;
         public readonly string? EntitlementId;
         public readonly string Etag;
@@ -191,6 +192,8 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
             ImmutableArray<Outputs.GetEntitlementApprovalWorkflowResult> approvalWorkflows,
 
             string createTime,
+
+            string deletionPolicy,
 
             ImmutableArray<Outputs.GetEntitlementEligibleUserResult> eligibleUsers,
 
@@ -219,6 +222,7 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
             AdditionalNotificationTargets = additionalNotificationTargets;
             ApprovalWorkflows = approvalWorkflows;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             EligibleUsers = eligibleUsers;
             EntitlementId = entitlementId;
             Etag = etag;

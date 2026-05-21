@@ -67,6 +67,7 @@ type LookupDatabaseResult struct {
 	DatabaseDialect      string                        `pulumi:"databaseDialect"`
 	Ddls                 []string                      `pulumi:"ddls"`
 	DefaultTimeZone      string                        `pulumi:"defaultTimeZone"`
+	DeletionPolicy       string                        `pulumi:"deletionPolicy"`
 	DeletionProtection   bool                          `pulumi:"deletionProtection"`
 	EnableDropProtection bool                          `pulumi:"enableDropProtection"`
 	EncryptionConfigs    []GetDatabaseEncryptionConfig `pulumi:"encryptionConfigs"`
@@ -130,6 +131,10 @@ func (o LookupDatabaseResultOutput) Ddls() pulumi.StringArrayOutput {
 
 func (o LookupDatabaseResultOutput) DefaultTimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.DefaultTimeZone }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseResultOutput) DeletionProtection() pulumi.BoolOutput {

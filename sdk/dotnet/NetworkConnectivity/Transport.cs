@@ -37,13 +37,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary_network = new Gcp.Compute.Network("primary-network", new()
     ///     {
-    ///         Name = "tf-test-my-vpc-network_79580",
+    ///         Name = "tf-test-my-vpc-network_44154",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Transport("primary", new()
     ///     {
-    ///         Name = "tf-test-basic-transport_98863",
+    ///         Name = "tf-test-basic-transport_90221",
     ///         Region = "us-east4",
     ///         Description = "A sample transport",
     ///         RemoteProfile = $"https://networkconnectivity.googleapis.com/v1beta/{project.Apply(getProjectResult =&gt; getProjectResult.Id)}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -103,6 +103,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -300,6 +311,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Bandwidth { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// An optional description of this resource.
         /// </summary>
         [Input("description")]
@@ -425,6 +447,17 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// An optional description of this resource.

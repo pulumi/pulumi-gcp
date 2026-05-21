@@ -14,13 +14,17 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
     public sealed class ConnectionProfilePostgresql
     {
         /// <summary>
-        /// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+        /// If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
         /// </summary>
         public readonly string? AlloydbClusterId;
         /// <summary>
-        /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        /// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
         /// </summary>
         public readonly string? CloudSqlId;
+        /// <summary>
+        /// The name of the specific database within the host.
+        /// </summary>
+        public readonly string? Database;
         /// <summary>
         /// The IP or hostname of the source MySQL database.
         /// </summary>
@@ -46,6 +50,11 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
         /// </summary>
         public readonly int? Port;
         /// <summary>
+        /// Private connectivity.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ConnectionProfilePostgresqlPrivateConnectivity? PrivateConnectivity;
+        /// <summary>
         /// SSL configuration for the destination to connect to the source database.
         /// Structure is documented below.
         /// </summary>
@@ -61,6 +70,8 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
 
             string? cloudSqlId,
 
+            string? database,
+
             string? host,
 
             string? networkArchitecture,
@@ -71,17 +82,21 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Outputs
 
             int? port,
 
+            Outputs.ConnectionProfilePostgresqlPrivateConnectivity? privateConnectivity,
+
             Outputs.ConnectionProfilePostgresqlSsl? ssl,
 
             string? username)
         {
             AlloydbClusterId = alloydbClusterId;
             CloudSqlId = cloudSqlId;
+            Database = database;
             Host = host;
             NetworkArchitecture = networkArchitecture;
             Password = password;
             PasswordSet = passwordSet;
             Port = port;
+            PrivateConnectivity = privateConnectivity;
             Ssl = ssl;
             Username = username;
         }

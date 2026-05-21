@@ -55,7 +55,7 @@ import (
 //				return err
 //			}
 //			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
-//				MembershipId: pulumi.String("tf-test-membership_42702"),
+//				MembershipId: pulumi.String("tf-test-membership_94690"),
 //				Endpoint: &gkehub.MembershipEndpointArgs{
 //					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
 //						ResourceLink: primary.ID().ApplyT(func(id string) (string, error) {
@@ -74,7 +74,7 @@ import (
 //				return err
 //			}
 //			_, err = gkehub.NewMembershipRbacRoleBinding(ctx, "membership_rbac_role_binding", &gkehub.MembershipRbacRoleBindingArgs{
-//				MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_37426"),
+//				MembershipRbacRoleBindingId: pulumi.String("tf-test-membership-rbac-role-binding_29947"),
 //				MembershipId:                membership.MembershipId,
 //				User:                        pulumi.Sprintf("service-%v@gcp-sa-anthossupport.iam.gserviceaccount.com", project.Number),
 //				Role: &gkehub.MembershipRbacRoleBindingRoleArgs{
@@ -115,6 +115,13 @@ type MembershipRbacRoleBinding struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Location of the Membership
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Id of the membership
@@ -192,6 +199,13 @@ type membershipRbacRoleBindingState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Location of the Membership
 	Location *string `pulumi:"location"`
 	// Id of the membership
@@ -225,6 +239,13 @@ type MembershipRbacRoleBindingState struct {
 	CreateTime pulumi.StringPtrInput
 	// Time the RBAC Role Binding was deleted in UTC.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Location of the Membership
 	Location pulumi.StringPtrInput
 	// Id of the membership
@@ -258,6 +279,13 @@ func (MembershipRbacRoleBindingState) ElementType() reflect.Type {
 }
 
 type membershipRbacRoleBindingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Location of the Membership
 	Location string `pulumi:"location"`
 	// Id of the membership
@@ -279,6 +307,13 @@ type membershipRbacRoleBindingArgs struct {
 
 // The set of arguments for constructing a MembershipRbacRoleBinding resource.
 type MembershipRbacRoleBindingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Location of the Membership
 	Location pulumi.StringInput
 	// Id of the membership
@@ -393,6 +428,16 @@ func (o MembershipRbacRoleBindingOutput) CreateTime() pulumi.StringOutput {
 // Time the RBAC Role Binding was deleted in UTC.
 func (o MembershipRbacRoleBindingOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MembershipRbacRoleBinding) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MembershipRbacRoleBindingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MembershipRbacRoleBinding) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Location of the Membership

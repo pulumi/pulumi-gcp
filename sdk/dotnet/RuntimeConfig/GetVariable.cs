@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     [OutputType]
     public sealed class GetVariableResult
     {
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -184,6 +185,8 @@ namespace Pulumi.Gcp.RuntimeConfig
 
         [OutputConstructor]
         private GetVariableResult(
+            string deletionPolicy,
+
             string id,
 
             string name,
@@ -198,6 +201,7 @@ namespace Pulumi.Gcp.RuntimeConfig
 
             string value)
         {
+            DeletionPolicy = deletionPolicy;
             Id = id;
             Name = name;
             Parent = parent;

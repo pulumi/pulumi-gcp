@@ -61,6 +61,7 @@ export interface GetPrivateCloudResult {
     readonly createTime: string;
     readonly deleteTime: string;
     readonly deletionDelayHours: number;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly expireTime: string;
     readonly hcxes: outputs.vmwareengine.GetPrivateCloudHcx[];

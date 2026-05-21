@@ -222,7 +222,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
      * @return The deletion policy for the Project. Setting PREVENT will protect the project
@@ -231,8 +231,8 @@ public class Project extends com.pulumi.resources.CustomResource {
      * the Google API. Possible values are: &#34;PREVENT&#34;, &#34;ABANDON&#34;, &#34;DELETE&#34;. Default value is `PREVENT`.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

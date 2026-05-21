@@ -186,6 +186,15 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly deleteDefaultRoutesOnCreate: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.
      */
@@ -294,6 +303,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["bgpInterRegionCost"] = state?.bgpInterRegionCost;
             resourceInputs["deleteBgpAlwaysCompareMed"] = state?.deleteBgpAlwaysCompareMed;
             resourceInputs["deleteDefaultRoutesOnCreate"] = state?.deleteDefaultRoutesOnCreate;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["enableUlaInternalIpv6"] = state?.enableUlaInternalIpv6;
             resourceInputs["gatewayIpv4"] = state?.gatewayIpv4;
@@ -316,6 +326,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["bgpInterRegionCost"] = args?.bgpInterRegionCost;
             resourceInputs["deleteBgpAlwaysCompareMed"] = args?.deleteBgpAlwaysCompareMed;
             resourceInputs["deleteDefaultRoutesOnCreate"] = args?.deleteDefaultRoutesOnCreate;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["enableUlaInternalIpv6"] = args?.enableUlaInternalIpv6;
             resourceInputs["internalIpv6Range"] = args?.internalIpv6Range;
@@ -373,6 +384,15 @@ export interface NetworkState {
      * immediately after network creation. Defaults to `false`.
      */
     deleteDefaultRoutesOnCreate?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.
@@ -501,6 +521,15 @@ export interface NetworkArgs {
      * immediately after network creation. Defaults to `false`.
      */
     deleteDefaultRoutesOnCreate?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. The resource must be
      * recreated to modify this field.

@@ -26,13 +26,16 @@ class GetClientResult:
     """
     A collection of values returned by getClient.
     """
-    def __init__(__self__, brand=None, client_id=None, display_name=None, id=None, secret=None):
+    def __init__(__self__, brand=None, client_id=None, deletion_policy=None, display_name=None, id=None, secret=None):
         if brand and not isinstance(brand, str):
             raise TypeError("Expected argument 'brand' to be a str")
         pulumi.set(__self__, "brand", brand)
         if client_id and not isinstance(client_id, str):
             raise TypeError("Expected argument 'client_id' to be a str")
         pulumi.set(__self__, "client_id", client_id)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -52,6 +55,11 @@ class GetClientResult:
     @pulumi.getter(name="clientId")
     def client_id(self) -> _builtins.str:
         return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -80,6 +88,7 @@ class AwaitableGetClientResult(GetClientResult):
         return GetClientResult(
             brand=self.brand,
             client_id=self.client_id,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             id=self.id,
             secret=self.secret)
@@ -115,6 +124,7 @@ def get_client(brand: Optional[_builtins.str] = None,
     return AwaitableGetClientResult(
         brand=pulumi.get(__ret__, 'brand'),
         client_id=pulumi.get(__ret__, 'client_id'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         secret=pulumi.get(__ret__, 'secret'))
@@ -147,6 +157,7 @@ def get_client_output(brand: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetClientResult(
         brand=pulumi.get(__response__, 'brand'),
         client_id=pulumi.get(__response__, 'client_id'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
         secret=pulumi.get(__response__, 'secret')))

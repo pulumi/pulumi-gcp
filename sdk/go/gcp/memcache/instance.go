@@ -134,6 +134,13 @@ type Instance struct {
 	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a `terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -242,6 +249,13 @@ type instanceState struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a `terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -310,6 +324,13 @@ type InstanceState struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a `terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -380,6 +401,13 @@ type instanceArgs struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a `terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -432,6 +460,13 @@ type InstanceArgs struct {
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
 	AuthorizedNetwork pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the instance.
 	// When a `terraform destroy` or `pulumi up` would delete the instance,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -575,6 +610,16 @@ func (o InstanceOutput) AuthorizedNetwork() pulumi.StringOutput {
 // Creation timestamp in RFC3339 text format.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the instance.

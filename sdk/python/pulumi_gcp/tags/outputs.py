@@ -224,6 +224,7 @@ class GetTagKeysKeyResult(dict):
     def __init__(__self__, *,
                  allowed_values_regex: _builtins.str,
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  description: _builtins.str,
                  name: _builtins.str,
                  namespaced_name: _builtins.str,
@@ -236,6 +237,12 @@ class GetTagKeysKeyResult(dict):
         :param _builtins.str allowed_values_regex: Regular expression constraint for dynamic tag values, follows RE2 syntax. If present, it implicitly allows dynamic values (constrained by the regex).
         :param _builtins.str create_time: Creation time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str description: User-assigned description of the TagKey.
         :param _builtins.str name: an identifier for the resource with format `tagKeys/{{name}}`
         :param _builtins.str namespaced_name: Namespaced name of the TagKey which is in the format `{parentNamespace}/{shortName}`.
@@ -248,6 +255,7 @@ class GetTagKeysKeyResult(dict):
         """
         pulumi.set(__self__, "allowed_values_regex", allowed_values_regex)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespaced_name", namespaced_name)
@@ -273,6 +281,19 @@ class GetTagKeysKeyResult(dict):
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -344,6 +365,7 @@ class GetTagKeysKeyResult(dict):
 class GetTagValuesValueResult(dict):
     def __init__(__self__, *,
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  description: _builtins.str,
                  name: _builtins.str,
                  namespaced_name: _builtins.str,
@@ -353,6 +375,12 @@ class GetTagValuesValueResult(dict):
         """
         :param _builtins.str create_time: Creation time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str description: User-assigned description of the TagValue.
         :param _builtins.str name: an identifier for the resource with format `tagValues/{{name}}`
         :param _builtins.str namespaced_name: Namespaced name of the TagValue.
@@ -362,6 +390,7 @@ class GetTagValuesValueResult(dict):
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "namespaced_name", namespaced_name)
@@ -377,6 +406,19 @@ class GetTagValuesValueResult(dict):
         A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

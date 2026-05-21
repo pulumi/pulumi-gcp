@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
- *     membershipId: "tf-test-membership_42702",
+ *     membershipId: "tf-test-membership_94690",
  *     endpoint: {
  *         gkeCluster: {
  *             resourceLink: pulumi.interpolate`//container.googleapis.com/${primary.id}`,
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  * });
  * const project = gcp.organizations.getProject({});
  * const membershipRbacRoleBinding = new gcp.gkehub.MembershipRbacRoleBinding("membership_rbac_role_binding", {
- *     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_37426",
+ *     membershipRbacRoleBindingId: "tf-test-membership-rbac-role-binding_29947",
  *     membershipId: membership.membershipId,
  *     user: project.then(project => `service-${project.number}@gcp-sa-anthossupport.iam.gserviceaccount.com`),
  *     role: {
@@ -111,6 +111,15 @@ export class MembershipRbacRoleBinding extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Location of the Membership
      */
     declare public readonly location: pulumi.Output<string>;
@@ -172,6 +181,7 @@ export class MembershipRbacRoleBinding extends pulumi.CustomResource {
             const state = argsOrState as MembershipRbacRoleBindingState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["membershipId"] = state?.membershipId;
             resourceInputs["membershipRbacRoleBindingId"] = state?.membershipRbacRoleBindingId;
@@ -199,6 +209,7 @@ export class MembershipRbacRoleBinding extends pulumi.CustomResource {
             if (args?.user === undefined && !opts.urn) {
                 throw new Error("Missing required property 'user'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["membershipId"] = args?.membershipId;
             resourceInputs["membershipRbacRoleBindingId"] = args?.membershipRbacRoleBindingId;
@@ -229,6 +240,15 @@ export interface MembershipRbacRoleBindingState {
      * Time the RBAC Role Binding was deleted in UTC.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Location of the Membership
      */
@@ -281,6 +301,15 @@ export interface MembershipRbacRoleBindingState {
  * The set of arguments for constructing a MembershipRbacRoleBinding resource.
  */
 export interface MembershipRbacRoleBindingArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Location of the Membership
      */

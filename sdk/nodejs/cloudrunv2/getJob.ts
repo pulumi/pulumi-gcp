@@ -65,6 +65,7 @@ export interface GetJobResult {
     readonly createTime: string;
     readonly creator: string;
     readonly deleteTime: string;
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly effectiveAnnotations: {[key: string]: string};
     readonly effectiveLabels: {[key: string]: string};

@@ -21,6 +21,7 @@ public final class GetBackendBucketResult {
     private String compressionMode;
     private String creationTimestamp;
     private List<String> customResponseHeaders;
+    private String deletionPolicy;
     private String description;
     private String edgeSecurityPolicy;
     private Boolean enableCdn;
@@ -50,6 +51,9 @@ public final class GetBackendBucketResult {
     }
     public List<String> customResponseHeaders() {
         return this.customResponseHeaders;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -97,6 +101,7 @@ public final class GetBackendBucketResult {
         private String compressionMode;
         private String creationTimestamp;
         private List<String> customResponseHeaders;
+        private String deletionPolicy;
         private String description;
         private String edgeSecurityPolicy;
         private Boolean enableCdn;
@@ -114,6 +119,7 @@ public final class GetBackendBucketResult {
     	      this.compressionMode = defaults.compressionMode;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.customResponseHeaders = defaults.customResponseHeaders;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.edgeSecurityPolicy = defaults.edgeSecurityPolicy;
     	      this.enableCdn = defaults.enableCdn;
@@ -170,6 +176,14 @@ public final class GetBackendBucketResult {
         }
         public Builder customResponseHeaders(String... customResponseHeaders) {
             return customResponseHeaders(List.of(customResponseHeaders));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -251,6 +265,7 @@ public final class GetBackendBucketResult {
             _resultValue.compressionMode = compressionMode;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.customResponseHeaders = customResponseHeaders;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.edgeSecurityPolicy = edgeSecurityPolicy;
             _resultValue.enableCdn = enableCdn;

@@ -139,6 +139,13 @@ type Plugin struct {
 	ConfigTemplate PluginConfigTemplateOutput `pulumi:"configTemplate"`
 	// Timestamp indicating when the plugin was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The plugin description. Max length is 2000 characters (Unicode code
 	// points).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -243,6 +250,13 @@ type pluginState struct {
 	ConfigTemplate *PluginConfigTemplate `pulumi:"configTemplate"`
 	// Timestamp indicating when the plugin was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The plugin description. Max length is 2000 characters (Unicode code
 	// points).
 	Description *string `pulumi:"description"`
@@ -309,6 +323,13 @@ type PluginState struct {
 	ConfigTemplate PluginConfigTemplatePtrInput
 	// Timestamp indicating when the plugin was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The plugin description. Max length is 2000 characters (Unicode code
 	// points).
 	Description pulumi.StringPtrInput
@@ -377,6 +398,13 @@ type pluginArgs struct {
 	// ConfigTemplate represents the configuration template for a plugin.
 	// Structure is documented below.
 	ConfigTemplate *PluginConfigTemplate `pulumi:"configTemplate"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The plugin description. Max length is 2000 characters (Unicode code
 	// points).
 	Description *string `pulumi:"description"`
@@ -422,6 +450,13 @@ type PluginArgs struct {
 	// ConfigTemplate represents the configuration template for a plugin.
 	// Structure is documented below.
 	ConfigTemplate PluginConfigTemplatePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The plugin description. Max length is 2000 characters (Unicode code
 	// points).
 	Description pulumi.StringPtrInput
@@ -561,6 +596,16 @@ func (o PluginOutput) ConfigTemplate() PluginConfigTemplateOutput {
 // Timestamp indicating when the plugin was created.
 func (o PluginOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PluginOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The plugin description. Max length is 2000 characters (Unicode code

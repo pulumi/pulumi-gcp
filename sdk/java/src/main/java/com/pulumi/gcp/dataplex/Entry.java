@@ -108,6 +108,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataplex.Entry;
  * import com.pulumi.gcp.dataplex.EntryArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryEntrySourceArgs;
+ * import com.pulumi.gcp.dataplex.inputs.EntryEntrySourceAncestorArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectArgs;
  * import com.pulumi.gcp.dataplex.inputs.EntryAspectAspectArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -557,6 +558,30 @@ public class Entry extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The entry group id of the entry group the entry will be created in.

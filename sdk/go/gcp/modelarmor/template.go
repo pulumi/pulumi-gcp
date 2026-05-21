@@ -218,6 +218,13 @@ type Template struct {
 
 	// Create time stamp
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Filters configuration.
@@ -243,7 +250,7 @@ type Template struct {
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// Message describing TemplateMetadata
 	// Structure is documented below.
-	TemplateMetadata TemplateTemplateMetadataPtrOutput `pulumi:"templateMetadata"`
+	TemplateMetadata TemplateTemplateMetadataOutput `pulumi:"templateMetadata"`
 	// Update time stamp
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -294,6 +301,13 @@ func GetTemplate(ctx *pulumi.Context,
 type templateState struct {
 	// Create time stamp
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Filters configuration.
@@ -327,6 +341,13 @@ type templateState struct {
 type TemplateState struct {
 	// Create time stamp
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Filters configuration.
@@ -362,6 +383,13 @@ func (TemplateState) ElementType() reflect.Type {
 }
 
 type templateArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Filters configuration.
 	// Structure is documented below.
 	FilterConfig TemplateFilterConfig `pulumi:"filterConfig"`
@@ -385,6 +413,13 @@ type templateArgs struct {
 
 // The set of arguments for constructing a Template resource.
 type TemplateArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Filters configuration.
 	// Structure is documented below.
 	FilterConfig TemplateFilterConfigInput
@@ -498,6 +533,16 @@ func (o TemplateOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TemplateOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Template) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o TemplateOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Template) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
@@ -548,8 +593,8 @@ func (o TemplateOutput) TemplateId() pulumi.StringOutput {
 
 // Message describing TemplateMetadata
 // Structure is documented below.
-func (o TemplateOutput) TemplateMetadata() TemplateTemplateMetadataPtrOutput {
-	return o.ApplyT(func(v *Template) TemplateTemplateMetadataPtrOutput { return v.TemplateMetadata }).(TemplateTemplateMetadataPtrOutput)
+func (o TemplateOutput) TemplateMetadata() TemplateTemplateMetadataOutput {
+	return o.ApplyT(func(v *Template) TemplateTemplateMetadataOutput { return v.TemplateMetadata }).(TemplateTemplateMetadataOutput)
 }
 
 // Update time stamp

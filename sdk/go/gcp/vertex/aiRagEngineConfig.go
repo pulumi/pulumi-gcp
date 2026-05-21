@@ -40,6 +40,13 @@ import (
 type AiRagEngineConfig struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The resource name of the Dataset. This value is set by Google.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -85,6 +92,13 @@ func GetAiRagEngineConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiRagEngineConfig resources.
 type aiRagEngineConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource name of the Dataset. This value is set by Google.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -98,6 +112,13 @@ type aiRagEngineConfigState struct {
 }
 
 type AiRagEngineConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource name of the Dataset. This value is set by Google.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -115,6 +136,13 @@ func (AiRagEngineConfigState) ElementType() reflect.Type {
 }
 
 type aiRagEngineConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -127,6 +155,13 @@ type aiRagEngineConfigArgs struct {
 
 // The set of arguments for constructing a AiRagEngineConfig resource.
 type AiRagEngineConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -222,6 +257,16 @@ func (o AiRagEngineConfigOutput) ToAiRagEngineConfigOutput() AiRagEngineConfigOu
 
 func (o AiRagEngineConfigOutput) ToAiRagEngineConfigOutputWithContext(ctx context.Context) AiRagEngineConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiRagEngineConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiRagEngineConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The resource name of the Dataset. This value is set by Google.

@@ -132,6 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedNamespacesArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -224,6 +225,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedApplicationsArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedApplicationsNamespacedNameArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -393,6 +395,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigSelectedNamespacesArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -503,6 +509,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigExcludedNamespacesArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -690,6 +701,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfyingArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigRestoreOrderGroupKindDependencyRequiringArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -795,6 +809,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkebackup.RestorePlanArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigArgs;
  * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigClusterResourceRestoreScopeArgs;
+ * import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -897,18 +912,42 @@ public class RestorePlan extends com.pulumi.resources.CustomResource {
         return this.backupPlan;
     }
     /**
-     * The source cluster from which Restores will be created via this RestorePlan.
+     * The name of the target cluster to which you want to Restore via this RestorePlan.
      * 
      */
     @Export(name="cluster", refs={String.class}, tree="[0]")
     private Output<String> cluster;
 
     /**
-     * @return The source cluster from which Restores will be created via this RestorePlan.
+     * @return The name of the target cluster to which you want to Restore via this RestorePlan.
      * 
      */
     public Output<String> cluster() {
         return this.cluster;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * User specified descriptive string for this RestorePlan.

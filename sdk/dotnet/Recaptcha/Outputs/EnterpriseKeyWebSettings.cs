@@ -30,7 +30,12 @@ namespace Pulumi.Gcp.Recaptcha.Outputs
         /// </summary>
         public readonly string? ChallengeSecurityPreference;
         /// <summary>
-        /// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE
+        /// Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.EnterpriseKeyWebSettingsChallengeSettings? ChallengeSettings;
+        /// <summary>
+        /// Required. Describes how this key is integrated with the website. Possible values: SCORE, CHECKBOX, INVISIBLE, POLICY_BASED_CHALLENGE
         /// </summary>
         public readonly string IntegrationType;
 
@@ -44,12 +49,15 @@ namespace Pulumi.Gcp.Recaptcha.Outputs
 
             string? challengeSecurityPreference,
 
+            Outputs.EnterpriseKeyWebSettingsChallengeSettings? challengeSettings,
+
             string integrationType)
         {
             AllowAllDomains = allowAllDomains;
             AllowAmpTraffic = allowAmpTraffic;
             AllowedDomains = allowedDomains;
             ChallengeSecurityPreference = challengeSecurityPreference;
+            ChallengeSettings = challengeSettings;
             IntegrationType = integrationType;
         }
     }

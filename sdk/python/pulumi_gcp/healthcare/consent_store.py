@@ -21,6 +21,7 @@ class ConsentStoreArgs:
     def __init__(__self__, *,
                  dataset: pulumi.Input[_builtins.str],
                  default_consent_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_consent_create_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
@@ -31,6 +32,12 @@ class ConsentStoreArgs:
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[_builtins.str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Consent stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -49,6 +56,8 @@ class ConsentStoreArgs:
         pulumi.set(__self__, "dataset", dataset)
         if default_consent_ttl is not None:
             pulumi.set(__self__, "default_consent_ttl", default_consent_ttl)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable_consent_create_on_update is not None:
             pulumi.set(__self__, "enable_consent_create_on_update", enable_consent_create_on_update)
         if labels is not None:
@@ -81,6 +90,23 @@ class ConsentStoreArgs:
     @default_consent_ttl.setter
     def default_consent_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_consent_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableConsentCreateOnUpdate")
@@ -135,6 +161,7 @@ class _ConsentStoreState:
     def __init__(__self__, *,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_consent_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_consent_create_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -147,6 +174,12 @@ class _ConsentStoreState:
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[_builtins.str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Consent stores.
@@ -169,6 +202,8 @@ class _ConsentStoreState:
             pulumi.set(__self__, "dataset", dataset)
         if default_consent_ttl is not None:
             pulumi.set(__self__, "default_consent_ttl", default_consent_ttl)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_consent_create_on_update is not None:
@@ -205,6 +240,23 @@ class _ConsentStoreState:
     @default_consent_ttl.setter
     def default_consent_ttl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_consent_ttl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -287,6 +339,7 @@ class ConsentStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_consent_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_consent_create_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -374,6 +427,12 @@ class ConsentStore(pulumi.CustomResource):
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[_builtins.str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Consent stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -489,6 +548,7 @@ class ConsentStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_consent_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_consent_create_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -505,6 +565,7 @@ class ConsentStore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset'")
             __props__.__dict__["dataset"] = dataset
             __props__.__dict__["default_consent_ttl"] = default_consent_ttl
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enable_consent_create_on_update"] = enable_consent_create_on_update
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -524,6 +585,7 @@ class ConsentStore(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dataset: pulumi.Input[Optional[_builtins.str]] = None,
             default_consent_ttl: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_consent_create_on_update: pulumi.Input[Optional[_builtins.bool]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -540,6 +602,12 @@ class ConsentStore(pulumi.CustomResource):
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[_builtins.str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-supplied key-value pairs used to organize Consent stores.
@@ -564,6 +632,7 @@ class ConsentStore(pulumi.CustomResource):
 
         __props__.__dict__["dataset"] = dataset
         __props__.__dict__["default_consent_ttl"] = default_consent_ttl
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_consent_create_on_update"] = enable_consent_create_on_update
         __props__.__dict__["labels"] = labels
@@ -588,6 +657,19 @@ class ConsentStore(pulumi.CustomResource):
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
         """
         return pulumi.get(self, "default_consent_ttl")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

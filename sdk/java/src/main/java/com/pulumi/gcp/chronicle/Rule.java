@@ -285,26 +285,40 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * If deletionPolicy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
      * will also be deleted. If deletionPolicy = &#34;DEFAULT&#34;, the call will only succeed if the
      * rule has no associated retrohunts, including completed retrohunts, and no
-     * associated detections. Regardless of this field&#39;s value, the rule
-     * deployment associated with this rule will also be deleted.
-     * Possible values: DEFAULT, FORCE
+     * associated detections. Regardless of being set to &#34;FORCE&#34; the rule
+     * deployment associated with this rule will also be deleted if deletion is successful.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
      * @return Policy to determine if the rule should be deleted forcefully.
      * If deletionPolicy = &#34;FORCE&#34;, any retrohunts and any detections associated with the rule
      * will also be deleted. If deletionPolicy = &#34;DEFAULT&#34;, the call will only succeed if the
      * rule has no associated retrohunts, including completed retrohunts, and no
-     * associated detections. Regardless of this field&#39;s value, the rule
-     * deployment associated with this rule will also be deleted.
-     * Possible values: DEFAULT, FORCE
+     * associated detections. Regardless of being set to &#34;FORCE&#34; the rule
+     * deployment associated with this rule will also be deleted if deletion is successful.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The display name of the severity level. Extracted from the meta section of

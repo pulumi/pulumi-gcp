@@ -253,6 +253,13 @@ type InterconnectAttachment struct {
 	// IPv6 address + prefix length to be configured on the customer
 	// router subinterface for this interconnect attachment.
 	CustomerRouterIpv6Address pulumi.StringOutput `pulumi:"customerRouterIpv6Address"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type
@@ -461,6 +468,13 @@ type interconnectAttachmentState struct {
 	// IPv6 address + prefix length to be configured on the customer
 	// router subinterface for this interconnect attachment.
 	CustomerRouterIpv6Address *string `pulumi:"customerRouterIpv6Address"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type
@@ -635,6 +649,13 @@ type InterconnectAttachmentState struct {
 	// IPv6 address + prefix length to be configured on the customer
 	// router subinterface for this interconnect attachment.
 	CustomerRouterIpv6Address pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired availability domain for the attachment. Only available for type
@@ -797,6 +818,13 @@ type interconnectAttachmentArgs struct {
 	// fail if all possible /29s are in use on Google's edge. If not supplied,
 	// Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets []string `pulumi:"candidateSubnets"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Desired availability domain for the attachment. Only available for type
@@ -926,6 +954,13 @@ type InterconnectAttachmentArgs struct {
 	// fail if all possible /29s are in use on Google's edge. If not supplied,
 	// Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Desired availability domain for the attachment. Only available for type
@@ -1193,6 +1228,16 @@ func (o InterconnectAttachmentOutput) CustomerRouterIpAddress() pulumi.StringOut
 // router subinterface for this interconnect attachment.
 func (o InterconnectAttachmentOutput) CustomerRouterIpv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.CustomerRouterIpv6Address }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InterconnectAttachmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

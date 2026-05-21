@@ -323,6 +323,13 @@ type Job struct {
 	// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
 	//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 	AttemptDeadline pulumi.StringPtrOutput `pulumi:"attemptDeadline"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human-readable description for the job.
 	// This string must not contain more than 500 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -403,6 +410,13 @@ type jobState struct {
 	// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
 	//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 	AttemptDeadline *string `pulumi:"attemptDeadline"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description for the job.
 	// This string must not contain more than 500 characters.
 	Description *string `pulumi:"description"`
@@ -454,6 +468,13 @@ type JobState struct {
 	// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
 	//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 	AttemptDeadline pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description for the job.
 	// This string must not contain more than 500 characters.
 	Description pulumi.StringPtrInput
@@ -509,6 +530,13 @@ type jobArgs struct {
 	// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
 	//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 	AttemptDeadline *string `pulumi:"attemptDeadline"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description for the job.
 	// This string must not contain more than 500 characters.
 	Description *string `pulumi:"description"`
@@ -559,6 +587,13 @@ type JobArgs struct {
 	// * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
 	//   A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 	AttemptDeadline pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description for the job.
 	// This string must not contain more than 500 characters.
 	Description pulumi.StringPtrInput
@@ -698,6 +733,16 @@ func (o JobOutput) AppEngineHttpTarget() JobAppEngineHttpTargetPtrOutput {
 //     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
 func (o JobOutput) AttemptDeadline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.AttemptDeadline }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o JobOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human-readable description for the job.

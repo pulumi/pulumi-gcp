@@ -138,6 +138,15 @@ export class Job extends pulumi.CustomResource {
      */
     declare public readonly additionalExperiments: pulumi.Output<string[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -254,6 +263,7 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             resourceInputs["additionalExperiments"] = state?.additionalExperiments;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableStreamingEngine"] = state?.enableStreamingEngine;
             resourceInputs["ipConfiguration"] = state?.ipConfiguration;
@@ -287,6 +297,7 @@ export class Job extends pulumi.CustomResource {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
             resourceInputs["additionalExperiments"] = args?.additionalExperiments;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enableStreamingEngine"] = args?.enableStreamingEngine;
             resourceInputs["ipConfiguration"] = args?.ipConfiguration;
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
@@ -327,6 +338,15 @@ export interface JobState {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     additionalExperiments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -439,6 +459,15 @@ export interface JobArgs {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     additionalExperiments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
      */

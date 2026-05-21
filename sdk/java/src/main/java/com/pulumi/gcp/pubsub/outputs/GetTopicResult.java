@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTopicResult {
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -37,6 +38,9 @@ public final class GetTopicResult {
     private Map<String,String> tags;
 
     private GetTopicResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
     }
@@ -90,6 +94,7 @@ public final class GetTopicResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private String id;
         private List<GetTopicIngestionDataSourceSetting> ingestionDataSourceSettings;
@@ -106,6 +111,7 @@ public final class GetTopicResult {
         public Builder() {}
         public Builder(GetTopicResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.ingestionDataSourceSettings = defaults.ingestionDataSourceSettings;
@@ -121,6 +127,14 @@ public final class GetTopicResult {
     	      this.tags = defaults.tags;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             if (effectiveLabels == null) {
@@ -237,6 +251,7 @@ public final class GetTopicResult {
         }
         public GetTopicResult build() {
             final var _resultValue = new GetTopicResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;
             _resultValue.ingestionDataSourceSettings = ingestionDataSourceSettings;

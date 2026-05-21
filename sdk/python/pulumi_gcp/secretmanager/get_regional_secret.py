@@ -27,7 +27,7 @@ class GetRegionalSecretResult:
     """
     A collection of values returned by getRegionalSecret.
     """
-    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, tags=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
+    def __init__(__self__, annotations=None, create_time=None, customer_managed_encryptions=None, deletion_policy=None, deletion_protection=None, effective_annotations=None, effective_labels=None, expire_time=None, id=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, rotations=None, secret_id=None, tags=None, topics=None, ttl=None, version_aliases=None, version_destroy_ttl=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -37,6 +37,9 @@ class GetRegionalSecretResult:
         if customer_managed_encryptions and not isinstance(customer_managed_encryptions, list):
             raise TypeError("Expected argument 'customer_managed_encryptions' to be a list")
         pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -103,6 +106,11 @@ class GetRegionalSecretResult:
     @pulumi.getter(name="customerManagedEncryptions")
     def customer_managed_encryptions(self) -> Sequence['outputs.GetRegionalSecretCustomerManagedEncryptionResult']:
         return pulumi.get(self, "customer_managed_encryptions")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -202,6 +210,7 @@ class AwaitableGetRegionalSecretResult(GetRegionalSecretResult):
             annotations=self.annotations,
             create_time=self.create_time,
             customer_managed_encryptions=self.customer_managed_encryptions,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
@@ -254,6 +263,7 @@ def get_regional_secret(location: Optional[_builtins.str] = None,
         annotations=pulumi.get(__ret__, 'annotations'),
         create_time=pulumi.get(__ret__, 'create_time'),
         customer_managed_encryptions=pulumi.get(__ret__, 'customer_managed_encryptions'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -303,6 +313,7 @@ def get_regional_secret_output(location: pulumi.Input[Optional[_builtins.str]] =
         annotations=pulumi.get(__response__, 'annotations'),
         create_time=pulumi.get(__response__, 'create_time'),
         customer_managed_encryptions=pulumi.get(__response__, 'customer_managed_encryptions'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

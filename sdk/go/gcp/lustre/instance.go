@@ -102,6 +102,13 @@ type Instance struct {
 	CapacityGib pulumi.StringOutput `pulumi:"capacityGib"`
 	// Timestamp when the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-readable description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Dynamic tier options for a Managed Lustre instance.
@@ -249,6 +256,13 @@ type instanceState struct {
 	CapacityGib *string `pulumi:"capacityGib"`
 	// Timestamp when the instance was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-readable description of the instance.
 	Description *string `pulumi:"description"`
 	// Dynamic tier options for a Managed Lustre instance.
@@ -347,6 +361,13 @@ type InstanceState struct {
 	CapacityGib pulumi.StringPtrInput
 	// Timestamp when the instance was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-readable description of the instance.
 	Description pulumi.StringPtrInput
 	// Dynamic tier options for a Managed Lustre instance.
@@ -447,6 +468,13 @@ type instanceArgs struct {
 	// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
 	// for specific minimums, maximums, and step sizes for each performance tier.
 	CapacityGib string `pulumi:"capacityGib"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-readable description of the instance.
 	Description *string `pulumi:"description"`
 	// Dynamic tier options for a Managed Lustre instance.
@@ -513,6 +541,13 @@ type InstanceArgs struct {
 	// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
 	// for specific minimums, maximums, and step sizes for each performance tier.
 	CapacityGib pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-readable description of the instance.
 	Description pulumi.StringPtrInput
 	// Dynamic tier options for a Managed Lustre instance.
@@ -673,6 +708,16 @@ func (o InstanceOutput) CapacityGib() pulumi.StringOutput {
 // Timestamp when the instance was created.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-readable description of the instance.

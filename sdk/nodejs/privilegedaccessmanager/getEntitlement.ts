@@ -63,6 +63,7 @@ export interface GetEntitlementResult {
     readonly additionalNotificationTargets: outputs.privilegedaccessmanager.GetEntitlementAdditionalNotificationTarget[];
     readonly approvalWorkflows: outputs.privilegedaccessmanager.GetEntitlementApprovalWorkflow[];
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly eligibleUsers: outputs.privilegedaccessmanager.GetEntitlementEligibleUser[];
     readonly entitlementId?: string;
     readonly etag: string;

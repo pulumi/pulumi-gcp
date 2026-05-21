@@ -27,10 +27,13 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, build_configs=None, description=None, effective_labels=None, environment=None, event_triggers=None, id=None, kms_key_name=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_configs=None, state=None, update_time=None, url=None):
+    def __init__(__self__, build_configs=None, deletion_policy=None, description=None, effective_labels=None, environment=None, event_triggers=None, id=None, kms_key_name=None, labels=None, location=None, name=None, project=None, pulumi_labels=None, service_configs=None, state=None, update_time=None, url=None):
         if build_configs and not isinstance(build_configs, list):
             raise TypeError("Expected argument 'build_configs' to be a list")
         pulumi.set(__self__, "build_configs", build_configs)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -81,6 +84,11 @@ class GetFunctionResult:
     @pulumi.getter(name="buildConfigs")
     def build_configs(self) -> Sequence['outputs.GetFunctionBuildConfigResult']:
         return pulumi.get(self, "build_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -168,6 +176,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             yield self
         return GetFunctionResult(
             build_configs=self.build_configs,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             effective_labels=self.effective_labels,
             environment=self.environment,
@@ -221,6 +230,7 @@ def get_function(location: Optional[_builtins.str] = None,
 
     return AwaitableGetFunctionResult(
         build_configs=pulumi.get(__ret__, 'build_configs'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         environment=pulumi.get(__ret__, 'environment'),
@@ -271,6 +281,7 @@ def get_function_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudfunctionsv2/getFunction:getFunction', __args__, opts=opts, typ=GetFunctionResult)
     return __ret__.apply(lambda __response__: GetFunctionResult(
         build_configs=pulumi.get(__response__, 'build_configs'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         environment=pulumi.get(__response__, 'environment'),

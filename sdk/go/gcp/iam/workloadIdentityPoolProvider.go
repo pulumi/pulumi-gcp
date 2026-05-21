@@ -560,6 +560,13 @@ type WorkloadIdentityPoolProvider struct {
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws WorkloadIdentityPoolProviderAwsPtrOutput `pulumi:"aws"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description for the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -684,6 +691,13 @@ type workloadIdentityPoolProviderState struct {
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws *WorkloadIdentityPoolProviderAws `pulumi:"aws"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description for the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -773,6 +787,13 @@ type WorkloadIdentityPoolProviderState struct {
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws WorkloadIdentityPoolProviderAwsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description for the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -866,6 +887,13 @@ type workloadIdentityPoolProviderArgs struct {
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws *WorkloadIdentityPoolProviderAws `pulumi:"aws"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description for the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -945,6 +973,13 @@ type WorkloadIdentityPoolProviderArgs struct {
 	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws WorkloadIdentityPoolProviderAwsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description for the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -1116,6 +1151,16 @@ func (o WorkloadIdentityPoolProviderOutput) AttributeMapping() pulumi.StringMapO
 // Structure is documented below.
 func (o WorkloadIdentityPoolProviderOutput) Aws() WorkloadIdentityPoolProviderAwsPtrOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) WorkloadIdentityPoolProviderAwsPtrOutput { return v.Aws }).(WorkloadIdentityPoolProviderAwsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkloadIdentityPoolProviderOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description for the provider. Cannot exceed 256 characters.

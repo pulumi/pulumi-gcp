@@ -79,6 +79,15 @@ export class EntryGroup extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -118,6 +127,7 @@ export class EntryGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EntryGroupState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["entryGroupId"] = state?.entryGroupId;
@@ -129,6 +139,7 @@ export class EntryGroup extends pulumi.CustomResource {
             if (args?.entryGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entryGroupId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["entryGroupId"] = args?.entryGroupId;
@@ -145,6 +156,15 @@ export class EntryGroup extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EntryGroup resources.
  */
 export interface EntryGroupState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
      */
@@ -177,6 +197,15 @@ export interface EntryGroupState {
  * The set of arguments for constructing a EntryGroup resource.
  */
 export interface EntryGroupArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Entry group description, which can consist of several sentences or paragraphs that describe entry group contents.
      */

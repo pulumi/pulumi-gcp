@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_94690"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_79411"});
  * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
- *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_29947",
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_2234",
  *     scopeId: scope.scopeId,
  *     user: "test-email@gmail.com",
  *     role: {
@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_28257"});
+ * const scope = new gcp.gkehub.Scope("scope", {scopeId: "tf-test-scope_29225"});
  * const rbacrolebindingactuation = new gcp.gkehub.Feature("rbacrolebindingactuation", {
  *     name: "rbacrolebindingactuation",
  *     location: "global",
@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const scopeRbacRoleBinding = new gcp.gkehub.ScopeRbacRoleBinding("scope_rbac_role_binding", {
- *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_49175",
+ *     scopeRbacRoleBindingId: "tf-test-scope-rbac-role-binding_40798",
  *     scopeId: scope.scopeId,
  *     user: "test-email@gmail.com",
  *     role: {
@@ -119,6 +119,15 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
      * Time the RBAC Role Binding was deleted in UTC.
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -199,6 +208,7 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
             const state = argsOrState as ScopeRbacRoleBindingState | undefined;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["group"] = state?.group;
             resourceInputs["labels"] = state?.labels;
@@ -223,6 +233,7 @@ export class ScopeRbacRoleBinding extends pulumi.CustomResource {
             if (args?.scopeRbacRoleBindingId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'scopeRbacRoleBindingId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["group"] = args?.group;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["project"] = args?.project;
@@ -258,6 +269,15 @@ export interface ScopeRbacRoleBindingState {
      * Time the RBAC Role Binding was deleted in UTC.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -328,6 +348,15 @@ export interface ScopeRbacRoleBindingState {
  * The set of arguments for constructing a ScopeRbacRoleBinding resource.
  */
 export interface ScopeRbacRoleBindingArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Principal that is be authorized in the cluster (at least of one the oneof
      * is required). Updating one will unset the other automatically.

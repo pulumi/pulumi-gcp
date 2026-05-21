@@ -22,7 +22,8 @@ class ContactArgs:
                  email: pulumi.Input[_builtins.str],
                  language_tag: pulumi.Input[_builtins.str],
                  notification_category_subscriptions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 parent: pulumi.Input[_builtins.str]):
+                 parent: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Contact resource.
 
@@ -30,11 +31,19 @@ class ContactArgs:
         :param pulumi.Input[_builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[_builtins.str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "language_tag", language_tag)
         pulumi.set(__self__, "notification_category_subscriptions", notification_category_subscriptions)
         pulumi.set(__self__, "parent", parent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter
@@ -84,10 +93,28 @@ class ContactArgs:
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _ContactState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  language_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -96,12 +123,20 @@ class _ContactState:
         """
         Input properties used for looking up and filtering Contact resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] email: The email address to send notifications to. This does not need to be a Google account.
         :param pulumi.Input[_builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[_builtins.str] name: The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[_builtins.str] parent: The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if language_tag is not None:
@@ -112,6 +147,23 @@ class _ContactState:
             pulumi.set(__self__, "notification_category_subscriptions", notification_category_subscriptions)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -180,6 +232,7 @@ class Contact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  language_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_category_subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -231,6 +284,12 @@ class Contact(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] email: The email address to send notifications to. This does not need to be a Google account.
         :param pulumi.Input[_builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
@@ -301,6 +360,7 @@ class Contact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  language_tag: pulumi.Input[Optional[_builtins.str]] = None,
                  notification_category_subscriptions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -314,6 +374,7 @@ class Contact(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContactArgs.__new__(ContactArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
@@ -337,6 +398,7 @@ class Contact(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             email: pulumi.Input[Optional[_builtins.str]] = None,
             language_tag: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -349,6 +411,12 @@ class Contact(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] email: The email address to send notifications to. This does not need to be a Google account.
         :param pulumi.Input[_builtins.str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         :param pulumi.Input[_builtins.str] name: The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
@@ -359,12 +427,26 @@ class Contact(pulumi.CustomResource):
 
         __props__ = _ContactState.__new__(_ContactState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["email"] = email
         __props__.__dict__["language_tag"] = language_tag
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_category_subscriptions"] = notification_category_subscriptions
         __props__.__dict__["parent"] = parent
         return Contact(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

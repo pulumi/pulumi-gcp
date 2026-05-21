@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 public final class GetSecurityPolicyResult {
     private List<GetSecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfigs;
     private List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveLabels;
     private String fingerprint;
@@ -44,6 +45,9 @@ public final class GetSecurityPolicyResult {
     }
     public List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs() {
         return this.advancedOptionsConfigs;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -100,6 +104,7 @@ public final class GetSecurityPolicyResult {
     public static final class Builder {
         private List<GetSecurityPolicyAdaptiveProtectionConfig> adaptiveProtectionConfigs;
         private List<GetSecurityPolicyAdvancedOptionsConfig> advancedOptionsConfigs;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private String fingerprint;
@@ -118,6 +123,7 @@ public final class GetSecurityPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.adaptiveProtectionConfigs = defaults.adaptiveProtectionConfigs;
     	      this.advancedOptionsConfigs = defaults.advancedOptionsConfigs;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.fingerprint = defaults.fingerprint;
@@ -154,6 +160,14 @@ public final class GetSecurityPolicyResult {
         }
         public Builder advancedOptionsConfigs(GetSecurityPolicyAdvancedOptionsConfig... advancedOptionsConfigs) {
             return advancedOptionsConfigs(List.of(advancedOptionsConfigs));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetSecurityPolicyResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -263,6 +277,7 @@ public final class GetSecurityPolicyResult {
             final var _resultValue = new GetSecurityPolicyResult();
             _resultValue.adaptiveProtectionConfigs = adaptiveProtectionConfigs;
             _resultValue.advancedOptionsConfigs = advancedOptionsConfigs;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.fingerprint = fingerprint;

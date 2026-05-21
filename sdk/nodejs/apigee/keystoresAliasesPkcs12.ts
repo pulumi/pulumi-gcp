@@ -67,13 +67,22 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly certsInfos: pulumi.Output<outputs.apigee.KeystoresAliasesPkcs12CertsInfo[]>;
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Environment associated with the alias
      */
     declare public readonly environment: pulumi.Output<string>;
     /**
      * PKCS12 file content
-     *
-     * - - -
      */
     declare public readonly file: pulumi.Output<string>;
     /**
@@ -112,6 +121,7 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
             const state = argsOrState as KeystoresAliasesPkcs12State | undefined;
             resourceInputs["alias"] = state?.alias;
             resourceInputs["certsInfos"] = state?.certsInfos;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["file"] = state?.file;
             resourceInputs["filehash"] = state?.filehash;
@@ -140,6 +150,7 @@ export class KeystoresAliasesPkcs12 extends pulumi.CustomResource {
                 throw new Error("Missing required property 'orgId'");
             }
             resourceInputs["alias"] = args?.alias;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["file"] = args?.file;
             resourceInputs["filehash"] = args?.filehash;
@@ -168,13 +179,22 @@ export interface KeystoresAliasesPkcs12State {
      */
     certsInfos?: pulumi.Input<pulumi.Input<inputs.apigee.KeystoresAliasesPkcs12CertsInfo>[] | undefined>;
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Environment associated with the alias
      */
     environment?: pulumi.Input<string | undefined>;
     /**
      * PKCS12 file content
-     *
-     * - - -
      */
     file?: pulumi.Input<string | undefined>;
     /**
@@ -208,13 +228,22 @@ export interface KeystoresAliasesPkcs12Args {
      */
     alias: pulumi.Input<string>;
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * Environment associated with the alias
      */
     environment: pulumi.Input<string>;
     /**
      * PKCS12 file content
-     *
-     * - - -
      */
     file: pulumi.Input<string>;
     /**

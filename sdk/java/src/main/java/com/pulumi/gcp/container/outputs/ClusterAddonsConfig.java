@@ -138,7 +138,7 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigParallelstoreCsiDriverConfig parallelstoreCsiDriverConfig;
     /**
-     * @return ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 
@@ -313,7 +313,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.parallelstoreCsiDriverConfig);
     }
     /**
-     * @return ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+     * @return The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
      * 
      * This example `addonsConfig` disables two addons:
      * 

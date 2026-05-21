@@ -167,6 +167,13 @@ type ConversationProfile struct {
 	// Configuration for an automated agent to use with this profile
 	// Structure is documented below.
 	AutomatedAgentConfig ConversationProfileAutomatedAgentConfigPtrOutput `pulumi:"automatedAgentConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Configuration for connecting to a live agent
@@ -252,6 +259,13 @@ type conversationProfileState struct {
 	// Configuration for an automated agent to use with this profile
 	// Structure is documented below.
 	AutomatedAgentConfig *ConversationProfileAutomatedAgentConfig `pulumi:"automatedAgentConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for connecting to a live agent
@@ -302,6 +316,13 @@ type ConversationProfileState struct {
 	// Configuration for an automated agent to use with this profile
 	// Structure is documented below.
 	AutomatedAgentConfig ConversationProfileAutomatedAgentConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringPtrInput
 	// Configuration for connecting to a live agent
@@ -356,6 +377,13 @@ type conversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile
 	// Structure is documented below.
 	AutomatedAgentConfig *ConversationProfileAutomatedAgentConfig `pulumi:"automatedAgentConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName string `pulumi:"displayName"`
 	// Configuration for connecting to a live agent
@@ -405,6 +433,13 @@ type ConversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile
 	// Structure is documented below.
 	AutomatedAgentConfig ConversationProfileAutomatedAgentConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringInput
 	// Configuration for connecting to a live agent
@@ -542,6 +577,16 @@ func (o ConversationProfileOutput) AutomatedAgentConfig() ConversationProfileAut
 	return o.ApplyT(func(v *ConversationProfile) ConversationProfileAutomatedAgentConfigPtrOutput {
 		return v.AutomatedAgentConfig
 	}).(ConversationProfileAutomatedAgentConfigPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConversationProfileOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Required. Human readable name for this profile. Max length 1024 bytes.

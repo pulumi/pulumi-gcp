@@ -26,6 +26,7 @@ class NotebookExecutionArgs:
                  location: pulumi.Input[_builtins.str],
                  custom_environment_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecArgs']] = None,
                  dataform_repository_source: pulumi.Input[Optional['NotebookExecutionDataformRepositorySourceArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  direct_notebook_source: pulumi.Input[Optional['NotebookExecutionDirectNotebookSourceArgs']] = None,
                  execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_user: pulumi.Input[Optional[_builtins.str]] = None,
@@ -44,6 +45,12 @@ class NotebookExecutionArgs:
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['NotebookExecutionDirectNotebookSourceArgs'] direct_notebook_source: The content of the input notebook in ipynb format.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] execution_timeout: Max running time of the execution job in seconds (default 86400s / 24 hrs).
@@ -63,6 +70,8 @@ class NotebookExecutionArgs:
             pulumi.set(__self__, "custom_environment_spec", custom_environment_spec)
         if dataform_repository_source is not None:
             pulumi.set(__self__, "dataform_repository_source", dataform_repository_source)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if direct_notebook_source is not None:
             pulumi.set(__self__, "direct_notebook_source", direct_notebook_source)
         if execution_timeout is not None:
@@ -141,6 +150,23 @@ class NotebookExecutionArgs:
     @dataform_repository_source.setter
     def dataform_repository_source(self, value: pulumi.Input[Optional['NotebookExecutionDataformRepositorySourceArgs']]):
         pulumi.set(self, "dataform_repository_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="directNotebookSource")
@@ -247,6 +273,7 @@ class _NotebookExecutionState:
     def __init__(__self__, *,
                  custom_environment_spec: pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecArgs']] = None,
                  dataform_repository_source: pulumi.Input[Optional['NotebookExecutionDataformRepositorySourceArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  direct_notebook_source: pulumi.Input[Optional['NotebookExecutionDirectNotebookSourceArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
@@ -265,6 +292,12 @@ class _NotebookExecutionState:
                Structure is documented below.
         :param pulumi.Input['NotebookExecutionDataformRepositorySourceArgs'] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['NotebookExecutionDirectNotebookSourceArgs'] direct_notebook_source: The content of the input notebook in ipynb format.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Notebook Execution.
@@ -284,6 +317,8 @@ class _NotebookExecutionState:
             pulumi.set(__self__, "custom_environment_spec", custom_environment_spec)
         if dataform_repository_source is not None:
             pulumi.set(__self__, "dataform_repository_source", dataform_repository_source)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if direct_notebook_source is not None:
             pulumi.set(__self__, "direct_notebook_source", direct_notebook_source)
         if display_name is not None:
@@ -332,6 +367,23 @@ class _NotebookExecutionState:
     @dataform_repository_source.setter
     def dataform_repository_source(self, value: pulumi.Input[Optional['NotebookExecutionDataformRepositorySourceArgs']]):
         pulumi.set(self, "dataform_repository_source", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="directNotebookSource")
@@ -477,6 +529,7 @@ class NotebookExecution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_environment_spec: pulumi.Input[Optional[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']]] = None,
                  dataform_repository_source: pulumi.Input[Optional[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  direct_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
@@ -840,6 +893,12 @@ class NotebookExecution(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']] direct_notebook_source: The content of the input notebook in ipynb format.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Notebook Execution.
@@ -1223,6 +1282,7 @@ class NotebookExecution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_environment_spec: pulumi.Input[Optional[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']]] = None,
                  dataform_repository_source: pulumi.Input[Optional[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  direct_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1245,6 +1305,7 @@ class NotebookExecution(pulumi.CustomResource):
 
             __props__.__dict__["custom_environment_spec"] = custom_environment_spec
             __props__.__dict__["dataform_repository_source"] = dataform_repository_source
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["direct_notebook_source"] = direct_notebook_source
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1274,6 +1335,7 @@ class NotebookExecution(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             custom_environment_spec: pulumi.Input[Optional[Union['NotebookExecutionCustomEnvironmentSpecArgs', 'NotebookExecutionCustomEnvironmentSpecArgsDict']]] = None,
             dataform_repository_source: pulumi.Input[Optional[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             direct_notebook_source: pulumi.Input[Optional[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             execution_timeout: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1296,6 +1358,12 @@ class NotebookExecution(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['NotebookExecutionDataformRepositorySourceArgs', 'NotebookExecutionDataformRepositorySourceArgsDict']] dataform_repository_source: The Dataform Repository containing the input notebook.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['NotebookExecutionDirectNotebookSourceArgs', 'NotebookExecutionDirectNotebookSourceArgsDict']] direct_notebook_source: The content of the input notebook in ipynb format.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Notebook Execution.
@@ -1317,6 +1385,7 @@ class NotebookExecution(pulumi.CustomResource):
 
         __props__.__dict__["custom_environment_spec"] = custom_environment_spec
         __props__.__dict__["dataform_repository_source"] = dataform_repository_source
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["direct_notebook_source"] = direct_notebook_source
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["execution_timeout"] = execution_timeout
@@ -1347,6 +1416,19 @@ class NotebookExecution(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "dataform_repository_source")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="directNotebookSource")

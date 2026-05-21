@@ -57,6 +57,7 @@ export interface GetAppConnectionArgs {
 export interface GetAppConnectionResult {
     readonly applicationEndpoints: outputs.beyondcorp.GetAppConnectionApplicationEndpoint[];
     readonly connectors: string[];
+    readonly deletionPolicy: string;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly gateways: outputs.beyondcorp.GetAppConnectionGateway[];

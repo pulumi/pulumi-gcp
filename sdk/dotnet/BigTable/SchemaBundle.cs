@@ -95,6 +95,17 @@ namespace Pulumi.Gcp.BigTable
     public partial class SchemaBundle : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
         /// updates of a schema bundle from overwriting each other. This may be sent on update and delete
         /// requests to ensure the client has an update-to-date value before proceeding. The server returns
@@ -196,6 +207,17 @@ namespace Pulumi.Gcp.BigTable
     public sealed class SchemaBundleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// If true, allow backwards incompatible changes.
         /// </summary>
         [Input("ignoreWarnings")]
@@ -243,6 +265,17 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class SchemaBundleState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// etag is used for optimistic concurrency control as a way to help prevent simultaneous
         /// updates of a schema bundle from overwriting each other. This may be sent on update and delete

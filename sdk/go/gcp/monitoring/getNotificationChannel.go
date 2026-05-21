@@ -108,6 +108,7 @@ type LookupNotificationChannelArgs struct {
 
 // A collection of values returned by getNotificationChannel.
 type LookupNotificationChannelResult struct {
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// An optional human-readable description of this notification channel.
 	Description string  `pulumi:"description"`
 	DisplayName *string `pulumi:"displayName"`
@@ -176,6 +177,10 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 
 func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResultOutputWithContext(ctx context.Context) LookupNotificationChannelResultOutput {
 	return o
+}
+
+func (o LookupNotificationChannelResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional human-readable description of this notification channel.

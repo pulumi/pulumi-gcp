@@ -27,7 +27,7 @@ class GetPrivateCloudResult:
     """
     A collection of values returned by getPrivateCloud.
     """
-    def __init__(__self__, create_time=None, delete_time=None, deletion_delay_hours=None, description=None, expire_time=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, send_deletion_delay_hours_if_zero=None, state=None, type=None, uid=None, update_time=None, vcenters=None):
+    def __init__(__self__, create_time=None, delete_time=None, deletion_delay_hours=None, deletion_policy=None, description=None, expire_time=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, send_deletion_delay_hours_if_zero=None, state=None, type=None, uid=None, update_time=None, vcenters=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -37,6 +37,9 @@ class GetPrivateCloudResult:
         if deletion_delay_hours and not isinstance(deletion_delay_hours, int):
             raise TypeError("Expected argument 'deletion_delay_hours' to be a int")
         pulumi.set(__self__, "deletion_delay_hours", deletion_delay_hours)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -100,6 +103,11 @@ class GetPrivateCloudResult:
     @pulumi.getter(name="deletionDelayHours")
     def deletion_delay_hours(self) -> _builtins.int:
         return pulumi.get(self, "deletion_delay_hours")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -194,6 +202,7 @@ class AwaitableGetPrivateCloudResult(GetPrivateCloudResult):
             create_time=self.create_time,
             delete_time=self.delete_time,
             deletion_delay_hours=self.deletion_delay_hours,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             expire_time=self.expire_time,
             hcxes=self.hcxes,
@@ -251,6 +260,7 @@ def get_private_cloud(location: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
         deletion_delay_hours=pulumi.get(__ret__, 'deletion_delay_hours'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         hcxes=pulumi.get(__ret__, 'hcxes'),
@@ -305,6 +315,7 @@ def get_private_cloud_output(location: pulumi.Input[Optional[_builtins.str]] = N
         create_time=pulumi.get(__response__, 'create_time'),
         delete_time=pulumi.get(__response__, 'delete_time'),
         deletion_delay_hours=pulumi.get(__response__, 'deletion_delay_hours'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         expire_time=pulumi.get(__response__, 'expire_time'),
         hcxes=pulumi.get(__response__, 'hcxes'),

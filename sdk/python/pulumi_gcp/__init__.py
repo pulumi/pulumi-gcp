@@ -790,6 +790,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "apigee/dataCollector",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/dataCollector:DataCollector": "DataCollector"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "apigee/developer",
   "fqn": "pulumi_gcp.apigee",
   "classes": {
@@ -3910,6 +3918,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/regionInstantSnapshot",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionInstantSnapshot:RegionInstantSnapshot": "RegionInstantSnapshot"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionInstantSnapshotIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionInstantSnapshotIamBinding:RegionInstantSnapshotIamBinding": "RegionInstantSnapshotIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionInstantSnapshotIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionInstantSnapshotIamMember:RegionInstantSnapshotIamMember": "RegionInstantSnapshotIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionInstantSnapshotIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionInstantSnapshotIamPolicy:RegionInstantSnapshotIamPolicy": "RegionInstantSnapshotIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/regionNetworkEndpoint",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -4418,6 +4458,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.contactcenterinsights",
   "classes": {
    "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule": "AutoLabelingRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "contactcenterinsights/encryptionSpec",
+  "fqn": "pulumi_gcp.contactcenterinsights",
+  "classes": {
+   "gcp:contactcenterinsights/encryptionSpec:EncryptionSpec": "EncryptionSpec"
   }
  },
  {

@@ -26,7 +26,10 @@ class GetNetworkPeeringResult:
     """
     A collection of values returned by getNetworkPeering.
     """
-    def __init__(__self__, export_custom_routes=None, export_subnet_routes_with_public_ip=None, id=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, stack_type=None, state=None, state_details=None, update_strategy=None):
+    def __init__(__self__, deletion_policy=None, export_custom_routes=None, export_subnet_routes_with_public_ip=None, id=None, import_custom_routes=None, import_subnet_routes_with_public_ip=None, name=None, network=None, peer_network=None, stack_type=None, state=None, state_details=None, update_strategy=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if export_custom_routes and not isinstance(export_custom_routes, bool):
             raise TypeError("Expected argument 'export_custom_routes' to be a bool")
         pulumi.set(__self__, "export_custom_routes", export_custom_routes)
@@ -63,6 +66,11 @@ class GetNetworkPeeringResult:
         if update_strategy and not isinstance(update_strategy, str):
             raise TypeError("Expected argument 'update_strategy' to be a str")
         pulumi.set(__self__, "update_strategy", update_strategy)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="exportCustomRoutes")
@@ -134,6 +142,7 @@ class AwaitableGetNetworkPeeringResult(GetNetworkPeeringResult):
         if False:
             yield self
         return GetNetworkPeeringResult(
+            deletion_policy=self.deletion_policy,
             export_custom_routes=self.export_custom_routes,
             export_subnet_routes_with_public_ip=self.export_subnet_routes_with_public_ip,
             id=self.id,
@@ -192,6 +201,7 @@ def get_network_peering(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetworkPeering:getNetworkPeering', __args__, opts=opts, typ=GetNetworkPeeringResult).value
 
     return AwaitableGetNetworkPeeringResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         export_custom_routes=pulumi.get(__ret__, 'export_custom_routes'),
         export_subnet_routes_with_public_ip=pulumi.get(__ret__, 'export_subnet_routes_with_public_ip'),
         id=pulumi.get(__ret__, 'id'),
@@ -247,6 +257,7 @@ def get_network_peering_output(name: pulumi.Input[Optional[_builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetworkPeering:getNetworkPeering', __args__, opts=opts, typ=GetNetworkPeeringResult)
     return __ret__.apply(lambda __response__: GetNetworkPeeringResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         export_custom_routes=pulumi.get(__response__, 'export_custom_routes'),
         export_subnet_routes_with_public_ip=pulumi.get(__response__, 'export_subnet_routes_with_public_ip'),
         id=pulumi.get(__response__, 'id'),

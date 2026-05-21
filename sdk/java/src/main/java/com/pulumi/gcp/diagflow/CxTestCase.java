@@ -44,12 +44,17 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.CxIntent;
  * import com.pulumi.gcp.diagflow.CxIntentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhraseArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhrasePartArgs;
  * import com.pulumi.gcp.diagflow.CxPage;
  * import com.pulumi.gcp.diagflow.CxPageArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentMessageArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageTransitionRouteTriggerFulfillmentMessageTextArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerTriggerFulfillmentArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerTriggerFulfillmentMessageArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerTriggerFulfillmentMessageTextArgs;
  * import com.pulumi.gcp.diagflow.CxTestCase;
  * import com.pulumi.gcp.diagflow.CxTestCaseArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestConfigArgs;
@@ -60,6 +65,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntentArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPageArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponseArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnUserInputInputEventArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxTestCaseTestCaseConversationTurnUserInputInputDtmfArgs;
  * import static com.pulumi.codegen.internal.Serialization.*;
@@ -239,6 +245,30 @@ public class CxTestCase extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creationTime() {
         return this.creationTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The human-readable name of the test case, unique within the agent. Limit of 200 characters.

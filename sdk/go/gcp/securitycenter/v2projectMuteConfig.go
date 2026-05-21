@@ -75,6 +75,13 @@ type V2ProjectMuteConfig struct {
 	// The time at which the mute config was created. This field is set by
 	// the server and will be ignored if provided on config creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the mute config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// An expression that defines the filter to apply across create/update
@@ -149,6 +156,13 @@ type v2projectMuteConfigState struct {
 	// The time at which the mute config was created. This field is set by
 	// the server and will be ignored if provided on config creation.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the mute config.
 	Description *string `pulumi:"description"`
 	// An expression that defines the filter to apply across create/update
@@ -185,6 +199,13 @@ type V2ProjectMuteConfigState struct {
 	// The time at which the mute config was created. This field is set by
 	// the server and will be ignored if provided on config creation.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the mute config.
 	Description pulumi.StringPtrInput
 	// An expression that defines the filter to apply across create/update
@@ -222,6 +243,13 @@ func (V2ProjectMuteConfigState) ElementType() reflect.Type {
 }
 
 type v2projectMuteConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the mute config.
 	Description *string `pulumi:"description"`
 	// An expression that defines the filter to apply across create/update
@@ -243,6 +271,13 @@ type v2projectMuteConfigArgs struct {
 
 // The set of arguments for constructing a V2ProjectMuteConfig resource.
 type V2ProjectMuteConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the mute config.
 	Description pulumi.StringPtrInput
 	// An expression that defines the filter to apply across create/update
@@ -353,6 +388,16 @@ func (o V2ProjectMuteConfigOutput) ToV2ProjectMuteConfigOutputWithContext(ctx co
 // the server and will be ignored if provided on config creation.
 func (o V2ProjectMuteConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2ProjectMuteConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o V2ProjectMuteConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2ProjectMuteConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the mute config.

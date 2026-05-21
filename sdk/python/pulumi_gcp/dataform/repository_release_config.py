@@ -24,6 +24,7 @@ class RepositoryReleaseConfigArgs:
                  git_commitish: pulumi.Input[_builtins.str],
                  code_compilation_config: pulumi.Input[Optional['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,12 @@ class RepositoryReleaseConfigArgs:
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] name: The release's name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -50,6 +57,8 @@ class RepositoryReleaseConfigArgs:
             pulumi.set(__self__, "code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if name is not None:
@@ -99,6 +108,23 @@ class RepositoryReleaseConfigArgs:
     @cron_schedule.setter
     def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -179,6 +205,7 @@ class _RepositoryReleaseConfigState:
     def __init__(__self__, *,
                  code_compilation_config: pulumi.Input[Optional['RepositoryReleaseConfigCodeCompilationConfigArgs']] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  git_commitish: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -193,6 +220,12 @@ class _RepositoryReleaseConfigState:
         :param pulumi.Input['RepositoryReleaseConfigCodeCompilationConfigArgs'] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input[_builtins.str] name: The release's name.
@@ -208,6 +241,8 @@ class _RepositoryReleaseConfigState:
             pulumi.set(__self__, "code_compilation_config", code_compilation_config)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if git_commitish is not None:
@@ -249,6 +284,23 @@ class _RepositoryReleaseConfigState:
     @cron_schedule.setter
     def cron_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -357,6 +409,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  git_commitish: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -491,6 +544,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input[_builtins.str] name: The release's name.
@@ -644,6 +703,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
                  cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  git_commitish: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -662,6 +722,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
             __props__.__dict__["code_compilation_config"] = code_compilation_config
             __props__.__dict__["cron_schedule"] = cron_schedule
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disabled"] = disabled
             if git_commitish is None and not opts.urn:
                 raise TypeError("Missing required property 'git_commitish'")
@@ -684,6 +745,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             code_compilation_config: pulumi.Input[Optional[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']]] = None,
             cron_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             git_commitish: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -702,6 +764,12 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['RepositoryReleaseConfigCodeCompilationConfigArgs', 'RepositoryReleaseConfigCodeCompilationConfigArgsDict']] code_compilation_config: Optional. If set, fields of codeCompilationConfig override the default compilation settings that are specified in dataform.json.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron_schedule: Optional. Optional schedule (in cron format) for automatic creation of compilation results.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Disables automatic creation of compilation results.
         :param pulumi.Input[_builtins.str] git_commitish: Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
         :param pulumi.Input[_builtins.str] name: The release's name.
@@ -719,6 +787,7 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
 
         __props__.__dict__["code_compilation_config"] = code_compilation_config
         __props__.__dict__["cron_schedule"] = cron_schedule
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["git_commitish"] = git_commitish
         __props__.__dict__["name"] = name
@@ -745,6 +814,19 @@ class RepositoryReleaseConfig(pulumi.CustomResource):
         Optional. Optional schedule (in cron format) for automatic creation of compilation results.
         """
         return pulumi.get(self, "cron_schedule")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

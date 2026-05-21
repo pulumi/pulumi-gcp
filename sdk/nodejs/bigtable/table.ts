@@ -115,8 +115,6 @@ export class Table extends pulumi.CustomResource {
 
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
-     *
-     * -----
      */
     declare public readonly automatedBackupPolicy: pulumi.Output<outputs.bigtable.TableAutomatedBackupPolicy>;
     /**
@@ -127,6 +125,17 @@ export class Table extends pulumi.CustomResource {
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     declare public readonly columnFamilies: pulumi.Output<outputs.bigtable.TableColumnFamily[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * -----
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
@@ -176,6 +185,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["automatedBackupPolicy"] = state?.automatedBackupPolicy;
             resourceInputs["changeStreamRetention"] = state?.changeStreamRetention;
             resourceInputs["columnFamilies"] = state?.columnFamilies;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["name"] = state?.name;
@@ -190,6 +200,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["automatedBackupPolicy"] = args?.automatedBackupPolicy;
             resourceInputs["changeStreamRetention"] = args?.changeStreamRetention;
             resourceInputs["columnFamilies"] = args?.columnFamilies;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["name"] = args?.name;
@@ -208,8 +219,6 @@ export class Table extends pulumi.CustomResource {
 export interface TableState {
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
-     *
-     * -----
      */
     automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy | undefined>;
     /**
@@ -220,6 +229,17 @@ export interface TableState {
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * -----
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */
@@ -260,8 +280,6 @@ export interface TableState {
 export interface TableArgs {
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
-     *
-     * -----
      */
     automatedBackupPolicy?: pulumi.Input<inputs.bigtable.TableAutomatedBackupPolicy | undefined>;
     /**
@@ -272,6 +290,17 @@ export interface TableArgs {
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * -----
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      */

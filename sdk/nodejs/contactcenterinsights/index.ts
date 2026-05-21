@@ -20,6 +20,11 @@ export type AutoLabelingRule = import("./autoLabelingRule").AutoLabelingRule;
 export const AutoLabelingRule: typeof import("./autoLabelingRule").AutoLabelingRule = null as any;
 utilities.lazyLoad(exports, ["AutoLabelingRule"], () => require("./autoLabelingRule"));
 
+export { EncryptionSpecArgs, EncryptionSpecState } from "./encryptionSpec";
+export type EncryptionSpec = import("./encryptionSpec").EncryptionSpec;
+export const EncryptionSpec: typeof import("./encryptionSpec").EncryptionSpec = null as any;
+utilities.lazyLoad(exports, ["EncryptionSpec"], () => require("./encryptionSpec"));
+
 export { QaQuestionArgs, QaQuestionState } from "./qaQuestion";
 export type QaQuestion = import("./qaQuestion").QaQuestion;
 export const QaQuestion: typeof import("./qaQuestion").QaQuestion = null as any;
@@ -51,6 +56,8 @@ const _module = {
                 return new AssessmentRule(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule":
                 return new AutoLabelingRule(name, <any>undefined, { urn })
+            case "gcp:contactcenterinsights/encryptionSpec:EncryptionSpec":
+                return new EncryptionSpec(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/qaQuestion:QaQuestion":
                 return new QaQuestion(name, <any>undefined, { urn })
             case "gcp:contactcenterinsights/qaScorecard:QaScorecard":
@@ -67,6 +74,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/analysisRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/assessmentRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/autoLabelingRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/encryptionSpec", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/qaQuestion", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/qaScorecard", _module)
 pulumi.runtime.registerResourceModule("gcp", "contactcenterinsights/qaScorecardRevision", _module)

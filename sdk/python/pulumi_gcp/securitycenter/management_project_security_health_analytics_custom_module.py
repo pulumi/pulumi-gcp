@@ -22,6 +22,7 @@ __all__ = ['ManagementProjectSecurityHealthAnalyticsCustomModuleArgs', 'Manageme
 class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs:
     def __init__(__self__, *,
                  custom_config: pulumi.Input[Optional['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -31,6 +32,12 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs:
 
         :param pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
                returned by this custom module. The display name must be between 1 and
@@ -44,6 +51,8 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs:
         """
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if enablement_state is not None:
@@ -65,6 +74,23 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs:
     @custom_config.setter
     def custom_config(self, value: pulumi.Input[Optional['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs']]):
         pulumi.set(self, "custom_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -126,6 +152,7 @@ class _ManagementProjectSecurityHealthAnalyticsCustomModuleState:
     def __init__(__self__, *,
                  ancestor_module: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_config: pulumi.Input[Optional['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
                  last_editor: pulumi.Input[Optional[_builtins.str]] = None,
@@ -141,6 +168,12 @@ class _ManagementProjectSecurityHealthAnalyticsCustomModuleState:
                specifies the organization or folder from which the custom module is inherited.
         :param pulumi.Input['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs'] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
                returned by this custom module. The display name must be between 1 and
@@ -162,6 +195,8 @@ class _ManagementProjectSecurityHealthAnalyticsCustomModuleState:
             pulumi.set(__self__, "ancestor_module", ancestor_module)
         if custom_config is not None:
             pulumi.set(__self__, "custom_config", custom_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if enablement_state is not None:
@@ -203,6 +238,23 @@ class _ManagementProjectSecurityHealthAnalyticsCustomModuleState:
     @custom_config.setter
     def custom_config(self, value: pulumi.Input[Optional['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs']]):
         pulumi.set(self, "custom_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -305,6 +357,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_config: pulumi.Input[Optional[Union['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -405,6 +458,12 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
                returned by this custom module. The display name must be between 1 and
@@ -529,6 +588,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  custom_config: pulumi.Input[Optional[Union['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -543,6 +603,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
             __props__ = ManagementProjectSecurityHealthAnalyticsCustomModuleArgs.__new__(ManagementProjectSecurityHealthAnalyticsCustomModuleArgs)
 
             __props__.__dict__["custom_config"] = custom_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enablement_state"] = enablement_state
             __props__.__dict__["location"] = location
@@ -563,6 +624,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
             opts: Optional[pulumi.ResourceOptions] = None,
             ancestor_module: pulumi.Input[Optional[_builtins.str]] = None,
             custom_config: pulumi.Input[Optional[Union['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enablement_state: pulumi.Input[Optional[_builtins.str]] = None,
             last_editor: pulumi.Input[Optional[_builtins.str]] = None,
@@ -582,6 +644,12 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
                specifies the organization or folder from which the custom module is inherited.
         :param pulumi.Input[Union['ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgs', 'ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigArgsDict']] custom_config: The user specified custom configuration for the module.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the Security Health Analytics custom module. This
                display name becomes the finding category for all findings that are
                returned by this custom module. The display name must be between 1 and
@@ -605,6 +673,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
 
         __props__.__dict__["ancestor_module"] = ancestor_module
         __props__.__dict__["custom_config"] = custom_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enablement_state"] = enablement_state
         __props__.__dict__["last_editor"] = last_editor
@@ -632,6 +701,19 @@ class ManagementProjectSecurityHealthAnalyticsCustomModule(pulumi.CustomResource
         Structure is documented below.
         """
         return pulumi.get(self, "custom_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

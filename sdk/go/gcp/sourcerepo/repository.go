@@ -112,6 +112,13 @@ type Repository struct {
 
 	// If set to true, skip repository creation if a repository with the same name already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -160,6 +167,13 @@ func GetRepository(ctx *pulumi.Context,
 type repositoryState struct {
 	// If set to true, skip repository creation if a repository with the same name already exists.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	Name *string `pulumi:"name"`
@@ -179,6 +193,13 @@ type repositoryState struct {
 type RepositoryState struct {
 	// If set to true, skip repository creation if a repository with the same name already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	Name pulumi.StringPtrInput
@@ -202,6 +223,13 @@ func (RepositoryState) ElementType() reflect.Type {
 type repositoryArgs struct {
 	// If set to true, skip repository creation if a repository with the same name already exists.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	Name *string `pulumi:"name"`
@@ -218,6 +246,13 @@ type repositoryArgs struct {
 type RepositoryArgs struct {
 	// If set to true, skip repository creation if a repository with the same name already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
 	Name pulumi.StringPtrInput
@@ -320,6 +355,16 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 // If set to true, skip repository creation if a repository with the same name already exists.
 func (o RepositoryOutput) CreateIgnoreAlreadyExists() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.BoolPtrOutput { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RepositoryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Resource name of the repository, of the form `{{repo}}`.

@@ -7,13 +7,14 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Provides access to Cloud Composer environment configuration in a region for a given project.
+ * Provides access to Managed Airflow environment configuration in a region for a
+ * given project.
  *
- * To get more information about Composer Environment, see:
+ * To get more information about Managed Airflow Environment, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
  *
  * ## Example Usage
  *
@@ -64,6 +65,7 @@ export interface GetEnvironmentResult {
      * Configuration parameters for the environment.
      */
     readonly configs: outputs.composer.GetEnvironmentConfig[];
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -77,13 +79,14 @@ export interface GetEnvironmentResult {
     readonly storageConfigs: outputs.composer.GetEnvironmentStorageConfig[];
 }
 /**
- * Provides access to Cloud Composer environment configuration in a region for a given project.
+ * Provides access to Managed Airflow environment configuration in a region for a
+ * given project.
  *
- * To get more information about Composer Environment, see:
+ * To get more information about Managed Airflow Environment, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
  *
  * ## Example Usage
  *

@@ -12,6 +12,7 @@ from .api_deployment import *
 from .api_product import *
 from .app_group import *
 from .control_plane_access import *
+from .data_collector import *
 from .developer import *
 from .developer_app import *
 from .dns_zone import *

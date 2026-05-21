@@ -439,6 +439,13 @@ import (
 type InstanceDesiredUserCreatedEndpoints struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A list of desired user endpoints
 	// Structure is documented below.
 	DesiredUserCreatedEndpoints InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayOutput `pulumi:"desiredUserCreatedEndpoints"`
@@ -484,6 +491,13 @@ func GetInstanceDesiredUserCreatedEndpoints(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceDesiredUserCreatedEndpoints resources.
 type instanceDesiredUserCreatedEndpointsState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A list of desired user endpoints
 	// Structure is documented below.
 	DesiredUserCreatedEndpoints []InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint `pulumi:"desiredUserCreatedEndpoints"`
@@ -497,6 +511,13 @@ type instanceDesiredUserCreatedEndpointsState struct {
 }
 
 type InstanceDesiredUserCreatedEndpointsState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A list of desired user endpoints
 	// Structure is documented below.
 	DesiredUserCreatedEndpoints InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayInput
@@ -514,6 +535,13 @@ func (InstanceDesiredUserCreatedEndpointsState) ElementType() reflect.Type {
 }
 
 type instanceDesiredUserCreatedEndpointsArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A list of desired user endpoints
 	// Structure is documented below.
 	DesiredUserCreatedEndpoints []InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpoint `pulumi:"desiredUserCreatedEndpoints"`
@@ -528,6 +556,13 @@ type instanceDesiredUserCreatedEndpointsArgs struct {
 
 // The set of arguments for constructing a InstanceDesiredUserCreatedEndpoints resource.
 type InstanceDesiredUserCreatedEndpointsArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A list of desired user endpoints
 	// Structure is documented below.
 	DesiredUserCreatedEndpoints InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArrayInput
@@ -625,6 +660,16 @@ func (o InstanceDesiredUserCreatedEndpointsOutput) ToInstanceDesiredUserCreatedE
 
 func (o InstanceDesiredUserCreatedEndpointsOutput) ToInstanceDesiredUserCreatedEndpointsOutputWithContext(ctx context.Context) InstanceDesiredUserCreatedEndpointsOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceDesiredUserCreatedEndpointsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceDesiredUserCreatedEndpoints) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A list of desired user endpoints

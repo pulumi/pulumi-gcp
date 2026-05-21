@@ -864,8 +864,8 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const cross_project_dataset = new gcp.organizations.Project("cross-project-dataset", {
- *     projectId: "tf-test_45397",
- *     name: "tf-test_16451",
+ *     projectId: "tf-test_11171",
+ *     name: "tf-test_40472",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     deletionPolicy: "DELETE",
@@ -1374,6 +1374,15 @@ export class Stream extends pulumi.CustomResource {
      */
     declare public readonly customerManagedEncryptionKey: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
      * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
      * the stream from a `RUNNING` state.
@@ -1453,6 +1462,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["backfillNone"] = state?.backfillNone;
             resourceInputs["createWithoutValidation"] = state?.createWithoutValidation;
             resourceInputs["customerManagedEncryptionKey"] = state?.customerManagedEncryptionKey;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["destinationConfig"] = state?.destinationConfig;
             resourceInputs["displayName"] = state?.displayName;
@@ -1487,6 +1497,7 @@ export class Stream extends pulumi.CustomResource {
             resourceInputs["backfillNone"] = args?.backfillNone;
             resourceInputs["createWithoutValidation"] = args?.createWithoutValidation;
             resourceInputs["customerManagedEncryptionKey"] = args?.customerManagedEncryptionKey;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["destinationConfig"] = args?.destinationConfig;
             resourceInputs["displayName"] = args?.displayName;
@@ -1530,6 +1541,15 @@ export interface StreamState {
      * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
     customerManagedEncryptionKey?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
      * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
@@ -1616,6 +1636,15 @@ export interface StreamArgs {
      * will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
      */
     customerManagedEncryptionKey?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Stream. Set this field to `RUNNING` to start the stream,
      * `NOT_STARTED` to create the stream without starting and `PAUSED` to pause

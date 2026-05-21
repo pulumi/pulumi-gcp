@@ -13,6 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHostingChannelResult {
     private String channelId;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private String expireTime;
     /**
@@ -34,6 +35,9 @@ public final class GetHostingChannelResult {
     private GetHostingChannelResult() {}
     public String channelId() {
         return this.channelId;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -81,6 +85,7 @@ public final class GetHostingChannelResult {
     @CustomType.Builder
     public static final class Builder {
         private String channelId;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private String expireTime;
         private String id;
@@ -94,6 +99,7 @@ public final class GetHostingChannelResult {
         public Builder(GetHostingChannelResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.channelId = defaults.channelId;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.expireTime = defaults.expireTime;
     	      this.id = defaults.id;
@@ -111,6 +117,14 @@ public final class GetHostingChannelResult {
               throw new MissingRequiredPropertyException("GetHostingChannelResult", "channelId");
             }
             this.channelId = channelId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetHostingChannelResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -188,6 +202,7 @@ public final class GetHostingChannelResult {
         public GetHostingChannelResult build() {
             final var _resultValue = new GetHostingChannelResult();
             _resultValue.channelId = channelId;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.expireTime = expireTime;
             _resultValue.id = id;

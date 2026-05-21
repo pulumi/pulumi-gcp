@@ -572,6 +572,15 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether Terraform will be prevented from destroying the service. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the service,
      * the command will fail if this field is not set to false in Terraform state.
@@ -717,6 +726,7 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["creator"] = state?.creator;
             resourceInputs["customAudiences"] = state?.customAudiences;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
@@ -755,6 +765,7 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["client"] = args?.client;
             resourceInputs["clientVersion"] = args?.clientVersion;
             resourceInputs["customAudiences"] = args?.customAudiences;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceSplits"] = args?.instanceSplits;
@@ -845,6 +856,15 @@ export interface WorkerPoolState {
      * The deletion time.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the service. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the service,
@@ -1006,6 +1026,15 @@ export interface WorkerPoolArgs {
      * @deprecated `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
      */
     customAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the service. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the service,

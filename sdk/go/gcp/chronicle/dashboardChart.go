@@ -14,12 +14,9 @@ import (
 
 // A chart resource used within a NativeDashboard. Its lifecycle (Create, Update, Delete) is managed via custom methods on the NativeDashboard resource.
 //
-// > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-// See Provider Versions for more details on beta resources.
-//
 // To get more information about DashboardChart, see:
 //
-// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dashboardCharts)
+// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dashboardCharts)
 // * How-to Guides
 //   - [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 //
@@ -270,6 +267,13 @@ type DashboardChart struct {
 	// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
 	// Structure is documented below.
 	DashboardQuery DashboardChartDashboardQueryPtrOutput `pulumi:"dashboardQuery"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The ID of the Chronicle instance.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// The location of the Chronicle instance.
@@ -333,6 +337,13 @@ type dashboardChartState struct {
 	// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
 	// Structure is documented below.
 	DashboardQuery *DashboardChartDashboardQuery `pulumi:"dashboardQuery"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the Chronicle instance.
 	Instance *string `pulumi:"instance"`
 	// The location of the Chronicle instance.
@@ -358,6 +369,13 @@ type DashboardChartState struct {
 	// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
 	// Structure is documented below.
 	DashboardQuery DashboardChartDashboardQueryPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the Chronicle instance.
 	Instance pulumi.StringPtrInput
 	// The location of the Chronicle instance.
@@ -385,6 +403,13 @@ type dashboardChartArgs struct {
 	// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
 	// Structure is documented below.
 	DashboardQuery *DashboardChartDashboardQuery `pulumi:"dashboardQuery"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the Chronicle instance.
 	Instance string `pulumi:"instance"`
 	// The location of the Chronicle instance.
@@ -407,6 +432,13 @@ type DashboardChartArgs struct {
 	// The complete specification of the query for this chart. This includes the raw query string, execution parameters (like time windows), and server-generated metadata.
 	// Structure is documented below.
 	DashboardQuery DashboardChartDashboardQueryPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the Chronicle instance.
 	Instance pulumi.StringInput
 	// The location of the Chronicle instance.
@@ -526,6 +558,16 @@ func (o DashboardChartOutput) DashboardChart() DashboardChartDashboardChartOutpu
 // Structure is documented below.
 func (o DashboardChartOutput) DashboardQuery() DashboardChartDashboardQueryPtrOutput {
 	return o.ApplyT(func(v *DashboardChart) DashboardChartDashboardQueryPtrOutput { return v.DashboardQuery }).(DashboardChartDashboardQueryPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DashboardChartOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DashboardChart) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The ID of the Chronicle instance.

@@ -173,6 +173,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly ImmutableArray<Outputs.GetSecurityPolicyAdaptiveProtectionConfigResult> AdaptiveProtectionConfigs;
         public readonly ImmutableArray<Outputs.GetSecurityPolicyAdvancedOptionsConfigResult> AdvancedOptionsConfigs;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Fingerprint;
@@ -195,6 +196,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetSecurityPolicyAdaptiveProtectionConfigResult> adaptiveProtectionConfigs,
 
             ImmutableArray<Outputs.GetSecurityPolicyAdvancedOptionsConfigResult> advancedOptionsConfigs,
+
+            string deletionPolicy,
 
             string description,
 
@@ -224,6 +227,7 @@ namespace Pulumi.Gcp.Compute
         {
             AdaptiveProtectionConfigs = adaptiveProtectionConfigs;
             AdvancedOptionsConfigs = advancedOptionsConfigs;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             Fingerprint = fingerprint;

@@ -22,6 +22,7 @@ __all__ = ['ServicePerimeterDryRunEgressPolicyArgs', 'ServicePerimeterDryRunEgre
 class ServicePerimeterDryRunEgressPolicyArgs:
     def __init__(__self__, *,
                  perimeter: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_from: pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressFromArgs']] = None,
                  egress_to: pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressToArgs']] = None,
                  title: pulumi.Input[Optional[_builtins.str]] = None):
@@ -29,6 +30,12 @@ class ServicePerimeterDryRunEgressPolicyArgs:
         The set of arguments for constructing a ServicePerimeterDryRunEgressPolicy resource.
 
         :param pulumi.Input[_builtins.str] perimeter: The name of the Service Perimeter to add this resource to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -37,6 +44,8 @@ class ServicePerimeterDryRunEgressPolicyArgs:
         :param pulumi.Input[_builtins.str] title: Human readable title. Must be unique within the perimeter. Does not affect behavior.
         """
         pulumi.set(__self__, "perimeter", perimeter)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
@@ -55,6 +64,23 @@ class ServicePerimeterDryRunEgressPolicyArgs:
     @perimeter.setter
     def perimeter(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "perimeter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="egressFrom")
@@ -100,6 +126,7 @@ class ServicePerimeterDryRunEgressPolicyArgs:
 class _ServicePerimeterDryRunEgressPolicyState:
     def __init__(__self__, *,
                  access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_from: pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressFromArgs']] = None,
                  egress_to: pulumi.Input[Optional['ServicePerimeterDryRunEgressPolicyEgressToArgs']] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -109,6 +136,12 @@ class _ServicePerimeterDryRunEgressPolicyState:
         Input properties used for looking up and filtering ServicePerimeterDryRunEgressPolicy resources.
 
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -120,6 +153,8 @@ class _ServicePerimeterDryRunEgressPolicyState:
         """
         if access_policy_id is not None:
             pulumi.set(__self__, "access_policy_id", access_policy_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
@@ -142,6 +177,23 @@ class _ServicePerimeterDryRunEgressPolicyState:
     @access_policy_id.setter
     def access_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="egressFrom")
@@ -213,6 +265,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_from: pulumi.Input[Optional[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']]] = None,
                  egress_to: pulumi.Input[Optional[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']]] = None,
                  perimeter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -246,6 +299,12 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -301,6 +360,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  egress_from: pulumi.Input[Optional[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']]] = None,
                  egress_to: pulumi.Input[Optional[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']]] = None,
                  perimeter: pulumi.Input[Optional[_builtins.str]] = None,
@@ -314,6 +374,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServicePerimeterDryRunEgressPolicyArgs.__new__(ServicePerimeterDryRunEgressPolicyArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["egress_from"] = egress_from
             __props__.__dict__["egress_to"] = egress_to
             if perimeter is None and not opts.urn:
@@ -333,6 +394,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             egress_from: pulumi.Input[Optional[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']]] = None,
             egress_to: pulumi.Input[Optional[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -346,6 +408,12 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -360,6 +428,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
         __props__ = _ServicePerimeterDryRunEgressPolicyState.__new__(_ServicePerimeterDryRunEgressPolicyState)
 
         __props__.__dict__["access_policy_id"] = access_policy_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["egress_from"] = egress_from
         __props__.__dict__["egress_to"] = egress_to
         __props__.__dict__["etag"] = etag
@@ -374,6 +443,19 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
         The name of the Access Policy this resource belongs to.
         """
         return pulumi.get(self, "access_policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="egressFrom")

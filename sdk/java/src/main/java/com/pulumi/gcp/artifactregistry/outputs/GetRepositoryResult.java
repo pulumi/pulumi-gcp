@@ -24,6 +24,7 @@ public final class GetRepositoryResult {
     private List<GetRepositoryCleanupPolicy> cleanupPolicies;
     private Boolean cleanupPolicyDryRun;
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private List<GetRepositoryDockerConfig> dockerConfigs;
     private Map<String,String> effectiveLabels;
@@ -57,6 +58,9 @@ public final class GetRepositoryResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -132,6 +136,7 @@ public final class GetRepositoryResult {
         private List<GetRepositoryCleanupPolicy> cleanupPolicies;
         private Boolean cleanupPolicyDryRun;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private List<GetRepositoryDockerConfig> dockerConfigs;
         private Map<String,String> effectiveLabels;
@@ -157,6 +162,7 @@ public final class GetRepositoryResult {
     	      this.cleanupPolicies = defaults.cleanupPolicies;
     	      this.cleanupPolicyDryRun = defaults.cleanupPolicyDryRun;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.dockerConfigs = defaults.dockerConfigs;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -203,6 +209,14 @@ public final class GetRepositoryResult {
               throw new MissingRequiredPropertyException("GetRepositoryResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -375,6 +389,7 @@ public final class GetRepositoryResult {
             _resultValue.cleanupPolicies = cleanupPolicies;
             _resultValue.cleanupPolicyDryRun = cleanupPolicyDryRun;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.dockerConfigs = dockerConfigs;
             _resultValue.effectiveLabels = effectiveLabels;

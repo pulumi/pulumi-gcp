@@ -73,6 +73,7 @@ type LookupRegionBackendServiceResult struct {
 	ConsistentHashes             []GetRegionBackendServiceConsistentHash           `pulumi:"consistentHashes"`
 	CreationTimestamp            string                                            `pulumi:"creationTimestamp"`
 	CustomMetrics                []GetRegionBackendServiceCustomMetric             `pulumi:"customMetrics"`
+	DeletionPolicy               string                                            `pulumi:"deletionPolicy"`
 	Description                  string                                            `pulumi:"description"`
 	DynamicForwardings           []GetRegionBackendServiceDynamicForwarding        `pulumi:"dynamicForwardings"`
 	EnableCdn                    bool                                              `pulumi:"enableCdn"`
@@ -185,6 +186,10 @@ func (o LookupRegionBackendServiceResultOutput) CreationTimestamp() pulumi.Strin
 
 func (o LookupRegionBackendServiceResultOutput) CustomMetrics() GetRegionBackendServiceCustomMetricArrayOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) []GetRegionBackendServiceCustomMetric { return v.CustomMetrics }).(GetRegionBackendServiceCustomMetricArrayOutput)
+}
+
+func (o LookupRegionBackendServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) Description() pulumi.StringOutput {

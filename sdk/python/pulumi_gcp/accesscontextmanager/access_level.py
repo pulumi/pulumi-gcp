@@ -25,6 +25,7 @@ class AccessLevelArgs:
                  title: pulumi.Input[_builtins.str],
                  basic: pulumi.Input[Optional['AccessLevelBasicArgs']] = None,
                  custom: pulumi.Input[Optional['AccessLevelCustomArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -38,6 +39,12 @@ class AccessLevelArgs:
         :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[_builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
@@ -49,6 +56,8 @@ class AccessLevelArgs:
             pulumi.set(__self__, "basic", basic)
         if custom is not None:
             pulumi.set(__self__, "custom", custom)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -107,6 +116,23 @@ class AccessLevelArgs:
         pulumi.set(self, "custom", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -138,6 +164,7 @@ class _AccessLevelState:
     def __init__(__self__, *,
                  basic: pulumi.Input[Optional['AccessLevelBasicArgs']] = None,
                  custom: pulumi.Input[Optional['AccessLevelCustomArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -150,6 +177,12 @@ class _AccessLevelState:
         :param pulumi.Input['AccessLevelCustomArgs'] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[_builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
@@ -162,6 +195,8 @@ class _AccessLevelState:
             pulumi.set(__self__, "basic", basic)
         if custom is not None:
             pulumi.set(__self__, "custom", custom)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -197,6 +232,23 @@ class _AccessLevelState:
     @custom.setter
     def custom(self, value: pulumi.Input[Optional['AccessLevelCustomArgs']]):
         pulumi.set(self, "custom", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -258,6 +310,7 @@ class AccessLevel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
                  custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -331,6 +384,12 @@ class AccessLevel(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[_builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
@@ -423,6 +482,7 @@ class AccessLevel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
                  custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -438,6 +498,7 @@ class AccessLevel(pulumi.CustomResource):
 
             __props__.__dict__["basic"] = basic
             __props__.__dict__["custom"] = custom
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if parent is None and not opts.urn:
@@ -458,6 +519,7 @@ class AccessLevel(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             basic: pulumi.Input[Optional[Union['AccessLevelBasicArgs', 'AccessLevelBasicArgsDict']]] = None,
             custom: pulumi.Input[Optional[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -474,6 +536,12 @@ class AccessLevel(pulumi.CustomResource):
         :param pulumi.Input[Union['AccessLevelCustomArgs', 'AccessLevelCustomArgsDict']] custom: Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
                See CEL spec at: https://github.com/google/cel-spec.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the AccessLevel and its use. Does not affect behavior.
         :param pulumi.Input[_builtins.str] name: Resource name for the Access Level. The short_name component must begin
                with a letter and only include alphanumeric and '_'.
@@ -488,6 +556,7 @@ class AccessLevel(pulumi.CustomResource):
 
         __props__.__dict__["basic"] = basic
         __props__.__dict__["custom"] = custom
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
@@ -512,6 +581,19 @@ class AccessLevel(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "custom")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

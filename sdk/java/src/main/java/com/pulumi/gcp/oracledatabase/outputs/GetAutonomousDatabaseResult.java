@@ -22,6 +22,7 @@ public final class GetAutonomousDatabaseResult {
     private String cidr;
     private String createTime;
     private String database;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private List<String> disasterRecoverySupportedLocations;
     private String displayName;
@@ -59,6 +60,9 @@ public final class GetAutonomousDatabaseResult {
     }
     public String database() {
         return this.database;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -130,6 +134,7 @@ public final class GetAutonomousDatabaseResult {
         private String cidr;
         private String createTime;
         private String database;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private List<String> disasterRecoverySupportedLocations;
         private String displayName;
@@ -155,6 +160,7 @@ public final class GetAutonomousDatabaseResult {
     	      this.cidr = defaults.cidr;
     	      this.createTime = defaults.createTime;
     	      this.database = defaults.database;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.disasterRecoverySupportedLocations = defaults.disasterRecoverySupportedLocations;
     	      this.displayName = defaults.displayName;
@@ -212,6 +218,14 @@ public final class GetAutonomousDatabaseResult {
               throw new MissingRequiredPropertyException("GetAutonomousDatabaseResult", "database");
             }
             this.database = database;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabaseResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -367,6 +381,7 @@ public final class GetAutonomousDatabaseResult {
             _resultValue.cidr = cidr;
             _resultValue.createTime = createTime;
             _resultValue.database = database;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.disasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
             _resultValue.displayName = displayName;

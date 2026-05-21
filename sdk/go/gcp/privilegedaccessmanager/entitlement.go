@@ -124,6 +124,13 @@ type Entitlement struct {
 	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Who can create Grants using Entitlement. This list should contain at most one entry
 	// Structure is documented below.
 	EligibleUsers EntitlementEligibleUserArrayOutput `pulumi:"eligibleUsers"`
@@ -218,6 +225,13 @@ type entitlementState struct {
 	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Who can create Grants using Entitlement. This list should contain at most one entry
 	// Structure is documented below.
 	EligibleUsers []EntitlementEligibleUser `pulumi:"eligibleUsers"`
@@ -262,6 +276,13 @@ type EntitlementState struct {
 	// Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Who can create Grants using Entitlement. This list should contain at most one entry
 	// Structure is documented below.
 	EligibleUsers EntitlementEligibleUserArrayInput
@@ -307,6 +328,13 @@ type entitlementArgs struct {
 	// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
 	// Structure is documented below.
 	ApprovalWorkflow *EntitlementApprovalWorkflow `pulumi:"approvalWorkflow"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Who can create Grants using Entitlement. This list should contain at most one entry
 	// Structure is documented below.
 	EligibleUsers []EntitlementEligibleUser `pulumi:"eligibleUsers"`
@@ -339,6 +367,13 @@ type EntitlementArgs struct {
 	// No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
 	// Structure is documented below.
 	ApprovalWorkflow EntitlementApprovalWorkflowPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Who can create Grants using Entitlement. This list should contain at most one entry
 	// Structure is documented below.
 	EligibleUsers EntitlementEligibleUserArrayInput
@@ -468,6 +503,16 @@ func (o EntitlementOutput) ApprovalWorkflow() EntitlementApprovalWorkflowPtrOutp
 // Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 func (o EntitlementOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EntitlementOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entitlement) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Who can create Grants using Entitlement. This list should contain at most one entry

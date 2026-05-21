@@ -159,6 +159,13 @@ import (
 type Key struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
 	Keepers pulumi.StringMapOutput `pulumi:"keepers"`
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -236,6 +243,13 @@ func GetKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
 	Keepers map[string]string `pulumi:"keepers"`
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -271,6 +285,13 @@ type keyState struct {
 }
 
 type KeyState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
 	Keepers pulumi.StringMapInput
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -310,6 +331,13 @@ func (KeyState) ElementType() reflect.Type {
 }
 
 type keyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
 	Keepers map[string]string `pulumi:"keepers"`
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -334,6 +362,13 @@ type keyArgs struct {
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Arbitrary map of values that, when changed, will trigger a new key to be generated.
 	Keepers pulumi.StringMapInput
 	// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
@@ -441,6 +476,16 @@ func (o KeyOutput) ToKeyOutput() KeyOutput {
 
 func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o KeyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Arbitrary map of values that, when changed, will trigger a new key to be generated.

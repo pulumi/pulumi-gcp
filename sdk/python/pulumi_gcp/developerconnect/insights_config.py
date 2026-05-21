@@ -26,6 +26,7 @@ class InsightsConfigArgs:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
                  artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  target_projects: pulumi.Input[Optional['InsightsConfigTargetProjectsArgs']] = None):
@@ -43,6 +44,12 @@ class InsightsConfigArgs:
                projects/{project}/locations/{location}/applications/{application}
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with an InsightsConfig.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -59,6 +66,8 @@ class InsightsConfigArgs:
             pulumi.set(__self__, "app_hub_application", app_hub_application)
         if artifact_configs is not None:
             pulumi.set(__self__, "artifact_configs", artifact_configs)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -133,6 +142,23 @@ class InsightsConfigArgs:
         pulumi.set(self, "artifact_configs", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -180,6 +206,7 @@ class _InsightsConfigState:
                  app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
                  artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  errors: pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorArgs']]]] = None,
@@ -207,6 +234,12 @@ class _InsightsConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigArtifactConfigArgs']]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['InsightsConfigErrorArgs']]] errors: Any errors that occurred while setting up the InsightsConfig.
@@ -251,6 +284,8 @@ class _InsightsConfigState:
             pulumi.set(__self__, "artifact_configs", artifact_configs)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if effective_labels is not None:
@@ -333,6 +368,23 @@ class _InsightsConfigState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
@@ -533,6 +585,7 @@ class InsightsConfig(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
                  artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -553,7 +606,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_3686",
+            project_id="dci-tf-_44339",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -630,7 +683,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_54136",
+            application_id="tf-test-example-application_34599",
             scope={
                 "type": "REGIONAL",
             },
@@ -638,7 +691,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic-apphub-_11171",
+            insights_config_id="tf-test-ic-apphub-_79513",
             project=project.project_id,
             annotations={},
             labels={},
@@ -668,7 +721,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_40472",
+            project_id="dci-tf-_55500",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -745,7 +798,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
             location="us-central1",
-            insights_config_id="tf-test-ic-projects-_44339",
+            insights_config_id="tf-test-ic-projects-_12223",
             project=project.project_id,
             annotations={},
             labels={},
@@ -793,6 +846,12 @@ class InsightsConfig(pulumi.CustomResource):
                projects/{project}/locations/{location}/applications/{application}
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] insights_config_id: ID of the requesting InsightsConfig.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Set of labels associated with an InsightsConfig.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -823,7 +882,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_3686",
+            project_id="dci-tf-_44339",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -900,7 +959,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_54136",
+            application_id="tf-test-example-application_34599",
             scope={
                 "type": "REGIONAL",
             },
@@ -908,7 +967,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic-apphub-_11171",
+            insights_config_id="tf-test-ic-apphub-_79513",
             project=project.project_id,
             annotations={},
             labels={},
@@ -938,7 +997,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_40472",
+            project_id="dci-tf-_55500",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -1015,7 +1074,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
             location="us-central1",
-            insights_config_id="tf-test-ic-projects-_44339",
+            insights_config_id="tf-test-ic-projects-_12223",
             project=project.project_id,
             annotations={},
             labels={},
@@ -1070,6 +1129,7 @@ class InsightsConfig(pulumi.CustomResource):
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
                  artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_config_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1087,6 +1147,7 @@ class InsightsConfig(pulumi.CustomResource):
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["app_hub_application"] = app_hub_application
             __props__.__dict__["artifact_configs"] = artifact_configs
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if insights_config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'insights_config_id'")
             __props__.__dict__["insights_config_id"] = insights_config_id
@@ -1122,6 +1183,7 @@ class InsightsConfig(pulumi.CustomResource):
             app_hub_application: pulumi.Input[Optional[_builtins.str]] = None,
             artifact_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]]] = None,
@@ -1153,6 +1215,12 @@ class InsightsConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigArtifactConfigArgs', 'InsightsConfigArtifactConfigArgsDict']]]] artifact_configs: The artifact configurations of the artifacts that are deployed.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: [Output only] Create timestamp
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InsightsConfigErrorArgs', 'InsightsConfigErrorArgsDict']]]] errors: Any errors that occurred while setting up the InsightsConfig.
@@ -1197,6 +1265,7 @@ class InsightsConfig(pulumi.CustomResource):
         __props__.__dict__["app_hub_application"] = app_hub_application
         __props__.__dict__["artifact_configs"] = artifact_configs
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["errors"] = errors
@@ -1250,6 +1319,19 @@ class InsightsConfig(pulumi.CustomResource):
         [Output only] Create timestamp
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")

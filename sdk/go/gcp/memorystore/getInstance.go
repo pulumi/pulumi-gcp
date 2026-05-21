@@ -67,6 +67,7 @@ type LookupInstanceResult struct {
 	BackupCollection                string                                      `pulumi:"backupCollection"`
 	CreateTime                      string                                      `pulumi:"createTime"`
 	CrossInstanceReplicationConfigs []GetInstanceCrossInstanceReplicationConfig `pulumi:"crossInstanceReplicationConfigs"`
+	DeletionPolicy                  string                                      `pulumi:"deletionPolicy"`
 	DeletionProtectionEnabled       bool                                        `pulumi:"deletionProtectionEnabled"`
 	DesiredAutoCreatedEndpoints     []GetInstanceDesiredAutoCreatedEndpoint     `pulumi:"desiredAutoCreatedEndpoints"`
 	DesiredPscAutoConnections       []GetInstanceDesiredPscAutoConnection       `pulumi:"desiredPscAutoConnections"`
@@ -174,6 +175,10 @@ func (o LookupInstanceResultOutput) CrossInstanceReplicationConfigs() GetInstanc
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceCrossInstanceReplicationConfig {
 		return v.CrossInstanceReplicationConfigs
 	}).(GetInstanceCrossInstanceReplicationConfigArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DeletionProtectionEnabled() pulumi.BoolOutput {

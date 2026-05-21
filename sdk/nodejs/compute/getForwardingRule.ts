@@ -62,6 +62,7 @@ export interface GetForwardingRuleResult {
     readonly backendService: string;
     readonly baseForwardingRule: string;
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly forwardingRuleId: number;

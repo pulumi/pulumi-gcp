@@ -40,7 +40,12 @@ class PrivateConnectionArgs:
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
                routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
                child routes exist. Defaults to `FORCE` for backwards compatibility.
-               Possible values: `DEFAULT`, `FORCE`.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -124,7 +129,12 @@ class PrivateConnectionArgs:
         The deletion policy for the private connection. Setting `FORCE` will also delete any child
         routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
         child routes exist. Defaults to `FORCE` for backwards compatibility.
-        Possible values: `DEFAULT`, `FORCE`.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -212,7 +222,12 @@ class _PrivateConnectionState:
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
                routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
                child routes exist. Defaults to `FORCE` for backwards compatibility.
-               Possible values: `DEFAULT`, `FORCE`.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
@@ -283,7 +298,12 @@ class _PrivateConnectionState:
         The deletion policy for the private connection. Setting `FORCE` will also delete any child
         routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
         child routes exist. Defaults to `FORCE` for backwards compatibility.
-        Possible values: `DEFAULT`, `FORCE`.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -566,7 +586,12 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
                routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
                child routes exist. Defaults to `FORCE` for backwards compatibility.
-               Possible values: `DEFAULT`, `FORCE`.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -777,7 +802,12 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the private connection. Setting `FORCE` will also delete any child
                routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
                child routes exist. Defaults to `FORCE` for backwards compatibility.
-               Possible values: `DEFAULT`, `FORCE`.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]] errors: The PrivateConnection error in case of failure.
@@ -830,12 +860,17 @@ class PrivateConnection(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         The deletion policy for the private connection. Setting `FORCE` will also delete any child
         routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
         child routes exist. Defaults to `FORCE` for backwards compatibility.
-        Possible values: `DEFAULT`, `FORCE`.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
         """
         return pulumi.get(self, "deletion_policy")
 

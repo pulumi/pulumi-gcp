@@ -66,6 +66,7 @@ export interface GetNetworkPeeringArgs {
  * A collection of values returned by getNetworkPeering.
  */
 export interface GetNetworkPeeringResult {
+    readonly deletionPolicy: string;
     readonly exportCustomRoutes: boolean;
     readonly exportSubnetRoutesWithPublicIp: boolean;
     /**

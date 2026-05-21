@@ -98,6 +98,13 @@ import (
 type ManagementServer struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The location for the management server (management console)
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The management console URI
@@ -152,6 +159,13 @@ func GetManagementServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ManagementServer resources.
 type managementServerState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location for the management server (management console)
 	Location *string `pulumi:"location"`
 	// The management console URI
@@ -174,6 +188,13 @@ type managementServerState struct {
 }
 
 type ManagementServerState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location for the management server (management console)
 	Location pulumi.StringPtrInput
 	// The management console URI
@@ -200,6 +221,13 @@ func (ManagementServerState) ElementType() reflect.Type {
 }
 
 type managementServerArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location for the management server (management console)
 	Location string `pulumi:"location"`
 	// The name of management server (management console)
@@ -218,6 +246,13 @@ type managementServerArgs struct {
 
 // The set of arguments for constructing a ManagementServer resource.
 type ManagementServerArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location for the management server (management console)
 	Location pulumi.StringInput
 	// The name of management server (management console)
@@ -319,6 +354,16 @@ func (o ManagementServerOutput) ToManagementServerOutput() ManagementServerOutpu
 
 func (o ManagementServerOutput) ToManagementServerOutputWithContext(ctx context.Context) ManagementServerOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ManagementServerOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementServer) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The location for the management server (management console)

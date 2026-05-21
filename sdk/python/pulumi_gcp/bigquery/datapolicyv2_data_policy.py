@@ -25,6 +25,7 @@ class Datapolicyv2DataPolicyArgs:
                  data_policy_type: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  data_masking_policy: pulumi.Input[Optional['Datapolicyv2DataPolicyDataMaskingPolicyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -42,6 +43,12 @@ class Datapolicyv2DataPolicyArgs:
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input['Datapolicyv2DataPolicyDataMaskingPolicyArgs'] data_masking_policy: The policy used to specify data masking rule.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: The etag for this Data Policy.
                This field is used for UpdateDataPolicy calls. If Data Policy exists, this
                field is required and must match the server's etag. It will also be
@@ -62,6 +69,8 @@ class Datapolicyv2DataPolicyArgs:
         pulumi.set(__self__, "location", location)
         if data_masking_policy is not None:
             pulumi.set(__self__, "data_masking_policy", data_masking_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if grantees is not None:
@@ -125,6 +134,23 @@ class Datapolicyv2DataPolicyArgs:
         pulumi.set(self, "data_masking_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -178,6 +204,7 @@ class _Datapolicyv2DataPolicyState:
                  data_masking_policy: pulumi.Input[Optional['Datapolicyv2DataPolicyDataMaskingPolicyArgs']] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -198,6 +225,12 @@ class _Datapolicyv2DataPolicyState:
                DATA_MASKING_POLICY
                RAW_DATA_ACCESS_POLICY
                COLUMN_LEVEL_SECURITY_POLICY
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: The etag for this Data Policy.
                This field is used for UpdateDataPolicy calls. If Data Policy exists, this
                field is required and must match the server's etag. It will also be
@@ -229,6 +262,8 @@ class _Datapolicyv2DataPolicyState:
             pulumi.set(__self__, "data_policy_id", data_policy_id)
         if data_policy_type is not None:
             pulumi.set(__self__, "data_policy_type", data_policy_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if grantees is not None:
@@ -286,6 +321,23 @@ class _Datapolicyv2DataPolicyState:
     @data_policy_type.setter
     def data_policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_policy_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -398,6 +450,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
                  data_masking_policy: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -510,6 +563,12 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
                DATA_MASKING_POLICY
                RAW_DATA_ACCESS_POLICY
                COLUMN_LEVEL_SECURITY_POLICY
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: The etag for this Data Policy.
                This field is used for UpdateDataPolicy calls. If Data Policy exists, this
                field is required and must match the server's etag. It will also be
@@ -645,6 +704,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
                  data_masking_policy: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']]] = None,
                  data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,6 +725,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
             if data_policy_type is None and not opts.urn:
                 raise TypeError("Missing required property 'data_policy_type'")
             __props__.__dict__["data_policy_type"] = data_policy_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["etag"] = etag
             __props__.__dict__["grantees"] = grantees
             if location is None and not opts.urn:
@@ -687,6 +748,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
             data_masking_policy: pulumi.Input[Optional[Union['Datapolicyv2DataPolicyDataMaskingPolicyArgs', 'Datapolicyv2DataPolicyDataMaskingPolicyArgsDict']]] = None,
             data_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -711,6 +773,12 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
                DATA_MASKING_POLICY
                RAW_DATA_ACCESS_POLICY
                COLUMN_LEVEL_SECURITY_POLICY
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: The etag for this Data Policy.
                This field is used for UpdateDataPolicy calls. If Data Policy exists, this
                field is required and must match the server's etag. It will also be
@@ -743,6 +811,7 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
         __props__.__dict__["data_masking_policy"] = data_masking_policy
         __props__.__dict__["data_policy_id"] = data_policy_id
         __props__.__dict__["data_policy_type"] = data_policy_type
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["etag"] = etag
         __props__.__dict__["grantees"] = grantees
         __props__.__dict__["location"] = location
@@ -782,6 +851,19 @@ class Datapolicyv2DataPolicy(pulumi.CustomResource):
         COLUMN_LEVEL_SECURITY_POLICY
         """
         return pulumi.get(self, "data_policy_type")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

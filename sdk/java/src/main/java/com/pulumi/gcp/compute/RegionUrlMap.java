@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionUrlMapArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -142,6 +143,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRetryPolicyPerTryTimeoutArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionUrlRewriteArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionCorsPolicyArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs;
@@ -151,6 +156,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapDefaultRouteActionTimeoutArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -340,6 +346,22 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionUrlMapArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -475,6 +497,15 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionUrlMapArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -578,6 +609,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionUrlMapArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -692,6 +733,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionUrlMapArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -781,6 +827,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionUrlMapArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -903,6 +953,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionRetryPolicyPerTryTimeoutArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionTimeoutArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionUrlRewriteArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherDefaultRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapTestArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -1362,6 +1417,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionUrlMapArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapHostRuleArgs;
  * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1535,6 +1593,30 @@ public class RegionUrlMap extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RegionUrlMapDefaultUrlRedirect>> defaultUrlRedirect() {
         return Codegen.optional(this.defaultUrlRedirect);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * An optional description of this resource. Provide this property when

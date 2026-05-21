@@ -83,6 +83,13 @@ type BackupPolicy struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
 	DailyBackupLimit pulumi.IntOutput `pulumi:"dailyBackupLimit"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -166,6 +173,13 @@ type backupPolicyState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
 	DailyBackupLimit *int `pulumi:"dailyBackupLimit"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -203,6 +217,13 @@ type BackupPolicyState struct {
 	CreateTime pulumi.StringPtrInput
 	// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
 	DailyBackupLimit pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -240,6 +261,13 @@ func (BackupPolicyState) ElementType() reflect.Type {
 type backupPolicyArgs struct {
 	// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
 	DailyBackupLimit int `pulumi:"dailyBackupLimit"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// If enabled, make backups automatically according to the schedules.
@@ -267,6 +295,13 @@ type backupPolicyArgs struct {
 type BackupPolicyArgs struct {
 	// Number of daily backups to keep. Note that the minimum daily backup limit is 2.
 	DailyBackupLimit pulumi.IntInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// If enabled, make backups automatically according to the schedules.
@@ -390,6 +425,16 @@ func (o BackupPolicyOutput) CreateTime() pulumi.StringOutput {
 // Number of daily backups to keep. Note that the minimum daily backup limit is 2.
 func (o BackupPolicyOutput) DailyBackupLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.IntOutput { return v.DailyBackupLimit }).(pulumi.IntOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

@@ -26,6 +26,7 @@ class TransportArgs:
                  advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_accept: pulumi.Input[Optional[_builtins.bool]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hub: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -47,6 +48,12 @@ class TransportArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
         :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] hub: The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -73,6 +80,8 @@ class TransportArgs:
             pulumi.set(__self__, "auto_accept", auto_accept)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if hub is not None:
@@ -178,6 +187,23 @@ class TransportArgs:
     @bandwidth.setter
     def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -311,6 +337,7 @@ class _TransportState:
                  advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_accept: pulumi.Input[Optional[_builtins.bool]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  generated_activation_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -336,6 +363,12 @@ class _TransportState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
         :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] generated_activation_key: [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
@@ -369,6 +402,8 @@ class _TransportState:
             pulumi.set(__self__, "auto_accept", auto_accept)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -453,6 +488,23 @@ class _TransportState:
     @bandwidth.setter
     def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -687,6 +739,7 @@ class Transport(pulumi.CustomResource):
                  advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_accept: pulumi.Input[Optional[_builtins.bool]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hub: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -723,10 +776,10 @@ class Transport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         primary_network = gcp.compute.Network("primary-network",
-            name="tf-test-my-vpc-network_79580",
+            name="tf-test-my-vpc-network_44154",
             auto_create_subnetworks=False)
         primary = gcp.networkconnectivity.Transport("primary",
-            name="tf-test-basic-transport_98863",
+            name="tf-test-basic-transport_90221",
             region="us-east4",
             description="A sample transport",
             remote_profile=f"https://networkconnectivity.googleapis.com/v1beta/{project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -763,6 +816,12 @@ class Transport(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
         :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] hub: The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -810,10 +869,10 @@ class Transport(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         primary_network = gcp.compute.Network("primary-network",
-            name="tf-test-my-vpc-network_79580",
+            name="tf-test-my-vpc-network_44154",
             auto_create_subnetworks=False)
         primary = gcp.networkconnectivity.Transport("primary",
-            name="tf-test-basic-transport_98863",
+            name="tf-test-basic-transport_90221",
             region="us-east4",
             description="A sample transport",
             remote_profile=f"https://networkconnectivity.googleapis.com/v1beta/{project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
@@ -863,6 +922,7 @@ class Transport(pulumi.CustomResource):
                  advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  auto_accept: pulumi.Input[Optional[_builtins.bool]] = None,
                  bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  hub: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -889,6 +949,7 @@ class Transport(pulumi.CustomResource):
             __props__.__dict__["advertised_routes"] = advertised_routes
             __props__.__dict__["auto_accept"] = auto_accept
             __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["hub"] = hub
             __props__.__dict__["labels"] = labels
@@ -929,6 +990,7 @@ class Transport(pulumi.CustomResource):
             advertised_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             auto_accept: pulumi.Input[Optional[_builtins.bool]] = None,
             bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             generated_activation_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -958,6 +1020,12 @@ class Transport(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] advertised_routes: List of IP Prefixes that will be advertised to the remote provider. Both IPv4 and IPv6 addresses are supported.
         :param pulumi.Input[_builtins.bool] auto_accept: Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         :param pulumi.Input[_builtins.str] bandwidth: Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] generated_activation_key: [Output only] Google-generated activation key. This is only output if the selected profile supports an OUTPUT key flow. Inputting this to the provider is only valid while the resource is in a PENDING_KEY state. Once the provider has accepted the key, the resource will move to the CONFIGURING state.
@@ -991,6 +1059,7 @@ class Transport(pulumi.CustomResource):
         __props__.__dict__["advertised_routes"] = advertised_routes
         __props__.__dict__["auto_accept"] = auto_accept
         __props__.__dict__["bandwidth"] = bandwidth
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["generated_activation_key"] = generated_activation_key
@@ -1042,6 +1111,19 @@ class Transport(pulumi.CustomResource):
         Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
         """
         return pulumi.get(self, "bandwidth")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

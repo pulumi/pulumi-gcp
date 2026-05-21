@@ -32,6 +32,7 @@ type GetRegionSSLPolicyArgs struct {
 type GetRegionSSLPolicyResult struct {
 	CreationTimestamp string   `pulumi:"creationTimestamp"`
 	CustomFeatures    []string `pulumi:"customFeatures"`
+	DeletionPolicy    string   `pulumi:"deletionPolicy"`
 	Description       string   `pulumi:"description"`
 	EnabledFeatures   []string `pulumi:"enabledFeatures"`
 	Fingerprint       string   `pulumi:"fingerprint"`
@@ -86,6 +87,10 @@ func (o GetRegionSSLPolicyResultOutput) CreationTimestamp() pulumi.StringOutput 
 
 func (o GetRegionSSLPolicyResultOutput) CustomFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) []string { return v.CustomFeatures }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRegionSSLPolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetRegionSSLPolicyResultOutput) Description() pulumi.StringOutput {

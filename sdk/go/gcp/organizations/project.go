@@ -158,7 +158,7 @@ type Project struct {
 	// against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
 	// to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
 	// the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The numeric ID of the folder this project should be
@@ -527,8 +527,8 @@ func (o ProjectOutput) BillingAccount() pulumi.StringPtrOutput {
 // against any destroy actions caused by a pulumi up or terraform destroy. Setting ABANDON allows the resource
 // to be abandoned rather than deleted, i.e., the Terraform resource can be deleted without deleting the Project via
 // the Google API. Possible values are: "PREVENT", "ABANDON", "DELETE". Default value is `PREVENT`.
-func (o ProjectOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+func (o ProjectOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

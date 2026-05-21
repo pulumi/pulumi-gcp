@@ -220,6 +220,17 @@ namespace Pulumi.Gcp.Logging
         public Output<Outputs.MetricBucketOptions?> BucketOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A description of this metric, which is used in documentation. The maximum length of the
         /// description is 8000 characters.
         /// </summary>
@@ -349,6 +360,17 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.MetricBucketOptionsArgs>? BucketOptions { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A description of this metric, which is used in documentation. The maximum length of the
         /// description is 8000 characters.
         /// </summary>
@@ -444,6 +466,17 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("bucketOptions")]
         public Input<Inputs.MetricBucketOptionsGetArgs>? BucketOptions { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// A description of this metric, which is used in documentation. The maximum length of the

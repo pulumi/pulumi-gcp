@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConfigResult {
+    private String deletionPolicy;
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -22,6 +23,9 @@ public final class GetConfigResult {
     private @Nullable String project;
 
     private GetConfigResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public String description() {
         return this.description;
     }
@@ -48,6 +52,7 @@ public final class GetConfigResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String description;
         private String id;
         private String name;
@@ -55,12 +60,21 @@ public final class GetConfigResult {
         public Builder() {}
         public Builder(GetConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetConfigResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -93,6 +107,7 @@ public final class GetConfigResult {
         }
         public GetConfigResult build() {
             final var _resultValue = new GetConfigResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.name = name;

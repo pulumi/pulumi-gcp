@@ -646,6 +646,13 @@ type JobTemplate struct {
 	// The configuration for this template.
 	// Structure is documented below.
 	Config JobTemplateConfigOutput `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// ID to use for the Transcoding job template.
@@ -711,6 +718,13 @@ type jobTemplateState struct {
 	// The configuration for this template.
 	// Structure is documented below.
 	Config *JobTemplateConfig `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// ID to use for the Transcoding job template.
@@ -736,6 +750,13 @@ type JobTemplateState struct {
 	// The configuration for this template.
 	// Structure is documented below.
 	Config JobTemplateConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// ID to use for the Transcoding job template.
@@ -765,6 +786,13 @@ type jobTemplateArgs struct {
 	// The configuration for this template.
 	// Structure is documented below.
 	Config *JobTemplateConfig `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ID to use for the Transcoding job template.
 	JobTemplateId string `pulumi:"jobTemplateId"`
 	// The labels associated with this job template. You can use these to organize and group your job templates.
@@ -784,6 +812,13 @@ type JobTemplateArgs struct {
 	// The configuration for this template.
 	// Structure is documented below.
 	Config JobTemplateConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// ID to use for the Transcoding job template.
 	JobTemplateId pulumi.StringInput
 	// The labels associated with this job template. You can use these to organize and group your job templates.
@@ -889,6 +924,16 @@ func (o JobTemplateOutput) ToJobTemplateOutputWithContext(ctx context.Context) J
 // Structure is documented below.
 func (o JobTemplateOutput) Config() JobTemplateConfigOutput {
 	return o.ApplyT(func(v *JobTemplate) JobTemplateConfigOutput { return v.Config }).(JobTemplateConfigOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o JobTemplateOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobTemplate) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

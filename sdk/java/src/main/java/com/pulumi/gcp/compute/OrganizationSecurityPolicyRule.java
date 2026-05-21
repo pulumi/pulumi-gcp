@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_72490")
+ *             .shortName("tf-test_56730")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -111,7 +111,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_89605")
+ *             .shortName("tf-test_95154")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -148,6 +148,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchExprArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRulePreconfiguredWafConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -162,7 +166,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_56730")
+ *             .shortName("tf-test_64336")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -220,6 +224,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchExprArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleHeaderActionArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleHeaderActionRequestHeadersToAddArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -234,7 +239,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_95154")
+ *             .shortName("tf-test_34962")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -296,7 +301,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var policy = new OrganizationSecurityPolicy("policy", OrganizationSecurityPolicyArgs.builder()
- *             .shortName("tf-test_64336")
+ *             .shortName("tf-test_74000")
  *             .parent("organizations/123456789")
  *             .type("CLOUD_ARMOR")
  *             .build());
@@ -336,6 +341,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.OrganizationSecurityPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
  * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
+ * import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -419,6 +425,30 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
      */
     public Output<String> action() {
         return this.action;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A description of the rule.

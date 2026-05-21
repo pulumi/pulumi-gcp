@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<string> CustomFeatures;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<string> EnabledFeatures;
         public readonly string Fingerprint;
@@ -81,6 +82,8 @@ namespace Pulumi.Gcp.Compute
             string creationTimestamp,
 
             ImmutableArray<string> customFeatures,
+
+            string deletionPolicy,
 
             string description,
 
@@ -104,6 +107,7 @@ namespace Pulumi.Gcp.Compute
         {
             CreationTimestamp = creationTimestamp;
             CustomFeatures = customFeatures;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EnabledFeatures = enabledFeatures;
             Fingerprint = fingerprint;

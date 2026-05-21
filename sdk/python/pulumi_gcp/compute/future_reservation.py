@@ -27,6 +27,7 @@ class FutureReservationArgs:
                  auto_created_reservations_duration: pulumi.Input[Optional['FutureReservationAutoCreatedReservationsDurationArgs']] = None,
                  auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
                  commitment_info: pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,6 +53,12 @@ class FutureReservationArgs:
         :param pulumi.Input[_builtins.bool] auto_delete_auto_created_reservations: Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         :param pulumi.Input['FutureReservationCommitmentInfoArgs'] commitment_info: If not present, then FR will not deliver a new commitment or update an existing commitment.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Type of the deployment requested as part of future reservation.
                Possible values are: `DENSE`, `FLEXIBLE`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -89,6 +96,8 @@ class FutureReservationArgs:
             pulumi.set(__self__, "auto_delete_auto_created_reservations", auto_delete_auto_created_reservations)
         if commitment_info is not None:
             pulumi.set(__self__, "commitment_info", commitment_info)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_type is not None:
             pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
@@ -189,6 +198,23 @@ class FutureReservationArgs:
     @commitment_info.setter
     def commitment_info(self, value: pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']]):
         pulumi.set(self, "commitment_info", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
@@ -357,6 +383,7 @@ class _FutureReservationState:
                  auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
                  commitment_info: pulumi.Input[Optional['FutureReservationCommitmentInfoArgs']] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -386,6 +413,12 @@ class _FutureReservationState:
         :param pulumi.Input['FutureReservationCommitmentInfoArgs'] commitment_info: If not present, then FR will not deliver a new commitment or update an existing commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: The creation timestamp for this future reservation in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Type of the deployment requested as part of future reservation.
                Possible values are: `DENSE`, `FLEXIBLE`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -431,6 +464,8 @@ class _FutureReservationState:
             pulumi.set(__self__, "commitment_info", commitment_info)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_type is not None:
             pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
@@ -540,6 +575,23 @@ class _FutureReservationState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
@@ -772,6 +824,7 @@ class FutureReservation(pulumi.CustomResource):
                  auto_created_reservations_duration: pulumi.Input[Optional[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
                  auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
                  commitment_info: pulumi.Input[Optional[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -896,6 +949,12 @@ class FutureReservation(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] auto_delete_auto_created_reservations: Setting for enabling or disabling automatic deletion for auto-created reservation. If set to true, auto-created reservations will be deleted at Future Reservation's end time (default) or at user's defined timestamp if any of the [autoCreatedReservationsDeleteTime, autoCreatedReservationsDuration] values is specified. For keeping auto-created reservation indefinitely, this value should be set to false.
         :param pulumi.Input[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']] commitment_info: If not present, then FR will not deliver a new commitment or update an existing commitment.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Type of the deployment requested as part of future reservation.
                Possible values are: `DENSE`, `FLEXIBLE`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -1050,6 +1109,7 @@ class FutureReservation(pulumi.CustomResource):
                  auto_created_reservations_duration: pulumi.Input[Optional[Union['FutureReservationAutoCreatedReservationsDurationArgs', 'FutureReservationAutoCreatedReservationsDurationArgsDict']]] = None,
                  auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
                  commitment_info: pulumi.Input[Optional[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1077,6 +1137,7 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["auto_created_reservations_duration"] = auto_created_reservations_duration
             __props__.__dict__["auto_delete_auto_created_reservations"] = auto_delete_auto_created_reservations
             __props__.__dict__["commitment_info"] = commitment_info
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -1113,6 +1174,7 @@ class FutureReservation(pulumi.CustomResource):
             auto_delete_auto_created_reservations: pulumi.Input[Optional[_builtins.bool]] = None,
             commitment_info: pulumi.Input[Optional[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1146,6 +1208,12 @@ class FutureReservation(pulumi.CustomResource):
         :param pulumi.Input[Union['FutureReservationCommitmentInfoArgs', 'FutureReservationCommitmentInfoArgsDict']] commitment_info: If not present, then FR will not deliver a new commitment or update an existing commitment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: The creation timestamp for this future reservation in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Type of the deployment requested as part of future reservation.
                Possible values are: `DENSE`, `FLEXIBLE`.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
@@ -1189,6 +1257,7 @@ class FutureReservation(pulumi.CustomResource):
         __props__.__dict__["auto_delete_auto_created_reservations"] = auto_delete_auto_created_reservations
         __props__.__dict__["commitment_info"] = commitment_info
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment_type"] = deployment_type
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
@@ -1258,6 +1327,19 @@ class FutureReservation(pulumi.CustomResource):
         The creation timestamp for this future reservation in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")

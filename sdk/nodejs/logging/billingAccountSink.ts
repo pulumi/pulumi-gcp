@@ -88,6 +88,15 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     declare public readonly billingAccount: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -142,6 +151,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             const state = argsOrState as BillingAccountSinkState | undefined;
             resourceInputs["bigqueryOptions"] = state?.bigqueryOptions;
             resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["destination"] = state?.destination;
             resourceInputs["disabled"] = state?.disabled;
@@ -159,6 +169,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             }
             resourceInputs["bigqueryOptions"] = args?.bigqueryOptions;
             resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["destination"] = args?.destination;
             resourceInputs["disabled"] = args?.disabled;
@@ -184,6 +195,15 @@ export interface BillingAccountSinkState {
      * The billing account exported to the sink.
      */
     billingAccount?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */
@@ -237,6 +257,15 @@ export interface BillingAccountSinkArgs {
      * The billing account exported to the sink.
      */
     billingAccount: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of this sink. The maximum length of the description is 8000 characters.
      */

@@ -13,6 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetIamCustomRoleResult {
     private Boolean deleted;
+    private String deletionPolicy;
     private String description;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -29,6 +30,9 @@ public final class GetIamCustomRoleResult {
     private GetIamCustomRoleResult() {}
     public Boolean deleted() {
         return this.deleted;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -69,6 +73,7 @@ public final class GetIamCustomRoleResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean deleted;
+        private String deletionPolicy;
         private String description;
         private String id;
         private String name;
@@ -81,6 +86,7 @@ public final class GetIamCustomRoleResult {
         public Builder(GetIamCustomRoleResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deleted = defaults.deleted;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -97,6 +103,14 @@ public final class GetIamCustomRoleResult {
               throw new MissingRequiredPropertyException("GetIamCustomRoleResult", "deleted");
             }
             this.deleted = deleted;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetIamCustomRoleResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +183,7 @@ public final class GetIamCustomRoleResult {
         public GetIamCustomRoleResult build() {
             final var _resultValue = new GetIamCustomRoleResult();
             _resultValue.deleted = deleted;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.name = name;

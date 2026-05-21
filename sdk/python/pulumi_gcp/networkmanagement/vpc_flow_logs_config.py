@@ -22,6 +22,7 @@ class VpcFlowLogsConfigArgs:
                  location: pulumi.Input[_builtins.str],
                  vpc_flow_logs_config_id: pulumi.Input[_builtins.str],
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
                  flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
@@ -43,6 +44,12 @@ class VpcFlowLogsConfigArgs:
         :param pulumi.Input[_builtins.str] vpc_flow_logs_config_id: Required. ID of the `VpcFlowLogsConfig`.
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
                INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[_builtins.str] filter_expr: Optional. Export filter used to define which VPC Flow Logs should be logged.
@@ -73,6 +80,8 @@ class VpcFlowLogsConfigArgs:
         pulumi.set(__self__, "vpc_flow_logs_config_id", vpc_flow_logs_config_id)
         if aggregation_interval is not None:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if filter_expr is not None:
@@ -136,6 +145,23 @@ class VpcFlowLogsConfigArgs:
     @aggregation_interval.setter
     def aggregation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aggregation_interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -300,6 +326,7 @@ class _VpcFlowLogsConfigState:
     def __init__(__self__, *,
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -325,6 +352,12 @@ class _VpcFlowLogsConfigState:
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
                INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the config was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -370,6 +403,8 @@ class _VpcFlowLogsConfigState:
             pulumi.set(__self__, "aggregation_interval", aggregation_interval)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -433,6 +468,23 @@ class _VpcFlowLogsConfigState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -691,6 +743,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
                  flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
@@ -841,6 +894,12 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
                INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[_builtins.str] filter_expr: Optional. Export filter used to define which VPC Flow Logs should be logged.
@@ -1024,6 +1083,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
                  flow_sampling: pulumi.Input[Optional[_builtins.float]] = None,
@@ -1048,6 +1108,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             __props__ = VpcFlowLogsConfigArgs.__new__(VpcFlowLogsConfigArgs)
 
             __props__.__dict__["aggregation_interval"] = aggregation_interval
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["filter_expr"] = filter_expr
             __props__.__dict__["flow_sampling"] = flow_sampling
@@ -1086,6 +1147,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aggregation_interval: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             filter_expr: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1115,6 +1177,12 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] aggregation_interval: Optional. The aggregation interval for the logs. Default value is
                INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
         :param pulumi.Input[_builtins.str] create_time: Output only. The time the config was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
                of 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1162,6 +1230,7 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
 
         __props__.__dict__["aggregation_interval"] = aggregation_interval
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["filter_expr"] = filter_expr
@@ -1199,6 +1268,19 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
         Output only. The time the config was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

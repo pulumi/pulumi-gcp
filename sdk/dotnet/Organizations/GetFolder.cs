@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.Organizations
         /// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         /// <summary>
         /// The folder's display name.
@@ -203,6 +204,8 @@ namespace Pulumi.Gcp.Organizations
 
             string createTime,
 
+            string deletionPolicy,
+
             bool deletionProtection,
 
             string displayName,
@@ -227,6 +230,7 @@ namespace Pulumi.Gcp.Organizations
         {
             ConfiguredCapabilities = configuredCapabilities;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DisplayName = displayName;
             Folder = folder;

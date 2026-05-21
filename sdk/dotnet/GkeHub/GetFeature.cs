@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.GkeHub
     {
         public readonly string CreateTime;
         public readonly string DeleteTime;
+        public readonly string DeletionPolicy;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetFeatureFleetDefaultMemberConfigResult> FleetDefaultMemberConfigs;
         /// <summary>
@@ -169,6 +170,8 @@ namespace Pulumi.Gcp.GkeHub
             string createTime,
 
             string deleteTime,
+
+            string deletionPolicy,
 
             ImmutableDictionary<string, string> effectiveLabels,
 
@@ -196,6 +199,7 @@ namespace Pulumi.Gcp.GkeHub
         {
             CreateTime = createTime;
             DeleteTime = deleteTime;
+            DeletionPolicy = deletionPolicy;
             EffectiveLabels = effectiveLabels;
             FleetDefaultMemberConfigs = fleetDefaultMemberConfigs;
             Id = id;

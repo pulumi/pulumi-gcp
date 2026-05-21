@@ -80,6 +80,13 @@ type TargetPool struct {
 	// URL to the backup target pool. Must also set
 	// failover_ratio.
 	BackupPool pulumi.StringPtrOutput `pulumi:"backupPool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Textual description field.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Ratio (0 to 1) of failed nodes before using the
@@ -148,6 +155,13 @@ type targetPoolState struct {
 	// URL to the backup target pool. Must also set
 	// failover_ratio.
 	BackupPool *string `pulumi:"backupPool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Textual description field.
 	Description *string `pulumi:"description"`
 	// Ratio (0 to 1) of failed nodes before using the
@@ -187,6 +201,13 @@ type TargetPoolState struct {
 	// URL to the backup target pool. Must also set
 	// failover_ratio.
 	BackupPool pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Textual description field.
 	Description pulumi.StringPtrInput
 	// Ratio (0 to 1) of failed nodes before using the
@@ -230,6 +251,13 @@ type targetPoolArgs struct {
 	// URL to the backup target pool. Must also set
 	// failover_ratio.
 	BackupPool *string `pulumi:"backupPool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Textual description field.
 	Description *string `pulumi:"description"`
 	// Ratio (0 to 1) of failed nodes before using the
@@ -268,6 +296,13 @@ type TargetPoolArgs struct {
 	// URL to the backup target pool. Must also set
 	// failover_ratio.
 	BackupPool pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Textual description field.
 	Description pulumi.StringPtrInput
 	// Ratio (0 to 1) of failed nodes before using the
@@ -392,6 +427,16 @@ func (o TargetPoolOutput) ToTargetPoolOutputWithContext(ctx context.Context) Tar
 // failover_ratio.
 func (o TargetPoolOutput) BackupPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.BackupPool }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TargetPoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Textual description field.

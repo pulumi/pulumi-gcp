@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.AwsCluster;
  * import com.pulumi.gcp.container.AwsClusterArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -61,6 +62,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigRootVolumeArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigTaintArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolManagementArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolKubeletConfigArgs;
@@ -213,6 +215,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.AwsCluster;
  * import com.pulumi.gcp.container.AwsClusterArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -231,6 +234,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigRootVolumeArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigTaintArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -372,6 +376,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.AwsCluster;
  * import com.pulumi.gcp.container.AwsClusterArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
+ * import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
  * import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
@@ -390,6 +395,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigRootVolumeArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigProxyConfigArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigSshConfigArgs;
+ * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigTaintArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolConfigInstancePlacementArgs;
  * import com.pulumi.gcp.container.inputs.AwsNodePoolMaxPodsConstraintArgs;
  * import java.util.ArrayList;
@@ -616,6 +622,30 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.

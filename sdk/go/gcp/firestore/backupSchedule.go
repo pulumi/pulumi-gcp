@@ -132,6 +132,13 @@ type BackupSchedule struct {
 	DailyRecurrence BackupScheduleDailyRecurrencePtrOutput `pulumi:"dailyRecurrence"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The unique backup schedule identifier across all locations and databases for the given project. Format:
 	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -184,6 +191,13 @@ type backupScheduleState struct {
 	DailyRecurrence *BackupScheduleDailyRecurrence `pulumi:"dailyRecurrence"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The unique backup schedule identifier across all locations and databases for the given project. Format:
 	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
 	Name *string `pulumi:"name"`
@@ -204,6 +218,13 @@ type BackupScheduleState struct {
 	DailyRecurrence BackupScheduleDailyRecurrencePtrInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The unique backup schedule identifier across all locations and databases for the given project. Format:
 	// `projects/{{project}}/databases/{{database}}/backupSchedules/{{backupSchedule}}`
 	Name pulumi.StringPtrInput
@@ -228,6 +249,13 @@ type backupScheduleArgs struct {
 	DailyRecurrence *BackupScheduleDailyRecurrence `pulumi:"dailyRecurrence"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -246,6 +274,13 @@ type BackupScheduleArgs struct {
 	DailyRecurrence BackupScheduleDailyRecurrencePtrInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -353,6 +388,16 @@ func (o BackupScheduleOutput) DailyRecurrence() BackupScheduleDailyRecurrencePtr
 // The Firestore database id. Defaults to `"(default)"`.
 func (o BackupScheduleOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringPtrOutput { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupScheduleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The unique backup schedule identifier across all locations and databases for the given project. Format:

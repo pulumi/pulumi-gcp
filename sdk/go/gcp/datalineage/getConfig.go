@@ -62,7 +62,8 @@ type LookupConfigArgs struct {
 
 // A collection of values returned by getConfig.
 type LookupConfigResult struct {
-	Etag string `pulumi:"etag"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	Etag           string `pulumi:"etag"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string               `pulumi:"id"`
 	Ingestions []GetConfigIngestion `pulumi:"ingestions"`
@@ -106,6 +107,10 @@ func (o LookupConfigResultOutput) ToLookupConfigResultOutput() LookupConfigResul
 
 func (o LookupConfigResultOutput) ToLookupConfigResultOutputWithContext(ctx context.Context) LookupConfigResultOutput {
 	return o
+}
+
+func (o LookupConfigResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupConfigResultOutput) Etag() pulumi.StringOutput {

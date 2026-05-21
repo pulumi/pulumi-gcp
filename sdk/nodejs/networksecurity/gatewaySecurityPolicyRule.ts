@@ -121,6 +121,15 @@ export class GatewaySecurityPolicyRule extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Free-text description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -186,6 +195,7 @@ export class GatewaySecurityPolicyRule extends pulumi.CustomResource {
             resourceInputs["applicationMatcher"] = state?.applicationMatcher;
             resourceInputs["basicProfile"] = state?.basicProfile;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabled"] = state?.enabled;
             resourceInputs["gatewaySecurityPolicy"] = state?.gatewaySecurityPolicy;
@@ -219,6 +229,7 @@ export class GatewaySecurityPolicyRule extends pulumi.CustomResource {
             }
             resourceInputs["applicationMatcher"] = args?.applicationMatcher;
             resourceInputs["basicProfile"] = args?.basicProfile;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["enabled"] = args?.enabled;
             resourceInputs["gatewaySecurityPolicy"] = args?.gatewaySecurityPolicy;
@@ -256,6 +267,15 @@ export interface GatewaySecurityPolicyRuleState {
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Free-text description of the resource.
      */
@@ -320,6 +340,15 @@ export interface GatewaySecurityPolicyRuleArgs {
      * Possible values are: `BASIC_PROFILE_UNSPECIFIED`, `ALLOW`, `DENY`.
      */
     basicProfile: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Free-text description of the resource.
      */

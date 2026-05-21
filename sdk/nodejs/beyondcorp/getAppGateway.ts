@@ -56,6 +56,7 @@ export interface GetAppGatewayArgs {
  */
 export interface GetAppGatewayResult {
     readonly allocatedConnections: outputs.beyondcorp.GetAppGatewayAllocatedConnection[];
+    readonly deletionPolicy: string;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly hostType: string;

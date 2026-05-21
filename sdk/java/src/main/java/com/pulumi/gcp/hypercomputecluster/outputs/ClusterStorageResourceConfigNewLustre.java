@@ -37,6 +37,16 @@ public final class ClusterStorageResourceConfigNewLustre {
      * 
      */
     private String lustre;
+    /**
+     * @return Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+     * 500, 1000. See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * 
+     * &lt;a name=&#34;nestedStorageResourcesFilestore&#34;&gt;&lt;/a&gt;The `filestore` block contains:
+     * 
+     */
+    private @Nullable String perUnitStorageThroughput;
 
     private ClusterStorageResourceConfigNewLustre() {}
     /**
@@ -72,6 +82,18 @@ public final class ClusterStorageResourceConfigNewLustre {
     public String lustre() {
         return this.lustre;
     }
+    /**
+     * @return Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+     * 500, 1000. See [Performance tiers and maximum storage
+     * capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+     * for more information.
+     * 
+     * &lt;a name=&#34;nestedStorageResourcesFilestore&#34;&gt;&lt;/a&gt;The `filestore` block contains:
+     * 
+     */
+    public Optional<String> perUnitStorageThroughput() {
+        return Optional.ofNullable(this.perUnitStorageThroughput);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -86,6 +108,7 @@ public final class ClusterStorageResourceConfigNewLustre {
         private @Nullable String description;
         private String filesystem;
         private String lustre;
+        private @Nullable String perUnitStorageThroughput;
         public Builder() {}
         public Builder(ClusterStorageResourceConfigNewLustre defaults) {
     	      Objects.requireNonNull(defaults);
@@ -93,6 +116,7 @@ public final class ClusterStorageResourceConfigNewLustre {
     	      this.description = defaults.description;
     	      this.filesystem = defaults.filesystem;
     	      this.lustre = defaults.lustre;
+    	      this.perUnitStorageThroughput = defaults.perUnitStorageThroughput;
         }
 
         @CustomType.Setter
@@ -125,12 +149,19 @@ public final class ClusterStorageResourceConfigNewLustre {
             this.lustre = lustre;
             return this;
         }
+        @CustomType.Setter
+        public Builder perUnitStorageThroughput(@Nullable String perUnitStorageThroughput) {
+
+            this.perUnitStorageThroughput = perUnitStorageThroughput;
+            return this;
+        }
         public ClusterStorageResourceConfigNewLustre build() {
             final var _resultValue = new ClusterStorageResourceConfigNewLustre();
             _resultValue.capacityGb = capacityGb;
             _resultValue.description = description;
             _resultValue.filesystem = filesystem;
             _resultValue.lustre = lustre;
+            _resultValue.perUnitStorageThroughput = perUnitStorageThroughput;
             return _resultValue;
         }
     }

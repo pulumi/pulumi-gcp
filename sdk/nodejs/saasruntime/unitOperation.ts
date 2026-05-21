@@ -244,6 +244,15 @@ export class UnitOperation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Deprovision is the unit operation that deprovision the underlying
      * resources represented by a Unit. Can only execute if the Unit is currently
      * provisioned.
@@ -375,6 +384,7 @@ export class UnitOperation extends pulumi.CustomResource {
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["conditions"] = state?.conditions;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deprovision"] = state?.deprovision;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -406,6 +416,7 @@ export class UnitOperation extends pulumi.CustomResource {
                 throw new Error("Missing required property 'unitOperationId'");
             }
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deprovision"] = args?.deprovision;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -458,6 +469,15 @@ export interface UnitOperationState {
      * The timestamp when the resource was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Deprovision is the unit operation that deprovision the underlying
      * resources represented by a Unit. Can only execute if the Unit is currently
@@ -588,6 +608,15 @@ export interface UnitOperationArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Deprovision is the unit operation that deprovision the underlying
      * resources represented by a Unit. Can only execute if the Unit is currently

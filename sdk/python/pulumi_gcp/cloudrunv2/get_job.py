@@ -27,7 +27,7 @@ class GetJobResult:
     """
     A collection of values returned by getJob.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, deletion_protection=None, effective_annotations=None, effective_labels=None, etag=None, execution_count=None, expire_time=None, generation=None, id=None, labels=None, last_modifier=None, latest_created_executions=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, run_execution_token=None, start_execution_token=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, delete_time=None, deletion_policy=None, deletion_protection=None, effective_annotations=None, effective_labels=None, etag=None, execution_count=None, expire_time=None, generation=None, id=None, labels=None, last_modifier=None, latest_created_executions=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, run_execution_token=None, start_execution_token=None, templates=None, terminal_conditions=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -52,6 +52,9 @@ class GetJobResult:
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -164,6 +167,11 @@ class GetJobResult:
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> _builtins.str:
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -303,6 +311,7 @@ class AwaitableGetJobResult(GetJobResult):
             create_time=self.create_time,
             creator=self.creator,
             delete_time=self.delete_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             effective_annotations=self.effective_annotations,
             effective_labels=self.effective_labels,
@@ -372,6 +381,7 @@ def get_job(location: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         creator=pulumi.get(__ret__, 'creator'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -438,6 +448,7 @@ def get_job_output(location: pulumi.Input[Optional[Optional[_builtins.str]]] = N
         create_time=pulumi.get(__response__, 'create_time'),
         creator=pulumi.get(__response__, 'creator'),
         delete_time=pulumi.get(__response__, 'delete_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

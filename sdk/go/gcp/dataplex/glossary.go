@@ -96,6 +96,13 @@ type Glossary struct {
 	CategoryCount pulumi.IntOutput `pulumi:"categoryCount"`
 	// The time at which the glossary was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user-mutable description of the glossary.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
@@ -172,6 +179,13 @@ type glossaryState struct {
 	CategoryCount *int `pulumi:"categoryCount"`
 	// The time at which the glossary was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-mutable description of the glossary.
 	Description *string `pulumi:"description"`
 	// User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
@@ -208,6 +222,13 @@ type GlossaryState struct {
 	CategoryCount pulumi.IntPtrInput
 	// The time at which the glossary was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-mutable description of the glossary.
 	Description pulumi.StringPtrInput
 	// User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
@@ -244,6 +265,13 @@ func (GlossaryState) ElementType() reflect.Type {
 }
 
 type glossaryArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-mutable description of the glossary.
 	Description *string `pulumi:"description"`
 	// User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
@@ -264,6 +292,13 @@ type glossaryArgs struct {
 
 // The set of arguments for constructing a Glossary resource.
 type GlossaryArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-mutable description of the glossary.
 	Description pulumi.StringPtrInput
 	// User friendly display name of the glossary. This is user-mutable. This will be same as the glossaryId, if not specified.
@@ -377,6 +412,16 @@ func (o GlossaryOutput) CategoryCount() pulumi.IntOutput {
 // The time at which the glossary was created.
 func (o GlossaryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GlossaryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user-mutable description of the glossary.

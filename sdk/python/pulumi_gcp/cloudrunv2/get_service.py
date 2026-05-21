@@ -27,7 +27,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, iap_enabled=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, multi_region_settings=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_policy=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, iap_enabled=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, multi_region_settings=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -61,6 +61,9 @@ class GetServiceResult:
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -212,6 +215,11 @@ class GetServiceResult:
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> _builtins.str:
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -394,6 +402,7 @@ class AwaitableGetServiceResult(GetServiceResult):
             custom_audiences=self.custom_audiences,
             default_uri_disabled=self.default_uri_disabled,
             delete_time=self.delete_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             description=self.description,
             effective_annotations=self.effective_annotations,
@@ -474,6 +483,7 @@ def get_service(location: Optional[_builtins.str] = None,
         custom_audiences=pulumi.get(__ret__, 'custom_audiences'),
         default_uri_disabled=pulumi.get(__ret__, 'default_uri_disabled'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
         effective_annotations=pulumi.get(__ret__, 'effective_annotations'),
@@ -551,6 +561,7 @@ def get_service_output(location: pulumi.Input[Optional[Optional[_builtins.str]]]
         custom_audiences=pulumi.get(__response__, 'custom_audiences'),
         default_uri_disabled=pulumi.get(__response__, 'default_uri_disabled'),
         delete_time=pulumi.get(__response__, 'delete_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         description=pulumi.get(__response__, 'description'),
         effective_annotations=pulumi.get(__response__, 'effective_annotations'),

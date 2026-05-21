@@ -25,6 +25,7 @@ class RestorePlanArgs:
                  cluster: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  restore_config: pulumi.Input['RestorePlanRestoreConfigArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,10 +35,16 @@ class RestorePlanArgs:
 
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
-        :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
+        :param pulumi.Input[_builtins.str] cluster: The name of the target cluster to which you want to Restore via this RestorePlan.
         :param pulumi.Input[_builtins.str] location: The region of the Restore Plan.
         :param pulumi.Input['RestorePlanRestoreConfigArgs'] restore_config: Defines the configuration of Restores created via this RestorePlan.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
@@ -53,6 +60,8 @@ class RestorePlanArgs:
         pulumi.set(__self__, "cluster", cluster)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "restore_config", restore_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -79,7 +88,7 @@ class RestorePlanArgs:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[_builtins.str]:
         """
-        The source cluster from which Restores will be created via this RestorePlan.
+        The name of the target cluster to which you want to Restore via this RestorePlan.
         """
         return pulumi.get(self, "cluster")
 
@@ -111,6 +120,23 @@ class RestorePlanArgs:
     @restore_config.setter
     def restore_config(self, value: pulumi.Input['RestorePlanRestoreConfigArgs']):
         pulumi.set(self, "restore_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -172,6 +198,7 @@ class _RestorePlanState:
     def __init__(__self__, *,
                  backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -188,7 +215,13 @@ class _RestorePlanState:
 
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
-        :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
+        :param pulumi.Input[_builtins.str] cluster: The name of the target cluster to which you want to Restore via this RestorePlan.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Description: A set of custom labels supplied by the user.
@@ -213,6 +246,8 @@ class _RestorePlanState:
             pulumi.set(__self__, "backup_plan", backup_plan)
         if cluster is not None:
             pulumi.set(__self__, "cluster", cluster)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -253,13 +288,30 @@ class _RestorePlanState:
     @pulumi.getter
     def cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The source cluster from which Restores will be created via this RestorePlan.
+        The name of the target cluster to which you want to Restore via this RestorePlan.
         """
         return pulumi.get(self, "cluster")
 
     @cluster.setter
     def cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -410,6 +462,7 @@ class RestorePlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -949,7 +1002,13 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
-        :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
+        :param pulumi.Input[_builtins.str] cluster: The name of the target cluster to which you want to Restore via this RestorePlan.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Description: A set of custom labels supplied by the user.
                A list of key->value pairs.
@@ -1515,6 +1574,7 @@ class RestorePlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1536,6 +1596,7 @@ class RestorePlan(pulumi.CustomResource):
             if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__.__dict__["cluster"] = cluster
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -1565,6 +1626,7 @@ class RestorePlan(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backup_plan: pulumi.Input[Optional[_builtins.str]] = None,
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1585,7 +1647,13 @@ class RestorePlan(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] backup_plan: A reference to the BackupPlan from which Backups may be used
                as the source for Restores created via this RestorePlan.
-        :param pulumi.Input[_builtins.str] cluster: The source cluster from which Restores will be created via this RestorePlan.
+        :param pulumi.Input[_builtins.str] cluster: The name of the target cluster to which you want to Restore via this RestorePlan.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User specified descriptive string for this RestorePlan.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Description: A set of custom labels supplied by the user.
@@ -1612,6 +1680,7 @@ class RestorePlan(pulumi.CustomResource):
 
         __props__.__dict__["backup_plan"] = backup_plan
         __props__.__dict__["cluster"] = cluster
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["labels"] = labels
@@ -1638,9 +1707,22 @@ class RestorePlan(pulumi.CustomResource):
     @pulumi.getter
     def cluster(self) -> pulumi.Output[_builtins.str]:
         """
-        The source cluster from which Restores will be created via this RestorePlan.
+        The name of the target cluster to which you want to Restore via this RestorePlan.
         """
         return pulumi.get(self, "cluster")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

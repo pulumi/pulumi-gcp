@@ -55,6 +55,7 @@ export interface GetAppConnectorArgs {
  * A collection of values returned by getAppConnector.
  */
 export interface GetAppConnectorResult {
+    readonly deletionPolicy: string;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
     /**

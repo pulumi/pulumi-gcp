@@ -107,6 +107,13 @@ type AppRootAgentAssociation struct {
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
 	// The ID of the App. Used to construct the app resource name.
 	AppId pulumi.StringOutput `pulumi:"appId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The location of the App.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -158,6 +165,13 @@ type appRootAgentAssociationState struct {
 	AgentId *string `pulumi:"agentId"`
 	// The ID of the App. Used to construct the app resource name.
 	AppId *string `pulumi:"appId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the App.
 	Location *string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -171,6 +185,13 @@ type AppRootAgentAssociationState struct {
 	AgentId pulumi.StringPtrInput
 	// The ID of the App. Used to construct the app resource name.
 	AppId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the App.
 	Location pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -188,6 +209,13 @@ type appRootAgentAssociationArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// The ID of the App. Used to construct the app resource name.
 	AppId string `pulumi:"appId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the App.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -202,6 +230,13 @@ type AppRootAgentAssociationArgs struct {
 	AgentId pulumi.StringInput
 	// The ID of the App. Used to construct the app resource name.
 	AppId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the App.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -305,6 +340,16 @@ func (o AppRootAgentAssociationOutput) AgentId() pulumi.StringOutput {
 // The ID of the App. Used to construct the app resource name.
 func (o AppRootAgentAssociationOutput) AppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRootAgentAssociation) pulumi.StringOutput { return v.AppId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppRootAgentAssociationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppRootAgentAssociation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The location of the App.

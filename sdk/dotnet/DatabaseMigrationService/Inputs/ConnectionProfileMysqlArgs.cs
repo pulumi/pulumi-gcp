@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
     public sealed class ConnectionProfileMysqlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        /// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
         /// </summary>
         [Input("cloudSqlId")]
         public Input<string>? CloudSqlId { get; set; }

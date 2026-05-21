@@ -96,12 +96,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildStepArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSecretArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsSecretManagerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsNpmPackageArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsPythonPackageArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsMavenArtifactArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsVolumeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -393,11 +400,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
@@ -485,6 +494,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildStepArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerApprovalConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -822,12 +832,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildStepArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSecretArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsSecretManagerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsVolumeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -925,12 +939,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerTriggerTemplateArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildStepArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSourceStorageSourceArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildSecretArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsSecretManagerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsObjectsArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
+ * import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsVolumeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -1309,6 +1327,30 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Human-readable description of the trigger.

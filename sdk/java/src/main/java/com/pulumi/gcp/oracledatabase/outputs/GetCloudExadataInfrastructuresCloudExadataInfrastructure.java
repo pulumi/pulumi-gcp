@@ -28,6 +28,16 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
      */
     private String createTime;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
      * 
      */
@@ -109,6 +119,18 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
@@ -208,6 +230,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     public static final class Builder {
         private String cloudExadataInfrastructureId;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
@@ -224,6 +247,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     	      Objects.requireNonNull(defaults);
     	      this.cloudExadataInfrastructureId = defaults.cloudExadataInfrastructureId;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -251,6 +275,14 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
               throw new MissingRequiredPropertyException("GetCloudExadataInfrastructuresCloudExadataInfrastructure", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCloudExadataInfrastructuresCloudExadataInfrastructure", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -348,6 +380,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
             final var _resultValue = new GetCloudExadataInfrastructuresCloudExadataInfrastructure();
             _resultValue.cloudExadataInfrastructureId = cloudExadataInfrastructureId;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;

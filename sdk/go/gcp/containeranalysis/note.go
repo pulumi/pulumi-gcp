@@ -128,6 +128,13 @@ type Note struct {
 	AttestationAuthority NoteAttestationAuthorityOutput `pulumi:"attestationAuthority"`
 	// The time this note was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Time of expiration for this note. Leave empty if note does not expire.
 	ExpirationTime pulumi.StringPtrOutput `pulumi:"expirationTime"`
 	// The type of analysis this note describes
@@ -196,6 +203,13 @@ type noteState struct {
 	AttestationAuthority *NoteAttestationAuthority `pulumi:"attestationAuthority"`
 	// The time this note was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Time of expiration for this note. Leave empty if note does not expire.
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// The type of analysis this note describes
@@ -232,6 +246,13 @@ type NoteState struct {
 	AttestationAuthority NoteAttestationAuthorityPtrInput
 	// The time this note was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Time of expiration for this note. Leave empty if note does not expire.
 	ExpirationTime pulumi.StringPtrInput
 	// The type of analysis this note describes
@@ -270,6 +291,13 @@ type noteArgs struct {
 	// project.
 	// Structure is documented below.
 	AttestationAuthority NoteAttestationAuthority `pulumi:"attestationAuthority"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Time of expiration for this note. Leave empty if note does not expire.
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// A detailed description of the note
@@ -301,6 +329,13 @@ type NoteArgs struct {
 	// project.
 	// Structure is documented below.
 	AttestationAuthority NoteAttestationAuthorityInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Time of expiration for this note. Leave empty if note does not expire.
 	ExpirationTime pulumi.StringPtrInput
 	// A detailed description of the note
@@ -423,6 +458,16 @@ func (o NoteOutput) AttestationAuthority() NoteAttestationAuthorityOutput {
 // The time this note was created.
 func (o NoteOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o NoteOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Time of expiration for this note. Leave empty if note does not expire.

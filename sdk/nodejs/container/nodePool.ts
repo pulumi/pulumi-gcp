@@ -133,6 +133,17 @@ export class NodePool extends pulumi.CustomResource {
      */
     declare public readonly cluster: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
      * this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -224,8 +235,6 @@ export class NodePool extends pulumi.CustomResource {
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     declare public readonly queuedProvisioning: pulumi.Output<outputs.container.NodePoolQueuedProvisioning | undefined>;
     /**
@@ -258,6 +267,7 @@ export class NodePool extends pulumi.CustomResource {
             const state = argsOrState as NodePoolState | undefined;
             resourceInputs["autoscaling"] = state?.autoscaling;
             resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["initialNodeCount"] = state?.initialNodeCount;
             resourceInputs["instanceGroupUrls"] = state?.instanceGroupUrls;
             resourceInputs["location"] = state?.location;
@@ -284,6 +294,7 @@ export class NodePool extends pulumi.CustomResource {
             }
             resourceInputs["autoscaling"] = args?.autoscaling;
             resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["initialNodeCount"] = args?.initialNodeCount;
             resourceInputs["location"] = args?.location;
             resourceInputs["management"] = args?.management;
@@ -324,6 +335,17 @@ export interface NodePoolState {
      * - - -
      */
     cluster?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -416,8 +438,6 @@ export interface NodePoolState {
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning | undefined>;
     /**
@@ -451,6 +471,17 @@ export interface NodePoolArgs {
      * - - -
      */
     cluster: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The initial number of nodes for the pool. In
      * regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -534,8 +565,6 @@ export interface NodePoolArgs {
     /**
      * Specifies node pool-level settings of queued provisioning.
      * Structure is documented below.
-     *
-     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     queuedProvisioning?: pulumi.Input<inputs.container.NodePoolQueuedProvisioning | undefined>;
     /**

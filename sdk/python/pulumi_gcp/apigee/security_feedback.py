@@ -26,6 +26,7 @@ class SecurityFeedbackArgs:
                  feedback_type: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -39,6 +40,12 @@ class SecurityFeedbackArgs:
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Feedback,
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[_builtins.str] comment: Optional text the user can provide for additional, unstructured context.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the feedback.
         :param pulumi.Input[_builtins.str] reason: The reason for the feedback.
                Possible values are: `INTERNAL_SYSTEM`, `NON_RISK_CLIENT`, `NAT`, `PENETRATION_TEST`, `OTHER`.
@@ -49,6 +56,8 @@ class SecurityFeedbackArgs:
         pulumi.set(__self__, "org_id", org_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if reason is not None:
@@ -118,6 +127,23 @@ class SecurityFeedbackArgs:
         pulumi.set(self, "comment", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -148,6 +174,7 @@ class _SecurityFeedbackState:
     def __init__(__self__, *,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]]] = None,
                  feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -161,6 +188,12 @@ class _SecurityFeedbackState:
 
         :param pulumi.Input[_builtins.str] comment: Optional text the user can provide for additional, unstructured context.
         :param pulumi.Input[_builtins.str] create_time: The time when this specific feedback id was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the feedback.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityFeedbackFeedbackContextArgs']]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
                Structure is documented below.
@@ -179,6 +212,8 @@ class _SecurityFeedbackState:
             pulumi.set(__self__, "comment", comment)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if feedback_contexts is not None:
@@ -219,6 +254,23 @@ class _SecurityFeedbackState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -329,6 +381,7 @@ class SecurityFeedback(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
                  feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -419,6 +472,12 @@ class SecurityFeedback(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Optional text the user can provide for additional, unstructured context.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the feedback.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
                Structure is documented below.
@@ -532,6 +591,7 @@ class SecurityFeedback(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
                  feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -548,6 +608,7 @@ class SecurityFeedback(pulumi.CustomResource):
             __props__ = SecurityFeedbackArgs.__new__(SecurityFeedbackArgs)
 
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             if feedback_contexts is None and not opts.urn:
                 raise TypeError("Missing required property 'feedback_contexts'")
@@ -577,6 +638,7 @@ class SecurityFeedback(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             feedback_contexts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]]] = None,
             feedback_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -594,6 +656,12 @@ class SecurityFeedback(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: Optional text the user can provide for additional, unstructured context.
         :param pulumi.Input[_builtins.str] create_time: The time when this specific feedback id was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the feedback.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SecurityFeedbackFeedbackContextArgs', 'SecurityFeedbackFeedbackContextArgsDict']]]] feedback_contexts: One or more attribute/value pairs for constraining the feedback.
                Structure is documented below.
@@ -614,6 +682,7 @@ class SecurityFeedback(pulumi.CustomResource):
 
         __props__.__dict__["comment"] = comment
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["feedback_contexts"] = feedback_contexts
         __props__.__dict__["feedback_id"] = feedback_id
@@ -639,6 +708,19 @@ class SecurityFeedback(pulumi.CustomResource):
         The time when this specific feedback id was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

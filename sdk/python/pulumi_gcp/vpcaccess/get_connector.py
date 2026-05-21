@@ -27,10 +27,13 @@ class GetConnectorResult:
     """
     A collection of values returned by getConnector.
     """
-    def __init__(__self__, connected_projects=None, id=None, ip_cidr_range=None, machine_type=None, max_instances=None, max_throughput=None, min_instances=None, min_throughput=None, name=None, network=None, project=None, region=None, self_link=None, state=None, subnets=None):
+    def __init__(__self__, connected_projects=None, deletion_policy=None, id=None, ip_cidr_range=None, machine_type=None, max_instances=None, max_throughput=None, min_instances=None, min_throughput=None, name=None, network=None, project=None, region=None, self_link=None, state=None, subnets=None):
         if connected_projects and not isinstance(connected_projects, list):
             raise TypeError("Expected argument 'connected_projects' to be a list")
         pulumi.set(__self__, "connected_projects", connected_projects)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -78,6 +81,11 @@ class GetConnectorResult:
     @pulumi.getter(name="connectedProjects")
     def connected_projects(self) -> Sequence[_builtins.str]:
         return pulumi.get(self, "connected_projects")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -160,6 +168,7 @@ class AwaitableGetConnectorResult(GetConnectorResult):
             yield self
         return GetConnectorResult(
             connected_projects=self.connected_projects,
+            deletion_policy=self.deletion_policy,
             id=self.id,
             ip_cidr_range=self.ip_cidr_range,
             machine_type=self.machine_type,
@@ -223,6 +232,7 @@ def get_connector(name: Optional[_builtins.str] = None,
 
     return AwaitableGetConnectorResult(
         connected_projects=pulumi.get(__ret__, 'connected_projects'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         id=pulumi.get(__ret__, 'id'),
         ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
         machine_type=pulumi.get(__ret__, 'machine_type'),
@@ -283,6 +293,7 @@ def get_connector_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:vpcaccess/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult)
     return __ret__.apply(lambda __response__: GetConnectorResult(
         connected_projects=pulumi.get(__response__, 'connected_projects'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         id=pulumi.get(__response__, 'id'),
         ip_cidr_range=pulumi.get(__response__, 'ip_cidr_range'),
         machine_type=pulumi.get(__response__, 'machine_type'),

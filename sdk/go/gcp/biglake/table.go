@@ -150,6 +150,13 @@ type Table struct {
 	// nanosecond resolution and up to nine fractional digits. Examples:
 	// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The checksum of a table object computed by the server based on the value
 	// of other fields. It may be sent on update requests to ensure the client
 	// has an up-to-date value before proceeding. It is only checked for update
@@ -218,6 +225,13 @@ type tableState struct {
 	// nanosecond resolution and up to nine fractional digits. Examples:
 	// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The checksum of a table object computed by the server based on the value
 	// of other fields. It may be sent on update requests to ensure the client
 	// has an up-to-date value before proceeding. It is only checked for update
@@ -257,6 +271,13 @@ type TableState struct {
 	// nanosecond resolution and up to nine fractional digits. Examples:
 	// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The checksum of a table object computed by the server based on the value
 	// of other fields. It may be sent on update requests to ensure the client
 	// has an up-to-date value before proceeding. It is only checked for update
@@ -290,6 +311,13 @@ func (TableState) ElementType() reflect.Type {
 type tableArgs struct {
 	// The id of the parent database.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Options of a Hive table.
 	// Structure is documented below.
 	HiveOptions *TableHiveOptions `pulumi:"hiveOptions"`
@@ -305,6 +333,13 @@ type tableArgs struct {
 type TableArgs struct {
 	// The id of the parent database.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Options of a Hive table.
 	// Structure is documented below.
 	HiveOptions TableHiveOptionsPtrInput
@@ -422,6 +457,16 @@ func (o TableOutput) Database() pulumi.StringPtrOutput {
 // "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o TableOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TableOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The checksum of a table object computed by the server based on the value

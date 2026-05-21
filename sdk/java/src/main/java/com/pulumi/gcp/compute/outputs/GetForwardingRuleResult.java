@@ -23,6 +23,7 @@ public final class GetForwardingRuleResult {
     private String backendService;
     private String baseForwardingRule;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveLabels;
     private Integer forwardingRuleId;
@@ -77,6 +78,9 @@ public final class GetForwardingRuleResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -191,6 +195,7 @@ public final class GetForwardingRuleResult {
         private String backendService;
         private String baseForwardingRule;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private Integer forwardingRuleId;
@@ -231,6 +236,7 @@ public final class GetForwardingRuleResult {
     	      this.backendService = defaults.backendService;
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.forwardingRuleId = defaults.forwardingRuleId;
@@ -310,6 +316,14 @@ public final class GetForwardingRuleResult {
               throw new MissingRequiredPropertyException("GetForwardingRuleResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetForwardingRuleResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -573,6 +587,7 @@ public final class GetForwardingRuleResult {
             _resultValue.backendService = backendService;
             _resultValue.baseForwardingRule = baseForwardingRule;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.forwardingRuleId = forwardingRuleId;

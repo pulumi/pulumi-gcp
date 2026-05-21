@@ -123,6 +123,17 @@ namespace Pulumi.Gcp.BigTable
         public Output<ImmutableArray<Outputs.InstanceCluster>> Clusters { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
         /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         /// </summary>
@@ -261,6 +272,17 @@ namespace Pulumi.Gcp.BigTable
         }
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false
         /// in the statefile, a `pulumi destroy` or `pulumi up` that would delete the instance will fail.
         /// </summary>
@@ -354,6 +376,17 @@ namespace Pulumi.Gcp.BigTable
             get => _clusters ?? (_clusters = new InputList<Inputs.InstanceClusterGetArgs>());
             set => _clusters = value;
         }
+
+        /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Whether or not to allow this provider to destroy the instance. Unless this field is set to false

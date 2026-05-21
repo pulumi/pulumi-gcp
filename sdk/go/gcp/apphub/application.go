@@ -157,6 +157,13 @@ type Application struct {
 	Attributes ApplicationAttributesPtrOutput `pulumi:"attributes"`
 	// Output only. Create time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. User-defined description of an Application.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. User-defined name for the Application.
@@ -231,6 +238,13 @@ type applicationState struct {
 	Attributes *ApplicationAttributes `pulumi:"attributes"`
 	// Output only. Create time.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. User-defined description of an Application.
 	Description *string `pulumi:"description"`
 	// Optional. User-defined name for the Application.
@@ -267,6 +281,13 @@ type ApplicationState struct {
 	Attributes ApplicationAttributesPtrInput
 	// Output only. Create time.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. User-defined description of an Application.
 	Description pulumi.StringPtrInput
 	// Optional. User-defined name for the Application.
@@ -305,6 +326,13 @@ type applicationArgs struct {
 	// Consumer provided attributes.
 	// Structure is documented below.
 	Attributes *ApplicationAttributes `pulumi:"attributes"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. User-defined description of an Application.
 	Description *string `pulumi:"description"`
 	// Optional. User-defined name for the Application.
@@ -326,6 +354,13 @@ type ApplicationArgs struct {
 	// Consumer provided attributes.
 	// Structure is documented below.
 	Attributes ApplicationAttributesPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. User-defined description of an Application.
 	Description pulumi.StringPtrInput
 	// Optional. User-defined name for the Application.
@@ -441,6 +476,16 @@ func (o ApplicationOutput) Attributes() ApplicationAttributesPtrOutput {
 // Output only. Create time.
 func (o ApplicationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ApplicationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. User-defined description of an Application.

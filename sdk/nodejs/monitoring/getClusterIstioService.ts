@@ -89,6 +89,7 @@ export interface GetClusterIstioServiceArgs {
  */
 export interface GetClusterIstioServiceResult {
     readonly clusterName: string;
+    readonly deletionPolicy: string;
     /**
      * Name used for UI elements listing this (Monitoring) Service.
      */

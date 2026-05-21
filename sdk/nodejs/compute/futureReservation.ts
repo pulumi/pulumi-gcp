@@ -163,6 +163,15 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Type of the deployment requested as part of future reservation.
      * Possible values are: `DENSE`, `FLEXIBLE`.
      */
@@ -265,6 +274,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["autoDeleteAutoCreatedReservations"] = state?.autoDeleteAutoCreatedReservations;
             resourceInputs["commitmentInfo"] = state?.commitmentInfo;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deploymentType"] = state?.deploymentType;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
@@ -292,6 +302,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["autoCreatedReservationsDuration"] = args?.autoCreatedReservationsDuration;
             resourceInputs["autoDeleteAutoCreatedReservations"] = args?.autoDeleteAutoCreatedReservations;
             resourceInputs["commitmentInfo"] = args?.commitmentInfo;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deploymentType"] = args?.deploymentType;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
@@ -347,6 +358,15 @@ export interface FutureReservationState {
      * The creation timestamp for this future reservation in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Type of the deployment requested as part of future reservation.
      * Possible values are: `DENSE`, `FLEXIBLE`.
@@ -459,6 +479,15 @@ export interface FutureReservationArgs {
      * Structure is documented below.
      */
     commitmentInfo?: pulumi.Input<inputs.compute.FutureReservationCommitmentInfo | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Type of the deployment requested as part of future reservation.
      * Possible values are: `DENSE`, `FLEXIBLE`.

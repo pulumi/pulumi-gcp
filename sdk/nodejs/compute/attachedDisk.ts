@@ -87,6 +87,15 @@ export class AttachedDisk extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Specifies a unique device name of your choice that is
      * reflected into the /dev/disk/by-id/google-* tree of a Linux operating
      * system running within the instance. This name can be used to
@@ -158,6 +167,7 @@ export class AttachedDisk extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AttachedDiskState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deviceName"] = state?.deviceName;
             resourceInputs["disk"] = state?.disk;
             resourceInputs["instance"] = state?.instance;
@@ -173,6 +183,7 @@ export class AttachedDisk extends pulumi.CustomResource {
             if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deviceName"] = args?.deviceName;
             resourceInputs["disk"] = args?.disk;
             resourceInputs["instance"] = args?.instance;
@@ -190,6 +201,15 @@ export class AttachedDisk extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AttachedDisk resources.
  */
 export interface AttachedDiskState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies a unique device name of your choice that is
      * reflected into the /dev/disk/by-id/google-* tree of a Linux operating
@@ -254,6 +274,15 @@ export interface AttachedDiskState {
  * The set of arguments for constructing a AttachedDisk resource.
  */
 export interface AttachedDiskArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies a unique device name of your choice that is
      * reflected into the /dev/disk/by-id/google-* tree of a Linux operating

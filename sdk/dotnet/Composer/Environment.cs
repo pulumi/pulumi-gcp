@@ -16,45 +16,51 @@ namespace Pulumi.Gcp.Composer
     /// 
     /// To get more information about Environments, see:
     /// 
-    /// * [Cloud Composer documentation](https://cloud.google.com/composer/docs)
-    /// * [Cloud Composer API documentation](https://cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments)
-    /// * How-to Guides (Cloud Composer 2)
-    ///   * [Creating environments](https://cloud.google.com/composer/docs/composer-2/create-environments)
-    ///   * [Scaling environments](https://cloud.google.com/composer/docs/composer-2/scale-environments)
-    ///   * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/composer-2/configure-shared-vpc)
-    /// * How-to Guides (Cloud Composer 3)
-    ///   * [Creating environments](https://cloud.google.com/composer/docs/composer-3/create-environments)
-    ///   * [Scaling environments](https://cloud.google.com/composer/docs/composer-3/scale-environments)
-    ///   * [Change environment networking type (Private or Public IP)](https://cloud.google.com/composer/docs/composer-3/change-networking-type)
-    ///   * [Connect an environment to a VPC network](https://cloud.google.com/composer/docs/composer-3/connect-vpc-network)
+    /// * [Managed Service for Apache Airflow documentation](https://docs.cloud.google.com/composer/docs)
+    /// * [Managed Airflow API documentation](https://docs.cloud.google.com/composer/docs/reference/rest/v1beta1/projects.locations.environments)
+    /// * How-to Guides for Managed Airflow (Gen 3)
+    ///   * [Creating environments](https://docs.cloud.google.com/composer/docs/composer-3/create-environments)
+    ///   * [Scaling environments](https://docs.cloud.google.com/composer/docs/composer-3/scale-environments)
+    ///   * [Change environment networking type (Private or Public IP)](https://docs.cloud.google.com/composer/docs/composer-3/change-networking-type)
+    ///   * [Connect an environment to a VPC network](https://docs.cloud.google.com/composer/docs/composer-3/connect-vpc-network)
+    /// * How-to Guides for Managed Airflow (Gen 2)
+    ///   * [Creating environments](https://docs.cloud.google.com/composer/docs/composer-2/create-environments)
+    ///   * [Scaling environments](https://docs.cloud.google.com/composer/docs/composer-2/scale-environments)
+    ///   * [Configuring Shared VPC](https://docs.cloud.google.com/composer/docs/composer-2/configure-shared-vpc)
     /// * [Apache Airflow Documentation](http://airflow.apache.org/)
     /// 
     /// &gt; **Note**
-    ///   Cloud Composer 1 is in the post-maintenance mode. Google does
-    ///   not release any further updates to Cloud Composer 1, including new versions
-    ///   of Airflow, bugfixes, and security updates. We recommend using
-    ///   Cloud Composer 2 or Cloud Composer 3 instead.
+    ///   Managed Airflow (Legacy Gen 1) is in the post-maintenance mode. Google
+    ///   doesn't release any further updates to Managed Service for
+    ///   Managed Airflow (Legacy Gen 1), including new versions of Airflow, bugfixes,
+    ///   and security updates. We recommend using Managed Airflow (Gen 3) or
+    ///   Managed Airflow (Gen 2) instead.
     /// 
-    /// We **STRONGLY** recommend you read the [GCP
-    /// guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
-    /// deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
-    /// cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
-    /// will not be able to find or manage many of these underlying resources automatically. In particular:
-    /// * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
-    ///   detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
-    ///   process), and is prone to limited error reporting. If you encounter confusing or uninformative
-    ///   errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
-    ///   against the provider.
-    /// * **Environments create Google Cloud Storage buckets that are not automatically cleaned up**
-    ///   on environment deletion. [More about Composer's use of Cloud
-    ///   Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
-    /// * Please review the [known
-    ///   issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
-    ///   problems.
+    /// Several special considerations apply to using Terraform with
+    /// Managed Service for Apache Airflow:
+    /// 
+    /// * The Environment resource is based on several layers of Google Cloud
+    ///     infrastructure. Terraform doesn't manage these underlying resources. For
+    ///     example, in Managed Airflow (Gen 2), this includes a Google Kubernetes
+    ///     Engine cluster, Cloud Storage, and Compute networking resources.
+    /// * Creating or updating an environment usually takes around 25 minutes.
+    /// * In some cases, errors in the configuration are detected and reported only
+    ///     during the process of environment creation. If you encounter such
+    ///     errors, please verify that your configuration is valid for the Managed
+    ///     Airflow environment you are creating before filing bugs for the Terraform
+    ///     provider.
+    /// * **Environments have Google Cloud Storage buckets that are not automatically
+    ///     deleted** with the environment.
+    ///     See [Delete environments](https://docs.cloud.google.com/composer/docs/composer-3/delete-environments)
+    ///     for more information.
+    /// * See
+    ///     [Troubleshooting pages](https://docs.cloud.google.com/composer/docs/composer-3/troubleshooting-environment-creation)
+    ///     if you encounter problems.
     /// 
     /// ## Example Usage
     /// 
-    /// ### Basic Usage (Cloud Composer 3)
+    /// ### Basic usage in Managed Airflow (Gen 3)
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -79,7 +85,8 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// ### Basic Usage (Cloud Composer 2)
+    /// ### Basic usage in Managed Airflow (Gen 2)
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -104,7 +111,8 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// ### Basic Usage (Cloud Composer 1)
+    /// ### Basic Usage in Managed Airflow (Legacy Gen 1)
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -129,18 +137,18 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// ### With GKE and Compute Resource Dependencies
+    /// ### With environment resources configuration
     /// 
     /// &gt; **Note**
     ///   To use custom service accounts, you must give at least the
-    ///   `role/composer.worker` role to the service account of the Cloud Composer
+    ///   `role/composer.worker` role to the service account of the Managed Airflow
     ///   environment. For more information, see the
-    ///   [Access Control](https://cloud.google.com/composer/docs/how-to/access-control)
-    ///   page in the Cloud Composer documentation.
+    ///   [Access Control](https://docs.cloud.google.com/composer/docs/composer-3/access-control)
+    ///   page in the Managed Airflow documentation.
     ///   You might need to assign additional roles depending on specific workflows
     ///   that the Airflow DAGs will be running.
     /// 
-    /// ### GKE and Compute Resource Dependencies (Cloud Composer 3)
+    /// ### Environment resources configuration in Managed Airflow (Gen 3)
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -153,7 +161,7 @@ namespace Pulumi.Gcp.Composer
     ///     var testAccount = new Gcp.ServiceAccount.Account("test", new()
     ///     {
     ///         AccountId = "composer-env-account",
-    ///         DisplayName = "Test Service Account for Composer Environment",
+    ///         DisplayName = "Test Service Account for Managed Airflow Environment",
     ///     });
     /// 
     ///     var test = new Gcp.Composer.Environment("test", new()
@@ -221,7 +229,7 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// ### GKE and Compute Resource Dependencies (Cloud Composer 2)
+    /// ### Environment resources configuration in Managed Airflow (Gen 2)
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -248,7 +256,7 @@ namespace Pulumi.Gcp.Composer
     ///     var testAccount = new Gcp.ServiceAccount.Account("test", new()
     ///     {
     ///         AccountId = "composer-env-account",
-    ///         DisplayName = "Test Service Account for Composer Environment",
+    ///         DisplayName = "Test Service Account for Managed Airflow",
     ///     });
     /// 
     ///     var test = new Gcp.Composer.Environment("test", new()
@@ -305,7 +313,7 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// ### GKE and Compute Resource Dependencies (Cloud Composer 1)
+    /// ### Environment resources configuration in Managed Airflow (Legacy Gen 1)
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -332,7 +340,7 @@ namespace Pulumi.Gcp.Composer
     ///     var testAccount = new Gcp.ServiceAccount.Account("test", new()
     ///     {
     ///         AccountId = "composer-env-account",
-    ///         DisplayName = "Test Service Account for Composer Environment",
+    ///         DisplayName = "Test Service Account for Managed Airflow",
     ///     });
     /// 
     ///     var test = new Gcp.Composer.Environment("test", new()
@@ -374,9 +382,9 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// ### Cloud Composer 3 networking configuration
+    /// ### Networking configuration in Managed Airflow (Gen 3)
     /// 
-    /// In Cloud Composer 3, networking configuration is simplified compared to
+    /// In Managed Airflow (Gen 3), networking configuration is simplified compared to
     /// previous versions. You don't need to specify network ranges, and can attach
     /// custom VPC networks to your environment.
     /// 
@@ -408,7 +416,7 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// Attach a custom VPC network (Cloud Composer creates a new network attachment):
+    /// Attach a custom VPC network (Managed Airflow creates a new network attachment):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -435,7 +443,7 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// Attach a custom VPC network (use existing network attachment):
+    /// Attach a custom VPC network (use an existing network attachment):
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -461,10 +469,12 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// If you specify an existing network attachment that you also manage in Terraform, then Terraform will revert changes
-    /// to the attachment done by Cloud Composer when you apply configuration changes. As a result, the environment will no
-    /// longer use the attachment. To address this problem, make sure that Terraform ignores changes to the
-    /// `ProducerAcceptLists` parameter of the attachment, as follows:
+    /// If you specify an existing network attachment that you also manage in
+    /// Terraform, then Terraform will revert changes to the attachment that were done
+    /// by Managed Airflow when you apply configuration changes. As a result, the
+    /// environment will no longer use the attachment. To address this, make sure that
+    /// Terraform ignores changes to the `ProducerAcceptLists` parameter of the
+    /// attachment, as follows:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -492,228 +502,23 @@ namespace Pulumi.Gcp.Composer
     /// });
     /// ```
     /// 
-    /// ## Argument Reference - Cloud Composer 1
+    /// ## Import
     /// 
-    /// The following arguments are supported:
+    /// Environment can be imported using any of these accepted formats:
     /// 
-    /// * `Name` -
-    /// (Required)
-    /// Name of the environment
+    /// * `projects/{{project}}/locations/{{region}}/environments/{{name}}`
+    /// * `{{project}}/{{region}}/{{name}}`
+    /// * `{{name}}`
     /// 
-    /// * `Config` -
-    /// (Optional)
-    /// Configuration parameters for this environment  Structure is documented below.
+    /// When using the
+    /// `pulumi import` command,
+    /// Environment can be imported using one of the formats above. For example:
     /// 
-    /// * `Labels` -
-    /// (Optional)
-    /// User-defined labels for this environment. The labels map can contain
-    /// no more than 64 entries. Entries of the labels map are UTF8 strings
-    /// that comply with the following restrictions:
-    /// Label keys must be between 1 and 63 characters long and must conform
-    /// to the following regular expression: `a-z?`.
-    /// Label values must be between 0 and 63 characters long and must
-    /// conform to the regular expression `(a-z?)?`.
-    /// No more than 64 labels can be associated with a given environment.
-    /// Both keys and values must be &lt;= 128 bytes in size.
-    ///   
-    ///   **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
-    /// Please refer to the field 'effective_labels' for all of the labels present on the resource.
-    /// 
-    /// * `PulumiLabels` -
-    /// The combination of labels configured directly on the resource and default labels configured on the provider.
-    /// 
-    /// * `EffectiveLabels` -
-    /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-    /// 
-    /// * `Region` -
-    /// (Optional)
-    /// The location or Compute Engine region for the environment.
-    /// 
-    /// * `Project` -
-    /// (Optional) The ID of the project in which the resource belongs.
-    /// If it is not provided, the provider project is used.
-    /// 
-    /// &lt;a name="NestedConfigC1"&gt;&lt;/a&gt;The `Config` block supports:
-    /// 
-    /// * `NodeCount` -
-    /// (Optional, Cloud Composer 1 only)
-    /// The number of nodes in the Kubernetes Engine cluster of the environment.
-    /// 
-    /// * `NodeConfig` -
-    /// (Optional)
-    /// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
-    /// 
-    /// * `SoftwareConfig` -
-    /// (Optional)
-    /// The configuration settings for software inside the environment.  Structure is documented below.
-    /// 
-    /// * `PrivateEnvironmentConfig` -
-    /// (Optional)
-    /// The configuration used for the Private IP Cloud Composer environment. Structure is documented below.
-    /// 
-    /// * `WebServerNetworkAccessControl` -
-    /// The network-level access control policy for the Airflow web server.
-    /// If unspecified, no network-level access restrictions are applied.
-    /// 
-    /// * `DatabaseConfig` -
-    /// (Optional, Cloud Composer 1 only)
-    /// The configuration settings for Cloud SQL instance used internally
-    /// by Apache Airflow software.
-    /// 
-    /// * `WebServerConfig` -
-    /// (Optional, Cloud Composer 1 only)
-    /// The configuration settings for the Airflow web server App Engine instance.
-    /// 
-    /// * `EncryptionConfig` -
-    /// (Optional)
-    /// The encryption options for the Cloud Composer environment and its
-    /// dependencies.
-    /// 
-    /// * `MaintenanceWindow` -
-    /// (Optional, Beta)
-    /// The configuration settings for Cloud Composer maintenance windows.
-    /// 
-    /// * `MasterAuthorizedNetworksConfig` -
-    /// (Optional)
-    /// Configuration options for the master authorized networks feature. Enabled
-    /// master authorized networks will disallow all external traffic to access
-    /// Kubernetes master through HTTPS except traffic from the given CIDR blocks,
-    /// Google Compute Engine Public IPs and Google Prod IPs. Structure is
-    /// documented below.
-    /// 
-    /// &lt;a name="NestedNodeConfigC1"&gt;&lt;/a&gt;The `NodeConfig` block supports:
-    /// 
-    /// * `Zone` -
-    /// (Optional, Cloud Composer 1 only)
-    /// The Compute Engine zone in which to deploy the VMs running the
-    /// Apache Airflow software, specified as the zone name or
-    /// relative resource name (e.g. "projects/{project}/zones/{zone}"). Must
-    /// belong to the enclosing environment's project and region.
-    /// 
-    /// * `MachineType` -
-    /// (Optional, Cloud Composer 1 only)
-    /// The Compute Engine machine type used for cluster instances,
-    /// specified as a name or relative resource name. For example:
-    /// "projects/{project}/zones/{zone}/machineTypes/{machineType}". Must belong
-    /// to the enclosing environment's project and region/zone.
-    /// 
-    /// * `Network` -
-    /// (Optional)
-    /// The Compute Engine network to be used for machine
-    /// communications, specified as a self-link, relative resource name
-    /// (for example "projects/{project}/global/networks/{network}"), by name.
-    ///   
-    ///   The network must belong to the environment's project. If unspecified, the "default" network ID in the environment's
-    /// project is used. If a Custom Subnet Network is provided, subnetwork must also be provided.
-    /// 
-    /// * `Subnetwork` -
-    /// (Optional)
-    /// The Compute Engine subnetwork to be used for machine
-    /// communications, specified as a self-link, relative resource name (for example,
-    /// "projects/{project}/regions/{region}/subnetworks/{subnetwork}"), or by name. If subnetwork is provided,
-    /// network must also be provided and the subnetwork must belong to the enclosing environment's project and region.
-    /// 
-    /// * `DiskSizeGb` -
-    /// (Optional, Cloud Composer 1 only)
-    /// The disk size in GB used for node VMs. Minimum size is 20GB.
-    /// If unspecified, defaults to 100GB. Cannot be updated.
-    /// 
-    /// * `OauthScopes` -
-    /// (Optional, Cloud Composer 1 only)
-    /// The set of Google API scopes to be made available on all node
-    /// VMs. Cannot be updated. If empty, defaults to
-    /// `["https://www.googleapis.com/auth/cloud-platform"]`.
-    /// 
-    /// * `ServiceAccount` -
-    /// (Optional)
-    /// The Google Cloud Platform Service Account to be used by the
-    /// node VMs. If a service account is not specified, the "default"
-    /// Compute Engine service account is used. Cannot be updated. If given,
-    /// note that the service account must have `roles/composer.worker`
-    /// for any GCP resources created under the Cloud Composer Environment.
-    /// 
-    /// * `Tags` -
-    /// (Optional)
-    /// The list of instance tags applied to all node VMs. Tags are
-    /// used to identify valid sources or targets for network
-    /// firewalls. Each tag within the list must comply with RFC1035.
-    /// Cannot be updated.
-    /// 
-    /// * `IpAllocationPolicy` -
-    /// (Optional)
-    /// Configuration for controlling how IPs are allocated in the GKE cluster.
-    /// Structure is documented below.
-    /// Cannot be updated.
-    /// 
-    /// * `MaxPodsPerNode` -
-    /// (Optional, Beta,
-    /// Cloud Composer 1 only)
-    /// The maximum pods per node in the GKE cluster allocated during environment
-    /// creation. Lowering this value reduces IP address consumption by the Cloud
-    /// Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
-    /// The range of possible values is 8-110, and the default is 32.
-    /// Cannot be updated.
-    /// 
-    /// * `EnableIpMasqAgent` -
-    /// (Optional)
-    /// Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines
-    /// nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for
-    /// all destination addresses, except between pods traffic.
-    /// See the [documentation](https://cloud.google.com/composer/docs/enable-ip-masquerade-agent).
-    /// 
-    /// &lt;a name="NestedSoftwareConfigC1"&gt;&lt;/a&gt;The `SoftwareConfig` block supports:
-    /// 
-    /// * `AirflowConfigOverrides` -
-    /// (Optional) Apache Airflow configuration properties to override. Property keys contain the section and property names,
-    /// separated by a hyphen, for example "core-dags_are_paused_at_creation".
-    ///   
-    ///   Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]").
-    /// The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain
-    /// characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can
-    /// contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration
-    /// property values are [blacklisted](https://cloud.google.com/composer/docs/concepts/airflow-configurations#airflow_configuration_blacklists),
-    /// and cannot be overridden.
-    /// 
-    /// * `PypiPackages` -
-    /// (Optional)
-    /// Custom Python Package Index (PyPI) packages to be installed
-    /// in the environment. Keys refer to the lowercase package name (e.g. "numpy"). Values are the lowercase extras and
-    /// version specifier (e.g. "==1.12.0", "[devel,gcp_api]", "[devel]&gt;=1.8.2, &lt;1.9.2"). To specify a package without
-    /// pinning it to a version specifier, use the empty string as the value.
-    /// 
-    /// * `EnvVariables` -
-    /// (Optional)
-    /// Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes.
-    /// Environment variable names must match the regular expression `[a-zA-Z_][a-zA-Z0-9_]*`.
-    /// They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression
-    /// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
-    ///   AIRFLOW_HOME
-    ///   C_FORCE_ROOT
-    ///   CONTAINER_NAME
-    ///   DAGS_FOLDER
-    ///   GCP_PROJECT
-    ///   GCS_BUCKET
-    ///   GKE_CLUSTER_NAME
-    ///   SQL_DATABASE
-    ///   SQL_INSTANCE
-    ///   SQL_PASSWORD
-    ///   SQL_PROJECT
-    ///   SQL_REGION
-    ///   SQL_USER
-    /// 
-    ///   AIRFLOW_HOME
-    ///   C_FORCE_ROOT
-    ///   CONTAINER_NAME
-    ///   DAGS_FOLDER
-    ///   GCP_PROJECT
-    ///   GCS_BUCKET
-    ///   GKE_CLUSTER_NAME
-    ///   SQL_DATABASE
-    ///   SQL_INSTANCE
-    ///   SQL_PASSWORD
-    ///   SQL_PROJECT
-    ///   SQL_REGION
-    ///   SQL_USER
+    /// ```sh
+    /// $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+    /// $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+    /// $ pulumi import gcp:composer/environment:Environment default {{name}}
+    /// ```
     /// </summary>
     [GcpResourceType("gcp:composer/environment:Environment")]
     public partial class Environment : global::Pulumi.CustomResource
@@ -723,6 +528,17 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         [Output("config")]
         public Output<Outputs.EnvironmentConfig> Config { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -826,6 +642,17 @@ namespace Pulumi.Gcp.Composer
         [Input("config")]
         public Input<Inputs.EnvironmentConfigArgs>? Config { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -878,6 +705,17 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         [Input("config")]
         public Input<Inputs.EnvironmentConfigGetArgs>? Config { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("effectiveLabels")]
         private InputMap<string>? _effectiveLabels;

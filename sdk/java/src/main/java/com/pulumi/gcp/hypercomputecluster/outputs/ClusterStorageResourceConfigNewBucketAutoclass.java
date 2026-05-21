@@ -6,7 +6,10 @@ package com.pulumi.gcp.hypercomputecluster.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterStorageResourceConfigNewBucketAutoclass {
@@ -15,6 +18,14 @@ public final class ClusterStorageResourceConfigNewBucketAutoclass {
      * 
      */
     private Boolean enabled;
+    /**
+     * @return Terminal storage class of the autoclass bucket
+     * Possible values:
+     * NEARLINE
+     * ARCHIVE
+     * 
+     */
+    private @Nullable String terminalStorageClass;
 
     private ClusterStorageResourceConfigNewBucketAutoclass() {}
     /**
@@ -23,6 +34,16 @@ public final class ClusterStorageResourceConfigNewBucketAutoclass {
      */
     public Boolean enabled() {
         return this.enabled;
+    }
+    /**
+     * @return Terminal storage class of the autoclass bucket
+     * Possible values:
+     * NEARLINE
+     * ARCHIVE
+     * 
+     */
+    public Optional<String> terminalStorageClass() {
+        return Optional.ofNullable(this.terminalStorageClass);
     }
 
     public static Builder builder() {
@@ -35,10 +56,12 @@ public final class ClusterStorageResourceConfigNewBucketAutoclass {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
+        private @Nullable String terminalStorageClass;
         public Builder() {}
         public Builder(ClusterStorageResourceConfigNewBucketAutoclass defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
+    	      this.terminalStorageClass = defaults.terminalStorageClass;
         }
 
         @CustomType.Setter
@@ -49,9 +72,16 @@ public final class ClusterStorageResourceConfigNewBucketAutoclass {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder terminalStorageClass(@Nullable String terminalStorageClass) {
+
+            this.terminalStorageClass = terminalStorageClass;
+            return this;
+        }
         public ClusterStorageResourceConfigNewBucketAutoclass build() {
             final var _resultValue = new ClusterStorageResourceConfigNewBucketAutoclass();
             _resultValue.enabled = enabled;
+            _resultValue.terminalStorageClass = terminalStorageClass;
             return _resultValue;
         }
     }

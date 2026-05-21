@@ -25,6 +25,7 @@ class SecurityMonitoringConditionArgs:
                  org_id: pulumi.Input[_builtins.str],
                  profile: pulumi.Input[_builtins.str],
                  scope: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  include_all_resources: pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']] = None):
         """
         The set of arguments for constructing a SecurityMonitoringCondition resource.
@@ -34,12 +35,20 @@ class SecurityMonitoringConditionArgs:
                in the format `organizations/{{org_name}}`.
         :param pulumi.Input[_builtins.str] profile: ID of security profile of the security monitoring condition.
         :param pulumi.Input[_builtins.str] scope: ID of security profile of the security monitoring condition.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs'] include_all_resources: A nested object resource.
         """
         pulumi.set(__self__, "condition_id", condition_id)
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "profile", profile)
         pulumi.set(__self__, "scope", scope)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if include_all_resources is not None:
             pulumi.set(__self__, "include_all_resources", include_all_resources)
 
@@ -93,6 +102,23 @@ class SecurityMonitoringConditionArgs:
         pulumi.set(self, "scope", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="includeAllResources")
     def include_all_resources(self) -> pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']]:
         """
@@ -110,6 +136,7 @@ class _SecurityMonitoringConditionState:
     def __init__(__self__, *,
                  condition_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  include_all_resources: pulumi.Input[Optional['SecurityMonitoringConditionIncludeAllResourcesArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -123,6 +150,12 @@ class _SecurityMonitoringConditionState:
 
         :param pulumi.Input[_builtins.str] condition_id: Resource ID of the security monitoring condition.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this profile was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['SecurityMonitoringConditionIncludeAllResourcesArgs'] include_all_resources: A nested object resource.
         :param pulumi.Input[_builtins.str] name: Name of the security monitoring condition resource,
                in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
@@ -138,6 +171,8 @@ class _SecurityMonitoringConditionState:
             pulumi.set(__self__, "condition_id", condition_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if include_all_resources is not None:
             pulumi.set(__self__, "include_all_resources", include_all_resources)
         if name is not None:
@@ -178,6 +213,23 @@ class _SecurityMonitoringConditionState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="includeAllResources")
@@ -285,6 +337,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
@@ -363,6 +416,12 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] condition_id: Resource ID of the security monitoring condition.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']] include_all_resources: A nested object resource.
         :param pulumi.Input[_builtins.str] org_id: The Apigee Organization associated with the Apigee Security Monitoring Condition,
                in the format `organizations/{{org_name}}`.
@@ -461,6 +520,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  condition_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  profile: pulumi.Input[Optional[_builtins.str]] = None,
@@ -477,6 +537,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
             if condition_id is None and not opts.urn:
                 raise TypeError("Missing required property 'condition_id'")
             __props__.__dict__["condition_id"] = condition_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["include_all_resources"] = include_all_resources
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -504,6 +565,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             condition_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             include_all_resources: pulumi.Input[Optional[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -521,6 +583,12 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] condition_id: Resource ID of the security monitoring condition.
         :param pulumi.Input[_builtins.str] create_time: The timestamp at which this profile was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['SecurityMonitoringConditionIncludeAllResourcesArgs', 'SecurityMonitoringConditionIncludeAllResourcesArgsDict']] include_all_resources: A nested object resource.
         :param pulumi.Input[_builtins.str] name: Name of the security monitoring condition resource,
                in the format `organizations/{{org_name}}/securityMonitoringConditions/{{condition_id}}`.
@@ -538,6 +606,7 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
 
         __props__.__dict__["condition_id"] = condition_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["include_all_resources"] = include_all_resources
         __props__.__dict__["name"] = name
         __props__.__dict__["org_id"] = org_id
@@ -563,6 +632,19 @@ class SecurityMonitoringCondition(pulumi.CustomResource):
         The timestamp at which this profile was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="includeAllResources")

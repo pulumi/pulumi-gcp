@@ -26,6 +26,7 @@ class AssetArgs:
                  lake: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  resource_spec: pulumi.Input['AssetResourceSpecArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -39,6 +40,12 @@ class AssetArgs:
         :param pulumi.Input[_builtins.str] lake: The lake for the resource
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input['AssetResourceSpecArgs'] resource_spec: Required. Immutable. Specification of the resource that is referenced by this asset.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the asset.
@@ -53,6 +60,8 @@ class AssetArgs:
         pulumi.set(__self__, "lake", lake)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "resource_spec", resource_spec)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -125,6 +134,23 @@ class AssetArgs:
         pulumi.set(self, "resource_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -193,6 +219,7 @@ class _AssetState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_spec: pulumi.Input[Optional['AssetDiscoverySpecArgs']] = None,
                  discovery_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]]] = None,
@@ -215,6 +242,12 @@ class _AssetState:
 
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the asset was created.
         :param pulumi.Input[_builtins.str] dataplex_zone: The zone for the resource
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
         :param pulumi.Input['AssetDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[Sequence[pulumi.Input['AssetDiscoveryStatusArgs']]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
@@ -240,6 +273,8 @@ class _AssetState:
             pulumi.set(__self__, "create_time", create_time)
         if dataplex_zone is not None:
             pulumi.set(__self__, "dataplex_zone", dataplex_zone)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if discovery_spec is not None:
@@ -298,6 +333,23 @@ class _AssetState:
     @dataplex_zone.setter
     def dataplex_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataplex_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -514,6 +566,7 @@ class Asset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -594,6 +647,12 @@ class Asset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataplex_zone: The zone for the resource
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
         :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
@@ -696,6 +755,7 @@ class Asset(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -717,6 +777,7 @@ class Asset(pulumi.CustomResource):
             if dataplex_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'dataplex_zone'")
             __props__.__dict__["dataplex_zone"] = dataplex_zone
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if discovery_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'discovery_spec'")
@@ -757,6 +818,7 @@ class Asset(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             dataplex_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             discovery_spec: pulumi.Input[Optional[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']]] = None,
             discovery_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]]] = None,
@@ -783,6 +845,12 @@ class Asset(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the asset was created.
         :param pulumi.Input[_builtins.str] dataplex_zone: The zone for the resource
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the asset.
         :param pulumi.Input[Union['AssetDiscoverySpecArgs', 'AssetDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data referenced by this asset. When this spec is left unset, the asset will use the spec set on the parent zone.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AssetDiscoveryStatusArgs', 'AssetDiscoveryStatusArgsDict']]]] discovery_statuses: Output only. Status of the discovery feature applied to data referenced by this asset.
@@ -810,6 +878,7 @@ class Asset(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dataplex_zone"] = dataplex_zone
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["discovery_spec"] = discovery_spec
         __props__.__dict__["discovery_statuses"] = discovery_statuses
@@ -844,6 +913,19 @@ class Asset(pulumi.CustomResource):
         The zone for the resource
         """
         return pulumi.get(self, "dataplex_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

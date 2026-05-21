@@ -68,6 +68,7 @@ type LookupSSLPolicyResult struct {
 	// ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
 	// attribute will be empty.
 	CustomFeatures []string `pulumi:"customFeatures"`
+	DeletionPolicy string   `pulumi:"deletionPolicy"`
 	// Description of this SSL Policy.
 	Description string `pulumi:"description"`
 	// The set of enabled encryption ciphers as a result of the policy config
@@ -134,6 +135,10 @@ func (o LookupSSLPolicyResultOutput) CreationTimestamp() pulumi.StringOutput {
 // attribute will be empty.
 func (o LookupSSLPolicyResultOutput) CustomFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSSLPolicyResult) []string { return v.CustomFeatures }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupSSLPolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSSLPolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of this SSL Policy.

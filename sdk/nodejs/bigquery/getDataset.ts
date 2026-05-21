@@ -58,6 +58,7 @@ export interface GetDatasetResult {
     readonly defaultPartitionExpirationMs: number;
     readonly defaultTableExpirationMs: number;
     readonly deleteContentsOnDestroy: boolean;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly etag: string;

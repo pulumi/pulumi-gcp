@@ -104,6 +104,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.SecretArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationUserManagedReplicaArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamMember;
@@ -114,22 +115,36 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionConfigVariableEncryptionKeyValueArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionConfigVariableSecretValueArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigAdditionalVariableArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigAdditionalVariableSecretValueArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigUserPasswordArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigUserPasswordPasswordArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionDestinationConfigArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionDestinationConfigDestinationArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionLockConfigArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionLogConfigArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionNodeConfigArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableSecretValueArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigClientCertificateArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigClientPrivateKeyArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigClientPrivateKeyPassArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigPrivateServerCertificateArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableSecretValueArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigRegistrationDestinationConfigArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordArgs;
  * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs;
+ * import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -502,6 +517,30 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * An arbitrary description for the Connection.

@@ -22,6 +22,7 @@ __all__ = ['CryptoKeyVersionArgs', 'CryptoKeyVersion']
 class CryptoKeyVersionArgs:
     def __init__(__self__, *,
                  crypto_key: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  external_protection_level_options: pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -29,6 +30,12 @@ class CryptoKeyVersionArgs:
 
         :param pulumi.Input[_builtins.str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
@@ -36,6 +43,8 @@ class CryptoKeyVersionArgs:
                Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if external_protection_level_options is not None:
             pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
         if state is not None:
@@ -53,6 +62,23 @@ class CryptoKeyVersionArgs:
     @crypto_key.setter
     def crypto_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "crypto_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="externalProtectionLevelOptions")
@@ -88,6 +114,7 @@ class _CryptoKeyVersionState:
                  algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  attestations: pulumi.Input[Optional[Sequence[pulumi.Input['CryptoKeyVersionAttestationArgs']]]] = None,
                  crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  external_protection_level_options: pulumi.Input[Optional['CryptoKeyVersionExternalProtectionLevelOptionsArgs']] = None,
                  generate_time: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -102,6 +129,12 @@ class _CryptoKeyVersionState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['CryptoKeyVersionExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] generate_time: The time this CryptoKeyVersion key material was generated
@@ -117,6 +150,8 @@ class _CryptoKeyVersionState:
             pulumi.set(__self__, "attestations", attestations)
         if crypto_key is not None:
             pulumi.set(__self__, "crypto_key", crypto_key)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if external_protection_level_options is not None:
             pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
         if generate_time is not None:
@@ -166,6 +201,23 @@ class _CryptoKeyVersionState:
     @crypto_key.setter
     def crypto_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="externalProtectionLevelOptions")
@@ -238,6 +290,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -287,6 +340,12 @@ class CryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] state: The current state of the CryptoKeyVersion. Note: you can only specify this field to manually `ENABLE` or `DISABLE` the CryptoKeyVersion,
@@ -357,6 +416,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -371,6 +431,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
             if crypto_key is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key'")
             __props__.__dict__["crypto_key"] = crypto_key
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["external_protection_level_options"] = external_protection_level_options
             __props__.__dict__["state"] = state
             __props__.__dict__["algorithm"] = None
@@ -391,6 +452,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
             algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CryptoKeyVersionAttestationArgs', 'CryptoKeyVersionAttestationArgsDict']]]]] = None,
             crypto_key: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             external_protection_level_options: pulumi.Input[Optional[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']]] = None,
             generate_time: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -409,6 +471,12 @@ class CryptoKeyVersion(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] crypto_key: The name of the cryptoKey associated with the CryptoKeyVersions.
                Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['CryptoKeyVersionExternalProtectionLevelOptionsArgs', 'CryptoKeyVersionExternalProtectionLevelOptionsArgsDict']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] generate_time: The time this CryptoKeyVersion key material was generated
@@ -425,6 +493,7 @@ class CryptoKeyVersion(pulumi.CustomResource):
         __props__.__dict__["algorithm"] = algorithm
         __props__.__dict__["attestations"] = attestations
         __props__.__dict__["crypto_key"] = crypto_key
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["external_protection_level_options"] = external_protection_level_options
         __props__.__dict__["generate_time"] = generate_time
         __props__.__dict__["name"] = name
@@ -458,6 +527,19 @@ class CryptoKeyVersion(pulumi.CustomResource):
         Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
         """
         return pulumi.get(self, "crypto_key")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="externalProtectionLevelOptions")

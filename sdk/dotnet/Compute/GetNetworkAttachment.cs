@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetNetworkAttachmentConnectionEndpointResult> ConnectionEndpoints;
         public readonly string ConnectionPreference;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string Fingerprint;
         public readonly string Id;
@@ -183,6 +184,8 @@ namespace Pulumi.Gcp.Compute
             string connectionPreference,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             string description,
 
@@ -213,6 +216,7 @@ namespace Pulumi.Gcp.Compute
             ConnectionEndpoints = connectionEndpoints;
             ConnectionPreference = connectionPreference;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Fingerprint = fingerprint;
             Id = id;

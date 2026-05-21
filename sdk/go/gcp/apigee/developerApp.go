@@ -259,6 +259,13 @@ type DeveloperApp struct {
 	// the consumer key/secret pairs associated with the API products.
 	// Structure is documented below.
 	Credentials DeveloperAppCredentialArrayOutput `pulumi:"credentials"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Email address of the developer.
 	// This value is used to uniquely identify the developer in Apigee hybrid.
 	// Note that the email address has to be in lowercase only.
@@ -342,6 +349,13 @@ type developerAppState struct {
 	// the consumer key/secret pairs associated with the API products.
 	// Structure is documented below.
 	Credentials []DeveloperAppCredential `pulumi:"credentials"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Email address of the developer.
 	// This value is used to uniquely identify the developer in Apigee hybrid.
 	// Note that the email address has to be in lowercase only.
@@ -387,6 +401,13 @@ type DeveloperAppState struct {
 	// the consumer key/secret pairs associated with the API products.
 	// Structure is documented below.
 	Credentials DeveloperAppCredentialArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Email address of the developer.
 	// This value is used to uniquely identify the developer in Apigee hybrid.
 	// Note that the email address has to be in lowercase only.
@@ -427,6 +448,13 @@ type developerAppArgs struct {
 	// Callback URL used by OAuth 2.0 authorization servers to communicate
 	// authorization codes back to developer apps.
 	CallbackUrl string `pulumi:"callbackUrl"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Email address of the developer.
 	// This value is used to uniquely identify the developer in Apigee hybrid.
 	// Note that the email address has to be in lowercase only.
@@ -460,6 +488,13 @@ type DeveloperAppArgs struct {
 	// Callback URL used by OAuth 2.0 authorization servers to communicate
 	// authorization codes back to developer apps.
 	CallbackUrl pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Email address of the developer.
 	// This value is used to uniquely identify the developer in Apigee hybrid.
 	// Note that the email address has to be in lowercase only.
@@ -606,6 +641,16 @@ func (o DeveloperAppOutput) CreatedAt() pulumi.StringOutput {
 // Structure is documented below.
 func (o DeveloperAppOutput) Credentials() DeveloperAppCredentialArrayOutput {
 	return o.ApplyT(func(v *DeveloperApp) DeveloperAppCredentialArrayOutput { return v.Credentials }).(DeveloperAppCredentialArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DeveloperAppOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeveloperApp) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Email address of the developer.

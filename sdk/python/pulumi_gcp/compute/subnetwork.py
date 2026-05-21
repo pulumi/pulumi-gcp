@@ -23,6 +23,7 @@ class SubnetworkArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
                  allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,6 +53,12 @@ class SubnetworkArgs:
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -106,7 +113,7 @@ class SubnetworkArgs:
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
-               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -131,6 +138,8 @@ class SubnetworkArgs:
         pulumi.set(__self__, "network", network)
         if allow_subnet_cidr_routes_overlap is not None:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if external_ipv6_prefix is not None:
@@ -199,6 +208,23 @@ class SubnetworkArgs:
     @allow_subnet_cidr_routes_overlap.setter
     def allow_subnet_cidr_routes_overlap(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_subnet_cidr_routes_overlap", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -423,7 +449,7 @@ class SubnetworkArgs:
     def resolve_subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         'Configures subnet mask resolution for this subnetwork.'
-        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
         """
         return pulumi.get(self, "resolve_subnet_mask")
 
@@ -501,6 +527,7 @@ class _SubnetworkState:
     def __init__(__self__, *,
                  allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -537,6 +564,12 @@ class _SubnetworkState:
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -602,7 +635,7 @@ class _SubnetworkState:
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
-               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -634,6 +667,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if external_ipv6_prefix is not None:
@@ -720,6 +755,23 @@ class _SubnetworkState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1011,7 +1063,7 @@ class _SubnetworkState:
     def resolve_subnet_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         'Configures subnet mask resolution for this subnetwork.'
-        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
         """
         return pulumi.get(self, "resolve_subnet_mask")
 
@@ -1130,6 +1182,7 @@ class Subnetwork(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1406,6 +1459,12 @@ class Subnetwork(pulumi.CustomResource):
                existing resources are dropped and prevented from leaving the VPC.
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -1462,7 +1521,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
-               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1754,6 +1813,7 @@ class Subnetwork(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  internal_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1785,6 +1845,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__ = SubnetworkArgs.__new__(SubnetworkArgs)
 
             __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
             __props__.__dict__["internal_ipv6_prefix"] = internal_ipv6_prefix
@@ -1828,6 +1889,7 @@ class Subnetwork(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allow_subnet_cidr_routes_overlap: pulumi.Input[Optional[_builtins.bool]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             external_ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1868,6 +1930,12 @@ class Subnetwork(pulumi.CustomResource):
                Setting this field to true will allow these packets to match dynamic routes injected
                via BGP even if their destinations match existing subnet ranges.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource. This field can be set only at resource
                creation time.
@@ -1933,7 +2001,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] reserved_internal_range: The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
                E.g. `networkconnectivity.googleapis.com/projects/{project}/locations/global/internalRanges/{rangeId}`
         :param pulumi.Input[_builtins.str] resolve_subnet_mask: 'Configures subnet mask resolution for this subnetwork.'
-               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+               Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
         :param pulumi.Input[_builtins.str] role: The role of subnetwork.
                Currently, this field is only used when `purpose` is `REGIONAL_MANAGED_PROXY`.
                The value can be set to `ACTIVE` or `BACKUP`.
@@ -1967,6 +2035,7 @@ class Subnetwork(pulumi.CustomResource):
 
         __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
         __props__.__dict__["fingerprint"] = fingerprint
@@ -2015,6 +2084,19 @@ class Subnetwork(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -2226,7 +2308,7 @@ class Subnetwork(pulumi.CustomResource):
     def resolve_subnet_mask(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         'Configures subnet mask resolution for this subnetwork.'
-        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`.
+        Possible values are: `ARP_ALL_RANGES`, `ARP_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE`, `ARP_BROADCAST_PRIMARY_RANGE_WITH_LEARNING`.
         """
         return pulumi.get(self, "resolve_subnet_mask")
 

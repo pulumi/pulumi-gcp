@@ -360,6 +360,13 @@ type InternalRange struct {
 	// Options for automatically allocating a free range with a size given by prefixLength.
 	// Structure is documented below.
 	AllocationOptions InternalRangeAllocationOptionsPtrOutput `pulumi:"allocationOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -461,6 +468,13 @@ type internalRangeState struct {
 	// Options for automatically allocating a free range with a size given by prefixLength.
 	// Structure is documented below.
 	AllocationOptions *InternalRangeAllocationOptions `pulumi:"allocationOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -519,6 +533,13 @@ type InternalRangeState struct {
 	// Options for automatically allocating a free range with a size given by prefixLength.
 	// Structure is documented below.
 	AllocationOptions InternalRangeAllocationOptionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -581,6 +602,13 @@ type internalRangeArgs struct {
 	// Options for automatically allocating a free range with a size given by prefixLength.
 	// Structure is documented below.
 	AllocationOptions *InternalRangeAllocationOptions `pulumi:"allocationOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -631,6 +659,13 @@ type InternalRangeArgs struct {
 	// Options for automatically allocating a free range with a size given by prefixLength.
 	// Structure is documented below.
 	AllocationOptions InternalRangeAllocationOptionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Optional. List of IP CIDR ranges to be excluded. Resulting reserved Internal Range will not overlap with any CIDR blocks mentioned in this list.
@@ -767,6 +802,16 @@ func (o InternalRangeOutput) ToInternalRangeOutputWithContext(ctx context.Contex
 // Structure is documented below.
 func (o InternalRangeOutput) AllocationOptions() InternalRangeAllocationOptionsPtrOutput {
 	return o.ApplyT(func(v *InternalRange) InternalRangeAllocationOptionsPtrOutput { return v.AllocationOptions }).(InternalRangeAllocationOptionsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InternalRangeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InternalRange) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

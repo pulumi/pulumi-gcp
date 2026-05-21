@@ -154,6 +154,13 @@ import (
 type RegionPerInstanceConfig struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
 	// * REPLACE
@@ -222,6 +229,13 @@ func GetRegionPerInstanceConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionPerInstanceConfig resources.
 type regionPerInstanceConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
 	// * REPLACE
@@ -258,6 +272,13 @@ type regionPerInstanceConfigState struct {
 }
 
 type RegionPerInstanceConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
 	// * REPLACE
@@ -298,6 +319,13 @@ func (RegionPerInstanceConfigState) ElementType() reflect.Type {
 }
 
 type regionPerInstanceConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
 	// * REPLACE
@@ -335,6 +363,13 @@ type regionPerInstanceConfigArgs struct {
 
 // The set of arguments for constructing a RegionPerInstanceConfig resource.
 type RegionPerInstanceConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
 	// * REPLACE
@@ -455,6 +490,16 @@ func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigOutput() RegionP
 
 func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigOutputWithContext(ctx context.Context) RegionPerInstanceConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionPerInstanceConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionPerInstanceConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The minimal action to perform on the instance during an update.

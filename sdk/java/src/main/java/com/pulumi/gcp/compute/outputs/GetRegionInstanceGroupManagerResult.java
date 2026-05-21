@@ -34,6 +34,7 @@ public final class GetRegionInstanceGroupManagerResult {
     private List<GetRegionInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
     private String baseInstanceName;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private String distributionPolicyTargetShape;
     private List<String> distributionPolicyZones;
@@ -82,6 +83,9 @@ public final class GetRegionInstanceGroupManagerResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -194,6 +198,7 @@ public final class GetRegionInstanceGroupManagerResult {
         private List<GetRegionInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
         private String baseInstanceName;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private String distributionPolicyTargetShape;
         private List<String> distributionPolicyZones;
@@ -232,6 +237,7 @@ public final class GetRegionInstanceGroupManagerResult {
     	      this.autoHealingPolicies = defaults.autoHealingPolicies;
     	      this.baseInstanceName = defaults.baseInstanceName;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.distributionPolicyTargetShape = defaults.distributionPolicyTargetShape;
     	      this.distributionPolicyZones = defaults.distributionPolicyZones;
@@ -301,6 +307,14 @@ public final class GetRegionInstanceGroupManagerResult {
               throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -594,6 +608,7 @@ public final class GetRegionInstanceGroupManagerResult {
             _resultValue.autoHealingPolicies = autoHealingPolicies;
             _resultValue.baseInstanceName = baseInstanceName;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.distributionPolicyTargetShape = distributionPolicyTargetShape;
             _resultValue.distributionPolicyZones = distributionPolicyZones;

@@ -82,6 +82,15 @@ export class ProjectInfo extends pulumi.CustomResource {
      */
     declare public readonly billingAccount: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -101,6 +110,7 @@ export class ProjectInfo extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ProjectInfoState | undefined;
             resourceInputs["billingAccount"] = state?.billingAccount;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["project"] = state?.project;
         } else {
             const args = argsOrState as ProjectInfoArgs | undefined;
@@ -108,6 +118,7 @@ export class ProjectInfo extends pulumi.CustomResource {
                 throw new Error("Missing required property 'billingAccount'");
             }
             resourceInputs["billingAccount"] = args?.billingAccount;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["project"] = args?.project;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -126,6 +137,15 @@ export interface ProjectInfoState {
      */
     billingAccount?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -142,6 +162,15 @@ export interface ProjectInfoArgs {
      * For example, `"012345-567890-ABCDEF"` or `""`.
      */
     billingAccount: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

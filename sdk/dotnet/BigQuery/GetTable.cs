@@ -159,6 +159,7 @@ namespace Pulumi.Gcp.BigQuery
         public readonly ImmutableArray<string> Clusterings;
         public readonly int CreationTime;
         public readonly string DatasetId;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -208,6 +209,8 @@ namespace Pulumi.Gcp.BigQuery
             int creationTime,
 
             string datasetId,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -285,6 +288,7 @@ namespace Pulumi.Gcp.BigQuery
             Clusterings = clusterings;
             CreationTime = creationTime;
             DatasetId = datasetId;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             Description = description;
             EffectiveLabels = effectiveLabels;

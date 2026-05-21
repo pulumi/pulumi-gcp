@@ -52,6 +52,7 @@ export interface GetOrganizationPolicyArgs {
 export interface GetOrganizationPolicyResult {
     readonly booleanPolicies: outputs.folder.GetOrganizationPolicyBooleanPolicy[];
     readonly constraint: string;
+    readonly deletionPolicy: string;
     readonly etag: string;
     readonly folder: string;
     /**

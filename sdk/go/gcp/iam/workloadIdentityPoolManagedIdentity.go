@@ -139,6 +139,13 @@ type WorkloadIdentityPoolManagedIdentity struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules WorkloadIdentityPoolManagedIdentityAttestationRuleArrayOutput `pulumi:"attestationRules"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -223,6 +230,13 @@ type workloadIdentityPoolManagedIdentityState struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules []WorkloadIdentityPoolManagedIdentityAttestationRule `pulumi:"attestationRules"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -269,6 +283,13 @@ type WorkloadIdentityPoolManagedIdentityState struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules WorkloadIdentityPoolManagedIdentityAttestationRuleArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -319,6 +340,13 @@ type workloadIdentityPoolManagedIdentityArgs struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules []WorkloadIdentityPoolManagedIdentityAttestationRule `pulumi:"attestationRules"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -356,6 +384,13 @@ type WorkloadIdentityPoolManagedIdentityArgs struct {
 	// 50 AttestationRules can be set.
 	// Structure is documented below.
 	AttestationRules WorkloadIdentityPoolManagedIdentityAttestationRuleArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the managed identity. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
@@ -481,6 +516,16 @@ func (o WorkloadIdentityPoolManagedIdentityOutput) AttestationRules() WorkloadId
 	return o.ApplyT(func(v *WorkloadIdentityPoolManagedIdentity) WorkloadIdentityPoolManagedIdentityAttestationRuleArrayOutput {
 		return v.AttestationRules
 	}).(WorkloadIdentityPoolManagedIdentityAttestationRuleArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkloadIdentityPoolManagedIdentityOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolManagedIdentity) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the managed identity. Cannot exceed 256 characters.

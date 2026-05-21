@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.Logging
         /// Options that affect sinks exporting data to BigQuery. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSinkBigqueryOptionResult> BigqueryOptions;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// A description of this exclusion.
         /// </summary>
@@ -185,6 +186,8 @@ namespace Pulumi.Gcp.Logging
         private GetSinkResult(
             ImmutableArray<Outputs.GetSinkBigqueryOptionResult> bigqueryOptions,
 
+            string deletionPolicy,
+
             string description,
 
             string destination,
@@ -202,6 +205,7 @@ namespace Pulumi.Gcp.Logging
             string writerIdentity)
         {
             BigqueryOptions = bigqueryOptions;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Destination = destination;
             Disabled = disabled;

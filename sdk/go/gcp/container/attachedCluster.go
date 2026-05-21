@@ -252,8 +252,15 @@ type AttachedCluster struct {
 	ClusterRegion pulumi.StringOutput `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// Policy to determine what flags to send on delete.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -390,7 +397,14 @@ type attachedClusterState struct {
 	ClusterRegion *string `pulumi:"clusterRegion"`
 	// Output only. The time at which this cluster was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+	// Policy to determine what flags to send on delete.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
@@ -484,7 +498,14 @@ type AttachedClusterState struct {
 	ClusterRegion pulumi.StringPtrInput
 	// Output only. The time at which this cluster was created.
 	CreateTime pulumi.StringPtrInput
-	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+	// Policy to determine what flags to send on delete.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
@@ -576,7 +597,14 @@ type attachedClusterArgs struct {
 	// Binary Authorization configuration.
 	// Structure is documented below.
 	BinaryAuthorization *AttachedClusterBinaryAuthorization `pulumi:"binaryAuthorization"`
-	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+	// Policy to determine what flags to send on delete.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
@@ -645,7 +673,14 @@ type AttachedClusterArgs struct {
 	// Binary Authorization configuration.
 	// Structure is documented below.
 	BinaryAuthorization AttachedClusterBinaryAuthorizationPtrInput
-	// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+	// Policy to determine what flags to send on delete.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	//
+	// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this attached cluster. Cannot be longer
 	// than 255 UTF-8 encoded bytes.
@@ -820,9 +855,16 @@ func (o AttachedClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
-func (o AttachedClusterOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AttachedCluster) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// Policy to determine what flags to send on delete.
+//
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+//
+// Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON'. Defaults to 'DELETE'.
+func (o AttachedClusterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human readable description of this attached cluster. Cannot be longer

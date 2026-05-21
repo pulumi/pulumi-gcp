@@ -193,6 +193,13 @@ type Target struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Information specifying a Custom Target.
 	CustomTarget TargetCustomTargetPtrOutput `pulumi:"customTarget"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -287,6 +294,13 @@ type targetState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Information specifying a Custom Target.
 	CustomTarget *TargetCustomTarget `pulumi:"customTarget"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -344,6 +358,13 @@ type TargetState struct {
 	CreateTime pulumi.StringPtrInput
 	// Optional. Information specifying a Custom Target.
 	CustomTarget TargetCustomTargetPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -403,6 +424,13 @@ type targetArgs struct {
 	AssociatedEntities []TargetAssociatedEntity `pulumi:"associatedEntities"`
 	// Optional. Information specifying a Custom Target.
 	CustomTarget *TargetCustomTarget `pulumi:"customTarget"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -445,6 +473,13 @@ type TargetArgs struct {
 	AssociatedEntities TargetAssociatedEntityArrayInput
 	// Optional. Information specifying a Custom Target.
 	CustomTarget TargetCustomTargetPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The deploy parameters to use for this target.
 	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
@@ -587,6 +622,16 @@ func (o TargetOutput) CreateTime() pulumi.StringOutput {
 // Optional. Information specifying a Custom Target.
 func (o TargetOutput) CustomTarget() TargetCustomTargetPtrOutput {
 	return o.ApplyT(func(v *Target) TargetCustomTargetPtrOutput { return v.CustomTarget }).(TargetCustomTargetPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TargetOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The deploy parameters to use for this target.

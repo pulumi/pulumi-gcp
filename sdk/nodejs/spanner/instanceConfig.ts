@@ -73,6 +73,15 @@ export class InstanceConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly configType: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of this instance configuration as it appears in UIs.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -124,6 +133,7 @@ export class InstanceConfig extends pulumi.CustomResource {
             const state = argsOrState as InstanceConfigState | undefined;
             resourceInputs["baseConfig"] = state?.baseConfig;
             resourceInputs["configType"] = state?.configType;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
@@ -140,6 +150,7 @@ export class InstanceConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'replicas'");
             }
             resourceInputs["baseConfig"] = args?.baseConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
@@ -170,6 +181,15 @@ export interface InstanceConfigState {
      * Output only. Whether this instance config is a Google or User Managed Configuration.
      */
     configType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of this instance configuration as it appears in UIs.
      */
@@ -218,6 +238,15 @@ export interface InstanceConfigArgs {
      * baseConfig must refer to a configuration of type GOOGLE_MANAGED in the same project as this configuration.
      */
     baseConfig?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of this instance configuration as it appears in UIs.
      */

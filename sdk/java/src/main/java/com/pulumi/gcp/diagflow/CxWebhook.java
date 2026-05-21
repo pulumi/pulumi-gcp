@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.CxWebhookArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceOauthConfigArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookGenericWebServiceSecretVersionsForRequestHeaderArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -194,6 +195,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
  * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceOauthConfigArgs;
+ * import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceSecretVersionsForRequestHeaderArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -482,6 +484,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:diagflow/cxWebhook:CxWebhook")
 public class CxWebhook extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * Indicates whether the webhook is disabled.
      * 

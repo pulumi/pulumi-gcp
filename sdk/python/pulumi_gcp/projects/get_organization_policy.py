@@ -27,13 +27,16 @@ class GetOrganizationPolicyResult:
     """
     A collection of values returned by getOrganizationPolicy.
     """
-    def __init__(__self__, boolean_policies=None, constraint=None, etag=None, id=None, list_policies=None, project=None, restore_policies=None, update_time=None, version=None):
+    def __init__(__self__, boolean_policies=None, constraint=None, deletion_policy=None, etag=None, id=None, list_policies=None, project=None, restore_policies=None, update_time=None, version=None):
         if boolean_policies and not isinstance(boolean_policies, list):
             raise TypeError("Expected argument 'boolean_policies' to be a list")
         pulumi.set(__self__, "boolean_policies", boolean_policies)
         if constraint and not isinstance(constraint, str):
             raise TypeError("Expected argument 'constraint' to be a str")
         pulumi.set(__self__, "constraint", constraint)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -65,6 +68,11 @@ class GetOrganizationPolicyResult:
     @pulumi.getter
     def constraint(self) -> _builtins.str:
         return pulumi.get(self, "constraint")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -113,6 +121,7 @@ class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
         return GetOrganizationPolicyResult(
             boolean_policies=self.boolean_policies,
             constraint=self.constraint,
+            deletion_policy=self.deletion_policy,
             etag=self.etag,
             id=self.id,
             list_policies=self.list_policies,
@@ -154,6 +163,7 @@ def get_organization_policy(constraint: Optional[_builtins.str] = None,
     return AwaitableGetOrganizationPolicyResult(
         boolean_policies=pulumi.get(__ret__, 'boolean_policies'),
         constraint=pulumi.get(__ret__, 'constraint'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         etag=pulumi.get(__ret__, 'etag'),
         id=pulumi.get(__ret__, 'id'),
         list_policies=pulumi.get(__ret__, 'list_policies'),
@@ -192,6 +202,7 @@ def get_organization_policy_output(constraint: pulumi.Input[Optional[_builtins.s
     return __ret__.apply(lambda __response__: GetOrganizationPolicyResult(
         boolean_policies=pulumi.get(__response__, 'boolean_policies'),
         constraint=pulumi.get(__response__, 'constraint'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         etag=pulumi.get(__response__, 'etag'),
         id=pulumi.get(__response__, 'id'),
         list_policies=pulumi.get(__response__, 'list_policies'),

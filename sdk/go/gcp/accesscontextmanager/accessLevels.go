@@ -138,6 +138,13 @@ type AccessLevels struct {
 	// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
 	// Structure is documented below.
 	AccessLevels AccessLevelsAccessLevelArrayOutput `pulumi:"accessLevels"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
@@ -179,6 +186,13 @@ type accessLevelsState struct {
 	// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
 	// Structure is documented below.
 	AccessLevels []AccessLevelsAccessLevel `pulumi:"accessLevels"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent *string `pulumi:"parent"`
@@ -188,6 +202,13 @@ type AccessLevelsState struct {
 	// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
 	// Structure is documented below.
 	AccessLevels AccessLevelsAccessLevelArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringPtrInput
@@ -201,6 +222,13 @@ type accessLevelsArgs struct {
 	// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
 	// Structure is documented below.
 	AccessLevels []AccessLevelsAccessLevel `pulumi:"accessLevels"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent string `pulumi:"parent"`
@@ -211,6 +239,13 @@ type AccessLevelsArgs struct {
 	// The desired Access Levels that should replace all existing Access Levels in the Access Policy.
 	// Structure is documented below.
 	AccessLevels AccessLevelsAccessLevelArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The AccessPolicy this AccessLevel lives in.
 	// Format: accessPolicies/{policy_id}
 	Parent pulumi.StringInput
@@ -307,6 +342,16 @@ func (o AccessLevelsOutput) ToAccessLevelsOutputWithContext(ctx context.Context)
 // Structure is documented below.
 func (o AccessLevelsOutput) AccessLevels() AccessLevelsAccessLevelArrayOutput {
 	return o.ApplyT(func(v *AccessLevels) AccessLevelsAccessLevelArrayOutput { return v.AccessLevels }).(AccessLevelsAccessLevelArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AccessLevelsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevels) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The AccessPolicy this AccessLevel lives in.

@@ -26,7 +26,8 @@ class DeveloperArgs:
                  last_name: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  user_name: pulumi.Input[_builtins.str],
-                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None):
+                 attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Developer resource.
 
@@ -38,6 +39,12 @@ class DeveloperArgs:
         :param pulumi.Input[_builtins.str] user_name: User name of the developer. Not used by Apigee hybrid.
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "first_name", first_name)
@@ -46,6 +53,8 @@ class DeveloperArgs:
         pulumi.set(__self__, "user_name", user_name)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter
@@ -121,12 +130,30 @@ class DeveloperArgs:
     def attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]]):
         pulumi.set(self, "attributes", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _DeveloperState:
     def __init__(__self__, *,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAttributeArgs']]]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -141,6 +168,12 @@ class _DeveloperState:
         :param pulumi.Input[Sequence[pulumi.Input['DeveloperAttributeArgs']]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] created_at: Time at which the developer was created in milliseconds since epoch.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] email: Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
         :param pulumi.Input[_builtins.str] first_name: First name of the developer.
         :param pulumi.Input[_builtins.str] last_modified_at: Time at which the developer was last modified in milliseconds since epoch.
@@ -155,6 +188,8 @@ class _DeveloperState:
             pulumi.set(__self__, "attributes", attributes)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if email is not None:
             pulumi.set(__self__, "email", email)
         if first_name is not None:
@@ -196,6 +231,23 @@ class _DeveloperState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -302,6 +354,7 @@ class Developer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  last_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -421,6 +474,12 @@ class Developer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] email: Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
         :param pulumi.Input[_builtins.str] first_name: First name of the developer.
         :param pulumi.Input[_builtins.str] last_name: Last name of the developer.
@@ -559,6 +618,7 @@ class Developer(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  email: pulumi.Input[Optional[_builtins.str]] = None,
                  first_name: pulumi.Input[Optional[_builtins.str]] = None,
                  last_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,6 +634,7 @@ class Developer(pulumi.CustomResource):
             __props__ = DeveloperArgs.__new__(DeveloperArgs)
 
             __props__.__dict__["attributes"] = attributes
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
@@ -605,6 +666,7 @@ class Developer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             email: pulumi.Input[Optional[_builtins.str]] = None,
             first_name: pulumi.Input[Optional[_builtins.str]] = None,
             last_modified_at: pulumi.Input[Optional[_builtins.str]] = None,
@@ -623,6 +685,12 @@ class Developer(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['DeveloperAttributeArgs', 'DeveloperAttributeArgsDict']]]] attributes: Developer attributes (name/value pairs). The custom attribute limit is 18.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] created_at: Time at which the developer was created in milliseconds since epoch.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] email: Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
         :param pulumi.Input[_builtins.str] first_name: First name of the developer.
         :param pulumi.Input[_builtins.str] last_modified_at: Time at which the developer was last modified in milliseconds since epoch.
@@ -639,6 +707,7 @@ class Developer(pulumi.CustomResource):
 
         __props__.__dict__["attributes"] = attributes
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["email"] = email
         __props__.__dict__["first_name"] = first_name
         __props__.__dict__["last_modified_at"] = last_modified_at
@@ -665,6 +734,19 @@ class Developer(pulumi.CustomResource):
         Time at which the developer was created in milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

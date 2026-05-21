@@ -25,13 +25,14 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ComposerFunctions {
     /**
-     * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * Provides access to Managed Airflow environment configuration in a region for a
+     * given project.
      * 
-     * To get more information about Composer Environment, see:
+     * To get more information about Managed Airflow Environment, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
      * 
      * ## Example Usage
      * 
@@ -78,13 +79,14 @@ public final class ComposerFunctions {
         return getEnvironment(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * Provides access to Managed Airflow environment configuration in a region for a
+     * given project.
      * 
-     * To get more information about Composer Environment, see:
+     * To get more information about Managed Airflow Environment, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
      * 
      * ## Example Usage
      * 
@@ -131,13 +133,14 @@ public final class ComposerFunctions {
         return getEnvironmentPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * Provides access to Managed Airflow environment configuration in a region for a
+     * given project.
      * 
-     * To get more information about Composer Environment, see:
+     * To get more information about Managed Airflow Environment, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
      * 
      * ## Example Usage
      * 
@@ -184,13 +187,14 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * Provides access to Managed Airflow environment configuration in a region for a
+     * given project.
      * 
-     * To get more information about Composer Environment, see:
+     * To get more information about Managed Airflow Environment, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
      * 
      * ## Example Usage
      * 
@@ -237,13 +241,14 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Cloud Composer environment configuration in a region for a given project.
+     * Provides access to Managed Airflow environment configuration in a region for a
+     * given project.
      * 
-     * To get more information about Composer Environment, see:
+     * To get more information about Managed Airflow Environment, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/latest/composer-overview)
      * 
      * ## Example Usage
      * 
@@ -290,13 +295,13 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:composer/getEnvironment:getEnvironment", TypeShape.of(GetEnvironmentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to available Cloud Composer versions in a region for a given project.
+     * Provides access to available Managed Airflow versions in a region for a given project.
      * 
-     * To get more information about Composer Image Versions, see:
+     * To get more information about Managed Airflow image versions, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
      * 
      * ## Example Usage
      * 
@@ -349,13 +354,13 @@ public final class ComposerFunctions {
         return getImageVersions(GetImageVersionsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides access to available Cloud Composer versions in a region for a given project.
+     * Provides access to available Managed Airflow versions in a region for a given project.
      * 
-     * To get more information about Composer Image Versions, see:
+     * To get more information about Managed Airflow image versions, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
      * 
      * ## Example Usage
      * 
@@ -408,13 +413,13 @@ public final class ComposerFunctions {
         return getImageVersionsPlain(GetImageVersionsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Provides access to available Cloud Composer versions in a region for a given project.
+     * Provides access to available Managed Airflow versions in a region for a given project.
      * 
-     * To get more information about Composer Image Versions, see:
+     * To get more information about Managed Airflow image versions, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
      * 
      * ## Example Usage
      * 
@@ -467,13 +472,13 @@ public final class ComposerFunctions {
         return getImageVersions(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to available Cloud Composer versions in a region for a given project.
+     * Provides access to available Managed Airflow versions in a region for a given project.
      * 
-     * To get more information about Composer Image Versions, see:
+     * To get more information about Managed Airflow image versions, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
      * 
      * ## Example Usage
      * 
@@ -526,13 +531,13 @@ public final class ComposerFunctions {
         return getImageVersionsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to available Cloud Composer versions in a region for a given project.
+     * Provides access to available Managed Airflow versions in a region for a given project.
      * 
-     * To get more information about Composer Image Versions, see:
+     * To get more information about Managed Airflow image versions, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
      * 
      * ## Example Usage
      * 
@@ -585,13 +590,13 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getImageVersions:getImageVersions", TypeShape.of(GetImageVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to available Cloud Composer versions in a region for a given project.
+     * Provides access to available Managed Airflow versions in a region for a given project.
      * 
-     * To get more information about Composer Image Versions, see:
+     * To get more information about Managed Airflow image versions, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
      * 
      * ## Example Usage
      * 
@@ -644,13 +649,13 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getImageVersions:getImageVersions", TypeShape.of(GetImageVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to available Cloud Composer versions in a region for a given project.
+     * Provides access to available Managed Airflow versions in a region for a given project.
      * 
-     * To get more information about Composer Image Versions, see:
+     * To get more information about Managed Airflow image versions, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.imageVersions)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://docs.cloud.google.com/composer/docs/composer-versions)
      * 
      * ## Example Usage
      * 
@@ -703,13 +708,13 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:composer/getImageVersions:getImageVersions", TypeShape.of(GetImageVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Config Map, see:
+     * To get more information about Managed Airflow User Workloads Config Map, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -759,10 +764,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -775,13 +780,13 @@ public final class ComposerFunctions {
         return getUserWorkloadsConfigMap(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Config Map, see:
+     * To get more information about Managed Airflow User Workloads Config Map, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -831,10 +836,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -847,13 +852,13 @@ public final class ComposerFunctions {
         return getUserWorkloadsConfigMapPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Config Map, see:
+     * To get more information about Managed Airflow User Workloads Config Map, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -903,10 +908,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -919,13 +924,13 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", TypeShape.of(GetUserWorkloadsConfigMapResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Config Map, see:
+     * To get more information about Managed Airflow User Workloads Config Map, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -975,10 +980,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -991,13 +996,13 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", TypeShape.of(GetUserWorkloadsConfigMapResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Config Map, see:
+     * To get more information about Managed Airflow User Workloads Config Map, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -1047,10 +1052,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsConfigMap(GetUserWorkloadsConfigMapArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsConfigMap.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1063,13 +1068,14 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invokeAsync("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", TypeShape.of(GetUserWorkloadsConfigMapResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes Secret configuration for a given project, region
+     * and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Secrets, see:
+     * To get more information about Managed Airflow User Workloads Secrets, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -1125,10 +1131,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1141,13 +1147,14 @@ public final class ComposerFunctions {
         return getUserWorkloadsSecret(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes Secret configuration for a given project, region
+     * and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Secrets, see:
+     * To get more information about Managed Airflow User Workloads Secrets, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -1203,10 +1210,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1219,13 +1226,14 @@ public final class ComposerFunctions {
         return getUserWorkloadsSecretPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes Secret configuration for a given project, region
+     * and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Secrets, see:
+     * To get more information about Managed Airflow User Workloads Secrets, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -1281,10 +1289,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1297,13 +1305,14 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", TypeShape.of(GetUserWorkloadsSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes Secret configuration for a given project, region
+     * and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Secrets, see:
+     * To get more information about Managed Airflow User Workloads Secrets, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -1359,10 +1368,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }
@@ -1375,13 +1384,14 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", TypeShape.of(GetUserWorkloadsSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * Provides access to Kubernetes Secret configuration for a given project, region
+     * and Managed Airflow Environment.
      * 
-     * To get more information about Composer User Workloads Secrets, see:
+     * To get more information about Managed Airflow User Workloads Secrets, see:
      * 
      * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
      * * How-to Guides
-     *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+     *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
      * 
      * ## Example Usage
      * 
@@ -1437,10 +1447,10 @@ public final class ComposerFunctions {
      *             ))
      *             .build());
      * 
-     *         final var example = exampleEnvironment.name().applyValue(_name -> ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
-     *             .environment(_name)
+     *         final var example = ComposerFunctions.getUserWorkloadsSecret(GetUserWorkloadsSecretArgs.builder()
+     *             .environment(exampleEnvironment.name())
      *             .name(googleComposerUserWorkloadsSecret.example().name())
-     *             .build()));
+     *             .build());
      * 
      *         ctx.export("debug", example);
      *     }

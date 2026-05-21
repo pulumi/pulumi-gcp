@@ -58,6 +58,7 @@ type LookupManagementServerArgs struct {
 
 // A collection of values returned by getManagementServer.
 type LookupManagementServerResult struct {
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id             string                             `pulumi:"id"`
 	Location       string                             `pulumi:"location"`
@@ -100,6 +101,10 @@ func (o LookupManagementServerResultOutput) ToLookupManagementServerResultOutput
 
 func (o LookupManagementServerResultOutput) ToLookupManagementServerResultOutputWithContext(ctx context.Context) LookupManagementServerResultOutput {
 	return o
+}
+
+func (o LookupManagementServerResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementServerResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

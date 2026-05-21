@@ -74,6 +74,13 @@ import (
 type AiLogicPromptTemplateLock struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The location of the prompt template.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Indicates if the prompt template is currently locked.
@@ -124,6 +131,13 @@ func GetAiLogicPromptTemplateLock(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiLogicPromptTemplateLock resources.
 type aiLogicPromptTemplateLockState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the prompt template.
 	Location *string `pulumi:"location"`
 	// Indicates if the prompt template is currently locked.
@@ -139,6 +153,13 @@ type aiLogicPromptTemplateLockState struct {
 }
 
 type AiLogicPromptTemplateLockState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the prompt template.
 	Location pulumi.StringPtrInput
 	// Indicates if the prompt template is currently locked.
@@ -158,6 +179,13 @@ func (AiLogicPromptTemplateLockState) ElementType() reflect.Type {
 }
 
 type aiLogicPromptTemplateLockArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the prompt template.
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -169,6 +197,13 @@ type aiLogicPromptTemplateLockArgs struct {
 
 // The set of arguments for constructing a AiLogicPromptTemplateLock resource.
 type AiLogicPromptTemplateLockArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the prompt template.
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -263,6 +298,16 @@ func (o AiLogicPromptTemplateLockOutput) ToAiLogicPromptTemplateLockOutput() AiL
 
 func (o AiLogicPromptTemplateLockOutput) ToAiLogicPromptTemplateLockOutputWithContext(ctx context.Context) AiLogicPromptTemplateLockOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiLogicPromptTemplateLockOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiLogicPromptTemplateLock) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The location of the prompt template.

@@ -203,6 +203,7 @@ namespace Pulumi.Gcp.Compute
         /// The current status of the instance. This could be one of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see [Instance life cycle](https://cloud.google.com/compute/docs/instances/instance-life-cycle).
         /// </summary>
         public readonly string CurrentStatus;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Whether deletion protection is enabled on this instance.
         /// </summary>
@@ -329,6 +330,8 @@ namespace Pulumi.Gcp.Compute
 
             string currentStatus,
 
+            string deletionPolicy,
+
             bool deletionProtection,
 
             string description,
@@ -410,6 +413,7 @@ namespace Pulumi.Gcp.Compute
             CpuPlatform = cpuPlatform;
             CreationTimestamp = creationTimestamp;
             CurrentStatus = currentStatus;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             Description = description;
             DesiredStatus = desiredStatus;

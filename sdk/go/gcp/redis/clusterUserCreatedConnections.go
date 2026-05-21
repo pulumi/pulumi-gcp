@@ -439,6 +439,13 @@ type ClusterUserCreatedConnections struct {
 	// A list of cluster endpoints
 	// Structure is documented below.
 	ClusterEndpoints ClusterUserCreatedConnectionsClusterEndpointArrayOutput `pulumi:"clusterEndpoints"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the Redis cluster these endpoints should be added to.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -484,6 +491,13 @@ type clusterUserCreatedConnectionsState struct {
 	// A list of cluster endpoints
 	// Structure is documented below.
 	ClusterEndpoints []ClusterUserCreatedConnectionsClusterEndpoint `pulumi:"clusterEndpoints"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Redis cluster these endpoints should be added to.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -497,6 +511,13 @@ type ClusterUserCreatedConnectionsState struct {
 	// A list of cluster endpoints
 	// Structure is documented below.
 	ClusterEndpoints ClusterUserCreatedConnectionsClusterEndpointArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Redis cluster these endpoints should be added to.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -514,6 +535,13 @@ type clusterUserCreatedConnectionsArgs struct {
 	// A list of cluster endpoints
 	// Structure is documented below.
 	ClusterEndpoints []ClusterUserCreatedConnectionsClusterEndpoint `pulumi:"clusterEndpoints"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Redis cluster these endpoints should be added to.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -528,6 +556,13 @@ type ClusterUserCreatedConnectionsArgs struct {
 	// A list of cluster endpoints
 	// Structure is documented below.
 	ClusterEndpoints ClusterUserCreatedConnectionsClusterEndpointArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Redis cluster these endpoints should be added to.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -630,6 +665,16 @@ func (o ClusterUserCreatedConnectionsOutput) ClusterEndpoints() ClusterUserCreat
 	return o.ApplyT(func(v *ClusterUserCreatedConnections) ClusterUserCreatedConnectionsClusterEndpointArrayOutput {
 		return v.ClusterEndpoints
 	}).(ClusterUserCreatedConnectionsClusterEndpointArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ClusterUserCreatedConnectionsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnections) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the Redis cluster these endpoints should be added to.

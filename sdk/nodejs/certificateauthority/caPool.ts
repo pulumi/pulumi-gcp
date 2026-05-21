@@ -230,6 +230,15 @@ export class CaPool extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -297,6 +306,7 @@ export class CaPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CaPoolState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["encryptionSpec"] = state?.encryptionSpec;
             resourceInputs["issuancePolicy"] = state?.issuancePolicy;
@@ -315,6 +325,7 @@ export class CaPool extends pulumi.CustomResource {
             if (args?.tier === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tier'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["encryptionSpec"] = args?.encryptionSpec;
             resourceInputs["issuancePolicy"] = args?.issuancePolicy;
             resourceInputs["labels"] = args?.labels;
@@ -337,6 +348,15 @@ export class CaPool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CaPool resources.
  */
 export interface CaPoolState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -397,6 +417,15 @@ export interface CaPoolState {
  * The set of arguments for constructing a CaPool resource.
  */
 export interface CaPoolArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Used when customer would like to encrypt data at rest. The customer-provided key will be used
      * to encrypt the Subject, SubjectAltNames and PEM-encoded certificate fields. When unspecified,

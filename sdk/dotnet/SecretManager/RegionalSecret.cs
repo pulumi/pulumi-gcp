@@ -275,6 +275,17 @@ namespace Pulumi.Gcp.SecretManager
         public Output<Outputs.RegionalSecretCustomerManagedEncryption?> CustomerManagedEncryption { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
         /// When the field is set to true in Terraform state, a `pulumi up`
         /// or `terraform destroy` that would delete the federation will fail.
@@ -489,6 +500,17 @@ namespace Pulumi.Gcp.SecretManager
         public Input<Inputs.RegionalSecretCustomerManagedEncryptionArgs>? CustomerManagedEncryption { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
         /// When the field is set to true in Terraform state, a `pulumi up`
         /// or `terraform destroy` that would delete the federation will fail.
@@ -662,6 +684,17 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         [Input("customerManagedEncryption")]
         public Input<Inputs.RegionalSecretCustomerManagedEncryptionGetArgs>? CustomerManagedEncryption { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.

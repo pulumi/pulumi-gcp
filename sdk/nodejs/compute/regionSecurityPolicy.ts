@@ -164,6 +164,15 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
      */
     declare public readonly ddosProtectionConfig: pulumi.Output<outputs.compute.RegionSecurityPolicyDdosProtectionConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -236,6 +245,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             const state = argsOrState as RegionSecurityPolicyState | undefined;
             resourceInputs["advancedOptionsConfig"] = state?.advancedOptionsConfig;
             resourceInputs["ddosProtectionConfig"] = state?.ddosProtectionConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["name"] = state?.name;
@@ -251,6 +261,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
             const args = argsOrState as RegionSecurityPolicyArgs | undefined;
             resourceInputs["advancedOptionsConfig"] = args?.advancedOptionsConfig;
             resourceInputs["ddosProtectionConfig"] = args?.ddosProtectionConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -282,6 +293,15 @@ export interface RegionSecurityPolicyState {
      * Structure is documented below.
      */
     ddosProtectionConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyDdosProtectionConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -355,6 +375,15 @@ export interface RegionSecurityPolicyArgs {
      * Structure is documented below.
      */
     ddosProtectionConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyDdosProtectionConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

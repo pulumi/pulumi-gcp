@@ -156,6 +156,7 @@ namespace Pulumi.Gcp.CertificateManager
     [OutputType]
     public sealed class GetDnsAuthorizationResult
     {
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetDnsAuthorizationDnsResourceRecordResult> DnsResourceRecords;
         public readonly string Domain;
@@ -173,6 +174,8 @@ namespace Pulumi.Gcp.CertificateManager
 
         [OutputConstructor]
         private GetDnsAuthorizationResult(
+            string deletionPolicy,
+
             string description,
 
             ImmutableArray<Outputs.GetDnsAuthorizationDnsResourceRecordResult> dnsResourceRecords,
@@ -195,6 +198,7 @@ namespace Pulumi.Gcp.CertificateManager
 
             string type)
         {
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DnsResourceRecords = dnsResourceRecords;
             Domain = domain;

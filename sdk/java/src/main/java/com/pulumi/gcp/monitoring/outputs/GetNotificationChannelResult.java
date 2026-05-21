@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetNotificationChannelResult {
+    private String deletionPolicy;
     /**
      * @return An optional human-readable description of this notification channel.
      * 
@@ -59,6 +60,9 @@ public final class GetNotificationChannelResult {
     private String verificationStatus;
 
     private GetNotificationChannelResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * @return An optional human-readable description of this notification channel.
      * 
@@ -134,6 +138,7 @@ public final class GetNotificationChannelResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String description;
         private @Nullable String displayName;
         private Boolean enabled;
@@ -149,6 +154,7 @@ public final class GetNotificationChannelResult {
         public Builder() {}
         public Builder(GetNotificationChannelResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
     	      this.enabled = defaults.enabled;
@@ -163,6 +169,14 @@ public final class GetNotificationChannelResult {
     	      this.verificationStatus = defaults.verificationStatus;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -254,6 +268,7 @@ public final class GetNotificationChannelResult {
         }
         public GetNotificationChannelResult build() {
             final var _resultValue = new GetNotificationChannelResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.displayName = displayName;
             _resultValue.enabled = enabled;

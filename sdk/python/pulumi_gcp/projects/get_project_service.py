@@ -26,10 +26,13 @@ class GetProjectServiceResult:
     """
     A collection of values returned by getProjectService.
     """
-    def __init__(__self__, check_if_service_has_usage_on_destroy=None, disable_dependent_services=None, disable_on_destroy=None, id=None, project=None, service=None):
+    def __init__(__self__, check_if_service_has_usage_on_destroy=None, deletion_policy=None, disable_dependent_services=None, disable_on_destroy=None, id=None, project=None, service=None):
         if check_if_service_has_usage_on_destroy and not isinstance(check_if_service_has_usage_on_destroy, bool):
             raise TypeError("Expected argument 'check_if_service_has_usage_on_destroy' to be a bool")
         pulumi.set(__self__, "check_if_service_has_usage_on_destroy", check_if_service_has_usage_on_destroy)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_dependent_services and not isinstance(disable_dependent_services, bool):
             raise TypeError("Expected argument 'disable_dependent_services' to be a bool")
         pulumi.set(__self__, "disable_dependent_services", disable_dependent_services)
@@ -50,6 +53,11 @@ class GetProjectServiceResult:
     @pulumi.getter(name="checkIfServiceHasUsageOnDestroy")
     def check_if_service_has_usage_on_destroy(self) -> _builtins.bool:
         return pulumi.get(self, "check_if_service_has_usage_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="disableDependentServices")
@@ -87,6 +95,7 @@ class AwaitableGetProjectServiceResult(GetProjectServiceResult):
             yield self
         return GetProjectServiceResult(
             check_if_service_has_usage_on_destroy=self.check_if_service_has_usage_on_destroy,
+            deletion_policy=self.deletion_policy,
             disable_dependent_services=self.disable_dependent_services,
             disable_on_destroy=self.disable_on_destroy,
             id=self.id,
@@ -136,6 +145,7 @@ def get_project_service(project: Optional[_builtins.str] = None,
 
     return AwaitableGetProjectServiceResult(
         check_if_service_has_usage_on_destroy=pulumi.get(__ret__, 'check_if_service_has_usage_on_destroy'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         disable_dependent_services=pulumi.get(__ret__, 'disable_dependent_services'),
         disable_on_destroy=pulumi.get(__ret__, 'disable_on_destroy'),
         id=pulumi.get(__ret__, 'id'),
@@ -182,6 +192,7 @@ def get_project_service_output(project: pulumi.Input[Optional[Optional[_builtins
     __ret__ = pulumi.runtime.invoke_output('gcp:projects/getProjectService:getProjectService', __args__, opts=opts, typ=GetProjectServiceResult)
     return __ret__.apply(lambda __response__: GetProjectServiceResult(
         check_if_service_has_usage_on_destroy=pulumi.get(__response__, 'check_if_service_has_usage_on_destroy'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         disable_dependent_services=pulumi.get(__response__, 'disable_dependent_services'),
         disable_on_destroy=pulumi.get(__response__, 'disable_on_destroy'),
         id=pulumi.get(__response__, 'id'),

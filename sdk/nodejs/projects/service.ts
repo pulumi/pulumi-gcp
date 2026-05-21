@@ -86,6 +86,15 @@ export class Service extends pulumi.CustomResource {
      */
     declare public readonly checkIfServiceHasUsageOnDestroy: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
      * destroyed. If `false` or unset, an error will be generated if any enabled
@@ -123,6 +132,7 @@ export class Service extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
             resourceInputs["checkIfServiceHasUsageOnDestroy"] = state?.checkIfServiceHasUsageOnDestroy;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disableDependentServices"] = state?.disableDependentServices;
             resourceInputs["disableOnDestroy"] = state?.disableOnDestroy;
             resourceInputs["project"] = state?.project;
@@ -133,6 +143,7 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'service'");
             }
             resourceInputs["checkIfServiceHasUsageOnDestroy"] = args?.checkIfServiceHasUsageOnDestroy;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disableDependentServices"] = args?.disableDependentServices;
             resourceInputs["disableOnDestroy"] = args?.disableOnDestroy;
             resourceInputs["project"] = args?.project;
@@ -153,6 +164,15 @@ export interface ServiceState {
      * will be returned if the service to be disabled has usage in last 30 days.
      */
     checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is
@@ -188,6 +208,15 @@ export interface ServiceArgs {
      * will be returned if the service to be disabled has usage in last 30 days.
      */
     checkIfServiceHasUsageOnDestroy?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If `true`, services that are enabled
      * and which depend on this service should also be disabled when this service is

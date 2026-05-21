@@ -23,6 +23,7 @@ class PreventionDeidentifyTemplateArgs:
     def __init__(__self__, *,
                  deidentify_config: pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'],
                  parent: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  template_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -36,6 +37,12 @@ class PreventionDeidentifyTemplateArgs:
                * `projects/{{project}}/locations/{{location}}`
                * `organizations/{{organization_id}}`
                * `organizations/{{organization_id}}/locations/{{location}}`
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the template.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the template.
         :param pulumi.Input[_builtins.str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
@@ -44,6 +51,8 @@ class PreventionDeidentifyTemplateArgs:
         """
         pulumi.set(__self__, "deidentify_config", deidentify_config)
         pulumi.set(__self__, "parent", parent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -79,6 +88,23 @@ class PreventionDeidentifyTemplateArgs:
     @parent.setter
     def parent(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "parent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -124,6 +150,7 @@ class _PreventionDeidentifyTemplateState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  deidentify_config: pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -136,6 +163,12 @@ class _PreventionDeidentifyTemplateState:
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
         :param pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigArgs'] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the template.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the template.
         :param pulumi.Input[_builtins.str] name: The resource name of the template. Set by the server.
@@ -153,6 +186,8 @@ class _PreventionDeidentifyTemplateState:
             pulumi.set(__self__, "create_time", create_time)
         if deidentify_config is not None:
             pulumi.set(__self__, "deidentify_config", deidentify_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -190,6 +225,23 @@ class _PreventionDeidentifyTemplateState:
     @deidentify_config.setter
     def deidentify_config(self, value: pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigArgs']]):
         pulumi.set(self, "deidentify_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -277,6 +329,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -447,6 +500,12 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the template.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the template.
         :param pulumi.Input[_builtins.str] parent: The parent of the template in any of the following formats:
@@ -641,6 +700,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -657,6 +717,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             if deidentify_config is None and not opts.urn:
                 raise TypeError("Missing required property 'deidentify_config'")
             __props__.__dict__["deidentify_config"] = deidentify_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if parent is None and not opts.urn:
@@ -678,6 +739,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             deidentify_config: pulumi.Input[Optional[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -694,6 +756,12 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation timestamp of an deidentifyTemplate. Set by the server.
         :param pulumi.Input[Union['PreventionDeidentifyTemplateDeidentifyConfigArgs', 'PreventionDeidentifyTemplateDeidentifyConfigArgsDict']] deidentify_config: Configuration of the deidentify template
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the template.
         :param pulumi.Input[_builtins.str] display_name: User set display name of the template.
         :param pulumi.Input[_builtins.str] name: The resource name of the template. Set by the server.
@@ -713,6 +781,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["deidentify_config"] = deidentify_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
@@ -737,6 +806,19 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "deidentify_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

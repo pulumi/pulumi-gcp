@@ -18,6 +18,15 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         /// </summary>
         public readonly bool BypassFirewallChecks;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// The user-supplied description of the Connectivity Test.
         /// </summary>
         public readonly string Description;
@@ -69,6 +78,8 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
         private GetConnectivityTestsConnectivityTestResult(
             bool bypassFirewallChecks,
 
+            string deletionPolicy,
+
             string description,
 
             ImmutableArray<Outputs.GetConnectivityTestsConnectivityTestDestinationResult> destinations,
@@ -92,6 +103,7 @@ namespace Pulumi.Gcp.NetworkManagement.Outputs
             ImmutableArray<Outputs.GetConnectivityTestsConnectivityTestSourceResult> sources)
         {
             BypassFirewallChecks = bypassFirewallChecks;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Destinations = destinations;
             EffectiveLabels = effectiveLabels;

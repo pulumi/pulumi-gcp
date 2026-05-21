@@ -19,18 +19,49 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
     public static final FirewallEndpointArgs Empty = new FirewallEndpointArgs();
 
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint&#39;s project if specified.
      * 
      */
-    @Import(name="billingProjectId", required=true)
-    private Output<String> billingProjectId;
+    @Import(name="billingProjectId")
+    private @Nullable Output<String> billingProjectId;
 
     /**
-     * @return Project to bill on endpoint uptime usage.
+     * @return Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint&#39;s project if specified.
      * 
      */
-    public Output<String> billingProjectId() {
-        return this.billingProjectId;
+    public Optional<Output<String>> billingProjectId() {
+        return Optional.ofNullable(this.billingProjectId);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -103,7 +134,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Import(name="parent", required=true)
@@ -111,7 +142,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Output<String> parent() {
@@ -122,6 +153,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
 
     private FirewallEndpointArgs(FirewallEndpointArgs $) {
         this.billingProjectId = $.billingProjectId;
+        this.deletionPolicy = $.deletionPolicy;
         this.endpointSettings = $.endpointSettings;
         this.labels = $.labels;
         this.location = $.location;
@@ -148,24 +180,61 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * @param billingProjectId Project to charge for the deployed firewall endpoint.
+         * This field is required for organization-scoped endpoints.
+         * For project-scoped endpoints, it is optional but must match the
+         * endpoint&#39;s project if specified.
          * 
          * @return builder
          * 
          */
-        public Builder billingProjectId(Output<String> billingProjectId) {
+        public Builder billingProjectId(@Nullable Output<String> billingProjectId) {
             $.billingProjectId = billingProjectId;
             return this;
         }
 
         /**
-         * @param billingProjectId Project to bill on endpoint uptime usage.
+         * @param billingProjectId Project to charge for the deployed firewall endpoint.
+         * This field is required for organization-scoped endpoints.
+         * For project-scoped endpoints, it is optional but must match the
+         * endpoint&#39;s project if specified.
          * 
          * @return builder
          * 
          */
         public Builder billingProjectId(String billingProjectId) {
             return billingProjectId(Output.of(billingProjectId));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -262,7 +331,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param parent The name of the parent this firewall endpoint belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 
@@ -274,7 +343,7 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param parent The name of the parent this firewall endpoint belongs to.
-         * Format: organizations/{organization_id}.
+         * Format: `organizations/{organization_id}` or `projects/{project_id}`.
          * 
          * @return builder
          * 
@@ -284,9 +353,6 @@ public final class FirewallEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         public FirewallEndpointArgs build() {
-            if ($.billingProjectId == null) {
-                throw new MissingRequiredPropertyException("FirewallEndpointArgs", "billingProjectId");
-            }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("FirewallEndpointArgs", "location");
             }

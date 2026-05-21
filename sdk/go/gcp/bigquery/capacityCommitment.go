@@ -81,6 +81,13 @@ type CapacityCommitment struct {
 	CommitmentEndTime pulumi.StringOutput `pulumi:"commitmentEndTime"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime pulumi.StringOutput `pulumi:"commitmentStartTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrOutput `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
@@ -148,6 +155,13 @@ type capacityCommitmentState struct {
 	CommitmentEndTime *string `pulumi:"commitmentEndTime"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime *string `pulumi:"commitmentStartTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition *string `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
@@ -180,6 +194,13 @@ type CapacityCommitmentState struct {
 	CommitmentEndTime pulumi.StringPtrInput
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrInput
 	// If true, fail the request if another project in the organization has a capacity commitment.
@@ -212,6 +233,13 @@ type capacityCommitmentArgs struct {
 	// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
 	// or merged.
 	CapacityCommitmentId *string `pulumi:"capacityCommitmentId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition *string `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
@@ -237,6 +265,13 @@ type CapacityCommitmentArgs struct {
 	// cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split
 	// or merged.
 	CapacityCommitmentId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
 	Edition pulumi.StringPtrInput
 	// If true, fail the request if another project in the organization has a capacity commitment.
@@ -358,6 +393,16 @@ func (o CapacityCommitmentOutput) CommitmentEndTime() pulumi.StringOutput {
 // The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 func (o CapacityCommitmentOutput) CommitmentStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.CommitmentStartTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CapacityCommitmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS

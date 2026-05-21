@@ -77,6 +77,7 @@ type LookupServiceResult struct {
 	CustomAudiences      []string                        `pulumi:"customAudiences"`
 	DefaultUriDisabled   bool                            `pulumi:"defaultUriDisabled"`
 	DeleteTime           string                          `pulumi:"deleteTime"`
+	DeletionPolicy       string                          `pulumi:"deletionPolicy"`
 	DeletionProtection   bool                            `pulumi:"deletionProtection"`
 	Description          string                          `pulumi:"description"`
 	EffectiveAnnotations map[string]string               `pulumi:"effectiveAnnotations"`
@@ -195,6 +196,10 @@ func (o LookupServiceResultOutput) DefaultUriDisabled() pulumi.BoolOutput {
 
 func (o LookupServiceResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o LookupServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupServiceResultOutput) DeletionProtection() pulumi.BoolOutput {

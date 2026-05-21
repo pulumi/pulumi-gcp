@@ -144,6 +144,13 @@ type WireGroup struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Required cross site network to which wire group belongs.
 	CrossSiteNetwork pulumi.StringOutput `pulumi:"crossSiteNetwork"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Endpoints grouped by location, each mapping to interconnect configurations.
@@ -212,6 +219,13 @@ type wireGroupState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Required cross site network to which wire group belongs.
 	CrossSiteNetwork *string `pulumi:"crossSiteNetwork"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Endpoints grouped by location, each mapping to interconnect configurations.
@@ -248,6 +262,13 @@ type WireGroupState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// Required cross site network to which wire group belongs.
 	CrossSiteNetwork pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Endpoints grouped by location, each mapping to interconnect configurations.
@@ -286,6 +307,13 @@ type wireGroupArgs struct {
 	AdminEnabled *bool `pulumi:"adminEnabled"`
 	// Required cross site network to which wire group belongs.
 	CrossSiteNetwork string `pulumi:"crossSiteNetwork"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Endpoints grouped by location, each mapping to interconnect configurations.
@@ -315,6 +343,13 @@ type WireGroupArgs struct {
 	AdminEnabled pulumi.BoolPtrInput
 	// Required cross site network to which wire group belongs.
 	CrossSiteNetwork pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Endpoints grouped by location, each mapping to interconnect configurations.
@@ -438,6 +473,16 @@ func (o WireGroupOutput) CreationTimestamp() pulumi.StringOutput {
 // Required cross site network to which wire group belongs.
 func (o WireGroupOutput) CrossSiteNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *WireGroup) pulumi.StringOutput { return v.CrossSiteNetwork }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WireGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WireGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when you create the resource.

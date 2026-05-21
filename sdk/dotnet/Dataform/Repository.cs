@@ -126,10 +126,18 @@ namespace Pulumi.Gcp.Dataform
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        /// Policy to control how the repository and its child resources are deleted.
+        /// When set to `FORCE`, any child resources of this repository will also be deleted.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// 
+        /// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Optional. The repository's user-friendly name.
@@ -264,7 +272,15 @@ namespace Pulumi.Gcp.Dataform
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        /// Policy to control how the repository and its child resources are deleted.
+        /// When set to `FORCE`, any child resources of this repository will also be deleted.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// 
+        /// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -352,7 +368,15 @@ namespace Pulumi.Gcp.Dataform
     public sealed class RepositoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        /// Policy to control how the repository and its child resources are deleted.
+        /// When set to `FORCE`, any child resources of this repository will also be deleted.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// 
+        /// Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

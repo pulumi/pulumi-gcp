@@ -79,6 +79,13 @@ type FolderBucketConfig struct {
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings FolderBucketConfigCmekSettingsPtrOutput `pulumi:"cmekSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Describes this bucket.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The parent resource that contains the logging bucket.
@@ -138,6 +145,13 @@ type folderBucketConfigState struct {
 	BucketId *string `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *FolderBucketConfigCmekSettings `pulumi:"cmekSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The parent resource that contains the logging bucket.
@@ -159,6 +173,13 @@ type FolderBucketConfigState struct {
 	BucketId pulumi.StringPtrInput
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings FolderBucketConfigCmekSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The parent resource that contains the logging bucket.
@@ -184,6 +205,13 @@ type folderBucketConfigArgs struct {
 	BucketId string `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings *FolderBucketConfigCmekSettings `pulumi:"cmekSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
 	// The parent resource that contains the logging bucket.
@@ -202,6 +230,13 @@ type FolderBucketConfigArgs struct {
 	BucketId pulumi.StringInput
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings FolderBucketConfigCmekSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
 	// The parent resource that contains the logging bucket.
@@ -309,6 +344,16 @@ func (o FolderBucketConfigOutput) BucketId() pulumi.StringOutput {
 // The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 func (o FolderBucketConfigOutput) CmekSettings() FolderBucketConfigCmekSettingsPtrOutput {
 	return o.ApplyT(func(v *FolderBucketConfig) FolderBucketConfigCmekSettingsPtrOutput { return v.CmekSettings }).(FolderBucketConfigCmekSettingsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FolderBucketConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderBucketConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Describes this bucket.

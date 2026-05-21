@@ -26,6 +26,7 @@ class NativeDashboardArgs:
                  location: pulumi.Input[_builtins.str],
                  access: pulumi.Input[Optional[_builtins.str]] = None,
                  charts: pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardChartArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  filters: pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardFilterArgs']]]] = None,
                  is_pinned: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -43,6 +44,12 @@ class NativeDashboardArgs:
                DASHBOARD_PUBLIC
         :param pulumi.Input[Sequence[pulumi.Input['NativeDashboardChartArgs']]] charts: A list of charts included in the dashboard definition.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the dashboard.
         :param pulumi.Input[Sequence[pulumi.Input['NativeDashboardFilterArgs']]] filters: Global filters defined for the dashboard.
                Structure is documented below.
@@ -60,6 +67,8 @@ class NativeDashboardArgs:
             pulumi.set(__self__, "access", access)
         if charts is not None:
             pulumi.set(__self__, "charts", charts)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if filters is not None:
@@ -136,6 +145,23 @@ class NativeDashboardArgs:
         pulumi.set(self, "charts", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -208,6 +234,7 @@ class _NativeDashboardState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  create_user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -234,6 +261,12 @@ class _NativeDashboardState:
         :param pulumi.Input[_builtins.str] create_time: The creation time of the dashboard.
         :param pulumi.Input[_builtins.str] create_user_id: The ID of the user who created the dashboard.
         :param pulumi.Input[_builtins.str] dashboard_id: The unique ID of the Dashboard.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the dashboard.
         :param pulumi.Input[_builtins.str] display_name: The display name/title of the dashboard visible to users.
         :param pulumi.Input[_builtins.str] etag: Server-computed checksum for optimistic concurrency control,
@@ -266,6 +299,8 @@ class _NativeDashboardState:
             pulumi.set(__self__, "create_user_id", create_user_id)
         if dashboard_id is not None:
             pulumi.set(__self__, "dashboard_id", dashboard_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -358,6 +393,23 @@ class _NativeDashboardState:
     @dashboard_id.setter
     def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -543,6 +595,7 @@ class NativeDashboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: pulumi.Input[Optional[_builtins.str]] = None,
                  charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]]] = None,
@@ -555,12 +608,9 @@ class NativeDashboard(pulumi.CustomResource):
         """
         A configuration for a native dashboard within a Google SecOps (Chronicle) instance.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about NativeDashboard, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.nativeDashboards)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.nativeDashboards)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 
@@ -620,6 +670,12 @@ class NativeDashboard(pulumi.CustomResource):
                DASHBOARD_PUBLIC
         :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]] charts: A list of charts included in the dashboard definition.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the dashboard.
         :param pulumi.Input[_builtins.str] display_name: The display name/title of the dashboard visible to users.
         :param pulumi.Input[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]] filters: Global filters defined for the dashboard.
@@ -642,12 +698,9 @@ class NativeDashboard(pulumi.CustomResource):
         """
         A configuration for a native dashboard within a Google SecOps (Chronicle) instance.
 
-        > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-        See Provider Versions for more details on beta resources.
-
         To get more information about NativeDashboard, see:
 
-        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.nativeDashboards)
+        * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.nativeDashboards)
         * How-to Guides
             * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
 
@@ -716,6 +769,7 @@ class NativeDashboard(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: pulumi.Input[Optional[_builtins.str]] = None,
                  charts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardChartArgs', 'NativeDashboardChartArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  filters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NativeDashboardFilterArgs', 'NativeDashboardFilterArgsDict']]]]] = None,
@@ -735,6 +789,7 @@ class NativeDashboard(pulumi.CustomResource):
 
             __props__.__dict__["access"] = access
             __props__.__dict__["charts"] = charts
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -773,6 +828,7 @@ class NativeDashboard(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             create_user_id: pulumi.Input[Optional[_builtins.str]] = None,
             dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -803,6 +859,12 @@ class NativeDashboard(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The creation time of the dashboard.
         :param pulumi.Input[_builtins.str] create_user_id: The ID of the user who created the dashboard.
         :param pulumi.Input[_builtins.str] dashboard_id: The unique ID of the Dashboard.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the dashboard.
         :param pulumi.Input[_builtins.str] display_name: The display name/title of the dashboard visible to users.
         :param pulumi.Input[_builtins.str] etag: Server-computed checksum for optimistic concurrency control,
@@ -834,6 +896,7 @@ class NativeDashboard(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["create_user_id"] = create_user_id
         __props__.__dict__["dashboard_id"] = dashboard_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["etag"] = etag
@@ -893,6 +956,19 @@ class NativeDashboard(pulumi.CustomResource):
         The unique ID of the Dashboard.
         """
         return pulumi.get(self, "dashboard_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

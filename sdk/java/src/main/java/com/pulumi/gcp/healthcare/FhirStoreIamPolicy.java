@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingArgs;
  * import com.pulumi.gcp.healthcare.FhirStoreIamPolicy;
  * import com.pulumi.gcp.healthcare.FhirStoreIamPolicyArgs;
  * import java.util.ArrayList;

@@ -68,11 +68,18 @@ import (
 type DiskAsyncReplication struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// The `secondaryDisk` block includes:
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The primary disk (source of replication).
 	PrimaryDisk pulumi.StringOutput `pulumi:"primaryDisk"`
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-	//
-	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDiskOutput `pulumi:"secondaryDisk"`
 }
 
@@ -112,20 +119,34 @@ func GetDiskAsyncReplication(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DiskAsyncReplication resources.
 type diskAsyncReplicationState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// The `secondaryDisk` block includes:
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The primary disk (source of replication).
 	PrimaryDisk *string `pulumi:"primaryDisk"`
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-	//
-	// The `secondaryDisk` block includes:
 	SecondaryDisk *DiskAsyncReplicationSecondaryDisk `pulumi:"secondaryDisk"`
 }
 
 type DiskAsyncReplicationState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// The `secondaryDisk` block includes:
+	DeletionPolicy pulumi.StringPtrInput
 	// The primary disk (source of replication).
 	PrimaryDisk pulumi.StringPtrInput
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-	//
-	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDiskPtrInput
 }
 
@@ -134,21 +155,35 @@ func (DiskAsyncReplicationState) ElementType() reflect.Type {
 }
 
 type diskAsyncReplicationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// The `secondaryDisk` block includes:
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The primary disk (source of replication).
 	PrimaryDisk string `pulumi:"primaryDisk"`
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-	//
-	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDisk `pulumi:"secondaryDisk"`
 }
 
 // The set of arguments for constructing a DiskAsyncReplication resource.
 type DiskAsyncReplicationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// The `secondaryDisk` block includes:
+	DeletionPolicy pulumi.StringPtrInput
 	// The primary disk (source of replication).
 	PrimaryDisk pulumi.StringInput
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-	//
-	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDiskInput
 }
 
@@ -239,14 +274,24 @@ func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutputWithContext(ctx 
 	return o
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// The `secondaryDisk` block includes:
+func (o DiskAsyncReplicationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiskAsyncReplication) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // The primary disk (source of replication).
 func (o DiskAsyncReplicationOutput) PrimaryDisk() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskAsyncReplication) pulumi.StringOutput { return v.PrimaryDisk }).(pulumi.StringOutput)
 }
 
 // The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-//
-// The `secondaryDisk` block includes:
 func (o DiskAsyncReplicationOutput) SecondaryDisk() DiskAsyncReplicationSecondaryDiskOutput {
 	return o.ApplyT(func(v *DiskAsyncReplication) DiskAsyncReplicationSecondaryDiskOutput { return v.SecondaryDisk }).(DiskAsyncReplicationSecondaryDiskOutput)
 }

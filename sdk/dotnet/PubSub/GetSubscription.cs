@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.PubSub
         public readonly ImmutableArray<Outputs.GetSubscriptionBigqueryConfigResult> BigqueryConfigs;
         public readonly ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> CloudStorageConfigs;
         public readonly ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> DeadLetterPolicies;
+        public readonly string DeletionPolicy;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly bool EnableExactlyOnceDelivery;
         public readonly bool EnableMessageOrdering;
@@ -175,6 +176,8 @@ namespace Pulumi.Gcp.PubSub
             ImmutableArray<Outputs.GetSubscriptionCloudStorageConfigResult> cloudStorageConfigs,
 
             ImmutableArray<Outputs.GetSubscriptionDeadLetterPolicyResult> deadLetterPolicies,
+
+            string deletionPolicy,
 
             ImmutableDictionary<string, string> effectiveLabels,
 
@@ -214,6 +217,7 @@ namespace Pulumi.Gcp.PubSub
             BigqueryConfigs = bigqueryConfigs;
             CloudStorageConfigs = cloudStorageConfigs;
             DeadLetterPolicies = deadLetterPolicies;
+            DeletionPolicy = deletionPolicy;
             EffectiveLabels = effectiveLabels;
             EnableExactlyOnceDelivery = enableExactlyOnceDelivery;
             EnableMessageOrdering = enableMessageOrdering;

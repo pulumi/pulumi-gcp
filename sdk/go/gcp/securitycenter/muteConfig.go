@@ -71,6 +71,13 @@ type MuteConfig struct {
 	// The time at which the mute config was created. This field is set by
 	// the server and will be ignored if provided on config creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the mute config.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
@@ -151,6 +158,13 @@ type muteConfigState struct {
 	// The time at which the mute config was created. This field is set by
 	// the server and will be ignored if provided on config creation.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the mute config.
 	Description *string `pulumi:"description"`
 	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
@@ -193,6 +207,13 @@ type MuteConfigState struct {
 	// The time at which the mute config was created. This field is set by
 	// the server and will be ignored if provided on config creation.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the mute config.
 	Description pulumi.StringPtrInput
 	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
@@ -236,6 +257,13 @@ func (MuteConfigState) ElementType() reflect.Type {
 }
 
 type muteConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the mute config.
 	Description *string `pulumi:"description"`
 	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
@@ -263,6 +291,13 @@ type muteConfigArgs struct {
 
 // The set of arguments for constructing a MuteConfig resource.
 type MuteConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the mute config.
 	Description pulumi.StringPtrInput
 	// Optional. The expiry of the mute config. Only applicable for dynamic configs.
@@ -379,6 +414,16 @@ func (o MuteConfigOutput) ToMuteConfigOutputWithContext(ctx context.Context) Mut
 // the server and will be ignored if provided on config creation.
 func (o MuteConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MuteConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MuteConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MuteConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the mute config.

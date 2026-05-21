@@ -156,6 +156,19 @@ namespace Pulumi.Gcp.Folder
         public Output<string> Constraint { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) The etag of the organization policy. `Etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         /// </summary>
         [Output("etag")]
@@ -179,8 +192,6 @@ namespace Pulumi.Gcp.Folder
         /// 
         /// &gt; **Note:** If none of [`BooleanPolicy`, `ListPolicy`, `RestorePolicy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-        /// 
-        /// - - -
         /// </summary>
         [Output("restorePolicy")]
         public Output<Outputs.OrganizationPolicyRestorePolicy?> RestorePolicy { get; private set; } = null!;
@@ -258,6 +269,19 @@ namespace Pulumi.Gcp.Folder
         public Input<string> Constraint { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The resource name of the folder to set the policy for. Its format is folders/{folder_id}.
         /// </summary>
         [Input("folder", required: true)]
@@ -275,8 +299,6 @@ namespace Pulumi.Gcp.Folder
         /// 
         /// &gt; **Note:** If none of [`BooleanPolicy`, `ListPolicy`, `RestorePolicy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-        /// 
-        /// - - -
         /// </summary>
         [Input("restorePolicy")]
         public Input<Inputs.OrganizationPolicyRestorePolicyArgs>? RestorePolicy { get; set; }
@@ -310,6 +332,19 @@ namespace Pulumi.Gcp.Folder
         public Input<string>? Constraint { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// (Computed) The etag of the organization policy. `Etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         /// </summary>
         [Input("etag")]
@@ -333,8 +368,6 @@ namespace Pulumi.Gcp.Folder
         /// 
         /// &gt; **Note:** If none of [`BooleanPolicy`, `ListPolicy`, `RestorePolicy`] are defined the policy for a given constraint will
         /// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-        /// 
-        /// - - -
         /// </summary>
         [Input("restorePolicy")]
         public Input<Inputs.OrganizationPolicyRestorePolicyGetArgs>? RestorePolicy { get; set; }

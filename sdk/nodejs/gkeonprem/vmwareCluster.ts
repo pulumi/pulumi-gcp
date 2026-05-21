@@ -343,6 +343,15 @@ export class VMwareCluster extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human readable description of this VMware User Cluster.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -495,6 +504,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataplaneV2"] = state?.dataplaneV2;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["disableBundledIngress"] = state?.disableBundledIngress;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
@@ -542,6 +552,7 @@ export class VMwareCluster extends pulumi.CustomResource {
             resourceInputs["autoRepairConfig"] = args?.autoRepairConfig;
             resourceInputs["controlPlaneNode"] = args?.controlPlaneNode;
             resourceInputs["dataplaneV2"] = args?.dataplaneV2;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["disableBundledIngress"] = args?.disableBundledIngress;
             resourceInputs["enableAdvancedCluster"] = args?.enableAdvancedCluster;
@@ -635,6 +646,15 @@ export interface VMwareClusterState {
      * The time at which VMware User Cluster was deleted.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human readable description of this VMware User Cluster.
      */
@@ -818,6 +838,15 @@ export interface VMwareClusterArgs {
      * Structure is documented below.
      */
     dataplaneV2?: pulumi.Input<inputs.gkeonprem.VMwareClusterDataplaneV2 | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human readable description of this VMware User Cluster.
      */

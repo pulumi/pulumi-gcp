@@ -24,6 +24,7 @@ class EnvironmentArgs:
                  org_id: pulumi.Input[_builtins.str],
                  api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ip_resolution_config: pulumi.Input[Optional['EnvironmentClientIpResolutionConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class EnvironmentArgs:
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input['EnvironmentClientIpResolutionConfigArgs'] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -69,6 +76,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "api_proxy_type", api_proxy_type)
         if client_ip_resolution_config is not None:
             pulumi.set(__self__, "client_ip_resolution_config", client_ip_resolution_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_type is not None:
             pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
@@ -125,6 +134,23 @@ class EnvironmentArgs:
     @client_ip_resolution_config.setter
     def client_ip_resolution_config(self, value: pulumi.Input[Optional['EnvironmentClientIpResolutionConfigArgs']]):
         pulumi.set(self, "client_ip_resolution_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
@@ -241,6 +267,7 @@ class _EnvironmentState:
     def __init__(__self__, *,
                  api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ip_resolution_config: pulumi.Input[Optional['EnvironmentClientIpResolutionConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -258,6 +285,12 @@ class _EnvironmentState:
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input['EnvironmentClientIpResolutionConfigArgs'] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -286,6 +319,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "api_proxy_type", api_proxy_type)
         if client_ip_resolution_config is not None:
             pulumi.set(__self__, "client_ip_resolution_config", client_ip_resolution_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_type is not None:
             pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
@@ -331,6 +366,23 @@ class _EnvironmentState:
     @client_ip_resolution_config.setter
     def client_ip_resolution_config(self, value: pulumi.Input[Optional['EnvironmentClientIpResolutionConfigArgs']]):
         pulumi.set(self, "client_ip_resolution_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
@@ -463,6 +515,7 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -542,6 +595,12 @@ class Environment(pulumi.CustomResource):
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -651,6 +710,7 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
                  client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -671,6 +731,7 @@ class Environment(pulumi.CustomResource):
 
             __props__.__dict__["api_proxy_type"] = api_proxy_type
             __props__.__dict__["client_ip_resolution_config"] = client_ip_resolution_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -694,6 +755,7 @@ class Environment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
             client_ip_resolution_config: pulumi.Input[Optional[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -715,6 +777,12 @@ class Environment(pulumi.CustomResource):
                Possible values are: `API_PROXY_TYPE_UNSPECIFIED`, `PROGRAMMABLE`, `CONFIGURABLE`.
         :param pulumi.Input[Union['EnvironmentClientIpResolutionConfigArgs', 'EnvironmentClientIpResolutionConfigArgsDict']] client_ip_resolution_config: The algorithm to resolve IP. This will affect Analytics, API Security, and other features that use the client ip. To remove a client ip resolution config, update the field to an empty value. Example: '{ "clientIpResolutionConfig" = {} }' For more information, see: https://cloud.google.com/apigee/docs/api-platform/system-administration/client-ip-resolution
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Optional. Deployment type supported by the environment. The deployment type can be
                set when creating the environment and cannot be changed. When you enable archive
                deployment, you will be prevented from performing a subset of actions within the
@@ -745,6 +813,7 @@ class Environment(pulumi.CustomResource):
 
         __props__.__dict__["api_proxy_type"] = api_proxy_type
         __props__.__dict__["client_ip_resolution_config"] = client_ip_resolution_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment_type"] = deployment_type
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -774,6 +843,19 @@ class Environment(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "client_ip_resolution_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")

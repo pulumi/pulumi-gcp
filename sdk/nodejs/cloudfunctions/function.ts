@@ -162,6 +162,15 @@ export class Function extends pulumi.CustomResource {
      */
     declare public readonly buildWorkerPool: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the function.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -319,6 +328,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["buildEnvironmentVariables"] = state?.buildEnvironmentVariables;
             resourceInputs["buildServiceAccount"] = state?.buildServiceAccount;
             resourceInputs["buildWorkerPool"] = state?.buildWorkerPool;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["dockerRegistry"] = state?.dockerRegistry;
             resourceInputs["dockerRepository"] = state?.dockerRepository;
@@ -361,6 +371,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["buildEnvironmentVariables"] = args?.buildEnvironmentVariables;
             resourceInputs["buildServiceAccount"] = args?.buildServiceAccount;
             resourceInputs["buildWorkerPool"] = args?.buildWorkerPool;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["dockerRegistry"] = args?.dockerRegistry;
             resourceInputs["dockerRepository"] = args?.dockerRepository;
@@ -425,6 +436,15 @@ export interface FunctionState {
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
     buildWorkerPool?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the function.
      */
@@ -590,6 +610,15 @@ export interface FunctionArgs {
      * Name of the Cloud Build Custom Worker Pool that should be used to build the function.
      */
     buildWorkerPool?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the function.
      */

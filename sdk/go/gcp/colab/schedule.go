@@ -423,6 +423,13 @@ type Schedule struct {
 	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestOutput `pulumi:"createNotebookExecutionJobRequest"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron pulumi.StringOutput `pulumi:"cron"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// Required. The display name of the Schedule.
@@ -498,6 +505,13 @@ type scheduleState struct {
 	CreateNotebookExecutionJobRequest *ScheduleCreateNotebookExecutionJobRequest `pulumi:"createNotebookExecutionJobRequest"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron *string `pulumi:"cron"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
 	DesiredState *string `pulumi:"desiredState"`
 	// Required. The display name of the Schedule.
@@ -529,6 +543,13 @@ type ScheduleState struct {
 	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestPtrInput
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
 	DesiredState pulumi.StringPtrInput
 	// Required. The display name of the Schedule.
@@ -564,6 +585,13 @@ type scheduleArgs struct {
 	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequest `pulumi:"createNotebookExecutionJobRequest"`
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron string `pulumi:"cron"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
 	DesiredState *string `pulumi:"desiredState"`
 	// Required. The display name of the Schedule.
@@ -592,6 +620,13 @@ type ScheduleArgs struct {
 	CreateNotebookExecutionJobRequest ScheduleCreateNotebookExecutionJobRequestInput
 	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 	Cron pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
 	DesiredState pulumi.StringPtrInput
 	// Required. The display name of the Schedule.
@@ -714,6 +749,16 @@ func (o ScheduleOutput) CreateNotebookExecutionJobRequest() ScheduleCreateNotebo
 // Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
 func (o ScheduleOutput) Cron() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Cron }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ScheduleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.

@@ -67,6 +67,7 @@ type LookupFunctionArgs struct {
 // A collection of values returned by getFunction.
 type LookupFunctionResult struct {
 	BuildConfigs    []GetFunctionBuildConfig  `pulumi:"buildConfigs"`
+	DeletionPolicy  string                    `pulumi:"deletionPolicy"`
 	Description     string                    `pulumi:"description"`
 	EffectiveLabels map[string]string         `pulumi:"effectiveLabels"`
 	Environment     string                    `pulumi:"environment"`
@@ -128,6 +129,10 @@ func (o LookupFunctionResultOutput) ToLookupFunctionResultOutputWithContext(ctx 
 
 func (o LookupFunctionResultOutput) BuildConfigs() GetFunctionBuildConfigArrayOutput {
 	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionBuildConfig { return v.BuildConfigs }).(GetFunctionBuildConfigArrayOutput)
+}
+
+func (o LookupFunctionResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupFunctionResultOutput) Description() pulumi.StringOutput {

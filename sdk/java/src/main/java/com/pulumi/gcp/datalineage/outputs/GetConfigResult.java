@@ -12,6 +12,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetConfigResult {
+    private String deletionPolicy;
     private String etag;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -24,6 +25,9 @@ public final class GetConfigResult {
     private String parent;
 
     private GetConfigResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public String etag() {
         return this.etag;
     }
@@ -56,6 +60,7 @@ public final class GetConfigResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String etag;
         private String id;
         private List<GetConfigIngestion> ingestions;
@@ -65,6 +70,7 @@ public final class GetConfigResult {
         public Builder() {}
         public Builder(GetConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.etag = defaults.etag;
     	      this.id = defaults.id;
     	      this.ingestions = defaults.ingestions;
@@ -73,6 +79,14 @@ public final class GetConfigResult {
     	      this.parent = defaults.parent;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetConfigResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder etag(String etag) {
             if (etag == null) {
@@ -126,6 +140,7 @@ public final class GetConfigResult {
         }
         public GetConfigResult build() {
             final var _resultValue = new GetConfigResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.etag = etag;
             _resultValue.id = id;
             _resultValue.ingestions = ingestions;

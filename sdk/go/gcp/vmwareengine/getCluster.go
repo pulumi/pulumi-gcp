@@ -65,6 +65,7 @@ type LookupClusterResult struct {
 	AutoscalingSettings   []GetClusterAutoscalingSetting   `pulumi:"autoscalingSettings"`
 	CreateTime            string                           `pulumi:"createTime"`
 	DatastoreMountConfigs []GetClusterDatastoreMountConfig `pulumi:"datastoreMountConfigs"`
+	DeletionPolicy        string                           `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string                     `pulumi:"id"`
 	Management      bool                       `pulumi:"management"`
@@ -122,6 +123,10 @@ func (o LookupClusterResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) DatastoreMountConfigs() GetClusterDatastoreMountConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterDatastoreMountConfig { return v.DatastoreMountConfigs }).(GetClusterDatastoreMountConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

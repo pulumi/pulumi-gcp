@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppEngineServiceResult {
+    private String deletionPolicy;
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
      * 
@@ -42,6 +43,9 @@ public final class GetAppEngineServiceResult {
     private Map<String,String> userLabels;
 
     private GetAppEngineServiceResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
      * 
@@ -93,6 +97,7 @@ public final class GetAppEngineServiceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String displayName;
         private String id;
         private String moduleId;
@@ -104,6 +109,7 @@ public final class GetAppEngineServiceResult {
         public Builder() {}
         public Builder(GetAppEngineServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.moduleId = defaults.moduleId;
@@ -114,6 +120,14 @@ public final class GetAppEngineServiceResult {
     	      this.userLabels = defaults.userLabels;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder displayName(String displayName) {
             if (displayName == null) {
@@ -181,6 +195,7 @@ public final class GetAppEngineServiceResult {
         }
         public GetAppEngineServiceResult build() {
             final var _resultValue = new GetAppEngineServiceResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.moduleId = moduleId;

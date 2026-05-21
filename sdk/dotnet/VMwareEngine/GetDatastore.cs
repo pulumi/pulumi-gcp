@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.VMwareEngine
     {
         public readonly ImmutableArray<string> Clusters;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -167,6 +168,8 @@ namespace Pulumi.Gcp.VMwareEngine
             ImmutableArray<string> clusters,
 
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -188,6 +191,7 @@ namespace Pulumi.Gcp.VMwareEngine
         {
             Clusters = clusters;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Id = id;
             Location = location;

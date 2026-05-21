@@ -49,6 +49,19 @@ namespace Pulumi.Gcp.Apigee
         public Output<ImmutableArray<Outputs.KeystoresAliasesPkcs12CertsInfo>> CertsInfos { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Environment associated with the alias
         /// </summary>
         [Output("environment")]
@@ -56,8 +69,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// PKCS12 file content
-        /// 
-        /// - - -
         /// </summary>
         [Output("file")]
         public Output<string> File { get; private set; } = null!;
@@ -145,6 +156,19 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> Alias { get; set; } = null!;
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Environment associated with the alias
         /// </summary>
         [Input("environment", required: true)]
@@ -152,8 +176,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// PKCS12 file content
-        /// 
-        /// - - -
         /// </summary>
         [Input("file", required: true)]
         public Input<string> File { get; set; } = null!;
@@ -210,6 +232,19 @@ namespace Pulumi.Gcp.Apigee
         }
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Environment associated with the alias
         /// </summary>
         [Input("environment")]
@@ -217,8 +252,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// PKCS12 file content
-        /// 
-        /// - - -
         /// </summary>
         [Input("file")]
         public Input<string>? File { get; set; }

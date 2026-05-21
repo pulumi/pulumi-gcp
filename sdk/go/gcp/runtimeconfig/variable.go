@@ -119,6 +119,13 @@ import (
 type Variable struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the variable to manage. Note that variable
 	// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -186,6 +193,13 @@ func GetVariable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Variable resources.
 type variableState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the variable to manage. Note that variable
 	// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
 	Name *string `pulumi:"name"`
@@ -210,6 +224,13 @@ type variableState struct {
 }
 
 type VariableState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the variable to manage. Note that variable
 	// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
 	Name pulumi.StringPtrInput
@@ -238,6 +259,13 @@ func (VariableState) ElementType() reflect.Type {
 }
 
 type variableArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the variable to manage. Note that variable
 	// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
 	Name *string `pulumi:"name"`
@@ -259,6 +287,13 @@ type variableArgs struct {
 
 // The set of arguments for constructing a Variable resource.
 type VariableArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the variable to manage. Note that variable
 	// names can be hierarchical using slashes (e.g. "prod-variables/hostname").
 	Name pulumi.StringPtrInput
@@ -363,6 +398,16 @@ func (o VariableOutput) ToVariableOutput() VariableOutput {
 
 func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VariableOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Variable) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the variable to manage. Note that variable

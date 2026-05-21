@@ -41,6 +41,13 @@ type Workload struct {
 	Attributes WorkloadAttributesPtrOutput `pulumi:"attributes"`
 	// Output only. Create time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-defined description of a Workload.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Immutable. The resource name of the original discovered workload.
@@ -119,6 +126,13 @@ type workloadState struct {
 	Attributes *WorkloadAttributes `pulumi:"attributes"`
 	// Output only. Create time.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-defined description of a Workload.
 	Description *string `pulumi:"description"`
 	// Immutable. The resource name of the original discovered workload.
@@ -156,6 +170,13 @@ type WorkloadState struct {
 	Attributes WorkloadAttributesPtrInput
 	// Output only. Create time.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-defined description of a Workload.
 	Description pulumi.StringPtrInput
 	// Immutable. The resource name of the original discovered workload.
@@ -195,6 +216,13 @@ type workloadArgs struct {
 	// Consumer provided attributes.
 	// Structure is documented below.
 	Attributes *WorkloadAttributes `pulumi:"attributes"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-defined description of a Workload.
 	Description *string `pulumi:"description"`
 	// Immutable. The resource name of the original discovered workload.
@@ -217,6 +245,13 @@ type WorkloadArgs struct {
 	// Consumer provided attributes.
 	// Structure is documented below.
 	Attributes WorkloadAttributesPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-defined description of a Workload.
 	Description pulumi.StringPtrInput
 	// Immutable. The resource name of the original discovered workload.
@@ -333,6 +368,16 @@ func (o WorkloadOutput) Attributes() WorkloadAttributesPtrOutput {
 // Output only. Create time.
 func (o WorkloadOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkloadOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-defined description of a Workload.

@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
@@ -138,6 +140,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerF5ConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterStorageArgs;
@@ -241,6 +244,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigHostConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterControlPlaneNodeAutoResizeConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
@@ -250,6 +255,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterDataplaneV2Args;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterUpgradePolicyArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
  * import java.util.ArrayList;
@@ -549,6 +555,30 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A human readable description of this VMware User Cluster.

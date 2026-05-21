@@ -38,6 +38,13 @@ type EnvKeystore struct {
 
 	// Aliases in this keystore.
 	Aliases pulumi.StringArrayOutput `pulumi:"aliases"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
@@ -80,6 +87,13 @@ func GetEnvKeystore(ctx *pulumi.Context,
 type envKeystoreState struct {
 	// Aliases in this keystore.
 	Aliases []string `pulumi:"aliases"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId *string `pulumi:"envId"`
@@ -90,6 +104,13 @@ type envKeystoreState struct {
 type EnvKeystoreState struct {
 	// Aliases in this keystore.
 	Aliases pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId pulumi.StringPtrInput
@@ -102,6 +123,13 @@ func (EnvKeystoreState) ElementType() reflect.Type {
 }
 
 type envKeystoreArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId string `pulumi:"envId"`
@@ -111,6 +139,13 @@ type envKeystoreArgs struct {
 
 // The set of arguments for constructing a EnvKeystore resource.
 type EnvKeystoreArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId pulumi.StringInput
@@ -208,6 +243,16 @@ func (o EnvKeystoreOutput) ToEnvKeystoreOutputWithContext(ctx context.Context) E
 // Aliases in this keystore.
 func (o EnvKeystoreOutput) Aliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvKeystore) pulumi.StringArrayOutput { return v.Aliases }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnvKeystoreOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvKeystore) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The Apigee environment group associated with the Apigee environment,

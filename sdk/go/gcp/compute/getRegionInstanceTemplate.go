@@ -88,6 +88,7 @@ type LookupRegionInstanceTemplateResult struct {
 	ConfidentialInstanceConfigs []GetRegionInstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfigs"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
+	DeletionPolicy    string `pulumi:"deletionPolicy"`
 	// A brief description of this resource.
 	Description string `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -235,6 +236,10 @@ func (o LookupRegionInstanceTemplateResultOutput) ConfidentialInstanceConfigs() 
 // Creation timestamp in RFC3339 text format.
 func (o LookupRegionInstanceTemplateResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionInstanceTemplateResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstanceTemplateResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A brief description of this resource.

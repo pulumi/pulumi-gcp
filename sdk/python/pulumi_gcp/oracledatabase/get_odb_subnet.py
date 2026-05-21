@@ -26,13 +26,16 @@ class GetOdbSubnetResult:
     """
     A collection of values returned by getOdbSubnet.
     """
-    def __init__(__self__, cidr_range=None, create_time=None, deletion_protection=None, effective_labels=None, id=None, labels=None, location=None, name=None, odb_subnet_id=None, odbnetwork=None, project=None, pulumi_labels=None, purpose=None, state=None):
+    def __init__(__self__, cidr_range=None, create_time=None, deletion_policy=None, deletion_protection=None, effective_labels=None, id=None, labels=None, location=None, name=None, odb_subnet_id=None, odbnetwork=None, project=None, pulumi_labels=None, purpose=None, state=None):
         if cidr_range and not isinstance(cidr_range, str):
             raise TypeError("Expected argument 'cidr_range' to be a str")
         pulumi.set(__self__, "cidr_range", cidr_range)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -79,6 +82,11 @@ class GetOdbSubnetResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -152,6 +160,7 @@ class AwaitableGetOdbSubnetResult(GetOdbSubnetResult):
         return GetOdbSubnetResult(
             cidr_range=self.cidr_range,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             effective_labels=self.effective_labels,
             id=self.id,
@@ -210,6 +219,7 @@ def get_odb_subnet(location: Optional[_builtins.str] = None,
     return AwaitableGetOdbSubnetResult(
         cidr_range=pulumi.get(__ret__, 'cidr_range'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
@@ -265,6 +275,7 @@ def get_odb_subnet_output(location: pulumi.Input[Optional[_builtins.str]] = None
     return __ret__.apply(lambda __response__: GetOdbSubnetResult(
         cidr_range=pulumi.get(__response__, 'cidr_range'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         id=pulumi.get(__response__, 'id'),

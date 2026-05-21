@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -87,6 +88,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerStartupProbeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerStartupProbeHttpGetArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -143,6 +147,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerResourcesArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -198,6 +204,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeCloudSqlInstanceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerEnvArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerEnvValueSourceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerVolumeMountArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolInstanceSplitArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
@@ -308,7 +321,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -359,6 +374,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerResourcesArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateNodeSelectorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -417,6 +434,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeSecretArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeSecretItemArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerVolumeMountArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamMember;
@@ -504,6 +526,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeEmptyDirArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -563,6 +589,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeGcsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -620,6 +650,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerVolumeMountArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeEmptyDirArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -676,7 +710,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerVolumeMountArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVolumeNfsArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -753,7 +792,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudrunv2.WorkerPool;
  * import com.pulumi.gcp.cloudrunv2.WorkerPoolArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerStartupProbeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerStartupProbeTcpSocketArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateContainerLivenessProbeHttpGetArgs;
  * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.WorkerPoolTemplateVpcAccessNetworkInterfaceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -997,6 +1042,30 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Whether Terraform will be prevented from destroying the service. Defaults to true.

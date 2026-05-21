@@ -21,6 +21,7 @@ public final class GetRegionNetworkEndpointGroupResult {
     private List<GetRegionNetworkEndpointGroupAppEngine> appEngines;
     private List<GetRegionNetworkEndpointGroupCloudFunction> cloudFunctions;
     private List<GetRegionNetworkEndpointGroupCloudRun> cloudRuns;
+    private String deletionPolicy;
     /**
      * @return The RNEG description.
      * 
@@ -67,6 +68,9 @@ public final class GetRegionNetworkEndpointGroupResult {
     }
     public List<GetRegionNetworkEndpointGroupCloudRun> cloudRuns() {
         return this.cloudRuns;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The RNEG description.
@@ -141,6 +145,7 @@ public final class GetRegionNetworkEndpointGroupResult {
         private List<GetRegionNetworkEndpointGroupAppEngine> appEngines;
         private List<GetRegionNetworkEndpointGroupCloudFunction> cloudFunctions;
         private List<GetRegionNetworkEndpointGroupCloudRun> cloudRuns;
+        private String deletionPolicy;
         private String description;
         private String id;
         private @Nullable String name;
@@ -159,6 +164,7 @@ public final class GetRegionNetworkEndpointGroupResult {
     	      this.appEngines = defaults.appEngines;
     	      this.cloudFunctions = defaults.cloudFunctions;
     	      this.cloudRuns = defaults.cloudRuns;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
@@ -205,6 +211,14 @@ public final class GetRegionNetworkEndpointGroupResult {
         }
         public Builder cloudRuns(GetRegionNetworkEndpointGroupCloudRun... cloudRuns) {
             return cloudRuns(List.of(cloudRuns));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -305,6 +319,7 @@ public final class GetRegionNetworkEndpointGroupResult {
             _resultValue.appEngines = appEngines;
             _resultValue.cloudFunctions = cloudFunctions;
             _resultValue.cloudRuns = cloudRuns;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.name = name;

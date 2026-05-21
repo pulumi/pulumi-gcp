@@ -138,6 +138,13 @@ type SecurityProfileV2 struct {
 
 	// The timestamp at which this profile was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the security profile.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name of the security profile v2 resource,
@@ -196,6 +203,13 @@ func GetSecurityProfileV2(ctx *pulumi.Context,
 type securityProfileV2State struct {
 	// The timestamp at which this profile was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the security profile.
 	Description *string `pulumi:"description"`
 	// Name of the security profile v2 resource,
@@ -216,6 +230,13 @@ type securityProfileV2State struct {
 type SecurityProfileV2State struct {
 	// The timestamp at which this profile was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the security profile.
 	Description pulumi.StringPtrInput
 	// Name of the security profile v2 resource,
@@ -238,6 +259,13 @@ func (SecurityProfileV2State) ElementType() reflect.Type {
 }
 
 type securityProfileV2Args struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the security profile.
 	Description *string `pulumi:"description"`
 	// The Apigee Organization associated with the Apigee Security Profile V2,
@@ -252,6 +280,13 @@ type securityProfileV2Args struct {
 
 // The set of arguments for constructing a SecurityProfileV2 resource.
 type SecurityProfileV2Args struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the security profile.
 	Description pulumi.StringPtrInput
 	// The Apigee Organization associated with the Apigee Security Profile V2,
@@ -354,6 +389,16 @@ func (o SecurityProfileV2Output) ToSecurityProfileV2OutputWithContext(ctx contex
 // The timestamp at which this profile was created.
 func (o SecurityProfileV2Output) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfileV2) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityProfileV2Output) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityProfileV2) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the security profile.

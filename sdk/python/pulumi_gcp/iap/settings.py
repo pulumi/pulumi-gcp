@@ -23,6 +23,7 @@ class SettingsArgs:
     def __init__(__self__, *,
                  access_settings: pulumi.Input[Optional['SettingsAccessSettingsArgs']] = None,
                  application_settings: pulumi.Input[Optional['SettingsApplicationSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Settings resource.
@@ -31,6 +32,12 @@ class SettingsArgs:
                Structure is documented below.
         :param pulumi.Input['SettingsApplicationSettingsArgs'] application_settings: Top level wrapper for all application related settings in IAP.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The resource name of the IAP protected resource. Name can have below resources:
                * organizations/{organization_id}
                * folders/{folder_id}
@@ -48,6 +55,8 @@ class SettingsArgs:
             pulumi.set(__self__, "access_settings", access_settings)
         if application_settings is not None:
             pulumi.set(__self__, "application_settings", application_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -76,6 +85,23 @@ class SettingsArgs:
     @application_settings.setter
     def application_settings(self, value: pulumi.Input[Optional['SettingsApplicationSettingsArgs']]):
         pulumi.set(self, "application_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -106,6 +132,7 @@ class _SettingsState:
     def __init__(__self__, *,
                  access_settings: pulumi.Input[Optional['SettingsAccessSettingsArgs']] = None,
                  application_settings: pulumi.Input[Optional['SettingsApplicationSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Settings resources.
@@ -114,6 +141,12 @@ class _SettingsState:
                Structure is documented below.
         :param pulumi.Input['SettingsApplicationSettingsArgs'] application_settings: Top level wrapper for all application related settings in IAP.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The resource name of the IAP protected resource. Name can have below resources:
                * organizations/{organization_id}
                * folders/{folder_id}
@@ -131,6 +164,8 @@ class _SettingsState:
             pulumi.set(__self__, "access_settings", access_settings)
         if application_settings is not None:
             pulumi.set(__self__, "application_settings", application_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -159,6 +194,23 @@ class _SettingsState:
     @application_settings.setter
     def application_settings(self, value: pulumi.Input[Optional['SettingsApplicationSettingsArgs']]):
         pulumi.set(self, "application_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -192,6 +244,7 @@ class Settings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
                  application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -323,6 +376,12 @@ class Settings(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']] application_settings: Top level wrapper for all application related settings in IAP.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The resource name of the IAP protected resource. Name can have below resources:
                * organizations/{organization_id}
                * folders/{folder_id}
@@ -482,6 +541,7 @@ class Settings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
                  application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -494,6 +554,7 @@ class Settings(pulumi.CustomResource):
 
             __props__.__dict__["access_settings"] = access_settings
             __props__.__dict__["application_settings"] = application_settings
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["name"] = name
         super(Settings, __self__).__init__(
             'gcp:iap/settings:Settings',
@@ -507,6 +568,7 @@ class Settings(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_settings: pulumi.Input[Optional[Union['SettingsAccessSettingsArgs', 'SettingsAccessSettingsArgsDict']]] = None,
             application_settings: pulumi.Input[Optional[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Settings':
         """
         Get an existing Settings resource's state with the given name, id, and optional extra
@@ -519,6 +581,12 @@ class Settings(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['SettingsApplicationSettingsArgs', 'SettingsApplicationSettingsArgsDict']] application_settings: Top level wrapper for all application related settings in IAP.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The resource name of the IAP protected resource. Name can have below resources:
                * organizations/{organization_id}
                * folders/{folder_id}
@@ -538,6 +606,7 @@ class Settings(pulumi.CustomResource):
 
         __props__.__dict__["access_settings"] = access_settings
         __props__.__dict__["application_settings"] = application_settings
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["name"] = name
         return Settings(resource_name, opts=opts, __props__=__props__)
 
@@ -558,6 +627,19 @@ class Settings(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "application_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

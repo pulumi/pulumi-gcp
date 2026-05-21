@@ -49,6 +49,7 @@ export interface GetIamCustomRoleArgs {
  */
 export interface GetIamCustomRoleResult {
     readonly deleted: boolean;
+    readonly deletionPolicy: string;
     readonly description: string;
     /**
      * The provider-assigned unique ID for this managed resource.

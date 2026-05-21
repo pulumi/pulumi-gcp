@@ -244,6 +244,7 @@ namespace Pulumi.Gcp.Monitoring
     public sealed class GetClusterIstioServiceResult
     {
         public readonly string ClusterName;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Name used for UI elements listing this (Monitoring) Service.
         /// </summary>
@@ -272,6 +273,8 @@ namespace Pulumi.Gcp.Monitoring
         private GetClusterIstioServiceResult(
             string clusterName,
 
+            string deletionPolicy,
+
             string displayName,
 
             string id,
@@ -293,6 +296,7 @@ namespace Pulumi.Gcp.Monitoring
             ImmutableDictionary<string, string> userLabels)
         {
             ClusterName = clusterName;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             Id = id;
             Location = location;

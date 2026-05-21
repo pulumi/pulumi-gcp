@@ -26,6 +26,7 @@ class BucketArgs:
                  cors: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
                  custom_placement_config: pulumi.Input[Optional['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption: pulumi.Input[Optional['BucketEncryptionArgs']] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -55,6 +56,12 @@ class BucketArgs:
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
@@ -85,6 +92,8 @@ class BucketArgs:
             pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable_object_retention is not None:
             pulumi.set(__self__, "enable_object_retention", enable_object_retention)
         if encryption is not None:
@@ -185,6 +194,23 @@ class BucketArgs:
     @default_event_based_hold.setter
     def default_event_based_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_event_based_hold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableObjectRetention")
@@ -423,6 +449,7 @@ class _BucketState:
                  cors: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorArgs']]]] = None,
                  custom_placement_config: pulumi.Input[Optional['BucketCustomPlacementConfigArgs']] = None,
                  default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption: pulumi.Input[Optional['BucketEncryptionArgs']] = None,
@@ -457,6 +484,12 @@ class _BucketState:
         :param pulumi.Input[Sequence[pulumi.Input['BucketCorArgs']]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input['BucketCustomPlacementConfigArgs'] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input['BucketEncryptionArgs'] encryption: The bucket's encryption configuration. Structure is documented below.
@@ -496,6 +529,8 @@ class _BucketState:
             pulumi.set(__self__, "custom_placement_config", custom_placement_config)
         if default_event_based_hold is not None:
             pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_object_retention is not None:
@@ -598,6 +633,23 @@ class _BucketState:
     @default_event_based_hold.setter
     def default_event_based_hold(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_event_based_hold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -937,6 +989,7 @@ class Bucket(pulumi.CustomResource):
                  cors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
                  custom_placement_config: pulumi.Input[Optional[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
                  default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption: pulumi.Input[Optional[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1188,6 +1241,12 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']] encryption: The bucket's encryption configuration. Structure is documented below.
         :param pulumi.Input[_builtins.bool] force_destroy: When true, before deleting a bucket, delete all objects within the bucket, or Anywhere Caches caching data for that bucket. Otherwise, buckets with objects/caches will fail. Anywhere Cache requires additional permissions to interact with and will be assumed not present when the provider is not permissioned, attempting to delete the bucket anyways. This may result in the objects in the bucket getting destroyed but not the bucket itself if there is a cache in use with the bucket. Force deletion may take a long time to delete buckets with lots of objects or with any Anywhere Caches (80m+).
@@ -1461,6 +1520,7 @@ class Bucket(pulumi.CustomResource):
                  cors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
                  custom_placement_config: pulumi.Input[Optional[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
                  default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption: pulumi.Input[Optional[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1494,6 +1554,7 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["cors"] = cors
             __props__.__dict__["custom_placement_config"] = custom_placement_config
             __props__.__dict__["default_event_based_hold"] = default_event_based_hold
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enable_object_retention"] = enable_object_retention
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["force_destroy"] = force_destroy
@@ -1539,6 +1600,7 @@ class Bucket(pulumi.CustomResource):
             cors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]]] = None,
             custom_placement_config: pulumi.Input[Optional[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']]] = None,
             default_event_based_hold: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_object_retention: pulumi.Input[Optional[_builtins.bool]] = None,
             encryption: pulumi.Input[Optional[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']]] = None,
@@ -1577,6 +1639,12 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['BucketCorArgs', 'BucketCorArgsDict']]]] cors: The bucket's [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[Union['BucketCustomPlacementConfigArgs', 'BucketCustomPlacementConfigArgsDict']] custom_placement_config: The bucket's custom location configuration, which specifies the individual regions that comprise a dual-region bucket. If the bucket is designated a single or multi-region, the parameters are empty. Structure is documented below.
         :param pulumi.Input[_builtins.bool] default_event_based_hold: Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_object_retention: Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
         :param pulumi.Input[Union['BucketEncryptionArgs', 'BucketEncryptionArgsDict']] encryption: The bucket's encryption configuration. Structure is documented below.
@@ -1616,6 +1684,7 @@ class Bucket(pulumi.CustomResource):
         __props__.__dict__["cors"] = cors
         __props__.__dict__["custom_placement_config"] = custom_placement_config
         __props__.__dict__["default_event_based_hold"] = default_event_based_hold
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_object_retention"] = enable_object_retention
         __props__.__dict__["encryption"] = encryption
@@ -1676,6 +1745,19 @@ class Bucket(pulumi.CustomResource):
         Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
         """
         return pulumi.get(self, "default_event_based_hold")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly ImmutableArray<string> CustomAudiences;
         public readonly bool DefaultUriDisabled;
         public readonly string DeleteTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
@@ -226,6 +227,8 @@ namespace Pulumi.Gcp.CloudRunV2
             bool defaultUriDisabled,
 
             string deleteTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -302,6 +305,7 @@ namespace Pulumi.Gcp.CloudRunV2
             CustomAudiences = customAudiences;
             DefaultUriDisabled = defaultUriDisabled;
             DeleteTime = deleteTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             Description = description;
             EffectiveAnnotations = effectiveAnnotations;

@@ -175,6 +175,15 @@ export class RegionBackendBucket extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
      */
@@ -227,6 +236,7 @@ export class RegionBackendBucket extends pulumi.CustomResource {
             const state = argsOrState as RegionBackendBucketState | undefined;
             resourceInputs["bucketName"] = state?.bucketName;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["loadBalancingScheme"] = state?.loadBalancingScheme;
             resourceInputs["name"] = state?.name;
@@ -242,6 +252,7 @@ export class RegionBackendBucket extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["bucketName"] = args?.bucketName;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["loadBalancingScheme"] = args?.loadBalancingScheme;
             resourceInputs["name"] = args?.name;
@@ -268,6 +279,15 @@ export interface RegionBackendBucketState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
@@ -316,6 +336,15 @@ export interface RegionBackendBucketArgs {
      * backend bucket.
      */
     bucketName: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.

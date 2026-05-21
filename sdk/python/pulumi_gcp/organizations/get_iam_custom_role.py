@@ -26,10 +26,13 @@ class GetIamCustomRoleResult:
     """
     A collection of values returned by getIamCustomRole.
     """
-    def __init__(__self__, deleted=None, description=None, id=None, name=None, org_id=None, permissions=None, role_id=None, stage=None, title=None):
+    def __init__(__self__, deleted=None, deletion_policy=None, description=None, id=None, name=None, org_id=None, permissions=None, role_id=None, stage=None, title=None):
         if deleted and not isinstance(deleted, bool):
             raise TypeError("Expected argument 'deleted' to be a bool")
         pulumi.set(__self__, "deleted", deleted)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -59,6 +62,11 @@ class GetIamCustomRoleResult:
     @pulumi.getter
     def deleted(self) -> _builtins.bool:
         return pulumi.get(self, "deleted")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -111,6 +119,7 @@ class AwaitableGetIamCustomRoleResult(GetIamCustomRoleResult):
             yield self
         return GetIamCustomRoleResult(
             deleted=self.deleted,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             id=self.id,
             name=self.name,
@@ -151,6 +160,7 @@ def get_iam_custom_role(org_id: Optional[_builtins.str] = None,
 
     return AwaitableGetIamCustomRoleResult(
         deleted=pulumi.get(__ret__, 'deleted'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -188,6 +198,7 @@ def get_iam_custom_role_output(org_id: pulumi.Input[Optional[_builtins.str]] = N
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getIamCustomRole:getIamCustomRole', __args__, opts=opts, typ=GetIamCustomRoleResult)
     return __ret__.apply(lambda __response__: GetIamCustomRoleResult(
         deleted=pulumi.get(__response__, 'deleted'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

@@ -162,6 +162,13 @@ type AccessApprovalSettings struct {
 	ActiveKeyVersion pulumi.StringPtrOutput `pulumi:"activeKeyVersion"`
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	AncestorHasActiveKeyVersion pulumi.BoolOutput `pulumi:"ancestorHasActiveKeyVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	EnrolledAncestor pulumi.BoolOutput `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -225,6 +232,13 @@ type accessApprovalSettingsState struct {
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	AncestorHasActiveKeyVersion *bool `pulumi:"ancestorHasActiveKeyVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	EnrolledAncestor *bool `pulumi:"enrolledAncestor"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -253,6 +267,13 @@ type AccessApprovalSettingsState struct {
 	ActiveKeyVersion pulumi.StringPtrInput
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	AncestorHasActiveKeyVersion pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// This field will always be unset for the organization since organizations do not have ancestors.
 	EnrolledAncestor pulumi.BoolPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
@@ -283,6 +304,13 @@ type accessApprovalSettingsArgs struct {
 	// The asymmetric crypto key version to use for signing approval requests.
 	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	ActiveKeyVersion *string `pulumi:"activeKeyVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
 	// to have explicit approval. Enrollment can be done for individual services.
@@ -302,6 +330,13 @@ type AccessApprovalSettingsArgs struct {
 	// The asymmetric crypto key version to use for signing approval requests.
 	// Empty activeKeyVersion indicates that a Google-managed key should be used for signing.
 	ActiveKeyVersion pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A list of Google Cloud Services for which the given resource has Access Approval enrolled.
 	// Access requests for the resource given by name against any of these services contained here will be required
 	// to have explicit approval. Enrollment can be done for individual services.
@@ -412,6 +447,16 @@ func (o AccessApprovalSettingsOutput) ActiveKeyVersion() pulumi.StringPtrOutput 
 // This field will always be unset for the organization since organizations do not have ancestors.
 func (o AccessApprovalSettingsOutput) AncestorHasActiveKeyVersion() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.BoolOutput { return v.AncestorHasActiveKeyVersion }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AccessApprovalSettingsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessApprovalSettings) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // This field will always be unset for the organization since organizations do not have ancestors.

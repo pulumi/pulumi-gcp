@@ -71,6 +71,13 @@ type AzureClient struct {
 	Certificate pulumi.StringOutput `pulumi:"certificate"`
 	// Output only. The time at which this resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of this resource.
@@ -130,6 +137,13 @@ type azureClientState struct {
 	Certificate *string `pulumi:"certificate"`
 	// Output only. The time at which this resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// The name of this resource.
@@ -151,6 +165,13 @@ type AzureClientState struct {
 	Certificate pulumi.StringPtrInput
 	// Output only. The time at which this resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// The name of this resource.
@@ -172,6 +193,13 @@ func (AzureClientState) ElementType() reflect.Type {
 type azureClientArgs struct {
 	// The Azure Active Directory Application ID.
 	ApplicationId string `pulumi:"applicationId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// The name of this resource.
@@ -188,6 +216,13 @@ type azureClientArgs struct {
 type AzureClientArgs struct {
 	// The Azure Active Directory Application ID.
 	ApplicationId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location for the resource
 	Location pulumi.StringInput
 	// The name of this resource.
@@ -300,6 +335,16 @@ func (o AzureClientOutput) Certificate() pulumi.StringOutput {
 // Output only. The time at which this resource was created.
 func (o AzureClientOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureClient) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AzureClientOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureClient) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The location for the resource

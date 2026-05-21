@@ -27,13 +27,16 @@ class GetStoragePoolResult:
     """
     A collection of values returned by getStoragePool.
     """
-    def __init__(__self__, capacity_provisioning_type=None, creation_timestamp=None, deletion_protection=None, description=None, effective_labels=None, id=None, kind=None, label_fingerprint=None, labels=None, name=None, params=None, performance_provisioning_type=None, pool_provisioned_capacity_gb=None, pool_provisioned_iops=None, pool_provisioned_throughput=None, project=None, pulumi_labels=None, resource_statuses=None, statuses=None, storage_pool_type=None, zone=None):
+    def __init__(__self__, capacity_provisioning_type=None, creation_timestamp=None, deletion_policy=None, deletion_protection=None, description=None, effective_labels=None, id=None, kind=None, label_fingerprint=None, labels=None, name=None, params=None, performance_provisioning_type=None, pool_provisioned_capacity_gb=None, pool_provisioned_iops=None, pool_provisioned_throughput=None, project=None, pulumi_labels=None, resource_statuses=None, statuses=None, storage_pool_type=None, zone=None):
         if capacity_provisioning_type and not isinstance(capacity_provisioning_type, str):
             raise TypeError("Expected argument 'capacity_provisioning_type' to be a str")
         pulumi.set(__self__, "capacity_provisioning_type", capacity_provisioning_type)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -101,6 +104,11 @@ class GetStoragePoolResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -206,6 +214,7 @@ class AwaitableGetStoragePoolResult(GetStoragePoolResult):
         return GetStoragePoolResult(
             capacity_provisioning_type=self.capacity_provisioning_type,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             description=self.description,
             effective_labels=self.effective_labels,
@@ -266,6 +275,7 @@ def get_storage_pool(name: Optional[_builtins.str] = None,
     return AwaitableGetStoragePoolResult(
         capacity_provisioning_type=pulumi.get(__ret__, 'capacity_provisioning_type'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -323,6 +333,7 @@ def get_storage_pool_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetStoragePoolResult(
         capacity_provisioning_type=pulumi.get(__response__, 'capacity_provisioning_type'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

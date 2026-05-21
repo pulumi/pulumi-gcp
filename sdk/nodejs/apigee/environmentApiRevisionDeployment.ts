@@ -84,6 +84,15 @@ export class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly basepaths: pulumi.Output<string[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * RFC3339 timestamp when deployment started.
      */
     declare public /*out*/ readonly deployStartTime: pulumi.Output<string>;
@@ -131,6 +140,7 @@ export class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
             const state = argsOrState as EnvironmentApiRevisionDeploymentState | undefined;
             resourceInputs["api"] = state?.api;
             resourceInputs["basepaths"] = state?.basepaths;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deployStartTime"] = state?.deployStartTime;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["orgId"] = state?.orgId;
@@ -154,6 +164,7 @@ export class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'revision'");
             }
             resourceInputs["api"] = args?.api;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["override"] = args?.override;
@@ -181,6 +192,15 @@ export interface EnvironmentApiRevisionDeploymentState {
      * Basepaths associated with the deployed proxy.
      */
     basepaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * RFC3339 timestamp when deployment started.
      */
@@ -223,6 +243,15 @@ export interface EnvironmentApiRevisionDeploymentArgs {
      * Apigee API proxy name.
      */
     api: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Apigee environment name.
      */

@@ -53,6 +53,7 @@ export interface GetResourcePolicyArgs {
  * A collection of values returned by getResourcePolicy.
  */
 export interface GetResourcePolicyResult {
+    readonly deletionPolicy: string;
     /**
      * Description of this Resource Policy.
      */

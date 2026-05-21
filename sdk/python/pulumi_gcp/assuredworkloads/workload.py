@@ -26,6 +26,7 @@ class WorkloadArgs:
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
                  billing_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_sovereign_controls: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_settings: pulumi.Input[Optional['WorkloadKmsSettingsArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -48,6 +49,12 @@ class WorkloadArgs:
                
                - - -
         :param pulumi.Input[_builtins.str] billing_account: Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input['WorkloadKmsSettingsArgs'] kms_settings: **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. Labels applied to the workload.
@@ -68,6 +75,8 @@ class WorkloadArgs:
         pulumi.set(__self__, "organization", organization)
         if billing_account is not None:
             pulumi.set(__self__, "billing_account", billing_account)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable_sovereign_controls is not None:
             pulumi.set(__self__, "enable_sovereign_controls", enable_sovereign_controls)
         if kms_settings is not None:
@@ -152,6 +161,23 @@ class WorkloadArgs:
     @billing_account.setter
     def billing_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSovereignControls")
@@ -285,6 +311,7 @@ class _WorkloadState:
                  compliance_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadComplianceStatusArgs']]]] = None,
                  compliant_but_disallowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  ekm_provisioning_responses: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadEkmProvisioningResponseArgs']]]] = None,
@@ -313,6 +340,12 @@ class _WorkloadState:
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadComplianceStatusArgs']]] compliance_statuses: Output only. Count of active Violations in the Workload.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compliant_but_disallowed_services: Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         :param pulumi.Input[_builtins.str] create_time: Output only. Immutable. The Workload creation timestamp.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['WorkloadEkmProvisioningResponseArgs']]] ekm_provisioning_responses: Optional. Represents the Ekm Provisioning State of the given workload.
@@ -351,6 +384,8 @@ class _WorkloadState:
             pulumi.set(__self__, "compliant_but_disallowed_services", compliant_but_disallowed_services)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -451,6 +486,23 @@ class _WorkloadState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -708,6 +760,7 @@ class Workload(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  compliance_regime: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_sovereign_controls: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']]] = None,
@@ -853,6 +906,12 @@ class Workload(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] billing_account: Optional. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
         :param pulumi.Input[_builtins.str] compliance_regime: Required. Immutable. Compliance Regime associated with this workload. Possible values: COMPLIANCE_REGIME_UNSPECIFIED, IL4, CJIS, FEDRAMP_HIGH, FEDRAMP_MODERATE, US_REGIONAL_ACCESS, HIPAA, HITRUST, EU_REGIONS_AND_SUPPORT, CA_REGIONS_AND_SUPPORT, ITAR, AU_REGIONS_AND_US_SUPPORT, ASSURED_WORKLOADS_FOR_PARTNERS, ISR_REGIONS, ISR_REGIONS_AND_SUPPORT, CA_PROTECTED_B, IL5, IL2, JP_REGIONS_AND_SUPPORT, KSA_REGIONS_AND_SUPPORT_WITH_SOVEREIGNTY_CONTROLS, REGIONAL_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS, HEALTHCARE_AND_LIFE_SCIENCES_CONTROLS_US_SUPPORT, IRS_1075
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[_builtins.bool] enable_sovereign_controls: Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
         :param pulumi.Input[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']] kms_settings: **DEPRECATED** Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
@@ -1024,6 +1083,7 @@ class Workload(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  compliance_regime: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_sovereign_controls: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_settings: pulumi.Input[Optional[Union['WorkloadKmsSettingsArgs', 'WorkloadKmsSettingsArgsDict']]] = None,
@@ -1050,6 +1110,7 @@ class Workload(pulumi.CustomResource):
             if compliance_regime is None and not opts.urn:
                 raise TypeError("Missing required property 'compliance_regime'")
             __props__.__dict__["compliance_regime"] = compliance_regime
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -1096,6 +1157,7 @@ class Workload(pulumi.CustomResource):
             compliance_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadComplianceStatusArgs', 'WorkloadComplianceStatusArgsDict']]]]] = None,
             compliant_but_disallowed_services: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             ekm_provisioning_responses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict']]]]] = None,
@@ -1128,6 +1190,12 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadComplianceStatusArgs', 'WorkloadComplianceStatusArgsDict']]]] compliance_statuses: Output only. Count of active Violations in the Workload.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] compliant_but_disallowed_services: Output only. Urls for services which are compliant for this Assured Workload, but which are currently disallowed by the ResourceUsageRestriction org policy. Invoke workloads.restrictAllowedResources endpoint to allow your project developers to use these services in their environment.
         :param pulumi.Input[_builtins.str] create_time: Output only. Immutable. The Workload creation timestamp.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WorkloadEkmProvisioningResponseArgs', 'WorkloadEkmProvisioningResponseArgsDict']]]] ekm_provisioning_responses: Optional. Represents the Ekm Provisioning State of the given workload.
@@ -1165,6 +1233,7 @@ class Workload(pulumi.CustomResource):
         __props__.__dict__["compliance_statuses"] = compliance_statuses
         __props__.__dict__["compliant_but_disallowed_services"] = compliant_but_disallowed_services
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["ekm_provisioning_responses"] = ekm_provisioning_responses
@@ -1226,6 +1295,19 @@ class Workload(pulumi.CustomResource):
         Output only. Immutable. The Workload creation timestamp.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

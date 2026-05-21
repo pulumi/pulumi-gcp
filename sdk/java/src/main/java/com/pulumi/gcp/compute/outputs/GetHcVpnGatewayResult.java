@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetHcVpnGatewayResult {
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveLabels;
     private String gatewayIpVersion;
@@ -37,6 +38,9 @@ public final class GetHcVpnGatewayResult {
     private List<GetHcVpnGatewayVpnInterface> vpnInterfaces;
 
     private GetHcVpnGatewayResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public String description() {
         return this.description;
     }
@@ -96,6 +100,7 @@ public final class GetHcVpnGatewayResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private String gatewayIpVersion;
@@ -114,6 +119,7 @@ public final class GetHcVpnGatewayResult {
         public Builder() {}
         public Builder(GetHcVpnGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gatewayIpVersion = defaults.gatewayIpVersion;
@@ -131,6 +137,14 @@ public final class GetHcVpnGatewayResult {
     	      this.vpnInterfaces = defaults.vpnInterfaces;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -255,6 +269,7 @@ public final class GetHcVpnGatewayResult {
         }
         public GetHcVpnGatewayResult build() {
             final var _resultValue = new GetHcVpnGatewayResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.gatewayIpVersion = gatewayIpVersion;

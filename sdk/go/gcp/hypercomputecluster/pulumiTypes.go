@@ -4742,6 +4742,11 @@ func (o ClusterStorageResourceConfigNewBucketPtrOutput) StorageClass() pulumi.St
 type ClusterStorageResourceConfigNewBucketAutoclass struct {
 	// Enables Auto-class feature.
 	Enabled bool `pulumi:"enabled"`
+	// Terminal storage class of the autoclass bucket
+	// Possible values:
+	// NEARLINE
+	// ARCHIVE
+	TerminalStorageClass *string `pulumi:"terminalStorageClass"`
 }
 
 // ClusterStorageResourceConfigNewBucketAutoclassInput is an input type that accepts ClusterStorageResourceConfigNewBucketAutoclassArgs and ClusterStorageResourceConfigNewBucketAutoclassOutput values.
@@ -4758,6 +4763,11 @@ type ClusterStorageResourceConfigNewBucketAutoclassInput interface {
 type ClusterStorageResourceConfigNewBucketAutoclassArgs struct {
 	// Enables Auto-class feature.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Terminal storage class of the autoclass bucket
+	// Possible values:
+	// NEARLINE
+	// ARCHIVE
+	TerminalStorageClass pulumi.StringPtrInput `pulumi:"terminalStorageClass"`
 }
 
 func (ClusterStorageResourceConfigNewBucketAutoclassArgs) ElementType() reflect.Type {
@@ -4842,6 +4852,14 @@ func (o ClusterStorageResourceConfigNewBucketAutoclassOutput) Enabled() pulumi.B
 	return o.ApplyT(func(v ClusterStorageResourceConfigNewBucketAutoclass) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Terminal storage class of the autoclass bucket
+// Possible values:
+// NEARLINE
+// ARCHIVE
+func (o ClusterStorageResourceConfigNewBucketAutoclassOutput) TerminalStorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterStorageResourceConfigNewBucketAutoclass) *string { return v.TerminalStorageClass }).(pulumi.StringPtrOutput)
+}
+
 type ClusterStorageResourceConfigNewBucketAutoclassPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterStorageResourceConfigNewBucketAutoclassPtrOutput) ElementType() reflect.Type {
@@ -4874,6 +4892,19 @@ func (o ClusterStorageResourceConfigNewBucketAutoclassPtrOutput) Enabled() pulum
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Terminal storage class of the autoclass bucket
+// Possible values:
+// NEARLINE
+// ARCHIVE
+func (o ClusterStorageResourceConfigNewBucketAutoclassPtrOutput) TerminalStorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStorageResourceConfigNewBucketAutoclass) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TerminalStorageClass
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterStorageResourceConfigNewBucketHierarchicalNamespace struct {
@@ -5402,6 +5433,13 @@ type ClusterStorageResourceConfigNewLustre struct {
 	// Name of the Managed Lustre instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance}`
 	Lustre string `pulumi:"lustre"`
+	// Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+	// 500, 1000. See [Performance tiers and maximum storage
+	// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+	// for more information.
+	//
+	// <a name="nestedStorageResourcesFilestore"></a>The `filestore` block contains:
+	PerUnitStorageThroughput *string `pulumi:"perUnitStorageThroughput"`
 }
 
 // ClusterStorageResourceConfigNewLustreInput is an input type that accepts ClusterStorageResourceConfigNewLustreArgs and ClusterStorageResourceConfigNewLustreOutput values.
@@ -5429,6 +5467,13 @@ type ClusterStorageResourceConfigNewLustreArgs struct {
 	// Name of the Managed Lustre instance, in the format
 	// `projects/{project}/locations/{location}/instances/{instance}`
 	Lustre pulumi.StringInput `pulumi:"lustre"`
+	// Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+	// 500, 1000. See [Performance tiers and maximum storage
+	// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+	// for more information.
+	//
+	// <a name="nestedStorageResourcesFilestore"></a>The `filestore` block contains:
+	PerUnitStorageThroughput pulumi.StringPtrInput `pulumi:"perUnitStorageThroughput"`
 }
 
 func (ClusterStorageResourceConfigNewLustreArgs) ElementType() reflect.Type {
@@ -5533,6 +5578,16 @@ func (o ClusterStorageResourceConfigNewLustreOutput) Lustre() pulumi.StringOutpu
 	return o.ApplyT(func(v ClusterStorageResourceConfigNewLustre) string { return v.Lustre }).(pulumi.StringOutput)
 }
 
+// Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+// 500, 1000. See [Performance tiers and maximum storage
+// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+// for more information.
+//
+// <a name="nestedStorageResourcesFilestore"></a>The `filestore` block contains:
+func (o ClusterStorageResourceConfigNewLustreOutput) PerUnitStorageThroughput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterStorageResourceConfigNewLustre) *string { return v.PerUnitStorageThroughput }).(pulumi.StringPtrOutput)
+}
+
 type ClusterStorageResourceConfigNewLustrePtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterStorageResourceConfigNewLustrePtrOutput) ElementType() reflect.Type {
@@ -5599,6 +5654,21 @@ func (o ClusterStorageResourceConfigNewLustrePtrOutput) Lustre() pulumi.StringPt
 			return nil
 		}
 		return &v.Lustre
+	}).(pulumi.StringPtrOutput)
+}
+
+// Throughput of the instance in MB/s/TiB. Valid values are 125, 250,
+// 500, 1000. See [Performance tiers and maximum storage
+// capacities](https://cloud.google.com/managed-lustre/docs/create-instance#performance-tiers)
+// for more information.
+//
+// <a name="nestedStorageResourcesFilestore"></a>The `filestore` block contains:
+func (o ClusterStorageResourceConfigNewLustrePtrOutput) PerUnitStorageThroughput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterStorageResourceConfigNewLustre) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PerUnitStorageThroughput
 	}).(pulumi.StringPtrOutput)
 }
 

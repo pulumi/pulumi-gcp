@@ -272,6 +272,13 @@ type NatAddress struct {
 
 	// Flag that specifies whether the reserved NAT address should be activate.
 	Activate pulumi.BoolPtrOutput `pulumi:"activate"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -318,6 +325,13 @@ func GetNatAddress(ctx *pulumi.Context,
 type natAddressState struct {
 	// Flag that specifies whether the reserved NAT address should be activate.
 	Activate *bool `pulumi:"activate"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId *string `pulumi:"instanceId"`
@@ -332,6 +346,13 @@ type natAddressState struct {
 type NatAddressState struct {
 	// Flag that specifies whether the reserved NAT address should be activate.
 	Activate pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId pulumi.StringPtrInput
@@ -350,6 +371,13 @@ func (NatAddressState) ElementType() reflect.Type {
 type natAddressArgs struct {
 	// Flag that specifies whether the reserved NAT address should be activate.
 	Activate *bool `pulumi:"activate"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId string `pulumi:"instanceId"`
@@ -361,6 +389,13 @@ type natAddressArgs struct {
 type NatAddressArgs struct {
 	// Flag that specifies whether the reserved NAT address should be activate.
 	Activate pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee instance associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/instances/{{instance_name}}`.
 	InstanceId pulumi.StringInput
@@ -458,6 +493,16 @@ func (o NatAddressOutput) ToNatAddressOutputWithContext(ctx context.Context) Nat
 // Flag that specifies whether the reserved NAT address should be activate.
 func (o NatAddressOutput) Activate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NatAddress) pulumi.BoolPtrOutput { return v.Activate }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o NatAddressOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NatAddress) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The Apigee instance associated with the Apigee environment,

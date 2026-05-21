@@ -184,6 +184,166 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// });
     /// ```
+    /// ### Workstation Config Hyperdisk
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "c3-standard-22",
+    ///             },
+    ///         },
+    ///         PersistentDirectories = new[]
+    ///         {
+    ///             new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryArgs
+    ///             {
+    ///                 MountPath = "/home",
+    ///                 GceHd = new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryGceHdArgs
+    ///                 {
+    ///                     SizeGb = 200,
+    ///                     ReclaimPolicy = "DELETE",
+    ///                     ArchiveTimeout = "3600s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Workstation Config Hyperdisk Source Snapshot
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var tagKey1 = new Gcp.Tags.TagKey("tag_key1", new()
+    ///     {
+    ///         Parent = "organizations/0123456789",
+    ///         ShortName = "keyname",
+    ///     });
+    /// 
+    ///     var tagValue1 = new Gcp.Tags.TagValue("tag_value1", new()
+    ///     {
+    ///         Parent = tagKey1.Id,
+    ///         ShortName = "valuename",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstation-cluster",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = @default.Name,
+    ///     });
+    /// 
+    ///     var mySourceDisk = new Gcp.Compute.Disk("my_source_disk", new()
+    ///     {
+    ///         Name = "workstation-config-source-disk",
+    ///         Size = 10,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var mySourceSnapshot = new Gcp.Compute.Snapshot("my_source_snapshot", new()
+    ///     {
+    ///         Name = "workstation-config-source-snapshot",
+    ///         SourceDisk = mySourceDisk.Name,
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    ///     var defaultWorkstationCluster = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "workstation-cluster",
+    ///         Network = @default.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var defaultWorkstationConfig = new Gcp.Workstations.WorkstationConfig("default", new()
+    ///     {
+    ///         WorkstationConfigId = "workstation-config",
+    ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
+    ///         Location = "us-central1",
+    ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
+    ///         {
+    ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
+    ///             {
+    ///                 MachineType = "c3-standard-22",
+    ///                 BootDiskSizeGb = 35,
+    ///                 DisablePublicIpAddresses = true,
+    ///                 VmTags = Output.Tuple(tagKey1.Id, tagValue1.Id).Apply(values =&gt;
+    ///                 {
+    ///                     var tagKey1Id = values.Item1;
+    ///                     var tagValue1Id = values.Item2;
+    ///                     return 
+    ///                     {
+    ///                         { tagKey1Id, tagValue1Id },
+    ///                     };
+    ///                 }),
+    ///             },
+    ///         },
+    ///         PersistentDirectories = new[]
+    ///         {
+    ///             new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryArgs
+    ///             {
+    ///                 MountPath = "/home",
+    ///                 GceHd = new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryGceHdArgs
+    ///                 {
+    ///                     SourceSnapshot = mySourceSnapshot.Id,
+    ///                     ReclaimPolicy = "DELETE",
+    ///                     ArchiveTimeout = "3600s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Workstation Config Persistent Directories
     /// 
     /// ```csharp
@@ -764,6 +924,17 @@ namespace Pulumi.Gcp.Workstations
         public Output<bool> Degraded { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         /// </summary>
         [Output("disableTcpConnections")]
@@ -1003,6 +1174,17 @@ namespace Pulumi.Gcp.Workstations
         public Input<Inputs.WorkstationConfigContainerArgs>? Container { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         /// </summary>
         [Input("disableTcpConnections")]
@@ -1214,6 +1396,17 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("degraded")]
         public Input<bool>? Degraded { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.

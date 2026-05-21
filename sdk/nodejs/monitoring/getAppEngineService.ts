@@ -93,6 +93,7 @@ export interface GetAppEngineServiceArgs {
  * A collection of values returned by getAppEngineService.
  */
 export interface GetAppEngineServiceResult {
+    readonly deletionPolicy: string;
     /**
      * Name used for UI elements listing this (Monitoring) Service.
      */

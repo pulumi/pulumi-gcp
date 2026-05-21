@@ -286,6 +286,17 @@ namespace Pulumi.Gcp.Monitoring
         public Output<ImmutableArray<Outputs.AlertPolicyCreationRecord>> CreationRecords { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A short name or phrase used to identify the policy in
         /// dashboards, notifications, and incidents. To avoid confusion, don't use
         /// the same display name for multiple policies in the same project. The
@@ -434,6 +445,17 @@ namespace Pulumi.Gcp.Monitoring
         }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A short name or phrase used to identify the policy in
         /// dashboards, notifications, and incidents. To avoid confusion, don't use
         /// the same display name for multiple policies in the same project. The
@@ -562,6 +584,17 @@ namespace Pulumi.Gcp.Monitoring
             get => _creationRecords ?? (_creationRecords = new InputList<Inputs.AlertPolicyCreationRecordGetArgs>());
             set => _creationRecords = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// A short name or phrase used to identify the policy in

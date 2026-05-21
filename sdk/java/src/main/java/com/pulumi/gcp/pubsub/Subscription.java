@@ -550,7 +550,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_63399")
+ *                 .filenameSuffix("-_34534")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -626,7 +626,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_97523")
+ *                 .filenameSuffix("-_87829")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -704,7 +704,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_31660")
+ *                 .filenameSuffix("-_44023")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -787,7 +787,7 @@ import javax.annotation.Nullable;
  *             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
  *                 .bucket(example.name())
  *                 .filenamePrefix("pre-")
- *                 .filenameSuffix("-_97962")
+ *                 .filenameSuffix("-_50206")
  *                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
  *                 .maxBytes(1000)
  *                 .maxDuration("300s")
@@ -1203,6 +1203,30 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<SubscriptionDeadLetterPolicy>> deadLetterPolicy() {
         return Codegen.optional(this.deadLetterPolicy);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

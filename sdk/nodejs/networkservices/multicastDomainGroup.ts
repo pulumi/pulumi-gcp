@@ -108,6 +108,15 @@ export class MulticastDomainGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional text description of the multicast domain group.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -193,6 +202,7 @@ export class MulticastDomainGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MulticastDomainGroupState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
@@ -213,6 +223,7 @@ export class MulticastDomainGroup extends pulumi.CustomResource {
             if (args?.multicastDomainGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'multicastDomainGroupId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -242,6 +253,15 @@ export interface MulticastDomainGroupState {
      * The timestamp when the multicast domain group was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional text description of the multicast domain group.
      */
@@ -319,6 +339,15 @@ export interface MulticastDomainGroupState {
  * The set of arguments for constructing a MulticastDomainGroup resource.
  */
 export interface MulticastDomainGroupArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional text description of the multicast domain group.
      */

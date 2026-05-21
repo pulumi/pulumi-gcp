@@ -39,6 +39,7 @@ type LookupInstanceResult struct {
 	AccessRulesOptions []GetInstanceAccessRulesOption `pulumi:"accessRulesOptions"`
 	CapacityGib        string                         `pulumi:"capacityGib"`
 	CreateTime         string                         `pulumi:"createTime"`
+	DeletionPolicy     string                         `pulumi:"deletionPolicy"`
 	Description        string                         `pulumi:"description"`
 	DynamicTierOptions []GetInstanceDynamicTierOption `pulumi:"dynamicTierOptions"`
 	EffectiveLabels    map[string]string              `pulumi:"effectiveLabels"`
@@ -114,6 +115,10 @@ func (o LookupInstanceResultOutput) CapacityGib() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) Description() pulumi.StringOutput {

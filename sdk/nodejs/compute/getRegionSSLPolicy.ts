@@ -28,6 +28,7 @@ export interface GetRegionSSLPolicyArgs {
 export interface GetRegionSSLPolicyResult {
     readonly creationTimestamp: string;
     readonly customFeatures: string[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly enabledFeatures: string[];
     readonly fingerprint: string;

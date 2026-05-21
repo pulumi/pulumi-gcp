@@ -83,6 +83,63 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Storage Batch Operations Description
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.storage.BatchOperationsJob;
+ * import com.pulumi.gcp.storage.BatchOperationsJobArgs;
+ * import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListArgs;
+ * import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsArgs;
+ * import com.pulumi.gcp.storage.inputs.BatchOperationsJobBucketListBucketsPrefixListArgs;
+ * import com.pulumi.gcp.storage.inputs.BatchOperationsJobPutMetadataArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bucket = new Bucket("bucket", BucketArgs.builder()
+ *             .name("tf-sample-bucket")
+ *             .location("us-central1")
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var tf_job = new BatchOperationsJob("tf-job", BatchOperationsJobArgs.builder()
+ *             .jobId("tf-job")
+ *             .description("A sample job description")
+ *             .bucketList(BatchOperationsJobBucketListArgs.builder()
+ *                 .buckets(BatchOperationsJobBucketListBucketsArgs.builder()
+ *                     .bucket(bucket.name())
+ *                     .prefixList(BatchOperationsJobBucketListBucketsPrefixListArgs.builder()
+ *                         .includedObjectPrefixes("bkt")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .putMetadata(BatchOperationsJobPutMetadataArgs.builder()
+ *                 .customMetadata(Map.of("key", "value"))
+ *                 .build())
+ *             .deleteProtection(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -176,6 +233,44 @@ public class BatchOperationsJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> deleteProtection() {
         return Codegen.optional(this.deleteProtection);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
+     * A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+     * 
+     */
+    @Export(name="description", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The ID of the job.

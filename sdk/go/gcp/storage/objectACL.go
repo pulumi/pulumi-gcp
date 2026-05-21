@@ -80,6 +80,13 @@ type ObjectACL struct {
 
 	// The name of the bucket the object is stored in.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the object to apply the acl to.
 	//
 	// ***
@@ -88,6 +95,10 @@ type ObjectACL struct {
 	PredefinedAcl pulumi.StringPtrOutput `pulumi:"predefinedAcl"`
 	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
 	// Must be set if `predefinedAcl` is not.
+	//
+	// > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+	// adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+	// `Create` time, where the object role/entity pair is omitted if not explicitly set.
 	RoleEntities pulumi.StringArrayOutput `pulumi:"roleEntities"`
 }
 
@@ -129,6 +140,13 @@ func GetObjectACL(ctx *pulumi.Context,
 type objectACLState struct {
 	// The name of the bucket the object is stored in.
 	Bucket *string `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the object to apply the acl to.
 	//
 	// ***
@@ -137,12 +155,23 @@ type objectACLState struct {
 	PredefinedAcl *string `pulumi:"predefinedAcl"`
 	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
 	// Must be set if `predefinedAcl` is not.
+	//
+	// > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+	// adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+	// `Create` time, where the object role/entity pair is omitted if not explicitly set.
 	RoleEntities []string `pulumi:"roleEntities"`
 }
 
 type ObjectACLState struct {
 	// The name of the bucket the object is stored in.
 	Bucket pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the object to apply the acl to.
 	//
 	// ***
@@ -151,6 +180,10 @@ type ObjectACLState struct {
 	PredefinedAcl pulumi.StringPtrInput
 	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
 	// Must be set if `predefinedAcl` is not.
+	//
+	// > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+	// adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+	// `Create` time, where the object role/entity pair is omitted if not explicitly set.
 	RoleEntities pulumi.StringArrayInput
 }
 
@@ -161,6 +194,13 @@ func (ObjectACLState) ElementType() reflect.Type {
 type objectACLArgs struct {
 	// The name of the bucket the object is stored in.
 	Bucket string `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the object to apply the acl to.
 	//
 	// ***
@@ -169,6 +209,10 @@ type objectACLArgs struct {
 	PredefinedAcl *string `pulumi:"predefinedAcl"`
 	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
 	// Must be set if `predefinedAcl` is not.
+	//
+	// > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+	// adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+	// `Create` time, where the object role/entity pair is omitted if not explicitly set.
 	RoleEntities []string `pulumi:"roleEntities"`
 }
 
@@ -176,6 +220,13 @@ type objectACLArgs struct {
 type ObjectACLArgs struct {
 	// The name of the bucket the object is stored in.
 	Bucket pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the object to apply the acl to.
 	//
 	// ***
@@ -184,6 +235,10 @@ type ObjectACLArgs struct {
 	PredefinedAcl pulumi.StringPtrInput
 	// List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
 	// Must be set if `predefinedAcl` is not.
+	//
+	// > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+	// adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+	// `Create` time, where the object role/entity pair is omitted if not explicitly set.
 	RoleEntities pulumi.StringArrayInput
 }
 
@@ -279,6 +334,16 @@ func (o ObjectACLOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectACL) pulumi.StringOutput { return v.Bucket }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ObjectACLOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectACL) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // The name of the object to apply the acl to.
 //
 // ***
@@ -293,6 +358,10 @@ func (o ObjectACLOutput) PredefinedAcl() pulumi.StringPtrOutput {
 
 // List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
 // Must be set if `predefinedAcl` is not.
+//
+// > The object's creator will always have `OWNER` permissions for their object, and any attempt to modify that permission would return an error. Instead, Terraform automatically
+// adds that role/entity pair to your `pulumi preview` results when it is omitted in your config; `pulumi preview` will show the correct final state at every point except for at
+// `Create` time, where the object role/entity pair is omitted if not explicitly set.
 func (o ObjectACLOutput) RoleEntities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ObjectACL) pulumi.StringArrayOutput { return v.RoleEntities }).(pulumi.StringArrayOutput)
 }

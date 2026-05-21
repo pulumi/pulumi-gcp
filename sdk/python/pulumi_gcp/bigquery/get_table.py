@@ -27,7 +27,7 @@ class GetTableResult:
     """
     A collection of values returned by getTable.
     """
-    def __init__(__self__, biglake_configurations=None, clusterings=None, creation_time=None, dataset_id=None, deletion_protection=None, description=None, effective_labels=None, encryption_configurations=None, etag=None, expiration_time=None, external_catalog_table_options=None, external_data_configurations=None, friendly_name=None, generated_schema_columns=None, id=None, ignore_auto_generated_schema=None, ignore_schema_changes=None, labels=None, last_modified_time=None, location=None, materialized_views=None, max_staleness=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, pulumi_labels=None, range_partitionings=None, require_partition_filter=None, resource_tags=None, schema=None, schema_foreign_type_infos=None, self_link=None, table_constraints=None, table_id=None, table_metadata_view=None, table_replication_infos=None, time_partitionings=None, type=None, views=None):
+    def __init__(__self__, biglake_configurations=None, clusterings=None, creation_time=None, dataset_id=None, deletion_policy=None, deletion_protection=None, description=None, effective_labels=None, encryption_configurations=None, etag=None, expiration_time=None, external_catalog_table_options=None, external_data_configurations=None, friendly_name=None, generated_schema_columns=None, id=None, ignore_auto_generated_schema=None, ignore_schema_changes=None, labels=None, last_modified_time=None, location=None, materialized_views=None, max_staleness=None, num_bytes=None, num_long_term_bytes=None, num_rows=None, project=None, pulumi_labels=None, range_partitionings=None, require_partition_filter=None, resource_tags=None, schema=None, schema_foreign_type_infos=None, self_link=None, table_constraints=None, table_id=None, table_metadata_view=None, table_replication_infos=None, time_partitionings=None, type=None, views=None):
         if biglake_configurations and not isinstance(biglake_configurations, list):
             raise TypeError("Expected argument 'biglake_configurations' to be a list")
         pulumi.set(__self__, "biglake_configurations", biglake_configurations)
@@ -40,6 +40,9 @@ class GetTableResult:
         if dataset_id and not isinstance(dataset_id, str):
             raise TypeError("Expected argument 'dataset_id' to be a str")
         pulumi.set(__self__, "dataset_id", dataset_id)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -168,6 +171,11 @@ class GetTableResult:
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> _builtins.str:
         return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -363,6 +371,7 @@ class AwaitableGetTableResult(GetTableResult):
             clusterings=self.clusterings,
             creation_time=self.creation_time,
             dataset_id=self.dataset_id,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             description=self.description,
             effective_labels=self.effective_labels,
@@ -439,6 +448,7 @@ def get_table(dataset_id: Optional[_builtins.str] = None,
         clusterings=pulumi.get(__ret__, 'clusterings'),
         creation_time=pulumi.get(__ret__, 'creation_time'),
         dataset_id=pulumi.get(__ret__, 'dataset_id'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -512,6 +522,7 @@ def get_table_output(dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
         clusterings=pulumi.get(__response__, 'clusterings'),
         creation_time=pulumi.get(__response__, 'creation_time'),
         dataset_id=pulumi.get(__response__, 'dataset_id'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

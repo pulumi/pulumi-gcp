@@ -27,6 +27,7 @@ class ConnectionArgs:
                  bitbucket_cloud_config: pulumi.Input[Optional['ConnectionBitbucketCloudConfigArgs']] = None,
                  bitbucket_data_center_config: pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigArgs']] = None,
                  crypto_key_config: pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  github_config: pulumi.Input[Optional['ConnectionGithubConfigArgs']] = None,
@@ -53,6 +54,12 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
                encryption keys (CMEK) feature.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
                Repository based API methods and webhooks processing for repositories in
                this connection will be disabled.
@@ -85,6 +92,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "bitbucket_data_center_config", bitbucket_data_center_config)
         if crypto_key_config is not None:
             pulumi.set(__self__, "crypto_key_config", crypto_key_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if etag is not None:
@@ -183,6 +192,23 @@ class ConnectionArgs:
     @crypto_key_config.setter
     def crypto_key_config(self, value: pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']]):
         pulumi.set(self, "crypto_key_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -315,6 +341,7 @@ class _ConnectionState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  crypto_key_config: pulumi.Input[Optional['ConnectionCryptoKeyConfigArgs']] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -351,6 +378,12 @@ class _ConnectionState:
                encryption keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: Output only. [Output only] Delete timestamp
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
                Repository based API methods and webhooks processing for repositories in
                this connection will be disabled.
@@ -402,6 +435,8 @@ class _ConnectionState:
             pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if effective_annotations is not None:
@@ -530,6 +565,23 @@ class _ConnectionState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -777,6 +829,7 @@ class Connection(pulumi.CustomResource):
                  bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  crypto_key_config: pulumi.Input[Optional[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
@@ -1130,6 +1183,12 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
                encryption keys (CMEK) feature.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
                Repository based API methods and webhooks processing for repositories in
                this connection will be disabled.
@@ -1506,6 +1565,7 @@ class Connection(pulumi.CustomResource):
                  bitbucket_data_center_config: pulumi.Input[Optional[Union['ConnectionBitbucketDataCenterConfigArgs', 'ConnectionBitbucketDataCenterConfigArgsDict']]] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  crypto_key_config: pulumi.Input[Optional[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  github_config: pulumi.Input[Optional[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
@@ -1532,6 +1592,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connection_id'")
             __props__.__dict__["connection_id"] = connection_id
             __props__.__dict__["crypto_key_config"] = crypto_key_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["etag"] = etag
             __props__.__dict__["github_config"] = github_config
@@ -1573,6 +1634,7 @@ class Connection(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             crypto_key_config: pulumi.Input[Optional[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1613,6 +1675,12 @@ class Connection(pulumi.CustomResource):
                encryption keys (CMEK) feature.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: Output only. [Output only] Delete timestamp
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
                Repository based API methods and webhooks processing for repositories in
                this connection will be disabled.
@@ -1661,6 +1729,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_config"] = crypto_key_config
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1744,6 +1813,19 @@ class Connection(pulumi.CustomResource):
         Output only. [Output only] Delete timestamp
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

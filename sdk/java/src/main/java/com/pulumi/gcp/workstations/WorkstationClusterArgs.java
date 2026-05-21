@@ -39,6 +39,31 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Human-readable name for this resource.
      * 
      */
@@ -194,6 +219,23 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+     * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+     * 
+     */
+    @Import(name="workstationAuthorizationUrl")
+    private @Nullable Output<String> workstationAuthorizationUrl;
+
+    /**
+     * @return Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+     * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+     * 
+     */
+    public Optional<Output<String>> workstationAuthorizationUrl() {
+        return Optional.ofNullable(this.workstationAuthorizationUrl);
+    }
+
+    /**
      * ID to use for the workstation cluster.
      * 
      */
@@ -208,10 +250,28 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
         return this.workstationClusterId;
     }
 
+    /**
+     * Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+     * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation&#39;s host URL.
+     * 
+     */
+    @Import(name="workstationLaunchUrl")
+    private @Nullable Output<String> workstationLaunchUrl;
+
+    /**
+     * @return Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+     * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation&#39;s host URL.
+     * 
+     */
+    public Optional<Output<String>> workstationLaunchUrl() {
+        return Optional.ofNullable(this.workstationLaunchUrl);
+    }
+
     private WorkstationClusterArgs() {}
 
     private WorkstationClusterArgs(WorkstationClusterArgs $) {
         this.annotations = $.annotations;
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.domainConfig = $.domainConfig;
         this.labels = $.labels;
@@ -221,7 +281,9 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
         this.project = $.project;
         this.subnetwork = $.subnetwork;
         this.tags = $.tags;
+        this.workstationAuthorizationUrl = $.workstationAuthorizationUrl;
         this.workstationClusterId = $.workstationClusterId;
+        this.workstationLaunchUrl = $.workstationLaunchUrl;
     }
 
     public static Builder builder() {
@@ -265,6 +327,37 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
          */
         public Builder annotations(Map<String,String> annotations) {
             return annotations(Output.of(annotations));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -477,6 +570,29 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param workstationAuthorizationUrl Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+         * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workstationAuthorizationUrl(@Nullable Output<String> workstationAuthorizationUrl) {
+            $.workstationAuthorizationUrl = workstationAuthorizationUrl;
+            return this;
+        }
+
+        /**
+         * @param workstationAuthorizationUrl Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+         * Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workstationAuthorizationUrl(String workstationAuthorizationUrl) {
+            return workstationAuthorizationUrl(Output.of(workstationAuthorizationUrl));
+        }
+
+        /**
          * @param workstationClusterId ID to use for the workstation cluster.
          * 
          * @return builder
@@ -495,6 +611,29 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
          */
         public Builder workstationClusterId(String workstationClusterId) {
             return workstationClusterId(Output.of(workstationClusterId));
+        }
+
+        /**
+         * @param workstationLaunchUrl Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+         * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation&#39;s host URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workstationLaunchUrl(@Nullable Output<String> workstationLaunchUrl) {
+            $.workstationLaunchUrl = workstationLaunchUrl;
+            return this;
+        }
+
+        /**
+         * @param workstationLaunchUrl Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+         * Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation&#39;s host URL.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workstationLaunchUrl(String workstationLaunchUrl) {
+            return workstationLaunchUrl(Output.of(workstationLaunchUrl));
         }
 
         public WorkstationClusterArgs build() {

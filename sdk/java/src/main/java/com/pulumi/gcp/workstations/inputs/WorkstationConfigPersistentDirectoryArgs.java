@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryGceHdArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryGcePdArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class WorkstationConfigPersistentDirectoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final WorkstationConfigPersistentDirectoryArgs Empty = new WorkstationConfigPersistentDirectoryArgs();
+
+    /**
+     * A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gceHd")
+    private @Nullable Output<WorkstationConfigPersistentDirectoryGceHdArgs> gceHd;
+
+    /**
+     * @return A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkstationConfigPersistentDirectoryGceHdArgs>> gceHd() {
+        return Optional.ofNullable(this.gceHd);
+    }
 
     /**
      * A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
@@ -51,6 +69,7 @@ public final class WorkstationConfigPersistentDirectoryArgs extends com.pulumi.r
     private WorkstationConfigPersistentDirectoryArgs() {}
 
     private WorkstationConfigPersistentDirectoryArgs(WorkstationConfigPersistentDirectoryArgs $) {
+        this.gceHd = $.gceHd;
         this.gcePd = $.gcePd;
         this.mountPath = $.mountPath;
     }
@@ -71,6 +90,29 @@ public final class WorkstationConfigPersistentDirectoryArgs extends com.pulumi.r
 
         public Builder(WorkstationConfigPersistentDirectoryArgs defaults) {
             $ = new WorkstationConfigPersistentDirectoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param gceHd A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gceHd(@Nullable Output<WorkstationConfigPersistentDirectoryGceHdArgs> gceHd) {
+            $.gceHd = gceHd;
+            return this;
+        }
+
+        /**
+         * @param gceHd A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gceHd(WorkstationConfigPersistentDirectoryGceHdArgs gceHd) {
+            return gceHd(Output.of(gceHd));
         }
 
         /**

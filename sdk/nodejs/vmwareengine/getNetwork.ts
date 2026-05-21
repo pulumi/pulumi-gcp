@@ -58,6 +58,7 @@ export interface GetNetworkArgs {
  */
 export interface GetNetworkResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly etag: string;
     /**

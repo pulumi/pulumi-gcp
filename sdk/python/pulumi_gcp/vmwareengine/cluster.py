@@ -24,6 +24,7 @@ class ClusterArgs:
                  parent: pulumi.Input[_builtins.str],
                  autoscaling_settings: pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']] = None,
                  datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None):
         """
@@ -39,6 +40,12 @@ class ClusterArgs:
                Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
                for unmount remove 'datastore_mount_config' config from the update of cluster resource
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -49,6 +56,8 @@ class ClusterArgs:
             pulumi.set(__self__, "autoscaling_settings", autoscaling_settings)
         if datastore_mount_configs is not None:
             pulumi.set(__self__, "datastore_mount_configs", datastore_mount_configs)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_type_configs is not None:
@@ -98,6 +107,23 @@ class ClusterArgs:
         pulumi.set(self, "datastore_mount_configs", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -130,6 +156,7 @@ class _ClusterState:
                  autoscaling_settings: pulumi.Input[Optional['ClusterAutoscalingSettingsArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeTypeConfigArgs']]]] = None,
@@ -150,6 +177,12 @@ class _ClusterState:
                Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
                for unmount remove 'datastore_mount_config' config from the update of cluster resource
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
@@ -171,6 +204,8 @@ class _ClusterState:
             pulumi.set(__self__, "create_time", create_time)
         if datastore_mount_configs is not None:
             pulumi.set(__self__, "datastore_mount_configs", datastore_mount_configs)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if management is not None:
             pulumi.set(__self__, "management", management)
         if name is not None:
@@ -228,6 +263,23 @@ class _ClusterState:
     @datastore_mount_configs.setter
     def datastore_mount_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDatastoreMountConfigArgs']]]]):
         pulumi.set(self, "datastore_mount_configs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -329,6 +381,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
                  datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,6 +718,12 @@ class Cluster(pulumi.CustomResource):
                Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
                for unmount remove 'datastore_mount_config' config from the update of cluster resource
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]] node_type_configs: The map of cluster node types in this cluster,
                where the key is canonical identifier of the node type (corresponds to the NodeType).
@@ -1019,6 +1078,7 @@ class Cluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
                  datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1033,6 +1093,7 @@ class Cluster(pulumi.CustomResource):
 
             __props__.__dict__["autoscaling_settings"] = autoscaling_settings
             __props__.__dict__["datastore_mount_configs"] = datastore_mount_configs
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type_configs"] = node_type_configs
             if parent is None and not opts.urn:
@@ -1056,6 +1117,7 @@ class Cluster(pulumi.CustomResource):
             autoscaling_settings: pulumi.Input[Optional[Union['ClusterAutoscalingSettingsArgs', 'ClusterAutoscalingSettingsArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             datastore_mount_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDatastoreMountConfigArgs', 'ClusterDatastoreMountConfigArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             management: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             node_type_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeTypeConfigArgs', 'ClusterNodeTypeConfigArgsDict']]]]] = None,
@@ -1080,6 +1142,12 @@ class Cluster(pulumi.CustomResource):
                Since service subnet is not configured with ip range on mgmt cluster creation, mount on management cluster is done as update only
                for unmount remove 'datastore_mount_config' config from the update of cluster resource
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] management: True if the cluster is a management cluster; false otherwise.
                There can only be one management cluster in a private cloud and it has to be the first one.
         :param pulumi.Input[_builtins.str] name: The ID of the Cluster.
@@ -1102,6 +1170,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["autoscaling_settings"] = autoscaling_settings
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["datastore_mount_configs"] = datastore_mount_configs
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["management"] = management
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type_configs"] = node_type_configs
@@ -1141,6 +1210,19 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "datastore_mount_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

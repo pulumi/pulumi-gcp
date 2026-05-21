@@ -138,6 +138,17 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly constraint: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
@@ -154,8 +165,6 @@ export class Policy extends pulumi.CustomResource {
      *
      * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-     *
-     * - - -
      */
     declare public readonly restorePolicy: pulumi.Output<outputs.organizations.PolicyRestorePolicy | undefined>;
     /**
@@ -182,6 +191,7 @@ export class Policy extends pulumi.CustomResource {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["booleanPolicy"] = state?.booleanPolicy;
             resourceInputs["constraint"] = state?.constraint;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["listPolicy"] = state?.listPolicy;
             resourceInputs["orgId"] = state?.orgId;
@@ -198,6 +208,7 @@ export class Policy extends pulumi.CustomResource {
             }
             resourceInputs["booleanPolicy"] = args?.booleanPolicy;
             resourceInputs["constraint"] = args?.constraint;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["listPolicy"] = args?.listPolicy;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["restorePolicy"] = args?.restorePolicy;
@@ -226,6 +237,17 @@ export interface PolicyState {
      */
     constraint?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      */
     etag?: pulumi.Input<string | undefined>;
@@ -242,8 +264,6 @@ export interface PolicyState {
      *
      * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-     *
-     * - - -
      */
     restorePolicy?: pulumi.Input<inputs.organizations.PolicyRestorePolicy | undefined>;
     /**
@@ -272,6 +292,17 @@ export interface PolicyArgs {
      */
     constraint: pulumi.Input<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
      */
     listPolicy?: pulumi.Input<inputs.organizations.PolicyListPolicy | undefined>;
@@ -284,8 +315,6 @@ export interface PolicyArgs {
      *
      * > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-     *
-     * - - -
      */
     restorePolicy?: pulumi.Input<inputs.organizations.PolicyRestorePolicy | undefined>;
     /**

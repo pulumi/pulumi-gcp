@@ -594,9 +594,18 @@ export class RestorePlan extends pulumi.CustomResource {
      */
     declare public readonly backupPlan: pulumi.Output<string>;
     /**
-     * The source cluster from which Restores will be created via this RestorePlan.
+     * The name of the target cluster to which you want to Restore via this RestorePlan.
      */
     declare public readonly cluster: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * User specified descriptive string for this RestorePlan.
      */
@@ -665,6 +674,7 @@ export class RestorePlan extends pulumi.CustomResource {
             const state = argsOrState as RestorePlanState | undefined;
             resourceInputs["backupPlan"] = state?.backupPlan;
             resourceInputs["cluster"] = state?.cluster;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
@@ -692,6 +702,7 @@ export class RestorePlan extends pulumi.CustomResource {
             }
             resourceInputs["backupPlan"] = args?.backupPlan;
             resourceInputs["cluster"] = args?.cluster;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -721,9 +732,18 @@ export interface RestorePlanState {
      */
     backupPlan?: pulumi.Input<string | undefined>;
     /**
-     * The source cluster from which Restores will be created via this RestorePlan.
+     * The name of the target cluster to which you want to Restore via this RestorePlan.
      */
     cluster?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User specified descriptive string for this RestorePlan.
      */
@@ -788,9 +808,18 @@ export interface RestorePlanArgs {
      */
     backupPlan: pulumi.Input<string>;
     /**
-     * The source cluster from which Restores will be created via this RestorePlan.
+     * The name of the target cluster to which you want to Restore via this RestorePlan.
      */
     cluster: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User specified descriptive string for this RestorePlan.
      */

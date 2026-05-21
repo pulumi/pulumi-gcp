@@ -47,6 +47,7 @@ export interface GetApplicationResult {
     readonly applicationId: string;
     readonly attributes: outputs.apphub.GetApplicationAttribute[];
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly displayName: string;
     /**

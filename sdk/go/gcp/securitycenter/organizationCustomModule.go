@@ -146,6 +146,13 @@ type OrganizationCustomModule struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.
 	CustomConfig OrganizationCustomModuleCustomConfigOutput `pulumi:"customConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the Security Health Analytics custom module. This
 	// display name becomes the finding category for all findings that are
 	// returned by this custom module. The display name must be between 1 and
@@ -217,6 +224,13 @@ type organizationCustomModuleState struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.
 	CustomConfig *OrganizationCustomModuleCustomConfig `pulumi:"customConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the Security Health Analytics custom module. This
 	// display name becomes the finding category for all findings that are
 	// returned by this custom module. The display name must be between 1 and
@@ -247,6 +261,13 @@ type OrganizationCustomModuleState struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.
 	CustomConfig OrganizationCustomModuleCustomConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the Security Health Analytics custom module. This
 	// display name becomes the finding category for all findings that are
 	// returned by this custom module. The display name must be between 1 and
@@ -277,6 +298,13 @@ type organizationCustomModuleArgs struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.
 	CustomConfig OrganizationCustomModuleCustomConfig `pulumi:"customConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the Security Health Analytics custom module. This
 	// display name becomes the finding category for all findings that are
 	// returned by this custom module. The display name must be between 1 and
@@ -295,6 +323,13 @@ type OrganizationCustomModuleArgs struct {
 	// The user specified custom configuration for the module.
 	// Structure is documented below.
 	CustomConfig OrganizationCustomModuleCustomConfigInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the Security Health Analytics custom module. This
 	// display name becomes the finding category for all findings that are
 	// returned by this custom module. The display name must be between 1 and
@@ -406,6 +441,16 @@ func (o OrganizationCustomModuleOutput) AncestorModule() pulumi.StringOutput {
 // Structure is documented below.
 func (o OrganizationCustomModuleOutput) CustomConfig() OrganizationCustomModuleCustomConfigOutput {
 	return o.ApplyT(func(v *OrganizationCustomModule) OrganizationCustomModuleCustomConfigOutput { return v.CustomConfig }).(OrganizationCustomModuleCustomConfigOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationCustomModuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationCustomModule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the Security Health Analytics custom module. This

@@ -169,6 +169,10 @@ export class Address extends pulumi.CustomResource {
      */
     declare public readonly address: pulumi.Output<string>;
     /**
+     * The unique numeric identifier for the resource. This identifier is defined by the server.
+     */
+    declare public /*out*/ readonly addressId: pulumi.Output<string>;
+    /**
      * The type of address to reserve.
      * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
@@ -179,6 +183,15 @@ export class Address extends pulumi.CustomResource {
      * Creation timestamp in RFC3339 text format.
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
@@ -309,8 +322,10 @@ export class Address extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AddressState | undefined;
             resourceInputs["address"] = state?.address;
+            resourceInputs["addressId"] = state?.addressId;
             resourceInputs["addressType"] = state?.addressType;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["ipCollection"] = state?.ipCollection;
@@ -333,6 +348,7 @@ export class Address extends pulumi.CustomResource {
             const args = argsOrState as AddressArgs | undefined;
             resourceInputs["address"] = args?.address;
             resourceInputs["addressType"] = args?.addressType;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["ipCollection"] = args?.ipCollection;
             resourceInputs["ipVersion"] = args?.ipVersion;
@@ -346,6 +362,7 @@ export class Address extends pulumi.CustomResource {
             resourceInputs["purpose"] = args?.purpose;
             resourceInputs["region"] = args?.region;
             resourceInputs["subnetwork"] = args?.subnetwork;
+            resourceInputs["addressId"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -371,6 +388,10 @@ export interface AddressState {
      */
     address?: pulumi.Input<string | undefined>;
     /**
+     * The unique numeric identifier for the resource. This identifier is defined by the server.
+     */
+    addressId?: pulumi.Input<string | undefined>;
+    /**
      * The type of address to reserve.
      * Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
@@ -381,6 +402,15 @@ export interface AddressState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -515,6 +545,15 @@ export interface AddressArgs {
      * Possible values are: `INTERNAL`, `EXTERNAL`.
      */
     addressType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

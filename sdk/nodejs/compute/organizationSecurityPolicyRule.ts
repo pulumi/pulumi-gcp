@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_72490",
+ *     shortName: "tf-test_56730",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_89605",
+ *     shortName: "tf-test_95154",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -70,7 +70,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_56730",
+ *     shortName: "tf-test_64336",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -115,7 +115,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_95154",
+ *     shortName: "tf-test_34962",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -150,7 +150,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
- *     shortName: "tf-test_64336",
+ *     shortName: "tf-test_74000",
  *     parent: "organizations/123456789",
  *     type: "CLOUD_ARMOR",
  * });
@@ -256,6 +256,15 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
      */
     declare public readonly action: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A description of the rule.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -339,6 +348,7 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyRuleState | undefined;
             resourceInputs["action"] = state?.action;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["direction"] = state?.direction;
             resourceInputs["enableLogging"] = state?.enableLogging;
@@ -366,6 +376,7 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'priority'");
             }
             resourceInputs["action"] = args?.action;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["direction"] = args?.direction;
             resourceInputs["enableLogging"] = args?.enableLogging;
@@ -396,6 +407,15 @@ export interface OrganizationSecurityPolicyRuleState {
      * "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
      */
     action?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the rule.
      */
@@ -479,6 +499,15 @@ export interface OrganizationSecurityPolicyRuleArgs {
      * "redirect": redirect to a different target. Parameters for this action can be configured via redirectOptions. Only EXTERNAL_302 redirect type is supported for organization security policies.
      */
     action: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A description of the rule.
      */

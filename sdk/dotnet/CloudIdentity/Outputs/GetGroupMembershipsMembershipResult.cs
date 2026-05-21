@@ -22,6 +22,15 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
         /// </summary>
         public readonly string Group;
@@ -56,6 +65,8 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
 
             string createTime,
 
+            string deletionPolicy,
+
             string group,
 
             ImmutableArray<Outputs.GetGroupMembershipsMembershipMemberKeyResult> memberKeys,
@@ -72,6 +83,7 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
         {
             CreateIgnoreAlreadyExists = createIgnoreAlreadyExists;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Group = group;
             MemberKeys = memberKeys;
             Name = name;

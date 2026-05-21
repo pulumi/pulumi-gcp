@@ -41,6 +41,7 @@ export interface GetManagementServerArgs {
  * A collection of values returned by getManagementServer.
  */
 export interface GetManagementServerResult {
+    readonly deletionPolicy: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -48,6 +48,13 @@ type FirewallEndpointAssociation struct {
 
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether the association is disabled. True indicates that traffic will not be intercepted.
 	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
 	// otherwise on an update the association can be disabled.
@@ -131,6 +138,13 @@ func GetFirewallEndpointAssociation(ctx *pulumi.Context,
 type firewallEndpointAssociationState struct {
 	// Time the firewall endpoint was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether the association is disabled. True indicates that traffic will not be intercepted.
 	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
 	// otherwise on an update the association can be disabled.
@@ -171,6 +185,13 @@ type firewallEndpointAssociationState struct {
 type FirewallEndpointAssociationState struct {
 	// Time the firewall endpoint was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether the association is disabled. True indicates that traffic will not be intercepted.
 	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
 	// otherwise on an update the association can be disabled.
@@ -213,6 +234,13 @@ func (FirewallEndpointAssociationState) ElementType() reflect.Type {
 }
 
 type firewallEndpointAssociationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether the association is disabled. True indicates that traffic will not be intercepted.
 	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
 	// otherwise on an update the association can be disabled.
@@ -239,6 +267,13 @@ type firewallEndpointAssociationArgs struct {
 
 // The set of arguments for constructing a FirewallEndpointAssociation resource.
 type FirewallEndpointAssociationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether the association is disabled. True indicates that traffic will not be intercepted.
 	// > **Note:** The API will reject the request if this value is set to true when creating the resource,
 	// otherwise on an update the association can be disabled.
@@ -353,6 +388,16 @@ func (o FirewallEndpointAssociationOutput) ToFirewallEndpointAssociationOutputWi
 // Time the firewall endpoint was created in UTC.
 func (o FirewallEndpointAssociationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FirewallEndpointAssociationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallEndpointAssociation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether the association is disabled. True indicates that traffic will not be intercepted.

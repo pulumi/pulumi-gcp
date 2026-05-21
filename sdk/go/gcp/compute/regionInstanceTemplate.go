@@ -376,6 +376,13 @@ type RegionInstanceTemplate struct {
 	ConfidentialInstanceConfig RegionInstanceTemplateConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A brief description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -528,6 +535,13 @@ type regionInstanceTemplateState struct {
 	ConfidentialInstanceConfig *RegionInstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -640,6 +654,13 @@ type RegionInstanceTemplateState struct {
 	ConfidentialInstanceConfig RegionInstanceTemplateConfidentialInstanceConfigPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
 	// Disks to attach to instances created from this template.
@@ -754,6 +775,13 @@ type regionInstanceTemplateArgs struct {
 	CanIpForward *bool `pulumi:"canIpForward"`
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig *RegionInstanceTemplateConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A brief description of this resource.
 	Description *string `pulumi:"description"`
 	// Disks to attach to instances created from this template.
@@ -853,6 +881,13 @@ type RegionInstanceTemplateArgs struct {
 	CanIpForward pulumi.BoolPtrInput
 	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM. Structure is documented below
 	ConfidentialInstanceConfig RegionInstanceTemplateConfidentialInstanceConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A brief description of this resource.
 	Description pulumi.StringPtrInput
 	// Disks to attach to instances created from this template.
@@ -1053,6 +1088,16 @@ func (o RegionInstanceTemplateOutput) ConfidentialInstanceConfig() RegionInstanc
 // Creation timestamp in RFC3339 text format.
 func (o RegionInstanceTemplateOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionInstanceTemplateOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A brief description of this resource.

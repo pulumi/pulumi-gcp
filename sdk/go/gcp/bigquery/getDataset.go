@@ -70,6 +70,7 @@ type LookupDatasetResult struct {
 	DefaultPartitionExpirationMs    int                                        `pulumi:"defaultPartitionExpirationMs"`
 	DefaultTableExpirationMs        int                                        `pulumi:"defaultTableExpirationMs"`
 	DeleteContentsOnDestroy         bool                                       `pulumi:"deleteContentsOnDestroy"`
+	DeletionPolicy                  string                                     `pulumi:"deletionPolicy"`
 	Description                     string                                     `pulumi:"description"`
 	EffectiveLabels                 map[string]string                          `pulumi:"effectiveLabels"`
 	Etag                            string                                     `pulumi:"etag"`
@@ -159,6 +160,10 @@ func (o LookupDatasetResultOutput) DefaultTableExpirationMs() pulumi.IntOutput {
 
 func (o LookupDatasetResultOutput) DeleteContentsOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatasetResult) bool { return v.DeleteContentsOnDestroy }).(pulumi.BoolOutput)
+}
+
+func (o LookupDatasetResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupDatasetResultOutput) Description() pulumi.StringOutput {

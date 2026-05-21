@@ -78,6 +78,10 @@ namespace Pulumi.Gcp.DiscoveryEngine
     ///         },
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["widgetConfigId"] = basicWidgetConfig.ConfigId,
+    ///     };
     /// });
     /// ```
     /// 
@@ -112,6 +116,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Output("collectionId")]
         public Output<string?> CollectionId { get; private set; } = null!;
+
+        /// <summary>
+        /// Output only. Unique obfuscated identifier of a WidgetConfig.
+        /// </summary>
+        [Output("configId")]
+        public Output<string> ConfigId { get; private set; } = null!;
 
         /// <summary>
         /// The engine ID.
@@ -297,6 +307,12 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// </summary>
         [Input("collectionId")]
         public Input<string>? CollectionId { get; set; }
+
+        /// <summary>
+        /// Output only. Unique obfuscated identifier of a WidgetConfig.
+        /// </summary>
+        [Input("configId")]
+        public Input<string>? ConfigId { get; set; }
 
         /// <summary>
         /// The engine ID.

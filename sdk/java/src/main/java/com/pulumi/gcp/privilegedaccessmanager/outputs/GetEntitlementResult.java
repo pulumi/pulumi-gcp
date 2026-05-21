@@ -21,6 +21,7 @@ public final class GetEntitlementResult {
     private List<GetEntitlementAdditionalNotificationTarget> additionalNotificationTargets;
     private List<GetEntitlementApprovalWorkflow> approvalWorkflows;
     private String createTime;
+    private String deletionPolicy;
     private List<GetEntitlementEligibleUser> eligibleUsers;
     private @Nullable String entitlementId;
     private String etag;
@@ -47,6 +48,9 @@ public final class GetEntitlementResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public List<GetEntitlementEligibleUser> eligibleUsers() {
         return this.eligibleUsers;
@@ -101,6 +105,7 @@ public final class GetEntitlementResult {
         private List<GetEntitlementAdditionalNotificationTarget> additionalNotificationTargets;
         private List<GetEntitlementApprovalWorkflow> approvalWorkflows;
         private String createTime;
+        private String deletionPolicy;
         private List<GetEntitlementEligibleUser> eligibleUsers;
         private @Nullable String entitlementId;
         private String etag;
@@ -119,6 +124,7 @@ public final class GetEntitlementResult {
     	      this.additionalNotificationTargets = defaults.additionalNotificationTargets;
     	      this.approvalWorkflows = defaults.approvalWorkflows;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.eligibleUsers = defaults.eligibleUsers;
     	      this.entitlementId = defaults.entitlementId;
     	      this.etag = defaults.etag;
@@ -161,6 +167,14 @@ public final class GetEntitlementResult {
               throw new MissingRequiredPropertyException("GetEntitlementResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetEntitlementResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -267,6 +281,7 @@ public final class GetEntitlementResult {
             _resultValue.additionalNotificationTargets = additionalNotificationTargets;
             _resultValue.approvalWorkflows = approvalWorkflows;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.eligibleUsers = eligibleUsers;
             _resultValue.entitlementId = entitlementId;
             _resultValue.etag = etag;

@@ -161,6 +161,7 @@ namespace Pulumi.Gcp.Alloydb
         public readonly ImmutableArray<Outputs.GetInstanceConnectionPoolConfigResult> ConnectionPoolConfigs;
         public readonly string CreateTime;
         public readonly ImmutableDictionary<string, string> DatabaseFlags;
+        public readonly string DeletionPolicy;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -209,6 +210,8 @@ namespace Pulumi.Gcp.Alloydb
             string createTime,
 
             ImmutableDictionary<string, string> databaseFlags,
+
+            string deletionPolicy,
 
             string displayName,
 
@@ -269,6 +272,7 @@ namespace Pulumi.Gcp.Alloydb
             ConnectionPoolConfigs = connectionPoolConfigs;
             CreateTime = createTime;
             DatabaseFlags = databaseFlags;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;

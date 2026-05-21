@@ -192,6 +192,7 @@ namespace Pulumi.Gcp.Compute
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The optional description of this resource.
         /// </summary>
@@ -313,6 +314,8 @@ namespace Pulumi.Gcp.Compute
 
             string creationTimestamp,
 
+            string deletionPolicy,
+
             string description,
 
             ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> diskEncryptionKeys,
@@ -399,6 +402,7 @@ namespace Pulumi.Gcp.Compute
             CreateSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
             CreateSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DiskEncryptionKeys = diskEncryptionKeys;
             DiskId = diskId;

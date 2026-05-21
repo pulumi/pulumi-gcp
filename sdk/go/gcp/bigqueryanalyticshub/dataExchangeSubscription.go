@@ -172,6 +172,13 @@ type DataExchangeSubscription struct {
 	DataExchangeLocation pulumi.StringOutput `pulumi:"dataExchangeLocation"`
 	// The ID of the Google Cloud project where the Data Exchange is located.
 	DataExchangeProject pulumi.StringOutput `pulumi:"dataExchangeProject"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// BigQuery destination dataset to create for the subscriber.
 	// Structure is documented below.
 	DestinationDataset DataExchangeSubscriptionDestinationDatasetPtrOutput `pulumi:"destinationDataset"`
@@ -270,6 +277,13 @@ type dataExchangeSubscriptionState struct {
 	DataExchangeLocation *string `pulumi:"dataExchangeLocation"`
 	// The ID of the Google Cloud project where the Data Exchange is located.
 	DataExchangeProject *string `pulumi:"dataExchangeProject"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// BigQuery destination dataset to create for the subscriber.
 	// Structure is documented below.
 	DestinationDataset *DataExchangeSubscriptionDestinationDataset `pulumi:"destinationDataset"`
@@ -324,6 +338,13 @@ type DataExchangeSubscriptionState struct {
 	DataExchangeLocation pulumi.StringPtrInput
 	// The ID of the Google Cloud project where the Data Exchange is located.
 	DataExchangeProject pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// BigQuery destination dataset to create for the subscriber.
 	// Structure is documented below.
 	DestinationDataset DataExchangeSubscriptionDestinationDatasetPtrInput
@@ -378,6 +399,13 @@ type dataExchangeSubscriptionArgs struct {
 	DataExchangeLocation string `pulumi:"dataExchangeLocation"`
 	// The ID of the Google Cloud project where the Data Exchange is located.
 	DataExchangeProject string `pulumi:"dataExchangeProject"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// BigQuery destination dataset to create for the subscriber.
 	// Structure is documented below.
 	DestinationDataset *DataExchangeSubscriptionDestinationDataset `pulumi:"destinationDataset"`
@@ -407,6 +435,13 @@ type DataExchangeSubscriptionArgs struct {
 	DataExchangeLocation pulumi.StringInput
 	// The ID of the Google Cloud project where the Data Exchange is located.
 	DataExchangeProject pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// BigQuery destination dataset to create for the subscriber.
 	// Structure is documented below.
 	DestinationDataset DataExchangeSubscriptionDestinationDatasetPtrInput
@@ -538,6 +573,16 @@ func (o DataExchangeSubscriptionOutput) DataExchangeLocation() pulumi.StringOutp
 // The ID of the Google Cloud project where the Data Exchange is located.
 func (o DataExchangeSubscriptionOutput) DataExchangeProject() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataExchangeSubscription) pulumi.StringOutput { return v.DataExchangeProject }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataExchangeSubscriptionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataExchangeSubscription) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // BigQuery destination dataset to create for the subscriber.

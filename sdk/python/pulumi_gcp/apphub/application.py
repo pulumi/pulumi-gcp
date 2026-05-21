@@ -25,6 +25,7 @@ class ApplicationArgs:
                  location: pulumi.Input[_builtins.str],
                  scope: pulumi.Input['ApplicationScopeArgs'],
                  attributes: pulumi.Input[Optional['ApplicationAttributesArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -37,6 +38,12 @@ class ApplicationArgs:
                Structure is documented below.
         :param pulumi.Input['ApplicationAttributesArgs'] attributes: Consumer provided attributes.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. User-defined description of an Application.
         :param pulumi.Input[_builtins.str] display_name: Optional. User-defined name for the Application.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -47,6 +54,8 @@ class ApplicationArgs:
         pulumi.set(__self__, "scope", scope)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -105,6 +114,23 @@ class ApplicationArgs:
         pulumi.set(self, "attributes", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -148,6 +174,7 @@ class _ApplicationState:
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional['ApplicationAttributesArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -164,6 +191,12 @@ class _ApplicationState:
         :param pulumi.Input['ApplicationAttributesArgs'] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. User-defined description of an Application.
         :param pulumi.Input[_builtins.str] display_name: Optional. User-defined name for the Application.
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
@@ -188,6 +221,8 @@ class _ApplicationState:
             pulumi.set(__self__, "attributes", attributes)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -243,6 +278,23 @@ class _ApplicationState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -369,6 +421,7 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -464,6 +517,12 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] application_id: Required. The Application identifier.
         :param pulumi.Input[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']] attributes: Consumer provided attributes.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. User-defined description of an Application.
         :param pulumi.Input[_builtins.str] display_name: Optional. User-defined name for the Application.
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
@@ -579,6 +638,7 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_id: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -597,6 +657,7 @@ class Application(pulumi.CustomResource):
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["attributes"] = attributes
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if location is None and not opts.urn:
@@ -624,6 +685,7 @@ class Application(pulumi.CustomResource):
             application_id: pulumi.Input[Optional[_builtins.str]] = None,
             attributes: pulumi.Input[Optional[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -644,6 +706,12 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Union['ApplicationAttributesArgs', 'ApplicationAttributesArgsDict']] attributes: Consumer provided attributes.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. User-defined description of an Application.
         :param pulumi.Input[_builtins.str] display_name: Optional. User-defined name for the Application.
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
@@ -669,6 +737,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["attributes"] = attributes
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["location"] = location
@@ -704,6 +773,19 @@ class Application(pulumi.CustomResource):
         Output only. Create time.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

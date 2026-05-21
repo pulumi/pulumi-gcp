@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const dataformFolderBasic = new gcp.dataform.Folder("dataform_folder_basic", {
  *     region: "us-central1",
- *     displayName: "Basic Folder-_8493",
+ *     displayName: "Basic Folder-_41819",
  * });
  * ```
  * ### Dataform Folder Full
@@ -34,11 +34,11 @@ import * as utilities from "../utilities";
  *
  * const dataformFolderRoot = new gcp.dataform.Folder("dataform_folder_root", {
  *     region: "us-central1",
- *     displayName: "Root Folder-_9106",
+ *     displayName: "Root Folder-_75092",
  * });
  * const dataformFolderFull = new gcp.dataform.Folder("dataform_folder_full", {
  *     region: "us-central1",
- *     displayName: "Nested Folder-_27169",
+ *     displayName: "Nested Folder-_2605",
  *     containingFolder: dataformFolderRoot.id,
  * });
  * ```
@@ -97,6 +97,15 @@ export class Folder extends pulumi.CustomResource {
      */
     declare public readonly containingFolder: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Required. The Folder's user-friendly name.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -132,6 +141,7 @@ export class Folder extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FolderState | undefined;
             resourceInputs["containingFolder"] = state?.containingFolder;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["folderId"] = state?.folderId;
             resourceInputs["name"] = state?.name;
@@ -146,6 +156,7 @@ export class Folder extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             resourceInputs["containingFolder"] = args?.containingFolder;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["project"] = args?.project;
             resourceInputs["region"] = args?.region;
@@ -166,6 +177,15 @@ export interface FolderState {
      * Format: `projects/*&#47;locations/*&#47;folders/*` or `projects/*&#47;locations/*&#47;teamFolders/*`.
      */
     containingFolder?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. The Folder's user-friendly name.
      */
@@ -198,6 +218,15 @@ export interface FolderArgs {
      * Format: `projects/*&#47;locations/*&#47;folders/*` or `projects/*&#47;locations/*&#47;teamFolders/*`.
      */
     containingFolder?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. The Folder's user-friendly name.
      */

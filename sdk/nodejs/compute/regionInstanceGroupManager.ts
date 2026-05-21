@@ -182,6 +182,17 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional textual description of the instance
      * group manager.
      */
@@ -247,8 +258,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     declare public readonly region: pulumi.Output<string>;
     /**
@@ -347,6 +356,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["autoHealingPolicies"] = state?.autoHealingPolicies;
             resourceInputs["baseInstanceName"] = state?.baseInstanceName;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["distributionPolicyTargetShape"] = state?.distributionPolicyTargetShape;
             resourceInputs["distributionPolicyZones"] = state?.distributionPolicyZones;
@@ -388,6 +398,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["allInstancesConfig"] = args?.allInstancesConfig;
             resourceInputs["autoHealingPolicies"] = args?.autoHealingPolicies;
             resourceInputs["baseInstanceName"] = args?.baseInstanceName;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["distributionPolicyTargetShape"] = args?.distributionPolicyTargetShape;
             resourceInputs["distributionPolicyZones"] = args?.distributionPolicyZones;
@@ -454,6 +465,17 @@ export interface RegionInstanceGroupManagerState {
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * An optional textual description of the instance
      * group manager.
      */
@@ -519,8 +541,6 @@ export interface RegionInstanceGroupManagerState {
     project?: pulumi.Input<string | undefined>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     region?: pulumi.Input<string | undefined>;
     /**
@@ -628,6 +648,17 @@ export interface RegionInstanceGroupManagerArgs {
      */
     baseInstanceName: pulumi.Input<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * An optional textual description of the instance
      * group manager.
      */
@@ -681,8 +712,6 @@ export interface RegionInstanceGroupManagerArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * The region where the managed instance group resides. If not provided, the provider region is used.
-     *
-     * - - -
      */
     region?: pulumi.Input<string | undefined>;
     /**

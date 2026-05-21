@@ -19,7 +19,7 @@ public final class ClusterSecretManagerConfig {
      */
     private Boolean enabled;
     /**
-     * @return config for secret manager auto rotation. Structure is docuemented below
+     * @return config for secret manager auto rotation. Structure is documented below
      * 
      */
     private @Nullable ClusterSecretManagerConfigRotationConfig rotationConfig;
@@ -33,7 +33,7 @@ public final class ClusterSecretManagerConfig {
         return this.enabled;
     }
     /**
-     * @return config for secret manager auto rotation. Structure is docuemented below
+     * @return config for secret manager auto rotation. Structure is documented below
      * 
      */
     public Optional<ClusterSecretManagerConfigRotationConfig> rotationConfig() {

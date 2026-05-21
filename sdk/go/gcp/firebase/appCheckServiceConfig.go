@@ -151,6 +151,13 @@ import (
 type AppCheckServiceConfig struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The App Check enforcement mode for a service supported by App Check. Valid values are
 	// (Unset)
 	// Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -224,6 +231,13 @@ func GetAppCheckServiceConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppCheckServiceConfig resources.
 type appCheckServiceConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The App Check enforcement mode for a service supported by App Check. Valid values are
 	// (Unset)
 	// Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -265,6 +279,13 @@ type appCheckServiceConfigState struct {
 }
 
 type AppCheckServiceConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The App Check enforcement mode for a service supported by App Check. Valid values are
 	// (Unset)
 	// Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -310,6 +331,13 @@ func (AppCheckServiceConfigState) ElementType() reflect.Type {
 }
 
 type appCheckServiceConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The App Check enforcement mode for a service supported by App Check. Valid values are
 	// (Unset)
 	// Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -350,6 +378,13 @@ type appCheckServiceConfigArgs struct {
 
 // The set of arguments for constructing a AppCheckServiceConfig resource.
 type AppCheckServiceConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The App Check enforcement mode for a service supported by App Check. Valid values are
 	// (Unset)
 	// Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -473,6 +508,16 @@ func (o AppCheckServiceConfigOutput) ToAppCheckServiceConfigOutput() AppCheckSer
 
 func (o AppCheckServiceConfigOutput) ToAppCheckServiceConfigOutputWithContext(ctx context.Context) AppCheckServiceConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppCheckServiceConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppCheckServiceConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The App Check enforcement mode for a service supported by App Check. Valid values are

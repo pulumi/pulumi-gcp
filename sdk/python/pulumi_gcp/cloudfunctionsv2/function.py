@@ -23,6 +23,7 @@ class FunctionArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  build_config: pulumi.Input[Optional['FunctionBuildConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_trigger: pulumi.Input[Optional['FunctionEventTriggerArgs']] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,12 @@ class FunctionArgs:
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of a function.
         :param pulumi.Input['FunctionEventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
@@ -57,6 +64,8 @@ class FunctionArgs:
         pulumi.set(__self__, "location", location)
         if build_config is not None:
             pulumi.set(__self__, "build_config", build_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if event_trigger is not None:
@@ -97,6 +106,23 @@ class FunctionArgs:
     @build_config.setter
     def build_config(self, value: pulumi.Input[Optional['FunctionBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -196,6 +222,7 @@ class FunctionArgs:
 class _FunctionState:
     def __init__(__self__, *,
                  build_config: pulumi.Input[Optional['FunctionBuildConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
@@ -216,6 +243,12 @@ class _FunctionState:
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of a function.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] environment: The environment the function is hosted on.
@@ -243,6 +276,8 @@ class _FunctionState:
         """
         if build_config is not None:
             pulumi.set(__self__, "build_config", build_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -285,6 +320,23 @@ class _FunctionState:
     @build_config.setter
     def build_config(self, value: pulumi.Input[Optional['FunctionBuildConfigArgs']]):
         pulumi.set(self, "build_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -472,6 +524,7 @@ class Function(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1297,6 +1350,12 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of a function.
         :param pulumi.Input[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in
                response to a condition in another service.
@@ -2148,6 +2207,7 @@ class Function(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  event_trigger: pulumi.Input[Optional[Union['FunctionEventTriggerArgs', 'FunctionEventTriggerArgsDict']]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2166,6 +2226,7 @@ class Function(pulumi.CustomResource):
             __props__ = FunctionArgs.__new__(FunctionArgs)
 
             __props__.__dict__["build_config"] = build_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["event_trigger"] = event_trigger
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -2195,6 +2256,7 @@ class Function(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             build_config: pulumi.Input[Optional[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2219,6 +2281,12 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Union['FunctionBuildConfigArgs', 'FunctionBuildConfigArgsDict']] build_config: Describes the Build step of the function that builds a container
                from the given source.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: User-provided description of a function.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] environment: The environment the function is hosted on.
@@ -2249,6 +2317,7 @@ class Function(pulumi.CustomResource):
         __props__ = _FunctionState.__new__(_FunctionState)
 
         __props__.__dict__["build_config"] = build_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["environment"] = environment
@@ -2274,6 +2343,19 @@ class Function(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "build_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

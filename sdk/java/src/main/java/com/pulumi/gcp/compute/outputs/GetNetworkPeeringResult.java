@@ -11,6 +11,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetNetworkPeeringResult {
+    private String deletionPolicy;
     private Boolean exportCustomRoutes;
     private Boolean exportSubnetRoutesWithPublicIp;
     /**
@@ -29,6 +30,9 @@ public final class GetNetworkPeeringResult {
     private String updateStrategy;
 
     private GetNetworkPeeringResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public Boolean exportCustomRoutes() {
         return this.exportCustomRoutes;
     }
@@ -79,6 +83,7 @@ public final class GetNetworkPeeringResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private Boolean exportCustomRoutes;
         private Boolean exportSubnetRoutesWithPublicIp;
         private String id;
@@ -94,6 +99,7 @@ public final class GetNetworkPeeringResult {
         public Builder() {}
         public Builder(GetNetworkPeeringResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.exportCustomRoutes = defaults.exportCustomRoutes;
     	      this.exportSubnetRoutesWithPublicIp = defaults.exportSubnetRoutesWithPublicIp;
     	      this.id = defaults.id;
@@ -108,6 +114,14 @@ public final class GetNetworkPeeringResult {
     	      this.updateStrategy = defaults.updateStrategy;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder exportCustomRoutes(Boolean exportCustomRoutes) {
             if (exportCustomRoutes == null) {
@@ -206,6 +220,7 @@ public final class GetNetworkPeeringResult {
         }
         public GetNetworkPeeringResult build() {
             final var _resultValue = new GetNetworkPeeringResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.exportCustomRoutes = exportCustomRoutes;
             _resultValue.exportSubnetRoutesWithPublicIp = exportSubnetRoutesWithPublicIp;
             _resultValue.id = id;

@@ -303,7 +303,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_37559",
+ *     name: "tf-test-bucket-name-_13293",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -329,14 +329,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_91980",
+ *     name: "tf-test-bucket-name-_40289",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
  * const tfTestConnection = new gcp.bigquery.Connection("tf_test_connection", {
- *     connectionId: "tf-test-connection-_37118",
+ *     connectionId: "tf-test-connection-_33395",
  *     location: "us-central1",
- *     friendlyName: "tf-test-connection-_80332",
+ *     friendlyName: "tf-test-connection-_76044",
  *     description: "a bigquery connection for tf test",
  *     cloudResource: {},
  * });
@@ -397,7 +397,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestBucket = new gcp.storage.Bucket("tf_test_bucket", {
- *     name: "tf-test-bucket-name-_13293",
+ *     name: "tf-test-bucket-name-_69391",
  *     location: "us-west1",
  *     uniformBucketLevelAccess: true,
  * });
@@ -425,12 +425,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__40289",
+ *     datasetId: "tf_dataplex_test_dataset_id__8270",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__33395",
+ *     tableId: "tf_dataplex_test_table_id__41150",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -505,12 +505,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfDataplexTestDataset = new gcp.bigquery.Dataset("tf_dataplex_test_dataset", {
- *     datasetId: "tf_dataplex_test_dataset_id__76044",
+ *     datasetId: "tf_dataplex_test_dataset_id__89313",
  *     defaultTableExpirationMs: 3600000,
  * });
  * const tfDataplexTestTable = new gcp.bigquery.Table("tf_dataplex_test_table", {
  *     datasetId: tfDataplexTestDataset.datasetId,
- *     tableId: "tf_dataplex_test_table_id__69391",
+ *     tableId: "tf_dataplex_test_table_id__60646",
  *     deletionProtection: false,
  *     schema: `    [
  *     {
@@ -587,14 +587,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const tfTestDataset = new gcp.bigquery.Dataset("tf_test_dataset", {
- *     datasetId: "tf_test_ds__8270",
+ *     datasetId: "tf_test_ds__9394",
  *     defaultTableExpirationMs: 3600000,
  *     deleteContentsOnDestroy: true,
  *     project: "my-project-name",
  * });
  * const tfTestTable = new gcp.bigquery.Table("tf_test_table", {
  *     datasetId: tfTestDataset.datasetId,
- *     tableId: "tf_test_tbl__41150",
+ *     tableId: "tf_test_tbl__11380",
  *     deletionProtection: false,
  *     project: "my-project-name",
  *     schema: `    [
@@ -642,7 +642,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  * });
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "tf-test-sa-_89313",
+ *     accountId: "tf-test-sa-_35305",
  *     displayName: "DataScan Service Account",
  *     project: "my-project-name",
  * });
@@ -665,7 +665,7 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
  * });
  * const tfTestDataset = new gcp.bigquery.Dataset("tf_test_dataset", {
- *     datasetId: "tf_test_ds__60646",
+ *     datasetId: "tf_test_ds__62793",
  *     defaultTableExpirationMs: 3600000,
  *     deleteContentsOnDestroy: true,
  *     project: "my-project-name",
@@ -678,7 +678,7 @@ import * as utilities from "../utilities";
  * });
  * const tfTestTable = new gcp.bigquery.Table("tf_test_table", {
  *     datasetId: tfTestDataset.datasetId,
- *     tableId: "tf_test_tbl__9394",
+ *     tableId: "tf_test_tbl__55438",
  *     deletionProtection: false,
  *     project: "my-project-name",
  *     schema: `    [
@@ -731,7 +731,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  * });
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "tf-test-sa-_11380",
+ *     accountId: "tf-test-sa-_32706",
  *     displayName: "DataScan Service Account",
  *     project: "my-project-name",
  * });
@@ -751,7 +751,7 @@ import * as utilities from "../utilities";
  *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
  * });
  * const tfTestDataset = new gcp.bigquery.Dataset("tf_test_dataset", {
- *     datasetId: "tf_test_dataset_id__35305",
+ *     datasetId: "tf_test_dataset_id__49082",
  *     defaultTableExpirationMs: 3600000,
  *     deleteContentsOnDestroy: true,
  *     project: "my-project-name",
@@ -765,7 +765,7 @@ import * as utilities from "../utilities";
  * });
  * const tfTestTable = new gcp.bigquery.Table("tf_test_table", {
  *     datasetId: tfTestDataset.datasetId,
- *     tableId: "tf_test_table_id__62793",
+ *     tableId: "tf_test_table_id__60365",
  *     deletionProtection: false,
  *     project: "my-project-name",
  *     schema: `    [
@@ -779,13 +779,13 @@ import * as utilities from "../utilities";
  * });
  * const testGroup = new gcp.dataplex.EntryGroup("test_group", {
  *     location: "us-central1",
- *     entryGroupId: "test-group-_55438",
+ *     entryGroupId: "test-group-_80215",
  *     project: "my-project-name",
  * });
  * const testEntry = new gcp.dataplex.Entry("test_entry", {
  *     location: "us-central1",
  *     entryGroupId: testGroup.entryGroupId,
- *     entryId: "test-entry-_32706",
+ *     entryId: "test-entry-_59033",
  *     entryType: "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
  *     project: project.then(project => project.number),
  *     aspects: [{
@@ -913,7 +913,7 @@ import * as utilities from "../utilities";
  *     projectId: "my-project-name",
  * });
  * const sa = new gcp.serviceaccount.Account("sa", {
- *     accountId: "tf-test-sa-_49082",
+ *     accountId: "tf-test-sa-_32081",
  *     displayName: "DataScan Service Account",
  *     project: project.then(project => project.projectId),
  * });
@@ -937,13 +937,13 @@ import * as utilities from "../utilities";
  * });
  * const testGroup = new gcp.dataplex.EntryGroup("test_group", {
  *     location: "us-central1",
- *     entryGroupId: "test-group-_60365",
+ *     entryGroupId: "test-group-_10393",
  *     project: project.then(project => project.projectId),
  * });
  * const testEntry = new gcp.dataplex.Entry("test_entry", {
  *     location: "us-central1",
  *     entryGroupId: testGroup.entryGroupId,
- *     entryId: "test-entry-_80215",
+ *     entryId: "test-entry-_33052",
  *     entryType: "projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
  *     project: project.then(project => project.number),
  *     aspects: [{
@@ -959,7 +959,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const tfTestDataset = new gcp.bigquery.Dataset("tf_test_dataset", {
- *     datasetId: "tf_test_dataset_id__59033",
+ *     datasetId: "tf_test_dataset_id__3684",
  *     defaultTableExpirationMs: 3600000,
  *     location: "us-central1",
  *     project: project.then(project => project.projectId),
@@ -972,7 +972,7 @@ import * as utilities from "../utilities";
  * });
  * const tfTestTable = new gcp.bigquery.Table("tf_test_table", {
  *     datasetId: tfTestDataset.datasetId,
- *     tableId: "tf_test_table_id__32081",
+ *     tableId: "tf_test_table_id__10719",
  *     deletionProtection: false,
  *     project: project.then(project => project.projectId),
  *     schema: `    [
@@ -1102,6 +1102,15 @@ export class Datascan extends pulumi.CustomResource {
      */
     declare public readonly dataScanId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the scan.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -1190,6 +1199,7 @@ export class Datascan extends pulumi.CustomResource {
             resourceInputs["dataProfileSpec"] = state?.dataProfileSpec;
             resourceInputs["dataQualitySpec"] = state?.dataQualitySpec;
             resourceInputs["dataScanId"] = state?.dataScanId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -1225,6 +1235,7 @@ export class Datascan extends pulumi.CustomResource {
             resourceInputs["dataProfileSpec"] = args?.dataProfileSpec;
             resourceInputs["dataQualitySpec"] = args?.dataQualitySpec;
             resourceInputs["dataScanId"] = args?.dataScanId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["executionIdentity"] = args?.executionIdentity;
@@ -1285,6 +1296,15 @@ export interface DatascanState {
      * DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
      */
     dataScanId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the scan.
      */
@@ -1387,6 +1407,15 @@ export interface DatascanArgs {
      * DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
      */
     dataScanId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the scan.
      */

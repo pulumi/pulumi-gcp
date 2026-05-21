@@ -21,6 +21,7 @@ class SslCertArgs:
     def __init__(__self__, *,
                  common_name: pulumi.Input[_builtins.str],
                  instance: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SslCert resource.
@@ -29,11 +30,19 @@ class SslCertArgs:
                client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
         pulumi.set(__self__, "common_name", common_name)
         pulumi.set(__self__, "instance", instance)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -64,6 +73,23 @@ class SslCertArgs:
         pulumi.set(self, "instance", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -84,6 +110,7 @@ class _SslCertState:
                  cert_serial_number: pulumi.Input[Optional[_builtins.str]] = None,
                  common_name: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -99,6 +126,12 @@ class _SslCertState:
                client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] create_time: The time when the certificate was created in RFC 3339 format,
                for example 2012-11-15T16:19:00.094Z.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expiration_time: The time when the certificate expires in RFC 3339 format,
                for example 2012-11-15T16:19:00.094Z.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
@@ -117,6 +150,8 @@ class _SslCertState:
             pulumi.set(__self__, "common_name", common_name)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if expiration_time is not None:
             pulumi.set(__self__, "expiration_time", expiration_time)
         if instance is not None:
@@ -179,6 +214,23 @@ class _SslCertState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
@@ -263,6 +315,7 @@ class SslCert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -301,6 +354,12 @@ class SslCert(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] common_name: The common name to be used in the certificate to identify the
                client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
                forces a new resource to be created.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
@@ -359,6 +418,7 @@ class SslCert(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -373,6 +433,7 @@ class SslCert(pulumi.CustomResource):
             if common_name is None and not opts.urn:
                 raise TypeError("Missing required property 'common_name'")
             __props__.__dict__["common_name"] = common_name
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__.__dict__["instance"] = instance
@@ -400,6 +461,7 @@ class SslCert(pulumi.CustomResource):
             cert_serial_number: pulumi.Input[Optional[_builtins.str]] = None,
             common_name: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
             instance: pulumi.Input[Optional[_builtins.str]] = None,
             private_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -419,6 +481,12 @@ class SslCert(pulumi.CustomResource):
                client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] create_time: The time when the certificate was created in RFC 3339 format,
                for example 2012-11-15T16:19:00.094Z.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expiration_time: The time when the certificate expires in RFC 3339 format,
                for example 2012-11-15T16:19:00.094Z.
         :param pulumi.Input[_builtins.str] instance: The name of the Cloud SQL instance. Changing this
@@ -437,6 +505,7 @@ class SslCert(pulumi.CustomResource):
         __props__.__dict__["cert_serial_number"] = cert_serial_number
         __props__.__dict__["common_name"] = common_name
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["expiration_time"] = expiration_time
         __props__.__dict__["instance"] = instance
         __props__.__dict__["private_key"] = private_key
@@ -478,6 +547,19 @@ class SslCert(pulumi.CustomResource):
         for example 2012-11-15T16:19:00.094Z.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")

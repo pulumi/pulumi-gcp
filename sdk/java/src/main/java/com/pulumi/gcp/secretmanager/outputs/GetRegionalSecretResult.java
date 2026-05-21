@@ -21,6 +21,7 @@ public final class GetRegionalSecretResult {
     private Map<String,String> annotations;
     private String createTime;
     private List<GetRegionalSecretCustomerManagedEncryption> customerManagedEncryptions;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
@@ -52,6 +53,9 @@ public final class GetRegionalSecretResult {
     }
     public List<GetRegionalSecretCustomerManagedEncryption> customerManagedEncryptions() {
         return this.customerManagedEncryptions;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -121,6 +125,7 @@ public final class GetRegionalSecretResult {
         private Map<String,String> annotations;
         private String createTime;
         private List<GetRegionalSecretCustomerManagedEncryption> customerManagedEncryptions;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
@@ -144,6 +149,7 @@ public final class GetRegionalSecretResult {
     	      this.annotations = defaults.annotations;
     	      this.createTime = defaults.createTime;
     	      this.customerManagedEncryptions = defaults.customerManagedEncryptions;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -189,6 +195,14 @@ public final class GetRegionalSecretResult {
         }
         public Builder customerManagedEncryptions(GetRegionalSecretCustomerManagedEncryption... customerManagedEncryptions) {
             return customerManagedEncryptions(List.of(customerManagedEncryptions));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionalSecretResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
@@ -335,6 +349,7 @@ public final class GetRegionalSecretResult {
             _resultValue.annotations = annotations;
             _resultValue.createTime = createTime;
             _resultValue.customerManagedEncryptions = customerManagedEncryptions;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;

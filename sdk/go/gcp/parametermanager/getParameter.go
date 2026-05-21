@@ -59,6 +59,7 @@ type LookupParameterArgs struct {
 // A collection of values returned by getParameter.
 type LookupParameterResult struct {
 	CreateTime      string            `pulumi:"createTime"`
+	DeletionPolicy  string            `pulumi:"deletionPolicy"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	Format          string            `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
@@ -111,6 +112,10 @@ func (o LookupParameterResultOutput) ToLookupParameterResultOutputWithContext(ct
 
 func (o LookupParameterResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupParameterResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupParameterResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupParameterResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupParameterResultOutput) EffectiveLabels() pulumi.StringMapOutput {

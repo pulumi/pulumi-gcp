@@ -22,6 +22,7 @@ __all__ = ['AiEndpointWithModelGardenDeploymentArgs', 'AiEndpointWithModelGarden
 class AiEndpointWithModelGardenDeploymentArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']] = None,
                  endpoint_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigArgs']] = None,
                  hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -32,6 +33,12 @@ class AiEndpointWithModelGardenDeploymentArgs:
         The set of arguments for constructing a AiEndpointWithModelGardenDeployment resource.
 
         :param pulumi.Input[_builtins.str] location: Resource ID segment making up resource `location`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs'] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentEndpointConfigArgs'] endpoint_config: The endpoint config to use for the deployment.
@@ -48,6 +55,8 @@ class AiEndpointWithModelGardenDeploymentArgs:
                `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
         """
         pulumi.set(__self__, "location", location)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deploy_config is not None:
             pulumi.set(__self__, "deploy_config", deploy_config)
         if endpoint_config is not None:
@@ -72,6 +81,23 @@ class AiEndpointWithModelGardenDeploymentArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deployConfig")
@@ -157,6 +183,7 @@ class AiEndpointWithModelGardenDeploymentArgs:
 @pulumi.input_type
 class _AiEndpointWithModelGardenDeploymentState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_config: pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigArgs']] = None,
                  deployed_model_display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  deployed_model_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -170,6 +197,12 @@ class _AiEndpointWithModelGardenDeploymentState:
         """
         Input properties used for looking up and filtering AiEndpointWithModelGardenDeployment resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigArgs'] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deployed_model_display_name: Output only. The display name assigned to the model deployed to the endpoint.
@@ -192,6 +225,8 @@ class _AiEndpointWithModelGardenDeploymentState:
                `publishers/{publisher}/models/{publisher_model}@{version_id}`, or
                `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001`.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deploy_config is not None:
             pulumi.set(__self__, "deploy_config", deploy_config)
         if deployed_model_display_name is not None:
@@ -212,6 +247,23 @@ class _AiEndpointWithModelGardenDeploymentState:
             pulumi.set(__self__, "project", project)
         if publisher_model_name is not None:
             pulumi.set(__self__, "publisher_model_name", publisher_model_name)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deployConfig")
@@ -351,6 +403,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
                  endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
                  hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -592,6 +645,12 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']] endpoint_config: The endpoint config to use for the deployment.
@@ -860,6 +919,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
                  endpoint_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentEndpointConfigArgs', 'AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict']]] = None,
                  hugging_face_model_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -876,6 +936,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiEndpointWithModelGardenDeploymentArgs.__new__(AiEndpointWithModelGardenDeploymentArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deploy_config"] = deploy_config
             __props__.__dict__["endpoint_config"] = endpoint_config
             __props__.__dict__["hugging_face_model_id"] = hugging_face_model_id
@@ -898,6 +959,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deploy_config: pulumi.Input[Optional[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']]] = None,
             deployed_model_display_name: pulumi.Input[Optional[_builtins.str]] = None,
             deployed_model_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -915,6 +977,12 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AiEndpointWithModelGardenDeploymentDeployConfigArgs', 'AiEndpointWithModelGardenDeploymentDeployConfigArgsDict']] deploy_config: The deploy config to use for the deployment.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deployed_model_display_name: Output only. The display name assigned to the model deployed to the endpoint.
@@ -941,6 +1009,7 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
 
         __props__ = _AiEndpointWithModelGardenDeploymentState.__new__(_AiEndpointWithModelGardenDeploymentState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deploy_config"] = deploy_config
         __props__.__dict__["deployed_model_display_name"] = deployed_model_display_name
         __props__.__dict__["deployed_model_id"] = deployed_model_id
@@ -952,6 +1021,19 @@ class AiEndpointWithModelGardenDeployment(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["publisher_model_name"] = publisher_model_name
         return AiEndpointWithModelGardenDeployment(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deployConfig")

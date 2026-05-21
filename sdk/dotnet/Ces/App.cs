@@ -10,7 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Ces
 {
     /// <summary>
-    /// Description
+    /// Customer Engagement Suite App
+    /// 
+    /// To get more information about App, see:
+    /// 
+    /// * [API documentation](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rest/v1/projects.locations.apps)
     /// 
     /// ## Example Usage
     /// 
@@ -522,6 +526,17 @@ namespace Pulumi.Gcp.Ces
         public Output<Outputs.AppDefaultChannelProfile?> DefaultChannelProfile { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Number of deployments in the app.
         /// </summary>
         [Output("deploymentCount")]
@@ -639,6 +654,13 @@ namespace Pulumi.Gcp.Ces
         public Output<Outputs.AppTimeZoneSettings?> TimeZoneSettings { get; private set; } = null!;
 
         /// <summary>
+        /// The tool execution mode for the app.
+        /// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+        /// </summary>
+        [Output("toolExecutionMode")]
+        public Output<string?> ToolExecutionMode { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamp when the app was last updated.
         /// </summary>
         [Output("updateTime")]
@@ -734,6 +756,17 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("defaultChannelProfile")]
         public Input<Inputs.AppDefaultChannelProfileArgs>? DefaultChannelProfile { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Human-readable description of the app.
@@ -843,6 +876,13 @@ namespace Pulumi.Gcp.Ces
         [Input("timeZoneSettings")]
         public Input<Inputs.AppTimeZoneSettingsArgs>? TimeZoneSettings { get; set; }
 
+        /// <summary>
+        /// The tool execution mode for the app.
+        /// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+        /// </summary>
+        [Input("toolExecutionMode")]
+        public Input<string>? ToolExecutionMode { get; set; }
+
         [Input("variableDeclarations")]
         private InputList<Inputs.AppVariableDeclarationArgs>? _variableDeclarations;
 
@@ -907,6 +947,17 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("defaultChannelProfile")]
         public Input<Inputs.AppDefaultChannelProfileGetArgs>? DefaultChannelProfile { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Number of deployments in the app.
@@ -1036,6 +1087,13 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("timeZoneSettings")]
         public Input<Inputs.AppTimeZoneSettingsGetArgs>? TimeZoneSettings { get; set; }
+
+        /// <summary>
+        /// The tool execution mode for the app.
+        /// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+        /// </summary>
+        [Input("toolExecutionMode")]
+        public Input<string>? ToolExecutionMode { get; set; }
 
         /// <summary>
         /// Timestamp when the app was last updated.

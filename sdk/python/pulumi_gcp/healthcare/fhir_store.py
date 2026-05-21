@@ -25,6 +25,7 @@ class FhirStoreArgs:
                  complex_data_type_reference_parsing: pulumi.Input[Optional[_builtins.str]] = None,
                  consent_config: pulumi.Input[Optional['FhirStoreConsentConfigArgs']] = None,
                  default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -50,6 +51,12 @@ class FhirStoreArgs:
         :param pulumi.Input[_builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -117,6 +124,8 @@ class FhirStoreArgs:
             pulumi.set(__self__, "consent_config", consent_config)
         if default_search_handling_strict is not None:
             pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_referential_integrity is not None:
             pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
@@ -198,6 +207,23 @@ class FhirStoreArgs:
     @default_search_handling_strict.setter
     def default_search_handling_strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_search_handling_strict", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableReferentialIntegrity")
@@ -399,6 +425,7 @@ class _FhirStoreState:
                  consent_config: pulumi.Input[Optional['FhirStoreConsentConfigArgs']] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -427,6 +454,12 @@ class _FhirStoreState:
         :param pulumi.Input[_builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -499,6 +532,8 @@ class _FhirStoreState:
             pulumi.set(__self__, "dataset", dataset)
         if default_search_handling_strict is not None:
             pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_referential_integrity is not None:
             pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
@@ -586,6 +621,23 @@ class _FhirStoreState:
     @default_search_handling_strict.setter
     def default_search_handling_strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_search_handling_strict", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableReferentialIntegrity")
@@ -827,6 +879,7 @@ class FhirStore(pulumi.CustomResource):
                  consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1050,6 +1103,12 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -1333,6 +1392,7 @@ class FhirStore(pulumi.CustomResource):
                  consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
                  dataset: pulumi.Input[Optional[_builtins.str]] = None,
                  default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_history_import: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1360,6 +1420,7 @@ class FhirStore(pulumi.CustomResource):
                 raise TypeError("Missing required property 'dataset'")
             __props__.__dict__["dataset"] = dataset
             __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
             __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
             __props__.__dict__["enable_history_import"] = enable_history_import
@@ -1391,6 +1452,7 @@ class FhirStore(pulumi.CustomResource):
             consent_config: pulumi.Input[Optional[Union['FhirStoreConsentConfigArgs', 'FhirStoreConsentConfigArgsDict']]] = None,
             dataset: pulumi.Input[Optional[_builtins.str]] = None,
             default_search_handling_strict: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disable_referential_integrity: pulumi.Input[Optional[_builtins.bool]] = None,
             disable_resource_versioning: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1423,6 +1485,12 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to handling=strict which returns an error for unrecognized search parameters.
                If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
                The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_referential_integrity: Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
                creation. The default value is false, meaning that the API will enforce referential integrity and fail the
                requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -1495,6 +1563,7 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["consent_config"] = consent_config
         __props__.__dict__["dataset"] = dataset
         __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
         __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1549,6 +1618,19 @@ class FhirStore(pulumi.CustomResource):
         The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
         """
         return pulumi.get(self, "default_search_handling_strict")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="disableReferentialIntegrity")

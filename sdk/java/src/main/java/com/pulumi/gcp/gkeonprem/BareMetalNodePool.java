@@ -44,19 +44,23 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePool;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigNodeConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -173,19 +177,24 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerPortConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpShareConfigLvpConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterStorageLvpNodeMountsConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterSecurityConfigAuthorizationAdminUserArgs;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePool;
  * import com.pulumi.gcp.gkeonprem.BareMetalNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigNodeConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigTaintArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -393,6 +402,30 @@ public class BareMetalNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The display name for the Bare Metal Node Pool.

@@ -7167,6 +7167,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
                  cidr: _builtins.str,
                  create_time: _builtins.str,
                  database: _builtins.str,
+                 deletion_policy: _builtins.str,
                  deletion_protection: _builtins.bool,
                  disaster_recovery_supported_locations: Sequence[_builtins.str],
                  display_name: _builtins.str,
@@ -7194,6 +7195,12 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         :param _builtins.str database: The name of the Autonomous Database. The database name must be unique in
                the project. The name must begin with a letter and can
                contain a maximum of 30 alphanumeric characters.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.bool deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
         :param Sequence[_builtins.str] disaster_recovery_supported_locations: List of supported GCP region to clone the Autonomous Database for disaster recovery.
         :param _builtins.str display_name: The display name for the Autonomous Database. The name does not have to
@@ -7233,6 +7240,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "disaster_recovery_supported_locations", disaster_recovery_supported_locations)
         pulumi.set(__self__, "display_name", display_name)
@@ -7294,6 +7302,19 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         contain a maximum of 30 alphanumeric characters.
         """
         return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -9590,6 +9611,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
     def __init__(__self__, *,
                  cloud_exadata_infrastructure_id: _builtins.str,
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  deletion_protection: _builtins.bool,
                  display_name: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
@@ -9607,6 +9629,12 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param _builtins.str create_time: The date and time that the Exadata Infrastructure was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.bool deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
         :param _builtins.str display_name: User friendly name for this resource.
         :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -9630,6 +9658,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
         """
         pulumi.set(__self__, "cloud_exadata_infrastructure_id", cloud_exadata_infrastructure_id)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -9660,6 +9689,19 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
         The date and time that the Exadata Infrastructure was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -10755,6 +10797,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                  cidr: _builtins.str,
                  cloud_vm_cluster_id: _builtins.str,
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  deletion_protection: _builtins.bool,
                  display_name: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
@@ -10780,6 +10823,12 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                characters in length. The value must start with a letter and end with
                a letter or a number.
         :param _builtins.str create_time: The date and time that the VM cluster was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.bool deletion_protection: Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
         :param _builtins.str display_name: User friendly name for this resource.
         :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -10818,6 +10867,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "cloud_vm_cluster_id", cloud_vm_cluster_id)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -10877,6 +10927,19 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         The date and time that the VM cluster was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

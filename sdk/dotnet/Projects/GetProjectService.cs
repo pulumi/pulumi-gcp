@@ -175,6 +175,7 @@ namespace Pulumi.Gcp.Projects
     public sealed class GetProjectServiceResult
     {
         public readonly bool CheckIfServiceHasUsageOnDestroy;
+        public readonly string DeletionPolicy;
         public readonly bool DisableDependentServices;
         public readonly bool DisableOnDestroy;
         /// <summary>
@@ -188,6 +189,8 @@ namespace Pulumi.Gcp.Projects
         private GetProjectServiceResult(
             bool checkIfServiceHasUsageOnDestroy,
 
+            string deletionPolicy,
+
             bool disableDependentServices,
 
             bool disableOnDestroy,
@@ -199,6 +202,7 @@ namespace Pulumi.Gcp.Projects
             string service)
         {
             CheckIfServiceHasUsageOnDestroy = checkIfServiceHasUsageOnDestroy;
+            DeletionPolicy = deletionPolicy;
             DisableDependentServices = disableDependentServices;
             DisableOnDestroy = disableOnDestroy;
             Id = id;

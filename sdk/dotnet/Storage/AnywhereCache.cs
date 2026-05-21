@@ -105,6 +105,23 @@ namespace Pulumi.Gcp.Storage
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not the cache ingests data as the data is written to the bucket.
+        /// </summary>
+        [Output("ingestOnWrite")]
+        public Output<bool?> IngestOnWrite { get; private set; } = null!;
+
+        /// <summary>
         /// True if the cache instance has an active Update long-running operation.
         /// </summary>
         [Output("pendingUpdate")]
@@ -195,6 +212,23 @@ namespace Pulumi.Gcp.Storage
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// Whether or not the cache ingests data as the data is written to the bucket.
+        /// </summary>
+        [Input("ingestOnWrite")]
+        public Input<bool>? IngestOnWrite { get; set; }
+
+        /// <summary>
         /// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
         /// </summary>
         [Input("ttl")]
@@ -239,6 +273,23 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
+        /// Whether or not the cache ingests data as the data is written to the bucket.
+        /// </summary>
+        [Input("ingestOnWrite")]
+        public Input<bool>? IngestOnWrite { get; set; }
 
         /// <summary>
         /// True if the cache instance has an active Update long-running operation.

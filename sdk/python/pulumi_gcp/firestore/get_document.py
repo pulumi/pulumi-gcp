@@ -26,7 +26,7 @@ class GetDocumentResult:
     """
     A collection of values returned by getDocument.
     """
-    def __init__(__self__, collection=None, create_time=None, database=None, document_id=None, fields=None, id=None, name=None, path=None, project=None, update_time=None):
+    def __init__(__self__, collection=None, create_time=None, database=None, deletion_policy=None, document_id=None, fields=None, id=None, name=None, path=None, project=None, update_time=None):
         if collection and not isinstance(collection, str):
             raise TypeError("Expected argument 'collection' to be a str")
         pulumi.set(__self__, "collection", collection)
@@ -36,6 +36,9 @@ class GetDocumentResult:
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if document_id and not isinstance(document_id, str):
             raise TypeError("Expected argument 'document_id' to be a str")
         pulumi.set(__self__, "document_id", document_id)
@@ -72,6 +75,11 @@ class GetDocumentResult:
     @pulumi.getter
     def database(self) -> _builtins.str:
         return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="documentId")
@@ -121,6 +129,7 @@ class AwaitableGetDocumentResult(GetDocumentResult):
             collection=self.collection,
             create_time=self.create_time,
             database=self.database,
+            deletion_policy=self.deletion_policy,
             document_id=self.document_id,
             fields=self.fields,
             id=self.id,
@@ -174,6 +183,7 @@ def get_document(collection: Optional[_builtins.str] = None,
         collection=pulumi.get(__ret__, 'collection'),
         create_time=pulumi.get(__ret__, 'create_time'),
         database=pulumi.get(__ret__, 'database'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         document_id=pulumi.get(__ret__, 'document_id'),
         fields=pulumi.get(__ret__, 'fields'),
         id=pulumi.get(__ret__, 'id'),
@@ -224,6 +234,7 @@ def get_document_output(collection: pulumi.Input[Optional[_builtins.str]] = None
         collection=pulumi.get(__response__, 'collection'),
         create_time=pulumi.get(__response__, 'create_time'),
         database=pulumi.get(__response__, 'database'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         document_id=pulumi.get(__response__, 'document_id'),
         fields=pulumi.get(__response__, 'fields'),
         id=pulumi.get(__response__, 'id'),

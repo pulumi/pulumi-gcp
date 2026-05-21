@@ -81,6 +81,13 @@ type StorageBucket struct {
 
 	// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
 	BucketId pulumi.StringPtrOutput `pulumi:"bucketId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -120,6 +127,13 @@ func GetStorageBucket(ctx *pulumi.Context,
 type storageBucketState struct {
 	// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
 	BucketId *string `pulumi:"bucketId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -130,6 +144,13 @@ type storageBucketState struct {
 type StorageBucketState struct {
 	// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
 	BucketId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -144,6 +165,13 @@ func (StorageBucketState) ElementType() reflect.Type {
 type storageBucketArgs struct {
 	// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
 	BucketId *string `pulumi:"bucketId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -153,6 +181,13 @@ type storageBucketArgs struct {
 type StorageBucketArgs struct {
 	// Required. Immutable. The ID of the underlying Google Cloud Storage bucket
 	BucketId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -248,6 +283,16 @@ func (o StorageBucketOutput) ToStorageBucketOutputWithContext(ctx context.Contex
 // Required. Immutable. The ID of the underlying Google Cloud Storage bucket
 func (o StorageBucketOutput) BucketId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StorageBucket) pulumi.StringPtrOutput { return v.BucketId }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o StorageBucketOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageBucket) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Resource name of the bucket in the format projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID

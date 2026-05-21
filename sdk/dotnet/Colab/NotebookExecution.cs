@@ -485,6 +485,17 @@ namespace Pulumi.Gcp.Colab
         public Output<Outputs.NotebookExecutionDataformRepositorySource?> DataformRepositorySource { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The content of the input notebook in ipynb format.
         /// Structure is documented below.
         /// </summary>
@@ -614,6 +625,17 @@ namespace Pulumi.Gcp.Colab
         public Input<Inputs.NotebookExecutionDataformRepositorySourceArgs>? DataformRepositorySource { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The content of the input notebook in ipynb format.
         /// Structure is documented below.
         /// </summary>
@@ -703,6 +725,17 @@ namespace Pulumi.Gcp.Colab
         /// </summary>
         [Input("dataformRepositorySource")]
         public Input<Inputs.NotebookExecutionDataformRepositorySourceGetArgs>? DataformRepositorySource { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The content of the input notebook in ipynb format.

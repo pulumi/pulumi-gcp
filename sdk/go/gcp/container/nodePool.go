@@ -161,6 +161,15 @@ type NodePool struct {
 	//
 	// ***
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -222,8 +231,6 @@ type NodePool struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning NodePoolQueuedProvisioningPtrOutput `pulumi:"queuedProvisioning"`
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -277,6 +284,15 @@ type nodePoolState struct {
 	//
 	// ***
 	Cluster *string `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -338,8 +354,6 @@ type nodePoolState struct {
 	Project *string `pulumi:"project"`
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning *NodePoolQueuedProvisioning `pulumi:"queuedProvisioning"`
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -361,6 +375,15 @@ type NodePoolState struct {
 	//
 	// ***
 	Cluster pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	DeletionPolicy pulumi.StringPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -422,8 +445,6 @@ type NodePoolState struct {
 	Project pulumi.StringPtrInput
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning NodePoolQueuedProvisioningPtrInput
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -449,6 +470,15 @@ type nodePoolArgs struct {
 	//
 	// ***
 	Cluster string `pulumi:"cluster"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -505,8 +535,6 @@ type nodePoolArgs struct {
 	Project *string `pulumi:"project"`
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning *NodePoolQueuedProvisioning `pulumi:"queuedProvisioning"`
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -529,6 +557,15 @@ type NodePoolArgs struct {
 	//
 	// ***
 	Cluster pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+	DeletionPolicy pulumi.StringPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 	// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -585,8 +622,6 @@ type NodePoolArgs struct {
 	Project pulumi.StringPtrInput
 	// Specifies node pool-level settings of queued provisioning.
 	// Structure is documented below.
-	//
-	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	QueuedProvisioning NodePoolQueuedProvisioningPtrInput
 	// Specify node upgrade settings to change how GKE upgrades nodes.
 	// The maximum number of nodes upgraded simultaneously is limited to 20. Structure is documented below.
@@ -700,6 +735,18 @@ func (o NodePoolOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
+func (o NodePoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // The initial number of nodes for the pool. In
 // regional or multi-zonal clusters, this is the number of nodes per zone. Changing
 // this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -809,8 +856,6 @@ func (o NodePoolOutput) Project() pulumi.StringOutput {
 
 // Specifies node pool-level settings of queued provisioning.
 // Structure is documented below.
-//
-// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 func (o NodePoolOutput) QueuedProvisioning() NodePoolQueuedProvisioningPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolQueuedProvisioningPtrOutput { return v.QueuedProvisioning }).(NodePoolQueuedProvisioningPtrOutput)
 }

@@ -33,6 +33,7 @@ public final class GetInstanceGroupManagerResult {
     private List<GetInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
     private String baseInstanceName;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private String fingerprint;
     /**
@@ -79,6 +80,9 @@ public final class GetInstanceGroupManagerResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -185,6 +189,7 @@ public final class GetInstanceGroupManagerResult {
         private List<GetInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies;
         private String baseInstanceName;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private String fingerprint;
         private String id;
@@ -221,6 +226,7 @@ public final class GetInstanceGroupManagerResult {
     	      this.autoHealingPolicies = defaults.autoHealingPolicies;
     	      this.baseInstanceName = defaults.baseInstanceName;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
@@ -288,6 +294,14 @@ public final class GetInstanceGroupManagerResult {
               throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -559,6 +573,7 @@ public final class GetInstanceGroupManagerResult {
             _resultValue.autoHealingPolicies = autoHealingPolicies;
             _resultValue.baseInstanceName = baseInstanceName;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;

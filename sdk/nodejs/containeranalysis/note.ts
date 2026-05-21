@@ -124,6 +124,15 @@ export class Note extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Time of expiration for this note. Leave empty if note does not expire.
      */
     declare public readonly expirationTime: pulumi.Output<string | undefined>;
@@ -177,6 +186,7 @@ export class Note extends pulumi.CustomResource {
             const state = argsOrState as NoteState | undefined;
             resourceInputs["attestationAuthority"] = state?.attestationAuthority;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["expirationTime"] = state?.expirationTime;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["longDescription"] = state?.longDescription;
@@ -192,6 +202,7 @@ export class Note extends pulumi.CustomResource {
                 throw new Error("Missing required property 'attestationAuthority'");
             }
             resourceInputs["attestationAuthority"] = args?.attestationAuthority;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["expirationTime"] = args?.expirationTime;
             resourceInputs["longDescription"] = args?.longDescription;
             resourceInputs["name"] = args?.name;
@@ -229,6 +240,15 @@ export interface NoteState {
      * The time this note was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Time of expiration for this note. Leave empty if note does not expire.
      */
@@ -286,6 +306,15 @@ export interface NoteArgs {
      * Structure is documented below.
      */
     attestationAuthority: pulumi.Input<inputs.containeranalysis.NoteAttestationAuthority>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Time of expiration for this note. Leave empty if note does not expire.
      */

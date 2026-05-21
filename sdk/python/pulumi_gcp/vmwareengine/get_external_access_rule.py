@@ -27,13 +27,16 @@ class GetExternalAccessRuleResult:
     """
     A collection of values returned by getExternalAccessRule.
     """
-    def __init__(__self__, action=None, create_time=None, description=None, destination_ip_ranges=None, destination_ports=None, id=None, ip_protocol=None, name=None, parent=None, priority=None, source_ip_ranges=None, source_ports=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, action=None, create_time=None, deletion_policy=None, description=None, destination_ip_ranges=None, destination_ports=None, id=None, ip_protocol=None, name=None, parent=None, priority=None, source_ip_ranges=None, source_ports=None, state=None, uid=None, update_time=None):
         if action and not isinstance(action, str):
             raise TypeError("Expected argument 'action' to be a str")
         pulumi.set(__self__, "action", action)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -83,6 +86,11 @@ class GetExternalAccessRuleResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -161,6 +169,7 @@ class AwaitableGetExternalAccessRuleResult(GetExternalAccessRuleResult):
         return GetExternalAccessRuleResult(
             action=self.action,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             destination_ip_ranges=self.destination_ip_ranges,
             destination_ports=self.destination_ports,
@@ -208,6 +217,7 @@ def get_external_access_rule(name: Optional[_builtins.str] = None,
     return AwaitableGetExternalAccessRuleResult(
         action=pulumi.get(__ret__, 'action'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         destination_ip_ranges=pulumi.get(__ret__, 'destination_ip_ranges'),
         destination_ports=pulumi.get(__ret__, 'destination_ports'),
@@ -252,6 +262,7 @@ def get_external_access_rule_output(name: pulumi.Input[Optional[_builtins.str]] 
     return __ret__.apply(lambda __response__: GetExternalAccessRuleResult(
         action=pulumi.get(__response__, 'action'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         destination_ip_ranges=pulumi.get(__response__, 'destination_ip_ranges'),
         destination_ports=pulumi.get(__response__, 'destination_ports'),

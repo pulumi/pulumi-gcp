@@ -69,6 +69,7 @@ type LookupTableResult struct {
 	Clusterings                 []string                             `pulumi:"clusterings"`
 	CreationTime                int                                  `pulumi:"creationTime"`
 	DatasetId                   string                               `pulumi:"datasetId"`
+	DeletionPolicy              string                               `pulumi:"deletionPolicy"`
 	DeletionProtection          bool                                 `pulumi:"deletionProtection"`
 	Description                 string                               `pulumi:"description"`
 	EffectiveLabels             map[string]string                    `pulumi:"effectiveLabels"`
@@ -161,6 +162,10 @@ func (o LookupTableResultOutput) CreationTime() pulumi.IntOutput {
 
 func (o LookupTableResultOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+func (o LookupTableResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTableResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupTableResultOutput) DeletionProtection() pulumi.BoolOutput {

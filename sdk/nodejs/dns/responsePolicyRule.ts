@@ -104,6 +104,15 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
      */
     declare public readonly behavior: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
     declare public readonly dnsName: pulumi.Output<string>;
@@ -141,6 +150,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ResponsePolicyRuleState | undefined;
             resourceInputs["behavior"] = state?.behavior;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["dnsName"] = state?.dnsName;
             resourceInputs["localData"] = state?.localData;
             resourceInputs["project"] = state?.project;
@@ -158,6 +168,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'ruleName'");
             }
             resourceInputs["behavior"] = args?.behavior;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["dnsName"] = args?.dnsName;
             resourceInputs["localData"] = args?.localData;
             resourceInputs["project"] = args?.project;
@@ -178,6 +189,15 @@ export interface ResponsePolicyRuleState {
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */
@@ -212,6 +232,15 @@ export interface ResponsePolicyRuleArgs {
      * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */

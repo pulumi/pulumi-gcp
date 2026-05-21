@@ -123,6 +123,17 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<ImmutableArray<string>> ChildPolicyTags { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Description of this policy tag. It must: contain only unicode characters, tabs,
         /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
         /// encoded in UTF-8. If not set, defaults to an empty description.
@@ -207,6 +218,17 @@ namespace Pulumi.Gcp.DataCatalog
     public sealed class PolicyTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Description of this policy tag. It must: contain only unicode characters, tabs,
         /// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
         /// encoded in UTF-8. If not set, defaults to an empty description.
@@ -256,6 +278,17 @@ namespace Pulumi.Gcp.DataCatalog
             get => _childPolicyTags ?? (_childPolicyTags = new InputList<string>());
             set => _childPolicyTags = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Description of this policy tag. It must: contain only unicode characters, tabs,

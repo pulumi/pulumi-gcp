@@ -50,6 +50,7 @@ export interface GetCertificateMapArgs {
  */
 export interface GetCertificateMapResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly gclbTargets: outputs.certificatemanager.GetCertificateMapGclbTarget[];

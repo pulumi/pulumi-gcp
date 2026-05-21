@@ -22,6 +22,7 @@ __all__ = ['NoteArgs', 'Note']
 class NoteArgs:
     def __init__(__self__, *,
                  attestation_authority: pulumi.Input['NoteAttestationAuthorityArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
                  long_description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class NoteArgs:
                Attestation Occurrences, even if they don't all live in the same
                project.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[_builtins.str] long_description: A detailed description of the note
         :param pulumi.Input[_builtins.str] name: The name of the note.
@@ -53,6 +60,8 @@ class NoteArgs:
         :param pulumi.Input[_builtins.str] short_description: A one sentence description of the note.
         """
         pulumi.set(__self__, "attestation_authority", attestation_authority)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if expiration_time is not None:
             pulumi.set(__self__, "expiration_time", expiration_time)
         if long_description is not None:
@@ -88,6 +97,23 @@ class NoteArgs:
     @attestation_authority.setter
     def attestation_authority(self, value: pulumi.Input['NoteAttestationAuthorityArgs']):
         pulumi.set(self, "attestation_authority", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
@@ -181,6 +207,7 @@ class _NoteState:
     def __init__(__self__, *,
                  attestation_authority: pulumi.Input[Optional['NoteAttestationAuthorityArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
                  long_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -204,6 +231,12 @@ class _NoteState:
                project.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time this note was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[_builtins.str] kind: The type of analysis this note describes
         :param pulumi.Input[_builtins.str] long_description: A detailed description of the note
@@ -220,6 +253,8 @@ class _NoteState:
             pulumi.set(__self__, "attestation_authority", attestation_authority)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if expiration_time is not None:
             pulumi.set(__self__, "expiration_time", expiration_time)
         if kind is not None:
@@ -271,6 +306,23 @@ class _NoteState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")
@@ -390,6 +442,7 @@ class Note(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
                  long_description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -481,6 +534,12 @@ class Note(pulumi.CustomResource):
                Attestation Occurrences, even if they don't all live in the same
                project.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[_builtins.str] long_description: A detailed description of the note
         :param pulumi.Input[_builtins.str] name: The name of the note.
@@ -584,6 +643,7 @@ class Note(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
                  long_description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -603,6 +663,7 @@ class Note(pulumi.CustomResource):
             if attestation_authority is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority'")
             __props__.__dict__["attestation_authority"] = attestation_authority
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["expiration_time"] = expiration_time
             __props__.__dict__["long_description"] = long_description
             __props__.__dict__["name"] = name
@@ -625,6 +686,7 @@ class Note(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             attestation_authority: pulumi.Input[Optional[Union['NoteAttestationAuthorityArgs', 'NoteAttestationAuthorityArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expiration_time: pulumi.Input[Optional[_builtins.str]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
             long_description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -652,6 +714,12 @@ class Note(pulumi.CustomResource):
                project.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time this note was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expiration_time: Time of expiration for this note. Leave empty if note does not expire.
         :param pulumi.Input[_builtins.str] kind: The type of analysis this note describes
         :param pulumi.Input[_builtins.str] long_description: A detailed description of the note
@@ -670,6 +738,7 @@ class Note(pulumi.CustomResource):
 
         __props__.__dict__["attestation_authority"] = attestation_authority
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["expiration_time"] = expiration_time
         __props__.__dict__["kind"] = kind
         __props__.__dict__["long_description"] = long_description
@@ -705,6 +774,19 @@ class Note(pulumi.CustomResource):
         The time this note was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="expirationTime")

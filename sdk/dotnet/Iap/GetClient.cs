@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.Iap
     {
         public readonly string Brand;
         public readonly string ClientId;
+        public readonly string DeletionPolicy;
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -162,6 +163,8 @@ namespace Pulumi.Gcp.Iap
 
             string clientId,
 
+            string deletionPolicy,
+
             string displayName,
 
             string id,
@@ -170,6 +173,7 @@ namespace Pulumi.Gcp.Iap
         {
             Brand = brand;
             ClientId = clientId;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             Id = id;
             Secret = secret;

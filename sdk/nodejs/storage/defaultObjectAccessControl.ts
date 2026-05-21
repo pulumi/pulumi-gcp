@@ -91,6 +91,15 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
      */
     declare public readonly bucket: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The domain associated with the entity.
      */
     declare public /*out*/ readonly domain: pulumi.Output<string>;
@@ -147,6 +156,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as DefaultObjectAccessControlState | undefined;
             resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["email"] = state?.email;
             resourceInputs["entity"] = state?.entity;
@@ -167,6 +177,7 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
                 throw new Error("Missing required property 'role'");
             }
             resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["entity"] = args?.entity;
             resourceInputs["object"] = args?.object;
             resourceInputs["role"] = args?.role;
@@ -189,6 +200,15 @@ export interface DefaultObjectAccessControlState {
      * The name of the bucket.
      */
     bucket?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The domain associated with the entity.
      */
@@ -241,6 +261,15 @@ export interface DefaultObjectAccessControlArgs {
      * The name of the bucket.
      */
     bucket: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The entity holding the permission, in one of the following forms:
      * * user-{{userId}}

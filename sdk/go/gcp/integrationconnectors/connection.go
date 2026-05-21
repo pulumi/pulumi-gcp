@@ -377,6 +377,13 @@ type Connection struct {
 	ConnectorVersionLaunchStage pulumi.StringOutput `pulumi:"connectorVersionLaunchStage"`
 	// Time the Namespace was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Define the Connectors target endpoint.
@@ -495,6 +502,13 @@ type connectionState struct {
 	ConnectorVersionLaunchStage *string `pulumi:"connectorVersionLaunchStage"`
 	// Time the Namespace was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An arbitrary description for the Connection.
 	Description *string `pulumi:"description"`
 	// Define the Connectors target endpoint.
@@ -573,6 +587,13 @@ type ConnectionState struct {
 	ConnectorVersionLaunchStage pulumi.StringPtrInput
 	// Time the Namespace was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrInput
 	// Define the Connectors target endpoint.
@@ -646,6 +667,13 @@ type connectionArgs struct {
 	ConfigVariables []ConnectionConfigVariable `pulumi:"configVariables"`
 	// connectorVersion of the Connector.
 	ConnectorVersion string `pulumi:"connectorVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An arbitrary description for the Connection.
 	Description *string `pulumi:"description"`
 	// Define the Connectors target endpoint.
@@ -697,6 +725,13 @@ type ConnectionArgs struct {
 	ConfigVariables ConnectionConfigVariableArrayInput
 	// connectorVersion of the Connector.
 	ConnectorVersion pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrInput
 	// Define the Connectors target endpoint.
@@ -863,6 +898,16 @@ func (o ConnectionOutput) ConnectorVersionLaunchStage() pulumi.StringOutput {
 // Time the Namespace was created in UTC.
 func (o ConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConnectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An arbitrary description for the Connection.

@@ -157,6 +157,15 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
      */
     declare public readonly cronSchedule: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.
      */
@@ -206,6 +215,7 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RepositoryWorkflowConfigState | undefined;
             resourceInputs["cronSchedule"] = state?.cronSchedule;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["invocationConfig"] = state?.invocationConfig;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -220,6 +230,7 @@ export class RepositoryWorkflowConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'releaseConfig'");
             }
             resourceInputs["cronSchedule"] = args?.cronSchedule;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["invocationConfig"] = args?.invocationConfig;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -242,6 +253,15 @@ export interface RepositoryWorkflowConfigState {
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
     cronSchedule?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.
@@ -287,6 +307,15 @@ export interface RepositoryWorkflowConfigArgs {
      * Optional. Optional schedule (in cron format) for automatic creation of compilation results.
      */
     cronSchedule?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. If left unset, a default InvocationConfig will be used.
      * Structure is documented below.

@@ -78,6 +78,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RegionAutoscalerAutoscalingPolicyScalingSchedule> ScalingSchedules;
+        /// <summary>
+        /// The number of seconds that the autoscaler waits for load stabilization
+        /// before making scale-in decisions.
+        /// This might appear as a delay in scaling in but it is an important mechanism
+        /// for your application to not have fluctuating size due to short term load
+        /// fluctuations.
+        /// </summary>
+        public readonly int? StabilizationPeriod;
 
         [OutputConstructor]
         private RegionAutoscalerAutoscalingPolicy(
@@ -99,7 +107,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.RegionAutoscalerAutoscalingPolicyScaleInControl? scaleInControl,
 
-            ImmutableArray<Outputs.RegionAutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules)
+            ImmutableArray<Outputs.RegionAutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules,
+
+            int? stabilizationPeriod)
         {
             CooldownPeriod = cooldownPeriod;
             CpuUtilization = cpuUtilization;
@@ -111,6 +121,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             ScaleDownControl = scaleDownControl;
             ScaleInControl = scaleInControl;
             ScalingSchedules = scalingSchedules;
+            StabilizationPeriod = stabilizationPeriod;
         }
     }
 }

@@ -26,6 +26,7 @@ class ApiProductArgs:
                  api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  approval_type: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  graphql_operation_group: pulumi.Input[Optional['ApiProductGraphqlOperationGroupArgs']] = None,
@@ -53,6 +54,12 @@ class ApiProductArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApiProductAttributeArgs']]] attributes: Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
                Use this property to specify the access level of the API product as either public, private, or internal.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the API product. Include key information about the API product that is not captured by other fields.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
                By specifying one or more environments, you can bind the resources listed in the API product to a specific environment, preventing developers from accessing those resources through API proxies deployed in another environment.
@@ -83,6 +90,8 @@ class ApiProductArgs:
             pulumi.set(__self__, "approval_type", approval_type)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if environments is not None:
@@ -175,6 +184,23 @@ class ApiProductArgs:
     @attributes.setter
     def attributes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]]):
         pulumi.set(self, "attributes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -348,6 +374,7 @@ class _ApiProductState:
                  approval_type: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductAttributeArgs']]]] = None,
                  created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -376,6 +403,12 @@ class _ApiProductState:
                Use this property to specify the access level of the API product as either public, private, or internal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] created_at: Response only. Creation time of this environment as milliseconds since epoch.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the API product. Include key information about the API product that is not captured by other fields.
         :param pulumi.Input[_builtins.str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
@@ -410,6 +443,8 @@ class _ApiProductState:
             pulumi.set(__self__, "attributes", attributes)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -495,6 +530,23 @@ class _ApiProductState:
     @created_at.setter
     def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -707,6 +759,7 @@ class ApiProduct(pulumi.CustomResource):
                  api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  approval_type: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -859,6 +912,12 @@ class ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]] attributes: Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes.
                Use this property to specify the access level of the API product as either public, private, or internal.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the API product. Include key information about the API product that is not captured by other fields.
         :param pulumi.Input[_builtins.str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
@@ -1034,6 +1093,7 @@ class ApiProduct(pulumi.CustomResource):
                  api_resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  approval_type: pulumi.Input[Optional[_builtins.str]] = None,
                  attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1061,6 +1121,7 @@ class ApiProduct(pulumi.CustomResource):
             __props__.__dict__["api_resources"] = api_resources
             __props__.__dict__["approval_type"] = approval_type
             __props__.__dict__["attributes"] = attributes
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1096,6 +1157,7 @@ class ApiProduct(pulumi.CustomResource):
             approval_type: pulumi.Input[Optional[_builtins.str]] = None,
             attributes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApiProductAttributeArgs', 'ApiProductAttributeArgsDict']]]]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             environments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1128,6 +1190,12 @@ class ApiProduct(pulumi.CustomResource):
                Use this property to specify the access level of the API product as either public, private, or internal.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] created_at: Response only. Creation time of this environment as milliseconds since epoch.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the API product. Include key information about the API product that is not captured by other fields.
         :param pulumi.Input[_builtins.str] display_name: Name displayed in the UI or developer portal to developers registering for API access.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] environments: Comma-separated list of environment names to which the API product is bound. Requests to environments that are not listed are rejected.
@@ -1162,6 +1230,7 @@ class ApiProduct(pulumi.CustomResource):
         __props__.__dict__["approval_type"] = approval_type
         __props__.__dict__["attributes"] = attributes
         __props__.__dict__["created_at"] = created_at
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["environments"] = environments
@@ -1216,6 +1285,19 @@ class ApiProduct(pulumi.CustomResource):
         Response only. Creation time of this environment as milliseconds since epoch.
         """
         return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

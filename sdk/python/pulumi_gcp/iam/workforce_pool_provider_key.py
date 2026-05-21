@@ -26,7 +26,8 @@ class WorkforcePoolProviderKeyArgs:
                  location: pulumi.Input[_builtins.str],
                  provider_id: pulumi.Input[_builtins.str],
                  use: pulumi.Input[_builtins.str],
-                 workforce_pool_id: pulumi.Input[_builtins.str]):
+                 workforce_pool_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkforcePoolProviderKey resource.
 
@@ -38,6 +39,12 @@ class WorkforcePoolProviderKeyArgs:
         :param pulumi.Input[_builtins.str] use: The purpose of the key.
                Possible values are: `ENCRYPTION`.
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the workforce pool.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "key_data", key_data)
         pulumi.set(__self__, "key_id", key_id)
@@ -45,6 +52,8 @@ class WorkforcePoolProviderKeyArgs:
         pulumi.set(__self__, "provider_id", provider_id)
         pulumi.set(__self__, "use", use)
         pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter(name="keyData")
@@ -120,10 +129,28 @@ class WorkforcePoolProviderKeyArgs:
     def workforce_pool_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "workforce_pool_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _WorkforcePoolProviderKeyState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  key_data: pulumi.Input[Optional['WorkforcePoolProviderKeyKeyDataArgs']] = None,
                  key_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -136,6 +163,12 @@ class _WorkforcePoolProviderKeyState:
         """
         Input properties used for looking up and filtering WorkforcePoolProviderKey resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expire_time: The time after which the key will be permanently deleted and cannot be recovered.
                Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
         :param pulumi.Input['WorkforcePoolProviderKeyKeyDataArgs'] key_data: Immutable. Public half of the asymmetric key.
@@ -150,6 +183,8 @@ class _WorkforcePoolProviderKeyState:
                Possible values are: `ENCRYPTION`.
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the workforce pool.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if key_data is not None:
@@ -168,6 +203,23 @@ class _WorkforcePoolProviderKeyState:
             pulumi.set(__self__, "use", use)
         if workforce_pool_id is not None:
             pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
@@ -288,6 +340,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
                  key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -356,6 +409,12 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']] key_data: Immutable. Public half of the asymmetric key.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] key_id: The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
@@ -445,6 +504,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
                  key_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -460,6 +520,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkforcePoolProviderKeyArgs.__new__(WorkforcePoolProviderKeyArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if key_data is None and not opts.urn:
                 raise TypeError("Missing required property 'key_data'")
             __props__.__dict__["key_data"] = key_data
@@ -491,6 +552,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             key_data: pulumi.Input[Optional[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']]] = None,
             key_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -507,6 +569,12 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expire_time: The time after which the key will be permanently deleted and cannot be recovered.
                Note that the key may get purged before this time if the total limit of keys per provider is exceeded.
         :param pulumi.Input[Union['WorkforcePoolProviderKeyKeyDataArgs', 'WorkforcePoolProviderKeyKeyDataArgsDict']] key_data: Immutable. Public half of the asymmetric key.
@@ -525,6 +593,7 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
 
         __props__ = _WorkforcePoolProviderKeyState.__new__(_WorkforcePoolProviderKeyState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["key_data"] = key_data
         __props__.__dict__["key_id"] = key_id
@@ -535,6 +604,19 @@ class WorkforcePoolProviderKey(pulumi.CustomResource):
         __props__.__dict__["use"] = use
         __props__.__dict__["workforce_pool_id"] = workforce_pool_id
         return WorkforcePoolProviderKey(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="expireTime")

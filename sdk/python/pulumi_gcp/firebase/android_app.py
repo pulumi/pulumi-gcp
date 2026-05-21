@@ -35,9 +35,12 @@ class AndroidAppArgs:
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
@@ -99,9 +102,12 @@ class AndroidAppArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-        serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -168,9 +174,12 @@ class _AndroidAppState:
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp.
                This identifier should be treated as an opaque token, as the data format is not specified.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
@@ -235,9 +244,12 @@ class _AndroidAppState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-        serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -428,9 +440,12 @@ class AndroidApp(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the AndroidApp.
                If apiKeyId is not set during creation, then Firebase automatically associates an apiKeyId with the AndroidApp.
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] package_name: The canonical package name of the Android app as would appear in the Google Play
                Developer Console.
@@ -597,9 +612,12 @@ class AndroidApp(pulumi.CustomResource):
                This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned.
         :param pulumi.Input[_builtins.str] app_id: The globally unique, Firebase-assigned identifier of the AndroidApp.
                This identifier should be treated as an opaque token, as the data format is not specified.
-        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-               rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-               serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user-assigned display name of the AndroidApp.
         :param pulumi.Input[_builtins.str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent
                with update requests to ensure the client has an up-to-date value before proceeding.
@@ -649,11 +667,14 @@ class AndroidApp(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-        rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-        serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

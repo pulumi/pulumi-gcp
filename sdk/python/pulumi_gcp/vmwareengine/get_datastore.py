@@ -27,13 +27,16 @@ class GetDatastoreResult:
     """
     A collection of values returned by getDatastore.
     """
-    def __init__(__self__, clusters=None, create_time=None, description=None, id=None, location=None, name=None, nfs_datastores=None, project=None, state=None, uid=None, update_time=None):
+    def __init__(__self__, clusters=None, create_time=None, deletion_policy=None, description=None, id=None, location=None, name=None, nfs_datastores=None, project=None, state=None, uid=None, update_time=None):
         if clusters and not isinstance(clusters, list):
             raise TypeError("Expected argument 'clusters' to be a list")
         pulumi.set(__self__, "clusters", clusters)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -71,6 +74,11 @@ class GetDatastoreResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -129,6 +137,7 @@ class AwaitableGetDatastoreResult(GetDatastoreResult):
         return GetDatastoreResult(
             clusters=self.clusters,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             id=self.id,
             location=self.location,
@@ -174,6 +183,7 @@ def get_datastore(location: Optional[_builtins.str] = None,
     return AwaitableGetDatastoreResult(
         clusters=pulumi.get(__ret__, 'clusters'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
@@ -216,6 +226,7 @@ def get_datastore_output(location: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetDatastoreResult(
         clusters=pulumi.get(__response__, 'clusters'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),

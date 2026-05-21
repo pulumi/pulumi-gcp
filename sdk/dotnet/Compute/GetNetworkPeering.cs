@@ -219,6 +219,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetNetworkPeeringResult
     {
+        public readonly string DeletionPolicy;
         public readonly bool ExportCustomRoutes;
         public readonly bool ExportSubnetRoutesWithPublicIp;
         /// <summary>
@@ -237,6 +238,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetNetworkPeeringResult(
+            string deletionPolicy,
+
             bool exportCustomRoutes,
 
             bool exportSubnetRoutesWithPublicIp,
@@ -261,6 +264,7 @@ namespace Pulumi.Gcp.Compute
 
             string updateStrategy)
         {
+            DeletionPolicy = deletionPolicy;
             ExportCustomRoutes = exportCustomRoutes;
             ExportSubnetRoutesWithPublicIp = exportSubnetRoutesWithPublicIp;
             Id = id;

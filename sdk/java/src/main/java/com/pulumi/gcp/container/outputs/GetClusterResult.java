@@ -84,6 +84,7 @@ public final class GetClusterResult {
     private String datapathProvider;
     private Integer defaultMaxPodsPerNode;
     private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String description;
     private Boolean disableL4LbFirewallReconciliation;
@@ -218,6 +219,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterDefaultSnatStatus> defaultSnatStatuses() {
         return this.defaultSnatStatuses;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -484,6 +488,7 @@ public final class GetClusterResult {
         private String datapathProvider;
         private Integer defaultMaxPodsPerNode;
         private List<GetClusterDefaultSnatStatus> defaultSnatStatuses;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String description;
         private Boolean disableL4LbFirewallReconciliation;
@@ -582,6 +587,7 @@ public final class GetClusterResult {
     	      this.datapathProvider = defaults.datapathProvider;
     	      this.defaultMaxPodsPerNode = defaults.defaultMaxPodsPerNode;
     	      this.defaultSnatStatuses = defaults.defaultSnatStatuses;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.disableL4LbFirewallReconciliation = defaults.disableL4LbFirewallReconciliation;
@@ -836,6 +842,14 @@ public final class GetClusterResult {
         }
         public Builder defaultSnatStatuses(GetClusterDefaultSnatStatus... defaultSnatStatuses) {
             return defaultSnatStatuses(List.of(defaultSnatStatuses));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
@@ -1596,6 +1610,7 @@ public final class GetClusterResult {
             _resultValue.datapathProvider = datapathProvider;
             _resultValue.defaultMaxPodsPerNode = defaultMaxPodsPerNode;
             _resultValue.defaultSnatStatuses = defaultSnatStatuses;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.disableL4LbFirewallReconciliation = disableL4LbFirewallReconciliation;

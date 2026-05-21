@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     public sealed class GetFunctionResult
     {
         public readonly ImmutableArray<Outputs.GetFunctionBuildConfigResult> BuildConfigs;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Environment;
@@ -179,6 +180,8 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         [OutputConstructor]
         private GetFunctionResult(
             ImmutableArray<Outputs.GetFunctionBuildConfigResult> buildConfigs,
+
+            string deletionPolicy,
 
             string description,
 
@@ -211,6 +214,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
             string url)
         {
             BuildConfigs = buildConfigs;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             Environment = environment;

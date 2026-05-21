@@ -518,6 +518,13 @@ type NotebookExecution struct {
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource NotebookExecutionDataformRepositorySourcePtrOutput `pulumi:"dataformRepositorySource"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The content of the input notebook in ipynb format.
 	// Structure is documented below.
 	DirectNotebookSource NotebookExecutionDirectNotebookSourcePtrOutput `pulumi:"directNotebookSource"`
@@ -590,6 +597,13 @@ type notebookExecutionState struct {
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource *NotebookExecutionDataformRepositorySource `pulumi:"dataformRepositorySource"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The content of the input notebook in ipynb format.
 	// Structure is documented below.
 	DirectNotebookSource *NotebookExecutionDirectNotebookSource `pulumi:"directNotebookSource"`
@@ -624,6 +638,13 @@ type NotebookExecutionState struct {
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource NotebookExecutionDataformRepositorySourcePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The content of the input notebook in ipynb format.
 	// Structure is documented below.
 	DirectNotebookSource NotebookExecutionDirectNotebookSourcePtrInput
@@ -662,6 +683,13 @@ type notebookExecutionArgs struct {
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource *NotebookExecutionDataformRepositorySource `pulumi:"dataformRepositorySource"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The content of the input notebook in ipynb format.
 	// Structure is documented below.
 	DirectNotebookSource *NotebookExecutionDirectNotebookSource `pulumi:"directNotebookSource"`
@@ -697,6 +725,13 @@ type NotebookExecutionArgs struct {
 	// The Dataform Repository containing the input notebook.
 	// Structure is documented below.
 	DataformRepositorySource NotebookExecutionDataformRepositorySourcePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The content of the input notebook in ipynb format.
 	// Structure is documented below.
 	DirectNotebookSource NotebookExecutionDirectNotebookSourcePtrInput
@@ -825,6 +860,16 @@ func (o NotebookExecutionOutput) DataformRepositorySource() NotebookExecutionDat
 	return o.ApplyT(func(v *NotebookExecution) NotebookExecutionDataformRepositorySourcePtrOutput {
 		return v.DataformRepositorySource
 	}).(NotebookExecutionDataformRepositorySourcePtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o NotebookExecutionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *NotebookExecution) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The content of the input notebook in ipynb format.

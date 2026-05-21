@@ -25,6 +25,7 @@ class WorkforcePoolArgs:
                  parent: pulumi.Input[_builtins.str],
                  workforce_pool_id: pulumi.Input[_builtins.str],
                  access_restrictions: pulumi.Input[Optional['WorkforcePoolAccessRestrictionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,6 +41,12 @@ class WorkforcePoolArgs:
         :param pulumi.Input['WorkforcePoolAccessRestrictionsArgs'] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
                sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -55,6 +62,8 @@ class WorkforcePoolArgs:
         pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
         if access_restrictions is not None:
             pulumi.set(__self__, "access_restrictions", access_restrictions)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -117,6 +126,23 @@ class WorkforcePoolArgs:
         pulumi.set(self, "access_restrictions", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -174,6 +200,7 @@ class WorkforcePoolArgs:
 class _WorkforcePoolState:
     def __init__(__self__, *,
                  access_restrictions: pulumi.Input[Optional['WorkforcePoolAccessRestrictionsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -189,6 +216,12 @@ class _WorkforcePoolState:
         :param pulumi.Input['WorkforcePoolAccessRestrictionsArgs'] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
                sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -218,6 +251,8 @@ class _WorkforcePoolState:
         """
         if access_restrictions is not None:
             pulumi.set(__self__, "access_restrictions", access_restrictions)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -250,6 +285,23 @@ class _WorkforcePoolState:
     @access_restrictions.setter
     def access_restrictions(self, value: pulumi.Input[Optional['WorkforcePoolAccessRestrictionsArgs']]):
         pulumi.set(self, "access_restrictions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -384,6 +436,7 @@ class WorkforcePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_restrictions: pulumi.Input[Optional[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -460,6 +513,12 @@ class WorkforcePool(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
                sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -560,6 +619,7 @@ class WorkforcePool(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_restrictions: pulumi.Input[Optional[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -577,6 +637,7 @@ class WorkforcePool(pulumi.CustomResource):
             __props__ = WorkforcePoolArgs.__new__(WorkforcePoolArgs)
 
             __props__.__dict__["access_restrictions"] = access_restrictions
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
@@ -603,6 +664,7 @@ class WorkforcePool(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_restrictions: pulumi.Input[Optional[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,6 +684,12 @@ class WorkforcePool(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkforcePoolAccessRestrictionsArgs', 'WorkforcePoolAccessRestrictionsArgsDict']] access_restrictions: Configure access restrictions on the workforce pool users. This is an optional field. If specified web
                sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the pool. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
                or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
@@ -654,6 +722,7 @@ class WorkforcePool(pulumi.CustomResource):
         __props__ = _WorkforcePoolState.__new__(_WorkforcePoolState)
 
         __props__.__dict__["access_restrictions"] = access_restrictions
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
@@ -674,6 +743,19 @@ class WorkforcePool(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "access_restrictions")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

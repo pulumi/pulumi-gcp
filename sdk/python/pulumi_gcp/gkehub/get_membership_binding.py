@@ -27,13 +27,16 @@ class GetMembershipBindingResult:
     """
     A collection of values returned by getMembershipBinding.
     """
-    def __init__(__self__, create_time=None, delete_time=None, effective_labels=None, id=None, labels=None, location=None, membership_binding_id=None, membership_id=None, name=None, project=None, pulumi_labels=None, scope=None, states=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, deletion_policy=None, effective_labels=None, id=None, labels=None, location=None, membership_binding_id=None, membership_id=None, name=None, project=None, pulumi_labels=None, scope=None, states=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -83,6 +86,11 @@ class GetMembershipBindingResult:
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> _builtins.str:
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -161,6 +169,7 @@ class AwaitableGetMembershipBindingResult(GetMembershipBindingResult):
         return GetMembershipBindingResult(
             create_time=self.create_time,
             delete_time=self.delete_time,
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             id=self.id,
             labels=self.labels,
@@ -217,6 +226,7 @@ def get_membership_binding(location: Optional[_builtins.str] = None,
     return AwaitableGetMembershipBindingResult(
         create_time=pulumi.get(__ret__, 'create_time'),
         delete_time=pulumi.get(__ret__, 'delete_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -270,6 +280,7 @@ def get_membership_binding_output(location: pulumi.Input[Optional[_builtins.str]
     return __ret__.apply(lambda __response__: GetMembershipBindingResult(
         create_time=pulumi.get(__response__, 'create_time'),
         delete_time=pulumi.get(__response__, 'delete_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),

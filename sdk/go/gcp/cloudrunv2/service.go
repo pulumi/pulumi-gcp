@@ -1086,6 +1086,13 @@ type Service struct {
 	DefaultUriDisabled pulumi.BoolPtrOutput `pulumi:"defaultUriDisabled"`
 	// The deletion time.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1248,6 +1255,13 @@ type serviceState struct {
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
 	// The deletion time.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1370,6 +1384,13 @@ type ServiceState struct {
 	DefaultUriDisabled pulumi.BoolPtrInput
 	// The deletion time.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1487,6 +1508,13 @@ type serviceArgs struct {
 	CustomAudiences []string `pulumi:"customAudiences"`
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled *bool `pulumi:"defaultUriDisabled"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1560,6 +1588,13 @@ type ServiceArgs struct {
 	CustomAudiences pulumi.StringArrayInput
 	// Disables public resolution of the default URI of this service.
 	DefaultUriDisabled pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether Terraform will be prevented from destroying the service. Defaults to true.
 	// When a`terraform destroy` or `pulumi up` would delete the service,
 	// the command will fail if this field is not set to false in Terraform state.
@@ -1758,6 +1793,16 @@ func (o ServiceOutput) DefaultUriDisabled() pulumi.BoolPtrOutput {
 // The deletion time.
 func (o ServiceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ServiceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the service. Defaults to true.

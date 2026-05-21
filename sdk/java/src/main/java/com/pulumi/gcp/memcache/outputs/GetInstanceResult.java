@@ -23,6 +23,7 @@ import javax.annotation.Nullable;
 public final class GetInstanceResult {
     private String authorizedNetwork;
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String discoveryEndpoint;
     private String displayName;
@@ -54,6 +55,9 @@ public final class GetInstanceResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -131,6 +135,7 @@ public final class GetInstanceResult {
     public static final class Builder {
         private String authorizedNetwork;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String discoveryEndpoint;
         private String displayName;
@@ -156,6 +161,7 @@ public final class GetInstanceResult {
     	      Objects.requireNonNull(defaults);
     	      this.authorizedNetwork = defaults.authorizedNetwork;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.discoveryEndpoint = defaults.discoveryEndpoint;
     	      this.displayName = defaults.displayName;
@@ -192,6 +198,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -375,6 +389,7 @@ public final class GetInstanceResult {
             final var _resultValue = new GetInstanceResult();
             _resultValue.authorizedNetwork = authorizedNetwork;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.discoveryEndpoint = discoveryEndpoint;
             _resultValue.displayName = displayName;

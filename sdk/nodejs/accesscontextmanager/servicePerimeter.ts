@@ -251,6 +251,15 @@ export class ServicePerimeter extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the ServicePerimeter and its use. Does not affect
      * behavior.
      */
@@ -335,6 +344,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServicePerimeterState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["parent"] = state?.parent;
@@ -352,6 +362,7 @@ export class ServicePerimeter extends pulumi.CustomResource {
             if (args?.title === undefined && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["parent"] = args?.parent;
@@ -376,6 +387,15 @@ export interface ServicePerimeterState {
      * Time the AccessPolicy was created in UTC.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the ServicePerimeter and its use. Does not affect
      * behavior.
@@ -452,6 +472,15 @@ export interface ServicePerimeterState {
  * The set of arguments for constructing a ServicePerimeter resource.
  */
 export interface ServicePerimeterArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the ServicePerimeter and its use. Does not affect
      * behavior.

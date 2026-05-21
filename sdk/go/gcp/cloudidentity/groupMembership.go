@@ -157,6 +157,13 @@ type GroupMembership struct {
 	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the Group to create this membership in.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// (Optional, Beta)
@@ -218,6 +225,13 @@ type groupMembershipState struct {
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// The time when the Membership was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Group to create this membership in.
 	Group *string `pulumi:"group"`
 	// (Optional, Beta)
@@ -244,6 +258,13 @@ type GroupMembershipState struct {
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// The time when the Membership was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Group to create this membership in.
 	Group pulumi.StringPtrInput
 	// (Optional, Beta)
@@ -272,6 +293,13 @@ func (GroupMembershipState) ElementType() reflect.Type {
 type groupMembershipArgs struct {
 	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Group to create this membership in.
 	Group string `pulumi:"group"`
 	// (Optional, Beta)
@@ -291,6 +319,13 @@ type groupMembershipArgs struct {
 type GroupMembershipArgs struct {
 	// If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Group to create this membership in.
 	Group pulumi.StringInput
 	// (Optional, Beta)
@@ -401,6 +436,16 @@ func (o GroupMembershipOutput) CreateIgnoreAlreadyExists() pulumi.BoolPtrOutput 
 // The time when the Membership was created.
 func (o GroupMembershipOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GroupMembershipOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMembership) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the Group to create this membership in.

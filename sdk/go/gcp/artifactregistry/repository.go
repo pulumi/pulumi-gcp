@@ -1010,6 +1010,13 @@ type Repository struct {
 	CleanupPolicyDryRun pulumi.BoolPtrOutput `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1131,6 +1138,13 @@ type repositoryState struct {
 	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
 	// The time when the repository was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1212,6 +1226,13 @@ type RepositoryState struct {
 	CleanupPolicyDryRun pulumi.BoolPtrInput
 	// The time when the repository was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
 	// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1295,6 +1316,13 @@ type repositoryArgs struct {
 	// If true, the cleanup pipeline is prevented from deleting versions in this
 	// repository.
 	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
 	// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1363,6 +1391,13 @@ type RepositoryArgs struct {
 	// If true, the cleanup pipeline is prevented from deleting versions in this
 	// repository.
 	CleanupPolicyDryRun pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
 	// Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1525,6 +1560,16 @@ func (o RepositoryOutput) CleanupPolicyDryRun() pulumi.BoolPtrOutput {
 // The time when the repository was created.
 func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RepositoryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user-provided description of the repository.

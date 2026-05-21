@@ -21,6 +21,7 @@ public final class GetSSLPolicyResult {
      * 
      */
     private List<String> customFeatures;
+    private String deletionPolicy;
     /**
      * @return Description of this SSL Policy.
      * 
@@ -71,6 +72,9 @@ public final class GetSSLPolicyResult {
      */
     public List<String> customFeatures() {
         return this.customFeatures;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Description of this SSL Policy.
@@ -139,6 +143,7 @@ public final class GetSSLPolicyResult {
     public static final class Builder {
         private String creationTimestamp;
         private List<String> customFeatures;
+        private String deletionPolicy;
         private String description;
         private List<String> enabledFeatures;
         private String fingerprint;
@@ -153,6 +158,7 @@ public final class GetSSLPolicyResult {
     	      Objects.requireNonNull(defaults);
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.customFeatures = defaults.customFeatures;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.enabledFeatures = defaults.enabledFeatures;
     	      this.fingerprint = defaults.fingerprint;
@@ -182,6 +188,14 @@ public final class GetSSLPolicyResult {
         }
         public Builder customFeatures(String... customFeatures) {
             return customFeatures(List.of(customFeatures));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -260,6 +274,7 @@ public final class GetSSLPolicyResult {
             final var _resultValue = new GetSSLPolicyResult();
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.customFeatures = customFeatures;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.enabledFeatures = enabledFeatures;
             _resultValue.fingerprint = fingerprint;

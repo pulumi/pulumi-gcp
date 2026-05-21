@@ -134,6 +134,15 @@ export class Firewall extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The list of DENY rules specified by this firewall. Each rule specifies
      * a protocol and port-range tuple that describes a denied connection.
      * Structure is documented below.
@@ -286,6 +295,7 @@ export class Firewall extends pulumi.CustomResource {
             const state = argsOrState as FirewallState | undefined;
             resourceInputs["allows"] = state?.allows;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["denies"] = state?.denies;
             resourceInputs["description"] = state?.description;
             resourceInputs["destinationRanges"] = state?.destinationRanges;
@@ -310,6 +320,7 @@ export class Firewall extends pulumi.CustomResource {
                 throw new Error("Missing required property 'network'");
             }
             resourceInputs["allows"] = args?.allows;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["denies"] = args?.denies;
             resourceInputs["description"] = args?.description;
             resourceInputs["destinationRanges"] = args?.destinationRanges;
@@ -350,6 +361,15 @@ export interface FirewallState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
      * a protocol and port-range tuple that describes a denied connection.
@@ -500,6 +520,15 @@ export interface FirewallArgs {
      * Structure is documented below.
      */
     allows?: pulumi.Input<pulumi.Input<inputs.compute.FirewallAllow>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies
      * a protocol and port-range tuple that describes a denied connection.

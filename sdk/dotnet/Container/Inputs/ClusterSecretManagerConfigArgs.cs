@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// config for secret manager auto rotation. Structure is docuemented below
+        /// config for secret manager auto rotation. Structure is documented below
         /// </summary>
         [Input("rotationConfig")]
         public Input<Inputs.ClusterSecretManagerConfigRotationConfigArgs>? RotationConfig { get; set; }

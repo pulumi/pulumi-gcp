@@ -20,6 +20,7 @@ __all__ = ['AppCheckServiceConfigArgs', 'AppCheckServiceConfig']
 class AppCheckServiceConfigArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -30,6 +31,12 @@ class AppCheckServiceConfigArgs:
                firebasedatabase.googleapis.com (Firebase Realtime Database)
                firestore.googleapis.com (Cloud Firestore)
                identitytoolkit.googleapis.com (Authentication)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] enforcement_mode: The App Check enforcement mode for a service supported by App Check. Valid values are
                (Unset)
                Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -60,6 +67,8 @@ class AppCheckServiceConfigArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "service_id", service_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enforcement_mode is not None:
             pulumi.set(__self__, "enforcement_mode", enforcement_mode)
         if project is not None:
@@ -80,6 +89,23 @@ class AppCheckServiceConfigArgs:
     @service_id.setter
     def service_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcementMode")
@@ -135,6 +161,7 @@ class AppCheckServiceConfigArgs:
 @pulumi.input_type
 class _AppCheckServiceConfigState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -142,6 +169,12 @@ class _AppCheckServiceConfigState:
         """
         Input properties used for looking up and filtering AppCheckServiceConfig resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] enforcement_mode: The App Check enforcement mode for a service supported by App Check. Valid values are
                (Unset)
                Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -177,6 +210,8 @@ class _AppCheckServiceConfigState:
                firestore.googleapis.com (Cloud Firestore)
                identitytoolkit.googleapis.com (Authentication)
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enforcement_mode is not None:
             pulumi.set(__self__, "enforcement_mode", enforcement_mode)
         if name is not None:
@@ -185,6 +220,23 @@ class _AppCheckServiceConfigState:
             pulumi.set(__self__, "project", project)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enforcementMode")
@@ -271,6 +323,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -350,6 +403,12 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] enforcement_mode: The App Check enforcement mode for a service supported by App Check. Valid values are
                (Unset)
                Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -478,6 +537,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  service_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -490,6 +550,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppCheckServiceConfigArgs.__new__(AppCheckServiceConfigArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enforcement_mode"] = enforcement_mode
             __props__.__dict__["project"] = project
             if service_id is None and not opts.urn:
@@ -506,6 +567,7 @@ class AppCheckServiceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             enforcement_mode: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -517,6 +579,12 @@ class AppCheckServiceConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] enforcement_mode: The App Check enforcement mode for a service supported by App Check. Valid values are
                (Unset)
                Firebase App Check is not enforced for the service, nor are App Check metrics collected.
@@ -556,11 +624,25 @@ class AppCheckServiceConfig(pulumi.CustomResource):
 
         __props__ = _AppCheckServiceConfigState.__new__(_AppCheckServiceConfigState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["enforcement_mode"] = enforcement_mode
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["service_id"] = service_id
         return AppCheckServiceConfig(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="enforcementMode")

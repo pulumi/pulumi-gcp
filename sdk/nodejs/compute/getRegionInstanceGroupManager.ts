@@ -63,6 +63,7 @@ export interface GetRegionInstanceGroupManagerResult {
     readonly autoHealingPolicies: outputs.compute.GetRegionInstanceGroupManagerAutoHealingPolicy[];
     readonly baseInstanceName: string;
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly distributionPolicyTargetShape: string;
     readonly distributionPolicyZones: string[];

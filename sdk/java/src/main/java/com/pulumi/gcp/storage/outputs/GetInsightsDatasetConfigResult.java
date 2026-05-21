@@ -27,6 +27,7 @@ public final class GetInsightsDatasetConfigResult {
     private String createTime;
     private String datasetConfigId;
     private String datasetConfigState;
+    private String deletionPolicy;
     private String description;
     private List<GetInsightsDatasetConfigExcludeCloudStorageBucket> excludeCloudStorageBuckets;
     private List<GetInsightsDatasetConfigExcludeCloudStorageLocation> excludeCloudStorageLocations;
@@ -64,6 +65,9 @@ public final class GetInsightsDatasetConfigResult {
     }
     public String datasetConfigState() {
         return this.datasetConfigState;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -143,6 +147,7 @@ public final class GetInsightsDatasetConfigResult {
         private String createTime;
         private String datasetConfigId;
         private String datasetConfigState;
+        private String deletionPolicy;
         private String description;
         private List<GetInsightsDatasetConfigExcludeCloudStorageBucket> excludeCloudStorageBuckets;
         private List<GetInsightsDatasetConfigExcludeCloudStorageLocation> excludeCloudStorageLocations;
@@ -170,6 +175,7 @@ public final class GetInsightsDatasetConfigResult {
     	      this.createTime = defaults.createTime;
     	      this.datasetConfigId = defaults.datasetConfigId;
     	      this.datasetConfigState = defaults.datasetConfigState;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.excludeCloudStorageBuckets = defaults.excludeCloudStorageBuckets;
     	      this.excludeCloudStorageLocations = defaults.excludeCloudStorageLocations;
@@ -222,6 +228,14 @@ public final class GetInsightsDatasetConfigResult {
               throw new MissingRequiredPropertyException("GetInsightsDatasetConfigResult", "datasetConfigState");
             }
             this.datasetConfigState = datasetConfigState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInsightsDatasetConfigResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -412,6 +426,7 @@ public final class GetInsightsDatasetConfigResult {
             _resultValue.createTime = createTime;
             _resultValue.datasetConfigId = datasetConfigId;
             _resultValue.datasetConfigState = datasetConfigState;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.excludeCloudStorageBuckets = excludeCloudStorageBuckets;
             _resultValue.excludeCloudStorageLocations = excludeCloudStorageLocations;

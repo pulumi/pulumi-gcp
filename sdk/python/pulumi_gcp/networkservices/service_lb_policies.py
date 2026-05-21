@@ -23,6 +23,7 @@ class ServiceLbPoliciesArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  auto_capacity_drain: pulumi.Input[Optional['ServiceLbPoliciesAutoCapacityDrainArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_config: pulumi.Input[Optional['ServiceLbPoliciesFailoverConfigArgs']] = None,
                  isolation_config: pulumi.Input[Optional['ServiceLbPoliciesIsolationConfigArgs']] = None,
@@ -36,6 +37,12 @@ class ServiceLbPoliciesArgs:
         :param pulumi.Input[_builtins.str] location: The location of the service lb policy.
         :param pulumi.Input['ServiceLbPoliciesAutoCapacityDrainArgs'] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input['ServiceLbPoliciesFailoverConfigArgs'] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
                Structure is documented below.
@@ -53,6 +60,8 @@ class ServiceLbPoliciesArgs:
         pulumi.set(__self__, "location", location)
         if auto_capacity_drain is not None:
             pulumi.set(__self__, "auto_capacity_drain", auto_capacity_drain)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if failover_config is not None:
@@ -92,6 +101,23 @@ class ServiceLbPoliciesArgs:
     @auto_capacity_drain.setter
     def auto_capacity_drain(self, value: pulumi.Input[Optional['ServiceLbPoliciesAutoCapacityDrainArgs']]):
         pulumi.set(self, "auto_capacity_drain", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -189,6 +215,7 @@ class _ServiceLbPoliciesState:
     def __init__(__self__, *,
                  auto_capacity_drain: pulumi.Input[Optional['ServiceLbPoliciesAutoCapacityDrainArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  failover_config: pulumi.Input[Optional['ServiceLbPoliciesFailoverConfigArgs']] = None,
@@ -206,6 +233,12 @@ class _ServiceLbPoliciesState:
         :param pulumi.Input['ServiceLbPoliciesAutoCapacityDrainArgs'] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time the ServiceLbPolicy was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ServiceLbPoliciesFailoverConfigArgs'] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
@@ -229,6 +262,8 @@ class _ServiceLbPoliciesState:
             pulumi.set(__self__, "auto_capacity_drain", auto_capacity_drain)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -276,6 +311,23 @@ class _ServiceLbPoliciesState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -424,6 +476,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_capacity_drain: pulumi.Input[Optional[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_config: pulumi.Input[Optional[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
                  isolation_config: pulumi.Input[Optional[Union['ServiceLbPoliciesIsolationConfigArgs', 'ServiceLbPoliciesIsolationConfigArgsDict']]] = None,
@@ -535,6 +588,12 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
                Structure is documented below.
@@ -670,6 +729,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_capacity_drain: pulumi.Input[Optional[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  failover_config: pulumi.Input[Optional[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
                  isolation_config: pulumi.Input[Optional[Union['ServiceLbPoliciesIsolationConfigArgs', 'ServiceLbPoliciesIsolationConfigArgsDict']]] = None,
@@ -688,6 +748,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
             __props__ = ServiceLbPoliciesArgs.__new__(ServiceLbPoliciesArgs)
 
             __props__.__dict__["auto_capacity_drain"] = auto_capacity_drain
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["failover_config"] = failover_config
             __props__.__dict__["isolation_config"] = isolation_config
@@ -716,6 +777,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_capacity_drain: pulumi.Input[Optional[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             failover_config: pulumi.Input[Optional[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']]] = None,
@@ -737,6 +799,12 @@ class ServiceLbPolicies(pulumi.CustomResource):
         :param pulumi.Input[Union['ServiceLbPoliciesAutoCapacityDrainArgs', 'ServiceLbPoliciesAutoCapacityDrainArgsDict']] auto_capacity_drain: Option to specify if an unhealthy MIG/NEG should be considered for global load balancing and traffic routing.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time the ServiceLbPolicy was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['ServiceLbPoliciesFailoverConfigArgs', 'ServiceLbPoliciesFailoverConfigArgsDict']] failover_config: Option to specify health based failover behavior. This is not related to Network load balancer FailoverPolicy.
@@ -762,6 +830,7 @@ class ServiceLbPolicies(pulumi.CustomResource):
 
         __props__.__dict__["auto_capacity_drain"] = auto_capacity_drain
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["failover_config"] = failover_config
@@ -791,6 +860,19 @@ class ServiceLbPolicies(pulumi.CustomResource):
         Time the ServiceLbPolicy was created in UTC.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

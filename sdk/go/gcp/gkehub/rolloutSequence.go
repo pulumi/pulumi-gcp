@@ -41,10 +41,21 @@ import (
 type RolloutSequence struct {
 	pulumi.CustomResourceState
 
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig RolloutSequenceAutoUpgradeConfigPtrOutput `pulumi:"autoUpgradeConfig"`
 	// The timestamp at which the Rollout Sequence was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The timestamp at the Rollout Sequence was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human readable display name of the Rollout Sequence.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -119,10 +130,21 @@ func GetRolloutSequence(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RolloutSequence resources.
 type rolloutSequenceState struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig *RolloutSequenceAutoUpgradeConfig `pulumi:"autoUpgradeConfig"`
 	// The timestamp at which the Rollout Sequence was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The timestamp at the Rollout Sequence was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human readable display name of the Rollout Sequence.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -157,10 +179,21 @@ type rolloutSequenceState struct {
 }
 
 type RolloutSequenceState struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig RolloutSequenceAutoUpgradeConfigPtrInput
 	// The timestamp at which the Rollout Sequence was created.
 	CreateTime pulumi.StringPtrInput
 	// The timestamp at the Rollout Sequence was deleted.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human readable display name of the Rollout Sequence.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -199,6 +232,17 @@ func (RolloutSequenceState) ElementType() reflect.Type {
 }
 
 type rolloutSequenceArgs struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig *RolloutSequenceAutoUpgradeConfig `pulumi:"autoUpgradeConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human readable display name of the Rollout Sequence.
 	DisplayName *string `pulumi:"displayName"`
 	// Selector for clusters to exclude from the Rollout Sequence.
@@ -221,6 +265,17 @@ type rolloutSequenceArgs struct {
 
 // The set of arguments for constructing a RolloutSequence resource.
 type RolloutSequenceArgs struct {
+	// Configuration for automatic upgrades.
+	// If not specified, the system applies default behavior.
+	// Structure is documented below.
+	AutoUpgradeConfig RolloutSequenceAutoUpgradeConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human readable display name of the Rollout Sequence.
 	DisplayName pulumi.StringPtrInput
 	// Selector for clusters to exclude from the Rollout Sequence.
@@ -328,6 +383,13 @@ func (o RolloutSequenceOutput) ToRolloutSequenceOutputWithContext(ctx context.Co
 	return o
 }
 
+// Configuration for automatic upgrades.
+// If not specified, the system applies default behavior.
+// Structure is documented below.
+func (o RolloutSequenceOutput) AutoUpgradeConfig() RolloutSequenceAutoUpgradeConfigPtrOutput {
+	return o.ApplyT(func(v *RolloutSequence) RolloutSequenceAutoUpgradeConfigPtrOutput { return v.AutoUpgradeConfig }).(RolloutSequenceAutoUpgradeConfigPtrOutput)
+}
+
 // The timestamp at which the Rollout Sequence was created.
 func (o RolloutSequenceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolloutSequence) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -336,6 +398,16 @@ func (o RolloutSequenceOutput) CreateTime() pulumi.StringOutput {
 // The timestamp at the Rollout Sequence was deleted.
 func (o RolloutSequenceOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RolloutSequence) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RolloutSequenceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RolloutSequence) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Human readable display name of the Rollout Sequence.

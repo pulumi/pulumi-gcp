@@ -83,6 +83,79 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ces Deployment Full
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.ces.App;
+ * import com.pulumi.gcp.ces.AppArgs;
+ * import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+ * import com.pulumi.gcp.ces.Deployment;
+ * import com.pulumi.gcp.ces.DeploymentArgs;
+ * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileArgs;
+ * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfilePersonaPropertyArgs;
+ * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileWebWidgetConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_app = new App("my-app", AppArgs.builder()
+ *             .location("us")
+ *             .displayName("my-app")
+ *             .appId("app-id")
+ *             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+ *                 .timeZone("America/Los_Angeles")
+ *                 .build())
+ *             .build());
+ * 
+ *         var my_deployment = new Deployment("my-deployment", DeploymentArgs.builder()
+ *             .location("us")
+ *             .displayName("my-deployment")
+ *             .app(my_app.name())
+ *             .appVersion("projects/example-project/locations/us/apps/example-app/versions/example-version")
+ *             .channelProfile(DeploymentChannelProfileArgs.builder()
+ *                 .channelType("API")
+ *                 .disableBargeInControl(true)
+ *                 .disableDtmf(true)
+ *                 .personaProperty(DeploymentChannelProfilePersonaPropertyArgs.builder()
+ *                     .persona("CHATTY")
+ *                     .build())
+ *                 .profileId("temp_profile_id")
+ *                 .webWidgetConfig(DeploymentChannelProfileWebWidgetConfigArgs.builder()
+ *                     .modality("CHAT_AND_VOICE")
+ *                     .theme("DARK")
+ *                     .webWidgetTitle("temp_webwidget_title")
+ *                     .securitySettings(DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs.builder()
+ *                         .enablePublicAccess(true)
+ *                         .enableOriginCheck(true)
+ *                         .allowedOrigins(                        
+ *                             "https://example.com",
+ *                             "https://test.com")
+ *                         .enableRecaptcha(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -166,6 +239,30 @@ public class Deployment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Display name of the deployment.

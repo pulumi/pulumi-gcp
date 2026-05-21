@@ -106,6 +106,13 @@ type Deployment struct {
 	// Default value is `DELETE`.
 	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy pulumi.StringPtrOutput `pulumi:"deletePolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Unique identifier for deployment. Output only.
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
 	// Optional user-provided description of deployment.
@@ -188,6 +195,13 @@ type deploymentState struct {
 	// Default value is `DELETE`.
 	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy *string `pulumi:"deletePolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Unique identifier for deployment. Output only.
 	DeploymentId *string `pulumi:"deploymentId"`
 	// Optional user-provided description of deployment.
@@ -238,6 +252,13 @@ type DeploymentState struct {
 	// Default value is `DELETE`.
 	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Unique identifier for deployment. Output only.
 	DeploymentId pulumi.StringPtrInput
 	// Optional user-provided description of deployment.
@@ -292,6 +313,13 @@ type deploymentArgs struct {
 	// Default value is `DELETE`.
 	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy *string `pulumi:"deletePolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional user-provided description of deployment.
 	Description *string `pulumi:"description"`
 	// Key-value pairs to apply to this labels.
@@ -336,6 +364,13 @@ type DeploymentArgs struct {
 	// Default value is `DELETE`.
 	// Possible values are: `ABANDON`, `DELETE`.
 	DeletePolicy pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional user-provided description of deployment.
 	Description pulumi.StringPtrInput
 	// Key-value pairs to apply to this labels.
@@ -469,6 +504,16 @@ func (o DeploymentOutput) CreatePolicy() pulumi.StringPtrOutput {
 // Possible values are: `ABANDON`, `DELETE`.
 func (o DeploymentOutput) DeletePolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringPtrOutput { return v.DeletePolicy }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DeploymentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Unique identifier for deployment. Output only.

@@ -21,6 +21,7 @@ __all__ = ['AiLogicConfigArgs', 'AiLogicConfig']
 @pulumi.input_type
 class AiLogicConfigArgs:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  generative_language_config: pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -29,6 +30,12 @@ class AiLogicConfigArgs:
         """
         The set of arguments for constructing a AiLogicConfig resource.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -44,6 +51,8 @@ class AiLogicConfigArgs:
         :param pulumi.Input['AiLogicConfigTrafficFilterArgs'] traffic_filter: Configuration for traffic filtering.
                Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if generative_language_config is not None:
             pulumi.set(__self__, "generative_language_config", generative_language_config)
         if location is not None:
@@ -54,6 +63,23 @@ class AiLogicConfigArgs:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if traffic_filter is not None:
             pulumi.set(__self__, "traffic_filter", traffic_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
@@ -128,6 +154,7 @@ class AiLogicConfigArgs:
 @pulumi.input_type
 class _AiLogicConfigState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  generative_language_config: pulumi.Input[Optional['AiLogicConfigGenerativeLanguageConfigArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -137,6 +164,12 @@ class _AiLogicConfigState:
         """
         Input properties used for looking up and filtering AiLogicConfig resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AiLogicConfigGenerativeLanguageConfigArgs'] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -154,6 +187,8 @@ class _AiLogicConfigState:
         :param pulumi.Input['AiLogicConfigTrafficFilterArgs'] traffic_filter: Configuration for traffic filtering.
                Structure is documented below.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if generative_language_config is not None:
             pulumi.set(__self__, "generative_language_config", generative_language_config)
         if location is not None:
@@ -166,6 +201,23 @@ class _AiLogicConfigState:
             pulumi.set(__self__, "telemetry_config", telemetry_config)
         if traffic_filter is not None:
             pulumi.set(__self__, "traffic_filter", traffic_filter)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")
@@ -256,6 +308,7 @@ class AiLogicConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  generative_language_config: pulumi.Input[Optional[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -382,6 +435,12 @@ class AiLogicConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -536,6 +595,7 @@ class AiLogicConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  generative_language_config: pulumi.Input[Optional[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -550,6 +610,7 @@ class AiLogicConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiLogicConfigArgs.__new__(AiLogicConfigArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["generative_language_config"] = generative_language_config
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
@@ -566,6 +627,7 @@ class AiLogicConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             generative_language_config: pulumi.Input[Optional[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -579,6 +641,12 @@ class AiLogicConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AiLogicConfigGenerativeLanguageConfigArgs', 'AiLogicConfigGenerativeLanguageConfigArgsDict']] generative_language_config: Configuration for using the Gemini Developer API via Firebase AI Logic.
                When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
                API key is stored in this configuration *on the server* so that you do
@@ -600,6 +668,7 @@ class AiLogicConfig(pulumi.CustomResource):
 
         __props__ = _AiLogicConfigState.__new__(_AiLogicConfigState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["generative_language_config"] = generative_language_config
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -607,6 +676,19 @@ class AiLogicConfig(pulumi.CustomResource):
         __props__.__dict__["telemetry_config"] = telemetry_config
         __props__.__dict__["traffic_filter"] = traffic_filter
         return AiLogicConfig(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="generativeLanguageConfig")

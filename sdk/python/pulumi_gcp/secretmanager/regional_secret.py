@@ -25,6 +25,7 @@ class RegionalSecretArgs:
                  secret_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  customer_managed_encryption: pulumi.Input[Optional['RegionalSecretCustomerManagedEncryptionArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -55,6 +56,12 @@ class RegionalSecretArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs'] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
                When the field is set to true in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the federation will fail.
@@ -106,6 +113,8 @@ class RegionalSecretArgs:
             pulumi.set(__self__, "annotations", annotations)
         if customer_managed_encryption is not None:
             pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if expire_time is not None:
@@ -187,6 +196,23 @@ class RegionalSecretArgs:
     @customer_managed_encryption.setter
     def customer_managed_encryption(self, value: pulumi.Input[Optional['RegionalSecretCustomerManagedEncryptionArgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -349,6 +375,7 @@ class _RegionalSecretState:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  customer_managed_encryption: pulumi.Input[Optional['RegionalSecretCustomerManagedEncryptionArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -384,6 +411,12 @@ class _RegionalSecretState:
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional secret was created.
         :param pulumi.Input['RegionalSecretCustomerManagedEncryptionArgs'] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
                When the field is set to true in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the federation will fail.
@@ -443,6 +476,8 @@ class _RegionalSecretState:
             pulumi.set(__self__, "create_time", create_time)
         if customer_managed_encryption is not None:
             pulumi.set(__self__, "customer_managed_encryption", customer_managed_encryption)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if effective_annotations is not None:
@@ -524,6 +559,23 @@ class _RegionalSecretState:
     @customer_managed_encryption.setter
     def customer_managed_encryption(self, value: pulumi.Input[Optional['RegionalSecretCustomerManagedEncryptionArgs']]):
         pulumi.set(self, "customer_managed_encryption", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -762,6 +814,7 @@ class RegionalSecret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  customer_managed_encryption: pulumi.Input[Optional[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -940,6 +993,12 @@ class RegionalSecret(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
                When the field is set to true in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the federation will fail.
@@ -1158,6 +1217,7 @@ class RegionalSecret(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  customer_managed_encryption: pulumi.Input[Optional[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1181,6 +1241,7 @@ class RegionalSecret(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["customer_managed_encryption"] = customer_managed_encryption
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
@@ -1217,6 +1278,7 @@ class RegionalSecret(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             customer_managed_encryption: pulumi.Input[Optional[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1256,6 +1318,12 @@ class RegionalSecret(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time at which the regional secret was created.
         :param pulumi.Input[Union['RegionalSecretCustomerManagedEncryptionArgs', 'RegionalSecretCustomerManagedEncryptionArgsDict']] customer_managed_encryption: The customer-managed encryption configuration of the regional secret.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
                When the field is set to true in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the federation will fail.
@@ -1316,6 +1384,7 @@ class RegionalSecret(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["customer_managed_encryption"] = customer_managed_encryption
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1370,6 +1439,19 @@ class RegionalSecret(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "customer_managed_encryption")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

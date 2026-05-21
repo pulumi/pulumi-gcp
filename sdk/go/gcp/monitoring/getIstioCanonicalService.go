@@ -89,6 +89,7 @@ type GetIstioCanonicalServiceArgs struct {
 type GetIstioCanonicalServiceResult struct {
 	CanonicalService          string `pulumi:"canonicalService"`
 	CanonicalServiceNamespace string `pulumi:"canonicalServiceNamespace"`
+	DeletionPolicy            string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this (Monitoring) Service.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
@@ -158,6 +159,10 @@ func (o GetIstioCanonicalServiceResultOutput) CanonicalService() pulumi.StringOu
 
 func (o GetIstioCanonicalServiceResultOutput) CanonicalServiceNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIstioCanonicalServiceResult) string { return v.CanonicalServiceNamespace }).(pulumi.StringOutput)
+}
+
+func (o GetIstioCanonicalServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIstioCanonicalServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name used for UI elements listing this (Monitoring) Service.

@@ -66,6 +66,7 @@ export interface GetRegionNetworkEndpointGroupResult {
     readonly appEngines: outputs.compute.GetRegionNetworkEndpointGroupAppEngine[];
     readonly cloudFunctions: outputs.compute.GetRegionNetworkEndpointGroupCloudFunction[];
     readonly cloudRuns: outputs.compute.GetRegionNetworkEndpointGroupCloudRun[];
+    readonly deletionPolicy: string;
     /**
      * The RNEG description.
      */

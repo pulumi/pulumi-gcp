@@ -27,7 +27,10 @@ class GetResourcePolicyResult:
     """
     A collection of values returned by getResourcePolicy.
     """
-    def __init__(__self__, description=None, disk_consistency_group_policies=None, group_placement_policies=None, id=None, instance_schedule_policies=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None, workload_policies=None):
+    def __init__(__self__, deletion_policy=None, description=None, disk_consistency_group_policies=None, group_placement_policies=None, id=None, instance_schedule_policies=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None, workload_policies=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -61,6 +64,11 @@ class GetResourcePolicyResult:
         if workload_policies and not isinstance(workload_policies, list):
             raise TypeError("Expected argument 'workload_policies' to be a list")
         pulumi.set(__self__, "workload_policies", workload_policies)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -133,6 +141,7 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
         if False:
             yield self
         return GetResourcePolicyResult(
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disk_consistency_group_policies=self.disk_consistency_group_policies,
             group_placement_policies=self.group_placement_policies,
@@ -177,6 +186,7 @@ def get_resource_policy(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getResourcePolicy:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult).value
 
     return AwaitableGetResourcePolicyResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disk_consistency_group_policies=pulumi.get(__ret__, 'disk_consistency_group_policies'),
         group_placement_policies=pulumi.get(__ret__, 'group_placement_policies'),
@@ -218,6 +228,7 @@ def get_resource_policy_output(name: pulumi.Input[Optional[_builtins.str]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getResourcePolicy:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult)
     return __ret__.apply(lambda __response__: GetResourcePolicyResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disk_consistency_group_policies=pulumi.get(__response__, 'disk_consistency_group_policies'),
         group_placement_policies=pulumi.get(__response__, 'group_placement_policies'),

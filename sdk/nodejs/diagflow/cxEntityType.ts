@@ -116,6 +116,15 @@ export class CxEntityType extends pulumi.CustomResource {
      */
     declare public readonly autoExpansionMode: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The human-readable name of the entity type, unique within the agent.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -179,6 +188,7 @@ export class CxEntityType extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CxEntityTypeState | undefined;
             resourceInputs["autoExpansionMode"] = state?.autoExpansionMode;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["enableFuzzyExtraction"] = state?.enableFuzzyExtraction;
             resourceInputs["entities"] = state?.entities;
@@ -200,6 +210,7 @@ export class CxEntityType extends pulumi.CustomResource {
                 throw new Error("Missing required property 'kind'");
             }
             resourceInputs["autoExpansionMode"] = args?.autoExpansionMode;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enableFuzzyExtraction"] = args?.enableFuzzyExtraction;
             resourceInputs["entities"] = args?.entities;
@@ -226,6 +237,15 @@ export interface CxEntityTypeState {
      * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      */
     autoExpansionMode?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the entity type, unique within the agent.
      */
@@ -288,6 +308,15 @@ export interface CxEntityTypeArgs {
      * Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
      */
     autoExpansionMode?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human-readable name of the entity type, unique within the agent.
      */

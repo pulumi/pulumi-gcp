@@ -80,6 +80,13 @@ type TenantOauthIdpConfig struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human friendly display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// If this config allows users to sign in with the provider.
@@ -141,6 +148,13 @@ type tenantOauthIdpConfigState struct {
 	ClientId *string `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// If this config allows users to sign in with the provider.
@@ -161,6 +175,13 @@ type TenantOauthIdpConfigState struct {
 	ClientId pulumi.StringPtrInput
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// If this config allows users to sign in with the provider.
@@ -185,6 +206,13 @@ type tenantOauthIdpConfigArgs struct {
 	ClientId string `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human friendly display name.
 	DisplayName string `pulumi:"displayName"`
 	// If this config allows users to sign in with the provider.
@@ -206,6 +234,13 @@ type TenantOauthIdpConfigArgs struct {
 	ClientId pulumi.StringInput
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human friendly display name.
 	DisplayName pulumi.StringInput
 	// If this config allows users to sign in with the provider.
@@ -316,6 +351,16 @@ func (o TenantOauthIdpConfigOutput) ClientId() pulumi.StringOutput {
 // The client secret of the OAuth client, to enable OIDC code flow.
 func (o TenantOauthIdpConfigOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TenantOauthIdpConfig) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TenantOauthIdpConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *TenantOauthIdpConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Human friendly display name.

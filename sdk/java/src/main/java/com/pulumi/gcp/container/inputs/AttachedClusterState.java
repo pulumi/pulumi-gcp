@@ -128,14 +128,28 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+     * Policy to determine what flags to send on delete.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * 
+     * Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON&#39;. Defaults to &#39;DELETE&#39;.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+     * @return Policy to determine what flags to send on delete.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * 
+     * Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON&#39;. Defaults to &#39;DELETE&#39;.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -679,7 +693,14 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deletionPolicy Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+         * @param deletionPolicy Policy to determine what flags to send on delete.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * 
+         * Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON&#39;. Defaults to &#39;DELETE&#39;.
          * 
          * @return builder
          * 
@@ -690,7 +711,14 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deletionPolicy Policy to determine what flags to send on delete. Possible values: DELETE, DELETE_IGNORE_ERRORS
+         * @param deletionPolicy Policy to determine what flags to send on delete.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * 
+         * Possible values: DELETE, DELETE_IGNORE_ERRORS, PREVENT, ABANDON&#39;. Defaults to &#39;DELETE&#39;.
          * 
          * @return builder
          * 

@@ -60,6 +60,19 @@ namespace Pulumi.Gcp.Compute
     public partial class DiskAsyncReplication : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// The `SecondaryDisk` block includes:
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The primary disk (source of replication).
         /// </summary>
         [Output("primaryDisk")]
@@ -67,8 +80,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-        /// 
-        /// The `SecondaryDisk` block includes:
         /// </summary>
         [Output("secondaryDisk")]
         public Output<Outputs.DiskAsyncReplicationSecondaryDisk> SecondaryDisk { get; private set; } = null!;
@@ -120,6 +131,19 @@ namespace Pulumi.Gcp.Compute
     public sealed class DiskAsyncReplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// The `SecondaryDisk` block includes:
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The primary disk (source of replication).
         /// </summary>
         [Input("primaryDisk", required: true)]
@@ -127,8 +151,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-        /// 
-        /// The `SecondaryDisk` block includes:
         /// </summary>
         [Input("secondaryDisk", required: true)]
         public Input<Inputs.DiskAsyncReplicationSecondaryDiskArgs> SecondaryDisk { get; set; } = null!;
@@ -142,6 +164,19 @@ namespace Pulumi.Gcp.Compute
     public sealed class DiskAsyncReplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// The `SecondaryDisk` block includes:
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The primary disk (source of replication).
         /// </summary>
         [Input("primaryDisk")]
@@ -149,8 +184,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-        /// 
-        /// The `SecondaryDisk` block includes:
         /// </summary>
         [Input("secondaryDisk")]
         public Input<Inputs.DiskAsyncReplicationSecondaryDiskGetArgs>? SecondaryDisk { get; set; }

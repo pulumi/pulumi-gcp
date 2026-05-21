@@ -25,6 +25,7 @@ class RegionInstanceGroupManagerArgs:
                  versions: pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]],
                  all_instances_config: pulumi.Input[Optional['RegionInstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -66,6 +67,14 @@ class RegionInstanceGroupManagerArgs:
                apply the configuration.
         :param pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -89,8 +98,6 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
                - - -
@@ -123,6 +130,8 @@ class RegionInstanceGroupManagerArgs:
             pulumi.set(__self__, "all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if distribution_policy_target_shape is not None:
@@ -229,6 +238,25 @@ class RegionInstanceGroupManagerArgs:
     @auto_healing_policies.setter
     def auto_healing_policies(self, value: pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]):
         pulumi.set(self, "auto_healing_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -367,8 +395,6 @@ class RegionInstanceGroupManagerArgs:
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -552,6 +578,7 @@ class _RegionInstanceGroupManagerState:
                  auto_healing_policies: pulumi.Input[Optional['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -597,6 +624,14 @@ class _RegionInstanceGroupManagerState:
                appending a hyphen and a random four-character string to the base instance
                name.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -623,8 +658,6 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input['RegionInstanceGroupManagerResourcePoliciesArgs'] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
                - - -
@@ -664,6 +697,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "base_instance_name", base_instance_name)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if distribution_policy_target_shape is not None:
@@ -780,6 +815,25 @@ class _RegionInstanceGroupManagerState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -954,8 +1008,6 @@ class _RegionInstanceGroupManagerState:
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
-
-        - - -
         """
         return pulumi.get(self, "region")
 
@@ -1179,6 +1231,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  all_instances_config: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
                  auto_healing_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
                  base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1338,6 +1391,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                are lowercase letters, numbers, and hyphens (-). Instances are named by
                appending a hyphen and a random four-character string to the base instance
                name.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -1361,8 +1422,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
                - - -
@@ -1536,6 +1595,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  all_instances_config: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAllInstancesConfigArgs', 'RegionInstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
                  auto_healing_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
                  base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
                  distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1575,6 +1635,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             if base_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__.__dict__["base_instance_name"] = base_instance_name
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["distribution_policy_target_shape"] = distribution_policy_target_shape
             __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
@@ -1622,6 +1683,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             auto_healing_policies: pulumi.Input[Optional[Union['RegionInstanceGroupManagerAutoHealingPoliciesArgs', 'RegionInstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
             base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             distribution_policy_target_shape: pulumi.Input[Optional[_builtins.str]] = None,
             distribution_policy_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1671,6 +1733,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                appending a hyphen and a random four-character string to the base instance
                name.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
@@ -1697,8 +1767,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] region: The region where the managed instance group resides. If not provided, the provider region is used.
-               
-               - - -
         :param pulumi.Input[Union['RegionInstanceGroupManagerResourcePoliciesArgs', 'RegionInstanceGroupManagerResourcePoliciesArgsDict']] resource_policies: Resource policies for this managed instance group. Structure is documented below.
                
                - - -
@@ -1738,6 +1806,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["auto_healing_policies"] = auto_healing_policies
         __props__.__dict__["base_instance_name"] = base_instance_name
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["distribution_policy_target_shape"] = distribution_policy_target_shape
         __props__.__dict__["distribution_policy_zones"] = distribution_policy_zones
@@ -1809,6 +1878,21 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -1931,8 +2015,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     def region(self) -> pulumi.Output[_builtins.str]:
         """
         The region where the managed instance group resides. If not provided, the provider region is used.
-
-        - - -
         """
         return pulumi.get(self, "region")
 

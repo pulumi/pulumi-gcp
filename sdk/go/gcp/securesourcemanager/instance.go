@@ -834,15 +834,13 @@ type Instance struct {
 
 	// Time the Instance was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The deletion policy for the instance. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental
-	// deletion by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A list of hostnames for this instance.
@@ -925,14 +923,12 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Time the Instance was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// The deletion policy for the instance. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental
-	// deletion by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -976,14 +972,12 @@ type instanceState struct {
 type InstanceState struct {
 	// Time the Instance was created in UTC.
 	CreateTime pulumi.StringPtrInput
-	// The deletion policy for the instance. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental
-	// deletion by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
@@ -1029,14 +1023,12 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The deletion policy for the instance. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental
-	// deletion by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name for the Instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -1063,14 +1055,12 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The deletion policy for the instance. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental
-	// deletion by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// The name for the Instance.
 	InstanceId pulumi.StringInput
@@ -1187,16 +1177,14 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The deletion policy for the instance. Setting `ABANDON` allows the resource
-// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-// and all its contents. Setting `PREVENT` prevents the resource from accidental
-// deletion by erroring out during plan.
-// Default is `PREVENT`.  Possible values are:
-// * DELETE
-// * PREVENT
-// * ABANDON
-func (o InstanceOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

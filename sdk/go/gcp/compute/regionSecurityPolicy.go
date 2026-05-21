@@ -199,6 +199,13 @@ type RegionSecurityPolicy struct {
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig RegionSecurityPolicyDdosProtectionConfigPtrOutput `pulumi:"ddosProtectionConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during
@@ -272,6 +279,13 @@ type regionSecurityPolicyState struct {
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig *RegionSecurityPolicyDdosProtectionConfig `pulumi:"ddosProtectionConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Fingerprint of this resource. This field is used internally during
@@ -316,6 +330,13 @@ type RegionSecurityPolicyState struct {
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig RegionSecurityPolicyDdosProtectionConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Fingerprint of this resource. This field is used internally during
@@ -364,6 +385,13 @@ type regionSecurityPolicyArgs struct {
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig *RegionSecurityPolicyDdosProtectionConfig `pulumi:"ddosProtectionConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
@@ -400,6 +428,13 @@ type RegionSecurityPolicyArgs struct {
 	// Configuration for Google Cloud Armor DDOS Proctection Config.
 	// Structure is documented below.
 	DdosProtectionConfig RegionSecurityPolicyDdosProtectionConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035.
@@ -529,6 +564,16 @@ func (o RegionSecurityPolicyOutput) DdosProtectionConfig() RegionSecurityPolicyD
 	return o.ApplyT(func(v *RegionSecurityPolicy) RegionSecurityPolicyDdosProtectionConfigPtrOutput {
 		return v.DdosProtectionConfig
 	}).(RegionSecurityPolicyDdosProtectionConfigPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionSecurityPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionSecurityPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource. Provide this property when you create the resource.

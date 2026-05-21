@@ -135,10 +135,17 @@ namespace Pulumi.Gcp.Netapp
         /// Policy to determine if the volume should be deleted forcefully.
         /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
         /// Setting this parameter to FORCE will delete volumes including nested snapshots.
-        /// Possible values: DEFAULT, FORCE.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+        /// 
+        /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -486,7 +493,14 @@ namespace Pulumi.Gcp.Netapp
         /// Policy to determine if the volume should be deleted forcefully.
         /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
         /// Setting this parameter to FORCE will delete volumes including nested snapshots.
-        /// Possible values: DEFAULT, FORCE.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+        /// 
+        /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -738,7 +752,14 @@ namespace Pulumi.Gcp.Netapp
         /// Policy to determine if the volume should be deleted forcefully.
         /// Volumes may have nested snapshot resources. Deleting such a volume will fail.
         /// Setting this parameter to FORCE will delete volumes including nested snapshots.
-        /// Possible values: DEFAULT, FORCE.
+        /// 
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "DEFAULT".
+        /// 
+        /// Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

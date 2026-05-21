@@ -848,6 +848,151 @@ func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) WeekOfMonth
 	}).(pulumi.StringPtrOutput)
 }
 
+type BackupPlanComputeInstanceBackupPlanProperties struct {
+	// Indicates whether to perform a guest flush operation before taking a
+	// compute instance backup. When set to true, the system will attempt
+	// to ensure application-consistent backups.
+	GuestFlush bool `pulumi:"guestFlush"`
+}
+
+// BackupPlanComputeInstanceBackupPlanPropertiesInput is an input type that accepts BackupPlanComputeInstanceBackupPlanPropertiesArgs and BackupPlanComputeInstanceBackupPlanPropertiesOutput values.
+// You can construct a concrete instance of `BackupPlanComputeInstanceBackupPlanPropertiesInput` via:
+//
+//	BackupPlanComputeInstanceBackupPlanPropertiesArgs{...}
+type BackupPlanComputeInstanceBackupPlanPropertiesInput interface {
+	pulumi.Input
+
+	ToBackupPlanComputeInstanceBackupPlanPropertiesOutput() BackupPlanComputeInstanceBackupPlanPropertiesOutput
+	ToBackupPlanComputeInstanceBackupPlanPropertiesOutputWithContext(context.Context) BackupPlanComputeInstanceBackupPlanPropertiesOutput
+}
+
+type BackupPlanComputeInstanceBackupPlanPropertiesArgs struct {
+	// Indicates whether to perform a guest flush operation before taking a
+	// compute instance backup. When set to true, the system will attempt
+	// to ensure application-consistent backups.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+}
+
+func (BackupPlanComputeInstanceBackupPlanPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanComputeInstanceBackupPlanProperties)(nil)).Elem()
+}
+
+func (i BackupPlanComputeInstanceBackupPlanPropertiesArgs) ToBackupPlanComputeInstanceBackupPlanPropertiesOutput() BackupPlanComputeInstanceBackupPlanPropertiesOutput {
+	return i.ToBackupPlanComputeInstanceBackupPlanPropertiesOutputWithContext(context.Background())
+}
+
+func (i BackupPlanComputeInstanceBackupPlanPropertiesArgs) ToBackupPlanComputeInstanceBackupPlanPropertiesOutputWithContext(ctx context.Context) BackupPlanComputeInstanceBackupPlanPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanComputeInstanceBackupPlanPropertiesOutput)
+}
+
+func (i BackupPlanComputeInstanceBackupPlanPropertiesArgs) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutput() BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return i.ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanComputeInstanceBackupPlanPropertiesArgs) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanComputeInstanceBackupPlanPropertiesOutput).ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(ctx)
+}
+
+// BackupPlanComputeInstanceBackupPlanPropertiesPtrInput is an input type that accepts BackupPlanComputeInstanceBackupPlanPropertiesArgs, BackupPlanComputeInstanceBackupPlanPropertiesPtr and BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput values.
+// You can construct a concrete instance of `BackupPlanComputeInstanceBackupPlanPropertiesPtrInput` via:
+//
+//	        BackupPlanComputeInstanceBackupPlanPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanComputeInstanceBackupPlanPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutput() BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput
+	ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(context.Context) BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput
+}
+
+type backupPlanComputeInstanceBackupPlanPropertiesPtrType BackupPlanComputeInstanceBackupPlanPropertiesArgs
+
+func BackupPlanComputeInstanceBackupPlanPropertiesPtr(v *BackupPlanComputeInstanceBackupPlanPropertiesArgs) BackupPlanComputeInstanceBackupPlanPropertiesPtrInput {
+	return (*backupPlanComputeInstanceBackupPlanPropertiesPtrType)(v)
+}
+
+func (*backupPlanComputeInstanceBackupPlanPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanComputeInstanceBackupPlanProperties)(nil)).Elem()
+}
+
+func (i *backupPlanComputeInstanceBackupPlanPropertiesPtrType) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutput() BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return i.ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanComputeInstanceBackupPlanPropertiesPtrType) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput)
+}
+
+type BackupPlanComputeInstanceBackupPlanPropertiesOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanComputeInstanceBackupPlanPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanComputeInstanceBackupPlanProperties)(nil)).Elem()
+}
+
+func (o BackupPlanComputeInstanceBackupPlanPropertiesOutput) ToBackupPlanComputeInstanceBackupPlanPropertiesOutput() BackupPlanComputeInstanceBackupPlanPropertiesOutput {
+	return o
+}
+
+func (o BackupPlanComputeInstanceBackupPlanPropertiesOutput) ToBackupPlanComputeInstanceBackupPlanPropertiesOutputWithContext(ctx context.Context) BackupPlanComputeInstanceBackupPlanPropertiesOutput {
+	return o
+}
+
+func (o BackupPlanComputeInstanceBackupPlanPropertiesOutput) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutput() BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return o.ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanComputeInstanceBackupPlanPropertiesOutput) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanComputeInstanceBackupPlanProperties) *BackupPlanComputeInstanceBackupPlanProperties {
+		return &v
+	}).(BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput)
+}
+
+// Indicates whether to perform a guest flush operation before taking a
+// compute instance backup. When set to true, the system will attempt
+// to ensure application-consistent backups.
+func (o BackupPlanComputeInstanceBackupPlanPropertiesOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v BackupPlanComputeInstanceBackupPlanProperties) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+type BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanComputeInstanceBackupPlanProperties)(nil)).Elem()
+}
+
+func (o BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutput() BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return o
+}
+
+func (o BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput) ToBackupPlanComputeInstanceBackupPlanPropertiesPtrOutputWithContext(ctx context.Context) BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput {
+	return o
+}
+
+func (o BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput) Elem() BackupPlanComputeInstanceBackupPlanPropertiesOutput {
+	return o.ApplyT(func(v *BackupPlanComputeInstanceBackupPlanProperties) BackupPlanComputeInstanceBackupPlanProperties {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanComputeInstanceBackupPlanProperties
+		return ret
+	}).(BackupPlanComputeInstanceBackupPlanPropertiesOutput)
+}
+
+// Indicates whether to perform a guest flush operation before taking a
+// compute instance backup. When set to true, the system will attempt
+// to ensure application-consistent backups.
+func (o BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput) GuestFlush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackupPlanComputeInstanceBackupPlanProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.GuestFlush
+	}).(pulumi.BoolPtrOutput)
+}
+
 type BackupPlanDiskBackupPlanProperties struct {
 	// Indicates whether to perform a guest flush operation before taking a disk
 	// backup. When set to true, the system will attempt to ensure
@@ -8107,10 +8252,14 @@ type GetBackupBackup struct {
 	BackupId string `pulumi:"backupId"`
 	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId string `pulumi:"backupVaultId"`
+	// Compute instance related properties of the backup.
+	ComputeInstanceBackupProperties []GetBackupBackupComputeInstanceBackupProperty `pulumi:"computeInstanceBackupProperties"`
 	// The time when the backup was created.
 	CreateTime string `pulumi:"createTime"`
 	// The ID of the Data Source in which the Backup belongs.
 	DataSourceId string `pulumi:"dataSourceId"`
+	// Disk related properties of the backup.
+	DiskBackupProperties []GetBackupBackupDiskBackupProperty `pulumi:"diskBackupProperties"`
 	// The location in which the Backup belongs.
 	Location string `pulumi:"location"`
 	// Name of the resource.
@@ -8133,10 +8282,14 @@ type GetBackupBackupArgs struct {
 	BackupId pulumi.StringInput `pulumi:"backupId"`
 	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId pulumi.StringInput `pulumi:"backupVaultId"`
+	// Compute instance related properties of the backup.
+	ComputeInstanceBackupProperties GetBackupBackupComputeInstanceBackupPropertyArrayInput `pulumi:"computeInstanceBackupProperties"`
 	// The time when the backup was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the Data Source in which the Backup belongs.
 	DataSourceId pulumi.StringInput `pulumi:"dataSourceId"`
+	// Disk related properties of the backup.
+	DiskBackupProperties GetBackupBackupDiskBackupPropertyArrayInput `pulumi:"diskBackupProperties"`
 	// The location in which the Backup belongs.
 	Location pulumi.StringInput `pulumi:"location"`
 	// Name of the resource.
@@ -8204,6 +8357,13 @@ func (o GetBackupBackupOutput) BackupVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.BackupVaultId }).(pulumi.StringOutput)
 }
 
+// Compute instance related properties of the backup.
+func (o GetBackupBackupOutput) ComputeInstanceBackupProperties() GetBackupBackupComputeInstanceBackupPropertyArrayOutput {
+	return o.ApplyT(func(v GetBackupBackup) []GetBackupBackupComputeInstanceBackupProperty {
+		return v.ComputeInstanceBackupProperties
+	}).(GetBackupBackupComputeInstanceBackupPropertyArrayOutput)
+}
+
 // The time when the backup was created.
 func (o GetBackupBackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -8212,6 +8372,11 @@ func (o GetBackupBackupOutput) CreateTime() pulumi.StringOutput {
 // The ID of the Data Source in which the Backup belongs.
 func (o GetBackupBackupOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.DataSourceId }).(pulumi.StringOutput)
+}
+
+// Disk related properties of the backup.
+func (o GetBackupBackupOutput) DiskBackupProperties() GetBackupBackupDiskBackupPropertyArrayOutput {
+	return o.ApplyT(func(v GetBackupBackup) []GetBackupBackupDiskBackupProperty { return v.DiskBackupProperties }).(GetBackupBackupDiskBackupPropertyArrayOutput)
 }
 
 // The location in which the Backup belongs.
@@ -8242,6 +8407,200 @@ func (o GetBackupBackupArrayOutput) Index(i pulumi.IntInput) GetBackupBackupOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupBackup {
 		return vs[0].([]GetBackupBackup)[vs[1].(int)]
 	}).(GetBackupBackupOutput)
+}
+
+type GetBackupBackupComputeInstanceBackupProperty struct {
+	// Indicates if the backup was created with guest flush enabled.
+	GuestFlush bool `pulumi:"guestFlush"`
+}
+
+// GetBackupBackupComputeInstanceBackupPropertyInput is an input type that accepts GetBackupBackupComputeInstanceBackupPropertyArgs and GetBackupBackupComputeInstanceBackupPropertyOutput values.
+// You can construct a concrete instance of `GetBackupBackupComputeInstanceBackupPropertyInput` via:
+//
+//	GetBackupBackupComputeInstanceBackupPropertyArgs{...}
+type GetBackupBackupComputeInstanceBackupPropertyInput interface {
+	pulumi.Input
+
+	ToGetBackupBackupComputeInstanceBackupPropertyOutput() GetBackupBackupComputeInstanceBackupPropertyOutput
+	ToGetBackupBackupComputeInstanceBackupPropertyOutputWithContext(context.Context) GetBackupBackupComputeInstanceBackupPropertyOutput
+}
+
+type GetBackupBackupComputeInstanceBackupPropertyArgs struct {
+	// Indicates if the backup was created with guest flush enabled.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+}
+
+func (GetBackupBackupComputeInstanceBackupPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupBackupComputeInstanceBackupProperty)(nil)).Elem()
+}
+
+func (i GetBackupBackupComputeInstanceBackupPropertyArgs) ToGetBackupBackupComputeInstanceBackupPropertyOutput() GetBackupBackupComputeInstanceBackupPropertyOutput {
+	return i.ToGetBackupBackupComputeInstanceBackupPropertyOutputWithContext(context.Background())
+}
+
+func (i GetBackupBackupComputeInstanceBackupPropertyArgs) ToGetBackupBackupComputeInstanceBackupPropertyOutputWithContext(ctx context.Context) GetBackupBackupComputeInstanceBackupPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupBackupComputeInstanceBackupPropertyOutput)
+}
+
+// GetBackupBackupComputeInstanceBackupPropertyArrayInput is an input type that accepts GetBackupBackupComputeInstanceBackupPropertyArray and GetBackupBackupComputeInstanceBackupPropertyArrayOutput values.
+// You can construct a concrete instance of `GetBackupBackupComputeInstanceBackupPropertyArrayInput` via:
+//
+//	GetBackupBackupComputeInstanceBackupPropertyArray{ GetBackupBackupComputeInstanceBackupPropertyArgs{...} }
+type GetBackupBackupComputeInstanceBackupPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupBackupComputeInstanceBackupPropertyArrayOutput() GetBackupBackupComputeInstanceBackupPropertyArrayOutput
+	ToGetBackupBackupComputeInstanceBackupPropertyArrayOutputWithContext(context.Context) GetBackupBackupComputeInstanceBackupPropertyArrayOutput
+}
+
+type GetBackupBackupComputeInstanceBackupPropertyArray []GetBackupBackupComputeInstanceBackupPropertyInput
+
+func (GetBackupBackupComputeInstanceBackupPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupBackupComputeInstanceBackupProperty)(nil)).Elem()
+}
+
+func (i GetBackupBackupComputeInstanceBackupPropertyArray) ToGetBackupBackupComputeInstanceBackupPropertyArrayOutput() GetBackupBackupComputeInstanceBackupPropertyArrayOutput {
+	return i.ToGetBackupBackupComputeInstanceBackupPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupBackupComputeInstanceBackupPropertyArray) ToGetBackupBackupComputeInstanceBackupPropertyArrayOutputWithContext(ctx context.Context) GetBackupBackupComputeInstanceBackupPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupBackupComputeInstanceBackupPropertyArrayOutput)
+}
+
+type GetBackupBackupComputeInstanceBackupPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetBackupBackupComputeInstanceBackupPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupBackupComputeInstanceBackupProperty)(nil)).Elem()
+}
+
+func (o GetBackupBackupComputeInstanceBackupPropertyOutput) ToGetBackupBackupComputeInstanceBackupPropertyOutput() GetBackupBackupComputeInstanceBackupPropertyOutput {
+	return o
+}
+
+func (o GetBackupBackupComputeInstanceBackupPropertyOutput) ToGetBackupBackupComputeInstanceBackupPropertyOutputWithContext(ctx context.Context) GetBackupBackupComputeInstanceBackupPropertyOutput {
+	return o
+}
+
+// Indicates if the backup was created with guest flush enabled.
+func (o GetBackupBackupComputeInstanceBackupPropertyOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackupBackupComputeInstanceBackupProperty) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+type GetBackupBackupComputeInstanceBackupPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupBackupComputeInstanceBackupPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupBackupComputeInstanceBackupProperty)(nil)).Elem()
+}
+
+func (o GetBackupBackupComputeInstanceBackupPropertyArrayOutput) ToGetBackupBackupComputeInstanceBackupPropertyArrayOutput() GetBackupBackupComputeInstanceBackupPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupBackupComputeInstanceBackupPropertyArrayOutput) ToGetBackupBackupComputeInstanceBackupPropertyArrayOutputWithContext(ctx context.Context) GetBackupBackupComputeInstanceBackupPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupBackupComputeInstanceBackupPropertyArrayOutput) Index(i pulumi.IntInput) GetBackupBackupComputeInstanceBackupPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupBackupComputeInstanceBackupProperty {
+		return vs[0].([]GetBackupBackupComputeInstanceBackupProperty)[vs[1].(int)]
+	}).(GetBackupBackupComputeInstanceBackupPropertyOutput)
+}
+
+type GetBackupBackupDiskBackupProperty struct {
+	// Indicates whether the backup is application-consistent.
+	GuestFlush bool `pulumi:"guestFlush"`
+}
+
+// GetBackupBackupDiskBackupPropertyInput is an input type that accepts GetBackupBackupDiskBackupPropertyArgs and GetBackupBackupDiskBackupPropertyOutput values.
+// You can construct a concrete instance of `GetBackupBackupDiskBackupPropertyInput` via:
+//
+//	GetBackupBackupDiskBackupPropertyArgs{...}
+type GetBackupBackupDiskBackupPropertyInput interface {
+	pulumi.Input
+
+	ToGetBackupBackupDiskBackupPropertyOutput() GetBackupBackupDiskBackupPropertyOutput
+	ToGetBackupBackupDiskBackupPropertyOutputWithContext(context.Context) GetBackupBackupDiskBackupPropertyOutput
+}
+
+type GetBackupBackupDiskBackupPropertyArgs struct {
+	// Indicates whether the backup is application-consistent.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+}
+
+func (GetBackupBackupDiskBackupPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupBackupDiskBackupProperty)(nil)).Elem()
+}
+
+func (i GetBackupBackupDiskBackupPropertyArgs) ToGetBackupBackupDiskBackupPropertyOutput() GetBackupBackupDiskBackupPropertyOutput {
+	return i.ToGetBackupBackupDiskBackupPropertyOutputWithContext(context.Background())
+}
+
+func (i GetBackupBackupDiskBackupPropertyArgs) ToGetBackupBackupDiskBackupPropertyOutputWithContext(ctx context.Context) GetBackupBackupDiskBackupPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupBackupDiskBackupPropertyOutput)
+}
+
+// GetBackupBackupDiskBackupPropertyArrayInput is an input type that accepts GetBackupBackupDiskBackupPropertyArray and GetBackupBackupDiskBackupPropertyArrayOutput values.
+// You can construct a concrete instance of `GetBackupBackupDiskBackupPropertyArrayInput` via:
+//
+//	GetBackupBackupDiskBackupPropertyArray{ GetBackupBackupDiskBackupPropertyArgs{...} }
+type GetBackupBackupDiskBackupPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupBackupDiskBackupPropertyArrayOutput() GetBackupBackupDiskBackupPropertyArrayOutput
+	ToGetBackupBackupDiskBackupPropertyArrayOutputWithContext(context.Context) GetBackupBackupDiskBackupPropertyArrayOutput
+}
+
+type GetBackupBackupDiskBackupPropertyArray []GetBackupBackupDiskBackupPropertyInput
+
+func (GetBackupBackupDiskBackupPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupBackupDiskBackupProperty)(nil)).Elem()
+}
+
+func (i GetBackupBackupDiskBackupPropertyArray) ToGetBackupBackupDiskBackupPropertyArrayOutput() GetBackupBackupDiskBackupPropertyArrayOutput {
+	return i.ToGetBackupBackupDiskBackupPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupBackupDiskBackupPropertyArray) ToGetBackupBackupDiskBackupPropertyArrayOutputWithContext(ctx context.Context) GetBackupBackupDiskBackupPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupBackupDiskBackupPropertyArrayOutput)
+}
+
+type GetBackupBackupDiskBackupPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetBackupBackupDiskBackupPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupBackupDiskBackupProperty)(nil)).Elem()
+}
+
+func (o GetBackupBackupDiskBackupPropertyOutput) ToGetBackupBackupDiskBackupPropertyOutput() GetBackupBackupDiskBackupPropertyOutput {
+	return o
+}
+
+func (o GetBackupBackupDiskBackupPropertyOutput) ToGetBackupBackupDiskBackupPropertyOutputWithContext(ctx context.Context) GetBackupBackupDiskBackupPropertyOutput {
+	return o
+}
+
+// Indicates whether the backup is application-consistent.
+func (o GetBackupBackupDiskBackupPropertyOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackupBackupDiskBackupProperty) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+type GetBackupBackupDiskBackupPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupBackupDiskBackupPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupBackupDiskBackupProperty)(nil)).Elem()
+}
+
+func (o GetBackupBackupDiskBackupPropertyArrayOutput) ToGetBackupBackupDiskBackupPropertyArrayOutput() GetBackupBackupDiskBackupPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupBackupDiskBackupPropertyArrayOutput) ToGetBackupBackupDiskBackupPropertyArrayOutputWithContext(ctx context.Context) GetBackupBackupDiskBackupPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupBackupDiskBackupPropertyArrayOutput) Index(i pulumi.IntInput) GetBackupBackupDiskBackupPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupBackupDiskBackupProperty {
+		return vs[0].([]GetBackupBackupDiskBackupProperty)[vs[1].(int)]
+	}).(GetBackupBackupDiskBackupPropertyOutput)
 }
 
 type GetBackupPlanAssociationRulesConfigInfo struct {
@@ -9349,6 +9708,109 @@ func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) Index(
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
 		return vs[0].([]GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth)[vs[1].(int)]
 	}).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
+}
+
+type GetBackupPlanComputeInstanceBackupPlanProperty struct {
+	// Indicates whether to perform a guest flush operation before taking a
+	// compute instance backup. When set to true, the system will attempt
+	// to ensure application-consistent backups.
+	GuestFlush bool `pulumi:"guestFlush"`
+}
+
+// GetBackupPlanComputeInstanceBackupPlanPropertyInput is an input type that accepts GetBackupPlanComputeInstanceBackupPlanPropertyArgs and GetBackupPlanComputeInstanceBackupPlanPropertyOutput values.
+// You can construct a concrete instance of `GetBackupPlanComputeInstanceBackupPlanPropertyInput` via:
+//
+//	GetBackupPlanComputeInstanceBackupPlanPropertyArgs{...}
+type GetBackupPlanComputeInstanceBackupPlanPropertyInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanComputeInstanceBackupPlanPropertyOutput() GetBackupPlanComputeInstanceBackupPlanPropertyOutput
+	ToGetBackupPlanComputeInstanceBackupPlanPropertyOutputWithContext(context.Context) GetBackupPlanComputeInstanceBackupPlanPropertyOutput
+}
+
+type GetBackupPlanComputeInstanceBackupPlanPropertyArgs struct {
+	// Indicates whether to perform a guest flush operation before taking a
+	// compute instance backup. When set to true, the system will attempt
+	// to ensure application-consistent backups.
+	GuestFlush pulumi.BoolInput `pulumi:"guestFlush"`
+}
+
+func (GetBackupPlanComputeInstanceBackupPlanPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanComputeInstanceBackupPlanProperty)(nil)).Elem()
+}
+
+func (i GetBackupPlanComputeInstanceBackupPlanPropertyArgs) ToGetBackupPlanComputeInstanceBackupPlanPropertyOutput() GetBackupPlanComputeInstanceBackupPlanPropertyOutput {
+	return i.ToGetBackupPlanComputeInstanceBackupPlanPropertyOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanComputeInstanceBackupPlanPropertyArgs) ToGetBackupPlanComputeInstanceBackupPlanPropertyOutputWithContext(ctx context.Context) GetBackupPlanComputeInstanceBackupPlanPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanComputeInstanceBackupPlanPropertyOutput)
+}
+
+// GetBackupPlanComputeInstanceBackupPlanPropertyArrayInput is an input type that accepts GetBackupPlanComputeInstanceBackupPlanPropertyArray and GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanComputeInstanceBackupPlanPropertyArrayInput` via:
+//
+//	GetBackupPlanComputeInstanceBackupPlanPropertyArray{ GetBackupPlanComputeInstanceBackupPlanPropertyArgs{...} }
+type GetBackupPlanComputeInstanceBackupPlanPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput() GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput
+	ToGetBackupPlanComputeInstanceBackupPlanPropertyArrayOutputWithContext(context.Context) GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput
+}
+
+type GetBackupPlanComputeInstanceBackupPlanPropertyArray []GetBackupPlanComputeInstanceBackupPlanPropertyInput
+
+func (GetBackupPlanComputeInstanceBackupPlanPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanComputeInstanceBackupPlanProperty)(nil)).Elem()
+}
+
+func (i GetBackupPlanComputeInstanceBackupPlanPropertyArray) ToGetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput() GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput {
+	return i.ToGetBackupPlanComputeInstanceBackupPlanPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanComputeInstanceBackupPlanPropertyArray) ToGetBackupPlanComputeInstanceBackupPlanPropertyArrayOutputWithContext(ctx context.Context) GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput)
+}
+
+type GetBackupPlanComputeInstanceBackupPlanPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanComputeInstanceBackupPlanPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanComputeInstanceBackupPlanProperty)(nil)).Elem()
+}
+
+func (o GetBackupPlanComputeInstanceBackupPlanPropertyOutput) ToGetBackupPlanComputeInstanceBackupPlanPropertyOutput() GetBackupPlanComputeInstanceBackupPlanPropertyOutput {
+	return o
+}
+
+func (o GetBackupPlanComputeInstanceBackupPlanPropertyOutput) ToGetBackupPlanComputeInstanceBackupPlanPropertyOutputWithContext(ctx context.Context) GetBackupPlanComputeInstanceBackupPlanPropertyOutput {
+	return o
+}
+
+// Indicates whether to perform a guest flush operation before taking a
+// compute instance backup. When set to true, the system will attempt
+// to ensure application-consistent backups.
+func (o GetBackupPlanComputeInstanceBackupPlanPropertyOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackupPlanComputeInstanceBackupPlanProperty) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+type GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanComputeInstanceBackupPlanProperty)(nil)).Elem()
+}
+
+func (o GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput) ToGetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput() GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput) ToGetBackupPlanComputeInstanceBackupPlanPropertyArrayOutputWithContext(ctx context.Context) GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput) Index(i pulumi.IntInput) GetBackupPlanComputeInstanceBackupPlanPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanComputeInstanceBackupPlanProperty {
+		return vs[0].([]GetBackupPlanComputeInstanceBackupPlanProperty)[vs[1].(int)]
+	}).(GetBackupPlanComputeInstanceBackupPlanPropertyOutput)
 }
 
 type GetBackupPlanDiskBackupPlanProperty struct {
@@ -11809,6 +12271,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleBackupWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanComputeInstanceBackupPlanPropertiesInput)(nil)).Elem(), BackupPlanComputeInstanceBackupPlanPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanComputeInstanceBackupPlanPropertiesPtrInput)(nil)).Elem(), BackupPlanComputeInstanceBackupPlanPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanDiskBackupPlanPropertiesInput)(nil)).Elem(), BackupPlanDiskBackupPlanPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanDiskBackupPlanPropertiesPtrInput)(nil)).Elem(), BackupPlanDiskBackupPlanPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackupVaultEncryptionConfigInput)(nil)).Elem(), BackupVaultEncryptionConfigArgs{})
@@ -11895,6 +12359,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreWorkloadTargetResourceGcpResourcePtrInput)(nil)).Elem(), RestoreWorkloadTargetResourceGcpResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupInput)(nil)).Elem(), GetBackupBackupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupArrayInput)(nil)).Elem(), GetBackupBackupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupComputeInstanceBackupPropertyInput)(nil)).Elem(), GetBackupBackupComputeInstanceBackupPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupComputeInstanceBackupPropertyArrayInput)(nil)).Elem(), GetBackupBackupComputeInstanceBackupPropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupDiskBackupPropertyInput)(nil)).Elem(), GetBackupBackupDiskBackupPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupDiskBackupPropertyArrayInput)(nil)).Elem(), GetBackupBackupDiskBackupPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoArrayInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{})
@@ -11913,6 +12381,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleBackupWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanComputeInstanceBackupPlanPropertyInput)(nil)).Elem(), GetBackupPlanComputeInstanceBackupPlanPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanComputeInstanceBackupPlanPropertyArrayInput)(nil)).Elem(), GetBackupPlanComputeInstanceBackupPlanPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanDiskBackupPlanPropertyInput)(nil)).Elem(), GetBackupPlanDiskBackupPlanPropertyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanDiskBackupPlanPropertyArrayInput)(nil)).Elem(), GetBackupPlanDiskBackupPlanPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupVaultEncryptionConfigInput)(nil)).Elem(), GetBackupVaultEncryptionConfigArgs{})
@@ -11960,6 +12430,8 @@ func init() {
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanComputeInstanceBackupPlanPropertiesOutput{})
+	pulumi.RegisterOutputType(BackupPlanComputeInstanceBackupPlanPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BackupPlanDiskBackupPlanPropertiesOutput{})
 	pulumi.RegisterOutputType(BackupPlanDiskBackupPlanPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(BackupVaultEncryptionConfigOutput{})
@@ -12046,6 +12518,10 @@ func init() {
 	pulumi.RegisterOutputType(RestoreWorkloadTargetResourceGcpResourcePtrOutput{})
 	pulumi.RegisterOutputType(GetBackupBackupOutput{})
 	pulumi.RegisterOutputType(GetBackupBackupArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupBackupComputeInstanceBackupPropertyOutput{})
+	pulumi.RegisterOutputType(GetBackupBackupComputeInstanceBackupPropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupBackupDiskBackupPropertyOutput{})
+	pulumi.RegisterOutputType(GetBackupBackupDiskBackupPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput{})
@@ -12064,6 +12540,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanComputeInstanceBackupPlanPropertyOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanDiskBackupPlanPropertyOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanDiskBackupPlanPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupVaultEncryptionConfigOutput{})

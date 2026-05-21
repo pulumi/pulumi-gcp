@@ -72,6 +72,7 @@ type LookupAutonomousDatabaseResult struct {
 	Cidr                               string            `pulumi:"cidr"`
 	CreateTime                         string            `pulumi:"createTime"`
 	Database                           string            `pulumi:"database"`
+	DeletionPolicy                     string            `pulumi:"deletionPolicy"`
 	DeletionProtection                 bool              `pulumi:"deletionProtection"`
 	DisasterRecoverySupportedLocations []string          `pulumi:"disasterRecoverySupportedLocations"`
 	DisplayName                        string            `pulumi:"displayName"`
@@ -151,6 +152,10 @@ func (o LookupAutonomousDatabaseResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupAutonomousDatabaseResultOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.Database }).(pulumi.StringOutput)
+}
+
+func (o LookupAutonomousDatabaseResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupAutonomousDatabaseResultOutput) DeletionProtection() pulumi.BoolOutput {

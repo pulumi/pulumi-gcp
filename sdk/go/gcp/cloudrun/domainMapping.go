@@ -92,6 +92,13 @@ import (
 type DomainMapping struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata associated with this DomainMapping.
@@ -146,6 +153,13 @@ func GetDomainMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainMapping resources.
 type domainMappingState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the cloud run instance. eg us-central1
 	Location *string `pulumi:"location"`
 	// Metadata associated with this DomainMapping.
@@ -165,6 +179,13 @@ type domainMappingState struct {
 }
 
 type DomainMappingState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringPtrInput
 	// Metadata associated with this DomainMapping.
@@ -188,6 +209,13 @@ func (DomainMappingState) ElementType() reflect.Type {
 }
 
 type domainMappingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the cloud run instance. eg us-central1
 	Location string `pulumi:"location"`
 	// Metadata associated with this DomainMapping.
@@ -205,6 +233,13 @@ type domainMappingArgs struct {
 
 // The set of arguments for constructing a DomainMapping resource.
 type DomainMappingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringInput
 	// Metadata associated with this DomainMapping.
@@ -305,6 +340,16 @@ func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
 
 func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DomainMappingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The location of the cloud run instance. eg us-central1

@@ -38,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs;
@@ -128,6 +129,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs;
@@ -221,6 +223,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
@@ -309,6 +312,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs;
@@ -402,6 +406,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs;
@@ -491,6 +496,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs;
@@ -571,6 +577,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationOauthConfigArgs;
@@ -654,6 +661,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
@@ -733,6 +741,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs;
@@ -816,6 +825,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.ces.ToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigArgs;
+ * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetTlsConfigCaCertArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
  * import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs;
@@ -925,6 +935,30 @@ public class Toolset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The description of the toolset.

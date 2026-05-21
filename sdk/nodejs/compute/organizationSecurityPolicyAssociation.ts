@@ -37,6 +37,36 @@ import * as utilities from "../utilities";
  *     policyId: policy.id,
  * });
  * ```
+ * ### Organization Security Policy Association Excluded
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const securityPolicyTarget = new gcp.organizations.Folder("security_policy_target", {
+ *     displayName: "tf-test-secpol-_72490",
+ *     parent: "organizations/123456789",
+ *     deletionProtection: false,
+ * });
+ * const policy = new gcp.compute.OrganizationSecurityPolicy("policy", {
+ *     shortName: "tf-test_89605",
+ *     parent: securityPolicyTarget.name,
+ *     type: "CLOUD_ARMOR",
+ * });
+ * const policyOrganizationSecurityPolicyAssociation = new gcp.compute.OrganizationSecurityPolicyAssociation("policy", {
+ *     name: "tf-test",
+ *     attachmentId: "organizations/123456789",
+ *     policyId: policy.id,
+ *     excludedProjects: [
+ *         "projects/2000000002",
+ *         "projects/3000000003",
+ *     ],
+ *     excludedFolders: [
+ *         "folders/4000000004",
+ *         "folders/5000000005",
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -83,6 +113,15 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
      */
     declare public readonly attachmentId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The display name of the security policy of the association.
      */
     declare public /*out*/ readonly displayName: pulumi.Output<string>;
@@ -117,6 +156,7 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
         if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyAssociationState | undefined;
             resourceInputs["attachmentId"] = state?.attachmentId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["excludedFolders"] = state?.excludedFolders;
             resourceInputs["excludedProjects"] = state?.excludedProjects;
@@ -131,6 +171,7 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
                 throw new Error("Missing required property 'policyId'");
             }
             resourceInputs["attachmentId"] = args?.attachmentId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["excludedFolders"] = args?.excludedFolders;
             resourceInputs["excludedProjects"] = args?.excludedProjects;
             resourceInputs["name"] = args?.name;
@@ -150,6 +191,15 @@ export interface OrganizationSecurityPolicyAssociationState {
      * The resource that the security policy is attached to.
      */
     attachmentId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The display name of the security policy of the association.
      */
@@ -180,6 +230,15 @@ export interface OrganizationSecurityPolicyAssociationArgs {
      * The resource that the security policy is attached to.
      */
     attachmentId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A list of folders to exclude from the security policy.
      */

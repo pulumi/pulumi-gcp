@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class OwnerArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,9 +17,36 @@ public final class OwnerArgs extends com.pulumi.resources.ResourceArgs {
     public static final OwnerArgs Empty = new OwnerArgs();
 
     /**
-     * The email of the user to be added as an owner.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      * ***
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
+     * The email of the user to be added as an owner.
      * 
      */
     @Import(name="email", required=true)
@@ -25,8 +54,6 @@ public final class OwnerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The email of the user to be added as an owner.
-     * 
-     * ***
      * 
      */
     public Output<String> email() {
@@ -53,6 +80,7 @@ public final class OwnerArgs extends com.pulumi.resources.ResourceArgs {
     private OwnerArgs() {}
 
     private OwnerArgs(OwnerArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.email = $.email;
         this.webResourceId = $.webResourceId;
     }
@@ -76,9 +104,42 @@ public final class OwnerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email The email of the user to be added as an owner.
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
          * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
+         * @param email The email of the user to be added as an owner.
          * 
          * @return builder
          * 
@@ -90,8 +151,6 @@ public final class OwnerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param email The email of the user to be added as an owner.
-         * 
-         * ***
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ class GetEntitlementResult:
     """
     A collection of values returned by getEntitlement.
     """
-    def __init__(__self__, additional_notification_targets=None, approval_workflows=None, create_time=None, eligible_users=None, entitlement_id=None, etag=None, id=None, location=None, max_request_duration=None, name=None, parent=None, privileged_accesses=None, requester_justification_configs=None, state=None, update_time=None):
+    def __init__(__self__, additional_notification_targets=None, approval_workflows=None, create_time=None, deletion_policy=None, eligible_users=None, entitlement_id=None, etag=None, id=None, location=None, max_request_duration=None, name=None, parent=None, privileged_accesses=None, requester_justification_configs=None, state=None, update_time=None):
         if additional_notification_targets and not isinstance(additional_notification_targets, list):
             raise TypeError("Expected argument 'additional_notification_targets' to be a list")
         pulumi.set(__self__, "additional_notification_targets", additional_notification_targets)
@@ -37,6 +37,9 @@ class GetEntitlementResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if eligible_users and not isinstance(eligible_users, list):
             raise TypeError("Expected argument 'eligible_users' to be a list")
         pulumi.set(__self__, "eligible_users", eligible_users)
@@ -88,6 +91,11 @@ class GetEntitlementResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="eligibleUsers")
@@ -162,6 +170,7 @@ class AwaitableGetEntitlementResult(GetEntitlementResult):
             additional_notification_targets=self.additional_notification_targets,
             approval_workflows=self.approval_workflows,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             eligible_users=self.eligible_users,
             entitlement_id=self.entitlement_id,
             etag=self.etag,
@@ -216,6 +225,7 @@ def get_entitlement(entitlement_id: Optional[_builtins.str] = None,
         additional_notification_targets=pulumi.get(__ret__, 'additional_notification_targets'),
         approval_workflows=pulumi.get(__ret__, 'approval_workflows'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         eligible_users=pulumi.get(__ret__, 'eligible_users'),
         entitlement_id=pulumi.get(__ret__, 'entitlement_id'),
         etag=pulumi.get(__ret__, 'etag'),
@@ -267,6 +277,7 @@ def get_entitlement_output(entitlement_id: pulumi.Input[Optional[Optional[_built
         additional_notification_targets=pulumi.get(__response__, 'additional_notification_targets'),
         approval_workflows=pulumi.get(__response__, 'approval_workflows'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         eligible_users=pulumi.get(__response__, 'eligible_users'),
         entitlement_id=pulumi.get(__response__, 'entitlement_id'),
         etag=pulumi.get(__response__, 'etag'),

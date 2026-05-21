@@ -64,6 +64,7 @@ type LookupFeatureArgs struct {
 type LookupFeatureResult struct {
 	CreateTime                string                               `pulumi:"createTime"`
 	DeleteTime                string                               `pulumi:"deleteTime"`
+	DeletionPolicy            string                               `pulumi:"deletionPolicy"`
 	EffectiveLabels           map[string]string                    `pulumi:"effectiveLabels"`
 	FleetDefaultMemberConfigs []GetFeatureFleetDefaultMemberConfig `pulumi:"fleetDefaultMemberConfigs"`
 	// The provider-assigned unique ID for this managed resource.
@@ -124,6 +125,10 @@ func (o LookupFeatureResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupFeatureResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o LookupFeatureResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFeatureResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupFeatureResultOutput) EffectiveLabels() pulumi.StringMapOutput {

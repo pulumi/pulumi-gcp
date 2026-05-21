@@ -230,6 +230,13 @@ type CloudControl struct {
 	// The createTime is used because a new CC is created whenever we update an
 	// existing CC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the cloud control. The maximum length is 2000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the cloud control. The maximum length is 200
@@ -322,6 +329,13 @@ type cloudControlState struct {
 	// The createTime is used because a new CC is created whenever we update an
 	// existing CC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the cloud control. The maximum length is 2000 characters.
 	Description *string `pulumi:"description"`
 	// The display name of the cloud control. The maximum length is 200
@@ -376,6 +390,13 @@ type CloudControlState struct {
 	// The createTime is used because a new CC is created whenever we update an
 	// existing CC.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the cloud control. The maximum length is 2000 characters.
 	Description pulumi.StringPtrInput
 	// The display name of the cloud control. The maximum length is 200
@@ -430,6 +451,13 @@ type cloudControlArgs struct {
 	// This is the last segment of the CloudControl resource name.
 	// Format: `^a-zA-Z{0,61}[a-zA-Z0-9]$`.
 	CloudControlId string `pulumi:"cloudControlId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the cloud control. The maximum length is 2000 characters.
 	Description *string `pulumi:"description"`
 	// The display name of the cloud control. The maximum length is 200
@@ -469,6 +497,13 @@ type CloudControlArgs struct {
 	// This is the last segment of the CloudControl resource name.
 	// Format: `^a-zA-Z{0,61}[a-zA-Z0-9]$`.
 	CloudControlId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the cloud control. The maximum length is 2000 characters.
 	Description pulumi.StringPtrInput
 	// The display name of the cloud control. The maximum length is 200
@@ -604,6 +639,16 @@ func (o CloudControlOutput) CloudControlId() pulumi.StringOutput {
 // existing CC.
 func (o CloudControlOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudControl) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CloudControlOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudControl) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the cloud control. The maximum length is 2000 characters.

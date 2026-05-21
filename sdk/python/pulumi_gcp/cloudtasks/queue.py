@@ -23,6 +23,7 @@ class QueueArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  app_engine_routing_override: pulumi.Input[Optional['QueueAppEngineRoutingOverrideArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional['QueueHttpTargetArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,12 @@ class QueueArgs:
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
                
                * RUNNING: The queue is running. Tasks can be dispatched.
@@ -62,6 +69,8 @@ class QueueArgs:
         pulumi.set(__self__, "location", location)
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if http_target is not None:
@@ -102,6 +111,23 @@ class QueueArgs:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: pulumi.Input[Optional['QueueAppEngineRoutingOverrideArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
@@ -206,6 +232,7 @@ class QueueArgs:
 class _QueueState:
     def __init__(__self__, *,
                  app_engine_routing_override: pulumi.Input[Optional['QueueAppEngineRoutingOverrideArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional['QueueHttpTargetArgs']] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -221,6 +248,12 @@ class _QueueState:
         :param pulumi.Input['QueueAppEngineRoutingOverrideArgs'] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
                
                * RUNNING: The queue is running. Tasks can be dispatched.
@@ -247,6 +280,8 @@ class _QueueState:
         """
         if app_engine_routing_override is not None:
             pulumi.set(__self__, "app_engine_routing_override", app_engine_routing_override)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if http_target is not None:
@@ -279,6 +314,23 @@ class _QueueState:
     @app_engine_routing_override.setter
     def app_engine_routing_override(self, value: pulumi.Input[Optional['QueueAppEngineRoutingOverrideArgs']]):
         pulumi.set(self, "app_engine_routing_override", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
@@ -410,6 +462,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -578,6 +631,12 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
                
                * RUNNING: The queue is running. Tasks can be dispatched.
@@ -777,6 +836,7 @@ class Queue(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -795,6 +855,7 @@ class Queue(pulumi.CustomResource):
             __props__ = QueueArgs.__new__(QueueArgs)
 
             __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["http_target"] = http_target
             if location is None and not opts.urn:
@@ -817,6 +878,7 @@ class Queue(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_engine_routing_override: pulumi.Input[Optional[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             desired_state: pulumi.Input[Optional[_builtins.str]] = None,
             http_target: pulumi.Input[Optional[Union['QueueHttpTargetArgs', 'QueueHttpTargetArgsDict']]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -836,6 +898,12 @@ class Queue(pulumi.CustomResource):
         :param pulumi.Input[Union['QueueAppEngineRoutingOverrideArgs', 'QueueAppEngineRoutingOverrideArgsDict']] app_engine_routing_override: Overrides for task-level appEngineRouting. These settings apply only
                to App Engine tasks in this queue
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: The desired state of the queue. Use this to pause and resume the queue.
                
                * RUNNING: The queue is running. Tasks can be dispatched.
@@ -865,6 +933,7 @@ class Queue(pulumi.CustomResource):
         __props__ = _QueueState.__new__(_QueueState)
 
         __props__.__dict__["app_engine_routing_override"] = app_engine_routing_override
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["http_target"] = http_target
         __props__.__dict__["location"] = location
@@ -885,6 +954,19 @@ class Queue(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "app_engine_routing_override")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="desiredState")

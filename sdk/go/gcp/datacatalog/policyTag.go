@@ -133,6 +133,13 @@ type PolicyTag struct {
 
 	// Resource names of child policy tags of this policy tag.
 	ChildPolicyTags pulumi.StringArrayOutput `pulumi:"childPolicyTags"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of this policy tag. It must: contain only unicode characters, tabs,
 	// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
 	// encoded in UTF-8. If not set, defaults to an empty description.
@@ -191,6 +198,13 @@ func GetPolicyTag(ctx *pulumi.Context,
 type policyTagState struct {
 	// Resource names of child policy tags of this policy tag.
 	ChildPolicyTags []string `pulumi:"childPolicyTags"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of this policy tag. It must: contain only unicode characters, tabs,
 	// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
 	// encoded in UTF-8. If not set, defaults to an empty description.
@@ -214,6 +228,13 @@ type policyTagState struct {
 type PolicyTagState struct {
 	// Resource names of child policy tags of this policy tag.
 	ChildPolicyTags pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of this policy tag. It must: contain only unicode characters, tabs,
 	// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
 	// encoded in UTF-8. If not set, defaults to an empty description.
@@ -239,6 +260,13 @@ func (PolicyTagState) ElementType() reflect.Type {
 }
 
 type policyTagArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of this policy tag. It must: contain only unicode characters, tabs,
 	// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
 	// encoded in UTF-8. If not set, defaults to an empty description.
@@ -258,6 +286,13 @@ type policyTagArgs struct {
 
 // The set of arguments for constructing a PolicyTag resource.
 type PolicyTagArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of this policy tag. It must: contain only unicode characters, tabs,
 	// newlines, carriage returns and page breaks; and be at most 2000 bytes long when
 	// encoded in UTF-8. If not set, defaults to an empty description.
@@ -365,6 +400,16 @@ func (o PolicyTagOutput) ToPolicyTagOutputWithContext(ctx context.Context) Polic
 // Resource names of child policy tags of this policy tag.
 func (o PolicyTagOutput) ChildPolicyTags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PolicyTag) pulumi.StringArrayOutput { return v.ChildPolicyTags }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PolicyTagOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyTag) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of this policy tag. It must: contain only unicode characters, tabs,

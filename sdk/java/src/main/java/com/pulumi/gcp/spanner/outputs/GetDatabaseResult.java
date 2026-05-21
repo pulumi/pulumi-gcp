@@ -18,6 +18,7 @@ public final class GetDatabaseResult {
     private String databaseDialect;
     private List<String> ddls;
     private String defaultTimeZone;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private Boolean enableDropProtection;
     private List<GetDatabaseEncryptionConfig> encryptionConfigs;
@@ -41,6 +42,9 @@ public final class GetDatabaseResult {
     }
     public String defaultTimeZone() {
         return this.defaultTimeZone;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -86,6 +90,7 @@ public final class GetDatabaseResult {
         private String databaseDialect;
         private List<String> ddls;
         private String defaultTimeZone;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Boolean enableDropProtection;
         private List<GetDatabaseEncryptionConfig> encryptionConfigs;
@@ -101,6 +106,7 @@ public final class GetDatabaseResult {
     	      this.databaseDialect = defaults.databaseDialect;
     	      this.ddls = defaults.ddls;
     	      this.defaultTimeZone = defaults.defaultTimeZone;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.enableDropProtection = defaults.enableDropProtection;
     	      this.encryptionConfigs = defaults.encryptionConfigs;
@@ -137,6 +143,14 @@ public final class GetDatabaseResult {
               throw new MissingRequiredPropertyException("GetDatabaseResult", "defaultTimeZone");
             }
             this.defaultTimeZone = defaultTimeZone;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -217,6 +231,7 @@ public final class GetDatabaseResult {
             _resultValue.databaseDialect = databaseDialect;
             _resultValue.ddls = ddls;
             _resultValue.defaultTimeZone = defaultTimeZone;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.enableDropProtection = enableDropProtection;
             _resultValue.encryptionConfigs = encryptionConfigs;

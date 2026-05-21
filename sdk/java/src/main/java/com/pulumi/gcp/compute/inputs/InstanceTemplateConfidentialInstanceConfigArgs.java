@@ -17,14 +17,14 @@ public final class InstanceTemplateConfidentialInstanceConfigArgs extends com.pu
     public static final InstanceTemplateConfidentialInstanceConfigArgs Empty = new InstanceTemplateConfidentialInstanceConfigArgs();
 
     /**
-     * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
+     * Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
      * 
      */
     @Import(name="confidentialInstanceType")
     private @Nullable Output<String> confidentialInstanceType;
 
     /**
-     * @return Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
+     * @return Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
      * 
      */
     public Optional<Output<String>> confidentialInstanceType() {
@@ -32,14 +32,14 @@ public final class InstanceTemplateConfidentialInstanceConfigArgs extends com.pu
     }
 
     /**
-     * Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
      * 
      */
     @Import(name="enableConfidentialCompute")
     private @Nullable Output<Boolean> enableConfidentialCompute;
 
     /**
-     * @return Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * @return Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
      * 
      */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
@@ -72,7 +72,7 @@ public final class InstanceTemplateConfidentialInstanceConfigArgs extends com.pu
         }
 
         /**
-         * @param confidentialInstanceType Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
+         * @param confidentialInstanceType Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class InstanceTemplateConfidentialInstanceConfigArgs extends com.pu
         }
 
         /**
-         * @param confidentialInstanceType Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
+         * @param confidentialInstanceType Defines the confidential computing technology the instance uses. SEV is an AMD feature. TDX is an Intel feature. One of the following values is required: `SEV`, `SEV_SNP`, `TDX`. `onHostMaintenance` can be set to MIGRATE if `confidentialInstanceType` is set to `SEV` and `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM. If `SEV_SNP`, currently `minCpuPlatform` has to be set to `&#34;AMD Milan&#34;` or this will fail to create the VM.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class InstanceTemplateConfidentialInstanceConfigArgs extends com.pu
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class InstanceTemplateConfidentialInstanceConfigArgs extends com.pu
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled with AMD SEV. If enabled, `onHostMaintenance` can be set to MIGRATE if `minCpuPlatform` is set to `&#34;AMD Milan&#34;` or `&#34;AMD Genoa&#34;`. Otherwise, `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          * 
          * @return builder
          * 

@@ -25,6 +25,7 @@ class WorkloadIdentityPoolManagedIdentityArgs:
                  workload_identity_pool_managed_identity_id: pulumi.Input[_builtins.str],
                  workload_identity_pool_namespace_id: pulumi.Input[_builtins.str],
                  attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolManagedIdentityAttestationRuleArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -52,6 +53,12 @@ class WorkloadIdentityPoolManagedIdentityArgs:
                defined under a managed identity, matching workloads may receive that identity. A maximum of
                50 AttestationRules can be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the managed identity. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
                the identity, however existing credentials will still be accepted until they expire.
@@ -63,6 +70,8 @@ class WorkloadIdentityPoolManagedIdentityArgs:
         pulumi.set(__self__, "workload_identity_pool_namespace_id", workload_identity_pool_namespace_id)
         if attestation_rules is not None:
             pulumi.set(__self__, "attestation_rules", attestation_rules)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -136,6 +145,23 @@ class WorkloadIdentityPoolManagedIdentityArgs:
         pulumi.set(self, "attestation_rules", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -178,6 +204,7 @@ class WorkloadIdentityPoolManagedIdentityArgs:
 class _WorkloadIdentityPoolManagedIdentityState:
     def __init__(__self__, *,
                  attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolManagedIdentityAttestationRuleArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -193,6 +220,12 @@ class _WorkloadIdentityPoolManagedIdentityState:
                defined under a managed identity, matching workloads may receive that identity. A maximum of
                50 AttestationRules can be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the managed identity. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
                the identity, however existing credentials will still be accepted until they expire.
@@ -226,6 +259,8 @@ class _WorkloadIdentityPoolManagedIdentityState:
         """
         if attestation_rules is not None:
             pulumi.set(__self__, "attestation_rules", attestation_rules)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -257,6 +292,23 @@ class _WorkloadIdentityPoolManagedIdentityState:
     @attestation_rules.setter
     def attestation_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolManagedIdentityAttestationRuleArgs']]]]):
         pulumi.set(self, "attestation_rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -384,6 +436,7 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolManagedIdentityAttestationRuleArgs', 'WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -471,6 +524,12 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                defined under a managed identity, matching workloads may receive that identity. A maximum of
                50 AttestationRules can be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the managed identity. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
                the identity, however existing credentials will still be accepted until they expire.
@@ -590,6 +649,7 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolManagedIdentityAttestationRuleArgs', 'WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -606,6 +666,7 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
             __props__ = WorkloadIdentityPoolManagedIdentityArgs.__new__(WorkloadIdentityPoolManagedIdentityArgs)
 
             __props__.__dict__["attestation_rules"] = attestation_rules
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["project"] = project
@@ -631,6 +692,7 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attestation_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkloadIdentityPoolManagedIdentityAttestationRuleArgs', 'WorkloadIdentityPoolManagedIdentityAttestationRuleArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -650,6 +712,12 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
                defined under a managed identity, matching workloads may receive that identity. A maximum of
                50 AttestationRules can be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A description of the managed identity. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.bool] disabled: Whether the managed identity is disabled. If disabled, credentials may no longer be issued for
                the identity, however existing credentials will still be accepted until they expire.
@@ -686,6 +754,7 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
         __props__ = _WorkloadIdentityPoolManagedIdentityState.__new__(_WorkloadIdentityPoolManagedIdentityState)
 
         __props__.__dict__["attestation_rules"] = attestation_rules
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["name"] = name
@@ -706,6 +775,19 @@ class WorkloadIdentityPoolManagedIdentity(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "attestation_rules")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

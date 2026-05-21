@@ -27,10 +27,13 @@ class GetAppGatewayResult:
     """
     A collection of values returned by getAppGateway.
     """
-    def __init__(__self__, allocated_connections=None, display_name=None, effective_labels=None, host_type=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, state=None, type=None, uri=None):
+    def __init__(__self__, allocated_connections=None, deletion_policy=None, display_name=None, effective_labels=None, host_type=None, id=None, labels=None, name=None, project=None, pulumi_labels=None, region=None, state=None, type=None, uri=None):
         if allocated_connections and not isinstance(allocated_connections, list):
             raise TypeError("Expected argument 'allocated_connections' to be a list")
         pulumi.set(__self__, "allocated_connections", allocated_connections)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -72,6 +75,11 @@ class GetAppGatewayResult:
     @pulumi.getter(name="allocatedConnections")
     def allocated_connections(self) -> Sequence['outputs.GetAppGatewayAllocatedConnectionResult']:
         return pulumi.get(self, "allocated_connections")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -144,6 +152,7 @@ class AwaitableGetAppGatewayResult(GetAppGatewayResult):
             yield self
         return GetAppGatewayResult(
             allocated_connections=self.allocated_connections,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             host_type=self.host_type,
@@ -192,6 +201,7 @@ def get_app_gateway(name: Optional[_builtins.str] = None,
 
     return AwaitableGetAppGatewayResult(
         allocated_connections=pulumi.get(__ret__, 'allocated_connections'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         host_type=pulumi.get(__ret__, 'host_type'),
@@ -237,6 +247,7 @@ def get_app_gateway_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:beyondcorp/getAppGateway:getAppGateway', __args__, opts=opts, typ=GetAppGatewayResult)
     return __ret__.apply(lambda __response__: GetAppGatewayResult(
         allocated_connections=pulumi.get(__response__, 'allocated_connections'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         host_type=pulumi.get(__response__, 'host_type'),

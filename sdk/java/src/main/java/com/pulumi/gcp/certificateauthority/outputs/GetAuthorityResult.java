@@ -24,6 +24,7 @@ public final class GetAuthorityResult {
     private @Nullable String certificateAuthorityId;
     private List<GetAuthorityConfig> configs;
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String desiredState;
     private Map<String,String> effectiveLabels;
@@ -68,6 +69,9 @@ public final class GetAuthorityResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -160,6 +164,7 @@ public final class GetAuthorityResult {
         private @Nullable String certificateAuthorityId;
         private List<GetAuthorityConfig> configs;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String desiredState;
         private Map<String,String> effectiveLabels;
@@ -190,6 +195,7 @@ public final class GetAuthorityResult {
     	      this.certificateAuthorityId = defaults.certificateAuthorityId;
     	      this.configs = defaults.configs;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.desiredState = defaults.desiredState;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -249,6 +255,14 @@ public final class GetAuthorityResult {
               throw new MissingRequiredPropertyException("GetAuthorityResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -447,6 +461,7 @@ public final class GetAuthorityResult {
             _resultValue.certificateAuthorityId = certificateAuthorityId;
             _resultValue.configs = configs;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.desiredState = desiredState;
             _resultValue.effectiveLabels = effectiveLabels;

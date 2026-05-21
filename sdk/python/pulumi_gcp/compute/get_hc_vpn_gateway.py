@@ -27,7 +27,10 @@ class GetHcVpnGatewayResult:
     """
     A collection of values returned by getHcVpnGateway.
     """
-    def __init__(__self__, description=None, effective_labels=None, gateway_ip_version=None, id=None, label_fingerprint=None, labels=None, name=None, network=None, params=None, project=None, pulumi_labels=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
+    def __init__(__self__, deletion_policy=None, description=None, effective_labels=None, gateway_ip_version=None, id=None, label_fingerprint=None, labels=None, name=None, network=None, params=None, project=None, pulumi_labels=None, region=None, self_link=None, stack_type=None, vpn_interfaces=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -73,6 +76,11 @@ class GetHcVpnGatewayResult:
         if vpn_interfaces and not isinstance(vpn_interfaces, list):
             raise TypeError("Expected argument 'vpn_interfaces' to be a list")
         pulumi.set(__self__, "vpn_interfaces", vpn_interfaces)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -159,6 +167,7 @@ class AwaitableGetHcVpnGatewayResult(GetHcVpnGatewayResult):
         if False:
             yield self
         return GetHcVpnGatewayResult(
+            deletion_policy=self.deletion_policy,
             description=self.description,
             effective_labels=self.effective_labels,
             gateway_ip_version=self.gateway_ip_version,
@@ -210,6 +219,7 @@ def get_hc_vpn_gateway(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getHcVpnGateway:getHcVpnGateway', __args__, opts=opts, typ=GetHcVpnGatewayResult).value
 
     return AwaitableGetHcVpnGatewayResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         gateway_ip_version=pulumi.get(__ret__, 'gateway_ip_version'),
@@ -258,6 +268,7 @@ def get_hc_vpn_gateway_output(name: pulumi.Input[Optional[_builtins.str]] = None
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getHcVpnGateway:getHcVpnGateway', __args__, opts=opts, typ=GetHcVpnGatewayResult)
     return __ret__.apply(lambda __response__: GetHcVpnGatewayResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         gateway_ip_version=pulumi.get(__response__, 'gateway_ip_version'),

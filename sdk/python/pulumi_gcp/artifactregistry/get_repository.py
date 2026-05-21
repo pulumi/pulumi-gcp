@@ -27,7 +27,7 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, registry_uri=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None, vulnerability_scanning_configs=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, deletion_policy=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, registry_uri=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None, vulnerability_scanning_configs=None):
         if cleanup_policies and not isinstance(cleanup_policies, list):
             raise TypeError("Expected argument 'cleanup_policies' to be a list")
         pulumi.set(__self__, "cleanup_policies", cleanup_policies)
@@ -37,6 +37,9 @@ class GetRepositoryResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -109,6 +112,11 @@ class GetRepositoryResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -218,6 +226,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             cleanup_policies=self.cleanup_policies,
             cleanup_policy_dry_run=self.cleanup_policy_dry_run,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             docker_configs=self.docker_configs,
             effective_labels=self.effective_labels,
@@ -277,6 +286,7 @@ def get_repository(location: Optional[_builtins.str] = None,
         cleanup_policies=pulumi.get(__ret__, 'cleanup_policies'),
         cleanup_policy_dry_run=pulumi.get(__ret__, 'cleanup_policy_dry_run'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         docker_configs=pulumi.get(__ret__, 'docker_configs'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -333,6 +343,7 @@ def get_repository_output(location: pulumi.Input[Optional[_builtins.str]] = None
         cleanup_policies=pulumi.get(__response__, 'cleanup_policies'),
         cleanup_policy_dry_run=pulumi.get(__response__, 'cleanup_policy_dry_run'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         docker_configs=pulumi.get(__response__, 'docker_configs'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

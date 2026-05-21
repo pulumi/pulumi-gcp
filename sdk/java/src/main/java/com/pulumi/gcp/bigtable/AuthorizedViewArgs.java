@@ -18,6 +18,35 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
     public static final AuthorizedViewArgs Empty = new AuthorizedViewArgs();
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
      * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
      * 
@@ -84,16 +113,12 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
      * 
-     * ***
-     * 
      */
     @Import(name="subsetView")
     private @Nullable Output<AuthorizedViewSubsetViewArgs> subsetView;
 
     /**
      * @return An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     * 
-     * ***
      * 
      */
     public Optional<Output<AuthorizedViewSubsetViewArgs>> subsetView() {
@@ -118,6 +143,7 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
     private AuthorizedViewArgs() {}
 
     private AuthorizedViewArgs(AuthorizedViewArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.instanceName = $.instanceName;
         this.name = $.name;
@@ -142,6 +168,41 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
 
         public Builder(AuthorizedViewArgs defaults) {
             $ = new AuthorizedViewArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -235,8 +296,6 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param subsetView An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -247,8 +306,6 @@ public final class AuthorizedViewArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param subsetView An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-         * 
-         * ***
          * 
          * @return builder
          * 

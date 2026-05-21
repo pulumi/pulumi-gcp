@@ -88,6 +88,13 @@ type V2FolderNotificationConfig struct {
 
 	// This must be unique within the organization.
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Numerical ID of the parent folder.
@@ -152,6 +159,13 @@ func GetV2FolderNotificationConfig(ctx *pulumi.Context,
 type v2folderNotificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId *string `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// Numerical ID of the parent folder.
@@ -175,6 +189,13 @@ type v2folderNotificationConfigState struct {
 type V2FolderNotificationConfigState struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// Numerical ID of the parent folder.
@@ -202,6 +223,13 @@ func (V2FolderNotificationConfigState) ElementType() reflect.Type {
 type v2folderNotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId string `pulumi:"configId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// Numerical ID of the parent folder.
@@ -220,6 +248,13 @@ type v2folderNotificationConfigArgs struct {
 type V2FolderNotificationConfigArgs struct {
 	// This must be unique within the organization.
 	ConfigId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// Numerical ID of the parent folder.
@@ -324,6 +359,16 @@ func (o V2FolderNotificationConfigOutput) ToV2FolderNotificationConfigOutputWith
 // This must be unique within the organization.
 func (o V2FolderNotificationConfigOutput) ConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2FolderNotificationConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o V2FolderNotificationConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2FolderNotificationConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the notification config (max of 1024 characters).

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gkehub.RolloutSequenceArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceState;
+import com.pulumi.gcp.gkehub.outputs.RolloutSequenceAutoUpgradeConfig;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceIgnoredClustersSelector;
 import com.pulumi.gcp.gkehub.outputs.RolloutSequenceStage;
 import java.lang.String;
@@ -50,6 +51,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:gkehub/rolloutSequence:RolloutSequence")
 public class RolloutSequence extends com.pulumi.resources.CustomResource {
     /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="autoUpgradeConfig", refs={RolloutSequenceAutoUpgradeConfig.class}, tree="[0]")
+    private Output</* @Nullable */ RolloutSequenceAutoUpgradeConfig> autoUpgradeConfig;
+
+    /**
+     * @return Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RolloutSequenceAutoUpgradeConfig>> autoUpgradeConfig() {
+        return Codegen.optional(this.autoUpgradeConfig);
+    }
+    /**
      * The timestamp at which the Rollout Sequence was created.
      * 
      */
@@ -76,6 +95,30 @@ public class RolloutSequence extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Human readable display name of the Rollout Sequence.

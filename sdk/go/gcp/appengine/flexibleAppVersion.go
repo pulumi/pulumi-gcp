@@ -218,6 +218,13 @@ type FlexibleAppVersion struct {
 	DefaultExpiration pulumi.StringPtrOutput `pulumi:"defaultExpiration"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteServiceOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
 	Deployment FlexibleAppVersionDeploymentPtrOutput `pulumi:"deployment"`
@@ -350,6 +357,13 @@ type flexibleAppVersionState struct {
 	DefaultExpiration *string `pulumi:"defaultExpiration"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
 	Deployment *FlexibleAppVersionDeployment `pulumi:"deployment"`
@@ -441,6 +455,13 @@ type FlexibleAppVersionState struct {
 	DefaultExpiration pulumi.StringPtrInput
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
 	Deployment FlexibleAppVersionDeploymentPtrInput
@@ -536,6 +557,13 @@ type flexibleAppVersionArgs struct {
 	DefaultExpiration *string `pulumi:"defaultExpiration"`
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy *bool `pulumi:"deleteServiceOnDestroy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
 	Deployment *FlexibleAppVersionDeployment `pulumi:"deployment"`
@@ -626,6 +654,13 @@ type FlexibleAppVersionArgs struct {
 	DefaultExpiration pulumi.StringPtrInput
 	// If set to `true`, the service will be deleted if it is the last version.
 	DeleteServiceOnDestroy pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Code and application artifacts that make up this version.
 	// Structure is documented below.
 	Deployment FlexibleAppVersionDeploymentPtrInput
@@ -814,6 +849,16 @@ func (o FlexibleAppVersionOutput) DefaultExpiration() pulumi.StringPtrOutput {
 // If set to `true`, the service will be deleted if it is the last version.
 func (o FlexibleAppVersionOutput) DeleteServiceOnDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.BoolPtrOutput { return v.DeleteServiceOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FlexibleAppVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FlexibleAppVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Code and application artifacts that make up this version.

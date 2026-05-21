@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMeshIstioServiceResult {
+    private String deletionPolicy;
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
      * 
@@ -44,6 +45,9 @@ public final class GetMeshIstioServiceResult {
     private Map<String,String> userLabels;
 
     private GetMeshIstioServiceResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
      * 
@@ -101,6 +105,7 @@ public final class GetMeshIstioServiceResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String displayName;
         private String id;
         private String meshUid;
@@ -114,6 +119,7 @@ public final class GetMeshIstioServiceResult {
         public Builder() {}
         public Builder(GetMeshIstioServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.meshUid = defaults.meshUid;
@@ -126,6 +132,14 @@ public final class GetMeshIstioServiceResult {
     	      this.userLabels = defaults.userLabels;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder displayName(String displayName) {
             if (displayName == null) {
@@ -209,6 +223,7 @@ public final class GetMeshIstioServiceResult {
         }
         public GetMeshIstioServiceResult build() {
             final var _resultValue = new GetMeshIstioServiceResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.meshUid = meshUid;

@@ -176,6 +176,13 @@ type Policy struct {
 	// rule.
 	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRuleOutput `pulumi:"defaultAdmissionRule"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A descriptive comment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Controls the evaluation of a Google-maintained global admission policy
@@ -241,6 +248,13 @@ type policyState struct {
 	// rule.
 	// Structure is documented below.
 	DefaultAdmissionRule *PolicyDefaultAdmissionRule `pulumi:"defaultAdmissionRule"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A descriptive comment.
 	Description *string `pulumi:"description"`
 	// Controls the evaluation of a Google-maintained global admission policy
@@ -274,6 +288,13 @@ type PolicyState struct {
 	// rule.
 	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRulePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A descriptive comment.
 	Description pulumi.StringPtrInput
 	// Controls the evaluation of a Google-maintained global admission policy
@@ -311,6 +332,13 @@ type policyArgs struct {
 	// rule.
 	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRule `pulumi:"defaultAdmissionRule"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A descriptive comment.
 	Description *string `pulumi:"description"`
 	// Controls the evaluation of a Google-maintained global admission policy
@@ -345,6 +373,13 @@ type PolicyArgs struct {
 	// rule.
 	// Structure is documented below.
 	DefaultAdmissionRule PolicyDefaultAdmissionRuleInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A descriptive comment.
 	Description pulumi.StringPtrInput
 	// Controls the evaluation of a Google-maintained global admission policy
@@ -471,6 +506,16 @@ func (o PolicyOutput) ClusterAdmissionRules() PolicyClusterAdmissionRuleArrayOut
 // Structure is documented below.
 func (o PolicyOutput) DefaultAdmissionRule() PolicyDefaultAdmissionRuleOutput {
 	return o.ApplyT(func(v *Policy) PolicyDefaultAdmissionRuleOutput { return v.DefaultAdmissionRule }).(PolicyDefaultAdmissionRuleOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A descriptive comment.

@@ -126,6 +126,15 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
      */
     declare public readonly claimMapping: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -190,6 +199,7 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
             const state = argsOrState as WorkforcePoolProviderScimTenantState | undefined;
             resourceInputs["baseUri"] = state?.baseUri;
             resourceInputs["claimMapping"] = state?.claimMapping;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["hardDelete"] = state?.hardDelete;
@@ -216,6 +226,7 @@ export class WorkforcePoolProviderScimTenant extends pulumi.CustomResource {
                 throw new Error("Missing required property 'workforcePoolId'");
             }
             resourceInputs["claimMapping"] = args?.claimMapping;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["hardDelete"] = args?.hardDelete;
@@ -250,6 +261,15 @@ export interface WorkforcePoolProviderScimTenantState {
      * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      */
     claimMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */
@@ -309,6 +329,15 @@ export interface WorkforcePoolProviderScimTenantArgs {
      * Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
      */
     claimMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-specified description of the provider. Cannot exceed 256 characters.
      */

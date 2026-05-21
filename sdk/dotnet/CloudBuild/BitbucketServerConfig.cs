@@ -154,17 +154,11 @@ namespace Pulumi.Gcp.CloudBuild
     ///         },
     ///         Username = "test",
     ///         ApiKey = "&lt;api-key&gt;",
-    ///         PeeredNetwork = Output.Tuple(vpcNetwork.Id, project, project).Apply(values =&gt;
+    ///         PeeredNetwork = Std.Replace.Invoke(new()
     ///         {
-    ///             var id = values.Item1;
-    ///             var project = values.Item2;
-    ///             var project1 = values.Item3;
-    ///             return Std.Replace.Invoke(new()
-    ///             {
-    ///                 Text = id,
-    ///                 Search = project.Apply(getProjectResult =&gt; getProjectResult.Name),
-    ///                 Replace = project1.Number,
-    ///             });
+    ///             Text = vpcNetwork.Id,
+    ///             Search = project.Apply(getProjectResult =&gt; getProjectResult.Name),
+    ///             Replace = project.Apply(getProjectResult =&gt; getProjectResult.Number),
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         SslCa = @"-----BEGIN CERTIFICATE-----
     /// -----END CERTIFICATE-----
@@ -220,6 +214,17 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Output("connectedRepositories")]
         public Output<ImmutableArray<Outputs.BitbucketServerConfigConnectedRepository>> ConnectedRepositories { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
@@ -354,6 +359,17 @@ namespace Pulumi.Gcp.CloudBuild
         }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
         /// If you need to change it, please create another BitbucketServerConfig.
         /// </summary>
@@ -434,6 +450,17 @@ namespace Pulumi.Gcp.CloudBuild
             get => _connectedRepositories ?? (_connectedRepositories = new InputList<Inputs.BitbucketServerConfigConnectedRepositoryGetArgs>());
             set => _connectedRepositories = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.

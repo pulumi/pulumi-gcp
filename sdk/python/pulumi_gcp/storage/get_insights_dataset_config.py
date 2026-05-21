@@ -27,7 +27,7 @@ class GetInsightsDatasetConfigResult:
     """
     A collection of values returned by getInsightsDatasetConfig.
     """
-    def __init__(__self__, activity_data_retention_period_days=None, create_time=None, dataset_config_id=None, dataset_config_state=None, description=None, exclude_cloud_storage_buckets=None, exclude_cloud_storage_locations=None, id=None, identities=None, include_cloud_storage_buckets=None, include_cloud_storage_locations=None, include_newly_created_buckets=None, link_dataset=None, links=None, location=None, name=None, organization_number=None, organization_scope=None, project=None, retention_period_days=None, source_folders=None, source_projects=None, uid=None, update_time=None):
+    def __init__(__self__, activity_data_retention_period_days=None, create_time=None, dataset_config_id=None, dataset_config_state=None, deletion_policy=None, description=None, exclude_cloud_storage_buckets=None, exclude_cloud_storage_locations=None, id=None, identities=None, include_cloud_storage_buckets=None, include_cloud_storage_locations=None, include_newly_created_buckets=None, link_dataset=None, links=None, location=None, name=None, organization_number=None, organization_scope=None, project=None, retention_period_days=None, source_folders=None, source_projects=None, uid=None, update_time=None):
         if activity_data_retention_period_days and not isinstance(activity_data_retention_period_days, int):
             raise TypeError("Expected argument 'activity_data_retention_period_days' to be a int")
         pulumi.set(__self__, "activity_data_retention_period_days", activity_data_retention_period_days)
@@ -40,6 +40,9 @@ class GetInsightsDatasetConfigResult:
         if dataset_config_state and not isinstance(dataset_config_state, str):
             raise TypeError("Expected argument 'dataset_config_state' to be a str")
         pulumi.set(__self__, "dataset_config_state", dataset_config_state)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -120,6 +123,11 @@ class GetInsightsDatasetConfigResult:
     @pulumi.getter(name="datasetConfigState")
     def dataset_config_state(self) -> _builtins.str:
         return pulumi.get(self, "dataset_config_state")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -235,6 +243,7 @@ class AwaitableGetInsightsDatasetConfigResult(GetInsightsDatasetConfigResult):
             create_time=self.create_time,
             dataset_config_id=self.dataset_config_id,
             dataset_config_state=self.dataset_config_state,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             exclude_cloud_storage_buckets=self.exclude_cloud_storage_buckets,
             exclude_cloud_storage_locations=self.exclude_cloud_storage_locations,
@@ -295,6 +304,7 @@ def get_insights_dataset_config(dataset_config_id: Optional[_builtins.str] = Non
         create_time=pulumi.get(__ret__, 'create_time'),
         dataset_config_id=pulumi.get(__ret__, 'dataset_config_id'),
         dataset_config_state=pulumi.get(__ret__, 'dataset_config_state'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         exclude_cloud_storage_buckets=pulumi.get(__ret__, 'exclude_cloud_storage_buckets'),
         exclude_cloud_storage_locations=pulumi.get(__ret__, 'exclude_cloud_storage_locations'),
@@ -352,6 +362,7 @@ def get_insights_dataset_config_output(dataset_config_id: pulumi.Input[Optional[
         create_time=pulumi.get(__response__, 'create_time'),
         dataset_config_id=pulumi.get(__response__, 'dataset_config_id'),
         dataset_config_state=pulumi.get(__response__, 'dataset_config_state'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         exclude_cloud_storage_buckets=pulumi.get(__response__, 'exclude_cloud_storage_buckets'),
         exclude_cloud_storage_locations=pulumi.get(__response__, 'exclude_cloud_storage_locations'),

@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetNetworkPolicyResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string EdgeServicesCidr;
         public readonly ImmutableArray<Outputs.GetNetworkPolicyExternalIpResult> ExternalIps;
@@ -167,6 +168,8 @@ namespace Pulumi.Gcp.VMwareEngine
         [OutputConstructor]
         private GetNetworkPolicyResult(
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -193,6 +196,7 @@ namespace Pulumi.Gcp.VMwareEngine
             string vmwareEngineNetworkCanonical)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EdgeServicesCidr = edgeServicesCidr;
             ExternalIps = externalIps;

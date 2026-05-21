@@ -63,6 +63,7 @@ type LookupHealthCheckArgs struct {
 type LookupHealthCheckResult struct {
 	CheckIntervalSec    int                                `pulumi:"checkIntervalSec"`
 	CreationTimestamp   string                             `pulumi:"creationTimestamp"`
+	DeletionPolicy      string                             `pulumi:"deletionPolicy"`
 	Description         string                             `pulumi:"description"`
 	GrpcHealthChecks    []GetHealthCheckGrpcHealthCheck    `pulumi:"grpcHealthChecks"`
 	GrpcTlsHealthChecks []GetHealthCheckGrpcTlsHealthCheck `pulumi:"grpcTlsHealthChecks"`
@@ -129,6 +130,10 @@ func (o LookupHealthCheckResultOutput) CheckIntervalSec() pulumi.IntOutput {
 
 func (o LookupHealthCheckResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHealthCheckResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupHealthCheckResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHealthCheckResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupHealthCheckResultOutput) Description() pulumi.StringOutput {

@@ -61,36 +61,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * ### Region Backend Service Cache
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("default", {
- *     name: "rbs-health-check",
- *     region: "us-central1",
- *     httpHealthCheck: {
- *         port: 80,
- *     },
- * });
- * const _default = new gcp.compute.RegionBackendService("default", {
- *     name: "region-service",
- *     region: "us-central1",
- *     healthChecks: defaultRegionHealthCheck.id,
- *     enableCdn: true,
- *     cdnPolicy: {
- *         cacheMode: "CACHE_ALL_STATIC",
- *         defaultTtl: 3600,
- *         clientTtl: 7200,
- *         maxTtl: 10800,
- *         negativeCaching: true,
- *         signedUrlCacheMaxAgeSec: 7200,
- *     },
- *     loadBalancingScheme: "EXTERNAL",
- *     protocol: "HTTP",
- * });
- * ```
  * ### Region Backend Service Ilb Round Robin
  *
  * ```typescript
@@ -315,7 +285,7 @@ import * as utilities from "../utilities";
  *         trackingMode: "PER_SESSION",
  *         connectionPersistenceOnUnhealthyBackends: "NEVER_PERSIST",
  *         idleTimeoutSec: 60,
- *         enableStrongAffinity: true,
+ *         enableStrongAffinity: false,
  *     },
  * });
  * ```
@@ -646,7 +616,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     declare public readonly connectionDrainingTimeoutSec: pulumi.Output<number | undefined>;
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -672,6 +641,15 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly customMetrics: pulumi.Output<outputs.compute.RegionBackendServiceCustomMetric[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
@@ -924,6 +902,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["consistentHash"] = state?.consistentHash;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["customMetrics"] = state?.customMetrics;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["dynamicForwarding"] = state?.dynamicForwarding;
             resourceInputs["enableCdn"] = state?.enableCdn;
@@ -963,6 +942,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["connectionTrackingPolicy"] = args?.connectionTrackingPolicy;
             resourceInputs["consistentHash"] = args?.consistentHash;
             resourceInputs["customMetrics"] = args?.customMetrics;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["dynamicForwarding"] = args?.dynamicForwarding;
             resourceInputs["enableCdn"] = args?.enableCdn;
@@ -1034,7 +1014,6 @@ export interface RegionBackendServiceState {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number | undefined>;
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1060,6 +1039,15 @@ export interface RegionBackendServiceState {
      * Structure is documented below.
      */
     customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -1326,7 +1314,6 @@ export interface RegionBackendServiceArgs {
      */
     connectionDrainingTimeoutSec?: pulumi.Input<number | undefined>;
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -1348,6 +1335,15 @@ export interface RegionBackendServiceArgs {
      * Structure is documented below.
      */
     customMetrics?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCustomMetric>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

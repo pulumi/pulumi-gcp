@@ -202,6 +202,15 @@ export class CustomTargetType extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly customTargetTypeId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -272,6 +281,7 @@ export class CustomTargetType extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customActions"] = state?.customActions;
             resourceInputs["customTargetTypeId"] = state?.customTargetTypeId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -291,6 +301,7 @@ export class CustomTargetType extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["customActions"] = args?.customActions;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -336,6 +347,15 @@ export interface CustomTargetTypeState {
      * Resource id of the `CustomTargetType`.
      */
     customTargetTypeId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */
@@ -406,6 +426,15 @@ export interface CustomTargetTypeArgs {
      * Structure is documented below.
      */
     customActions?: pulumi.Input<inputs.clouddeploy.CustomTargetTypeCustomActions | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the `CustomTargetType`. Max length is 255 characters.
      */

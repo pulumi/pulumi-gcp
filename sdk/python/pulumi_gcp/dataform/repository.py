@@ -35,7 +35,15 @@ class RepositoryArgs:
         """
         The set of arguments for constructing a Repository resource.
 
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted.
+               When set to `FORCE`, any child resources of this repository will also be deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
@@ -82,7 +90,15 @@ class RepositoryArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        Policy to control how the repository and its child resources are deleted.
+        When set to `FORCE`, any child resources of this repository will also be deleted.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+
+        Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -238,7 +254,15 @@ class _RepositoryState:
         """
         Input properties used for looking up and filtering Repository resources.
 
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted.
+               When set to `FORCE`, any child resources of this repository will also be deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
@@ -292,7 +316,15 @@ class _RepositoryState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        Policy to control how the repository and its child resources are deleted.
+        When set to `FORCE`, any child resources of this repository will also be deleted.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+
+        Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -553,7 +585,15 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted.
+               When set to `FORCE`, any child resources of this repository will also be deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
@@ -738,7 +778,15 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Policy to control how the repository and its child resources are deleted.
+               When set to `FORCE`, any child resources of this repository will also be deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               
+               Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         :param pulumi.Input[_builtins.str] display_name: Optional. The repository's user-friendly name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['RepositoryGitRemoteSettingsArgs', 'RepositoryGitRemoteSettingsArgsDict']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
@@ -782,9 +830,17 @@ class Repository(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        Policy to control how the repository and its child resources are deleted. When set to `FORCE`, any child resources of this repository will also be deleted. Possible values: `DELETE`, `FORCE`. Defaults to `DELETE`.
+        Policy to control how the repository and its child resources are deleted.
+        When set to `FORCE`, any child resources of this repository will also be deleted.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+
+        Possible values: `DELETE`, `FORCE`, 'PREVENT', 'ABANDON'. Defaults to `DELETE`.
         """
         return pulumi.get(self, "deletion_policy")
 

@@ -16,16 +16,22 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// <summary>
         /// The modality of the web widget.
         /// Possible values:
-        /// UNKNOWN_MODALITY
+        /// MODALITY_UNSPECIFIED
         /// CHAT_AND_VOICE
         /// VOICE_ONLY
         /// CHAT_ONLY
+        /// CHAT_VOICE_AND_VIDEO
         /// </summary>
         public readonly string? Modality;
         /// <summary>
+        /// The security settings of the web widget.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DeploymentChannelProfileWebWidgetConfigSecuritySettings? SecuritySettings;
+        /// <summary>
         /// The theme of the web widget.
         /// Possible values:
-        /// UNKNOWN_THEME
+        /// THEME_UNSPECIFIED
         /// LIGHT
         /// DARK
         /// </summary>
@@ -39,11 +45,14 @@ namespace Pulumi.Gcp.Ces.Outputs
         private DeploymentChannelProfileWebWidgetConfig(
             string? modality,
 
+            Outputs.DeploymentChannelProfileWebWidgetConfigSecuritySettings? securitySettings,
+
             string? theme,
 
             string? webWidgetTitle)
         {
             Modality = modality;
+            SecuritySettings = securitySettings;
             Theme = theme;
             WebWidgetTitle = webWidgetTitle;
         }

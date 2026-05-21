@@ -36,20 +36,30 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The deletion policy for the GC policy.
-     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     * The deletion policy for the GC policy. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+     * in a replicated instance.
      * 
-     * Possible values are: `ABANDON`.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;DELETE&#34; or &#34;&#34;, deleting the resource is allowed.
+     * 
+     * Possible values: PREVENT, ABANDON, DELETE.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the GC policy.
-     * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     * @return The deletion policy for the GC policy. Setting ABANDON allows the resource
+     * to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+     * in a replicated instance.
      * 
-     * Possible values are: `ABANDON`.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;DELETE&#34; or &#34;&#34;, deleting the resource is allowed.
+     * 
+     * Possible values: PREVENT, ABANDON, DELETE.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -239,10 +249,15 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the GC policy.
-         * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+         * @param deletionPolicy The deletion policy for the GC policy. Setting ABANDON allows the resource
+         * to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+         * in a replicated instance.
          * 
-         * Possible values are: `ABANDON`.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;DELETE&#34; or &#34;&#34;, deleting the resource is allowed.
+         * 
+         * Possible values: PREVENT, ABANDON, DELETE.
          * 
          * @return builder
          * 
@@ -253,10 +268,15 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the GC policy.
-         * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+         * @param deletionPolicy The deletion policy for the GC policy. Setting ABANDON allows the resource
+         * to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+         * in a replicated instance.
          * 
-         * Possible values are: `ABANDON`.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;DELETE&#34; or &#34;&#34;, deleting the resource is allowed.
+         * 
+         * Possible values: PREVENT, ABANDON, DELETE.
          * 
          * @return builder
          * 

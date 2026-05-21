@@ -25,6 +25,16 @@ public final class GetGroupsGroup {
      */
     private String createTime;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return An extended description to help users determine the purpose of a Group.
      * 
      */
@@ -85,6 +95,18 @@ public final class GetGroupsGroup {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return An extended description to help users determine the purpose of a Group.
@@ -160,6 +182,7 @@ public final class GetGroupsGroup {
     public static final class Builder {
         private List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private String displayName;
         private List<GetGroupsGroupGroupKey> groupKeys;
@@ -173,6 +196,7 @@ public final class GetGroupsGroup {
     	      Objects.requireNonNull(defaults);
     	      this.additionalGroupKeys = defaults.additionalGroupKeys;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
     	      this.groupKeys = defaults.groupKeys;
@@ -200,6 +224,14 @@ public final class GetGroupsGroup {
               throw new MissingRequiredPropertyException("GetGroupsGroup", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -273,6 +305,7 @@ public final class GetGroupsGroup {
             final var _resultValue = new GetGroupsGroup();
             _resultValue.additionalGroupKeys = additionalGroupKeys;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.displayName = displayName;
             _resultValue.groupKeys = groupKeys;

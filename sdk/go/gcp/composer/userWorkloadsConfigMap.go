@@ -118,6 +118,13 @@ type UserWorkloadsConfigMap struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data pulumi.StringMapOutput `pulumi:"data"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
@@ -165,6 +172,13 @@ type userWorkloadsConfigMapState struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data map[string]string `pulumi:"data"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
 	Environment *string `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
@@ -180,6 +194,13 @@ type UserWorkloadsConfigMapState struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Environment where the Kubernetes ConfigMap will be stored and used.
 	Environment pulumi.StringPtrInput
 	// Name of the Kubernetes ConfigMap.
@@ -199,6 +220,13 @@ type userWorkloadsConfigMapArgs struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data map[string]string `pulumi:"data"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Environment where the Kubernetes ConfigMap will be stored and used.
 	Environment string `pulumi:"environment"`
 	// Name of the Kubernetes ConfigMap.
@@ -215,6 +243,13 @@ type UserWorkloadsConfigMapArgs struct {
 	// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
 	// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 	Data pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Environment where the Kubernetes ConfigMap will be stored and used.
 	Environment pulumi.StringInput
 	// Name of the Kubernetes ConfigMap.
@@ -317,6 +352,16 @@ func (o UserWorkloadsConfigMapOutput) ToUserWorkloadsConfigMapOutputWithContext(
 // For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
 func (o UserWorkloadsConfigMapOutput) Data() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *UserWorkloadsConfigMap) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o UserWorkloadsConfigMapOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserWorkloadsConfigMap) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Environment where the Kubernetes ConfigMap will be stored and used.

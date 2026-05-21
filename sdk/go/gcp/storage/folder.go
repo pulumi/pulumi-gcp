@@ -93,6 +93,13 @@ type Folder struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The timestamp at which this folder was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If set to true, items within folder if any will be force destroyed.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The metadata generation of the folder.
@@ -143,6 +150,13 @@ type folderState struct {
 	Bucket *string `pulumi:"bucket"`
 	// The timestamp at which this folder was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If set to true, items within folder if any will be force destroyed.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The metadata generation of the folder.
@@ -161,6 +175,13 @@ type FolderState struct {
 	Bucket pulumi.StringPtrInput
 	// The timestamp at which this folder was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If set to true, items within folder if any will be force destroyed.
 	ForceDestroy pulumi.BoolPtrInput
 	// The metadata generation of the folder.
@@ -181,6 +202,13 @@ func (FolderState) ElementType() reflect.Type {
 type folderArgs struct {
 	// The name of the bucket that contains the folder.
 	Bucket string `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If set to true, items within folder if any will be force destroyed.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the folder expressed as a path. Must include
@@ -192,6 +220,13 @@ type folderArgs struct {
 type FolderArgs struct {
 	// The name of the bucket that contains the folder.
 	Bucket pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If set to true, items within folder if any will be force destroyed.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the folder expressed as a path. Must include
@@ -294,6 +329,16 @@ func (o FolderOutput) Bucket() pulumi.StringOutput {
 // The timestamp at which this folder was created.
 func (o FolderOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FolderOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Folder) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If set to true, items within folder if any will be force destroyed.

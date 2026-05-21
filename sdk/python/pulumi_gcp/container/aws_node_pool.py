@@ -29,6 +29,7 @@ class AwsNodePoolArgs:
                  subnet_id: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  kubelet_config: pulumi.Input[Optional['AwsNodePoolKubeletConfigArgs']] = None,
                  management: pulumi.Input[Optional['AwsNodePoolManagementArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,6 +49,12 @@ class AwsNodePoolArgs:
                
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AwsNodePoolKubeletConfigArgs'] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[_builtins.str] name: The name of this resource.
@@ -63,6 +70,8 @@ class AwsNodePoolArgs:
         pulumi.set(__self__, "version", version)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if kubelet_config is not None:
             pulumi.set(__self__, "kubelet_config", kubelet_config)
         if management is not None:
@@ -174,6 +183,23 @@ class AwsNodePoolArgs:
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="kubeletConfig")
     def kubelet_config(self) -> pulumi.Input[Optional['AwsNodePoolKubeletConfigArgs']]:
         """
@@ -242,6 +268,7 @@ class _AwsNodePoolState:
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AwsNodePoolConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  kubelet_config: pulumi.Input[Optional['AwsNodePoolKubeletConfigArgs']] = None,
@@ -268,6 +295,12 @@ class _AwsNodePoolState:
         :param pulumi.Input[_builtins.str] cluster: The awsCluster for the resource
         :param pulumi.Input['AwsNodePoolConfigArgs'] config: The configuration of the node pool.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this node pool was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AwsNodePoolKubeletConfigArgs'] kubelet_config: The kubelet configuration for the node pool.
@@ -294,6 +327,8 @@ class _AwsNodePoolState:
             pulumi.set(__self__, "config", config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_annotations is not None:
             pulumi.set(__self__, "effective_annotations", effective_annotations)
         if etag is not None:
@@ -387,6 +422,23 @@ class _AwsNodePoolState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")
@@ -579,6 +631,7 @@ class AwsNodePool(pulumi.CustomResource):
                  autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
@@ -992,6 +1045,12 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']] autoscaling: Autoscaler configuration for this node pool.
         :param pulumi.Input[_builtins.str] cluster: The awsCluster for the resource
         :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']] kubelet_config: The kubelet configuration for the node pool.
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']] management: The Management configuration for this node pool.
@@ -1421,6 +1480,7 @@ class AwsNodePool(pulumi.CustomResource):
                  autoscaling: pulumi.Input[Optional[Union['AwsNodePoolAutoscalingArgs', 'AwsNodePoolAutoscalingArgsDict']]] = None,
                  cluster: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management: pulumi.Input[Optional[Union['AwsNodePoolManagementArgs', 'AwsNodePoolManagementArgsDict']]] = None,
@@ -1449,6 +1509,7 @@ class AwsNodePool(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["kubelet_config"] = kubelet_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -1488,6 +1549,7 @@ class AwsNodePool(pulumi.CustomResource):
             cluster: pulumi.Input[Optional[_builtins.str]] = None,
             config: pulumi.Input[Optional[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             kubelet_config: pulumi.Input[Optional[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']]] = None,
@@ -1518,6 +1580,12 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] cluster: The awsCluster for the resource
         :param pulumi.Input[Union['AwsNodePoolConfigArgs', 'AwsNodePoolConfigArgsDict']] config: The configuration of the node pool.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time at which this node pool was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
         :param pulumi.Input[_builtins.str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['AwsNodePoolKubeletConfigArgs', 'AwsNodePoolKubeletConfigArgsDict']] kubelet_config: The kubelet configuration for the node pool.
@@ -1543,6 +1611,7 @@ class AwsNodePool(pulumi.CustomResource):
         __props__.__dict__["cluster"] = cluster
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["etag"] = etag
         __props__.__dict__["kubelet_config"] = kubelet_config
@@ -1602,6 +1671,19 @@ class AwsNodePool(pulumi.CustomResource):
         Output only. The time at which this node pool was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveAnnotations")

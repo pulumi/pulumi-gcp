@@ -33,10 +33,16 @@ class SecretVersionArgs:
         :param pulumi.Input[_builtins.str] secret: Secret Manager secret resource
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               disabled rather than deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               
+               Default is `DELETE`. Possible values are:
                * DELETE
                * DISABLE
                * ABANDON
+               * PREVENT
         :param pulumi.Input[_builtins.bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided,
@@ -85,10 +91,16 @@ class SecretVersionArgs:
         """
         The deletion policy for the secret version. Setting `ABANDON` allows the resource
         to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-        disabled rather than deleted. Default is `DELETE`. Possible values are:
+        disabled rather than deleted.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+
+        Default is `DELETE`. Possible values are:
         * DELETE
         * DISABLE
         * ABANDON
+        * PREVENT
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -197,10 +209,16 @@ class _SecretVersionState:
         :param pulumi.Input[_builtins.str] create_time: The time at which the Secret was created.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               disabled rather than deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               
+               Default is `DELETE`. Possible values are:
                * DELETE
                * DISABLE
                * ABANDON
+               * PREVENT
         :param pulumi.Input[_builtins.str] destroy_time: The time at which the Secret was destroyed. Only present if state is DESTROYED.
         :param pulumi.Input[_builtins.bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
@@ -263,10 +281,16 @@ class _SecretVersionState:
         """
         The deletion policy for the secret version. Setting `ABANDON` allows the resource
         to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-        disabled rather than deleted. Default is `DELETE`. Possible values are:
+        disabled rather than deleted.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+
+        Default is `DELETE`. Possible values are:
         * DELETE
         * DISABLE
         * ABANDON
+        * PREVENT
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -576,10 +600,16 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               disabled rather than deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               
+               Default is `DELETE`. Possible values are:
                * DELETE
                * DISABLE
                * ABANDON
+               * PREVENT
         :param pulumi.Input[_builtins.bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it is not provided,
@@ -835,10 +865,16 @@ class SecretVersion(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time at which the Secret was created.
         :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the secret version. Setting `ABANDON` allows the resource
                to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-               disabled rather than deleted. Default is `DELETE`. Possible values are:
+               disabled rather than deleted.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               
+               Default is `DELETE`. Possible values are:
                * DELETE
                * DISABLE
                * ABANDON
+               * PREVENT
         :param pulumi.Input[_builtins.str] destroy_time: The time at which the Secret was destroyed. Only present if state is DESTROYED.
         :param pulumi.Input[_builtins.bool] enabled: The current state of the SecretVersion.
         :param pulumi.Input[_builtins.bool] is_secret_data_base64: If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
@@ -886,14 +922,20 @@ class SecretVersion(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         The deletion policy for the secret version. Setting `ABANDON` allows the resource
         to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-        disabled rather than deleted. Default is `DELETE`. Possible values are:
+        disabled rather than deleted.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+
+        Default is `DELETE`. Possible values are:
         * DELETE
         * DISABLE
         * ABANDON
+        * PREVENT
         """
         return pulumi.get(self, "deletion_policy")
 

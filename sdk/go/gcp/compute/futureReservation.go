@@ -159,6 +159,13 @@ type FutureReservation struct {
 	CommitmentInfo FutureReservationCommitmentInfoPtrOutput `pulumi:"commitmentInfo"`
 	// The creation timestamp for this future reservation in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Type of the deployment requested as part of future reservation.
 	// Possible values are: `DENSE`, `FLEXIBLE`.
 	DeploymentType pulumi.StringPtrOutput `pulumi:"deploymentType"`
@@ -258,6 +265,13 @@ type futureReservationState struct {
 	CommitmentInfo *FutureReservationCommitmentInfo `pulumi:"commitmentInfo"`
 	// The creation timestamp for this future reservation in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Type of the deployment requested as part of future reservation.
 	// Possible values are: `DENSE`, `FLEXIBLE`.
 	DeploymentType *string `pulumi:"deploymentType"`
@@ -325,6 +339,13 @@ type FutureReservationState struct {
 	CommitmentInfo FutureReservationCommitmentInfoPtrInput
 	// The creation timestamp for this future reservation in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Type of the deployment requested as part of future reservation.
 	// Possible values are: `DENSE`, `FLEXIBLE`.
 	DeploymentType pulumi.StringPtrInput
@@ -394,6 +415,13 @@ type futureReservationArgs struct {
 	// If not present, then FR will not deliver a new commitment or update an existing commitment.
 	// Structure is documented below.
 	CommitmentInfo *FutureReservationCommitmentInfo `pulumi:"commitmentInfo"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Type of the deployment requested as part of future reservation.
 	// Possible values are: `DENSE`, `FLEXIBLE`.
 	DeploymentType *string `pulumi:"deploymentType"`
@@ -451,6 +479,13 @@ type FutureReservationArgs struct {
 	// If not present, then FR will not deliver a new commitment or update an existing commitment.
 	// Structure is documented below.
 	CommitmentInfo FutureReservationCommitmentInfoPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Type of the deployment requested as part of future reservation.
 	// Possible values are: `DENSE`, `FLEXIBLE`.
 	DeploymentType pulumi.StringPtrInput
@@ -615,6 +650,16 @@ func (o FutureReservationOutput) CommitmentInfo() FutureReservationCommitmentInf
 // The creation timestamp for this future reservation in RFC3339 text format.
 func (o FutureReservationOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FutureReservationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Type of the deployment requested as part of future reservation.

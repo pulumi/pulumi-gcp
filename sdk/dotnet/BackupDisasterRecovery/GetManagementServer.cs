@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     [OutputType]
     public sealed class GetManagementServerResult
     {
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -134,6 +135,8 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         [OutputConstructor]
         private GetManagementServerResult(
+            string deletionPolicy,
+
             string id,
 
             string location,
@@ -150,6 +153,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
             string type)
         {
+            DeletionPolicy = deletionPolicy;
             Id = id;
             Location = location;
             ManagementUris = managementUris;

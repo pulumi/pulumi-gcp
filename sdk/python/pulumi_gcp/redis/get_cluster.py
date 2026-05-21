@@ -27,7 +27,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, labels=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, pulumi_labels=None, redis_configs=None, region=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
+    def __init__(__self__, authorization_mode=None, automated_backup_configs=None, available_maintenance_versions=None, backup_collection=None, create_time=None, cross_cluster_replication_configs=None, deletion_policy=None, deletion_protection_enabled=None, discovery_endpoints=None, effective_labels=None, effective_maintenance_version=None, gcs_sources=None, id=None, kms_key=None, labels=None, maintenance_policies=None, maintenance_schedules=None, maintenance_version=None, managed_backup_sources=None, managed_server_cas=None, name=None, node_type=None, persistence_configs=None, precise_size_gb=None, project=None, psc_configs=None, psc_connections=None, psc_service_attachments=None, pulumi_labels=None, redis_configs=None, region=None, replica_count=None, server_ca_mode=None, server_ca_pool=None, shard_count=None, size_gb=None, state=None, state_infos=None, transit_encryption_mode=None, uid=None, zone_distribution_configs=None):
         if authorization_mode and not isinstance(authorization_mode, str):
             raise TypeError("Expected argument 'authorization_mode' to be a str")
         pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -46,6 +46,9 @@ class GetClusterResult:
         if cross_cluster_replication_configs and not isinstance(cross_cluster_replication_configs, list):
             raise TypeError("Expected argument 'cross_cluster_replication_configs' to be a list")
         pulumi.set(__self__, "cross_cluster_replication_configs", cross_cluster_replication_configs)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection_enabled and not isinstance(deletion_protection_enabled, bool):
             raise TypeError("Expected argument 'deletion_protection_enabled' to be a bool")
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
@@ -178,6 +181,11 @@ class GetClusterResult:
     @pulumi.getter(name="crossClusterReplicationConfigs")
     def cross_cluster_replication_configs(self) -> Sequence['outputs.GetClusterCrossClusterReplicationConfigResult']:
         return pulumi.get(self, "cross_cluster_replication_configs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -365,6 +373,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             backup_collection=self.backup_collection,
             create_time=self.create_time,
             cross_cluster_replication_configs=self.cross_cluster_replication_configs,
+            deletion_policy=self.deletion_policy,
             deletion_protection_enabled=self.deletion_protection_enabled,
             discovery_endpoints=self.discovery_endpoints,
             effective_labels=self.effective_labels,
@@ -438,6 +447,7 @@ def get_cluster(name: Optional[_builtins.str] = None,
         backup_collection=pulumi.get(__ret__, 'backup_collection'),
         create_time=pulumi.get(__ret__, 'create_time'),
         cross_cluster_replication_configs=pulumi.get(__ret__, 'cross_cluster_replication_configs'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection_enabled=pulumi.get(__ret__, 'deletion_protection_enabled'),
         discovery_endpoints=pulumi.get(__ret__, 'discovery_endpoints'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -508,6 +518,7 @@ def get_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         backup_collection=pulumi.get(__response__, 'backup_collection'),
         create_time=pulumi.get(__response__, 'create_time'),
         cross_cluster_replication_configs=pulumi.get(__response__, 'cross_cluster_replication_configs'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection_enabled=pulumi.get(__response__, 'deletion_protection_enabled'),
         discovery_endpoints=pulumi.get(__response__, 'discovery_endpoints'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

@@ -797,10 +797,21 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<string> BackupPlan { get; private set; } = null!;
 
         /// <summary>
-        /// The source cluster from which Restores will be created via this RestorePlan.
+        /// The name of the target cluster to which you want to Restore via this RestorePlan.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// User specified descriptive string for this RestorePlan.
@@ -935,10 +946,21 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string> BackupPlan { get; set; } = null!;
 
         /// <summary>
-        /// The source cluster from which Restores will be created via this RestorePlan.
+        /// The name of the target cluster to which you want to Restore via this RestorePlan.
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// User specified descriptive string for this RestorePlan.
@@ -1005,10 +1027,21 @@ namespace Pulumi.Gcp.GkeBackup
         public Input<string>? BackupPlan { get; set; }
 
         /// <summary>
-        /// The source cluster from which Restores will be created via this RestorePlan.
+        /// The name of the target cluster to which you want to Restore via this RestorePlan.
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// User specified descriptive string for this RestorePlan.

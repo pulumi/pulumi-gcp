@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePool;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
@@ -133,10 +134,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerVipConfigArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePool;
  * import com.pulumi.gcp.gkeonprem.VMwareNodePoolArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigTaintArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigVsphereConfigArgs;
+ * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigVsphereConfigTagArgs;
  * import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolNodePoolAutoscalingArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -340,6 +344,30 @@ public class VMwareNodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> deleteTime() {
         return this.deleteTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The display name for the node pool.

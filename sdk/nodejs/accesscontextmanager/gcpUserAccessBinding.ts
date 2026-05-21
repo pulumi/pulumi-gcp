@@ -107,6 +107,15 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
      */
     declare public readonly accessLevels: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */
     declare public readonly groupKey: pulumi.Output<string>;
@@ -143,6 +152,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GcpUserAccessBindingState | undefined;
             resourceInputs["accessLevels"] = state?.accessLevels;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["groupKey"] = state?.groupKey;
             resourceInputs["name"] = state?.name;
             resourceInputs["organizationId"] = state?.organizationId;
@@ -157,6 +167,7 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationId'");
             }
             resourceInputs["accessLevels"] = args?.accessLevels;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["groupKey"] = args?.groupKey;
             resourceInputs["organizationId"] = args?.organizationId;
             resourceInputs["scopedAccessSettings"] = args?.scopedAccessSettings;
@@ -176,6 +187,15 @@ export interface GcpUserAccessBindingState {
      * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
     accessLevels?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */
@@ -208,6 +228,15 @@ export interface GcpUserAccessBindingArgs {
      * Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
      */
     accessLevels?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the G Suite Directory API's Groups resource. If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
      */

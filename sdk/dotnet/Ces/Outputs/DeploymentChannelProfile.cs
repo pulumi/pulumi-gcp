@@ -22,6 +22,8 @@ namespace Pulumi.Gcp.Ces.Outputs
         /// TWILIO
         /// GOOGLE_TELEPHONY_PLATFORM
         /// CONTACT_CENTER_AS_A_SERVICE
+        /// FIVE9
+        /// CONTACT_CENTER_INTEGRATION
         /// </summary>
         public readonly string? ChannelType;
         /// <summary>

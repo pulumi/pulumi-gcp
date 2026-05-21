@@ -25,6 +25,7 @@ class AuthzPolicyArgs:
                  location: pulumi.Input[_builtins.str],
                  target: pulumi.Input['AuthzPolicyTargetArgs'],
                  custom_provider: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -48,6 +49,12 @@ class AuthzPolicyArgs:
                Structure is documented below.
         :param pulumi.Input['AuthzPolicyCustomProviderArgs'] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
                Limited to 5 rules.
@@ -72,6 +79,8 @@ class AuthzPolicyArgs:
         pulumi.set(__self__, "target", target)
         if custom_provider is not None:
             pulumi.set(__self__, "custom_provider", custom_provider)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if http_rules is not None:
@@ -142,6 +151,23 @@ class AuthzPolicyArgs:
     @custom_provider.setter
     def custom_provider(self, value: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']]):
         pulumi.set(self, "custom_provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -234,6 +260,7 @@ class _AuthzPolicyState:
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_provider: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  http_rules: pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]]] = None,
@@ -260,6 +287,12 @@ class _AuthzPolicyState:
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input['AuthzPolicyCustomProviderArgs'] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['AuthzPolicyHttpRuleArgs']]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
@@ -292,6 +325,8 @@ class _AuthzPolicyState:
             pulumi.set(__self__, "create_time", create_time)
         if custom_provider is not None:
             pulumi.set(__self__, "custom_provider", custom_provider)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -359,6 +394,23 @@ class _AuthzPolicyState:
     @custom_provider.setter
     def custom_provider(self, value: pulumi.Input[Optional['AuthzPolicyCustomProviderArgs']]):
         pulumi.set(self, "custom_provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -515,6 +567,7 @@ class AuthzPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -602,6 +655,12 @@ class AuthzPolicy(pulumi.CustomResource):
                Possible values are: `ALLOW`, `DENY`, `CUSTOM`.
         :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
                Limited to 5 rules.
@@ -712,6 +771,7 @@ class AuthzPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -733,6 +793,7 @@ class AuthzPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
             __props__.__dict__["custom_provider"] = custom_provider
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["http_rules"] = http_rules
             __props__.__dict__["labels"] = labels
@@ -764,6 +825,7 @@ class AuthzPolicy(pulumi.CustomResource):
             action: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_provider: pulumi.Input[Optional[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             http_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]]] = None,
@@ -794,6 +856,12 @@ class AuthzPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The timestamp when the resource was created.
         :param pulumi.Input[Union['AuthzPolicyCustomProviderArgs', 'AuthzPolicyCustomProviderArgsDict']] custom_provider: Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of cloudIap or authzExtension must be specified.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AuthzPolicyHttpRuleArgs', 'AuthzPolicyHttpRuleArgsDict']]]] http_rules: A list of authorization HTTP rules to match against the incoming request.A policy match occurs when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least one HTTP Rule is required for Allow or Deny Action.
@@ -827,6 +895,7 @@ class AuthzPolicy(pulumi.CustomResource):
         __props__.__dict__["action"] = action
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_provider"] = custom_provider
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["http_rules"] = http_rules
@@ -872,6 +941,19 @@ class AuthzPolicy(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "custom_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

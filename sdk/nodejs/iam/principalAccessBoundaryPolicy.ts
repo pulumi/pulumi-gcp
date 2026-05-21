@@ -120,6 +120,15 @@ export class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Principal access boundary policy details
      * Structure is documented below.
      */
@@ -178,6 +187,7 @@ export class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
             const state = argsOrState as PrincipalAccessBoundaryPolicyState | undefined;
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["details"] = state?.details;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
@@ -200,6 +210,7 @@ export class PrincipalAccessBoundaryPolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'principalAccessBoundaryPolicyId'");
             }
             resourceInputs["annotations"] = args?.annotations;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["details"] = args?.details;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["location"] = args?.location;
@@ -233,6 +244,15 @@ export interface PrincipalAccessBoundaryPolicyState {
      * Output only. The time when the principal access boundary policy was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Principal access boundary policy details
      * Structure is documented below.
@@ -290,6 +310,15 @@ export interface PrincipalAccessBoundaryPolicyArgs {
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
     annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Principal access boundary policy details
      * Structure is documented below.

@@ -25,6 +25,7 @@ class DatabaseArgs:
                  database_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  ddls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_config: pulumi.Input[Optional['DatabaseEncryptionConfigArgs']] = None,
@@ -48,6 +49,12 @@ class DatabaseArgs:
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
@@ -76,6 +83,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "ddls", ddls)
         if default_time_zone is not None:
             pulumi.set(__self__, "default_time_zone", default_time_zone)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_drop_protection is not None:
@@ -146,6 +155,23 @@ class DatabaseArgs:
     @default_time_zone.setter
     def default_time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_time_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -240,6 +266,7 @@ class _DatabaseState:
                  database_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  ddls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_config: pulumi.Input[Optional['DatabaseEncryptionConfigArgs']] = None,
@@ -264,6 +291,12 @@ class _DatabaseState:
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
@@ -293,6 +326,8 @@ class _DatabaseState:
             pulumi.set(__self__, "ddls", ddls)
         if default_time_zone is not None:
             pulumi.set(__self__, "default_time_zone", default_time_zone)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if enable_drop_protection is not None:
@@ -355,6 +390,23 @@ class _DatabaseState:
     @default_time_zone.setter
     def default_time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_time_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -476,6 +528,7 @@ class Database(pulumi.CustomResource):
                  database_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  ddls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
@@ -558,6 +611,12 @@ class Database(pulumi.CustomResource):
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
@@ -663,6 +722,7 @@ class Database(pulumi.CustomResource):
                  database_dialect: pulumi.Input[Optional[_builtins.str]] = None,
                  ddls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
@@ -682,6 +742,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["database_dialect"] = database_dialect
             __props__.__dict__["ddls"] = ddls
             __props__.__dict__["default_time_zone"] = default_time_zone
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["enable_drop_protection"] = enable_drop_protection
             __props__.__dict__["encryption_config"] = encryption_config
@@ -705,6 +766,7 @@ class Database(pulumi.CustomResource):
             database_dialect: pulumi.Input[Optional[_builtins.str]] = None,
             ddls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_drop_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             encryption_config: pulumi.Input[Optional[Union['DatabaseEncryptionConfigArgs', 'DatabaseEncryptionConfigArgsDict']]] = None,
@@ -733,6 +795,12 @@ class Database(pulumi.CustomResource):
                to prior statements will create a plan that marks the resource for recreation.
         :param pulumi.Input[_builtins.str] default_time_zone: The default time zone for the database. The default time zone must be a valid name
                from the tz database. Default value is "America/Los_angeles".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[_builtins.bool] enable_drop_protection: Whether drop protection is enabled for this database. Defaults to false.
@@ -763,6 +831,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["database_dialect"] = database_dialect
         __props__.__dict__["ddls"] = ddls
         __props__.__dict__["default_time_zone"] = default_time_zone
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["enable_drop_protection"] = enable_drop_protection
         __props__.__dict__["encryption_config"] = encryption_config
@@ -806,6 +875,19 @@ class Database(pulumi.CustomResource):
         from the tz database. Default value is "America/Los_angeles".
         """
         return pulumi.get(self, "default_time_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

@@ -224,6 +224,29 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.scalingSchedules);
     }
 
+    /**
+     * The number of seconds that the autoscaler waits for load stabilization
+     * before making scale-in decisions.
+     * This might appear as a delay in scaling in but it is an important mechanism
+     * for your application to not have fluctuating size due to short term load
+     * fluctuations.
+     * 
+     */
+    @Import(name="stabilizationPeriod")
+    private @Nullable Output<Integer> stabilizationPeriod;
+
+    /**
+     * @return The number of seconds that the autoscaler waits for load stabilization
+     * before making scale-in decisions.
+     * This might appear as a delay in scaling in but it is an important mechanism
+     * for your application to not have fluctuating size due to short term load
+     * fluctuations.
+     * 
+     */
+    public Optional<Output<Integer>> stabilizationPeriod() {
+        return Optional.ofNullable(this.stabilizationPeriod);
+    }
+
     private AutoscalerAutoscalingPolicyArgs() {}
 
     private AutoscalerAutoscalingPolicyArgs(AutoscalerAutoscalingPolicyArgs $) {
@@ -237,6 +260,7 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
         this.scaleDownControl = $.scaleDownControl;
         this.scaleInControl = $.scaleInControl;
         this.scalingSchedules = $.scalingSchedules;
+        this.stabilizationPeriod = $.stabilizationPeriod;
     }
 
     public static Builder builder() {
@@ -537,6 +561,35 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
          */
         public Builder scalingSchedules(AutoscalerAutoscalingPolicyScalingScheduleArgs... scalingSchedules) {
             return scalingSchedules(List.of(scalingSchedules));
+        }
+
+        /**
+         * @param stabilizationPeriod The number of seconds that the autoscaler waits for load stabilization
+         * before making scale-in decisions.
+         * This might appear as a delay in scaling in but it is an important mechanism
+         * for your application to not have fluctuating size due to short term load
+         * fluctuations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stabilizationPeriod(@Nullable Output<Integer> stabilizationPeriod) {
+            $.stabilizationPeriod = stabilizationPeriod;
+            return this;
+        }
+
+        /**
+         * @param stabilizationPeriod The number of seconds that the autoscaler waits for load stabilization
+         * before making scale-in decisions.
+         * This might appear as a delay in scaling in but it is an important mechanism
+         * for your application to not have fluctuating size due to short term load
+         * fluctuations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stabilizationPeriod(Integer stabilizationPeriod) {
+            return stabilizationPeriod(Output.of(stabilizationPeriod));
         }
 
         public AutoscalerAutoscalingPolicyArgs build() {

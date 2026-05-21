@@ -41,6 +41,7 @@ public final class GetRegionBackendServiceResult {
     private List<GetRegionBackendServiceConsistentHash> consistentHashes;
     private String creationTimestamp;
     private List<GetRegionBackendServiceCustomMetric> customMetrics;
+    private String deletionPolicy;
     private String description;
     private List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings;
     private Boolean enableCdn;
@@ -103,6 +104,9 @@ public final class GetRegionBackendServiceResult {
     }
     public List<GetRegionBackendServiceCustomMetric> customMetrics() {
         return this.customMetrics;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -217,6 +221,7 @@ public final class GetRegionBackendServiceResult {
         private List<GetRegionBackendServiceConsistentHash> consistentHashes;
         private String creationTimestamp;
         private List<GetRegionBackendServiceCustomMetric> customMetrics;
+        private String deletionPolicy;
         private String description;
         private List<GetRegionBackendServiceDynamicForwarding> dynamicForwardings;
         private Boolean enableCdn;
@@ -259,6 +264,7 @@ public final class GetRegionBackendServiceResult {
     	      this.consistentHashes = defaults.consistentHashes;
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.customMetrics = defaults.customMetrics;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.dynamicForwardings = defaults.dynamicForwardings;
     	      this.enableCdn = defaults.enableCdn;
@@ -380,6 +386,14 @@ public final class GetRegionBackendServiceResult {
         }
         public Builder customMetrics(GetRegionBackendServiceCustomMetric... customMetrics) {
             return customMetrics(List.of(customMetrics));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionBackendServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -664,6 +678,7 @@ public final class GetRegionBackendServiceResult {
             _resultValue.consistentHashes = consistentHashes;
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.customMetrics = customMetrics;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.dynamicForwardings = dynamicForwardings;
             _resultValue.enableCdn = enableCdn;

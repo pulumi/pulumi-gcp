@@ -6,6 +6,7 @@ package com.pulumi.gcp.databasemigrationservice;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionPscInterfaceConfigArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionVpcPeeringConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -32,6 +33,31 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> createWithoutValidation() {
         return Optional.ofNullable(this.createWithoutValidation);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -116,13 +142,32 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The PSC Interface configuration is used to create PSC Interface
+     * between DMS&#39;s internal VPC and the consumer&#39;s PSC.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscInterfaceConfig")
+    private @Nullable Output<PrivateConnectionPscInterfaceConfigArgs> pscInterfaceConfig;
+
+    /**
+     * @return The PSC Interface configuration is used to create PSC Interface
+     * between DMS&#39;s internal VPC and the consumer&#39;s PSC.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PrivateConnectionPscInterfaceConfigArgs>> pscInterfaceConfig() {
+        return Optional.ofNullable(this.pscInterfaceConfig);
+    }
+
+    /**
      * The VPC Peering configuration is used to create VPC peering
      * between databasemigrationservice and the consumer&#39;s VPC.
      * Structure is documented below.
      * 
      */
-    @Import(name="vpcPeeringConfig", required=true)
-    private Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig;
+    @Import(name="vpcPeeringConfig")
+    private @Nullable Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig;
 
     /**
      * @return The VPC Peering configuration is used to create VPC peering
@@ -130,19 +175,21 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
      * Structure is documented below.
      * 
      */
-    public Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig() {
-        return this.vpcPeeringConfig;
+    public Optional<Output<PrivateConnectionVpcPeeringConfigArgs>> vpcPeeringConfig() {
+        return Optional.ofNullable(this.vpcPeeringConfig);
     }
 
     private PrivateConnectionArgs() {}
 
     private PrivateConnectionArgs(PrivateConnectionArgs $) {
         this.createWithoutValidation = $.createWithoutValidation;
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.labels = $.labels;
         this.location = $.location;
         this.privateConnectionId = $.privateConnectionId;
         this.project = $.project;
+        this.pscInterfaceConfig = $.pscInterfaceConfig;
         this.vpcPeeringConfig = $.vpcPeeringConfig;
     }
 
@@ -183,6 +230,37 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder createWithoutValidation(Boolean createWithoutValidation) {
             return createWithoutValidation(Output.of(createWithoutValidation));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -297,6 +375,31 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param pscInterfaceConfig The PSC Interface configuration is used to create PSC Interface
+         * between DMS&#39;s internal VPC and the consumer&#39;s PSC.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfig(@Nullable Output<PrivateConnectionPscInterfaceConfigArgs> pscInterfaceConfig) {
+            $.pscInterfaceConfig = pscInterfaceConfig;
+            return this;
+        }
+
+        /**
+         * @param pscInterfaceConfig The PSC Interface configuration is used to create PSC Interface
+         * between DMS&#39;s internal VPC and the consumer&#39;s PSC.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscInterfaceConfig(PrivateConnectionPscInterfaceConfigArgs pscInterfaceConfig) {
+            return pscInterfaceConfig(Output.of(pscInterfaceConfig));
+        }
+
+        /**
          * @param vpcPeeringConfig The VPC Peering configuration is used to create VPC peering
          * between databasemigrationservice and the consumer&#39;s VPC.
          * Structure is documented below.
@@ -304,7 +407,7 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
          * @return builder
          * 
          */
-        public Builder vpcPeeringConfig(Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig) {
+        public Builder vpcPeeringConfig(@Nullable Output<PrivateConnectionVpcPeeringConfigArgs> vpcPeeringConfig) {
             $.vpcPeeringConfig = vpcPeeringConfig;
             return this;
         }
@@ -327,9 +430,6 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
             }
             if ($.privateConnectionId == null) {
                 throw new MissingRequiredPropertyException("PrivateConnectionArgs", "privateConnectionId");
-            }
-            if ($.vpcPeeringConfig == null) {
-                throw new MissingRequiredPropertyException("PrivateConnectionArgs", "vpcPeeringConfig");
             }
             return $;
         }

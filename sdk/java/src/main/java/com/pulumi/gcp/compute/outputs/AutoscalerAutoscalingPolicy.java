@@ -95,6 +95,15 @@ public final class AutoscalerAutoscalingPolicy {
      * 
      */
     private @Nullable List<AutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules;
+    /**
+     * @return The number of seconds that the autoscaler waits for load stabilization
+     * before making scale-in decisions.
+     * This might appear as a delay in scaling in but it is an important mechanism
+     * for your application to not have fluctuating size due to short term load
+     * fluctuations.
+     * 
+     */
+    private @Nullable Integer stabilizationPeriod;
 
     private AutoscalerAutoscalingPolicy() {}
     /**
@@ -192,6 +201,17 @@ public final class AutoscalerAutoscalingPolicy {
     public List<AutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules() {
         return this.scalingSchedules == null ? List.of() : this.scalingSchedules;
     }
+    /**
+     * @return The number of seconds that the autoscaler waits for load stabilization
+     * before making scale-in decisions.
+     * This might appear as a delay in scaling in but it is an important mechanism
+     * for your application to not have fluctuating size due to short term load
+     * fluctuations.
+     * 
+     */
+    public Optional<Integer> stabilizationPeriod() {
+        return Optional.ofNullable(this.stabilizationPeriod);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -212,6 +232,7 @@ public final class AutoscalerAutoscalingPolicy {
         private @Nullable AutoscalerAutoscalingPolicyScaleDownControl scaleDownControl;
         private @Nullable AutoscalerAutoscalingPolicyScaleInControl scaleInControl;
         private @Nullable List<AutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules;
+        private @Nullable Integer stabilizationPeriod;
         public Builder() {}
         public Builder(AutoscalerAutoscalingPolicy defaults) {
     	      Objects.requireNonNull(defaults);
@@ -225,6 +246,7 @@ public final class AutoscalerAutoscalingPolicy {
     	      this.scaleDownControl = defaults.scaleDownControl;
     	      this.scaleInControl = defaults.scaleInControl;
     	      this.scalingSchedules = defaults.scalingSchedules;
+    	      this.stabilizationPeriod = defaults.stabilizationPeriod;
         }
 
         @CustomType.Setter
@@ -297,6 +319,12 @@ public final class AutoscalerAutoscalingPolicy {
         public Builder scalingSchedules(AutoscalerAutoscalingPolicyScalingSchedule... scalingSchedules) {
             return scalingSchedules(List.of(scalingSchedules));
         }
+        @CustomType.Setter
+        public Builder stabilizationPeriod(@Nullable Integer stabilizationPeriod) {
+
+            this.stabilizationPeriod = stabilizationPeriod;
+            return this;
+        }
         public AutoscalerAutoscalingPolicy build() {
             final var _resultValue = new AutoscalerAutoscalingPolicy();
             _resultValue.cooldownPeriod = cooldownPeriod;
@@ -309,6 +337,7 @@ public final class AutoscalerAutoscalingPolicy {
             _resultValue.scaleDownControl = scaleDownControl;
             _resultValue.scaleInControl = scaleInControl;
             _resultValue.scalingSchedules = scalingSchedules;
+            _resultValue.stabilizationPeriod = stabilizationPeriod;
             return _resultValue;
         }
     }

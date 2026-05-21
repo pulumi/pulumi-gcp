@@ -37,6 +37,7 @@ export interface GetHostingChannelArgs {
  */
 export interface GetHostingChannelResult {
     readonly channelId: string;
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly expireTime: string;
     /**

@@ -88,6 +88,13 @@ type Policy struct {
 
 	// The customer that the Policy belongs to. Format: `customers/{customer_id}`.
 	Customer pulumi.StringOutput `pulumi:"customer"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The resource name of the Policy. Format: `policies/{policy_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The PolicyQuery the Setting applies to.
@@ -139,6 +146,13 @@ func GetPolicy(ctx *pulumi.Context,
 type policyState struct {
 	// The customer that the Policy belongs to. Format: `customers/{customer_id}`.
 	Customer *string `pulumi:"customer"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource name of the Policy. Format: `policies/{policy_id}`.
 	Name *string `pulumi:"name"`
 	// The PolicyQuery the Setting applies to.
@@ -152,6 +166,13 @@ type policyState struct {
 type PolicyState struct {
 	// The customer that the Policy belongs to. Format: `customers/{customer_id}`.
 	Customer pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource name of the Policy. Format: `policies/{policy_id}`.
 	Name pulumi.StringPtrInput
 	// The PolicyQuery the Setting applies to.
@@ -169,6 +190,13 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// The customer that the Policy belongs to. Format: `customers/{customer_id}`.
 	Customer string `pulumi:"customer"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The PolicyQuery the Setting applies to.
 	// Structure is documented below.
 	PolicyQuery PolicyPolicyQuery `pulumi:"policyQuery"`
@@ -181,6 +209,13 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// The customer that the Policy belongs to. Format: `customers/{customer_id}`.
 	Customer pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The PolicyQuery the Setting applies to.
 	// Structure is documented below.
 	PolicyQuery PolicyPolicyQueryInput
@@ -279,6 +314,16 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 // The customer that the Policy belongs to. Format: `customers/{customer_id}`.
 func (o PolicyOutput) Customer() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Customer }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The resource name of the Policy. Format: `policies/{policy_id}`.

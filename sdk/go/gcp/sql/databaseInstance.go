@@ -391,7 +391,7 @@ import (
 // ```
 //
 // ### Cloud SQL Instance created using pointInTimeRestore
-// > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+// > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`. The `targetInstance` is required field and must match the name of the resource.
 //
 // ```go
 // package main
@@ -417,7 +417,7 @@ import (
 //				},
 //				PointInTimeRestoreContext: &sql.DatabaseInstancePointInTimeRestoreContextArgs{
 //					Datasource:     pulumi.String("backupdr_datasource"),
-//					TargetInstance: pulumi.String("target_instance_name"),
+//					TargetInstance: pulumi.String("main-instance"),
 //					PointInTime:    pulumi.String("time_stamp"),
 //				},
 //			})
@@ -431,7 +431,7 @@ import (
 // ```
 //
 // ### Cloud SQL Instance created using pointInTimeRestore using multiregion datasource
-// > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+// > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region. The `targetInstance` is required field and must match the name of the resource.
 //
 // ```go
 // package main
@@ -457,7 +457,7 @@ import (
 //				},
 //				PointInTimeRestoreContext: &sql.DatabaseInstancePointInTimeRestoreContextArgs{
 //					Datasource:     pulumi.String("backupdr_datasource"),
-//					TargetInstance: pulumi.String("target_instance_name"),
+//					TargetInstance: pulumi.String("main-instance"),
 //					PointInTime:    pulumi.String("time_stamp"),
 //					Region:         pulumi.String("region"),
 //				},
@@ -556,6 +556,13 @@ type DatabaseInstance struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	//
@@ -718,6 +725,13 @@ type databaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	//
@@ -832,6 +846,13 @@ type DatabaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	//
@@ -945,6 +966,13 @@ type databaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion string `pulumi:"databaseVersion"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	//
@@ -1036,6 +1064,13 @@ type DatabaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
 	//
@@ -1230,6 +1265,16 @@ func (o DatabaseInstanceOutput) ConnectionName() pulumi.StringOutput {
 // includes an up-to-date reference of supported versions.
 func (o DatabaseInstanceOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DatabaseInstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether or not to allow the provider to destroy the instance. Unless this field is set to false

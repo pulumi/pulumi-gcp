@@ -300,11 +300,11 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     alloydb: {
- *         clusterId: "tf-test-dbmsalloycluster_39249",
+ *         clusterId: "tf-test-dbmsalloycluster_9106",
  *         settings: {
  *             initialUser: {
- *                 user: "alloyuser_74391",
- *                 password: "alloypass_16511",
+ *                 user: "alloyuser_27169",
+ *                 password: "alloypass_75223",
  *             },
  *             vpcNetwork: _default.id,
  *             labels: {
@@ -511,6 +511,15 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly dbprovider: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The connection profile display name.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -564,6 +573,11 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
+     * The connection profile role.
+     * Possible values are: `SOURCE`, `DESTINATION`.
+     */
+    declare public readonly role: pulumi.Output<string>;
+    /**
      * The current connection profile state.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
@@ -586,6 +600,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["connectionProfileId"] = state?.connectionProfileId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dbprovider"] = state?.dbprovider;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["errors"] = state?.errors;
@@ -597,6 +612,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["postgresql"] = state?.postgresql;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
+            resourceInputs["role"] = state?.role;
             resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as ConnectionProfileArgs | undefined;
@@ -606,6 +622,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["alloydb"] = args?.alloydb;
             resourceInputs["cloudsql"] = args?.cloudsql;
             resourceInputs["connectionProfileId"] = args?.connectionProfileId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -613,6 +630,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["oracle"] = args?.oracle;
             resourceInputs["postgresql"] = args?.postgresql;
             resourceInputs["project"] = args?.project;
+            resourceInputs["role"] = args?.role;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["dbprovider"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -654,6 +672,15 @@ export interface ConnectionProfileState {
      * The database provider.
      */
     dbprovider?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The connection profile display name.
      */
@@ -708,6 +735,11 @@ export interface ConnectionProfileState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * The connection profile role.
+     * Possible values are: `SOURCE`, `DESTINATION`.
+     */
+    role?: pulumi.Input<string | undefined>;
+    /**
      * The current connection profile state.
      */
     state?: pulumi.Input<string | undefined>;
@@ -731,6 +763,15 @@ export interface ConnectionProfileArgs {
      * The ID of the connection profile.
      */
     connectionProfileId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The connection profile display name.
      */
@@ -766,4 +807,9 @@ export interface ConnectionProfileArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string | undefined>;
+    /**
+     * The connection profile role.
+     * Possible values are: `SOURCE`, `DESTINATION`.
+     */
+    role?: pulumi.Input<string | undefined>;
 }

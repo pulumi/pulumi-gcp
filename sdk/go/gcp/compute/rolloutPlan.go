@@ -41,7 +41,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewRolloutPlan(ctx, "default", &compute.RolloutPlanArgs{
-//				Name:          pulumi.String("tf-test-rollout-plan-_34962"),
+//				Name:          pulumi.String("tf-test-rollout-plan-_75125"),
 //				Description:   pulumi.String("A test rollout plan"),
 //				LocationScope: pulumi.String("ZONAL"),
 //				Waves: compute.RolloutPlanWaveArray{
@@ -89,6 +89,13 @@ import (
 type RolloutPlan struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The location scope of the rollout plan.
@@ -140,6 +147,13 @@ func GetRolloutPlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RolloutPlan resources.
 type rolloutPlanState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The location scope of the rollout plan.
@@ -159,6 +173,13 @@ type rolloutPlanState struct {
 }
 
 type RolloutPlanState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The location scope of the rollout plan.
@@ -182,6 +203,13 @@ func (RolloutPlanState) ElementType() reflect.Type {
 }
 
 type rolloutPlanArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The location scope of the rollout plan.
@@ -200,6 +228,13 @@ type rolloutPlanArgs struct {
 
 // The set of arguments for constructing a RolloutPlan resource.
 type RolloutPlanArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The location scope of the rollout plan.
@@ -301,6 +336,16 @@ func (o RolloutPlanOutput) ToRolloutPlanOutput() RolloutPlanOutput {
 
 func (o RolloutPlanOutput) ToRolloutPlanOutputWithContext(ctx context.Context) RolloutPlanOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RolloutPlanOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RolloutPlan) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

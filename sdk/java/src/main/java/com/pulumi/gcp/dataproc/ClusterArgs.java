@@ -36,6 +36,35 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
      * Does not affect auto scaling decomissioning from an autoscaling policy.
      * Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -44,7 +73,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * Only supported on Dataproc image versions 1.2 and higher.
      * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-     * ***
      * 
      */
     @Import(name="gracefulDecommissionTimeout")
@@ -59,7 +87,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
      * Only supported on Dataproc image versions 1.2 and higher.
      * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-     * ***
      * 
      */
     public Optional<Output<String>> gracefulDecommissionTimeout() {
@@ -161,6 +188,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClusterArgs(ClusterArgs $) {
         this.clusterConfig = $.clusterConfig;
+        this.deletionPolicy = $.deletionPolicy;
         this.gracefulDecommissionTimeout = $.gracefulDecommissionTimeout;
         this.labels = $.labels;
         this.name = $.name;
@@ -211,6 +239,41 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
+        }
+
+        /**
          * @param gracefulDecommissionTimeout Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
          * Does not affect auto scaling decomissioning from an autoscaling policy.
          * Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -219,7 +282,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
          * Only supported on Dataproc image versions 1.2 and higher.
          * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-         * ***
          * 
          * @return builder
          * 
@@ -238,7 +300,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
          * Only supported on Dataproc image versions 1.2 and higher.
          * For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-         * ***
          * 
          * @return builder
          * 

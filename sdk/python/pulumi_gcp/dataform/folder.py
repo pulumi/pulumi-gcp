@@ -22,6 +22,7 @@ class FolderArgs:
                  display_name: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  containing_folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Folder resource.
@@ -30,6 +31,12 @@ class FolderArgs:
         :param pulumi.Input[_builtins.str] region: A reference to the region
         :param pulumi.Input[_builtins.str] containing_folder: Optional. The containing Folder resource name.
                Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -37,6 +44,8 @@ class FolderArgs:
         pulumi.set(__self__, "region", region)
         if containing_folder is not None:
             pulumi.set(__self__, "containing_folder", containing_folder)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -78,6 +87,23 @@ class FolderArgs:
         pulumi.set(self, "containing_folder", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -95,6 +121,7 @@ class FolderArgs:
 class _FolderState:
     def __init__(__self__, *,
                  containing_folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  folder_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -105,6 +132,12 @@ class _FolderState:
 
         :param pulumi.Input[_builtins.str] containing_folder: Optional. The containing Folder resource name.
                Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The Folder's user-friendly name.
         :param pulumi.Input[_builtins.str] folder_id: The unique identifier for the Folder.
         :param pulumi.Input[_builtins.str] name: The Folder's name.
@@ -114,6 +147,8 @@ class _FolderState:
         """
         if containing_folder is not None:
             pulumi.set(__self__, "containing_folder", containing_folder)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if folder_id is not None:
@@ -137,6 +172,23 @@ class _FolderState:
     @containing_folder.setter
     def containing_folder(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "containing_folder", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -207,6 +259,7 @@ class Folder(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  containing_folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -230,7 +283,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_8493")
+            display_name="Basic Folder-_41819")
         ```
         ### Dataform Folder Full
 
@@ -240,10 +293,10 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_root = gcp.dataform.Folder("dataform_folder_root",
             region="us-central1",
-            display_name="Root Folder-_9106")
+            display_name="Root Folder-_75092")
         dataform_folder_full = gcp.dataform.Folder("dataform_folder_full",
             region="us-central1",
-            display_name="Nested Folder-_27169",
+            display_name="Nested Folder-_2605",
             containing_folder=dataform_folder_root.id)
         ```
 
@@ -272,6 +325,12 @@ class Folder(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] containing_folder: Optional. The containing Folder resource name.
                Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The Folder's user-friendly name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -302,7 +361,7 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
             region="us-central1",
-            display_name="Basic Folder-_8493")
+            display_name="Basic Folder-_41819")
         ```
         ### Dataform Folder Full
 
@@ -312,10 +371,10 @@ class Folder(pulumi.CustomResource):
 
         dataform_folder_root = gcp.dataform.Folder("dataform_folder_root",
             region="us-central1",
-            display_name="Root Folder-_9106")
+            display_name="Root Folder-_75092")
         dataform_folder_full = gcp.dataform.Folder("dataform_folder_full",
             region="us-central1",
-            display_name="Nested Folder-_27169",
+            display_name="Nested Folder-_2605",
             containing_folder=dataform_folder_root.id)
         ```
 
@@ -356,6 +415,7 @@ class Folder(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  containing_folder: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -369,6 +429,7 @@ class Folder(pulumi.CustomResource):
             __props__ = FolderArgs.__new__(FolderArgs)
 
             __props__.__dict__["containing_folder"] = containing_folder
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -389,6 +450,7 @@ class Folder(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             containing_folder: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             folder_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -403,6 +465,12 @@ class Folder(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] containing_folder: Optional. The containing Folder resource name.
                Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Required. The Folder's user-friendly name.
         :param pulumi.Input[_builtins.str] folder_id: The unique identifier for the Folder.
         :param pulumi.Input[_builtins.str] name: The Folder's name.
@@ -415,6 +483,7 @@ class Folder(pulumi.CustomResource):
         __props__ = _FolderState.__new__(_FolderState)
 
         __props__.__dict__["containing_folder"] = containing_folder
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["folder_id"] = folder_id
         __props__.__dict__["name"] = name
@@ -430,6 +499,19 @@ class Folder(pulumi.CustomResource):
         Format: `projects/*/locations/*/folders/*` or `projects/*/locations/*/teamFolders/*`.
         """
         return pulumi.get(self, "containing_folder")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

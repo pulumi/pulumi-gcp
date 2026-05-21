@@ -13377,6 +13377,13 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
 	Database string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -13455,6 +13462,13 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
 	Database pulumi.StringInput `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -13585,6 +13599,16 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) CreateTime() pulumi.Stri
 // contain a maximum of 30 alphanumeric characters.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
@@ -17177,6 +17201,13 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructure struct {
 	CloudExadataInfrastructureId string `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
@@ -17229,6 +17260,13 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructureArgs struct {
 	CloudExadataInfrastructureId pulumi.StringInput `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
@@ -17326,6 +17364,16 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) CloudExa
 // The date and time that the Exadata Infrastructure was created.
 func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or terraform apply that would delete the instance will fail.
@@ -18900,6 +18948,13 @@ type GetCloudVmClustersCloudVmCluster struct {
 	CloudVmClusterId string `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
 	CreateTime string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
 	DeletionProtection bool `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
@@ -18975,6 +19030,13 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	CloudVmClusterId pulumi.StringInput `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
 	DeletionProtection pulumi.BoolInput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
@@ -19102,6 +19164,16 @@ func (o GetCloudVmClustersCloudVmClusterOutput) CloudVmClusterId() pulumi.String
 // The date and time that the VM cluster was created.
 func (o GetCloudVmClustersCloudVmClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetCloudVmClustersCloudVmClusterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.

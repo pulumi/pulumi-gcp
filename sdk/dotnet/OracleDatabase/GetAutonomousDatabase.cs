@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string Cidr;
         public readonly string CreateTime;
         public readonly string Database;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly ImmutableArray<string> DisasterRecoverySupportedLocations;
         public readonly string DisplayName;
@@ -196,6 +197,8 @@ namespace Pulumi.Gcp.OracleDatabase
             string createTime,
 
             string database,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -236,6 +239,7 @@ namespace Pulumi.Gcp.OracleDatabase
             Cidr = cidr;
             CreateTime = createTime;
             Database = database;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             DisasterRecoverySupportedLocations = disasterRecoverySupportedLocations;
             DisplayName = displayName;

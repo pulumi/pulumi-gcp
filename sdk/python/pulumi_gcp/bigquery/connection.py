@@ -28,6 +28,7 @@ class ConnectionArgs:
                  cloud_sql: pulumi.Input[Optional['ConnectionCloudSqlArgs']] = None,
                  configuration: pulumi.Input[Optional['ConnectionConfigurationArgs']] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,6 +53,12 @@ class ConnectionArgs:
                Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
         :param pulumi.Input[_builtins.str] friendly_name: A descriptive name for the connection
         :param pulumi.Input[_builtins.str] kms_key_name: Optional. The Cloud KMS key that is used for encryption.
@@ -82,6 +89,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "configuration", configuration)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if friendly_name is not None:
@@ -188,6 +197,23 @@ class ConnectionArgs:
         pulumi.set(self, "connection_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -279,6 +305,7 @@ class _ConnectionState:
                  cloud_sql: pulumi.Input[Optional['ConnectionCloudSqlArgs']] = None,
                  configuration: pulumi.Input[Optional['ConnectionConfigurationArgs']] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  has_credential: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -305,6 +332,12 @@ class _ConnectionState:
                Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
         :param pulumi.Input[_builtins.str] friendly_name: A descriptive name for the connection
         :param pulumi.Input[_builtins.bool] has_credential: True if the connection has credential assigned.
@@ -338,6 +371,8 @@ class _ConnectionState:
             pulumi.set(__self__, "configuration", configuration)
         if connection_id is not None:
             pulumi.set(__self__, "connection_id", connection_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if friendly_name is not None:
@@ -446,6 +481,23 @@ class _ConnectionState:
     @connection_id.setter
     def connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -567,6 +619,7 @@ class Connection(pulumi.CustomResource):
                  cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
                  configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -906,6 +959,12 @@ class Connection(pulumi.CustomResource):
                Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
         :param pulumi.Input[_builtins.str] friendly_name: A descriptive name for the connection
         :param pulumi.Input[_builtins.str] kms_key_name: Optional. The Cloud KMS key that is used for encryption.
@@ -1265,6 +1324,7 @@ class Connection(pulumi.CustomResource):
                  cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
                  configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
                  connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1287,6 +1347,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["cloud_sql"] = cloud_sql
             __props__.__dict__["configuration"] = configuration
             __props__.__dict__["connection_id"] = connection_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -1312,6 +1373,7 @@ class Connection(pulumi.CustomResource):
             cloud_sql: pulumi.Input[Optional[Union['ConnectionCloudSqlArgs', 'ConnectionCloudSqlArgsDict']]] = None,
             configuration: pulumi.Input[Optional[Union['ConnectionConfigurationArgs', 'ConnectionConfigurationArgsDict']]] = None,
             connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             friendly_name: pulumi.Input[Optional[_builtins.str]] = None,
             has_credential: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1342,6 +1404,12 @@ class Connection(pulumi.CustomResource):
                Connector framework.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] connection_id: Optional connection id that should be assigned to the created connection.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive description for the connection
         :param pulumi.Input[_builtins.str] friendly_name: A descriptive name for the connection
         :param pulumi.Input[_builtins.bool] has_credential: True if the connection has credential assigned.
@@ -1372,6 +1440,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["cloud_sql"] = cloud_sql
         __props__.__dict__["configuration"] = configuration
         __props__.__dict__["connection_id"] = connection_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["has_credential"] = has_credential
@@ -1445,6 +1514,19 @@ class Connection(pulumi.CustomResource):
         Optional connection id that should be assigned to the created connection.
         """
         return pulumi.get(self, "connection_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

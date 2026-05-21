@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.CloudFunctions
         public readonly ImmutableDictionary<string, string> BuildEnvironmentVariables;
         public readonly string BuildServiceAccount;
         public readonly string BuildWorkerPool;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Description of the function.
         /// </summary>
@@ -263,6 +264,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             string buildWorkerPool,
 
+            string deletionPolicy,
+
             string description,
 
             string dockerRegistry,
@@ -334,6 +337,7 @@ namespace Pulumi.Gcp.CloudFunctions
             BuildEnvironmentVariables = buildEnvironmentVariables;
             BuildServiceAccount = buildServiceAccount;
             BuildWorkerPool = buildWorkerPool;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DockerRegistry = dockerRegistry;
             DockerRepository = dockerRepository;

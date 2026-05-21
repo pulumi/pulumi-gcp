@@ -97,6 +97,7 @@ class ProviderArgs:
                  dataproc_metastore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  datastream_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  default_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  dialogflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -387,6 +388,8 @@ class ProviderArgs:
             pulumi.set(__self__, "datastream_custom_endpoint", datastream_custom_endpoint)
         if default_labels is not None:
             pulumi.set(__self__, "default_labels", default_labels)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_manager_custom_endpoint is not None:
             pulumi.set(__self__, "deployment_manager_custom_endpoint", deployment_manager_custom_endpoint)
         if developer_connect_custom_endpoint is not None:
@@ -1352,6 +1355,15 @@ class ProviderArgs:
     @default_labels.setter
     def default_labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_labels", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentManagerCustomEndpoint")
@@ -2634,6 +2646,7 @@ class Provider(pulumi.ProviderResource):
                  dataproc_metastore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  datastream_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  default_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  dialogflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2883,6 +2896,7 @@ class Provider(pulumi.ProviderResource):
                  dataproc_metastore_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  datastream_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  default_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_manager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_connect_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  dialogflow_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3102,6 +3116,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
             __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
             __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels).apply(pulumi.runtime.to_json) if default_labels is not None else None
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
             __props__.__dict__["developer_connect_custom_endpoint"] = developer_connect_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
@@ -3618,6 +3633,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="datastreamCustomEndpoint")
     def datastream_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "datastream_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deploymentManagerCustomEndpoint")

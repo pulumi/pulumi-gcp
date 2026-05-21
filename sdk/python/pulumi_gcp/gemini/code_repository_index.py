@@ -21,6 +21,7 @@ class CodeRepositoryIndexArgs:
     def __init__(__self__, *,
                  code_repository_index_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -30,6 +31,12 @@ class CodeRepositoryIndexArgs:
 
         :param pulumi.Input[_builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
         :param pulumi.Input[_builtins.str] location: The location of the Code Repository Index, for example `us-central1`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[_builtins.str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -41,6 +48,8 @@ class CodeRepositoryIndexArgs:
         """
         pulumi.set(__self__, "code_repository_index_id", code_repository_index_id)
         pulumi.set(__self__, "location", location)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if force_destroy is not None:
             pulumi.set(__self__, "force_destroy", force_destroy)
         if kms_key is not None:
@@ -73,6 +82,23 @@ class CodeRepositoryIndexArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
@@ -132,6 +158,7 @@ class _CodeRepositoryIndexState:
     def __init__(__self__, *,
                  code_repository_index_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -147,6 +174,12 @@ class _CodeRepositoryIndexState:
 
         :param pulumi.Input[_builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time stamp.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[_builtins.str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
@@ -168,6 +201,8 @@ class _CodeRepositoryIndexState:
             pulumi.set(__self__, "code_repository_index_id", code_repository_index_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if force_destroy is not None:
@@ -212,6 +247,23 @@ class _CodeRepositoryIndexState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -347,6 +399,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_repository_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -396,6 +449,12 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[_builtins.str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -468,6 +527,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_repository_index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -485,6 +545,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
             if code_repository_index_id is None and not opts.urn:
                 raise TypeError("Missing required property 'code_repository_index_id'")
             __props__.__dict__["code_repository_index_id"] = code_repository_index_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
@@ -512,6 +573,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             code_repository_index_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             kms_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -531,6 +593,12 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] code_repository_index_id: Required. Id of the Code Repository Index.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time stamp.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[_builtins.str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
@@ -554,6 +622,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
 
         __props__.__dict__["code_repository_index_id"] = code_repository_index_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["kms_key"] = kms_key
@@ -581,6 +650,19 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         Output only. Create time stamp.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

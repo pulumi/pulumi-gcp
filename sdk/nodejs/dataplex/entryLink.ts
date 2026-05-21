@@ -25,25 +25,25 @@ import * as utilities from "../utilities";
  *
  * const entry_group_basic = new gcp.dataplex.EntryGroup("entry-group-basic", {
  *     location: "us-central1",
- *     entryGroupId: "tf-test-entry-group_10393",
+ *     entryGroupId: "tf-test-entry-group_1443",
  *     project: "1111111111111",
  * });
  * const entry_type_basic = new gcp.dataplex.EntryType("entry-type-basic", {
- *     entryTypeId: "tf-test-entry-type_3684",
+ *     entryTypeId: "tf-test-entry-type_8647",
  *     location: "us-central1",
  *     project: "1111111111111",
  * });
  * const source = new gcp.dataplex.Entry("source", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryId: "tf-test-source-entry_33052",
+ *     entryId: "tf-test-source-entry_26032",
  *     entryType: entry_type_basic.name,
  *     project: "1111111111111",
  * });
  * const target = new gcp.dataplex.Entry("target", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryId: "tf-test-target-entry_10719",
+ *     entryId: "tf-test-target-entry_50610",
  *     entryType: entry_type_basic.name,
  *     project: "1111111111111",
  * });
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     project: "1111111111111",
  *     location: "us-central1",
  *     entryGroupId: entry_group_basic.entryGroupId,
- *     entryLinkId: "tf-test-entry-link_1443",
+ *     entryLinkId: "tf-test-entry-link_77124",
  *     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/related",
  *     entryReferences: [
  *         {
@@ -72,30 +72,30 @@ import * as utilities from "../utilities";
  *
  * const entry_group_full = new gcp.dataplex.EntryGroup("entry-group-full", {
  *     location: "us-central1",
- *     entryGroupId: "tf-test-entry-group_26032",
+ *     entryGroupId: "tf-test-entry-group_15335",
  *     project: "1111111111111",
  * });
  * const entry_type_full = new gcp.dataplex.EntryType("entry-type-full", {
- *     entryTypeId: "tf-test-entry-type_50610",
+ *     entryTypeId: "tf-test-entry-type_85160",
  *     location: "us-central1",
  *     project: "1111111111111",
  * });
  * const source = new gcp.dataplex.Entry("source", {
  *     location: "us-central1",
  *     entryGroupId: entry_group_full.entryGroupId,
- *     entryId: "tf-test-source-entry_8647",
+ *     entryId: "tf-test-source-entry_20665",
  *     entryType: entry_type_full.name,
  *     project: "1111111111111",
  * });
  * const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
- *     glossaryId: "tf-test-glossary_77124",
+ *     glossaryId: "tf-test-glossary_92130",
  *     location: "us-central1",
  * });
  * const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
  *     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
  *     glossaryId: termTestIdFull.glossaryId,
  *     location: "us-central1",
- *     termId: "tf-test-term-full_15335",
+ *     termId: "tf-test-term-full_16199",
  *     labels: {
  *         tag: "test-tf",
  *     },
@@ -110,7 +110,7 @@ import * as utilities from "../utilities";
  *     project: "1111111111111",
  *     location: "us-central1",
  *     entryGroupId: entry_group_full.entryGroupId,
- *     entryLinkId: "tf-test-entry-link_20665",
+ *     entryLinkId: "tf-test-entry-link_21563",
  *     entryLinkType: "projects/655216118709/locations/global/entryLinkTypes/definition",
  *     entryReferences: [
  *         {
@@ -181,6 +181,15 @@ export class EntryLink extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The id of the entry group this entry link is in.
      */
     declare public readonly entryGroupId: pulumi.Output<string>;
@@ -232,6 +241,7 @@ export class EntryLink extends pulumi.CustomResource {
             const state = argsOrState as EntryLinkState | undefined;
             resourceInputs["aspects"] = state?.aspects;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["entryGroupId"] = state?.entryGroupId;
             resourceInputs["entryLinkId"] = state?.entryLinkId;
             resourceInputs["entryLinkType"] = state?.entryLinkType;
@@ -258,6 +268,7 @@ export class EntryLink extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["aspects"] = args?.aspects;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["entryGroupId"] = args?.entryGroupId;
             resourceInputs["entryLinkId"] = args?.entryLinkId;
             resourceInputs["entryLinkType"] = args?.entryLinkType;
@@ -286,6 +297,15 @@ export interface EntryLinkState {
      * The time when the Entry Link was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The id of the entry group this entry link is in.
      */
@@ -333,6 +353,15 @@ export interface EntryLinkArgs {
      * Structure is documented below.
      */
     aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryLinkAspect>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The id of the entry group this entry link is in.
      */

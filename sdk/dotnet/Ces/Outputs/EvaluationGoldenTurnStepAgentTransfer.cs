@@ -14,11 +14,12 @@ namespace Pulumi.Gcp.Ces.Outputs
     public sealed class EvaluationGoldenTurnStepAgentTransfer
     {
         /// <summary>
-        /// The display name of the target agent.
+        /// (Output)
+        /// Display name of the agent.
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// The resource name of the target agent.
+        /// The agent to which the conversation is being transferred.
         /// </summary>
         public readonly string TargetAgent;
 

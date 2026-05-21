@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.Compute
         /// attribute will be empty.
         /// </summary>
         public readonly ImmutableArray<string> CustomFeatures;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Description of this SSL Policy.
         /// </summary>
@@ -182,6 +183,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> customFeatures,
 
+            string deletionPolicy,
+
             string description,
 
             ImmutableArray<string> enabledFeatures,
@@ -202,6 +205,7 @@ namespace Pulumi.Gcp.Compute
         {
             CreationTimestamp = creationTimestamp;
             CustomFeatures = customFeatures;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EnabledFeatures = enabledFeatures;
             Fingerprint = fingerprint;

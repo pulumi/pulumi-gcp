@@ -100,6 +100,13 @@ type Backup struct {
 	CapacityGb pulumi.StringOutput `pulumi:"capacityGb"`
 	// The time when the snapshot was created in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Amount of bytes that will be downloaded if the backup is restored.
@@ -194,6 +201,13 @@ type backupState struct {
 	CapacityGb *string `pulumi:"capacityGb"`
 	// The time when the snapshot was created in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
 	// Amount of bytes that will be downloaded if the backup is restored.
@@ -245,6 +259,13 @@ type BackupState struct {
 	CapacityGb pulumi.StringPtrInput
 	// The time when the snapshot was created in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
 	// Amount of bytes that will be downloaded if the backup is restored.
@@ -296,6 +317,13 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
 	// Resource labels to represent user-provided metadata.
@@ -329,6 +357,13 @@ type backupArgs struct {
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
@@ -455,6 +490,16 @@ func (o BackupOutput) CapacityGb() pulumi.StringOutput {
 // The time when the snapshot was created in RFC3339 text format.
 func (o BackupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.

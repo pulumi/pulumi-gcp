@@ -110,6 +110,13 @@ type CxEntityType struct {
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
 	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode pulumi.StringPtrOutput `pulumi:"autoExpansionMode"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
@@ -187,6 +194,13 @@ type cxEntityTypeState struct {
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
 	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
@@ -226,6 +240,13 @@ type CxEntityTypeState struct {
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
 	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// Enables fuzzy entity extraction during classification.
@@ -269,6 +290,13 @@ type cxEntityTypeArgs struct {
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
 	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
@@ -306,6 +334,13 @@ type CxEntityTypeArgs struct {
 	// * AUTO_EXPANSION_MODE_DEFAULT: Allows an agent to recognize values that have not been explicitly listed in the entity.
 	//   Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 	AutoExpansionMode pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringInput
 	// Enables fuzzy entity extraction during classification.
@@ -429,6 +464,16 @@ func (o CxEntityTypeOutput) ToCxEntityTypeOutputWithContext(ctx context.Context)
 //     Possible values are: `AUTO_EXPANSION_MODE_DEFAULT`, `AUTO_EXPANSION_MODE_UNSPECIFIED`.
 func (o CxEntityTypeOutput) AutoExpansionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CxEntityType) pulumi.StringPtrOutput { return v.AutoExpansionMode }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxEntityTypeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxEntityType) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the entity type, unique within the agent.

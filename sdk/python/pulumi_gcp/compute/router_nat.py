@@ -24,6 +24,7 @@ class RouterNatArgs:
                  router: pulumi.Input[_builtins.str],
                  source_subnetwork_ip_ranges_to_nat: pulumi.Input[_builtins.str],
                  auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -66,6 +67,12 @@ class RouterNatArgs:
                Must be one of: PREMIUM, STANDARD. If not specified, then the current
                project-level default tier is used.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[_builtins.bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -134,6 +141,8 @@ class RouterNatArgs:
         pulumi.set(__self__, "source_subnetwork_ip_ranges_to_nat", source_subnetwork_ip_ranges_to_nat)
         if auto_network_tier is not None:
             pulumi.set(__self__, "auto_network_tier", auto_network_tier)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
@@ -229,6 +238,23 @@ class RouterNatArgs:
     @auto_network_tier.setter
     def auto_network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_network_tier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="drainNatIps")
@@ -551,6 +577,7 @@ class RouterNatArgs:
 class _RouterNatState:
     def __init__(__self__, *,
                  auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -583,6 +610,12 @@ class _RouterNatState:
                Must be one of: PREMIUM, STANDARD. If not specified, then the current
                project-level default tier is used.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[_builtins.bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -661,6 +694,8 @@ class _RouterNatState:
         """
         if auto_network_tier is not None:
             pulumi.set(__self__, "auto_network_tier", auto_network_tier)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if drain_nat_ips is not None:
             pulumi.set(__self__, "drain_nat_ips", drain_nat_ips)
         if enable_dynamic_port_allocation is not None:
@@ -726,6 +761,23 @@ class _RouterNatState:
     @auto_network_tier.setter
     def auto_network_tier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_network_tier", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="drainNatIps")
@@ -1085,6 +1137,7 @@ class RouterNat(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1286,6 +1339,12 @@ class RouterNat(pulumi.CustomResource):
                Must be one of: PREMIUM, STANDARD. If not specified, then the current
                project-level default tier is used.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[_builtins.bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -1553,6 +1612,7 @@ class RouterNat(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1588,6 +1648,7 @@ class RouterNat(pulumi.CustomResource):
             __props__ = RouterNatArgs.__new__(RouterNatArgs)
 
             __props__.__dict__["auto_network_tier"] = auto_network_tier
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["drain_nat_ips"] = drain_nat_ips
             __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
             __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
@@ -1628,6 +1689,7 @@ class RouterNat(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_network_tier: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             drain_nat_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             enable_dynamic_port_allocation: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_endpoint_independent_mapping: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1664,6 +1726,12 @@ class RouterNat(pulumi.CustomResource):
                Must be one of: PREMIUM, STANDARD. If not specified, then the current
                project-level default tier is used.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
         :param pulumi.Input[_builtins.bool] enable_dynamic_port_allocation: Enable Dynamic Port Allocation.
@@ -1745,6 +1813,7 @@ class RouterNat(pulumi.CustomResource):
         __props__ = _RouterNatState.__new__(_RouterNatState)
 
         __props__.__dict__["auto_network_tier"] = auto_network_tier
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["drain_nat_ips"] = drain_nat_ips
         __props__.__dict__["enable_dynamic_port_allocation"] = enable_dynamic_port_allocation
         __props__.__dict__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
@@ -1782,6 +1851,19 @@ class RouterNat(pulumi.CustomResource):
         Possible values are: `PREMIUM`, `STANDARD`.
         """
         return pulumi.get(self, "auto_network_tier")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="drainNatIps")

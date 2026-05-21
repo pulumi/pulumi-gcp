@@ -304,6 +304,13 @@ type AiIndexEndpointDeployedIndex struct {
 	// n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
 	// Structure is documented below.
 	DedicatedResources AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput `pulumi:"dedicatedResources"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If set, the authentication is enabled for the private endpoint.
 	// Structure is documented below.
 	DeployedIndexAuthConfig AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrOutput `pulumi:"deployedIndexAuthConfig"`
@@ -390,6 +397,13 @@ type aiIndexEndpointDeployedIndexState struct {
 	// n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
 	// Structure is documented below.
 	DedicatedResources *AiIndexEndpointDeployedIndexDedicatedResources `pulumi:"dedicatedResources"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If set, the authentication is enabled for the private endpoint.
 	// Structure is documented below.
 	DeployedIndexAuthConfig *AiIndexEndpointDeployedIndexDeployedIndexAuthConfig `pulumi:"deployedIndexAuthConfig"`
@@ -438,6 +452,13 @@ type AiIndexEndpointDeployedIndexState struct {
 	// n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
 	// Structure is documented below.
 	DedicatedResources AiIndexEndpointDeployedIndexDedicatedResourcesPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If set, the authentication is enabled for the private endpoint.
 	// Structure is documented below.
 	DeployedIndexAuthConfig AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrInput
@@ -488,6 +509,13 @@ type aiIndexEndpointDeployedIndexArgs struct {
 	// n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
 	// Structure is documented below.
 	DedicatedResources *AiIndexEndpointDeployedIndexDedicatedResources `pulumi:"dedicatedResources"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If set, the authentication is enabled for the private endpoint.
 	// Structure is documented below.
 	DeployedIndexAuthConfig *AiIndexEndpointDeployedIndexDeployedIndexAuthConfig `pulumi:"deployedIndexAuthConfig"`
@@ -527,6 +555,13 @@ type AiIndexEndpointDeployedIndexArgs struct {
 	// n1-standard-16 and n1-standard-32 are still available, but we recommend e2-standard-16 and e2-highmem-16 for cost efficiency.
 	// Structure is documented below.
 	DedicatedResources AiIndexEndpointDeployedIndexDedicatedResourcesPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If set, the authentication is enabled for the private endpoint.
 	// Structure is documented below.
 	DeployedIndexAuthConfig AiIndexEndpointDeployedIndexDeployedIndexAuthConfigPtrInput
@@ -664,6 +699,16 @@ func (o AiIndexEndpointDeployedIndexOutput) DedicatedResources() AiIndexEndpoint
 	return o.ApplyT(func(v *AiIndexEndpointDeployedIndex) AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput {
 		return v.DedicatedResources
 	}).(AiIndexEndpointDeployedIndexDedicatedResourcesPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiIndexEndpointDeployedIndexOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiIndexEndpointDeployedIndex) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If set, the authentication is enabled for the private endpoint.

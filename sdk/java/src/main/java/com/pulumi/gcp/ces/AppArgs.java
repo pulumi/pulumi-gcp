@@ -121,6 +121,31 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Human-readable description of the app.
      * 
      */
@@ -355,6 +380,23 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The tool execution mode for the app.
+     * See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+     * 
+     */
+    @Import(name="toolExecutionMode")
+    private @Nullable Output<String> toolExecutionMode;
+
+    /**
+     * @return The tool execution mode for the app.
+     * See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+     * 
+     */
+    public Optional<Output<String>> toolExecutionMode() {
+        return Optional.ofNullable(this.toolExecutionMode);
+    }
+
+    /**
      * The declarations of the variables.
      * Structure is documented below.
      * 
@@ -379,6 +421,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.clientCertificateSettings = $.clientCertificateSettings;
         this.dataStoreSettings = $.dataStoreSettings;
         this.defaultChannelProfile = $.defaultChannelProfile;
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.displayName = $.displayName;
         this.evaluationMetricsThresholds = $.evaluationMetricsThresholds;
@@ -393,6 +436,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.rootAgent = $.rootAgent;
         this.timeZoneSettings = $.timeZoneSettings;
+        this.toolExecutionMode = $.toolExecutionMode;
         this.variableDeclarations = $.variableDeclarations;
     }
 
@@ -533,6 +577,37 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder defaultChannelProfile(AppDefaultChannelProfileArgs defaultChannelProfile) {
             return defaultChannelProfile(Output.of(defaultChannelProfile));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -863,6 +938,29 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder timeZoneSettings(AppTimeZoneSettingsArgs timeZoneSettings) {
             return timeZoneSettings(Output.of(timeZoneSettings));
+        }
+
+        /**
+         * @param toolExecutionMode The tool execution mode for the app.
+         * See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolExecutionMode(@Nullable Output<String> toolExecutionMode) {
+            $.toolExecutionMode = toolExecutionMode;
+            return this;
+        }
+
+        /**
+         * @param toolExecutionMode The tool execution mode for the app.
+         * See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder toolExecutionMode(String toolExecutionMode) {
+            return toolExecutionMode(Output.of(toolExecutionMode));
         }
 
         /**

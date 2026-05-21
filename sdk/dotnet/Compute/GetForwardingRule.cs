@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string BackendService;
         public readonly string BaseForwardingRule;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly int ForwardingRuleId;
@@ -205,6 +206,8 @@ namespace Pulumi.Gcp.Compute
             string baseForwardingRule,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             string description,
 
@@ -274,6 +277,7 @@ namespace Pulumi.Gcp.Compute
             BackendService = backendService;
             BaseForwardingRule = baseForwardingRule;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             ForwardingRuleId = forwardingRuleId;

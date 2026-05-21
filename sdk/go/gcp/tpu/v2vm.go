@@ -219,6 +219,13 @@ type V2Vm struct {
 	// The additional data disks for the Node.
 	// Structure is documented below.
 	DataDisks V2VmDataDiskArrayOutput `pulumi:"dataDisks"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Text description of the TPU.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -336,6 +343,13 @@ type v2vmState struct {
 	// The additional data disks for the Node.
 	// Structure is documented below.
 	DataDisks []V2VmDataDisk `pulumi:"dataDisks"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Text description of the TPU.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -416,6 +430,13 @@ type V2VmState struct {
 	// The additional data disks for the Node.
 	// Structure is documented below.
 	DataDisks V2VmDataDiskArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Text description of the TPU.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -498,6 +519,13 @@ type v2vmArgs struct {
 	// The additional data disks for the Node.
 	// Structure is documented below.
 	DataDisks []V2VmDataDisk `pulumi:"dataDisks"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Text description of the TPU.
 	Description *string `pulumi:"description"`
 	// Resource labels to represent user-provided metadata.
@@ -555,6 +583,13 @@ type V2VmArgs struct {
 	// The additional data disks for the Node.
 	// Structure is documented below.
 	DataDisks V2VmDataDiskArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Text description of the TPU.
 	Description pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
@@ -712,6 +747,16 @@ func (o V2VmOutput) CidrBlock() pulumi.StringOutput {
 // Structure is documented below.
 func (o V2VmOutput) DataDisks() V2VmDataDiskArrayOutput {
 	return o.ApplyT(func(v *V2Vm) V2VmDataDiskArrayOutput { return v.DataDisks }).(V2VmDataDiskArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o V2VmOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2Vm) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Text description of the TPU.

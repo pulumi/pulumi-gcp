@@ -502,6 +502,13 @@ type Tool struct {
 	// https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
 	// Structure is documented below.
 	DataStoreTool ToolDataStoreToolPtrOutput `pulumi:"dataStoreTool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// (Output)
 	// The name of the allowed custom CA certificates. This
 	// can be used to disambiguate the custom CA certificates.
@@ -602,6 +609,13 @@ type toolState struct {
 	// https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
 	// Structure is documented below.
 	DataStoreTool *ToolDataStoreTool `pulumi:"dataStoreTool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// (Output)
 	// The name of the allowed custom CA certificates. This
 	// can be used to disambiguate the custom CA certificates.
@@ -664,6 +678,13 @@ type ToolState struct {
 	// https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
 	// Structure is documented below.
 	DataStoreTool ToolDataStoreToolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// (Output)
 	// The name of the allowed custom CA certificates. This
 	// can be used to disambiguate the custom CA certificates.
@@ -728,6 +749,13 @@ type toolArgs struct {
 	// https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
 	// Structure is documented below.
 	DataStoreTool *ToolDataStoreTool `pulumi:"dataStoreTool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Possible values:
 	// SYNCHRONOUS
 	// ASYNCHRONOUS
@@ -767,6 +795,13 @@ type ToolArgs struct {
 	// https://cloud.google.com/generative-ai-app-builder/docs/enterprise-search-introduction.
 	// Structure is documented below.
 	DataStoreTool ToolDataStoreToolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Possible values:
 	// SYNCHRONOUS
 	// ASYNCHRONOUS
@@ -903,6 +938,16 @@ func (o ToolOutput) CreateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o ToolOutput) DataStoreTool() ToolDataStoreToolPtrOutput {
 	return o.ApplyT(func(v *Tool) ToolDataStoreToolPtrOutput { return v.DataStoreTool }).(ToolDataStoreToolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ToolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // (Output)

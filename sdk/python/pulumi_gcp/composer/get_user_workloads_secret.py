@@ -26,10 +26,13 @@ class GetUserWorkloadsSecretResult:
     """
     A collection of values returned by getUserWorkloadsSecret.
     """
-    def __init__(__self__, data=None, environment=None, id=None, name=None, project=None, region=None):
+    def __init__(__self__, data=None, deletion_policy=None, environment=None, id=None, name=None, project=None, region=None):
         if data and not isinstance(data, dict):
             raise TypeError("Expected argument 'data' to be a dict")
         pulumi.set(__self__, "data", data)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if environment and not isinstance(environment, str):
             raise TypeError("Expected argument 'environment' to be a str")
         pulumi.set(__self__, "environment", environment)
@@ -50,6 +53,11 @@ class GetUserWorkloadsSecretResult:
     @pulumi.getter
     def data(self) -> Mapping[str, _builtins.str]:
         return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -87,6 +95,7 @@ class AwaitableGetUserWorkloadsSecretResult(GetUserWorkloadsSecretResult):
             yield self
         return GetUserWorkloadsSecretResult(
             data=self.data,
+            deletion_policy=self.deletion_policy,
             environment=self.environment,
             id=self.id,
             name=self.name,
@@ -100,13 +109,14 @@ def get_user_workloads_secret(environment: Optional[_builtins.str] = None,
                               region: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserWorkloadsSecretResult:
     """
-    Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+    Provides access to Kubernetes Secret configuration for a given project, region
+    and Managed Airflow Environment.
 
-    To get more information about Composer User Workloads Secrets, see:
+    To get more information about Managed Airflow User Workloads Secrets, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 
     ## Example Usage
 
@@ -129,8 +139,8 @@ def get_user_workloads_secret(environment: Optional[_builtins.str] = None,
             "username": std.base64encode(input="username").result,
             "password": std.base64encode(input="password").result,
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
+    example = gcp.composer.get_user_workloads_secret_output(environment=example_environment.name,
+        name=google_composer_user_workloads_secret["example"]["name"])
     pulumi.export("debug", example)
     ```
 
@@ -151,6 +161,7 @@ def get_user_workloads_secret(environment: Optional[_builtins.str] = None,
 
     return AwaitableGetUserWorkloadsSecretResult(
         data=pulumi.get(__ret__, 'data'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         environment=pulumi.get(__ret__, 'environment'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
@@ -162,13 +173,14 @@ def get_user_workloads_secret_output(environment: pulumi.Input[Optional[_builtin
                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserWorkloadsSecretResult]:
     """
-    Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+    Provides access to Kubernetes Secret configuration for a given project, region
+    and Managed Airflow Environment.
 
-    To get more information about Composer User Workloads Secrets, see:
+    To get more information about Managed Airflow User Workloads Secrets, see:
 
     * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsSecrets)
     * How-to Guides
-        * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
 
     ## Example Usage
 
@@ -191,8 +203,8 @@ def get_user_workloads_secret_output(environment: pulumi.Input[Optional[_builtin
             "username": std.base64encode(input="username").result,
             "password": std.base64encode(input="password").result,
         })
-    example = example_environment.name.apply(lambda name: gcp.composer.get_user_workloads_secret_output(environment=name,
-        name=google_composer_user_workloads_secret["example"]["name"]))
+    example = gcp.composer.get_user_workloads_secret_output(environment=example_environment.name,
+        name=google_composer_user_workloads_secret["example"]["name"])
     pulumi.export("debug", example)
     ```
 
@@ -212,6 +224,7 @@ def get_user_workloads_secret_output(environment: pulumi.Input[Optional[_builtin
     __ret__ = pulumi.runtime.invoke_output('gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret', __args__, opts=opts, typ=GetUserWorkloadsSecretResult)
     return __ret__.apply(lambda __response__: GetUserWorkloadsSecretResult(
         data=pulumi.get(__response__, 'data'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         environment=pulumi.get(__response__, 'environment'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),

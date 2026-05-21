@@ -113,6 +113,13 @@ type V2PolicyOrchestrator struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// Output only. Timestamp when the policy orchestrator resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. Freeform text describing the purpose of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -217,6 +224,13 @@ type v2policyOrchestratorState struct {
 	Action *string `pulumi:"action"`
 	// Output only. Timestamp when the policy orchestrator resource was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Freeform text describing the purpose of the resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -278,6 +292,13 @@ type V2PolicyOrchestratorState struct {
 	Action pulumi.StringPtrInput
 	// Output only. Timestamp when the policy orchestrator resource was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Freeform text describing the purpose of the resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -341,6 +362,13 @@ type v2policyOrchestratorArgs struct {
 	// - `UPSERT` - Orchestrator will create or update target resources.
 	// - `DELETE` - Orchestrator will delete target resources, if they exist
 	Action string `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. Freeform text describing the purpose of the resource.
 	Description *string `pulumi:"description"`
 	// Optional. Labels as key value pairs
@@ -383,6 +411,13 @@ type V2PolicyOrchestratorArgs struct {
 	// - `UPSERT` - Orchestrator will create or update target resources.
 	// - `DELETE` - Orchestrator will delete target resources, if they exist
 	Action pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. Freeform text describing the purpose of the resource.
 	Description pulumi.StringPtrInput
 	// Optional. Labels as key value pairs
@@ -516,6 +551,16 @@ func (o V2PolicyOrchestratorOutput) Action() pulumi.StringOutput {
 // Output only. Timestamp when the policy orchestrator resource was created.
 func (o V2PolicyOrchestratorOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *V2PolicyOrchestrator) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o V2PolicyOrchestratorOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2PolicyOrchestrator) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. Freeform text describing the purpose of the resource.

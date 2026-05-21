@@ -132,6 +132,112 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Workstation Config Hyperdisk
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: _default.name,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "c3-standard-22",
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gceHd: {
+ *             sizeGb: 200,
+ *             reclaimPolicy: "DELETE",
+ *             archiveTimeout: "3600s",
+ *         },
+ *     }],
+ * });
+ * ```
+ * ### Workstation Config Hyperdisk Source Snapshot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tagKey1 = new gcp.tags.TagKey("tag_key1", {
+ *     parent: "organizations/0123456789",
+ *     shortName: "keyname",
+ * });
+ * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
+ *     parent: tagKey1.id,
+ *     shortName: "valuename",
+ * });
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "workstation-cluster",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
+ *     name: "workstation-cluster",
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: _default.name,
+ * });
+ * const mySourceDisk = new gcp.compute.Disk("my_source_disk", {
+ *     name: "workstation-config-source-disk",
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const mySourceSnapshot = new gcp.compute.Snapshot("my_source_snapshot", {
+ *     name: "workstation-config-source-snapshot",
+ *     sourceDisk: mySourceDisk.name,
+ *     zone: "us-central1-a",
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("default", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: _default.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("default", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: "us-central1",
+ *     host: {
+ *         gceInstance: {
+ *             machineType: "c3-standard-22",
+ *             bootDiskSizeGb: 35,
+ *             disablePublicIpAddresses: true,
+ *             vmTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
+ *                 [tagKey1Id]: tagValue1Id,
+ *             }),
+ *         },
+ *     },
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gceHd: {
+ *             sourceSnapshot: mySourceSnapshot.id,
+ *             reclaimPolicy: "DELETE",
+ *             archiveTimeout: "3600s",
+ *         },
+ *     }],
+ * });
+ * ```
  * ### Workstation Config Persistent Directories
  *
  * ```typescript
@@ -571,6 +677,15 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly degraded: pulumi.Output<boolean>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
      */
     declare public readonly disableTcpConnections: pulumi.Output<boolean | undefined>;
@@ -698,6 +813,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["container"] = state?.container;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["degraded"] = state?.degraded;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disableTcpConnections"] = state?.disableTcpConnections;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
@@ -735,6 +851,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["allowedPorts"] = args?.allowedPorts;
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["container"] = args?.container;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disableTcpConnections"] = args?.disableTcpConnections;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enableAuditAgent"] = args?.enableAuditAgent;
@@ -802,6 +919,15 @@ export interface WorkstationConfigState {
      * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
      */
     degraded?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
      */
@@ -932,6 +1058,15 @@ export interface WorkstationConfigArgs {
      * Structure is documented below.
      */
     container?: pulumi.Input<inputs.workstations.WorkstationConfigContainer | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
      */

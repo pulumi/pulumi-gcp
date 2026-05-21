@@ -22,6 +22,7 @@ __all__ = ['AccessLevelConditionArgs', 'AccessLevelCondition']
 class AccessLevelConditionArgs:
     def __init__(__self__, *,
                  access_level: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  device_policy: pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']] = None,
                  ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -33,6 +34,12 @@ class AccessLevelConditionArgs:
         The set of arguments for constructing a AccessLevelCondition resource.
 
         :param pulumi.Input[_builtins.str] access_level: The name of the Access Level to add this condition to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -69,6 +76,8 @@ class AccessLevelConditionArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "access_level", access_level)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if device_policy is not None:
             pulumi.set(__self__, "device_policy", device_policy)
         if ip_subnetworks is not None:
@@ -95,6 +104,23 @@ class AccessLevelConditionArgs:
     @access_level.setter
     def access_level(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "access_level", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="devicePolicy")
@@ -213,6 +239,7 @@ class _AccessLevelConditionState:
     def __init__(__self__, *,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
                  access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  device_policy: pulumi.Input[Optional['AccessLevelConditionDevicePolicyArgs']] = None,
                  ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -225,6 +252,12 @@ class _AccessLevelConditionState:
 
         :param pulumi.Input[_builtins.str] access_level: The name of the Access Level to add this condition to.
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -264,6 +297,8 @@ class _AccessLevelConditionState:
             pulumi.set(__self__, "access_level", access_level)
         if access_policy_id is not None:
             pulumi.set(__self__, "access_policy_id", access_policy_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if device_policy is not None:
             pulumi.set(__self__, "device_policy", device_policy)
         if ip_subnetworks is not None:
@@ -302,6 +337,23 @@ class _AccessLevelConditionState:
     @access_policy_id.setter
     def access_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="devicePolicy")
@@ -422,6 +474,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
                  ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -514,6 +567,12 @@ class AccessLevelCondition(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_level: The name of the Access Level to add this condition to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -652,6 +711,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
                  ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -671,6 +731,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__.__dict__["access_level"] = access_level
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["device_policy"] = device_policy
             __props__.__dict__["ip_subnetworks"] = ip_subnetworks
             __props__.__dict__["members"] = members
@@ -691,6 +752,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: pulumi.Input[Optional[_builtins.str]] = None,
             access_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             device_policy: pulumi.Input[Optional[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
             ip_subnetworks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -707,6 +769,12 @@ class AccessLevelCondition(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_level: The name of the Access Level to add this condition to.
         :param pulumi.Input[_builtins.str] access_policy_id: The name of the Access Policy this resource belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -748,6 +816,7 @@ class AccessLevelCondition(pulumi.CustomResource):
 
         __props__.__dict__["access_level"] = access_level
         __props__.__dict__["access_policy_id"] = access_policy_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["device_policy"] = device_policy
         __props__.__dict__["ip_subnetworks"] = ip_subnetworks
         __props__.__dict__["members"] = members
@@ -772,6 +841,19 @@ class AccessLevelCondition(pulumi.CustomResource):
         The name of the Access Policy this resource belongs to.
         """
         return pulumi.get(self, "access_policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="devicePolicy")

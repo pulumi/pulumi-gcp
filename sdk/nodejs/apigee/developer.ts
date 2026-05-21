@@ -166,6 +166,15 @@ export class Developer extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
      */
     declare public readonly email: pulumi.Output<string>;
@@ -214,6 +223,7 @@ export class Developer extends pulumi.CustomResource {
             const state = argsOrState as DeveloperState | undefined;
             resourceInputs["attributes"] = state?.attributes;
             resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["email"] = state?.email;
             resourceInputs["firstName"] = state?.firstName;
             resourceInputs["lastModifiedAt"] = state?.lastModifiedAt;
@@ -240,6 +250,7 @@ export class Developer extends pulumi.CustomResource {
                 throw new Error("Missing required property 'userName'");
             }
             resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["email"] = args?.email;
             resourceInputs["firstName"] = args?.firstName;
             resourceInputs["lastName"] = args?.lastName;
@@ -268,6 +279,15 @@ export interface DeveloperState {
      * Time at which the developer was created in milliseconds since epoch.
      */
     createdAt?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
      */
@@ -312,6 +332,15 @@ export interface DeveloperArgs {
      * Structure is documented below.
      */
     attributes?: pulumi.Input<pulumi.Input<inputs.apigee.DeveloperAttribute>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
      */

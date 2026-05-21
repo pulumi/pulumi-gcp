@@ -23,6 +23,8 @@ public final class DeploymentChannelProfile {
      * TWILIO
      * GOOGLE_TELEPHONY_PLATFORM
      * CONTACT_CENTER_AS_A_SERVICE
+     * FIVE9
+     * CONTACT_CENTER_INTEGRATION
      * 
      */
     private @Nullable String channelType;
@@ -67,6 +69,8 @@ public final class DeploymentChannelProfile {
      * TWILIO
      * GOOGLE_TELEPHONY_PLATFORM
      * CONTACT_CENTER_AS_A_SERVICE
+     * FIVE9
+     * CONTACT_CENTER_INTEGRATION
      * 
      */
     public Optional<String> channelType() {

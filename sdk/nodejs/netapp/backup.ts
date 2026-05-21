@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -130,6 +132,15 @@ export class Backup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -152,6 +163,12 @@ export class Backup extends pulumi.CustomResource {
      * The resource name of the backup. Needs to be unique per location.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * (Optional, Beta)
+     * Details of the ONTAP source volume and snapshot.
+     * Structure is documented below.
+     */
+    declare public readonly ontapSource: pulumi.Output<outputs.netapp.BackupOntapSource | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -206,11 +223,13 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["backupType"] = state?.backupType;
             resourceInputs["chainStorageBytes"] = state?.chainStorageBytes;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
+            resourceInputs["ontapSource"] = state?.ontapSource;
             resourceInputs["project"] = state?.project;
             resourceInputs["pulumiLabels"] = state?.pulumiLabels;
             resourceInputs["sourceSnapshot"] = state?.sourceSnapshot;
@@ -227,10 +246,12 @@ export class Backup extends pulumi.CustomResource {
             if (args?.vaultName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vaultName'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
             resourceInputs["name"] = args?.name;
+            resourceInputs["ontapSource"] = args?.ontapSource;
             resourceInputs["project"] = args?.project;
             resourceInputs["sourceSnapshot"] = args?.sourceSnapshot;
             resourceInputs["sourceVolume"] = args?.sourceVolume;
@@ -274,6 +295,15 @@ export interface BackupState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
     description?: pulumi.Input<string | undefined>;
@@ -296,6 +326,12 @@ export interface BackupState {
      * The resource name of the backup. Needs to be unique per location.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Details of the ONTAP source volume and snapshot.
+     * Structure is documented below.
+     */
+    ontapSource?: pulumi.Input<inputs.netapp.BackupOntapSource | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -339,6 +375,15 @@ export interface BackupState {
  */
 export interface BackupArgs {
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
     description?: pulumi.Input<string | undefined>;
@@ -357,6 +402,12 @@ export interface BackupArgs {
      * The resource name of the backup. Needs to be unique per location.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Details of the ONTAP source volume and snapshot.
+     * Structure is documented below.
+     */
+    ontapSource?: pulumi.Input<inputs.netapp.BackupOntapSource | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

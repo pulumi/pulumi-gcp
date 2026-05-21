@@ -63,6 +63,7 @@ type LookupSecurityGatewayArgs struct {
 type LookupSecurityGatewayResult struct {
 	CreateTime               string                  `pulumi:"createTime"`
 	DelegatingServiceAccount string                  `pulumi:"delegatingServiceAccount"`
+	DeletionPolicy           string                  `pulumi:"deletionPolicy"`
 	DisplayName              string                  `pulumi:"displayName"`
 	ExternalIps              []string                `pulumi:"externalIps"`
 	Hubs                     []GetSecurityGatewayHub `pulumi:"hubs"`
@@ -124,6 +125,10 @@ func (o LookupSecurityGatewayResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupSecurityGatewayResultOutput) DelegatingServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGatewayResult) string { return v.DelegatingServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o LookupSecurityGatewayResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityGatewayResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupSecurityGatewayResultOutput) DisplayName() pulumi.StringOutput {

@@ -148,6 +148,13 @@ type AppHostingDomain struct {
 	CustomDomainStatuses AppHostingDomainCustomDomainStatusArrayOutput `pulumi:"customDomainStatuses"`
 	// Time at which the domain was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
 	DomainId pulumi.StringOutput `pulumi:"domainId"`
@@ -223,6 +230,13 @@ type appHostingDomainState struct {
 	CustomDomainStatuses []AppHostingDomainCustomDomainStatus `pulumi:"customDomainStatuses"`
 	// Time at which the domain was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
 	DomainId *string `pulumi:"domainId"`
@@ -260,6 +274,13 @@ type AppHostingDomainState struct {
 	CustomDomainStatuses AppHostingDomainCustomDomainStatusArrayInput
 	// Time at which the domain was deleted.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
 	DomainId pulumi.StringPtrInput
@@ -294,6 +315,13 @@ func (AppHostingDomainState) ElementType() reflect.Type {
 type appHostingDomainArgs struct {
 	// The ID of the Backend that this Domain is associated with
 	Backend string `pulumi:"backend"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
 	DomainId string `pulumi:"domainId"`
@@ -312,6 +340,13 @@ type appHostingDomainArgs struct {
 type AppHostingDomainArgs struct {
 	// The ID of the Backend that this Domain is associated with
 	Backend pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Id of the domain to create.
 	// Must be a valid domain name, such as "foo.com"
 	DomainId pulumi.StringInput
@@ -432,6 +467,16 @@ func (o AppHostingDomainOutput) CustomDomainStatuses() AppHostingDomainCustomDom
 // Time at which the domain was deleted.
 func (o AppHostingDomainOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppHostingDomain) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppHostingDomainOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppHostingDomain) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Id of the domain to create.

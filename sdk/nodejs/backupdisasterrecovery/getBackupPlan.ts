@@ -32,7 +32,9 @@ export interface GetBackupPlanResult {
     readonly backupRules: outputs.backupdisasterrecovery.GetBackupPlanBackupRule[];
     readonly backupVault: string;
     readonly backupVaultServiceAccount: string;
+    readonly computeInstanceBackupPlanProperties: outputs.backupdisasterrecovery.GetBackupPlanComputeInstanceBackupPlanProperty[];
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly diskBackupPlanProperties: outputs.backupdisasterrecovery.GetBackupPlanDiskBackupPlanProperty[];
     /**

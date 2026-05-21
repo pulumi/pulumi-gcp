@@ -27,10 +27,13 @@ class GetClusterIstioServiceResult:
     """
     A collection of values returned by getClusterIstioService.
     """
-    def __init__(__self__, cluster_name=None, display_name=None, id=None, location=None, name=None, project=None, service_id=None, service_name=None, service_namespace=None, telemetries=None, user_labels=None):
+    def __init__(__self__, cluster_name=None, deletion_policy=None, display_name=None, id=None, location=None, name=None, project=None, service_id=None, service_name=None, service_namespace=None, telemetries=None, user_labels=None):
         if cluster_name and not isinstance(cluster_name, str):
             raise TypeError("Expected argument 'cluster_name' to be a str")
         pulumi.set(__self__, "cluster_name", cluster_name)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -66,6 +69,11 @@ class GetClusterIstioServiceResult:
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> _builtins.str:
         return pulumi.get(self, "cluster_name")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -138,6 +146,7 @@ class AwaitableGetClusterIstioServiceResult(GetClusterIstioServiceResult):
             yield self
         return GetClusterIstioServiceResult(
             cluster_name=self.cluster_name,
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             id=self.id,
             location=self.location,
@@ -213,6 +222,7 @@ def get_cluster_istio_service(cluster_name: Optional[_builtins.str] = None,
 
     return AwaitableGetClusterIstioServiceResult(
         cluster_name=pulumi.get(__ret__, 'cluster_name'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
@@ -285,6 +295,7 @@ def get_cluster_istio_service_output(cluster_name: pulumi.Input[Optional[_builti
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getClusterIstioService:getClusterIstioService', __args__, opts=opts, typ=GetClusterIstioServiceResult)
     return __ret__.apply(lambda __response__: GetClusterIstioServiceResult(
         cluster_name=pulumi.get(__response__, 'cluster_name'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),

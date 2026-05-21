@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly ImmutableArray<Outputs.GetRouterBgpResult> Bgps;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly bool EncryptedInterconnectRouter;
         /// <summary>
@@ -182,6 +183,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetRouterBgpResult> bgps,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             string description,
 
@@ -207,6 +210,7 @@ namespace Pulumi.Gcp.Compute
         {
             Bgps = bgps;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EncryptedInterconnectRouter = encryptedInterconnectRouter;
             Id = id;

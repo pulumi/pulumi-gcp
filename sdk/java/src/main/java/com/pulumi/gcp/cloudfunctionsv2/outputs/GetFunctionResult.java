@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetFunctionResult {
     private List<GetFunctionBuildConfig> buildConfigs;
+    private String deletionPolicy;
     private String description;
     private Map<String,String> effectiveLabels;
     private String environment;
@@ -41,6 +42,9 @@ public final class GetFunctionResult {
     private GetFunctionResult() {}
     public List<GetFunctionBuildConfig> buildConfigs() {
         return this.buildConfigs;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -102,6 +106,7 @@ public final class GetFunctionResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetFunctionBuildConfig> buildConfigs;
+        private String deletionPolicy;
         private String description;
         private Map<String,String> effectiveLabels;
         private String environment;
@@ -121,6 +126,7 @@ public final class GetFunctionResult {
         public Builder(GetFunctionResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.buildConfigs = defaults.buildConfigs;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.environment = defaults.environment;
@@ -148,6 +154,14 @@ public final class GetFunctionResult {
         }
         public Builder buildConfigs(GetFunctionBuildConfig... buildConfigs) {
             return buildConfigs(List.of(buildConfigs));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -276,6 +290,7 @@ public final class GetFunctionResult {
         public GetFunctionResult build() {
             final var _resultValue = new GetFunctionResult();
             _resultValue.buildConfigs = buildConfigs;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.environment = environment;

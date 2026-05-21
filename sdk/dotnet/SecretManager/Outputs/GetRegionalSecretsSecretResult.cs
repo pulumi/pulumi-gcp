@@ -27,6 +27,15 @@ namespace Pulumi.Gcp.SecretManager.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult> CustomerManagedEncryptions;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
         /// When the field is set to true in Terraform state, a 'terraform apply'
         /// or 'terraform destroy' that would delete the federation will fail.
@@ -107,6 +116,8 @@ namespace Pulumi.Gcp.SecretManager.Outputs
 
             ImmutableArray<Outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult> customerManagedEncryptions,
 
+            string deletionPolicy,
+
             bool deletionProtection,
 
             ImmutableDictionary<string, string> effectiveAnnotations,
@@ -142,6 +153,7 @@ namespace Pulumi.Gcp.SecretManager.Outputs
             Annotations = annotations;
             CreateTime = createTime;
             CustomerManagedEncryptions = customerManagedEncryptions;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;

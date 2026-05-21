@@ -289,28 +289,40 @@ public class RegionalSecretVersion extends com.pulumi.resources.CustomResource {
         return this.customerManagedEncryptions;
     }
     /**
-     * The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * disabled rather than deleted.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * 
+     * Default is `DELETE`. Possible values are:
      * * DELETE
      * * DISABLE
      * * ABANDON
+     * * PREVENT
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+     * @return The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * disabled rather than deleted.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * 
+     * Default is `DELETE`. Possible values are:
      * * DELETE
      * * DISABLE
      * * ABANDON
+     * * PREVENT
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The time at which the regional secret version was destroyed. Only present if state is DESTROYED.

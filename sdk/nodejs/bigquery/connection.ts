@@ -412,6 +412,15 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly connectionId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A descriptive description for the connection
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -474,6 +483,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["cloudSql"] = state?.cloudSql;
             resourceInputs["configuration"] = state?.configuration;
             resourceInputs["connectionId"] = state?.connectionId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["friendlyName"] = state?.friendlyName;
             resourceInputs["hasCredential"] = state?.hasCredential;
@@ -491,6 +501,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["cloudSql"] = args?.cloudSql;
             resourceInputs["configuration"] = args?.configuration;
             resourceInputs["connectionId"] = args?.connectionId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["friendlyName"] = args?.friendlyName;
             resourceInputs["kmsKeyName"] = args?.kmsKeyName;
@@ -545,6 +556,15 @@ export interface ConnectionState {
      * Optional connection id that should be assigned to the created connection.
      */
     connectionId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A descriptive description for the connection
      */
@@ -629,6 +649,15 @@ export interface ConnectionArgs {
      * Optional connection id that should be assigned to the created connection.
      */
     connectionId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A descriptive description for the connection
      */

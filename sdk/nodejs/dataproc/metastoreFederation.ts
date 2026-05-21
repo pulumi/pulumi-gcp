@@ -127,6 +127,15 @@ export class MetastoreFederation extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether Terraform will be prevented from destroying the federation. Defaults to false.
      * When the field is set to true in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the federation will fail.
@@ -212,6 +221,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
             const state = argsOrState as MetastoreFederationState | undefined;
             resourceInputs["backendMetastores"] = state?.backendMetastores;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["endpointUri"] = state?.endpointUri;
@@ -239,6 +249,7 @@ export class MetastoreFederation extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["backendMetastores"] = args?.backendMetastores;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["federationId"] = args?.federationId;
             resourceInputs["labels"] = args?.labels;
@@ -276,6 +287,15 @@ export interface MetastoreFederationState {
      * Output only. The time when the metastore federation was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the federation. Defaults to false.
      * When the field is set to true in Terraform state, a `pulumi up`
@@ -357,6 +377,15 @@ export interface MetastoreFederationArgs {
      * Structure is documented below.
      */
     backendMetastores: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreFederationBackendMetastore>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the federation. Defaults to false.
      * When the field is set to true in Terraform state, a `pulumi up`

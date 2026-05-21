@@ -27,6 +27,7 @@ class ScheduleArgs:
                  location: pulumi.Input[_builtins.str],
                  max_concurrent_run_count: pulumi.Input[_builtins.str],
                  allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
                  max_run_count: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class ScheduleArgs:
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input[_builtins.str] max_concurrent_run_count: Maximum number of runs that can be started concurrently for this Schedule. This is the limit for starting the scheduled requests and not the execution of the notebook execution jobs created by the requests.
         :param pulumi.Input[_builtins.bool] allow_queueing: Whether new scheduled runs can be queued when max_concurrent_runs limit is reached. If set to true, new runs will be queued instead of skipped. Default to false.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         :param pulumi.Input[_builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
         :param pulumi.Input[_builtins.str] max_run_count: Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount >= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
@@ -56,6 +63,8 @@ class ScheduleArgs:
         pulumi.set(__self__, "max_concurrent_run_count", max_concurrent_run_count)
         if allow_queueing is not None:
             pulumi.set(__self__, "allow_queueing", allow_queueing)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if end_time is not None:
@@ -141,6 +150,23 @@ class ScheduleArgs:
         pulumi.set(self, "allow_queueing", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -208,6 +234,7 @@ class _ScheduleState:
                  allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_notebook_execution_job_request: pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestArgs']] = None,
                  cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -225,6 +252,12 @@ class _ScheduleState:
         :param pulumi.Input['ScheduleCreateNotebookExecutionJobRequestArgs'] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Schedule.
         :param pulumi.Input[_builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
@@ -243,6 +276,8 @@ class _ScheduleState:
             pulumi.set(__self__, "create_notebook_execution_job_request", create_notebook_execution_job_request)
         if cron is not None:
             pulumi.set(__self__, "cron", cron)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if display_name is not None:
@@ -300,6 +335,23 @@ class _ScheduleState:
     @cron.setter
     def cron(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
@@ -432,6 +484,7 @@ class Schedule(pulumi.CustomResource):
                  allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_notebook_execution_job_request: pulumi.Input[Optional[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
                  cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -739,6 +792,12 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Schedule.
         :param pulumi.Input[_builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
@@ -1065,6 +1124,7 @@ class Schedule(pulumi.CustomResource):
                  allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_notebook_execution_job_request: pulumi.Input[Optional[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
                  cron: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1089,6 +1149,7 @@ class Schedule(pulumi.CustomResource):
             if cron is None and not opts.urn:
                 raise TypeError("Missing required property 'cron'")
             __props__.__dict__["cron"] = cron
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["desired_state"] = desired_state
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1118,6 +1179,7 @@ class Schedule(pulumi.CustomResource):
             allow_queueing: pulumi.Input[Optional[_builtins.bool]] = None,
             create_notebook_execution_job_request: pulumi.Input[Optional[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']]] = None,
             cron: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             desired_state: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             end_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1139,6 +1201,12 @@ class Schedule(pulumi.CustomResource):
         :param pulumi.Input[Union['ScheduleCreateNotebookExecutionJobRequestArgs', 'ScheduleCreateNotebookExecutionJobRequestArgsDict']] create_notebook_execution_job_request: Request for google_colab_notebook_execution.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Schedule.
         :param pulumi.Input[_builtins.str] end_time: Timestamp after which no new runs can be scheduled. If specified, the schedule will be completed when either end_time is reached or when scheduled_run_count >= max_run_count. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
@@ -1158,6 +1226,7 @@ class Schedule(pulumi.CustomResource):
         __props__.__dict__["allow_queueing"] = allow_queueing
         __props__.__dict__["create_notebook_execution_job_request"] = create_notebook_execution_job_request
         __props__.__dict__["cron"] = cron
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["end_time"] = end_time
@@ -1194,6 +1263,19 @@ class Schedule(pulumi.CustomResource):
         Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
         """
         return pulumi.get(self, "cron")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="desiredState")

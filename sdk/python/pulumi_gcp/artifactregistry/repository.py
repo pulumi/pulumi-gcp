@@ -25,6 +25,7 @@ class RepositoryArgs:
                  repository_id: pulumi.Input[_builtins.str],
                  cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_config: pulumi.Input[Optional['RepositoryDockerConfigArgs']] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -52,6 +53,12 @@ class RepositoryArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -95,6 +102,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "cleanup_policies", cleanup_policies)
         if cleanup_policy_dry_run is not None:
             pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if docker_config is not None:
@@ -174,6 +183,23 @@ class RepositoryArgs:
     @cleanup_policy_dry_run.setter
     def cleanup_policy_dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cleanup_policy_dry_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -339,6 +365,7 @@ class _RepositoryState:
                  cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]] = None,
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_config: pulumi.Input[Optional['RepositoryDockerConfigArgs']] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -368,6 +395,12 @@ class _RepositoryState:
         :param pulumi.Input[_builtins.bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
         :param pulumi.Input[_builtins.str] create_time: The time when the repository was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -424,6 +457,8 @@ class _RepositoryState:
             pulumi.set(__self__, "cleanup_policy_dry_run", cleanup_policy_dry_run)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if docker_config is not None:
@@ -501,6 +536,23 @@ class _RepositoryState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -758,6 +810,7 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1345,6 +1398,12 @@ class Repository(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
         :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -1975,6 +2034,7 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
                  cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
                  format: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1999,6 +2059,7 @@ class Repository(pulumi.CustomResource):
 
             __props__.__dict__["cleanup_policies"] = cleanup_policies
             __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["docker_config"] = docker_config
             if format is None and not opts.urn:
@@ -2037,6 +2098,7 @@ class Repository(pulumi.CustomResource):
             cleanup_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RepositoryCleanupPolicyArgs', 'RepositoryCleanupPolicyArgsDict']]]]] = None,
             cleanup_policy_dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             docker_config: pulumi.Input[Optional[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2070,6 +2132,12 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
         :param pulumi.Input[_builtins.str] create_time: The time when the repository was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The user-provided description of the repository.
         :param pulumi.Input[Union['RepositoryDockerConfigArgs', 'RepositoryDockerConfigArgsDict']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
                Structure is documented below.
@@ -2127,6 +2195,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["cleanup_policies"] = cleanup_policies
         __props__.__dict__["cleanup_policy_dry_run"] = cleanup_policy_dry_run
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["docker_config"] = docker_config
         __props__.__dict__["effective_labels"] = effective_labels
@@ -2175,6 +2244,19 @@ class Repository(pulumi.CustomResource):
         The time when the repository was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

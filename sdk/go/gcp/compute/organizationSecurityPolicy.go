@@ -49,6 +49,46 @@ import (
 //	}
 //
 // ```
+// ### Organization Security Policy With Advanced Options
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewOrganizationSecurityPolicy(ctx, "policy", &compute.OrganizationSecurityPolicyArgs{
+//				ShortName: pulumi.String("security-policy"),
+//				Parent:    pulumi.String("organizations/123456789"),
+//				Type:      pulumi.String("CLOUD_ARMOR"),
+//				AdvancedOptionsConfig: &compute.OrganizationSecurityPolicyAdvancedOptionsConfigArgs{
+//					JsonParsing: pulumi.String("STANDARD_WITH_GRAPHQL"),
+//					LogLevel:    pulumi.String("VERBOSE"),
+//					JsonCustomConfig: &compute.OrganizationSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{
+//						ContentTypes: pulumi.StringArray{
+//							pulumi.String("application/vnd.api+json"),
+//						},
+//					},
+//					UserIpRequestHeaders: pulumi.StringArray{
+//						pulumi.String("X-Forwarded-For"),
+//					},
+//					RequestBodyInspectionSize: pulumi.String("64KB"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -66,6 +106,16 @@ import (
 type OrganizationSecurityPolicy struct {
 	pulumi.CustomResourceState
 
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput `pulumi:"advancedOptionsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -119,6 +169,16 @@ func GetOrganizationSecurityPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationSecurityPolicy resources.
 type organizationSecurityPolicyState struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig *OrganizationSecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A textual description for the organization security policy.
 	Description *string `pulumi:"description"`
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -140,6 +200,16 @@ type organizationSecurityPolicyState struct {
 }
 
 type OrganizationSecurityPolicyState struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig OrganizationSecurityPolicyAdvancedOptionsConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrInput
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -165,6 +235,16 @@ func (OrganizationSecurityPolicyState) ElementType() reflect.Type {
 }
 
 type organizationSecurityPolicyArgs struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig *OrganizationSecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A textual description for the organization security policy.
 	Description *string `pulumi:"description"`
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -182,6 +262,16 @@ type organizationSecurityPolicyArgs struct {
 
 // The set of arguments for constructing a OrganizationSecurityPolicy resource.
 type OrganizationSecurityPolicyArgs struct {
+	// Additional options for this security policy.
+	// Structure is documented below.
+	AdvancedOptionsConfig OrganizationSecurityPolicyAdvancedOptionsConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A textual description for the organization security policy.
 	Description pulumi.StringPtrInput
 	// User-provided name of the organization security policy. The name should be unique in the organization in which the security policy is created. This should only be used when SecurityPolicyType is FIREWALL.
@@ -282,6 +372,24 @@ func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutput() O
 
 func (o OrganizationSecurityPolicyOutput) ToOrganizationSecurityPolicyOutputWithContext(ctx context.Context) OrganizationSecurityPolicyOutput {
 	return o
+}
+
+// Additional options for this security policy.
+// Structure is documented below.
+func (o OrganizationSecurityPolicyOutput) AdvancedOptionsConfig() OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput {
+		return v.AdvancedOptionsConfig
+	}).(OrganizationSecurityPolicyAdvancedOptionsConfigPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationSecurityPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationSecurityPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A textual description for the organization security policy.

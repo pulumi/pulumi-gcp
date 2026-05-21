@@ -64,6 +64,7 @@ type LookupOrganizationPolicyArgs struct {
 type LookupOrganizationPolicyResult struct {
 	BooleanPolicies []GetOrganizationPolicyBooleanPolicy `pulumi:"booleanPolicies"`
 	Constraint      string                               `pulumi:"constraint"`
+	DeletionPolicy  string                               `pulumi:"deletionPolicy"`
 	Etag            string                               `pulumi:"etag"`
 	Folder          string                               `pulumi:"folder"`
 	// The provider-assigned unique ID for this managed resource.
@@ -116,6 +117,10 @@ func (o LookupOrganizationPolicyResultOutput) BooleanPolicies() GetOrganizationP
 
 func (o LookupOrganizationPolicyResultOutput) Constraint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationPolicyResult) string { return v.Constraint }).(pulumi.StringOutput)
+}
+
+func (o LookupOrganizationPolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationPolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupOrganizationPolicyResultOutput) Etag() pulumi.StringOutput {

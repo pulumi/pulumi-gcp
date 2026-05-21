@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 public final class GetAppConnectionResult {
     private List<GetAppConnectionApplicationEndpoint> applicationEndpoints;
     private List<String> connectors;
+    private String deletionPolicy;
     private String displayName;
     private Map<String,String> effectiveLabels;
     private List<GetAppConnectionGateway> gateways;
@@ -39,6 +40,9 @@ public final class GetAppConnectionResult {
     }
     public List<String> connectors() {
         return this.connectors;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String displayName() {
         return this.displayName;
@@ -86,6 +90,7 @@ public final class GetAppConnectionResult {
     public static final class Builder {
         private List<GetAppConnectionApplicationEndpoint> applicationEndpoints;
         private List<String> connectors;
+        private String deletionPolicy;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private List<GetAppConnectionGateway> gateways;
@@ -101,6 +106,7 @@ public final class GetAppConnectionResult {
     	      Objects.requireNonNull(defaults);
     	      this.applicationEndpoints = defaults.applicationEndpoints;
     	      this.connectors = defaults.connectors;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.gateways = defaults.gateways;
@@ -134,6 +140,14 @@ public final class GetAppConnectionResult {
         }
         public Builder connectors(String... connectors) {
             return connectors(List.of(connectors));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectionResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
@@ -218,6 +232,7 @@ public final class GetAppConnectionResult {
             final var _resultValue = new GetAppConnectionResult();
             _resultValue.applicationEndpoints = applicationEndpoints;
             _resultValue.connectors = connectors;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.gateways = gateways;

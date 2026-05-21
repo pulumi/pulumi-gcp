@@ -23,6 +23,7 @@ class GuestPoliciesArgs:
     def __init__(__self__, *,
                  assignment: pulumi.Input['GuestPoliciesAssignmentArgs'],
                  guest_policy_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  package_repositories: pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]]] = None,
@@ -46,6 +47,12 @@ class GuestPoliciesArgs:
                * Must be between 1-63 characters.
                * Must end with a number or a letter.
                * Must be unique within the project.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[Sequence[pulumi.Input['GuestPoliciesPackageRepositoryArgs']]] package_repositories: A list of package repositories to configure on the VM instance.
@@ -61,6 +68,8 @@ class GuestPoliciesArgs:
         """
         pulumi.set(__self__, "assignment", assignment)
         pulumi.set(__self__, "guest_policy_id", guest_policy_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -109,6 +118,23 @@ class GuestPoliciesArgs:
     @guest_policy_id.setter
     def guest_policy_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "guest_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -194,6 +220,7 @@ class _GuestPoliciesState:
     def __init__(__self__, *,
                  assignment: pulumi.Input[Optional['GuestPoliciesAssignmentArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -216,6 +243,12 @@ class _GuestPoliciesState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] guest_policy_id: The logical name of the guest policy in the project with the following restrictions:
@@ -242,6 +275,8 @@ class _GuestPoliciesState:
             pulumi.set(__self__, "assignment", assignment)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -292,6 +327,23 @@ class _GuestPoliciesState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -421,6 +473,7 @@ class GuestPolicies(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignment: pulumi.Input[Optional[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -604,6 +657,12 @@ class GuestPolicies(pulumi.CustomResource):
                For more information, see how the service
                [handles assignment conflicts](https://cloud.google.com/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] guest_policy_id: The logical name of the guest policy in the project with the following restrictions:
@@ -810,6 +869,7 @@ class GuestPolicies(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignment: pulumi.Input[Optional[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -829,6 +889,7 @@ class GuestPolicies(pulumi.CustomResource):
             if assignment is None and not opts.urn:
                 raise TypeError("Missing required property 'assignment'")
             __props__.__dict__["assignment"] = assignment
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             if guest_policy_id is None and not opts.urn:
@@ -853,6 +914,7 @@ class GuestPolicies(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             assignment: pulumi.Input[Optional[Union['GuestPoliciesAssignmentArgs', 'GuestPoliciesAssignmentArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             guest_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -879,6 +941,12 @@ class GuestPolicies(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time this guest policy was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
                Example: "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[_builtins.str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
         :param pulumi.Input[_builtins.str] guest_policy_id: The logical name of the guest policy in the project with the following restrictions:
@@ -907,6 +975,7 @@ class GuestPolicies(pulumi.CustomResource):
 
         __props__.__dict__["assignment"] = assignment
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
         __props__.__dict__["guest_policy_id"] = guest_policy_id
@@ -941,6 +1010,19 @@ class GuestPolicies(pulumi.CustomResource):
         Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -517,6 +517,15 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     declare public readonly consumerRejectLists: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -624,6 +633,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["connectionPreference"] = state?.connectionPreference;
             resourceInputs["consumerAcceptLists"] = state?.consumerAcceptLists;
             resourceInputs["consumerRejectLists"] = state?.consumerRejectLists;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["domainNames"] = state?.domainNames;
             resourceInputs["enableProxyProtocol"] = state?.enableProxyProtocol;
@@ -657,6 +667,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["connectionPreference"] = args?.connectionPreference;
             resourceInputs["consumerAcceptLists"] = args?.consumerAcceptLists;
             resourceInputs["consumerRejectLists"] = args?.consumerRejectLists;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["domainNames"] = args?.domainNames;
             resourceInputs["enableProxyProtocol"] = args?.enableProxyProtocol;
@@ -706,6 +717,15 @@ export interface ServiceAttachmentState {
      * attachment.
      */
     consumerRejectLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -818,6 +838,15 @@ export interface ServiceAttachmentArgs {
      * attachment.
      */
     consumerRejectLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

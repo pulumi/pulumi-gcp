@@ -148,6 +148,13 @@ type VolumeReplication struct {
 	// For production use, it is recommended to keep this parameter false to avoid accidental volume
 	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume pulumi.BoolPtrOutput `pulumi:"deleteDestinationVolume"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
@@ -277,6 +284,13 @@ type volumeReplicationState struct {
 	// For production use, it is recommended to keep this parameter false to avoid accidental volume
 	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume *bool `pulumi:"deleteDestinationVolume"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An description of this resource.
 	Description *string `pulumi:"description"`
 	// Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
@@ -363,6 +377,13 @@ type VolumeReplicationState struct {
 	// For production use, it is recommended to keep this parameter false to avoid accidental volume
 	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An description of this resource.
 	Description pulumi.StringPtrInput
 	// Full resource name of destination volume with format: `projects/{{project}}/locations/{{location}}/volumes/{{volumeId}}`
@@ -451,6 +472,13 @@ type volumeReplicationArgs struct {
 	// For production use, it is recommended to keep this parameter false to avoid accidental volume
 	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume *bool `pulumi:"deleteDestinationVolume"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An description of this resource.
 	Description *string `pulumi:"description"`
 	// Destination volume parameters.
@@ -499,6 +527,13 @@ type VolumeReplicationArgs struct {
 	// For production use, it is recommended to keep this parameter false to avoid accidental volume
 	// deletion. Handle with care. Default is false.
 	DeleteDestinationVolume pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An description of this resource.
 	Description pulumi.StringPtrInput
 	// Destination volume parameters.
@@ -638,6 +673,16 @@ func (o VolumeReplicationOutput) CreateTime() pulumi.StringOutput {
 // deletion. Handle with care. Default is false.
 func (o VolumeReplicationOutput) DeleteDestinationVolume() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VolumeReplication) pulumi.BoolPtrOutput { return v.DeleteDestinationVolume }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VolumeReplicationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeReplication) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An description of this resource.

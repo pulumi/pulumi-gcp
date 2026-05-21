@@ -60,6 +60,7 @@ export interface GetVariableArgs {
  * A collection of values returned by getVariable.
  */
 export interface GetVariableResult {
+    readonly deletionPolicy: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

@@ -121,6 +121,13 @@ type Cluster struct {
 	// specified explicitly for a node pool in this cluster. If unspecified, the
 	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode pulumi.IntOutput `pulumi:"defaultMaxPodsPerNode"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IP address of the Kubernetes API server.
@@ -250,6 +257,13 @@ type clusterState struct {
 	// specified explicitly for a node pool in this cluster. If unspecified, the
 	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IP address of the Kubernetes API server.
@@ -332,6 +346,13 @@ type ClusterState struct {
 	// specified explicitly for a node pool in this cluster. If unspecified, the
 	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The IP address of the Kubernetes API server.
@@ -410,6 +431,13 @@ type clusterArgs struct {
 	// specified explicitly for a node pool in this cluster. If unspecified, the
 	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode *int `pulumi:"defaultMaxPodsPerNode"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Address pools for cluster data plane external load balancing.
 	ExternalLoadBalancerIpv4AddressPools []string `pulumi:"externalLoadBalancerIpv4AddressPools"`
 	// Fleet related configuration.
@@ -464,6 +492,13 @@ type ClusterArgs struct {
 	// specified explicitly for a node pool in this cluster. If unspecified, the
 	// Kubernetes default value will be used.
 	DefaultMaxPodsPerNode pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Address pools for cluster data plane external load balancing.
 	ExternalLoadBalancerIpv4AddressPools pulumi.StringArrayInput
 	// Fleet related configuration.
@@ -630,6 +665,16 @@ func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 // Kubernetes default value will be used.
 func (o ClusterOutput) DefaultMaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.IntOutput { return v.DefaultMaxPodsPerNode }).(pulumi.IntOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ClusterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

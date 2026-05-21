@@ -60,6 +60,13 @@ import (
 type ProjectMetadataItem struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The metadata key to set.
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The ID of the project in which the resource belongs. If it
@@ -107,6 +114,13 @@ func GetProjectMetadataItem(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectMetadataItem resources.
 type projectMetadataItemState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The metadata key to set.
 	Key *string `pulumi:"key"`
 	// The ID of the project in which the resource belongs. If it
@@ -119,6 +133,13 @@ type projectMetadataItemState struct {
 }
 
 type ProjectMetadataItemState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The metadata key to set.
 	Key pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
@@ -135,6 +156,13 @@ func (ProjectMetadataItemState) ElementType() reflect.Type {
 }
 
 type projectMetadataItemArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The metadata key to set.
 	Key string `pulumi:"key"`
 	// The ID of the project in which the resource belongs. If it
@@ -148,6 +176,13 @@ type projectMetadataItemArgs struct {
 
 // The set of arguments for constructing a ProjectMetadataItem resource.
 type ProjectMetadataItemArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The metadata key to set.
 	Key pulumi.StringInput
 	// The ID of the project in which the resource belongs. If it
@@ -244,6 +279,16 @@ func (o ProjectMetadataItemOutput) ToProjectMetadataItemOutput() ProjectMetadata
 
 func (o ProjectMetadataItemOutput) ToProjectMetadataItemOutputWithContext(ctx context.Context) ProjectMetadataItemOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ProjectMetadataItemOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectMetadataItem) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The metadata key to set.

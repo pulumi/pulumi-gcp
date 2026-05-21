@@ -101,6 +101,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly dataprocGdcCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly dataprocMetastoreCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly datastreamCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
     declare public readonly deploymentManagerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly developerConnectCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly dialogflowCustomEndpoint: pulumi.Output<string | undefined>;
@@ -316,6 +317,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args?.dataprocMetastoreCustomEndpoint;
             resourceInputs["datastreamCustomEndpoint"] = args?.datastreamCustomEndpoint;
             resourceInputs["defaultLabels"] = pulumi.output(args?.defaultLabels).apply(JSON.stringify);
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deploymentManagerCustomEndpoint"] = args?.deploymentManagerCustomEndpoint;
             resourceInputs["developerConnectCustomEndpoint"] = args?.developerConnectCustomEndpoint;
             resourceInputs["dialogflowCustomEndpoint"] = args?.dialogflowCustomEndpoint;
@@ -547,6 +549,7 @@ export interface ProviderArgs {
     dataprocMetastoreCustomEndpoint?: pulumi.Input<string | undefined>;
     datastreamCustomEndpoint?: pulumi.Input<string | undefined>;
     defaultLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    deletionPolicy?: pulumi.Input<string | undefined>;
     deploymentManagerCustomEndpoint?: pulumi.Input<string | undefined>;
     developerConnectCustomEndpoint?: pulumi.Input<string | undefined>;
     dialogflowCustomEndpoint?: pulumi.Input<string | undefined>;

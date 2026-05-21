@@ -25,13 +25,16 @@ class WorkstationClusterArgs:
                  subnetwork: pulumi.Input[_builtins.str],
                  workstation_cluster_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_config: pulumi.Input[Optional['WorkstationClusterDomainConfigArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  private_cluster_config: pulumi.Input[Optional['WorkstationClusterPrivateClusterConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
-                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 workstation_authorization_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_launch_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkstationCluster resource.
 
@@ -43,6 +46,12 @@ class WorkstationClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input['WorkstationClusterDomainConfigArgs'] domain_config: Configuration options for a custom domain.
                Structure is documented below.
@@ -58,12 +67,18 @@ class WorkstationClusterArgs:
                For example:
                "123/environment": "production",
                "123/costCenter": "marketing"
+        :param pulumi.Input[_builtins.str] workstation_authorization_url: Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+               Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        :param pulumi.Input[_builtins.str] workstation_launch_url: Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+               Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if domain_config is not None:
@@ -78,6 +93,10 @@ class WorkstationClusterArgs:
             pulumi.set(__self__, "project", project)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if workstation_authorization_url is not None:
+            pulumi.set(__self__, "workstation_authorization_url", workstation_authorization_url)
+        if workstation_launch_url is not None:
+            pulumi.set(__self__, "workstation_launch_url", workstation_launch_url)
 
     @_builtins.property
     @pulumi.getter
@@ -130,6 +149,23 @@ class WorkstationClusterArgs:
     @annotations.setter
     def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -223,6 +259,32 @@ class WorkstationClusterArgs:
     def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workstationAuthorizationUrl")
+    def workstation_authorization_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        """
+        return pulumi.get(self, "workstation_authorization_url")
+
+    @workstation_authorization_url.setter
+    def workstation_authorization_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workstation_authorization_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="workstationLaunchUrl")
+    def workstation_launch_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+        Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        """
+        return pulumi.get(self, "workstation_launch_url")
+
+    @workstation_launch_url.setter
+    def workstation_launch_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workstation_launch_url", value)
+
 
 @pulumi.input_type
 class _WorkstationClusterState:
@@ -232,6 +294,7 @@ class _WorkstationClusterState:
                  control_plane_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  degraded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_config: pulumi.Input[Optional['WorkstationClusterDomainConfigArgs']] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -247,7 +310,9 @@ class _WorkstationClusterState:
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  uid: pulumi.Input[Optional[_builtins.str]] = None,
-                 workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 workstation_authorization_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_launch_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkstationCluster resources.
 
@@ -261,6 +326,12 @@ class _WorkstationClusterState:
         :param pulumi.Input[_builtins.str] create_time: Time when this resource was created.
         :param pulumi.Input[_builtins.bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input['WorkstationClusterDomainConfigArgs'] domain_config: Configuration options for a custom domain.
                Structure is documented below.
@@ -288,7 +359,11 @@ class _WorkstationClusterState:
                "123/environment": "production",
                "123/costCenter": "marketing"
         :param pulumi.Input[_builtins.str] uid: The system-generated UID of the resource.
+        :param pulumi.Input[_builtins.str] workstation_authorization_url: Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+               Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
         :param pulumi.Input[_builtins.str] workstation_cluster_id: ID to use for the workstation cluster.
+        :param pulumi.Input[_builtins.str] workstation_launch_url: Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+               Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -300,6 +375,8 @@ class _WorkstationClusterState:
             pulumi.set(__self__, "create_time", create_time)
         if degraded is not None:
             pulumi.set(__self__, "degraded", degraded)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if domain_config is not None:
@@ -330,8 +407,12 @@ class _WorkstationClusterState:
             pulumi.set(__self__, "tags", tags)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
+        if workstation_authorization_url is not None:
+            pulumi.set(__self__, "workstation_authorization_url", workstation_authorization_url)
         if workstation_cluster_id is not None:
             pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
+        if workstation_launch_url is not None:
+            pulumi.set(__self__, "workstation_launch_url", workstation_launch_url)
 
     @_builtins.property
     @pulumi.getter
@@ -397,6 +478,23 @@ class _WorkstationClusterState:
     @degraded.setter
     def degraded(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "degraded", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -591,6 +689,19 @@ class _WorkstationClusterState:
         pulumi.set(self, "uid", value)
 
     @_builtins.property
+    @pulumi.getter(name="workstationAuthorizationUrl")
+    def workstation_authorization_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        """
+        return pulumi.get(self, "workstation_authorization_url")
+
+    @workstation_authorization_url.setter
+    def workstation_authorization_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workstation_authorization_url", value)
+
+    @_builtins.property
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -602,6 +713,19 @@ class _WorkstationClusterState:
     def workstation_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workstation_cluster_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workstationLaunchUrl")
+    def workstation_launch_url(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+        Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        """
+        return pulumi.get(self, "workstation_launch_url")
+
+    @workstation_launch_url.setter
+    def workstation_launch_url(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "workstation_launch_url", value)
+
 
 @pulumi.type_token("gcp:workstations/workstationCluster:WorkstationCluster")
 class WorkstationCluster(pulumi.CustomResource):
@@ -610,6 +734,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -619,7 +744,9 @@ class WorkstationCluster(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 workstation_authorization_url: pulumi.Input[Optional[_builtins.str]] = None,
                  workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_launch_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         A grouping of workstation configurations and the associated workstations in that region.
@@ -632,6 +759,29 @@ class WorkstationCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Workstation Cluster Custom Urls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="workstations-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstations-network",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="custom-urls-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            workstation_authorization_url="https://workstations.cloud.google.com/ui/auth",
+            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
+        project = gcp.organizations.get_project()
+        ```
         ### Workstation Cluster Basic
 
         ```python
@@ -779,6 +929,12 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: Client-specified annotations. This is distinct from labels.
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']] domain_config: Configuration options for a custom domain.
                Structure is documented below.
@@ -798,7 +954,11 @@ class WorkstationCluster(pulumi.CustomResource):
                For example:
                "123/environment": "production",
                "123/costCenter": "marketing"
+        :param pulumi.Input[_builtins.str] workstation_authorization_url: Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+               Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
         :param pulumi.Input[_builtins.str] workstation_cluster_id: ID to use for the workstation cluster.
+        :param pulumi.Input[_builtins.str] workstation_launch_url: Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+               Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
         """
         ...
     @overload
@@ -817,6 +977,29 @@ class WorkstationCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Workstation Cluster Custom Urls
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("default",
+            name="workstations-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstations-network",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name)
+        default = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="custom-urls-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            workstation_authorization_url="https://workstations.cloud.google.com/ui/auth",
+            workstation_launch_url="https://console.cloud.google.com/workstations/launch")
+        project = gcp.organizations.get_project()
+        ```
         ### Workstation Cluster Basic
 
         ```python
@@ -975,6 +1158,7 @@ class WorkstationCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -984,7 +1168,9 @@ class WorkstationCluster(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 workstation_authorization_url: pulumi.Input[Optional[_builtins.str]] = None,
                  workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workstation_launch_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -995,6 +1181,7 @@ class WorkstationCluster(pulumi.CustomResource):
             __props__ = WorkstationClusterArgs.__new__(WorkstationClusterArgs)
 
             __props__.__dict__["annotations"] = annotations
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["domain_config"] = domain_config
             __props__.__dict__["labels"] = labels
@@ -1008,9 +1195,11 @@ class WorkstationCluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'subnetwork'")
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["workstation_authorization_url"] = workstation_authorization_url
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
+            __props__.__dict__["workstation_launch_url"] = workstation_launch_url
             __props__.__dict__["conditions"] = None
             __props__.__dict__["control_plane_ip"] = None
             __props__.__dict__["create_time"] = None
@@ -1038,6 +1227,7 @@ class WorkstationCluster(pulumi.CustomResource):
             control_plane_ip: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             degraded: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             domain_config: pulumi.Input[Optional[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1053,7 +1243,9 @@ class WorkstationCluster(pulumi.CustomResource):
             subnetwork: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             uid: pulumi.Input[Optional[_builtins.str]] = None,
-            workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkstationCluster':
+            workstation_authorization_url: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workstation_launch_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkstationCluster':
         """
         Get an existing WorkstationCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1071,6 +1263,12 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Time when this resource was created.
         :param pulumi.Input[_builtins.bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality.
                Details can be found in the conditions field.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Union['WorkstationClusterDomainConfigArgs', 'WorkstationClusterDomainConfigArgsDict']] domain_config: Configuration options for a custom domain.
                Structure is documented below.
@@ -1098,7 +1296,11 @@ class WorkstationCluster(pulumi.CustomResource):
                "123/environment": "production",
                "123/costCenter": "marketing"
         :param pulumi.Input[_builtins.str] uid: The system-generated UID of the resource.
+        :param pulumi.Input[_builtins.str] workstation_authorization_url: Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+               Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
         :param pulumi.Input[_builtins.str] workstation_cluster_id: ID to use for the workstation cluster.
+        :param pulumi.Input[_builtins.str] workstation_launch_url: Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+               Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1109,6 +1311,7 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["control_plane_ip"] = control_plane_ip
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["degraded"] = degraded
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["domain_config"] = domain_config
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -1124,7 +1327,9 @@ class WorkstationCluster(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["tags"] = tags
         __props__.__dict__["uid"] = uid
+        __props__.__dict__["workstation_authorization_url"] = workstation_authorization_url
         __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
+        __props__.__dict__["workstation_launch_url"] = workstation_launch_url
         return WorkstationCluster(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1171,6 +1376,19 @@ class WorkstationCluster(pulumi.CustomResource):
         Details can be found in the conditions field.
         """
         return pulumi.get(self, "degraded")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -1305,10 +1523,28 @@ class WorkstationCluster(pulumi.CustomResource):
         return pulumi.get(self, "uid")
 
     @_builtins.property
+    @pulumi.getter(name="workstationAuthorizationUrl")
+    def workstation_authorization_url(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies the redirect URL for unauthorized requests received by workstation VMs in this cluster.
+        Redirects to this endpoint will send a base64 encoded `state` query param containing the target workstation name and original request hostname. The endpoint is responsible for retrieving a token using `GenerateAccessToken` and redirecting back to the original hostname with the token.
+        """
+        return pulumi.get(self, "workstation_authorization_url")
+
+    @_builtins.property
     @pulumi.getter(name="workstationClusterId")
     def workstation_cluster_id(self) -> pulumi.Output[_builtins.str]:
         """
         ID to use for the workstation cluster.
         """
         return pulumi.get(self, "workstation_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="workstationLaunchUrl")
+    def workstation_launch_url(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Specifies the launch URL for workstations in this cluster. Requests sent to unstarted workstations will be redirected to this URL.
+        Requests redirected to the launch endpoint will be sent with a `workstation` query parameter containing the full workstation resource. The launch endpoint is responsible for starting the workstation, polling it until it reaches `STATE_RUNNING`, and then issuing a redirect to the workstation's host URL.
+        """
+        return pulumi.get(self, "workstation_launch_url")
 

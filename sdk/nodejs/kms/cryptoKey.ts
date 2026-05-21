@@ -108,6 +108,15 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     declare public readonly cryptoKeyBackend: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 30 days.
      */
@@ -201,6 +210,7 @@ export class CryptoKey extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
             resourceInputs["cryptoKeyBackend"] = state?.cryptoKeyBackend;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["destroyScheduledDuration"] = state?.destroyScheduledDuration;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["importOnly"] = state?.importOnly;
@@ -220,6 +230,7 @@ export class CryptoKey extends pulumi.CustomResource {
                 throw new Error("Missing required property 'keyRing'");
             }
             resourceInputs["cryptoKeyBackend"] = args?.cryptoKeyBackend;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["destroyScheduledDuration"] = args?.destroyScheduledDuration;
             resourceInputs["importOnly"] = args?.importOnly;
             resourceInputs["keyAccessJustificationsPolicy"] = args?.keyAccessJustificationsPolicy;
@@ -250,6 +261,15 @@ export interface CryptoKeyState {
      * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
      */
     cryptoKeyBackend?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 30 days.
@@ -340,6 +360,15 @@ export interface CryptoKeyArgs {
      * The resource name is in the format "projects/*&#47;locations/*&#47;ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
      */
     cryptoKeyBackend?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 30 days.

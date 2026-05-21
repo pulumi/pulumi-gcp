@@ -18,6 +18,7 @@ public final class GetClusterResult {
     private List<GetClusterAutoscalingSetting> autoscalingSettings;
     private String createTime;
     private List<GetClusterDatastoreMountConfig> datastoreMountConfigs;
+    private String deletionPolicy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -40,6 +41,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterDatastoreMountConfig> datastoreMountConfigs() {
         return this.datastoreMountConfigs;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -82,6 +86,7 @@ public final class GetClusterResult {
         private List<GetClusterAutoscalingSetting> autoscalingSettings;
         private String createTime;
         private List<GetClusterDatastoreMountConfig> datastoreMountConfigs;
+        private String deletionPolicy;
         private String id;
         private Boolean management;
         private String name;
@@ -96,6 +101,7 @@ public final class GetClusterResult {
     	      this.autoscalingSettings = defaults.autoscalingSettings;
     	      this.createTime = defaults.createTime;
     	      this.datastoreMountConfigs = defaults.datastoreMountConfigs;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.id = defaults.id;
     	      this.management = defaults.management;
     	      this.name = defaults.name;
@@ -135,6 +141,14 @@ public final class GetClusterResult {
         }
         public Builder datastoreMountConfigs(GetClusterDatastoreMountConfig... datastoreMountConfigs) {
             return datastoreMountConfigs(List.of(datastoreMountConfigs));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -208,6 +222,7 @@ public final class GetClusterResult {
             _resultValue.autoscalingSettings = autoscalingSettings;
             _resultValue.createTime = createTime;
             _resultValue.datastoreMountConfigs = datastoreMountConfigs;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.id = id;
             _resultValue.management = management;
             _resultValue.name = name;

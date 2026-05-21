@@ -27,6 +27,7 @@ class InstanceArgs:
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional['InstanceAutomatedBackupConfigArgs']] = None,
                  cross_instance_replication_config: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]] = None,
                  desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
@@ -67,6 +68,12 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
@@ -92,9 +99,15 @@ class InstanceArgs:
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -122,6 +135,8 @@ class InstanceArgs:
             pulumi.set(__self__, "automated_backup_config", automated_backup_config)
         if cross_instance_replication_config is not None:
             pulumi.set(__self__, "cross_instance_replication_config", cross_instance_replication_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if desired_auto_created_endpoints is not None:
@@ -248,6 +263,23 @@ class InstanceArgs:
     @cross_instance_replication_config.setter
     def cross_instance_replication_config(self, value: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']]):
         pulumi.set(self, "cross_instance_replication_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -411,9 +443,15 @@ class InstanceArgs:
         Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
+        CUSTOM_PICO
+        CUSTOM_MICRO
+        CUSTOM_MINI
         HIGHMEM_MEDIUM
+        HIGHCPU_MEDIUM
         HIGHMEM_XLARGE
         STANDARD_SMALL
+        STANDARD_LARGE
+        HIGHMEM_2XLARGE
         """
         return pulumi.get(self, "node_type")
 
@@ -525,6 +563,7 @@ class _InstanceState:
                  backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_instance_replication_config: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]]] = None,
                  desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]]] = None,
@@ -577,6 +616,12 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation timestamp of the instance.
         :param pulumi.Input['InstanceCrossInstanceReplicationConfigArgs'] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredAutoCreatedEndpointArgs']]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceDesiredPscAutoConnectionArgs']]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
@@ -626,9 +671,15 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -677,6 +728,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if cross_instance_replication_config is not None:
             pulumi.set(__self__, "cross_instance_replication_config", cross_instance_replication_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if desired_auto_created_endpoints is not None:
@@ -839,6 +892,23 @@ class _InstanceState:
     @cross_instance_replication_config.setter
     def cross_instance_replication_config(self, value: pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigArgs']]):
         pulumi.set(self, "cross_instance_replication_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -1137,9 +1207,15 @@ class _InstanceState:
         Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
+        CUSTOM_PICO
+        CUSTOM_MICRO
+        CUSTOM_MINI
         HIGHMEM_MEDIUM
+        HIGHCPU_MEDIUM
         HIGHMEM_XLARGE
         STANDARD_SMALL
+        STANDARD_LARGE
+        HIGHMEM_2XLARGE
         """
         return pulumi.get(self, "node_type")
 
@@ -1358,6 +1434,7 @@ class Instance(pulumi.CustomResource):
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
                  desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
@@ -1770,6 +1847,12 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
@@ -1804,9 +1887,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -2229,6 +2318,7 @@ class Instance(pulumi.CustomResource):
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional[Union['InstanceAutomatedBackupConfigArgs', 'InstanceAutomatedBackupConfigArgsDict']]] = None,
                  cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
                  desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
@@ -2264,6 +2354,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["desired_auto_created_endpoints"] = desired_auto_created_endpoints
             __props__.__dict__["desired_psc_auto_connections"] = desired_psc_auto_connections
@@ -2329,6 +2420,7 @@ class Instance(pulumi.CustomResource):
             backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             cross_instance_replication_config: pulumi.Input[Optional[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             desired_auto_created_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]]] = None,
             desired_psc_auto_connections: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]]] = None,
@@ -2385,6 +2477,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: Output only. Creation timestamp of the instance.
         :param pulumi.Input[Union['InstanceCrossInstanceReplicationConfigArgs', 'InstanceCrossInstanceReplicationConfigArgsDict']] cross_instance_replication_config: Cross instance replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. If set to true deletion of the instance will fail.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredAutoCreatedEndpointArgs', 'InstanceDesiredAutoCreatedEndpointArgsDict']]]] desired_auto_created_endpoints: Immutable. User inputs for the auto-created endpoints connections.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceDesiredPscAutoConnectionArgs', 'InstanceDesiredPscAutoConnectionArgsDict']]]] desired_psc_auto_connections: `desired_psc_auto_connections` is deprecated  Use `desired_auto_created_endpoints` instead `pulumi import` will only work with desired_auto_created_endpoints`.
@@ -2434,9 +2532,15 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_type: Optional. Machine type for individual nodes of the instance.
                Possible values:
                SHARED_CORE_NANO
+               CUSTOM_PICO
+               CUSTOM_MICRO
+               CUSTOM_MINI
                HIGHMEM_MEDIUM
+               HIGHCPU_MEDIUM
                HIGHMEM_XLARGE
                STANDARD_SMALL
+               STANDARD_LARGE
+               HIGHMEM_2XLARGE
         :param pulumi.Input[Union['InstancePersistenceConfigArgs', 'InstancePersistenceConfigArgsDict']] persistence_config: Represents persistence configuration for a instance.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -2483,6 +2587,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["backup_collection"] = backup_collection
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_instance_replication_config"] = cross_instance_replication_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["desired_auto_created_endpoints"] = desired_auto_created_endpoints
         __props__.__dict__["desired_psc_auto_connections"] = desired_psc_auto_connections
@@ -2575,6 +2680,19 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "cross_instance_replication_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -2785,9 +2903,15 @@ class Instance(pulumi.CustomResource):
         Optional. Machine type for individual nodes of the instance.
         Possible values:
         SHARED_CORE_NANO
+        CUSTOM_PICO
+        CUSTOM_MICRO
+        CUSTOM_MINI
         HIGHMEM_MEDIUM
+        HIGHCPU_MEDIUM
         HIGHMEM_XLARGE
         STANDARD_SMALL
+        STANDARD_LARGE
+        HIGHMEM_2XLARGE
         """
         return pulumi.get(self, "node_type")
 

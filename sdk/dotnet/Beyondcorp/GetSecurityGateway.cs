@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Beyondcorp
     {
         public readonly string CreateTime;
         public readonly string DelegatingServiceAccount;
+        public readonly string DeletionPolicy;
         public readonly string DisplayName;
         public readonly ImmutableArray<string> ExternalIps;
         public readonly ImmutableArray<Outputs.GetSecurityGatewayHubResult> Hubs;
@@ -159,6 +160,8 @@ namespace Pulumi.Gcp.Beyondcorp
             string createTime,
 
             string delegatingServiceAccount,
+
+            string deletionPolicy,
 
             string displayName,
 
@@ -188,6 +191,7 @@ namespace Pulumi.Gcp.Beyondcorp
         {
             CreateTime = createTime;
             DelegatingServiceAccount = delegatingServiceAccount;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             ExternalIps = externalIps;
             Hubs = hubs;

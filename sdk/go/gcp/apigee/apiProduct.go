@@ -257,6 +257,13 @@ type ApiProduct struct {
 	Attributes ApiProductAttributeArrayOutput `pulumi:"attributes"`
 	// Response only. Creation time of this environment as milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the API product. Include key information about the API product that is not captured by other fields.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Name displayed in the UI or developer portal to developers registering for API access.
@@ -349,6 +356,13 @@ type apiProductState struct {
 	Attributes []ApiProductAttribute `pulumi:"attributes"`
 	// Response only. Creation time of this environment as milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the API product. Include key information about the API product that is not captured by other fields.
 	Description *string `pulumi:"description"`
 	// Name displayed in the UI or developer portal to developers registering for API access.
@@ -406,6 +420,13 @@ type ApiProductState struct {
 	Attributes ApiProductAttributeArrayInput
 	// Response only. Creation time of this environment as milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the API product. Include key information about the API product that is not captured by other fields.
 	Description pulumi.StringPtrInput
 	// Name displayed in the UI or developer portal to developers registering for API access.
@@ -465,6 +486,13 @@ type apiProductArgs struct {
 	// Use this property to specify the access level of the API product as either public, private, or internal.
 	// Structure is documented below.
 	Attributes []ApiProductAttribute `pulumi:"attributes"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the API product. Include key information about the API product that is not captured by other fields.
 	Description *string `pulumi:"description"`
 	// Name displayed in the UI or developer portal to developers registering for API access.
@@ -519,6 +547,13 @@ type ApiProductArgs struct {
 	// Use this property to specify the access level of the API product as either public, private, or internal.
 	// Structure is documented below.
 	Attributes ApiProductAttributeArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the API product. Include key information about the API product that is not captured by other fields.
 	Description pulumi.StringPtrInput
 	// Name displayed in the UI or developer portal to developers registering for API access.
@@ -670,6 +705,16 @@ func (o ApiProductOutput) Attributes() ApiProductAttributeArrayOutput {
 // Response only. Creation time of this environment as milliseconds since epoch.
 func (o ApiProductOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiProduct) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ApiProductOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApiProduct) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the API product. Include key information about the API product that is not captured by other fields.

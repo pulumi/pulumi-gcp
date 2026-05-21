@@ -184,6 +184,15 @@ export class Runtime extends pulumi.CustomResource {
      */
     declare public readonly autoUpgrade: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The description of the Runtime.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -248,6 +257,7 @@ export class Runtime extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RuntimeState | undefined;
             resourceInputs["autoUpgrade"] = state?.autoUpgrade;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["displayName"] = state?.displayName;
@@ -272,6 +282,7 @@ export class Runtime extends pulumi.CustomResource {
                 throw new Error("Missing required property 'runtimeUser'");
             }
             resourceInputs["autoUpgrade"] = args?.autoUpgrade;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["displayName"] = args?.displayName;
@@ -298,6 +309,15 @@ export interface RuntimeState {
      * Triggers an upgrade anytime the runtime is started if it is upgradable.
      */
     autoUpgrade?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the Runtime.
      */
@@ -358,6 +378,15 @@ export interface RuntimeArgs {
      * Triggers an upgrade anytime the runtime is started if it is upgradable.
      */
     autoUpgrade?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The description of the Runtime.
      */

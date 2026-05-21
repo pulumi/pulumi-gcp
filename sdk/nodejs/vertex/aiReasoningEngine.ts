@@ -136,9 +136,9 @@ import * as utilities from "../utilities";
  * const tenantArReader = new gcp.projects.IAMMember("tenant_ar_reader", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/artifactregistry.reader",
- *     member: tenantMds.apply(tenantMds => std.jsondecodeOutput({
- *         input: tenantMds.output,
- *     })).apply(invoke => `serviceAccount:${invoke.result?.output}`),
+ *     member: std.jsondecodeOutput({
+ *         input: tenantMds.apply(tenantMds => tenantMds.output),
+ *     }).apply(invoke => `serviceAccount:${invoke.result?.output}`),
  * });
  * const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
  *     displayName: "reasoning-engine",
@@ -491,9 +491,16 @@ export class AiReasoningEngine extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * Optional. The deletion policy for the reasoning engine.
+     * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is permitted.
      */
-    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * The description of the ReasoningEngine.
      */
@@ -621,7 +628,14 @@ export interface AiReasoningEngineState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * Optional. The deletion policy for the reasoning engine.
+     * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is permitted.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -693,7 +707,14 @@ export interface AiReasoningEngineArgs {
      */
     contextSpec?: pulumi.Input<inputs.vertex.AiReasoningEngineContextSpec | undefined>;
     /**
-     * Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     * Optional. The deletion policy for the reasoning engine.
+     * Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+     *
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is permitted.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

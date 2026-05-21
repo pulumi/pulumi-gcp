@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("dci-tf-_3686")
+ *             .projectId("dci-tf-_44339")
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
@@ -181,7 +181,7 @@ import javax.annotation.Nullable;
  * 
  *         var myApphubApplication = new Application("myApphubApplication", ApplicationArgs.builder()
  *             .location("us-central1")
- *             .applicationId("tf-test-example-application_54136")
+ *             .applicationId("tf-test-example-application_34599")
  *             .scope(ApplicationScopeArgs.builder()
  *                 .type("REGIONAL")
  *                 .build())
@@ -192,7 +192,7 @@ import javax.annotation.Nullable;
  * 
  *         var insightsConfig = new InsightsConfig("insightsConfig", InsightsConfigArgs.builder()
  *             .location("us-central1")
- *             .insightsConfigId("tf-test-ic-apphub-_11171")
+ *             .insightsConfigId("tf-test-ic-apphub-_79513")
  *             .project(project.projectId())
  *             .annotations(Map.ofEntries(
  *             ))
@@ -261,7 +261,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var project = new Project("project", ProjectArgs.builder()
- *             .projectId("dci-tf-_40472")
+ *             .projectId("dci-tf-_55500")
  *             .name("Service Project")
  *             .orgId("123456789")
  *             .billingAccount("000000-0000000-0000000-000000")
@@ -374,7 +374,7 @@ import javax.annotation.Nullable;
  * 
  *         var insightsConfigProjects = new InsightsConfig("insightsConfigProjects", InsightsConfigArgs.builder()
  *             .location("us-central1")
- *             .insightsConfigId("tf-test-ic-projects-_44339")
+ *             .insightsConfigId("tf-test-ic-projects-_12223")
  *             .project(project.projectId())
  *             .annotations(Map.ofEntries(
  *             ))
@@ -488,6 +488,30 @@ public class InsightsConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.

@@ -150,6 +150,15 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public readonly customPerformanceEnabled: pulumi.Output<boolean>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -303,6 +312,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["capacityGib"] = state?.capacityGib;
             resourceInputs["coldTierSizeUsedGib"] = state?.coldTierSizeUsedGib;
             resourceInputs["customPerformanceEnabled"] = state?.customPerformanceEnabled;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableHotTierAutoResize"] = state?.enableHotTierAutoResize;
@@ -347,6 +357,7 @@ export class StoragePool extends pulumi.CustomResource {
             resourceInputs["allowAutoTiering"] = args?.allowAutoTiering;
             resourceInputs["capacityGib"] = args?.capacityGib;
             resourceInputs["customPerformanceEnabled"] = args?.customPerformanceEnabled;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["enableHotTierAutoResize"] = args?.enableHotTierAutoResize;
             resourceInputs["hotTierSizeGib"] = args?.hotTierSizeGib;
@@ -413,6 +424,15 @@ export interface StoragePoolState {
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
     customPerformanceEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -571,6 +591,15 @@ export interface StoragePoolArgs {
      * Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
      */
     customPerformanceEnabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

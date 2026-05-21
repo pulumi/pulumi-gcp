@@ -69,6 +69,15 @@ export class Workload extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-defined description of a Workload.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -136,6 +145,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["applicationId"] = state?.applicationId;
             resourceInputs["attributes"] = state?.attributes;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["discoveredWorkload"] = state?.discoveredWorkload;
             resourceInputs["displayName"] = state?.displayName;
@@ -164,6 +174,7 @@ export class Workload extends pulumi.CustomResource {
             }
             resourceInputs["applicationId"] = args?.applicationId;
             resourceInputs["attributes"] = args?.attributes;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["discoveredWorkload"] = args?.discoveredWorkload;
             resourceInputs["displayName"] = args?.displayName;
@@ -200,6 +211,15 @@ export interface WorkloadState {
      * Output only. Create time.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-defined description of a Workload.
      */
@@ -266,6 +286,15 @@ export interface WorkloadArgs {
      * Structure is documented below.
      */
     attributes?: pulumi.Input<inputs.apphub.WorkloadAttributes | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-defined description of a Workload.
      */

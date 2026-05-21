@@ -60,6 +60,7 @@ export interface GetInstanceArgs {
  */
 export interface GetInstanceResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly deletionProtectionEnabled: boolean;
     readonly deletionProtectionReason: string;
     readonly description: string;

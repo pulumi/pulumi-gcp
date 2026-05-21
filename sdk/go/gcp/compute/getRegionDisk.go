@@ -46,6 +46,7 @@ type LookupRegionDiskResult struct {
 	CreateSnapshotBeforeDestroy       bool                             `pulumi:"createSnapshotBeforeDestroy"`
 	CreateSnapshotBeforeDestroyPrefix string                           `pulumi:"createSnapshotBeforeDestroyPrefix"`
 	CreationTimestamp                 string                           `pulumi:"creationTimestamp"`
+	DeletionPolicy                    string                           `pulumi:"deletionPolicy"`
 	Description                       string                           `pulumi:"description"`
 	DiskEncryptionKeys                []GetRegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
 	DiskId                            string                           `pulumi:"diskId"`
@@ -54,6 +55,7 @@ type LookupRegionDiskResult struct {
 	GuestOsFeatures                   []GetRegionDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                           string                                     `pulumi:"id"`
+	Image                        string                                     `pulumi:"image"`
 	Interface                    string                                     `pulumi:"interface"`
 	LabelFingerprint             string                                     `pulumi:"labelFingerprint"`
 	Labels                       map[string]string                          `pulumi:"labels"`
@@ -73,6 +75,8 @@ type LookupRegionDiskResult struct {
 	Snapshot                     string                                     `pulumi:"snapshot"`
 	SourceDisk                   string                                     `pulumi:"sourceDisk"`
 	SourceDiskId                 string                                     `pulumi:"sourceDiskId"`
+	SourceImageEncryptionKeys    []GetRegionDiskSourceImageEncryptionKey    `pulumi:"sourceImageEncryptionKeys"`
+	SourceImageId                string                                     `pulumi:"sourceImageId"`
 	SourceSnapshotEncryptionKeys []GetRegionDiskSourceSnapshotEncryptionKey `pulumi:"sourceSnapshotEncryptionKeys"`
 	SourceSnapshotId             string                                     `pulumi:"sourceSnapshotId"`
 	Type                         string                                     `pulumi:"type"`
@@ -140,6 +144,10 @@ func (o LookupRegionDiskResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+func (o LookupRegionDiskResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 func (o LookupRegionDiskResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -167,6 +175,10 @@ func (o LookupRegionDiskResultOutput) GuestOsFeatures() GetRegionDiskGuestOsFeat
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRegionDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionDiskResultOutput) Image() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Image }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionDiskResultOutput) Interface() pulumi.StringOutput {
@@ -243,6 +255,16 @@ func (o LookupRegionDiskResultOutput) SourceDisk() pulumi.StringOutput {
 
 func (o LookupRegionDiskResultOutput) SourceDiskId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceDiskId }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionDiskResultOutput) SourceImageEncryptionKeys() GetRegionDiskSourceImageEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) []GetRegionDiskSourceImageEncryptionKey {
+		return v.SourceImageEncryptionKeys
+	}).(GetRegionDiskSourceImageEncryptionKeyArrayOutput)
+}
+
+func (o LookupRegionDiskResultOutput) SourceImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.SourceImageId }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionDiskResultOutput) SourceSnapshotEncryptionKeys() GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {

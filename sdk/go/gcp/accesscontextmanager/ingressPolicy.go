@@ -34,6 +34,13 @@ type IngressPolicy struct {
 
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of the Service Perimeter to add this resource to.
 	IngressPolicyName pulumi.StringOutput `pulumi:"ingressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
@@ -78,6 +85,13 @@ func GetIngressPolicy(ctx *pulumi.Context,
 type ingressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId *string `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Service Perimeter to add this resource to.
 	IngressPolicyName *string `pulumi:"ingressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
@@ -87,6 +101,13 @@ type ingressPolicyState struct {
 type IngressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
 	IngressPolicyName pulumi.StringPtrInput
 	// A GCP resource that is inside of the service perimeter.
@@ -98,6 +119,13 @@ func (IngressPolicyState) ElementType() reflect.Type {
 }
 
 type ingressPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Service Perimeter to add this resource to.
 	IngressPolicyName string `pulumi:"ingressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
@@ -106,6 +134,13 @@ type ingressPolicyArgs struct {
 
 // The set of arguments for constructing a IngressPolicy resource.
 type IngressPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
 	IngressPolicyName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
@@ -202,6 +237,16 @@ func (o IngressPolicyOutput) ToIngressPolicyOutputWithContext(ctx context.Contex
 // The name of the Access Policy this resource belongs to.
 func (o IngressPolicyOutput) AccessPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IngressPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o IngressPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngressPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of the Service Perimeter to add this resource to.

@@ -176,6 +176,13 @@ type Posture struct {
 
 	// Time the Posture was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the posture.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// For Resource freshness validation (https://google.aip.dev/154)
@@ -250,6 +257,13 @@ func GetPosture(ctx *pulumi.Context,
 type postureState struct {
 	// Time the Posture was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the posture.
 	Description *string `pulumi:"description"`
 	// For Resource freshness validation (https://google.aip.dev/154)
@@ -280,6 +294,13 @@ type postureState struct {
 type PostureState struct {
 	// Time the Posture was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the posture.
 	Description pulumi.StringPtrInput
 	// For Resource freshness validation (https://google.aip.dev/154)
@@ -312,6 +333,13 @@ func (PostureState) ElementType() reflect.Type {
 }
 
 type postureArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the posture.
 	Description *string `pulumi:"description"`
 	// Location of the resource, eg: global.
@@ -331,6 +359,13 @@ type postureArgs struct {
 
 // The set of arguments for constructing a Posture resource.
 type PostureArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the posture.
 	Description pulumi.StringPtrInput
 	// Location of the resource, eg: global.
@@ -438,6 +473,16 @@ func (o PostureOutput) ToPostureOutputWithContext(ctx context.Context) PostureOu
 // Time the Posture was created in UTC.
 func (o PostureOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PostureOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Posture) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the posture.

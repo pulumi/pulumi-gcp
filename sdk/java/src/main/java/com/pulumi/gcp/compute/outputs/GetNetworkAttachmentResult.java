@@ -17,6 +17,7 @@ public final class GetNetworkAttachmentResult {
     private List<GetNetworkAttachmentConnectionEndpoint> connectionEndpoints;
     private String connectionPreference;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private String fingerprint;
     private String id;
@@ -40,6 +41,9 @@ public final class GetNetworkAttachmentResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -93,6 +97,7 @@ public final class GetNetworkAttachmentResult {
         private List<GetNetworkAttachmentConnectionEndpoint> connectionEndpoints;
         private String connectionPreference;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private String fingerprint;
         private String id;
@@ -112,6 +117,7 @@ public final class GetNetworkAttachmentResult {
     	      this.connectionEndpoints = defaults.connectionEndpoints;
     	      this.connectionPreference = defaults.connectionPreference;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
@@ -152,6 +158,14 @@ public final class GetNetworkAttachmentResult {
               throw new MissingRequiredPropertyException("GetNetworkAttachmentResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkAttachmentResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -270,6 +284,7 @@ public final class GetNetworkAttachmentResult {
             _resultValue.connectionEndpoints = connectionEndpoints;
             _resultValue.connectionPreference = connectionPreference;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;

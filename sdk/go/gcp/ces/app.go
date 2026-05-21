@@ -12,7 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Description
+// Customer Engagement Suite App
+//
+// To get more information about App, see:
+//
+// * [API documentation](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rest/v1/projects.locations.apps)
 //
 // ## Example Usage
 //
@@ -519,6 +523,13 @@ type App struct {
 	// channel, such as web UI or telephony.
 	// Structure is documented below.
 	DefaultChannelProfile AppDefaultChannelProfilePtrOutput `pulumi:"defaultChannelProfile"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Number of deployments in the app.
 	DeploymentCount pulumi.IntOutput `pulumi:"deploymentCount"`
 	// Human-readable description of the app.
@@ -568,6 +579,9 @@ type App struct {
 	// TimeZone settings of the app.
 	// Structure is documented below.
 	TimeZoneSettings AppTimeZoneSettingsPtrOutput `pulumi:"timeZoneSettings"`
+	// The tool execution mode for the app.
+	// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+	ToolExecutionMode pulumi.StringPtrOutput `pulumi:"toolExecutionMode"`
 	// Timestamp when the app was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// The declarations of the variables.
@@ -634,6 +648,13 @@ type appState struct {
 	// channel, such as web UI or telephony.
 	// Structure is documented below.
 	DefaultChannelProfile *AppDefaultChannelProfile `pulumi:"defaultChannelProfile"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Number of deployments in the app.
 	DeploymentCount *int `pulumi:"deploymentCount"`
 	// Human-readable description of the app.
@@ -683,6 +704,9 @@ type appState struct {
 	// TimeZone settings of the app.
 	// Structure is documented below.
 	TimeZoneSettings *AppTimeZoneSettings `pulumi:"timeZoneSettings"`
+	// The tool execution mode for the app.
+	// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+	ToolExecutionMode *string `pulumi:"toolExecutionMode"`
 	// Timestamp when the app was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 	// The declarations of the variables.
@@ -711,6 +735,13 @@ type AppState struct {
 	// channel, such as web UI or telephony.
 	// Structure is documented below.
 	DefaultChannelProfile AppDefaultChannelProfilePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Number of deployments in the app.
 	DeploymentCount pulumi.IntPtrInput
 	// Human-readable description of the app.
@@ -760,6 +791,9 @@ type AppState struct {
 	// TimeZone settings of the app.
 	// Structure is documented below.
 	TimeZoneSettings AppTimeZoneSettingsPtrInput
+	// The tool execution mode for the app.
+	// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+	ToolExecutionMode pulumi.StringPtrInput
 	// Timestamp when the app was last updated.
 	UpdateTime pulumi.StringPtrInput
 	// The declarations of the variables.
@@ -790,6 +824,13 @@ type appArgs struct {
 	// channel, such as web UI or telephony.
 	// Structure is documented below.
 	DefaultChannelProfile *AppDefaultChannelProfile `pulumi:"defaultChannelProfile"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human-readable description of the app.
 	Description *string `pulumi:"description"`
 	// Display name of the app.
@@ -830,6 +871,9 @@ type appArgs struct {
 	// TimeZone settings of the app.
 	// Structure is documented below.
 	TimeZoneSettings *AppTimeZoneSettings `pulumi:"timeZoneSettings"`
+	// The tool execution mode for the app.
+	// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+	ToolExecutionMode *string `pulumi:"toolExecutionMode"`
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations []AppVariableDeclaration `pulumi:"variableDeclarations"`
@@ -855,6 +899,13 @@ type AppArgs struct {
 	// channel, such as web UI or telephony.
 	// Structure is documented below.
 	DefaultChannelProfile AppDefaultChannelProfilePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human-readable description of the app.
 	Description pulumi.StringPtrInput
 	// Display name of the app.
@@ -895,6 +946,9 @@ type AppArgs struct {
 	// TimeZone settings of the app.
 	// Structure is documented below.
 	TimeZoneSettings AppTimeZoneSettingsPtrInput
+	// The tool execution mode for the app.
+	// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+	ToolExecutionMode pulumi.StringPtrInput
 	// The declarations of the variables.
 	// Structure is documented below.
 	VariableDeclarations AppVariableDeclarationArrayInput
@@ -1025,6 +1079,16 @@ func (o AppOutput) DefaultChannelProfile() AppDefaultChannelProfilePtrOutput {
 	return o.ApplyT(func(v *App) AppDefaultChannelProfilePtrOutput { return v.DefaultChannelProfile }).(AppDefaultChannelProfilePtrOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // Number of deployments in the app.
 func (o AppOutput) DeploymentCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *App) pulumi.IntOutput { return v.DeploymentCount }).(pulumi.IntOutput)
@@ -1123,6 +1187,12 @@ func (o AppOutput) RootAgent() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o AppOutput) TimeZoneSettings() AppTimeZoneSettingsPtrOutput {
 	return o.ApplyT(func(v *App) AppTimeZoneSettingsPtrOutput { return v.TimeZoneSettings }).(AppTimeZoneSettingsPtrOutput)
+}
+
+// The tool execution mode for the app.
+// See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+func (o AppOutput) ToolExecutionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.ToolExecutionMode }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp when the app was last updated.

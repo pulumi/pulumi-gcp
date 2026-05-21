@@ -168,6 +168,17 @@ namespace Pulumi.Gcp.Folder
         public Output<bool> AncestorHasActiveKeyVersion { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.
         /// </summary>
         [Output("enrolledAncestor")]
@@ -266,6 +277,17 @@ namespace Pulumi.Gcp.Folder
         [Input("activeKeyVersion")]
         public Input<string>? ActiveKeyVersion { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("enrolledServices", required: true)]
         private InputList<Inputs.AccessApprovalSettingsEnrolledServiceArgs>? _enrolledServices;
 
@@ -323,6 +345,17 @@ namespace Pulumi.Gcp.Folder
         /// </summary>
         [Input("ancestorHasActiveKeyVersion")]
         public Input<bool>? AncestorHasActiveKeyVersion { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors of the Folder.

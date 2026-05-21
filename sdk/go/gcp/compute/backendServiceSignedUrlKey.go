@@ -125,6 +125,13 @@ type BackendServiceSignedUrlKey struct {
 
 	// The backend service this signed URL key belongs.
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -181,6 +188,13 @@ func GetBackendServiceSignedUrlKey(ctx *pulumi.Context,
 type backendServiceSignedUrlKeyState struct {
 	// The backend service this signed URL key belongs.
 	BackendService *string `pulumi:"backendService"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -195,6 +209,13 @@ type backendServiceSignedUrlKeyState struct {
 type BackendServiceSignedUrlKeyState struct {
 	// The backend service this signed URL key belongs.
 	BackendService pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -213,6 +234,13 @@ func (BackendServiceSignedUrlKeyState) ElementType() reflect.Type {
 type backendServiceSignedUrlKeyArgs struct {
 	// The backend service this signed URL key belongs.
 	BackendService string `pulumi:"backendService"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -228,6 +256,13 @@ type backendServiceSignedUrlKeyArgs struct {
 type BackendServiceSignedUrlKeyArgs struct {
 	// The backend service this signed URL key belongs.
 	BackendService pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// 128-bit key value used for signing the URL. The key value must be a
 	// valid RFC 4648 Section 5 base64url encoded string.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
@@ -329,6 +364,16 @@ func (o BackendServiceSignedUrlKeyOutput) ToBackendServiceSignedUrlKeyOutputWith
 // The backend service this signed URL key belongs.
 func (o BackendServiceSignedUrlKeyOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackendServiceSignedUrlKey) pulumi.StringOutput { return v.BackendService }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackendServiceSignedUrlKeyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendServiceSignedUrlKey) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // 128-bit key value used for signing the URL. The key value must be a

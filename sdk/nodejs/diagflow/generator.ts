@@ -85,6 +85,15 @@ export class Generator extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. Human readable description of the generator.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -138,6 +147,7 @@ export class Generator extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GeneratorState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["generatorId"] = state?.generatorId;
             resourceInputs["inferenceParameter"] = state?.inferenceParameter;
@@ -155,6 +165,7 @@ export class Generator extends pulumi.CustomResource {
             if (args?.summarizationContext === undefined && !opts.urn) {
                 throw new Error("Missing required property 'summarizationContext'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["generatorId"] = args?.generatorId;
             resourceInputs["inferenceParameter"] = args?.inferenceParameter;
@@ -174,6 +185,15 @@ export class Generator extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Generator resources.
  */
 export interface GeneratorState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. Human readable description of the generator.
      */
@@ -220,6 +240,15 @@ export interface GeneratorState {
  * The set of arguments for constructing a Generator resource.
  */
 export interface GeneratorArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. Human readable description of the generator.
      */

@@ -75,6 +75,15 @@ export class RegionSslPolicy extends pulumi.CustomResource {
      */
     declare public readonly customFeatures: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -148,6 +157,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
             const state = argsOrState as RegionSslPolicyState | undefined;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["customFeatures"] = state?.customFeatures;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["enabledFeatures"] = state?.enabledFeatures;
             resourceInputs["fingerprint"] = state?.fingerprint;
@@ -160,6 +170,7 @@ export class RegionSslPolicy extends pulumi.CustomResource {
         } else {
             const args = argsOrState as RegionSslPolicyArgs | undefined;
             resourceInputs["customFeatures"] = args?.customFeatures;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["minTlsVersion"] = args?.minTlsVersion;
             resourceInputs["name"] = args?.name;
@@ -194,6 +205,15 @@ export interface RegionSslPolicyState {
      * *must not* be present when using any other profile.
      */
     customFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -268,6 +288,15 @@ export interface RegionSslPolicyArgs {
      * *must not* be present when using any other profile.
      */
     customFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

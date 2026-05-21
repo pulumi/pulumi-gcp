@@ -63,6 +63,7 @@ export interface GetWorkloadIdentityPoolProviderResult {
     readonly attributeCondition: string;
     readonly attributeMapping: {[key: string]: string};
     readonly aws: outputs.iam.GetWorkloadIdentityPoolProviderAw[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly disabled: boolean;
     readonly displayName: string;

@@ -127,110 +127,111 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
-// Parent: pulumi.String("organizations/123456789"),
-// ShortName: pulumi.String("tagkey"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-// Parent: tagKey1.ID(),
-// ShortName: pulumi.String("tagvalue"),
-// })
-// if err != nil {
-// return err
-// }
-// network1, err := compute.NewNetwork(ctx, "network1", &compute.NetworkArgs{
-// Name: pulumi.String("network-1"),
-// })
-// if err != nil {
-// return err
-// }
-// targetGatewayTags, err := compute.NewVPNGateway(ctx, "target_gateway_tags", &compute.VPNGatewayArgs{
-// Name: pulumi.String("vpn-1"),
-// Network: network1.ID(),
-// Params: &compute.VPNGatewayParamsArgs{
-// ResourceManagerTags: pulumi.All(tagKey1.ID(),tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKey1Id := _args[0].(string)
-// tagValue1Id := _args[1].(string)
-// return map[string]string{
-// tagKey1Id: tagValue1Id,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// vpnStaticIp, err := compute.NewAddress(ctx, "vpn_static_ip", &compute.AddressArgs{
-// Name: pulumi.String("vpn-static-ip"),
-// })
-// if err != nil {
-// return err
-// }
-// frEsp, err := compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
-// Name: pulumi.String("fr-esp"),
-// IpProtocol: pulumi.String("ESP"),
-// IpAddress: vpnStaticIp.Address,
-// Target: targetGatewayTags.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// frUdp500, err := compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
-// Name: pulumi.String("fr-udp500"),
-// IpProtocol: pulumi.String("UDP"),
-// PortRange: pulumi.String("500"),
-// IpAddress: vpnStaticIp.Address,
-// Target: targetGatewayTags.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// frUdp4500, err := compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
-// Name: pulumi.String("fr-udp4500"),
-// IpProtocol: pulumi.String("UDP"),
-// PortRange: pulumi.String("4500"),
-// IpAddress: vpnStaticIp.Address,
-// Target: targetGatewayTags.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
-// Name: pulumi.String("tunnel1"),
-// PeerIp: pulumi.String("15.0.0.120"),
-// SharedSecret: pulumi.String("a secret message"),
-// TargetVpnGateway: targetGatewayTags.ID(),
-// }, pulumi.DependsOn([]pulumi.Resource{
-// frEsp,
-// frUdp500,
-// frUdp4500,
-// }))
-// if err != nil {
-// return err
-// }
-// _, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
-// Name: pulumi.String("route1"),
-// Network: network1.Name,
-// DestRange: pulumi.String("15.0.0.0/24"),
-// Priority: pulumi.Int(1000),
-// NextHopVpnTunnel: tunnel1.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
+//				Parent:    pulumi.String("organizations/123456789"),
+//				ShortName: pulumi.String("tagkey"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
+//				Parent:    tagKey1.ID(),
+//				ShortName: pulumi.String("tagvalue"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			network1, err := compute.NewNetwork(ctx, "network1", &compute.NetworkArgs{
+//				Name: pulumi.String("network-1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			targetGatewayTags, err := compute.NewVPNGateway(ctx, "target_gateway_tags", &compute.VPNGatewayArgs{
+//				Name:    pulumi.String("vpn-1"),
+//				Network: network1.ID(),
+//				Params: &compute.VPNGatewayParamsArgs{
+//					ResourceManagerTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//						tagKey1Id := _args[0].(string)
+//						tagValue1Id := _args[1].(string)
+//						return map[string]string{
+//							tagKey1Id: tagValue1Id,
+//						}, nil
+//					}).(pulumi.StringMapOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vpnStaticIp, err := compute.NewAddress(ctx, "vpn_static_ip", &compute.AddressArgs{
+//				Name: pulumi.String("vpn-static-ip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frEsp, err := compute.NewForwardingRule(ctx, "fr_esp", &compute.ForwardingRuleArgs{
+//				Name:       pulumi.String("fr-esp"),
+//				IpProtocol: pulumi.String("ESP"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGatewayTags.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frUdp500, err := compute.NewForwardingRule(ctx, "fr_udp500", &compute.ForwardingRuleArgs{
+//				Name:       pulumi.String("fr-udp500"),
+//				IpProtocol: pulumi.String("UDP"),
+//				PortRange:  pulumi.String("500"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGatewayTags.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			frUdp4500, err := compute.NewForwardingRule(ctx, "fr_udp4500", &compute.ForwardingRuleArgs{
+//				Name:       pulumi.String("fr-udp4500"),
+//				IpProtocol: pulumi.String("UDP"),
+//				PortRange:  pulumi.String("4500"),
+//				IpAddress:  vpnStaticIp.Address,
+//				Target:     targetGatewayTags.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+//				Name:             pulumi.String("tunnel1"),
+//				PeerIp:           pulumi.String("15.0.0.120"),
+//				SharedSecret:     pulumi.String("a secret message"),
+//				TargetVpnGateway: targetGatewayTags.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				frEsp,
+//				frUdp500,
+//				frUdp4500,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+//				Name:             pulumi.String("route1"),
+//				Network:          network1.Name,
+//				DestRange:        pulumi.String("15.0.0.0/24"),
+//				Priority:         pulumi.Int(1000),
+//				NextHopVpnTunnel: tunnel1.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -255,6 +256,13 @@ type VPNGateway struct {
 
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The unique identifier for the resource.
@@ -316,6 +324,13 @@ func GetVPNGateway(ctx *pulumi.Context,
 type vpngatewayState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The unique identifier for the resource.
@@ -345,6 +360,13 @@ type vpngatewayState struct {
 type VPNGatewayState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The unique identifier for the resource.
@@ -376,6 +398,13 @@ func (VPNGatewayState) ElementType() reflect.Type {
 }
 
 type vpngatewayArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Name of the resource. Provided by the client when the resource is
@@ -400,6 +429,13 @@ type vpngatewayArgs struct {
 
 // The set of arguments for constructing a VPNGateway resource.
 type VPNGatewayArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -512,6 +548,16 @@ func (o VPNGatewayOutput) ToVPNGatewayOutputWithContext(ctx context.Context) VPN
 // Creation timestamp in RFC3339 text format.
 func (o VPNGatewayOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNGateway) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VPNGatewayOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *VPNGateway) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

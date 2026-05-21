@@ -138,6 +138,13 @@ type CertificateIssuanceConfig struct {
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -230,6 +237,13 @@ type certificateIssuanceConfigState struct {
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -276,6 +290,13 @@ type CertificateIssuanceConfigState struct {
 	// accurate to nanoseconds with up to nine fractional digits.
 	// Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -322,6 +343,13 @@ type certificateIssuanceConfigArgs struct {
 	// The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
 	// Structure is documented below.
 	CertificateAuthorityConfig CertificateIssuanceConfigCertificateAuthorityConfig `pulumi:"certificateAuthorityConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description *string `pulumi:"description"`
 	// Key algorithm to use when generating the private key.
@@ -356,6 +384,13 @@ type CertificateIssuanceConfigArgs struct {
 	// The CA that issues the workload certificate. It includes the CA address, type, authentication to CA service, etc.
 	// Structure is documented below.
 	CertificateAuthorityConfig CertificateIssuanceConfigCertificateAuthorityConfigInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// One or more paragraphs of text description of a CertificateIssuanceConfig.
 	Description pulumi.StringPtrInput
 	// Key algorithm to use when generating the private key.
@@ -485,6 +520,16 @@ func (o CertificateIssuanceConfigOutput) CertificateAuthorityConfig() Certificat
 // Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o CertificateIssuanceConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CertificateIssuanceConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // One or more paragraphs of text description of a CertificateIssuanceConfig.

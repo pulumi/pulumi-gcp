@@ -22,6 +22,7 @@ __all__ = ['ManagementServerArgs', 'ManagementServer']
 class ManagementServerArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['ManagementServerNetworkArgs']]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -30,6 +31,12 @@ class ManagementServerArgs:
         The set of arguments for constructing a ManagementServer resource.
 
         :param pulumi.Input[_builtins.str] location: The location for the management server (management console)
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] name: The name of management server (management console)
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerNetworkArgs']]] networks: Network details to create management server (management console).
                Structure is documented below.
@@ -40,6 +47,8 @@ class ManagementServerArgs:
                Possible values are: `BACKUP_RESTORE`.
         """
         pulumi.set(__self__, "location", location)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -60,6 +69,23 @@ class ManagementServerArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -117,6 +143,7 @@ class ManagementServerArgs:
 @pulumi.input_type
 class _ManagementServerState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  management_uris: pulumi.Input[Optional[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -127,6 +154,12 @@ class _ManagementServerState:
         """
         Input properties used for looking up and filtering ManagementServer resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the management server (management console)
         :param pulumi.Input[Sequence[pulumi.Input['ManagementServerManagementUriArgs']]] management_uris: The management console URI
                Structure is documented below.
@@ -140,6 +173,8 @@ class _ManagementServerState:
                Default value is `BACKUP_RESTORE`.
                Possible values are: `BACKUP_RESTORE`.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if management_uris is not None:
@@ -154,6 +189,23 @@ class _ManagementServerState:
             pulumi.set(__self__, "project", project)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -251,6 +303,7 @@ class ManagementServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]]] = None,
@@ -311,6 +364,12 @@ class ManagementServer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the management server (management console)
         :param pulumi.Input[_builtins.str] name: The name of management server (management console)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]] networks: Network details to create management server (management console).
@@ -394,6 +453,7 @@ class ManagementServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagementServerNetworkArgs', 'ManagementServerNetworkArgsDict']]]]] = None,
@@ -408,6 +468,7 @@ class ManagementServer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagementServerArgs.__new__(ManagementServerArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -427,6 +488,7 @@ class ManagementServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             management_uris: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ManagementServerManagementUriArgs', 'ManagementServerManagementUriArgsDict']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -441,6 +503,12 @@ class ManagementServer(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] location: The location for the management server (management console)
         :param pulumi.Input[Sequence[pulumi.Input[Union['ManagementServerManagementUriArgs', 'ManagementServerManagementUriArgsDict']]]] management_uris: The management console URI
                Structure is documented below.
@@ -458,6 +526,7 @@ class ManagementServer(pulumi.CustomResource):
 
         __props__ = _ManagementServerState.__new__(_ManagementServerState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["location"] = location
         __props__.__dict__["management_uris"] = management_uris
         __props__.__dict__["name"] = name
@@ -466,6 +535,19 @@ class ManagementServer(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["type"] = type
         return ManagementServer(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

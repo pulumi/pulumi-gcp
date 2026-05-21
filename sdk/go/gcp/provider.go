@@ -92,6 +92,7 @@ type Provider struct {
 	DataprocGdcCustomEndpoint              pulumi.StringPtrOutput `pulumi:"dataprocGdcCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint        pulumi.StringPtrOutput `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastreamCustomEndpoint               pulumi.StringPtrOutput `pulumi:"datastreamCustomEndpoint"`
+	DeletionPolicy                         pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrOutput `pulumi:"deploymentManagerCustomEndpoint"`
 	DeveloperConnectCustomEndpoint         pulumi.StringPtrOutput `pulumi:"developerConnectCustomEndpoint"`
 	DialogflowCustomEndpoint               pulumi.StringPtrOutput `pulumi:"dialogflowCustomEndpoint"`
@@ -336,6 +337,7 @@ type providerArgs struct {
 	DataprocMetastoreCustomEndpoint        *string                      `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastreamCustomEndpoint               *string                      `pulumi:"datastreamCustomEndpoint"`
 	DefaultLabels                          map[string]string            `pulumi:"defaultLabels"`
+	DeletionPolicy                         *string                      `pulumi:"deletionPolicy"`
 	DeploymentManagerCustomEndpoint        *string                      `pulumi:"deploymentManagerCustomEndpoint"`
 	DeveloperConnectCustomEndpoint         *string                      `pulumi:"developerConnectCustomEndpoint"`
 	DialogflowCustomEndpoint               *string                      `pulumi:"dialogflowCustomEndpoint"`
@@ -550,6 +552,7 @@ type ProviderArgs struct {
 	DataprocMetastoreCustomEndpoint        pulumi.StringPtrInput
 	DatastreamCustomEndpoint               pulumi.StringPtrInput
 	DefaultLabels                          pulumi.StringMapInput
+	DeletionPolicy                         pulumi.StringPtrInput
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrInput
 	DeveloperConnectCustomEndpoint         pulumi.StringPtrInput
 	DialogflowCustomEndpoint               pulumi.StringPtrInput
@@ -1039,6 +1042,10 @@ func (o ProviderOutput) DataprocMetastoreCustomEndpoint() pulumi.StringPtrOutput
 
 func (o ProviderOutput) DatastreamCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DatastreamCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) DeploymentManagerCustomEndpoint() pulumi.StringPtrOutput {

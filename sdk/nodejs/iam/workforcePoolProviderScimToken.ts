@@ -122,6 +122,15 @@ export class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A user-specified display name for the scim token. Cannot exceed 32 characters.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -174,6 +183,7 @@ export class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkforcePoolProviderScimTokenState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -200,6 +210,7 @@ export class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
             if (args?.workforcePoolId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'workforcePoolId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["location"] = args?.location;
             resourceInputs["providerId"] = args?.providerId;
@@ -219,6 +230,15 @@ export class WorkforcePoolProviderScimToken extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkforcePoolProviderScimToken resources.
  */
 export interface WorkforcePoolProviderScimTokenState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-specified display name for the scim token. Cannot exceed 32 characters.
      */
@@ -264,6 +284,15 @@ export interface WorkforcePoolProviderScimTokenState {
  * The set of arguments for constructing a WorkforcePoolProviderScimToken resource.
  */
 export interface WorkforcePoolProviderScimTokenArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-specified display name for the scim token. Cannot exceed 32 characters.
      */

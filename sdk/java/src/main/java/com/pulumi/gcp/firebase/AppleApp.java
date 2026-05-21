@@ -201,22 +201,28 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
         return this.bundleId;
     }
     /**
-     * (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-     * rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-     * serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return (Optional) Set to `ABANDON` to allow the Apple to be untracked from terraform state
-     * rather than deleted upon `terraform destroy`. This is useful because the Apple may be
-     * serving traffic. Set to `DELETE` to delete the Apple. Defaults to `DELETE`.
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The user-assigned display name of the App.

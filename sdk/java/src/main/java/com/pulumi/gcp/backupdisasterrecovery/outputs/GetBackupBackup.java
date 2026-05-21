@@ -5,7 +5,10 @@ package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupBackupComputeInstanceBackupProperty;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupBackupDiskBackupProperty;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -21,6 +24,11 @@ public final class GetBackupBackup {
      */
     private String backupVaultId;
     /**
+     * @return Compute instance related properties of the backup.
+     * 
+     */
+    private List<GetBackupBackupComputeInstanceBackupProperty> computeInstanceBackupProperties;
+    /**
      * @return The time when the backup was created.
      * 
      */
@@ -30,6 +38,11 @@ public final class GetBackupBackup {
      * 
      */
     private String dataSourceId;
+    /**
+     * @return Disk related properties of the backup.
+     * 
+     */
+    private List<GetBackupBackupDiskBackupProperty> diskBackupProperties;
     /**
      * @return The location in which the Backup belongs.
      * 
@@ -57,6 +70,13 @@ public final class GetBackupBackup {
         return this.backupVaultId;
     }
     /**
+     * @return Compute instance related properties of the backup.
+     * 
+     */
+    public List<GetBackupBackupComputeInstanceBackupProperty> computeInstanceBackupProperties() {
+        return this.computeInstanceBackupProperties;
+    }
+    /**
      * @return The time when the backup was created.
      * 
      */
@@ -69,6 +89,13 @@ public final class GetBackupBackup {
      */
     public String dataSourceId() {
         return this.dataSourceId;
+    }
+    /**
+     * @return Disk related properties of the backup.
+     * 
+     */
+    public List<GetBackupBackupDiskBackupProperty> diskBackupProperties() {
+        return this.diskBackupProperties;
     }
     /**
      * @return The location in which the Backup belongs.
@@ -96,8 +123,10 @@ public final class GetBackupBackup {
     public static final class Builder {
         private String backupId;
         private String backupVaultId;
+        private List<GetBackupBackupComputeInstanceBackupProperty> computeInstanceBackupProperties;
         private String createTime;
         private String dataSourceId;
+        private List<GetBackupBackupDiskBackupProperty> diskBackupProperties;
         private String location;
         private String name;
         public Builder() {}
@@ -105,8 +134,10 @@ public final class GetBackupBackup {
     	      Objects.requireNonNull(defaults);
     	      this.backupId = defaults.backupId;
     	      this.backupVaultId = defaults.backupVaultId;
+    	      this.computeInstanceBackupProperties = defaults.computeInstanceBackupProperties;
     	      this.createTime = defaults.createTime;
     	      this.dataSourceId = defaults.dataSourceId;
+    	      this.diskBackupProperties = defaults.diskBackupProperties;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
         }
@@ -128,6 +159,17 @@ public final class GetBackupBackup {
             return this;
         }
         @CustomType.Setter
+        public Builder computeInstanceBackupProperties(List<GetBackupBackupComputeInstanceBackupProperty> computeInstanceBackupProperties) {
+            if (computeInstanceBackupProperties == null) {
+              throw new MissingRequiredPropertyException("GetBackupBackup", "computeInstanceBackupProperties");
+            }
+            this.computeInstanceBackupProperties = computeInstanceBackupProperties;
+            return this;
+        }
+        public Builder computeInstanceBackupProperties(GetBackupBackupComputeInstanceBackupProperty... computeInstanceBackupProperties) {
+            return computeInstanceBackupProperties(List.of(computeInstanceBackupProperties));
+        }
+        @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
               throw new MissingRequiredPropertyException("GetBackupBackup", "createTime");
@@ -142,6 +184,17 @@ public final class GetBackupBackup {
             }
             this.dataSourceId = dataSourceId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder diskBackupProperties(List<GetBackupBackupDiskBackupProperty> diskBackupProperties) {
+            if (diskBackupProperties == null) {
+              throw new MissingRequiredPropertyException("GetBackupBackup", "diskBackupProperties");
+            }
+            this.diskBackupProperties = diskBackupProperties;
+            return this;
+        }
+        public Builder diskBackupProperties(GetBackupBackupDiskBackupProperty... diskBackupProperties) {
+            return diskBackupProperties(List.of(diskBackupProperties));
         }
         @CustomType.Setter
         public Builder location(String location) {
@@ -163,8 +216,10 @@ public final class GetBackupBackup {
             final var _resultValue = new GetBackupBackup();
             _resultValue.backupId = backupId;
             _resultValue.backupVaultId = backupVaultId;
+            _resultValue.computeInstanceBackupProperties = computeInstanceBackupProperties;
             _resultValue.createTime = createTime;
             _resultValue.dataSourceId = dataSourceId;
+            _resultValue.diskBackupProperties = diskBackupProperties;
             _resultValue.location = location;
             _resultValue.name = name;
             return _resultValue;

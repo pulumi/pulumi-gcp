@@ -89,6 +89,13 @@ import (
 type EntityType struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of this entity type to be displayed on the console.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
@@ -147,6 +154,13 @@ func GetEntityType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EntityType resources.
 type entityTypeState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of this entity type to be displayed on the console.
 	DisplayName *string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
@@ -170,6 +184,13 @@ type entityTypeState struct {
 }
 
 type EntityTypeState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of this entity type to be displayed on the console.
 	DisplayName pulumi.StringPtrInput
 	// Enables fuzzy entity extraction during classification.
@@ -197,6 +218,13 @@ func (EntityTypeState) ElementType() reflect.Type {
 }
 
 type entityTypeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of this entity type to be displayed on the console.
 	DisplayName string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
@@ -218,6 +246,13 @@ type entityTypeArgs struct {
 
 // The set of arguments for constructing a EntityType resource.
 type EntityTypeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of this entity type to be displayed on the console.
 	DisplayName pulumi.StringInput
 	// Enables fuzzy entity extraction during classification.
@@ -322,6 +357,16 @@ func (o EntityTypeOutput) ToEntityTypeOutput() EntityTypeOutput {
 
 func (o EntityTypeOutput) ToEntityTypeOutputWithContext(ctx context.Context) EntityTypeOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EntityTypeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntityType) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of this entity type to be displayed on the console.

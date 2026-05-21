@@ -50,6 +50,7 @@ export interface GetConfigArgs {
  * A collection of values returned by getConfig.
  */
 export interface GetConfigResult {
+    readonly deletionPolicy: string;
     readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.

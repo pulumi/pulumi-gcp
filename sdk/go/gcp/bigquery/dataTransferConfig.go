@@ -241,6 +241,13 @@ type DataTransferConfig struct {
 	DataRefreshWindowDays pulumi.IntPtrOutput `pulumi:"dataRefreshWindowDays"`
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringOutput `pulumi:"dataSourceId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The BigQuery target dataset id.
 	DestinationDatasetId pulumi.StringPtrOutput `pulumi:"destinationDatasetId"`
 	// When set to true, no runs are scheduled for a given transfer.
@@ -348,6 +355,13 @@ type dataTransferConfigState struct {
 	DataRefreshWindowDays *int `pulumi:"dataRefreshWindowDays"`
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId *string `pulumi:"dataSourceId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The BigQuery target dataset id.
 	DestinationDatasetId *string `pulumi:"destinationDatasetId"`
 	// When set to true, no runs are scheduled for a given transfer.
@@ -417,6 +431,13 @@ type DataTransferConfigState struct {
 	DataRefreshWindowDays pulumi.IntPtrInput
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The BigQuery target dataset id.
 	DestinationDatasetId pulumi.StringPtrInput
 	// When set to true, no runs are scheduled for a given transfer.
@@ -490,6 +511,13 @@ type dataTransferConfigArgs struct {
 	DataRefreshWindowDays *int `pulumi:"dataRefreshWindowDays"`
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId string `pulumi:"dataSourceId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The BigQuery target dataset id.
 	DestinationDatasetId *string `pulumi:"destinationDatasetId"`
 	// When set to true, no runs are scheduled for a given transfer.
@@ -554,6 +582,13 @@ type DataTransferConfigArgs struct {
 	DataRefreshWindowDays pulumi.IntPtrInput
 	// The data source id. Cannot be changed once the transfer config is created.
 	DataSourceId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The BigQuery target dataset id.
 	DestinationDatasetId pulumi.StringPtrInput
 	// When set to true, no runs are scheduled for a given transfer.
@@ -707,6 +742,16 @@ func (o DataTransferConfigOutput) DataRefreshWindowDays() pulumi.IntPtrOutput {
 // The data source id. Cannot be changed once the transfer config is created.
 func (o DataTransferConfigOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringOutput { return v.DataSourceId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataTransferConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataTransferConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The BigQuery target dataset id.

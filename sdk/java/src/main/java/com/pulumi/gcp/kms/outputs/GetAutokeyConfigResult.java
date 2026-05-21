@@ -10,6 +10,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAutokeyConfigResult {
+    private String deletionPolicy;
     private String etag;
     private String folder;
     /**
@@ -25,6 +26,9 @@ public final class GetAutokeyConfigResult {
     private String keyProjectResolutionMode;
 
     private GetAutokeyConfigResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     public String etag() {
         return this.etag;
     }
@@ -58,6 +62,7 @@ public final class GetAutokeyConfigResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String etag;
         private String folder;
         private String id;
@@ -66,6 +71,7 @@ public final class GetAutokeyConfigResult {
         public Builder() {}
         public Builder(GetAutokeyConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.etag = defaults.etag;
     	      this.folder = defaults.folder;
     	      this.id = defaults.id;
@@ -73,6 +79,14 @@ public final class GetAutokeyConfigResult {
     	      this.keyProjectResolutionMode = defaults.keyProjectResolutionMode;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAutokeyConfigResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder etag(String etag) {
             if (etag == null) {
@@ -115,6 +129,7 @@ public final class GetAutokeyConfigResult {
         }
         public GetAutokeyConfigResult build() {
             final var _resultValue = new GetAutokeyConfigResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.etag = etag;
             _resultValue.folder = folder;
             _resultValue.id = id;

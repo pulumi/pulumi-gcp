@@ -86,6 +86,13 @@ import (
 type InboundSamlConfig struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Human friendly display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// If this config allows users to sign in with the provider.
@@ -145,6 +152,13 @@ func GetInboundSamlConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InboundSamlConfig resources.
 type inboundSamlConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human friendly display name.
 	DisplayName *string `pulumi:"displayName"`
 	// If this config allows users to sign in with the provider.
@@ -166,6 +180,13 @@ type inboundSamlConfigState struct {
 }
 
 type InboundSamlConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human friendly display name.
 	DisplayName pulumi.StringPtrInput
 	// If this config allows users to sign in with the provider.
@@ -191,6 +212,13 @@ func (InboundSamlConfigState) ElementType() reflect.Type {
 }
 
 type inboundSamlConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Human friendly display name.
 	DisplayName string `pulumi:"displayName"`
 	// If this config allows users to sign in with the provider.
@@ -213,6 +241,13 @@ type inboundSamlConfigArgs struct {
 
 // The set of arguments for constructing a InboundSamlConfig resource.
 type InboundSamlConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Human friendly display name.
 	DisplayName pulumi.StringInput
 	// If this config allows users to sign in with the provider.
@@ -318,6 +353,16 @@ func (o InboundSamlConfigOutput) ToInboundSamlConfigOutput() InboundSamlConfigOu
 
 func (o InboundSamlConfigOutput) ToInboundSamlConfigOutputWithContext(ctx context.Context) InboundSamlConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InboundSamlConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InboundSamlConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Human friendly display name.

@@ -227,6 +227,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfile;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileUrlFilteringProfileUrlFilterArgs;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
  * import java.util.ArrayList;
@@ -330,6 +331,30 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customMirroringProfile);
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * An optional description of the profile. The Max length is 512 characters.
      * 
      */
@@ -427,7 +452,7 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
@@ -435,7 +460,7 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the parent this security profile group belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      * 
      */
     public Output<Optional<String>> parent() {

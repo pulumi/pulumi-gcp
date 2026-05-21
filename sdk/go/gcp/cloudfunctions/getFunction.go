@@ -72,6 +72,7 @@ type LookupFunctionResult struct {
 	BuildEnvironmentVariables map[string]string `pulumi:"buildEnvironmentVariables"`
 	BuildServiceAccount       string            `pulumi:"buildServiceAccount"`
 	BuildWorkerPool           string            `pulumi:"buildWorkerPool"`
+	DeletionPolicy            string            `pulumi:"deletionPolicy"`
 	// Description of the function.
 	Description      string            `pulumi:"description"`
 	DockerRegistry   string            `pulumi:"dockerRegistry"`
@@ -186,6 +187,10 @@ func (o LookupFunctionResultOutput) BuildServiceAccount() pulumi.StringOutput {
 
 func (o LookupFunctionResultOutput) BuildWorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.BuildWorkerPool }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the function.

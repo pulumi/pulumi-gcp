@@ -28,6 +28,7 @@ class SecurityActionArgs:
                  state: pulumi.Input[_builtins.str],
                  allow: pulumi.Input[Optional['SecurityActionAllowArgs']] = None,
                  api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deny: pulumi.Input[Optional['SecurityActionDenyArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,6 +51,12 @@ class SecurityActionArgs:
                list is deployed at the time of enforcement. If set, several restrictions are enforced on SecurityActions.
                There can be at most 100 enabled actions with proxies set in an env.
                Several other restrictions apply on conditions and are detailed later.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['SecurityActionDenyArgs'] deny: Deny a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional user provided description of the SecurityAction.
@@ -71,6 +78,8 @@ class SecurityActionArgs:
             pulumi.set(__self__, "allow", allow)
         if api_proxies is not None:
             pulumi.set(__self__, "api_proxies", api_proxies)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deny is not None:
             pulumi.set(__self__, "deny", deny)
         if description is not None:
@@ -174,6 +183,23 @@ class SecurityActionArgs:
         pulumi.set(self, "api_proxies", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def deny(self) -> pulumi.Input[Optional['SecurityActionDenyArgs']]:
         """
@@ -247,6 +273,7 @@ class _SecurityActionState:
                  api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  condition_config: pulumi.Input[Optional['SecurityActionConditionConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deny: pulumi.Input[Optional['SecurityActionDenyArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -271,6 +298,12 @@ class _SecurityActionState:
         :param pulumi.Input[_builtins.str] create_time: The create time for this SecurityAction.
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
                Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['SecurityActionDenyArgs'] deny: Deny a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional user provided description of the SecurityAction.
@@ -300,6 +333,8 @@ class _SecurityActionState:
             pulumi.set(__self__, "condition_config", condition_config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deny is not None:
             pulumi.set(__self__, "deny", deny)
         if description is not None:
@@ -375,6 +410,23 @@ class _SecurityActionState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -516,6 +568,7 @@ class SecurityAction(pulumi.CustomResource):
                  allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']]] = None,
                  api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -622,6 +675,12 @@ class SecurityAction(pulumi.CustomResource):
                Several other restrictions apply on conditions and are detailed later.
         :param pulumi.Input[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']] condition_config: A valid SecurityAction must contain at least one condition.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']] deny: Deny a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional user provided description of the SecurityAction.
@@ -750,6 +809,7 @@ class SecurityAction(pulumi.CustomResource):
                  allow: pulumi.Input[Optional[Union['SecurityActionAllowArgs', 'SecurityActionAllowArgsDict']]] = None,
                  api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  env_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -773,6 +833,7 @@ class SecurityAction(pulumi.CustomResource):
             if condition_config is None and not opts.urn:
                 raise TypeError("Missing required property 'condition_config'")
             __props__.__dict__["condition_config"] = condition_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deny"] = deny
             __props__.__dict__["description"] = description
             if env_id is None and not opts.urn:
@@ -806,6 +867,7 @@ class SecurityAction(pulumi.CustomResource):
             api_proxies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             condition_config: pulumi.Input[Optional[Union['SecurityActionConditionConfigArgs', 'SecurityActionConditionConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deny: pulumi.Input[Optional[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             env_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -834,6 +896,12 @@ class SecurityAction(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The create time for this SecurityAction.
                Uses RFC 3339, where generated output will always be Z-normalized and uses 0, 3, 6 or 9 fractional digits.
                Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['SecurityActionDenyArgs', 'SecurityActionDenyArgsDict']] deny: Deny a request through if it matches this SecurityAction.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] description: An optional user provided description of the SecurityAction.
@@ -863,6 +931,7 @@ class SecurityAction(pulumi.CustomResource):
         __props__.__dict__["api_proxies"] = api_proxies
         __props__.__dict__["condition_config"] = condition_config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deny"] = deny
         __props__.__dict__["description"] = description
         __props__.__dict__["env_id"] = env_id
@@ -913,6 +982,19 @@ class SecurityAction(pulumi.CustomResource):
         Offsets other than "Z" are also accepted. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z" or "2014-10-02T15:01:23+05:30".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

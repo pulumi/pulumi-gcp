@@ -30,13 +30,15 @@ type LookupBackupPlanArgs struct {
 
 // A collection of values returned by getBackupPlan.
 type LookupBackupPlanResult struct {
-	BackupPlanId              string                                `pulumi:"backupPlanId"`
-	BackupRules               []GetBackupPlanBackupRule             `pulumi:"backupRules"`
-	BackupVault               string                                `pulumi:"backupVault"`
-	BackupVaultServiceAccount string                                `pulumi:"backupVaultServiceAccount"`
-	CreateTime                string                                `pulumi:"createTime"`
-	Description               string                                `pulumi:"description"`
-	DiskBackupPlanProperties  []GetBackupPlanDiskBackupPlanProperty `pulumi:"diskBackupPlanProperties"`
+	BackupPlanId                        string                                           `pulumi:"backupPlanId"`
+	BackupRules                         []GetBackupPlanBackupRule                        `pulumi:"backupRules"`
+	BackupVault                         string                                           `pulumi:"backupVault"`
+	BackupVaultServiceAccount           string                                           `pulumi:"backupVaultServiceAccount"`
+	ComputeInstanceBackupPlanProperties []GetBackupPlanComputeInstanceBackupPlanProperty `pulumi:"computeInstanceBackupPlanProperties"`
+	CreateTime                          string                                           `pulumi:"createTime"`
+	DeletionPolicy                      string                                           `pulumi:"deletionPolicy"`
+	Description                         string                                           `pulumi:"description"`
+	DiskBackupPlanProperties            []GetBackupPlanDiskBackupPlanProperty            `pulumi:"diskBackupPlanProperties"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                             string   `pulumi:"id"`
 	Location                       string   `pulumi:"location"`
@@ -100,8 +102,18 @@ func (o LookupBackupPlanResultOutput) BackupVaultServiceAccount() pulumi.StringO
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.BackupVaultServiceAccount }).(pulumi.StringOutput)
 }
 
+func (o LookupBackupPlanResultOutput) ComputeInstanceBackupPlanProperties() GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) []GetBackupPlanComputeInstanceBackupPlanProperty {
+		return v.ComputeInstanceBackupPlanProperties
+	}).(GetBackupPlanComputeInstanceBackupPlanPropertyArrayOutput)
+}
+
 func (o LookupBackupPlanResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupBackupPlanResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupPlanResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupBackupPlanResultOutput) Description() pulumi.StringOutput {

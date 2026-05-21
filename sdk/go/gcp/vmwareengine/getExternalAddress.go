@@ -62,9 +62,10 @@ type LookupExternalAddressArgs struct {
 
 // A collection of values returned by getExternalAddress.
 type LookupExternalAddressResult struct {
-	CreateTime  string `pulumi:"createTime"`
-	Description string `pulumi:"description"`
-	ExternalIp  string `pulumi:"externalIp"`
+	CreateTime     string `pulumi:"createTime"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	Description    string `pulumi:"description"`
+	ExternalIp     string `pulumi:"externalIp"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string `pulumi:"id"`
 	InternalIp string `pulumi:"internalIp"`
@@ -113,6 +114,10 @@ func (o LookupExternalAddressResultOutput) ToLookupExternalAddressResultOutputWi
 
 func (o LookupExternalAddressResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalAddressResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupExternalAddressResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExternalAddressResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupExternalAddressResultOutput) Description() pulumi.StringOutput {

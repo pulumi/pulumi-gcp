@@ -46,14 +46,14 @@ import (
 //				return err
 //			}
 //			primary_network, err := compute.NewNetwork(ctx, "primary-network", &compute.NetworkArgs{
-//				Name:                  pulumi.String("tf-test-my-vpc-network_79580"),
+//				Name:                  pulumi.String("tf-test-my-vpc-network_44154"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = networkconnectivity.NewTransport(ctx, "primary", &networkconnectivity.TransportArgs{
-//				Name:            pulumi.String("tf-test-basic-transport_98863"),
+//				Name:            pulumi.String("tf-test-basic-transport_90221"),
 //				Region:          pulumi.String("us-east4"),
 //				Description:     pulumi.String("A sample transport"),
 //				RemoteProfile:   pulumi.Sprintf("https://networkconnectivity.googleapis.com/v1beta/%v/locations/us-east4/remoteTransportProfiles/aws-us-east-1", project.Id),
@@ -101,6 +101,13 @@ type Transport struct {
 	AutoAccept pulumi.BoolPtrOutput `pulumi:"autoAccept"`
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -197,6 +204,13 @@ type transportState struct {
 	AutoAccept *bool `pulumi:"autoAccept"`
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
 	Bandwidth *string `pulumi:"bandwidth"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -250,6 +264,13 @@ type TransportState struct {
 	AutoAccept pulumi.BoolPtrInput
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
 	Bandwidth pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -307,6 +328,13 @@ type transportArgs struct {
 	AutoAccept *bool `pulumi:"autoAccept"`
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
 	Bandwidth *string `pulumi:"bandwidth"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
@@ -350,6 +378,13 @@ type TransportArgs struct {
 	AutoAccept pulumi.BoolPtrInput
 	// Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
 	Bandwidth pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
@@ -488,6 +523,16 @@ func (o TransportOutput) AutoAccept() pulumi.BoolPtrOutput {
 // Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
 func (o TransportOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *Transport) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TransportOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Transport) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

@@ -148,6 +148,13 @@ import (
 type ProjectAutokeyConfig struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// How Autokey determines which project to use when provisioning CMEK keys.
@@ -188,6 +195,13 @@ func GetProjectAutokeyConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ProjectAutokeyConfig resources.
 type projectAutokeyConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag *string `pulumi:"etag"`
 	// How Autokey determines which project to use when provisioning CMEK keys.
@@ -199,6 +213,13 @@ type projectAutokeyConfigState struct {
 }
 
 type ProjectAutokeyConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag pulumi.StringPtrInput
 	// How Autokey determines which project to use when provisioning CMEK keys.
@@ -214,6 +235,13 @@ func (ProjectAutokeyConfigState) ElementType() reflect.Type {
 }
 
 type projectAutokeyConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// How Autokey determines which project to use when provisioning CMEK keys.
 	// Possible values are: `RESOURCE_PROJECT`, `DISABLED`.
 	KeyProjectResolutionMode *string `pulumi:"keyProjectResolutionMode"`
@@ -224,6 +252,13 @@ type projectAutokeyConfigArgs struct {
 
 // The set of arguments for constructing a ProjectAutokeyConfig resource.
 type ProjectAutokeyConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// How Autokey determines which project to use when provisioning CMEK keys.
 	// Possible values are: `RESOURCE_PROJECT`, `DISABLED`.
 	KeyProjectResolutionMode pulumi.StringPtrInput
@@ -317,6 +352,16 @@ func (o ProjectAutokeyConfigOutput) ToProjectAutokeyConfigOutput() ProjectAutoke
 
 func (o ProjectAutokeyConfigOutput) ToProjectAutokeyConfigOutputWithContext(ctx context.Context) ProjectAutokeyConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ProjectAutokeyConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectAutokeyConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The etag of the AutokeyConfig for optimistic concurrency control.

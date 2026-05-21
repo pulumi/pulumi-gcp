@@ -25,6 +25,7 @@ class RegionNetworkEndpointGroupArgs:
                  app_engine: pulumi.Input[Optional['RegionNetworkEndpointGroupAppEngineArgs']] = None,
                  cloud_function: pulumi.Input[Optional['RegionNetworkEndpointGroupCloudFunctionArgs']] = None,
                  cloud_run: pulumi.Input[Optional['RegionNetworkEndpointGroupCloudRunArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -47,6 +48,12 @@ class RegionNetworkEndpointGroupArgs:
         :param pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs'] cloud_run: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource; provided by the client when the resource is
@@ -83,6 +90,8 @@ class RegionNetworkEndpointGroupArgs:
             pulumi.set(__self__, "cloud_function", cloud_function)
         if cloud_run is not None:
             pulumi.set(__self__, "cloud_run", cloud_run)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -155,6 +164,23 @@ class RegionNetworkEndpointGroupArgs:
     @cloud_run.setter
     def cloud_run(self, value: pulumi.Input[Optional['RegionNetworkEndpointGroupCloudRunArgs']]):
         pulumi.set(self, "cloud_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -290,6 +316,7 @@ class _RegionNetworkEndpointGroupState:
                  app_engine: pulumi.Input[Optional['RegionNetworkEndpointGroupAppEngineArgs']] = None,
                  cloud_function: pulumi.Input[Optional['RegionNetworkEndpointGroupCloudFunctionArgs']] = None,
                  cloud_run: pulumi.Input[Optional['RegionNetworkEndpointGroupCloudRunArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -313,6 +340,12 @@ class _RegionNetworkEndpointGroupState:
         :param pulumi.Input['RegionNetworkEndpointGroupCloudRunArgs'] cloud_run: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource; provided by the client when the resource is
@@ -350,6 +383,8 @@ class _RegionNetworkEndpointGroupState:
             pulumi.set(__self__, "cloud_function", cloud_function)
         if cloud_run is not None:
             pulumi.set(__self__, "cloud_run", cloud_run)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -414,6 +449,23 @@ class _RegionNetworkEndpointGroupState:
     @cloud_run.setter
     def cloud_run(self, value: pulumi.Input[Optional['RegionNetworkEndpointGroupCloudRunArgs']]):
         pulumi.set(self, "cloud_run", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -576,6 +628,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']]] = None,
                  cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']]] = None,
                  cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -891,6 +944,12 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']] cloud_run: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource; provided by the client when the resource is
@@ -1238,6 +1297,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']]] = None,
                  cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']]] = None,
                  cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1260,6 +1320,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["app_engine"] = app_engine
             __props__.__dict__["cloud_function"] = cloud_function
             __props__.__dict__["cloud_run"] = cloud_run
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -1286,6 +1347,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             app_engine: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupAppEngineArgs', 'RegionNetworkEndpointGroupAppEngineArgsDict']]] = None,
             cloud_function: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudFunctionArgs', 'RegionNetworkEndpointGroupCloudFunctionArgsDict']]] = None,
             cloud_run: pulumi.Input[Optional[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1313,6 +1375,12 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[Union['RegionNetworkEndpointGroupCloudRunArgs', 'RegionNetworkEndpointGroupCloudRunArgsDict']] cloud_run: This field is only used for SERVERLESS NEGs.
                Only one of cloud_run, app_engine, cloud_function or serverless_deployment may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource; provided by the client when the resource is
@@ -1351,6 +1419,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["app_engine"] = app_engine
         __props__.__dict__["cloud_function"] = cloud_function
         __props__.__dict__["cloud_run"] = cloud_run
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
@@ -1393,6 +1462,19 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "cloud_run")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

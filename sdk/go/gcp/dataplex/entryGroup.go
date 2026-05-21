@@ -95,6 +95,13 @@ type EntryGroup struct {
 
 	// The time when the EntryGroup was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the EntryGroup.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
@@ -164,6 +171,13 @@ func GetEntryGroup(ctx *pulumi.Context,
 type entryGroupState struct {
 	// The time when the EntryGroup was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the EntryGroup.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -199,6 +213,13 @@ type entryGroupState struct {
 type EntryGroupState struct {
 	// The time when the EntryGroup was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the EntryGroup.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -236,6 +257,13 @@ func (EntryGroupState) ElementType() reflect.Type {
 }
 
 type entryGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the EntryGroup.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -256,6 +284,13 @@ type entryGroupArgs struct {
 
 // The set of arguments for constructing a EntryGroup resource.
 type EntryGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the EntryGroup.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -364,6 +399,16 @@ func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) Ent
 // The time when the EntryGroup was created.
 func (o EntryGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EntryGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EntryGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the EntryGroup.

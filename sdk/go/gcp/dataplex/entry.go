@@ -508,6 +508,13 @@ type Entry struct {
 	Aspects EntryAspectArrayOutput `pulumi:"aspects"`
 	// The time when the Entry was created in Dataplex.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The entry group id of the entry group the entry will be created in.
 	EntryGroupId pulumi.StringPtrOutput `pulumi:"entryGroupId"`
 	// The entry id of the entry.
@@ -571,6 +578,13 @@ type entryState struct {
 	Aspects []EntryAspect `pulumi:"aspects"`
 	// The time when the Entry was created in Dataplex.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The entry group id of the entry group the entry will be created in.
 	EntryGroupId *string `pulumi:"entryGroupId"`
 	// The entry id of the entry.
@@ -602,6 +616,13 @@ type EntryState struct {
 	Aspects EntryAspectArrayInput
 	// The time when the Entry was created in Dataplex.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The entry group id of the entry group the entry will be created in.
 	EntryGroupId pulumi.StringPtrInput
 	// The entry id of the entry.
@@ -635,6 +656,13 @@ type entryArgs struct {
 	// The aspects that are attached to the entry.
 	// Structure is documented below.
 	Aspects []EntryAspect `pulumi:"aspects"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The entry group id of the entry group the entry will be created in.
 	EntryGroupId *string `pulumi:"entryGroupId"`
 	// The entry id of the entry.
@@ -661,6 +689,13 @@ type EntryArgs struct {
 	// The aspects that are attached to the entry.
 	// Structure is documented below.
 	Aspects EntryAspectArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The entry group id of the entry group the entry will be created in.
 	EntryGroupId pulumi.StringPtrInput
 	// The entry id of the entry.
@@ -778,6 +813,16 @@ func (o EntryOutput) Aspects() EntryAspectArrayOutput {
 // The time when the Entry was created in Dataplex.
 func (o EntryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EntryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entry) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The entry group id of the entry group the entry will be created in.

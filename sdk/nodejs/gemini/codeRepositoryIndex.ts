@@ -81,6 +81,15 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -142,6 +151,7 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
             const state = argsOrState as CodeRepositoryIndexState | undefined;
             resourceInputs["codeRepositoryIndexId"] = state?.codeRepositoryIndexId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["kmsKey"] = state?.kmsKey;
@@ -161,6 +171,7 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["codeRepositoryIndexId"] = args?.codeRepositoryIndexId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["kmsKey"] = args?.kmsKey;
             resourceInputs["labels"] = args?.labels;
@@ -192,6 +203,15 @@ export interface CodeRepositoryIndexState {
      * Output only. Create time stamp.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -248,6 +268,15 @@ export interface CodeRepositoryIndexArgs {
      * Required. Id of the Code Repository Index.
      */
     codeRepositoryIndexId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
      */

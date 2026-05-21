@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string CompressionMode;
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<string> CustomResponseHeaders;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string EdgeSecurityPolicy;
         public readonly bool EnableCdn;
@@ -165,6 +166,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> customResponseHeaders,
 
+            string deletionPolicy,
+
             string description,
 
             string edgeSecurityPolicy,
@@ -188,6 +191,7 @@ namespace Pulumi.Gcp.Compute
             CompressionMode = compressionMode;
             CreationTimestamp = creationTimestamp;
             CustomResponseHeaders = customResponseHeaders;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EdgeSecurityPolicy = edgeSecurityPolicy;
             EnableCdn = enableCdn;

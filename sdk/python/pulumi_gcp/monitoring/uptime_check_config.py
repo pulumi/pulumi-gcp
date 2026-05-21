@@ -25,6 +25,7 @@ class UptimeCheckConfigArgs:
                  timeout: pulumi.Input[_builtins.str],
                  checker_type: pulumi.Input[Optional[_builtins.str]] = None,
                  content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  http_check: pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']] = None,
                  log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
                  monitored_resource: pulumi.Input[Optional['UptimeCheckConfigMonitoredResourceArgs']] = None,
@@ -44,6 +45,12 @@ class UptimeCheckConfigArgs:
                Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] log_check_failures: Specifies whether to log the results of failed probes to Cloud Logging.
@@ -68,6 +75,8 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "checker_type", checker_type)
         if content_matchers is not None:
             pulumi.set(__self__, "content_matchers", content_matchers)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if http_check is not None:
             pulumi.set(__self__, "http_check", http_check)
         if log_check_failures is not None:
@@ -138,6 +147,23 @@ class UptimeCheckConfigArgs:
     @content_matchers.setter
     def content_matchers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]):
         pulumi.set(self, "content_matchers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="httpCheck")
@@ -272,6 +298,7 @@ class _UptimeCheckConfigState:
     def __init__(__self__, *,
                  checker_type: pulumi.Input[Optional[_builtins.str]] = None,
                  content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  http_check: pulumi.Input[Optional['UptimeCheckConfigHttpCheckArgs']] = None,
                  log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -293,6 +320,12 @@ class _UptimeCheckConfigState:
                Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input['UptimeCheckConfigHttpCheckArgs'] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
@@ -319,6 +352,8 @@ class _UptimeCheckConfigState:
             pulumi.set(__self__, "checker_type", checker_type)
         if content_matchers is not None:
             pulumi.set(__self__, "content_matchers", content_matchers)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if http_check is not None:
@@ -373,6 +408,23 @@ class _UptimeCheckConfigState:
     @content_matchers.setter
     def content_matchers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigContentMatcherArgs']]]]):
         pulumi.set(self, "content_matchers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -558,6 +610,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checker_type: pulumi.Input[Optional[_builtins.str]] = None,
                  content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  http_check: pulumi.Input[Optional[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
                  log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -834,6 +887,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
                Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
@@ -1134,6 +1193,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  checker_type: pulumi.Input[Optional[_builtins.str]] = None,
                  content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  http_check: pulumi.Input[Optional[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
                  log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1157,6 +1217,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
             __props__.__dict__["checker_type"] = checker_type
             __props__.__dict__["content_matchers"] = content_matchers
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -1187,6 +1248,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             checker_type: pulumi.Input[Optional[_builtins.str]] = None,
             content_matchers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             http_check: pulumi.Input[Optional[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']]] = None,
             log_check_failures: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1212,6 +1274,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
                Possible values are: `STATIC_IP_CHECKERS`, `VPC_CHECKERS`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['UptimeCheckConfigContentMatcherArgs', 'UptimeCheckConfigContentMatcherArgsDict']]]] content_matchers: The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
         :param pulumi.Input[Union['UptimeCheckConfigHttpCheckArgs', 'UptimeCheckConfigHttpCheckArgsDict']] http_check: Contains information needed to make an HTTP or HTTPS check.
                Structure is documented below.
@@ -1240,6 +1308,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
 
         __props__.__dict__["checker_type"] = checker_type
         __props__.__dict__["content_matchers"] = content_matchers
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["http_check"] = http_check
         __props__.__dict__["log_check_failures"] = log_check_failures
@@ -1273,6 +1342,19 @@ class UptimeCheckConfig(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "content_matchers")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

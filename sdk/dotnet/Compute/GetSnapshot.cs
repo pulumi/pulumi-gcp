@@ -203,6 +203,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly string ChainName;
         public readonly string CreationTimestamp;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly int DiskSizeGb;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -235,6 +236,8 @@ namespace Pulumi.Gcp.Compute
             string chainName,
 
             string creationTimestamp,
+
+            string deletionPolicy,
 
             string description,
 
@@ -284,6 +287,7 @@ namespace Pulumi.Gcp.Compute
         {
             ChainName = chainName;
             CreationTimestamp = creationTimestamp;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DiskSizeGb = diskSizeGb;
             EffectiveLabels = effectiveLabels;

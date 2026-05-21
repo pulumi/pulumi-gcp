@@ -69,6 +69,7 @@ type LookupFolderResult struct {
 	ConfiguredCapabilities []string `pulumi:"configuredCapabilities"`
 	// Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime         string `pulumi:"createTime"`
+	DeletionPolicy     string `pulumi:"deletionPolicy"`
 	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// The folder's display name.
 	DisplayName string `pulumi:"displayName"`
@@ -133,6 +134,10 @@ func (o LookupFolderResultOutput) ConfiguredCapabilities() pulumi.StringArrayOut
 // Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o LookupFolderResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFolderResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupFolderResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupFolderResultOutput) DeletionProtection() pulumi.BoolOutput {

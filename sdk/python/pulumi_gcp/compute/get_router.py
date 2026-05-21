@@ -27,13 +27,16 @@ class GetRouterResult:
     """
     A collection of values returned by getRouter.
     """
-    def __init__(__self__, bgps=None, creation_timestamp=None, description=None, encrypted_interconnect_router=None, id=None, md5_authentication_keys=None, name=None, ncc_gateway=None, network=None, params=None, project=None, region=None, self_link=None):
+    def __init__(__self__, bgps=None, creation_timestamp=None, deletion_policy=None, description=None, encrypted_interconnect_router=None, id=None, md5_authentication_keys=None, name=None, ncc_gateway=None, network=None, params=None, project=None, region=None, self_link=None):
         if bgps and not isinstance(bgps, list):
             raise TypeError("Expected argument 'bgps' to be a list")
         pulumi.set(__self__, "bgps", bgps)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -77,6 +80,11 @@ class GetRouterResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -145,6 +153,7 @@ class AwaitableGetRouterResult(GetRouterResult):
         return GetRouterResult(
             bgps=self.bgps,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             encrypted_interconnect_router=self.encrypted_interconnect_router,
             id=self.id,
@@ -195,6 +204,7 @@ def get_router(name: Optional[_builtins.str] = None,
     return AwaitableGetRouterResult(
         bgps=pulumi.get(__ret__, 'bgps'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         encrypted_interconnect_router=pulumi.get(__ret__, 'encrypted_interconnect_router'),
         id=pulumi.get(__ret__, 'id'),
@@ -242,6 +252,7 @@ def get_router_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetRouterResult(
         bgps=pulumi.get(__response__, 'bgps'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         encrypted_interconnect_router=pulumi.get(__response__, 'encrypted_interconnect_router'),
         id=pulumi.get(__response__, 'id'),

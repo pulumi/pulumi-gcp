@@ -27,7 +27,10 @@ class GetAppConnectorResult:
     """
     A collection of values returned by getAppConnector.
     """
-    def __init__(__self__, display_name=None, effective_labels=None, id=None, labels=None, name=None, principal_infos=None, project=None, pulumi_labels=None, region=None, state=None):
+    def __init__(__self__, deletion_policy=None, display_name=None, effective_labels=None, id=None, labels=None, name=None, principal_infos=None, project=None, pulumi_labels=None, region=None, state=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -58,6 +61,11 @@ class GetAppConnectorResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -119,6 +127,7 @@ class AwaitableGetAppConnectorResult(GetAppConnectorResult):
         if False:
             yield self
         return GetAppConnectorResult(
+            deletion_policy=self.deletion_policy,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             id=self.id,
@@ -164,6 +173,7 @@ def get_app_connector(name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:beyondcorp/getAppConnector:getAppConnector', __args__, opts=opts, typ=GetAppConnectorResult).value
 
     return AwaitableGetAppConnectorResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         id=pulumi.get(__ret__, 'id'),
@@ -206,6 +216,7 @@ def get_app_connector_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:beyondcorp/getAppConnector:getAppConnector', __args__, opts=opts, typ=GetAppConnectorResult)
     return __ret__.apply(lambda __response__: GetAppConnectorResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         id=pulumi.get(__response__, 'id'),

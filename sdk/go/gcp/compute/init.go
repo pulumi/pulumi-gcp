@@ -257,6 +257,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstanceGroupManager{}
 	case "gcp:compute/regionInstanceTemplate:RegionInstanceTemplate":
 		r = &RegionInstanceTemplate{}
+	case "gcp:compute/regionInstantSnapshot:RegionInstantSnapshot":
+		r = &RegionInstantSnapshot{}
+	case "gcp:compute/regionInstantSnapshotIamBinding:RegionInstantSnapshotIamBinding":
+		r = &RegionInstantSnapshotIamBinding{}
+	case "gcp:compute/regionInstantSnapshotIamMember:RegionInstantSnapshotIamMember":
+		r = &RegionInstantSnapshotIamMember{}
+	case "gcp:compute/regionInstantSnapshotIamPolicy:RegionInstantSnapshotIamPolicy":
+		r = &RegionInstantSnapshotIamPolicy{}
 	case "gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint":
 		r = &RegionNetworkEndpoint{}
 	case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
@@ -980,6 +988,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionInstanceTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionInstantSnapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionInstantSnapshotIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionInstantSnapshotIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionInstantSnapshotIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

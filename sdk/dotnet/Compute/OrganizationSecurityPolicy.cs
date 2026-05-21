@@ -39,6 +39,42 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Organization Security Policy With Advanced Options
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var policy = new Gcp.Compute.OrganizationSecurityPolicy("policy", new()
+    ///     {
+    ///         ShortName = "security-policy",
+    ///         Parent = "organizations/123456789",
+    ///         Type = "CLOUD_ARMOR",
+    ///         AdvancedOptionsConfig = new Gcp.Compute.Inputs.OrganizationSecurityPolicyAdvancedOptionsConfigArgs
+    ///         {
+    ///             JsonParsing = "STANDARD_WITH_GRAPHQL",
+    ///             LogLevel = "VERBOSE",
+    ///             JsonCustomConfig = new Gcp.Compute.Inputs.OrganizationSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs
+    ///             {
+    ///                 ContentTypes = new[]
+    ///                 {
+    ///                     "application/vnd.api+json",
+    ///                 },
+    ///             },
+    ///             UserIpRequestHeaders = new[]
+    ///             {
+    ///                 "X-Forwarded-For",
+    ///             },
+    ///             RequestBodyInspectionSize = "64KB",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -57,6 +93,24 @@ namespace Pulumi.Gcp.Compute
     [GcpResourceType("gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy")]
     public partial class OrganizationSecurityPolicy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Additional options for this security policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("advancedOptionsConfig")]
+        public Output<Outputs.OrganizationSecurityPolicyAdvancedOptionsConfig?> AdvancedOptionsConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
         /// <summary>
         /// A textual description for the organization security policy.
         /// </summary>
@@ -150,6 +204,24 @@ namespace Pulumi.Gcp.Compute
     public sealed class OrganizationSecurityPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional options for this security policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedOptionsConfig")]
+        public Input<Inputs.OrganizationSecurityPolicyAdvancedOptionsConfigArgs>? AdvancedOptionsConfig { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A textual description for the organization security policy.
         /// </summary>
         [Input("description")]
@@ -190,6 +262,24 @@ namespace Pulumi.Gcp.Compute
 
     public sealed class OrganizationSecurityPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Additional options for this security policy.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedOptionsConfig")]
+        public Input<Inputs.OrganizationSecurityPolicyAdvancedOptionsConfigGetArgs>? AdvancedOptionsConfig { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// A textual description for the organization security policy.
         /// </summary>

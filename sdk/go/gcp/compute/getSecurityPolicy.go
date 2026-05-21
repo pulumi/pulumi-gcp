@@ -73,6 +73,7 @@ type LookupSecurityPolicyArgs struct {
 type LookupSecurityPolicyResult struct {
 	AdaptiveProtectionConfigs []GetSecurityPolicyAdaptiveProtectionConfig `pulumi:"adaptiveProtectionConfigs"`
 	AdvancedOptionsConfigs    []GetSecurityPolicyAdvancedOptionsConfig    `pulumi:"advancedOptionsConfigs"`
+	DeletionPolicy            string                                      `pulumi:"deletionPolicy"`
 	Description               string                                      `pulumi:"description"`
 	EffectiveLabels           map[string]string                           `pulumi:"effectiveLabels"`
 	Fingerprint               string                                      `pulumi:"fingerprint"`
@@ -137,6 +138,10 @@ func (o LookupSecurityPolicyResultOutput) AdvancedOptionsConfigs() GetSecurityPo
 	return o.ApplyT(func(v LookupSecurityPolicyResult) []GetSecurityPolicyAdvancedOptionsConfig {
 		return v.AdvancedOptionsConfigs
 	}).(GetSecurityPolicyAdvancedOptionsConfigArrayOutput)
+}
+
+func (o LookupSecurityPolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityPolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupSecurityPolicyResultOutput) Description() pulumi.StringOutput {

@@ -378,6 +378,13 @@ type VMwareCluster struct {
 	DataplaneV2 VMwareClusterDataplaneV2Output `pulumi:"dataplaneV2"`
 	// The time at which VMware User Cluster was deleted.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disable bundled ingress.
@@ -537,6 +544,13 @@ type vmwareClusterState struct {
 	DataplaneV2 *VMwareClusterDataplaneV2 `pulumi:"dataplaneV2"`
 	// The time at which VMware User Cluster was deleted.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
 	// Disable bundled ingress.
@@ -655,6 +669,13 @@ type VMwareClusterState struct {
 	DataplaneV2 VMwareClusterDataplaneV2PtrInput
 	// The time at which VMware User Cluster was deleted.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput
 	// Disable bundled ingress.
@@ -773,6 +794,13 @@ type vmwareClusterArgs struct {
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
 	// Structure is documented below.
 	DataplaneV2 *VMwareClusterDataplaneV2 `pulumi:"dataplaneV2"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human readable description of this VMware User Cluster.
 	Description *string `pulumi:"description"`
 	// Disable bundled ingress.
@@ -848,6 +876,13 @@ type VMwareClusterArgs struct {
 	// VmwareDataplaneV2Config specifies configuration for Dataplane V2.
 	// Structure is documented below.
 	DataplaneV2 VMwareClusterDataplaneV2PtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human readable description of this VMware User Cluster.
 	Description pulumi.StringPtrInput
 	// Disable bundled ingress.
@@ -1037,6 +1072,16 @@ func (o VMwareClusterOutput) DataplaneV2() VMwareClusterDataplaneV2Output {
 // The time at which VMware User Cluster was deleted.
 func (o VMwareClusterOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VMwareCluster) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VMwareClusterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *VMwareCluster) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human readable description of this VMware User Cluster.

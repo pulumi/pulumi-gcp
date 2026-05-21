@@ -75,6 +75,13 @@ import (
 type BackupChannel struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this BackupChannel.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The project where Backups are allowed to be stored.
@@ -155,6 +162,13 @@ func GetBackupChannel(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupChannel resources.
 type backupChannelState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this BackupChannel.
 	Description *string `pulumi:"description"`
 	// The project where Backups are allowed to be stored.
@@ -195,6 +209,13 @@ type backupChannelState struct {
 }
 
 type BackupChannelState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this BackupChannel.
 	Description pulumi.StringPtrInput
 	// The project where Backups are allowed to be stored.
@@ -239,6 +260,13 @@ func (BackupChannelState) ElementType() reflect.Type {
 }
 
 type backupChannelArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User specified descriptive string for this BackupChannel.
 	Description *string `pulumi:"description"`
 	// The project where Backups are allowed to be stored.
@@ -263,6 +291,13 @@ type backupChannelArgs struct {
 
 // The set of arguments for constructing a BackupChannel resource.
 type BackupChannelArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User specified descriptive string for this BackupChannel.
 	Description pulumi.StringPtrInput
 	// The project where Backups are allowed to be stored.
@@ -370,6 +405,16 @@ func (o BackupChannelOutput) ToBackupChannelOutput() BackupChannelOutput {
 
 func (o BackupChannelOutput) ToBackupChannelOutputWithContext(ctx context.Context) BackupChannelOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupChannelOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupChannel) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User specified descriptive string for this BackupChannel.

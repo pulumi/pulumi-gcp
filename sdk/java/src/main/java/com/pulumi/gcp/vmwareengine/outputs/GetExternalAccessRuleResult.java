@@ -16,6 +16,7 @@ import java.util.Objects;
 public final class GetExternalAccessRuleResult {
     private String action;
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private List<GetExternalAccessRuleDestinationIpRange> destinationIpRanges;
     private List<String> destinationPorts;
@@ -40,6 +41,9 @@ public final class GetExternalAccessRuleResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -96,6 +100,7 @@ public final class GetExternalAccessRuleResult {
     public static final class Builder {
         private String action;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private List<GetExternalAccessRuleDestinationIpRange> destinationIpRanges;
         private List<String> destinationPorts;
@@ -114,6 +119,7 @@ public final class GetExternalAccessRuleResult {
     	      Objects.requireNonNull(defaults);
     	      this.action = defaults.action;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.destinationIpRanges = defaults.destinationIpRanges;
     	      this.destinationPorts = defaults.destinationPorts;
@@ -143,6 +149,14 @@ public final class GetExternalAccessRuleResult {
               throw new MissingRequiredPropertyException("GetExternalAccessRuleResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetExternalAccessRuleResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -265,6 +279,7 @@ public final class GetExternalAccessRuleResult {
             final var _resultValue = new GetExternalAccessRuleResult();
             _resultValue.action = action;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.destinationIpRanges = destinationIpRanges;
             _resultValue.destinationPorts = destinationPorts;

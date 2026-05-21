@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const testEntryTypeFull = new gcp.dataplex.AspectType("test_entry_type_full", {
- *     aspectTypeId: "tf-test-aspect-type_25141",
+ *     aspectTypeId: "tf-test-aspect-type_26317",
  *     location: "us-central1",
  *     project: "my-project-name",
  *     metadataTemplate: `{
@@ -129,6 +129,15 @@ export class EntryType extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the EntryType.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -209,6 +218,7 @@ export class EntryType extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EntryTypeState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -226,6 +236,7 @@ export class EntryType extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as EntryTypeArgs | undefined;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["entryTypeId"] = args?.entryTypeId;
@@ -258,6 +269,15 @@ export interface EntryTypeState {
      * The time when the EntryType was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the EntryType.
      */
@@ -330,6 +350,15 @@ export interface EntryTypeState {
  * The set of arguments for constructing a EntryType resource.
  */
 export interface EntryTypeArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the EntryType.
      */

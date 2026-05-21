@@ -198,6 +198,7 @@ namespace Pulumi.Gcp.VpcAccess
     public sealed class GetConnectorResult
     {
         public readonly ImmutableArray<string> ConnectedProjects;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -219,6 +220,8 @@ namespace Pulumi.Gcp.VpcAccess
         [OutputConstructor]
         private GetConnectorResult(
             ImmutableArray<string> connectedProjects,
+
+            string deletionPolicy,
 
             string id,
 
@@ -249,6 +252,7 @@ namespace Pulumi.Gcp.VpcAccess
             ImmutableArray<Outputs.GetConnectorSubnetResult> subnets)
         {
             ConnectedProjects = connectedProjects;
+            DeletionPolicy = deletionPolicy;
             Id = id;
             IpCidrRange = ipCidrRange;
             MachineType = machineType;

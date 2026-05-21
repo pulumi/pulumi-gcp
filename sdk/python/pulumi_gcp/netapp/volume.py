@@ -67,7 +67,14 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
-               Possible values: DEFAULT, FORCE.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input['VolumeExportPolicyArgs'] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
@@ -258,7 +265,14 @@ class VolumeArgs:
         Policy to determine if the volume should be deleted forcefully.
         Volumes may have nested snapshot resources. Deleting such a volume will fail.
         Setting this parameter to FORCE will delete volumes including nested snapshots.
-        Possible values: DEFAULT, FORCE.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -594,7 +608,14 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
-               Possible values: DEFAULT, FORCE.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
@@ -848,7 +869,14 @@ class _VolumeState:
         Policy to determine if the volume should be deleted forcefully.
         Volumes may have nested snapshot resources. Deleting such a volume will fail.
         Setting this parameter to FORCE will delete volumes including nested snapshots.
-        Possible values: DEFAULT, FORCE.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -1452,7 +1480,14 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
-               Possible values: DEFAULT, FORCE.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Union['VolumeExportPolicyArgs', 'VolumeExportPolicyArgsDict']] export_policy: Export policy of the volume for NFSV3 and/or NFSV4.1 access.
                Structure is documented below.
@@ -1747,7 +1782,14 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
                Volumes may have nested snapshot resources. Deleting such a volume will fail.
                Setting this parameter to FORCE will delete volumes including nested snapshots.
-               Possible values: DEFAULT, FORCE.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", the command will behave as if set to "DEFAULT".
+               
+               Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] encryption_type: Reports the data-at-rest encryption type of the volume. Inherited from storage pool.
@@ -1926,12 +1968,19 @@ class Volume(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
         Policy to determine if the volume should be deleted forcefully.
         Volumes may have nested snapshot resources. Deleting such a volume will fail.
         Setting this parameter to FORCE will delete volumes including nested snapshots.
-        Possible values: DEFAULT, FORCE.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", the command will behave as if set to "DEFAULT".
+
+        Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE.
         """
         return pulumi.get(self, "deletion_policy")
 

@@ -90,6 +90,15 @@ export class Fleet extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleteTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
      * Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
      */
@@ -131,6 +140,7 @@ export class Fleet extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["defaultClusterConfig"] = state?.defaultClusterConfig;
             resourceInputs["deleteTime"] = state?.deleteTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["project"] = state?.project;
             resourceInputs["states"] = state?.states;
@@ -139,6 +149,7 @@ export class Fleet extends pulumi.CustomResource {
         } else {
             const args = argsOrState as FleetArgs | undefined;
             resourceInputs["defaultClusterConfig"] = args?.defaultClusterConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["project"] = args?.project;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -169,6 +180,15 @@ export interface FleetState {
      * The time the fleet was deleted, in RFC3339 text format.
      */
     deleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
      * Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
@@ -205,6 +225,15 @@ export interface FleetArgs {
      * Structure is documented below.
      */
     defaultClusterConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
      * Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.

@@ -396,6 +396,15 @@ export class Entry extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The entry group id of the entry group the entry will be created in.
      */
     declare public readonly entryGroupId: pulumi.Output<string | undefined>;
@@ -454,6 +463,7 @@ export class Entry extends pulumi.CustomResource {
             const state = argsOrState as EntryState | undefined;
             resourceInputs["aspects"] = state?.aspects;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["entryGroupId"] = state?.entryGroupId;
             resourceInputs["entryId"] = state?.entryId;
             resourceInputs["entrySource"] = state?.entrySource;
@@ -470,6 +480,7 @@ export class Entry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'entryType'");
             }
             resourceInputs["aspects"] = args?.aspects;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["entryGroupId"] = args?.entryGroupId;
             resourceInputs["entryId"] = args?.entryId;
             resourceInputs["entrySource"] = args?.entrySource;
@@ -500,6 +511,15 @@ export interface EntryState {
      * The time when the Entry was created in Dataplex.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The entry group id of the entry group the entry will be created in.
      */
@@ -554,6 +574,15 @@ export interface EntryArgs {
      * Structure is documented below.
      */
     aspects?: pulumi.Input<pulumi.Input<inputs.dataplex.EntryAspect>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The entry group id of the entry group the entry will be created in.
      */

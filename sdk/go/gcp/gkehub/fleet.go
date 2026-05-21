@@ -76,6 +76,13 @@ type Fleet struct {
 	DefaultClusterConfig FleetDefaultClusterConfigPtrOutput `pulumi:"defaultClusterConfig"`
 	// The time the fleet was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
 	// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -130,6 +137,13 @@ type fleetState struct {
 	DefaultClusterConfig *FleetDefaultClusterConfig `pulumi:"defaultClusterConfig"`
 	// The time the fleet was deleted, in RFC3339 text format.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
 	// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 	DisplayName *string `pulumi:"displayName"`
@@ -155,6 +169,13 @@ type FleetState struct {
 	DefaultClusterConfig FleetDefaultClusterConfigPtrInput
 	// The time the fleet was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
 	// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 	DisplayName pulumi.StringPtrInput
@@ -180,6 +201,13 @@ type fleetArgs struct {
 	// The default cluster configurations to apply across the fleet.
 	// Structure is documented below.
 	DefaultClusterConfig *FleetDefaultClusterConfig `pulumi:"defaultClusterConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
 	// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 	DisplayName *string `pulumi:"displayName"`
@@ -193,6 +221,13 @@ type FleetArgs struct {
 	// The default cluster configurations to apply across the fleet.
 	// Structure is documented below.
 	DefaultClusterConfig FleetDefaultClusterConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
 	// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 	DisplayName pulumi.StringPtrInput
@@ -302,6 +337,16 @@ func (o FleetOutput) DefaultClusterConfig() FleetDefaultClusterConfigPtrOutput {
 // The time the fleet was deleted, in RFC3339 text format.
 func (o FleetOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FleetOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.

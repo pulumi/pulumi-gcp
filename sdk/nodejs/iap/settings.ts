@@ -173,6 +173,15 @@ export class Settings extends pulumi.CustomResource {
      */
     declare public readonly applicationSettings: pulumi.Output<outputs.iap.SettingsApplicationSettings | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}
      * * folders/{folder_id}
@@ -203,11 +212,13 @@ export class Settings extends pulumi.CustomResource {
             const state = argsOrState as SettingsState | undefined;
             resourceInputs["accessSettings"] = state?.accessSettings;
             resourceInputs["applicationSettings"] = state?.applicationSettings;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as SettingsArgs | undefined;
             resourceInputs["accessSettings"] = args?.accessSettings;
             resourceInputs["applicationSettings"] = args?.applicationSettings;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -229,6 +240,15 @@ export interface SettingsState {
      * Structure is documented below.
      */
     applicationSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}
@@ -260,6 +280,15 @@ export interface SettingsArgs {
      * Structure is documented below.
      */
     applicationSettings?: pulumi.Input<inputs.iap.SettingsApplicationSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}

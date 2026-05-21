@@ -411,6 +411,15 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly datastoreMountConfigs: pulumi.Output<outputs.vmwareengine.ClusterDatastoreMountConfig[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
      */
@@ -462,6 +471,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["autoscalingSettings"] = state?.autoscalingSettings;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["datastoreMountConfigs"] = state?.datastoreMountConfigs;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["management"] = state?.management;
             resourceInputs["name"] = state?.name;
             resourceInputs["nodeTypeConfigs"] = state?.nodeTypeConfigs;
@@ -476,6 +486,7 @@ export class Cluster extends pulumi.CustomResource {
             }
             resourceInputs["autoscalingSettings"] = args?.autoscalingSettings;
             resourceInputs["datastoreMountConfigs"] = args?.datastoreMountConfigs;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["nodeTypeConfigs"] = args?.nodeTypeConfigs;
             resourceInputs["parent"] = args?.parent;
@@ -513,6 +524,15 @@ export interface ClusterState {
      * Structure is documented below.
      */
     datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * True if the cluster is a management cluster; false otherwise.
      * There can only be one management cluster in a private cloud and it has to be the first one.
@@ -567,6 +587,15 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     datastoreMountConfigs?: pulumi.Input<pulumi.Input<inputs.vmwareengine.ClusterDatastoreMountConfig>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cluster.
      */

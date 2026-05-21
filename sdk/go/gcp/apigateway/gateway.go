@@ -51,6 +51,13 @@ type Gateway struct {
 	ApiConfig pulumi.StringOutput `pulumi:"apiConfig"`
 	// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
 	DefaultHostname pulumi.StringOutput `pulumi:"defaultHostname"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -121,6 +128,13 @@ type gatewayState struct {
 	ApiConfig *string `pulumi:"apiConfig"`
 	// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
 	DefaultHostname *string `pulumi:"defaultHostname"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -151,6 +165,13 @@ type GatewayState struct {
 	ApiConfig pulumi.StringPtrInput
 	// The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
 	DefaultHostname pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -183,6 +204,13 @@ type gatewayArgs struct {
 	// When changing api configs please ensure the new config is a new resource and the
 	// lifecycle rule `createBeforeDestroy` is set.
 	ApiConfig string `pulumi:"apiConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
@@ -205,6 +233,13 @@ type GatewayArgs struct {
 	// When changing api configs please ensure the new config is a new resource and the
 	// lifecycle rule `createBeforeDestroy` is set.
 	ApiConfig pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
@@ -318,6 +353,16 @@ func (o GatewayOutput) ApiConfig() pulumi.StringOutput {
 // The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
 func (o GatewayOutput) DefaultHostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DefaultHostname }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GatewayOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-visible name for the API.

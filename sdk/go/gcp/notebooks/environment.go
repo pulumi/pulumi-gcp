@@ -77,6 +77,13 @@ type Environment struct {
 	ContainerImage EnvironmentContainerImagePtrOutput `pulumi:"containerImage"`
 	// Instance creation time
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A brief description of this environment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of this environment for the UI.
@@ -135,6 +142,13 @@ type environmentState struct {
 	ContainerImage *EnvironmentContainerImage `pulumi:"containerImage"`
 	// Instance creation time
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
 	// Display name of this environment for the UI.
@@ -161,6 +175,13 @@ type EnvironmentState struct {
 	ContainerImage EnvironmentContainerImagePtrInput
 	// Instance creation time
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
 	// Display name of this environment for the UI.
@@ -189,6 +210,13 @@ type environmentArgs struct {
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
 	ContainerImage *EnvironmentContainerImage `pulumi:"containerImage"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
 	// Display name of this environment for the UI.
@@ -214,6 +242,13 @@ type EnvironmentArgs struct {
 	// Use a container image to start the notebook instance.
 	// Structure is documented below.
 	ContainerImage EnvironmentContainerImagePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
 	// Display name of this environment for the UI.
@@ -330,6 +365,16 @@ func (o EnvironmentOutput) ContainerImage() EnvironmentContainerImagePtrOutput {
 // Instance creation time
 func (o EnvironmentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnvironmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A brief description of this environment.

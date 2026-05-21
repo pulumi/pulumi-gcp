@@ -63,6 +63,7 @@ type LookupTopicArgs struct {
 
 // A collection of values returned by getTopic.
 type LookupTopicResult struct {
+	DeletionPolicy  string            `pulumi:"deletionPolicy"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                          string                               `pulumi:"id"`
@@ -116,6 +117,10 @@ func (o LookupTopicResultOutput) ToLookupTopicResultOutput() LookupTopicResultOu
 
 func (o LookupTopicResultOutput) ToLookupTopicResultOutputWithContext(ctx context.Context) LookupTopicResultOutput {
 	return o
+}
+
+func (o LookupTopicResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTopicResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupTopicResultOutput) EffectiveLabels() pulumi.StringMapOutput {

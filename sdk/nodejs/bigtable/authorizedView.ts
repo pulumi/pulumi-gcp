@@ -124,6 +124,17 @@ export class AuthorizedView extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * -----
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
      * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
      */
@@ -143,8 +154,6 @@ export class AuthorizedView extends pulumi.CustomResource {
     declare public readonly project: pulumi.Output<string>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     *
-     * -----
      */
     declare public readonly subsetView: pulumi.Output<outputs.bigtable.AuthorizedViewSubsetView | undefined>;
     /**
@@ -165,6 +174,7 @@ export class AuthorizedView extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AuthorizedViewState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["instanceName"] = state?.instanceName;
             resourceInputs["name"] = state?.name;
@@ -179,6 +189,7 @@ export class AuthorizedView extends pulumi.CustomResource {
             if (args?.tableName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'tableName'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["instanceName"] = args?.instanceName;
             resourceInputs["name"] = args?.name;
@@ -195,6 +206,17 @@ export class AuthorizedView extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AuthorizedView resources.
  */
 export interface AuthorizedViewState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * -----
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
      * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
@@ -215,8 +237,6 @@ export interface AuthorizedViewState {
     project?: pulumi.Input<string | undefined>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     *
-     * -----
      */
     subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView | undefined>;
     /**
@@ -229,6 +249,17 @@ export interface AuthorizedViewState {
  * The set of arguments for constructing a AuthorizedView resource.
  */
 export interface AuthorizedViewArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * -----
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
      * If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
@@ -249,8 +280,6 @@ export interface AuthorizedViewArgs {
     project?: pulumi.Input<string | undefined>;
     /**
      * An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-     *
-     * -----
      */
     subsetView?: pulumi.Input<inputs.bigtable.AuthorizedViewSubsetView | undefined>;
     /**

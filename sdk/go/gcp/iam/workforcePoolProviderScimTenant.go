@@ -123,6 +123,13 @@ type WorkforcePoolProviderScimTenant struct {
 	BaseUri pulumi.StringOutput `pulumi:"baseUri"`
 	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
 	ClaimMapping pulumi.StringMapOutput `pulumi:"claimMapping"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -202,6 +209,13 @@ type workforcePoolProviderScimTenantState struct {
 	BaseUri *string `pulumi:"baseUri"`
 	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
 	ClaimMapping map[string]string `pulumi:"claimMapping"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -240,6 +254,13 @@ type WorkforcePoolProviderScimTenantState struct {
 	BaseUri pulumi.StringPtrInput
 	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
 	ClaimMapping pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -276,6 +297,13 @@ func (WorkforcePoolProviderScimTenantState) ElementType() reflect.Type {
 type workforcePoolProviderScimTenantArgs struct {
 	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
 	ClaimMapping map[string]string `pulumi:"claimMapping"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -296,6 +324,13 @@ type workforcePoolProviderScimTenantArgs struct {
 type WorkforcePoolProviderScimTenantArgs struct {
 	// Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
 	ClaimMapping pulumi.StringMapInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A user-specified description of the provider. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// A user-specified display name for the scim tenant. Cannot exceed 32 characters.
@@ -411,6 +446,16 @@ func (o WorkforcePoolProviderScimTenantOutput) BaseUri() pulumi.StringOutput {
 // Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
 func (o WorkforcePoolProviderScimTenantOutput) ClaimMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringMapOutput { return v.ClaimMapping }).(pulumi.StringMapOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WorkforcePoolProviderScimTenantOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderScimTenant) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A user-specified description of the provider. Cannot exceed 256 characters.

@@ -67,6 +67,7 @@ export interface GetNetworkEndpointGroupResult {
      * The NEG default port.
      */
     readonly defaultPort: number;
+    readonly deletionPolicy: string;
     /**
      * The NEG description.
      */

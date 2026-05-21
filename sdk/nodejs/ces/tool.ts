@@ -351,6 +351,15 @@ export class Tool extends pulumi.CustomResource {
      */
     declare public readonly dataStoreTool: pulumi.Output<outputs.ces.ToolDataStoreTool | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * (Output)
      * The name of the allowed custom CA certificates. This
      * can be used to disambiguate the custom CA certificates.
@@ -437,6 +446,7 @@ export class Tool extends pulumi.CustomResource {
             resourceInputs["clientFunction"] = state?.clientFunction;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataStoreTool"] = state?.dataStoreTool;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["executionType"] = state?.executionType;
@@ -464,6 +474,7 @@ export class Tool extends pulumi.CustomResource {
             resourceInputs["app"] = args?.app;
             resourceInputs["clientFunction"] = args?.clientFunction;
             resourceInputs["dataStoreTool"] = args?.dataStoreTool;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["executionType"] = args?.executionType;
             resourceInputs["googleSearchTool"] = args?.googleSearchTool;
             resourceInputs["location"] = args?.location;
@@ -512,6 +523,15 @@ export interface ToolState {
      * Structure is documented below.
      */
     dataStoreTool?: pulumi.Input<inputs.ces.ToolDataStoreTool | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * (Output)
      * The name of the allowed custom CA certificates. This
@@ -607,6 +627,15 @@ export interface ToolArgs {
      * Structure is documented below.
      */
     dataStoreTool?: pulumi.Input<inputs.ces.ToolDataStoreTool | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Possible values:
      * SYNCHRONOUS

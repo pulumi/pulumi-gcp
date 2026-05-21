@@ -282,6 +282,15 @@ export class Bucket extends pulumi.CustomResource {
      */
     declare public readonly defaultEventBasedHold: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -410,6 +419,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["cors"] = state?.cors;
             resourceInputs["customPlacementConfig"] = state?.customPlacementConfig;
             resourceInputs["defaultEventBasedHold"] = state?.defaultEventBasedHold;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableObjectRetention"] = state?.enableObjectRetention;
             resourceInputs["encryption"] = state?.encryption;
@@ -446,6 +456,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["cors"] = args?.cors;
             resourceInputs["customPlacementConfig"] = args?.customPlacementConfig;
             resourceInputs["defaultEventBasedHold"] = args?.defaultEventBasedHold;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enableObjectRetention"] = args?.enableObjectRetention;
             resourceInputs["encryption"] = args?.encryption;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
@@ -501,6 +512,15 @@ export interface BucketState {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
      */
@@ -634,6 +654,15 @@ export interface BucketArgs {
      * Whether or not to automatically apply an eventBasedHold to new objects added to the bucket.
      */
     defaultEventBasedHold?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Enables [object retention](https://cloud.google.com/storage/docs/object-lock) on a storage bucket.
      */

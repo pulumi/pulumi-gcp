@@ -256,6 +256,15 @@ export class AspectType extends pulumi.CustomResource {
      */
     declare public readonly dataClassification: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the AspectType.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -326,6 +335,7 @@ export class AspectType extends pulumi.CustomResource {
             resourceInputs["aspectTypeId"] = state?.aspectTypeId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataClassification"] = state?.dataClassification;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -342,6 +352,7 @@ export class AspectType extends pulumi.CustomResource {
             const args = argsOrState as AspectTypeArgs | undefined;
             resourceInputs["aspectTypeId"] = args?.aspectTypeId;
             resourceInputs["dataClassification"] = args?.dataClassification;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
@@ -383,6 +394,15 @@ export interface AspectTypeState {
      * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
      */
     dataClassification?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the AspectType.
      */
@@ -455,6 +475,15 @@ export interface AspectTypeArgs {
      * Possible values are: `DATA_CLASSIFICATION_UNSPECIFIED`, `METADATA_AND_DATA`.
      */
     dataClassification?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the AspectType.
      */

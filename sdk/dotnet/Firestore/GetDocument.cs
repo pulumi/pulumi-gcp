@@ -183,6 +183,7 @@ namespace Pulumi.Gcp.Firestore
         public readonly string Collection;
         public readonly string CreateTime;
         public readonly string Database;
+        public readonly string DeletionPolicy;
         public readonly string DocumentId;
         public readonly string Fields;
         /// <summary>
@@ -202,6 +203,8 @@ namespace Pulumi.Gcp.Firestore
 
             string database,
 
+            string deletionPolicy,
+
             string documentId,
 
             string fields,
@@ -219,6 +222,7 @@ namespace Pulumi.Gcp.Firestore
             Collection = collection;
             CreateTime = createTime;
             Database = database;
+            DeletionPolicy = deletionPolicy;
             DocumentId = documentId;
             Fields = fields;
             Id = id;

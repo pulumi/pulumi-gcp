@@ -22,6 +22,7 @@ __all__ = [
     'BackupPlanBackupRuleStandardSchedule',
     'BackupPlanBackupRuleStandardScheduleBackupWindow',
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonth',
+    'BackupPlanComputeInstanceBackupPlanProperties',
     'BackupPlanDiskBackupPlanProperties',
     'BackupVaultEncryptionConfig',
     'ManagementServerManagementUri',
@@ -65,6 +66,8 @@ __all__ = [
     'RestoreWorkloadTargetResource',
     'RestoreWorkloadTargetResourceGcpResource',
     'GetBackupBackupResult',
+    'GetBackupBackupComputeInstanceBackupPropertyResult',
+    'GetBackupBackupDiskBackupPropertyResult',
     'GetBackupPlanAssociationRulesConfigInfoResult',
     'GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult',
     'GetBackupPlanAssociationsAssociationResult',
@@ -74,6 +77,7 @@ __all__ = [
     'GetBackupPlanBackupRuleStandardScheduleResult',
     'GetBackupPlanBackupRuleStandardScheduleBackupWindowResult',
     'GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult',
+    'GetBackupPlanComputeInstanceBackupPlanPropertyResult',
     'GetBackupPlanDiskBackupPlanPropertyResult',
     'GetBackupVaultEncryptionConfigResult',
     'GetDataSourceBackupConfigInfoResult',
@@ -525,6 +529,45 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonth(dict):
         Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class BackupPlanComputeInstanceBackupPlanProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guestFlush":
+            suggest = "guest_flush"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanComputeInstanceBackupPlanProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanComputeInstanceBackupPlanProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanComputeInstanceBackupPlanProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 guest_flush: _builtins.bool):
+        """
+        :param _builtins.bool guest_flush: Indicates whether to perform a guest flush operation before taking a
+               compute instance backup. When set to true, the system will attempt
+               to ensure application-consistent backups.
+        """
+        pulumi.set(__self__, "guest_flush", guest_flush)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> _builtins.bool:
+        """
+        Indicates whether to perform a guest flush operation before taking a
+        compute instance backup. When set to true, the system will attempt
+        to ensure application-consistent backups.
+        """
+        return pulumi.get(self, "guest_flush")
 
 
 @pulumi.output_type
@@ -3556,22 +3599,28 @@ class GetBackupBackupResult(dict):
     def __init__(__self__, *,
                  backup_id: _builtins.str,
                  backup_vault_id: _builtins.str,
+                 compute_instance_backup_properties: Sequence['outputs.GetBackupBackupComputeInstanceBackupPropertyResult'],
                  create_time: _builtins.str,
                  data_source_id: _builtins.str,
+                 disk_backup_properties: Sequence['outputs.GetBackupBackupDiskBackupPropertyResult'],
                  location: _builtins.str,
                  name: _builtins.str):
         """
         :param _builtins.str backup_id: Id of the requesting object, Backup.
         :param _builtins.str backup_vault_id: The ID of the Backup Vault of the Data Source in which the Backup belongs.
+        :param Sequence['GetBackupBackupComputeInstanceBackupPropertyArgs'] compute_instance_backup_properties: Compute instance related properties of the backup.
         :param _builtins.str create_time: The time when the backup was created.
         :param _builtins.str data_source_id: The ID of the Data Source in which the Backup belongs.
+        :param Sequence['GetBackupBackupDiskBackupPropertyArgs'] disk_backup_properties: Disk related properties of the backup.
         :param _builtins.str location: The location in which the Backup belongs.
         :param _builtins.str name: Name of the resource.
         """
         pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "backup_vault_id", backup_vault_id)
+        pulumi.set(__self__, "compute_instance_backup_properties", compute_instance_backup_properties)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "data_source_id", data_source_id)
+        pulumi.set(__self__, "disk_backup_properties", disk_backup_properties)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
 
@@ -3592,6 +3641,14 @@ class GetBackupBackupResult(dict):
         return pulumi.get(self, "backup_vault_id")
 
     @_builtins.property
+    @pulumi.getter(name="computeInstanceBackupProperties")
+    def compute_instance_backup_properties(self) -> Sequence['outputs.GetBackupBackupComputeInstanceBackupPropertyResult']:
+        """
+        Compute instance related properties of the backup.
+        """
+        return pulumi.get(self, "compute_instance_backup_properties")
+
+    @_builtins.property
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         """
@@ -3608,6 +3665,14 @@ class GetBackupBackupResult(dict):
         return pulumi.get(self, "data_source_id")
 
     @_builtins.property
+    @pulumi.getter(name="diskBackupProperties")
+    def disk_backup_properties(self) -> Sequence['outputs.GetBackupBackupDiskBackupPropertyResult']:
+        """
+        Disk related properties of the backup.
+        """
+        return pulumi.get(self, "disk_backup_properties")
+
+    @_builtins.property
     @pulumi.getter
     def location(self) -> _builtins.str:
         """
@@ -3622,6 +3687,42 @@ class GetBackupBackupResult(dict):
         Name of the resource.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetBackupBackupComputeInstanceBackupPropertyResult(dict):
+    def __init__(__self__, *,
+                 guest_flush: _builtins.bool):
+        """
+        :param _builtins.bool guest_flush: Indicates if the backup was created with guest flush enabled.
+        """
+        pulumi.set(__self__, "guest_flush", guest_flush)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> _builtins.bool:
+        """
+        Indicates if the backup was created with guest flush enabled.
+        """
+        return pulumi.get(self, "guest_flush")
+
+
+@pulumi.output_type
+class GetBackupBackupDiskBackupPropertyResult(dict):
+    def __init__(__self__, *,
+                 guest_flush: _builtins.bool):
+        """
+        :param _builtins.bool guest_flush: Indicates whether the backup is application-consistent.
+        """
+        pulumi.set(__self__, "guest_flush", guest_flush)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> _builtins.bool:
+        """
+        Indicates whether the backup is application-consistent.
+        """
+        return pulumi.get(self, "guest_flush")
 
 
 @pulumi.output_type
@@ -4050,6 +4151,28 @@ class GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult(dict):
         WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class GetBackupPlanComputeInstanceBackupPlanPropertyResult(dict):
+    def __init__(__self__, *,
+                 guest_flush: _builtins.bool):
+        """
+        :param _builtins.bool guest_flush: Indicates whether to perform a guest flush operation before taking a
+               compute instance backup. When set to true, the system will attempt
+               to ensure application-consistent backups.
+        """
+        pulumi.set(__self__, "guest_flush", guest_flush)
+
+    @_builtins.property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> _builtins.bool:
+        """
+        Indicates whether to perform a guest flush operation before taking a
+        compute instance backup. When set to true, the system will attempt
+        to ensure application-consistent backups.
+        """
+        return pulumi.get(self, "guest_flush")
 
 
 @pulumi.output_type

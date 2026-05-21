@@ -15,6 +15,8 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'BackupOntapSourceArgs',
+    'BackupOntapSourceArgsDict',
     'BackupVaultBackupRetentionPolicyArgs',
     'BackupVaultBackupRetentionPolicyArgsDict',
     'VolumeBackupConfigArgs',
@@ -60,6 +62,76 @@ __all__ = [
     'VolumeTieringPolicyArgs',
     'VolumeTieringPolicyArgsDict',
 ]
+
+class BackupOntapSourceArgsDict(TypedDict):
+    storage_pool: pulumi.Input[_builtins.str]
+    """
+    Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+    Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
+    """
+    volume_uuid: pulumi.Input[_builtins.str]
+    """
+    The UUID of the ONTAP source volume.
+    """
+    snapshot_uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The UUID of the ONTAP source snapshot.
+    """
+
+@pulumi.input_type
+class BackupOntapSourceArgs:
+    def __init__(__self__, *,
+                 storage_pool: pulumi.Input[_builtins.str],
+                 volume_uuid: pulumi.Input[_builtins.str],
+                 snapshot_uuid: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] storage_pool: Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+               Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
+        :param pulumi.Input[_builtins.str] volume_uuid: The UUID of the ONTAP source volume.
+        :param pulumi.Input[_builtins.str] snapshot_uuid: The UUID of the ONTAP source snapshot.
+        """
+        pulumi.set(__self__, "storage_pool", storage_pool)
+        pulumi.set(__self__, "volume_uuid", volume_uuid)
+        if snapshot_uuid is not None:
+            pulumi.set(__self__, "snapshot_uuid", snapshot_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="storagePool")
+    def storage_pool(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the storage pool. This must be specified for creating backups for ONTAP mode volumes.
+        Format: `projects/{{project}}/locations/{{location}}/storagePools/{{storage_pool_id}}`
+        """
+        return pulumi.get(self, "storage_pool")
+
+    @storage_pool.setter
+    def storage_pool(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "storage_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="volumeUuid")
+    def volume_uuid(self) -> pulumi.Input[_builtins.str]:
+        """
+        The UUID of the ONTAP source volume.
+        """
+        return pulumi.get(self, "volume_uuid")
+
+    @volume_uuid.setter
+    def volume_uuid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "volume_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotUuid")
+    def snapshot_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The UUID of the ONTAP source snapshot.
+        """
+        return pulumi.get(self, "snapshot_uuid")
+
+    @snapshot_uuid.setter
+    def snapshot_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "snapshot_uuid", value)
+
 
 class BackupVaultBackupRetentionPolicyArgsDict(TypedDict):
     backup_minimum_enforced_retention_days: pulumi.Input[_builtins.int]

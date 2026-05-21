@@ -151,6 +151,13 @@ type StoragePool struct {
 	ColdTierSizeUsedGib pulumi.StringOutput `pulumi:"coldTierSizeUsedGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled pulumi.BoolOutput `pulumi:"customPerformanceEnabled"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -296,6 +303,13 @@ type storagePoolState struct {
 	ColdTierSizeUsedGib *string `pulumi:"coldTierSizeUsedGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled *bool `pulumi:"customPerformanceEnabled"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -395,6 +409,13 @@ type StoragePoolState struct {
 	ColdTierSizeUsedGib pulumi.StringPtrInput
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -494,6 +515,13 @@ type storagePoolArgs struct {
 	CapacityGib string `pulumi:"capacityGib"`
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled *bool `pulumi:"customPerformanceEnabled"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
@@ -577,6 +605,13 @@ type StoragePoolArgs struct {
 	CapacityGib pulumi.StringInput
 	// Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 	CustomPerformanceEnabled pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Flag indicating that the hot-tier threshold will be auto-increased by 10% of the hot-tier when it hits 100%. Default is true.
@@ -765,6 +800,16 @@ func (o StoragePoolOutput) ColdTierSizeUsedGib() pulumi.StringOutput {
 // Optional. True if using Independent Scaling of capacity and performance (Hyperdisk). Default is false.
 func (o StoragePoolOutput) CustomPerformanceEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *StoragePool) pulumi.BoolOutput { return v.CustomPerformanceEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o StoragePoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *StoragePool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

@@ -28,6 +28,7 @@ class OrganizationArgs:
                  authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
                  billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,6 +51,12 @@ class OrganizationArgs:
         :param pulumi.Input[_builtins.str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[_builtins.str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
                Only used for the data residency region "US" or "EU".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the Apigee organization.
         :param pulumi.Input[_builtins.bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -86,6 +93,8 @@ class OrganizationArgs:
             pulumi.set(__self__, "billing_type", billing_type)
         if control_plane_encryption_key_name is not None:
             pulumi.set(__self__, "control_plane_encryption_key_name", control_plane_encryption_key_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_vpc_peering is not None:
@@ -189,6 +198,23 @@ class OrganizationArgs:
     @control_plane_encryption_key_name.setter
     def control_plane_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_encryption_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -301,6 +327,7 @@ class _OrganizationState:
                  billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -328,6 +355,12 @@ class _OrganizationState:
                Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
         :param pulumi.Input[_builtins.str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
                Only used for the data residency region "US" or "EU".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the Apigee organization.
         :param pulumi.Input[_builtins.bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -371,6 +404,8 @@ class _OrganizationState:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
         if control_plane_encryption_key_name is not None:
             pulumi.set(__self__, "control_plane_encryption_key_name", control_plane_encryption_key_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_vpc_peering is not None:
@@ -493,6 +528,23 @@ class _OrganizationState:
     @control_plane_encryption_key_name.setter
     def control_plane_encryption_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_plane_encryption_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -643,6 +695,7 @@ class Organization(pulumi.CustomResource):
                  authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
                  billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -816,6 +869,12 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[_builtins.str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
                Only used for the data residency region "US" or "EU".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the Apigee organization.
         :param pulumi.Input[_builtins.bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -1018,6 +1077,7 @@ class Organization(pulumi.CustomResource):
                  authorized_network: pulumi.Input[Optional[_builtins.str]] = None,
                  billing_type: pulumi.Input[Optional[_builtins.str]] = None,
                  control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1041,6 +1101,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["billing_type"] = billing_type
             __props__.__dict__["control_plane_encryption_key_name"] = control_plane_encryption_key_name
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_vpc_peering"] = disable_vpc_peering
             __props__.__dict__["display_name"] = display_name
@@ -1073,6 +1134,7 @@ class Organization(pulumi.CustomResource):
             billing_type: pulumi.Input[Optional[_builtins.str]] = None,
             ca_certificate: pulumi.Input[Optional[_builtins.str]] = None,
             control_plane_encryption_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disable_vpc_peering: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1104,6 +1166,12 @@ class Organization(pulumi.CustomResource):
                Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
         :param pulumi.Input[_builtins.str] control_plane_encryption_key_name: Cloud KMS key name used for encrypting control plane data that is stored in a multi region.
                Only used for the data residency region "US" or "EU".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the Apigee organization.
         :param pulumi.Input[_builtins.bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
                disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
@@ -1143,6 +1211,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["billing_type"] = billing_type
         __props__.__dict__["ca_certificate"] = ca_certificate
         __props__.__dict__["control_plane_encryption_key_name"] = control_plane_encryption_key_name
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_vpc_peering"] = disable_vpc_peering
         __props__.__dict__["display_name"] = display_name
@@ -1224,6 +1293,19 @@ class Organization(pulumi.CustomResource):
         Only used for the data residency region "US" or "EU".
         """
         return pulumi.get(self, "control_plane_encryption_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

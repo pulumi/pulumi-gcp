@@ -27,6 +27,7 @@ class KeystoresAliasesPkcs12Args:
                  filehash: pulumi.Input[_builtins.str],
                  keystore: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeystoresAliasesPkcs12 resource.
@@ -34,11 +35,17 @@ class KeystoresAliasesPkcs12Args:
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
         :param pulumi.Input[_builtins.str] file: PKCS12 file content
-               
-               - - -
         :param pulumi.Input[_builtins.str] filehash: Hash of the pkcs file
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
         :param pulumi.Input[_builtins.str] org_id: Organization ID associated with the alias, without organization/ prefix
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] password: Password for the PKCS12 file if it's encrypted
         """
         pulumi.set(__self__, "alias", alias)
@@ -47,6 +54,8 @@ class KeystoresAliasesPkcs12Args:
         pulumi.set(__self__, "filehash", filehash)
         pulumi.set(__self__, "keystore", keystore)
         pulumi.set(__self__, "org_id", org_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if password is not None:
             pulumi.set(__self__, "password", password)
 
@@ -79,8 +88,6 @@ class KeystoresAliasesPkcs12Args:
     def file(self) -> pulumi.Input[_builtins.str]:
         """
         PKCS12 file content
-
-        - - -
         """
         return pulumi.get(self, "file")
 
@@ -125,6 +132,25 @@ class KeystoresAliasesPkcs12Args:
         pulumi.set(self, "org_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -142,6 +168,7 @@ class _KeystoresAliasesPkcs12State:
     def __init__(__self__, *,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
                  certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  file: pulumi.Input[Optional[_builtins.str]] = None,
                  filehash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -155,10 +182,16 @@ class _KeystoresAliasesPkcs12State:
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoArgs']]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
-        :param pulumi.Input[_builtins.str] file: PKCS12 file content
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
+        :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
+        :param pulumi.Input[_builtins.str] file: PKCS12 file content
         :param pulumi.Input[_builtins.str] filehash: Hash of the pkcs file
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
         :param pulumi.Input[_builtins.str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -169,6 +202,8 @@ class _KeystoresAliasesPkcs12State:
             pulumi.set(__self__, "alias", alias)
         if certs_infos is not None:
             pulumi.set(__self__, "certs_infos", certs_infos)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if file is not None:
@@ -210,6 +245,25 @@ class _KeystoresAliasesPkcs12State:
         pulumi.set(self, "certs_infos", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def environment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -226,8 +280,6 @@ class _KeystoresAliasesPkcs12State:
     def file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PKCS12 file content
-
-        - - -
         """
         return pulumi.get(self, "file")
 
@@ -303,6 +355,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  file: pulumi.Input[Optional[_builtins.str]] = None,
                  filehash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -337,10 +390,16 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: Alias Name
-        :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
-        :param pulumi.Input[_builtins.str] file: PKCS12 file content
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
+        :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
+        :param pulumi.Input[_builtins.str] file: PKCS12 file content
         :param pulumi.Input[_builtins.str] filehash: Hash of the pkcs file
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
         :param pulumi.Input[_builtins.str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -392,6 +451,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment: pulumi.Input[Optional[_builtins.str]] = None,
                  file: pulumi.Input[Optional[_builtins.str]] = None,
                  filehash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -410,6 +470,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
             if alias is None and not opts.urn:
                 raise TypeError("Missing required property 'alias'")
             __props__.__dict__["alias"] = alias
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if environment is None and not opts.urn:
                 raise TypeError("Missing required property 'environment'")
             __props__.__dict__["environment"] = environment
@@ -440,6 +501,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: pulumi.Input[Optional[_builtins.str]] = None,
             certs_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             environment: pulumi.Input[Optional[_builtins.str]] = None,
             file: pulumi.Input[Optional[_builtins.str]] = None,
             filehash: pulumi.Input[Optional[_builtins.str]] = None,
@@ -457,10 +519,16 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alias: Alias Name
         :param pulumi.Input[Sequence[pulumi.Input[Union['KeystoresAliasesPkcs12CertsInfoArgs', 'KeystoresAliasesPkcs12CertsInfoArgsDict']]]] certs_infos: Chain of certificates under this alias.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
-        :param pulumi.Input[_builtins.str] file: PKCS12 file content
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
+        :param pulumi.Input[_builtins.str] environment: Environment associated with the alias
+        :param pulumi.Input[_builtins.str] file: PKCS12 file content
         :param pulumi.Input[_builtins.str] filehash: Hash of the pkcs file
         :param pulumi.Input[_builtins.str] keystore: Keystore Name
         :param pulumi.Input[_builtins.str] org_id: Organization ID associated with the alias, without organization/ prefix
@@ -473,6 +541,7 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
 
         __props__.__dict__["alias"] = alias
         __props__.__dict__["certs_infos"] = certs_infos
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["environment"] = environment
         __props__.__dict__["file"] = file
         __props__.__dict__["filehash"] = filehash
@@ -500,6 +569,21 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
         return pulumi.get(self, "certs_infos")
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
     @pulumi.getter
     def environment(self) -> pulumi.Output[_builtins.str]:
         """
@@ -512,8 +596,6 @@ class KeystoresAliasesPkcs12(pulumi.CustomResource):
     def file(self) -> pulumi.Output[_builtins.str]:
         """
         PKCS12 file content
-
-        - - -
         """
         return pulumi.get(self, "file")
 

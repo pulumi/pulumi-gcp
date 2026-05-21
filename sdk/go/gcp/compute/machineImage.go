@@ -144,63 +144,64 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
-// Parent: pulumi.Sprintf("projects/%v", project.Number),
-// ShortName: pulumi.String("tagkey"),
-// })
-// if err != nil {
-// return err
-// }
-// tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
-// Parent: tagKey1.ID(),
-// ShortName: pulumi.String("tagvalue"),
-// })
-// if err != nil {
-// return err
-// }
-// vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
-// Name: pulumi.String("my-vm"),
-// MachineType: pulumi.String("e2-medium"),
-// BootDisk: &compute.InstanceBootDiskArgs{
-// InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-// Image: pulumi.String("debian-cloud/debian-11"),
-// },
-// },
-// NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// &compute.InstanceNetworkInterfaceArgs{
-// Network: pulumi.String("default"),
-// },
-// },
-// })
-// if err != nil {
-// return err
-// }
-// _, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
-// Name: pulumi.String("my-image"),
-// SourceInstance: vm.SelfLink,
-// Params: &compute.MachineImageParamsArgs{
-// ResourceManagerTags: pulumi.All(tagKey1.ID(),tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// tagKey1Id := _args[0].(string)
-// tagValue1Id := _args[1].(string)
-// return map[string]string{
-// tagKey1Id: tagValue1Id,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// },
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tagKey1, err := tags.NewTagKey(ctx, "tag_key1", &tags.TagKeyArgs{
+//				Parent:    pulumi.Sprintf("projects/%v", project.Number),
+//				ShortName: pulumi.String("tagkey"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tagValue1, err := tags.NewTagValue(ctx, "tag_value1", &tags.TagValueArgs{
+//				Parent:    tagKey1.ID(),
+//				ShortName: pulumi.String("tagvalue"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+//				Name:        pulumi.String("my-vm"),
+//				MachineType: pulumi.String("e2-medium"),
+//				BootDisk: &compute.InstanceBootDiskArgs{
+//					InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+//						Image: pulumi.String("debian-cloud/debian-11"),
+//					},
+//				},
+//				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+//					&compute.InstanceNetworkInterfaceArgs{
+//						Network: pulumi.String("default"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+//				Name:           pulumi.String("my-image"),
+//				SourceInstance: vm.SelfLink,
+//				Params: &compute.MachineImageParamsArgs{
+//					ResourceManagerTags: pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//						tagKey1Id := _args[0].(string)
+//						tagValue1Id := _args[1].(string)
+//						return map[string]string{
+//							tagKey1Id: tagValue1Id,
+//						}, nil
+//					}).(pulumi.StringMapOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -221,6 +222,13 @@ import (
 type MachineImage struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A text description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
@@ -281,6 +289,13 @@ func GetMachineImage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MachineImage resources.
 type machineImageState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A text description of the resource.
 	Description *string `pulumi:"description"`
 	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
@@ -309,6 +324,13 @@ type machineImageState struct {
 }
 
 type MachineImageState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A text description of the resource.
 	Description pulumi.StringPtrInput
 	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
@@ -341,6 +363,13 @@ func (MachineImageState) ElementType() reflect.Type {
 }
 
 type machineImageArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A text description of the resource.
 	Description *string `pulumi:"description"`
 	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
@@ -366,6 +395,13 @@ type machineImageArgs struct {
 
 // The set of arguments for constructing a MachineImage resource.
 type MachineImageArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A text description of the resource.
 	Description pulumi.StringPtrInput
 	// Specify this to create an application consistent machine image by informing the OS to prepare for the snapshot process.
@@ -474,6 +510,16 @@ func (o MachineImageOutput) ToMachineImageOutput() MachineImageOutput {
 
 func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MachineImageOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineImage) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A text description of the resource.

@@ -22,6 +22,7 @@ __all__ = ['ResponsePolicyArgs', 'ResponsePolicy']
 class ResponsePolicyArgs:
     def __init__(__self__, *,
                  response_policy_name: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
@@ -30,6 +31,12 @@ class ResponsePolicyArgs:
         The set of arguments for constructing a ResponsePolicy resource.
 
         :param pulumi.Input[_builtins.str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
@@ -39,6 +46,8 @@ class ResponsePolicyArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "response_policy_name", response_policy_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if gke_clusters is not None:
@@ -59,6 +68,23 @@ class ResponsePolicyArgs:
     @response_policy_name.setter
     def response_policy_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "response_policy_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -115,6 +141,7 @@ class ResponsePolicyArgs:
 @pulumi.input_type
 class _ResponsePolicyState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
@@ -123,6 +150,12 @@ class _ResponsePolicyState:
         """
         Input properties used for looking up and filtering ResponsePolicy resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGkeClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
@@ -132,6 +165,8 @@ class _ResponsePolicyState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] response_policy_name: The user assigned name for this Response Policy, such as `myresponsepolicy`.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if gke_clusters is not None:
@@ -142,6 +177,23 @@ class _ResponsePolicyState:
             pulumi.set(__self__, "project", project)
         if response_policy_name is not None:
             pulumi.set(__self__, "response_policy_name", response_policy_name)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -213,6 +265,7 @@ class ResponsePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
@@ -311,6 +364,12 @@ class ResponsePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
@@ -431,6 +490,7 @@ class ResponsePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
@@ -445,6 +505,7 @@ class ResponsePolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResponsePolicyArgs.__new__(ResponsePolicyArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["gke_clusters"] = gke_clusters
             __props__.__dict__["networks"] = networks
@@ -462,6 +523,7 @@ class ResponsePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             gke_clusters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]]] = None,
             networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResponsePolicyNetworkArgs', 'ResponsePolicyNetworkArgsDict']]]]] = None,
@@ -474,6 +536,12 @@ class ResponsePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the response policy, such as `My new response policy`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ResponsePolicyGkeClusterArgs', 'ResponsePolicyGkeClusterArgsDict']]]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
                Structure is documented below.
@@ -487,12 +555,26 @@ class ResponsePolicy(pulumi.CustomResource):
 
         __props__ = _ResponsePolicyState.__new__(_ResponsePolicyState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["gke_clusters"] = gke_clusters
         __props__.__dict__["networks"] = networks
         __props__.__dict__["project"] = project
         __props__.__dict__["response_policy_name"] = response_policy_name
         return ResponsePolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

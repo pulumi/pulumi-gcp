@@ -242,6 +242,34 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
         return this.constraint;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
      * 
      */
@@ -289,8 +317,6 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
      * 
-     * ***
-     * 
      */
     @Export(name="restorePolicy", refs={OrganizationPolicyRestorePolicy.class}, tree="[0]")
     private Output</* @Nullable */ OrganizationPolicyRestorePolicy> restorePolicy;
@@ -300,8 +326,6 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
      * 
      * &gt; **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
      * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
-     * 
-     * ***
      * 
      */
     public Output<Optional<OrganizationPolicyRestorePolicy>> restorePolicy() {

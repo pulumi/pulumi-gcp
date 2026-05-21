@@ -104,6 +104,13 @@ type VolumeQuotaRule struct {
 
 	// Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description for the quota rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The maximum allowed capacity in MiB.
@@ -190,6 +197,13 @@ func GetVolumeQuotaRule(ctx *pulumi.Context,
 type volumeQuotaRuleState struct {
 	// Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description for the quota rule.
 	Description *string `pulumi:"description"`
 	// The maximum allowed capacity in MiB.
@@ -233,6 +247,13 @@ type volumeQuotaRuleState struct {
 type VolumeQuotaRuleState struct {
 	// Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description for the quota rule.
 	Description pulumi.StringPtrInput
 	// The maximum allowed capacity in MiB.
@@ -278,6 +299,13 @@ func (VolumeQuotaRuleState) ElementType() reflect.Type {
 }
 
 type volumeQuotaRuleArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description for the quota rule.
 	Description *string `pulumi:"description"`
 	// The maximum allowed capacity in MiB.
@@ -311,6 +339,13 @@ type volumeQuotaRuleArgs struct {
 
 // The set of arguments for constructing a VolumeQuotaRule resource.
 type VolumeQuotaRuleArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description for the quota rule.
 	Description pulumi.StringPtrInput
 	// The maximum allowed capacity in MiB.
@@ -432,6 +467,16 @@ func (o VolumeQuotaRuleOutput) ToVolumeQuotaRuleOutputWithContext(ctx context.Co
 // Create time of the quota rule. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
 func (o VolumeQuotaRuleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VolumeQuotaRule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VolumeQuotaRuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *VolumeQuotaRule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description for the quota rule.

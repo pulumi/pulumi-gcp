@@ -28,7 +28,8 @@ class FolderFeedArgs:
                  asset_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  asset_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  condition: pulumi.Input[Optional['FolderFeedConditionArgs']] = None,
-                 content_type: pulumi.Input[Optional[_builtins.str]] = None):
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FolderFeed resource.
 
@@ -56,6 +57,12 @@ class FolderFeedArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "billing_project", billing_project)
         pulumi.set(__self__, "feed_id", feed_id)
@@ -69,6 +76,8 @@ class FolderFeedArgs:
             pulumi.set(__self__, "condition", condition)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter(name="billingProject")
@@ -182,6 +191,23 @@ class FolderFeedArgs:
     def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _FolderFeedState:
@@ -191,6 +217,7 @@ class _FolderFeedState:
                  billing_project: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional['FolderFeedConditionArgs']] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_id: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_output_config: pulumi.Input[Optional['FolderFeedFeedOutputConfigArgs']] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
@@ -219,6 +246,12 @@ class _FolderFeedState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         :param pulumi.Input['FolderFeedFeedOutputConfigArgs'] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
@@ -237,6 +270,8 @@ class _FolderFeedState:
             pulumi.set(__self__, "condition", condition)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if feed_id is not None:
             pulumi.set(__self__, "feed_id", feed_id)
         if feed_output_config is not None:
@@ -324,6 +359,23 @@ class _FolderFeedState:
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="feedId")
     def feed_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -397,6 +449,7 @@ class FolderFeed(pulumi.CustomResource):
                  billing_project: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional[Union['FolderFeedConditionArgs', 'FolderFeedConditionArgsDict']]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_id: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_output_config: pulumi.Input[Optional[Union['FolderFeedFeedOutputConfigArgs', 'FolderFeedFeedOutputConfigArgsDict']]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
@@ -492,6 +545,12 @@ class FolderFeed(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         :param pulumi.Input[Union['FolderFeedFeedOutputConfigArgs', 'FolderFeedFeedOutputConfigArgsDict']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
@@ -592,6 +651,7 @@ class FolderFeed(pulumi.CustomResource):
                  billing_project: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional[Union['FolderFeedConditionArgs', 'FolderFeedConditionArgsDict']]] = None,
                  content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_id: pulumi.Input[Optional[_builtins.str]] = None,
                  feed_output_config: pulumi.Input[Optional[Union['FolderFeedFeedOutputConfigArgs', 'FolderFeedFeedOutputConfigArgsDict']]] = None,
                  folder: pulumi.Input[Optional[_builtins.str]] = None,
@@ -611,6 +671,7 @@ class FolderFeed(pulumi.CustomResource):
             __props__.__dict__["billing_project"] = billing_project
             __props__.__dict__["condition"] = condition
             __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if feed_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_id'")
             __props__.__dict__["feed_id"] = feed_id
@@ -637,6 +698,7 @@ class FolderFeed(pulumi.CustomResource):
             billing_project: pulumi.Input[Optional[_builtins.str]] = None,
             condition: pulumi.Input[Optional[Union['FolderFeedConditionArgs', 'FolderFeedConditionArgsDict']]] = None,
             content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             feed_id: pulumi.Input[Optional[_builtins.str]] = None,
             feed_output_config: pulumi.Input[Optional[Union['FolderFeedFeedOutputConfigArgs', 'FolderFeedFeedOutputConfigArgsDict']]] = None,
             folder: pulumi.Input[Optional[_builtins.str]] = None,
@@ -669,6 +731,12 @@ class FolderFeed(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] content_type: Asset content type. If not specified, no content but the asset name and type will be returned.
                Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feed_id: This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
         :param pulumi.Input[Union['FolderFeedFeedOutputConfigArgs', 'FolderFeedFeedOutputConfigArgsDict']] feed_output_config: Output configuration for asset feed destination.
                Structure is documented below.
@@ -686,6 +754,7 @@ class FolderFeed(pulumi.CustomResource):
         __props__.__dict__["billing_project"] = billing_project
         __props__.__dict__["condition"] = condition
         __props__.__dict__["content_type"] = content_type
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["feed_id"] = feed_id
         __props__.__dict__["feed_output_config"] = feed_output_config
         __props__.__dict__["folder"] = folder
@@ -747,6 +816,19 @@ class FolderFeed(pulumi.CustomResource):
         Possible values are: `CONTENT_TYPE_UNSPECIFIED`, `RESOURCE`, `IAM_POLICY`, `ORG_POLICY`, `OS_INVENTORY`, `ACCESS_POLICY`.
         """
         return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="feedId")

@@ -42,6 +42,7 @@ public final class GetRegionInstanceTemplateResult {
      * 
      */
     private String creationTimestamp;
+    private String deletionPolicy;
     /**
      * @return A brief description of this resource.
      * 
@@ -220,6 +221,9 @@ public final class GetRegionInstanceTemplateResult {
      */
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return A brief description of this resource.
@@ -455,6 +459,7 @@ public final class GetRegionInstanceTemplateResult {
         private Boolean canIpForward;
         private List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private List<GetRegionInstanceTemplateDisk> disks;
         private Map<String,String> effectiveLabels;
@@ -496,6 +501,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.canIpForward = defaults.canIpForward;
     	      this.confidentialInstanceConfigs = defaults.confidentialInstanceConfigs;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.disks = defaults.disks;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -568,6 +574,14 @@ public final class GetRegionInstanceTemplateResult {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -868,6 +882,7 @@ public final class GetRegionInstanceTemplateResult {
             _resultValue.canIpForward = canIpForward;
             _resultValue.confidentialInstanceConfigs = confidentialInstanceConfigs;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.disks = disks;
             _resultValue.effectiveLabels = effectiveLabels;

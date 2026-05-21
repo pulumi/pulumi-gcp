@@ -29,7 +29,8 @@ class EntitlementArgs:
                  privileged_access: pulumi.Input['EntitlementPrivilegedAccessArgs'],
                  requester_justification_config: pulumi.Input['EntitlementRequesterJustificationConfigArgs'],
                  additional_notification_targets: pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']] = None,
-                 approval_workflow: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']] = None):
+                 approval_workflow: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Entitlement resource.
 
@@ -52,6 +53,12 @@ class EntitlementArgs:
         :param pulumi.Input['EntitlementApprovalWorkflowArgs'] approval_workflow: The approvals needed before access will be granted to a requester.
                No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "eligible_users", eligible_users)
         pulumi.set(__self__, "entitlement_id", entitlement_id)
@@ -64,6 +71,8 @@ class EntitlementArgs:
             pulumi.set(__self__, "additional_notification_targets", additional_notification_targets)
         if approval_workflow is not None:
             pulumi.set(__self__, "approval_workflow", approval_workflow)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter(name="eligibleUsers")
@@ -183,6 +192,23 @@ class EntitlementArgs:
     def approval_workflow(self, value: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']]):
         pulumi.set(self, "approval_workflow", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _EntitlementState:
@@ -190,6 +216,7 @@ class _EntitlementState:
                  additional_notification_targets: pulumi.Input[Optional['EntitlementAdditionalNotificationTargetsArgs']] = None,
                  approval_workflow: pulumi.Input[Optional['EntitlementApprovalWorkflowArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]]] = None,
                  entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -211,6 +238,12 @@ class _EntitlementState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['EntitlementEligibleUserArgs']]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
                Structure is documented below.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
@@ -238,6 +271,8 @@ class _EntitlementState:
             pulumi.set(__self__, "approval_workflow", approval_workflow)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if eligible_users is not None:
             pulumi.set(__self__, "eligible_users", eligible_users)
         if entitlement_id is not None:
@@ -300,6 +335,23 @@ class _EntitlementState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="eligibleUsers")
@@ -451,6 +503,7 @@ class Entitlement(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_notification_targets: pulumi.Input[Optional[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
                  approval_workflow: pulumi.Input[Optional[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
                  entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -536,6 +589,12 @@ class Entitlement(pulumi.CustomResource):
         :param pulumi.Input[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']] approval_workflow: The approvals needed before access will be granted to a requester.
                No approvals will be needed if this field is null. Different types of approval workflows that can be used to gate privileged access granting.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
                Structure is documented below.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
@@ -644,6 +703,7 @@ class Entitlement(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_notification_targets: pulumi.Input[Optional[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
                  approval_workflow: pulumi.Input[Optional[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
                  entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -662,6 +722,7 @@ class Entitlement(pulumi.CustomResource):
 
             __props__.__dict__["additional_notification_targets"] = additional_notification_targets
             __props__.__dict__["approval_workflow"] = approval_workflow
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if eligible_users is None and not opts.urn:
                 raise TypeError("Missing required property 'eligible_users'")
             __props__.__dict__["eligible_users"] = eligible_users
@@ -701,6 +762,7 @@ class Entitlement(pulumi.CustomResource):
             additional_notification_targets: pulumi.Input[Optional[Union['EntitlementAdditionalNotificationTargetsArgs', 'EntitlementAdditionalNotificationTargetsArgsDict']]] = None,
             approval_workflow: pulumi.Input[Optional[Union['EntitlementApprovalWorkflowArgs', 'EntitlementApprovalWorkflowArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             eligible_users: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]]] = None,
             entitlement_id: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
@@ -726,6 +788,12 @@ class Entitlement(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. Create time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntitlementEligibleUserArgs', 'EntitlementEligibleUserArgsDict']]]] eligible_users: Who can create Grants using Entitlement. This list should contain at most one entry
                Structure is documented below.
         :param pulumi.Input[_builtins.str] entitlement_id: The ID to use for this Entitlement. This will become the last part of the resource name.
@@ -754,6 +822,7 @@ class Entitlement(pulumi.CustomResource):
         __props__.__dict__["additional_notification_targets"] = additional_notification_targets
         __props__.__dict__["approval_workflow"] = approval_workflow
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["eligible_users"] = eligible_users
         __props__.__dict__["entitlement_id"] = entitlement_id
         __props__.__dict__["etag"] = etag
@@ -794,6 +863,19 @@ class Entitlement(pulumi.CustomResource):
         Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="eligibleUsers")

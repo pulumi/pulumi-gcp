@@ -25,6 +25,7 @@ class BudgetArgs:
                  billing_account: pulumi.Input[_builtins.str],
                  all_updates_rule: pulumi.Input[Optional['BudgetAllUpdatesRuleArgs']] = None,
                  budget_filter: pulumi.Input[Optional['BudgetBudgetFilterArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ownership_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  threshold_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BudgetThresholdRuleArgs']]]] = None):
@@ -41,6 +42,12 @@ class BudgetArgs:
         :param pulumi.Input['BudgetBudgetFilterArgs'] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[_builtins.str] ownership_scope: The ownership scope of the budget. The ownership scope and users'
                IAM permissions determine who has full access to the budget's data.
@@ -56,6 +63,8 @@ class BudgetArgs:
             pulumi.set(__self__, "all_updates_rule", all_updates_rule)
         if budget_filter is not None:
             pulumi.set(__self__, "budget_filter", budget_filter)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if ownership_scope is not None:
@@ -118,6 +127,23 @@ class BudgetArgs:
         pulumi.set(self, "budget_filter", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -166,6 +192,7 @@ class _BudgetState:
                  amount: pulumi.Input[Optional['BudgetAmountArgs']] = None,
                  billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  budget_filter: pulumi.Input[Optional['BudgetBudgetFilterArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  ownership_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -183,6 +210,12 @@ class _BudgetState:
         :param pulumi.Input['BudgetBudgetFilterArgs'] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[_builtins.str] name: Resource name of the budget. The resource name
                implies the scope of a budget. Values are of the form
@@ -203,6 +236,8 @@ class _BudgetState:
             pulumi.set(__self__, "billing_account", billing_account)
         if budget_filter is not None:
             pulumi.set(__self__, "budget_filter", budget_filter)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -265,6 +300,23 @@ class _BudgetState:
     @budget_filter.setter
     def budget_filter(self, value: pulumi.Input[Optional['BudgetBudgetFilterArgs']]):
         pulumi.set(self, "budget_filter", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -332,6 +384,7 @@ class Budget(pulumi.CustomResource):
                  amount: pulumi.Input[Optional[Union['BudgetAmountArgs', 'BudgetAmountArgsDict']]] = None,
                  billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  budget_filter: pulumi.Input[Optional[Union['BudgetBudgetFilterArgs', 'BudgetBudgetFilterArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ownership_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  threshold_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BudgetThresholdRuleArgs', 'BudgetThresholdRuleArgsDict']]]]] = None,
@@ -569,6 +622,12 @@ class Budget(pulumi.CustomResource):
         :param pulumi.Input[Union['BudgetBudgetFilterArgs', 'BudgetBudgetFilterArgsDict']] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[_builtins.str] ownership_scope: The ownership scope of the budget. The ownership scope and users'
                IAM permissions determine who has full access to the budget's data.
@@ -824,6 +883,7 @@ class Budget(pulumi.CustomResource):
                  amount: pulumi.Input[Optional[Union['BudgetAmountArgs', 'BudgetAmountArgsDict']]] = None,
                  billing_account: pulumi.Input[Optional[_builtins.str]] = None,
                  budget_filter: pulumi.Input[Optional[Union['BudgetBudgetFilterArgs', 'BudgetBudgetFilterArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  ownership_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  threshold_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BudgetThresholdRuleArgs', 'BudgetThresholdRuleArgsDict']]]]] = None,
@@ -844,6 +904,7 @@ class Budget(pulumi.CustomResource):
                 raise TypeError("Missing required property 'billing_account'")
             __props__.__dict__["billing_account"] = billing_account
             __props__.__dict__["budget_filter"] = budget_filter
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["ownership_scope"] = ownership_scope
             __props__.__dict__["threshold_rules"] = threshold_rules
@@ -862,6 +923,7 @@ class Budget(pulumi.CustomResource):
             amount: pulumi.Input[Optional[Union['BudgetAmountArgs', 'BudgetAmountArgsDict']]] = None,
             billing_account: pulumi.Input[Optional[_builtins.str]] = None,
             budget_filter: pulumi.Input[Optional[Union['BudgetBudgetFilterArgs', 'BudgetBudgetFilterArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             ownership_scope: pulumi.Input[Optional[_builtins.str]] = None,
@@ -883,6 +945,12 @@ class Budget(pulumi.CustomResource):
         :param pulumi.Input[Union['BudgetBudgetFilterArgs', 'BudgetBudgetFilterArgsDict']] budget_filter: Filters that define which resources are used to compute the actual
                spend against the budget.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: User data for display name in UI. Must be <= 60 chars.
         :param pulumi.Input[_builtins.str] name: Resource name of the budget. The resource name
                implies the scope of a budget. Values are of the form
@@ -903,6 +971,7 @@ class Budget(pulumi.CustomResource):
         __props__.__dict__["amount"] = amount
         __props__.__dict__["billing_account"] = billing_account
         __props__.__dict__["budget_filter"] = budget_filter
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
         __props__.__dict__["ownership_scope"] = ownership_scope
@@ -946,6 +1015,19 @@ class Budget(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "budget_filter")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

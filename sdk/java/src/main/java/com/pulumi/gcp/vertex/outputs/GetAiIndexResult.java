@@ -19,6 +19,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiIndexResult {
     private String createTime;
+    private String deletionPolicy;
     private List<GetAiIndexDeployedIndex> deployedIndexes;
     private String description;
     private String displayName;
@@ -44,6 +45,9 @@ public final class GetAiIndexResult {
     private GetAiIndexResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public List<GetAiIndexDeployedIndex> deployedIndexes() {
         return this.deployedIndexes;
@@ -111,6 +115,7 @@ public final class GetAiIndexResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private List<GetAiIndexDeployedIndex> deployedIndexes;
         private String description;
         private String displayName;
@@ -132,6 +137,7 @@ public final class GetAiIndexResult {
         public Builder(GetAiIndexResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deployedIndexes = defaults.deployedIndexes;
     	      this.description = defaults.description;
     	      this.displayName = defaults.displayName;
@@ -157,6 +163,14 @@ public final class GetAiIndexResult {
               throw new MissingRequiredPropertyException("GetAiIndexResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -308,6 +322,7 @@ public final class GetAiIndexResult {
         public GetAiIndexResult build() {
             final var _resultValue = new GetAiIndexResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deployedIndexes = deployedIndexes;
             _resultValue.description = description;
             _resultValue.displayName = displayName;

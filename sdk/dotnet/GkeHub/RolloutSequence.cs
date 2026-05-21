@@ -41,6 +41,14 @@ namespace Pulumi.Gcp.GkeHub
     public partial class RolloutSequence : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Configuration for automatic upgrades.
+        /// If not specified, the system applies default behavior.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("autoUpgradeConfig")]
+        public Output<Outputs.RolloutSequenceAutoUpgradeConfig?> AutoUpgradeConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp at which the Rollout Sequence was created.
         /// </summary>
         [Output("createTime")]
@@ -51,6 +59,17 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Human readable display name of the Rollout Sequence.
@@ -183,6 +202,25 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class RolloutSequenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for automatic upgrades.
+        /// If not specified, the system applies default behavior.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoUpgradeConfig")]
+        public Input<Inputs.RolloutSequenceAutoUpgradeConfigArgs>? AutoUpgradeConfig { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Human readable display name of the Rollout Sequence.
         /// </summary>
         [Input("displayName")]
@@ -245,6 +283,14 @@ namespace Pulumi.Gcp.GkeHub
     public sealed class RolloutSequenceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration for automatic upgrades.
+        /// If not specified, the system applies default behavior.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autoUpgradeConfig")]
+        public Input<Inputs.RolloutSequenceAutoUpgradeConfigGetArgs>? AutoUpgradeConfig { get; set; }
+
+        /// <summary>
         /// The timestamp at which the Rollout Sequence was created.
         /// </summary>
         [Input("createTime")]
@@ -255,6 +301,17 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Human readable display name of the Rollout Sequence.

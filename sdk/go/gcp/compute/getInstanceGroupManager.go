@@ -75,6 +75,7 @@ type LookupInstanceGroupManagerResult struct {
 	AutoHealingPolicies []GetInstanceGroupManagerAutoHealingPolicy  `pulumi:"autoHealingPolicies"`
 	BaseInstanceName    string                                      `pulumi:"baseInstanceName"`
 	CreationTimestamp   string                                      `pulumi:"creationTimestamp"`
+	DeletionPolicy      string                                      `pulumi:"deletionPolicy"`
 	Description         string                                      `pulumi:"description"`
 	Fingerprint         string                                      `pulumi:"fingerprint"`
 	// The provider-assigned unique ID for this managed resource.
@@ -165,6 +166,10 @@ func (o LookupInstanceGroupManagerResultOutput) BaseInstanceName() pulumi.String
 
 func (o LookupInstanceGroupManagerResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceGroupManagerResultOutput) Description() pulumi.StringOutput {

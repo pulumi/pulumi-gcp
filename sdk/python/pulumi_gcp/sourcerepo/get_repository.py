@@ -27,10 +27,13 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, create_ignore_already_exists=None, id=None, name=None, project=None, pubsub_configs=None, size=None, url=None):
+    def __init__(__self__, create_ignore_already_exists=None, deletion_policy=None, id=None, name=None, project=None, pubsub_configs=None, size=None, url=None):
         if create_ignore_already_exists and not isinstance(create_ignore_already_exists, bool):
             raise TypeError("Expected argument 'create_ignore_already_exists' to be a bool")
         pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -54,6 +57,11 @@ class GetRepositoryResult:
     @pulumi.getter(name="createIgnoreAlreadyExists")
     def create_ignore_already_exists(self) -> _builtins.bool:
         return pulumi.get(self, "create_ignore_already_exists")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -96,6 +104,7 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             yield self
         return GetRepositoryResult(
             create_ignore_already_exists=self.create_ignore_already_exists,
+            deletion_policy=self.deletion_policy,
             id=self.id,
             name=self.name,
             project=self.project,
@@ -134,6 +143,7 @@ def get_repository(name: Optional[_builtins.str] = None,
 
     return AwaitableGetRepositoryResult(
         create_ignore_already_exists=pulumi.get(__ret__, 'create_ignore_already_exists'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
@@ -169,6 +179,7 @@ def get_repository_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:sourcerepo/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
     return __ret__.apply(lambda __response__: GetRepositoryResult(
         create_ignore_already_exists=pulumi.get(__response__, 'create_ignore_already_exists'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         project=pulumi.get(__response__, 'project'),

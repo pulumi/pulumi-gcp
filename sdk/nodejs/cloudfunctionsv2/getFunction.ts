@@ -58,6 +58,7 @@ export interface GetFunctionArgs {
  */
 export interface GetFunctionResult {
     readonly buildConfigs: outputs.cloudfunctionsv2.GetFunctionBuildConfig[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly environment: string;

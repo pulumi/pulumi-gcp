@@ -60,6 +60,7 @@ export interface GetRepositoryResult {
     readonly cleanupPolicies: outputs.artifactregistry.GetRepositoryCleanupPolicy[];
     readonly cleanupPolicyDryRun: boolean;
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly dockerConfigs: outputs.artifactregistry.GetRepositoryDockerConfig[];
     readonly effectiveLabels: {[key: string]: string};

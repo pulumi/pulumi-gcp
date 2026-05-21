@@ -1095,6 +1095,15 @@ export class RegionUrlMap extends pulumi.CustomResource {
      */
     declare public readonly defaultUrlRedirect: pulumi.Output<outputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -1174,6 +1183,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["defaultRouteAction"] = state?.defaultRouteAction;
             resourceInputs["defaultService"] = state?.defaultService;
             resourceInputs["defaultUrlRedirect"] = state?.defaultUrlRedirect;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["headerAction"] = state?.headerAction;
@@ -1190,6 +1200,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
             resourceInputs["defaultRouteAction"] = args?.defaultRouteAction;
             resourceInputs["defaultService"] = args?.defaultService;
             resourceInputs["defaultUrlRedirect"] = args?.defaultUrlRedirect;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["headerAction"] = args?.headerAction;
             resourceInputs["hostRules"] = args?.hostRules;
@@ -1241,6 +1252,15 @@ export interface RegionUrlMapState {
      * Structure is documented below.
      */
     defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
@@ -1334,6 +1354,15 @@ export interface RegionUrlMapArgs {
      * Structure is documented below.
      */
     defaultUrlRedirect?: pulumi.Input<inputs.compute.RegionUrlMapDefaultUrlRedirect | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

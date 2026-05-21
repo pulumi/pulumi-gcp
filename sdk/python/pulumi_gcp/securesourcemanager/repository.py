@@ -34,14 +34,12 @@ class RepositoryArgs:
         :param pulumi.Input[_builtins.str] instance: The name of the instance in which the repository is hosted.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-               by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input['RepositoryInitialConfigArgs'] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -100,14 +98,12 @@ class RepositoryArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the repository. Setting `ABANDON` allows the resource
-        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-        and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-        by erroring out during plan.
-        Default is `PREVENT`.  Possible values are:
-        * DELETE
-        * PREVENT
-        * ABANDON
+        Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -173,14 +169,12 @@ class _RepositoryState:
         Input properties used for looking up and filtering Repository resources.
 
         :param pulumi.Input[_builtins.str] create_time: Time the repository was created in UTC.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-               by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input['RepositoryInitialConfigArgs'] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -236,14 +230,12 @@ class _RepositoryState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the repository. Setting `ABANDON` allows the resource
-        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-        and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-        by erroring out during plan.
-        Default is `PREVENT`.  Possible values are:
-        * DELETE
-        * PREVENT
-        * ABANDON
+        Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -461,14 +453,12 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-               by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -633,14 +623,12 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: Time the repository was created in UTC.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the repository. Setting `ABANDON` allows the resource
-               to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-               and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-               by erroring out during plan.
-               Default is `PREVENT`.  Possible values are:
-               * DELETE
-               * PREVENT
-               * ABANDON
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the repository, which cannot exceed 500 characters.
         :param pulumi.Input[Union['RepositoryInitialConfigArgs', 'RepositoryInitialConfigArgsDict']] initial_config: Initial configurations for the repository.
                Structure is documented below.
@@ -683,16 +671,14 @@ class Repository(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The deletion policy for the repository. Setting `ABANDON` allows the resource
-        to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-        and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-        by erroring out during plan.
-        Default is `PREVENT`.  Possible values are:
-        * DELETE
-        * PREVENT
-        * ABANDON
+        Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

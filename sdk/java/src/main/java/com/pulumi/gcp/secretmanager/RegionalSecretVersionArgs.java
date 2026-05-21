@@ -18,24 +18,36 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
     public static final RegionalSecretVersionArgs Empty = new RegionalSecretVersionArgs();
 
     /**
-     * The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+     * The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * disabled rather than deleted.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * 
+     * Default is `DELETE`. Possible values are:
      * * DELETE
      * * DISABLE
      * * ABANDON
+     * * PREVENT
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+     * @return The deletion policy for the secret version. Setting `ABANDON` allows the resource
      * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-     * disabled rather than deleted. Default is `DELETE`. Possible values are:
+     * disabled rather than deleted.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * 
+     * Default is `DELETE`. Possible values are:
      * * DELETE
      * * DISABLE
      * * ABANDON
+     * * PREVENT
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -133,12 +145,18 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+         * @param deletionPolicy The deletion policy for the secret version. Setting `ABANDON` allows the resource
          * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-         * disabled rather than deleted. Default is `DELETE`. Possible values are:
+         * disabled rather than deleted.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * 
+         * Default is `DELETE`. Possible values are:
          * * DELETE
          * * DISABLE
          * * ABANDON
+         * * PREVENT
          * 
          * @return builder
          * 
@@ -149,12 +167,18 @@ public final class RegionalSecretVersionArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the regional secret version. Setting `ABANDON` allows the resource
+         * @param deletionPolicy The deletion policy for the secret version. Setting `ABANDON` allows the resource
          * to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-         * disabled rather than deleted. Default is `DELETE`. Possible values are:
+         * disabled rather than deleted.
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * 
+         * Default is `DELETE`. Possible values are:
          * * DELETE
          * * DISABLE
          * * ABANDON
+         * * PREVENT
          * 
          * @return builder
          * 

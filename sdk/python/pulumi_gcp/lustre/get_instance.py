@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, description=None, dynamic_tier_options=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, uid=None, upcoming_maintenance_schedules=None, update_time=None, zone=None):
+    def __init__(__self__, access_rules_options=None, capacity_gib=None, create_time=None, deletion_policy=None, description=None, dynamic_tier_options=None, effective_labels=None, filesystem=None, gke_support_enabled=None, id=None, instance_id=None, kms_key=None, labels=None, location=None, maintenance_policies=None, mount_point=None, name=None, network=None, per_unit_storage_throughput=None, placement_policy=None, project=None, pulumi_labels=None, state=None, state_reason=None, uid=None, upcoming_maintenance_schedules=None, update_time=None, zone=None):
         if access_rules_options and not isinstance(access_rules_options, list):
             raise TypeError("Expected argument 'access_rules_options' to be a list")
         pulumi.set(__self__, "access_rules_options", access_rules_options)
@@ -37,6 +37,9 @@ class GetInstanceResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -124,6 +127,11 @@ class GetInstanceResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -258,6 +266,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             access_rules_options=self.access_rules_options,
             capacity_gib=self.capacity_gib,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             dynamic_tier_options=self.dynamic_tier_options,
             effective_labels=self.effective_labels,
@@ -309,6 +318,7 @@ def get_instance(instance_id: Optional[_builtins.str] = None,
         access_rules_options=pulumi.get(__ret__, 'access_rules_options'),
         capacity_gib=pulumi.get(__ret__, 'capacity_gib'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         dynamic_tier_options=pulumi.get(__ret__, 'dynamic_tier_options'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -357,6 +367,7 @@ def get_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = Non
         access_rules_options=pulumi.get(__response__, 'access_rules_options'),
         capacity_gib=pulumi.get(__response__, 'capacity_gib'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         dynamic_tier_options=pulumi.get(__response__, 'dynamic_tier_options'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

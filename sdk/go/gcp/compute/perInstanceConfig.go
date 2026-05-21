@@ -148,6 +148,13 @@ import (
 type PerInstanceConfig struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The instance group manager this instance config is part of.
 	InstanceGroupManager pulumi.StringOutput `pulumi:"instanceGroupManager"`
 	// The minimal action to perform on the instance during an update.
@@ -216,6 +223,13 @@ func GetPerInstanceConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PerInstanceConfig resources.
 type perInstanceConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The instance group manager this instance config is part of.
 	InstanceGroupManager *string `pulumi:"instanceGroupManager"`
 	// The minimal action to perform on the instance during an update.
@@ -252,6 +266,13 @@ type perInstanceConfigState struct {
 }
 
 type PerInstanceConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The instance group manager this instance config is part of.
 	InstanceGroupManager pulumi.StringPtrInput
 	// The minimal action to perform on the instance during an update.
@@ -292,6 +313,13 @@ func (PerInstanceConfigState) ElementType() reflect.Type {
 }
 
 type perInstanceConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The instance group manager this instance config is part of.
 	InstanceGroupManager string `pulumi:"instanceGroupManager"`
 	// The minimal action to perform on the instance during an update.
@@ -329,6 +357,13 @@ type perInstanceConfigArgs struct {
 
 // The set of arguments for constructing a PerInstanceConfig resource.
 type PerInstanceConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The instance group manager this instance config is part of.
 	InstanceGroupManager pulumi.StringInput
 	// The minimal action to perform on the instance during an update.
@@ -449,6 +484,16 @@ func (o PerInstanceConfigOutput) ToPerInstanceConfigOutput() PerInstanceConfigOu
 
 func (o PerInstanceConfigOutput) ToPerInstanceConfigOutputWithContext(ctx context.Context) PerInstanceConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PerInstanceConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PerInstanceConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The instance group manager this instance config is part of.

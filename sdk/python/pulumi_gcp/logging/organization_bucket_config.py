@@ -25,6 +25,7 @@ class OrganizationBucketConfigArgs:
                  location: pulumi.Input[_builtins.str],
                  organization: pulumi.Input[_builtins.str],
                  cmek_settings: pulumi.Input[Optional['OrganizationBucketConfigCmekSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  index_configs: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None):
@@ -35,6 +36,12 @@ class OrganizationBucketConfigArgs:
         :param pulumi.Input[_builtins.str] location: The location of the bucket. The supported locations are: "global" "us-central1"
         :param pulumi.Input[_builtins.str] organization: The parent resource that contains the logging bucket.
         :param pulumi.Input['OrganizationBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
@@ -44,6 +51,8 @@ class OrganizationBucketConfigArgs:
         pulumi.set(__self__, "organization", organization)
         if cmek_settings is not None:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if index_configs is not None:
@@ -100,6 +109,23 @@ class OrganizationBucketConfigArgs:
         pulumi.set(self, "cmek_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -141,6 +167,7 @@ class _OrganizationBucketConfigState:
     def __init__(__self__, *,
                  bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cmek_settings: pulumi.Input[Optional['OrganizationBucketConfigCmekSettingsArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  index_configs: pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]]] = None,
                  lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -153,6 +180,12 @@ class _OrganizationBucketConfigState:
 
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input['OrganizationBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationBucketConfigIndexConfigArgs']]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -165,6 +198,8 @@ class _OrganizationBucketConfigState:
             pulumi.set(__self__, "bucket_id", bucket_id)
         if cmek_settings is not None:
             pulumi.set(__self__, "cmek_settings", cmek_settings)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if index_configs is not None:
@@ -203,6 +238,23 @@ class _OrganizationBucketConfigState:
     @cmek_settings.setter
     def cmek_settings(self, value: pulumi.Input[Optional['OrganizationBucketConfigCmekSettingsArgs']]):
         pulumi.set(self, "cmek_settings", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -297,6 +349,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cmek_settings: pulumi.Input[Optional[Union['OrganizationBucketConfigCmekSettingsArgs', 'OrganizationBucketConfigCmekSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBucketConfigIndexConfigArgs', 'OrganizationBucketConfigIndexConfigArgsDict']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -345,6 +398,12 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[Union['OrganizationBucketConfigCmekSettingsArgs', 'OrganizationBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBucketConfigIndexConfigArgs', 'OrganizationBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The location of the bucket. The supported locations are: "global" "us-central1"
@@ -412,6 +471,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
                  cmek_settings: pulumi.Input[Optional[Union['OrganizationBucketConfigCmekSettingsArgs', 'OrganizationBucketConfigCmekSettingsArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBucketConfigIndexConfigArgs', 'OrganizationBucketConfigIndexConfigArgsDict']]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -430,6 +490,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bucket_id'")
             __props__.__dict__["bucket_id"] = bucket_id
             __props__.__dict__["cmek_settings"] = cmek_settings
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["index_configs"] = index_configs
             if location is None and not opts.urn:
@@ -453,6 +514,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bucket_id: pulumi.Input[Optional[_builtins.str]] = None,
             cmek_settings: pulumi.Input[Optional[Union['OrganizationBucketConfigCmekSettingsArgs', 'OrganizationBucketConfigCmekSettingsArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             index_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OrganizationBucketConfigIndexConfigArgs', 'OrganizationBucketConfigIndexConfigArgsDict']]]]] = None,
             lifecycle_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -469,6 +531,12 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket_id: The name of the logging bucket. Logging automatically creates two log buckets: `_Required` and `_Default`.
         :param pulumi.Input[Union['OrganizationBucketConfigCmekSettingsArgs', 'OrganizationBucketConfigCmekSettingsArgsDict']] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Describes this bucket.
         :param pulumi.Input[Sequence[pulumi.Input[Union['OrganizationBucketConfigIndexConfigArgs', 'OrganizationBucketConfigIndexConfigArgsDict']]]] index_configs: A list of indexed fields and related configuration data. Structure is documented below.
         :param pulumi.Input[_builtins.str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
@@ -483,6 +551,7 @@ class OrganizationBucketConfig(pulumi.CustomResource):
 
         __props__.__dict__["bucket_id"] = bucket_id
         __props__.__dict__["cmek_settings"] = cmek_settings
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["index_configs"] = index_configs
         __props__.__dict__["lifecycle_state"] = lifecycle_state
@@ -507,6 +576,19 @@ class OrganizationBucketConfig(pulumi.CustomResource):
         The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         """
         return pulumi.get(self, "cmek_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

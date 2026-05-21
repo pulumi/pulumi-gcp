@@ -99,6 +99,13 @@ import (
 type WebResource struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The email addresses of all direct, verified owners of this exact property. Indirect owners —
 	// for example verified owners of the containing domain—are not included in this list.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
@@ -149,6 +156,13 @@ func GetWebResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebResource resources.
 type webResourceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The email addresses of all direct, verified owners of this exact property. Indirect owners —
 	// for example verified owners of the containing domain—are not included in this list.
 	Owners []string `pulumi:"owners"`
@@ -164,6 +178,13 @@ type webResourceState struct {
 }
 
 type WebResourceState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The email addresses of all direct, verified owners of this exact property. Indirect owners —
 	// for example verified owners of the containing domain—are not included in this list.
 	Owners pulumi.StringArrayInput
@@ -183,6 +204,13 @@ func (WebResourceState) ElementType() reflect.Type {
 }
 
 type webResourceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Container for the address and type of a site for which a verification token will be verified.
 	// Structure is documented below.
 	Site WebResourceSite `pulumi:"site"`
@@ -194,6 +222,13 @@ type webResourceArgs struct {
 
 // The set of arguments for constructing a WebResource resource.
 type WebResourceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Container for the address and type of a site for which a verification token will be verified.
 	// Structure is documented below.
 	Site WebResourceSiteInput
@@ -288,6 +323,16 @@ func (o WebResourceOutput) ToWebResourceOutput() WebResourceOutput {
 
 func (o WebResourceOutput) ToWebResourceOutputWithContext(ctx context.Context) WebResourceOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o WebResourceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebResource) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The email addresses of all direct, verified owners of this exact property. Indirect owners —

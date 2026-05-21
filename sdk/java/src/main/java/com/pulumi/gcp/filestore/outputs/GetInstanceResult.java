@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetInstanceResult {
     private String createTime;
+    private String deletionPolicy;
     private Boolean deletionProtectionEnabled;
     private String deletionProtectionReason;
     private String description;
@@ -53,6 +54,9 @@ public final class GetInstanceResult {
     private GetInstanceResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtectionEnabled() {
         return this.deletionProtectionEnabled;
@@ -138,6 +142,7 @@ public final class GetInstanceResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtectionEnabled;
         private String deletionProtectionReason;
         private String description;
@@ -165,6 +170,7 @@ public final class GetInstanceResult {
         public Builder(GetInstanceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.deletionProtectionReason = defaults.deletionProtectionReason;
     	      this.description = defaults.description;
@@ -196,6 +202,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -399,6 +413,7 @@ public final class GetInstanceResult {
         public GetInstanceResult build() {
             final var _resultValue = new GetInstanceResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtectionEnabled = deletionProtectionEnabled;
             _resultValue.deletionProtectionReason = deletionProtectionReason;
             _resultValue.description = description;

@@ -29,6 +29,7 @@ public final class GetJobResult {
     private String createTime;
     private String creator;
     private String deleteTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private Map<String,String> effectiveAnnotations;
     private Map<String,String> effectiveLabels;
@@ -82,6 +83,9 @@ public final class GetJobResult {
     }
     public String deleteTime() {
         return this.deleteTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -177,6 +181,7 @@ public final class GetJobResult {
         private String createTime;
         private String creator;
         private String deleteTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private Map<String,String> effectiveAnnotations;
         private Map<String,String> effectiveLabels;
@@ -212,6 +217,7 @@ public final class GetJobResult {
     	      this.createTime = defaults.createTime;
     	      this.creator = defaults.creator;
     	      this.deleteTime = defaults.deleteTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -306,6 +312,14 @@ public final class GetJobResult {
               throw new MissingRequiredPropertyException("GetJobResult", "deleteTime");
             }
             this.deleteTime = deleteTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -515,6 +529,7 @@ public final class GetJobResult {
             _resultValue.createTime = createTime;
             _resultValue.creator = creator;
             _resultValue.deleteTime = deleteTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.effectiveAnnotations = effectiveAnnotations;
             _resultValue.effectiveLabels = effectiveLabels;

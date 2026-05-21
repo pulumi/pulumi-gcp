@@ -397,6 +397,13 @@ type UptimeCheckConfig struct {
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayOutput `pulumi:"contentMatchers"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Contains information needed to make an HTTP or HTTPS check.
@@ -476,6 +483,13 @@ type uptimeCheckConfigState struct {
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers []UptimeCheckConfigContentMatcher `pulumi:"contentMatchers"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName *string `pulumi:"displayName"`
 	// Contains information needed to make an HTTP or HTTPS check.
@@ -520,6 +534,13 @@ type UptimeCheckConfigState struct {
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName pulumi.StringPtrInput
 	// Contains information needed to make an HTTP or HTTPS check.
@@ -568,6 +589,13 @@ type uptimeCheckConfigArgs struct {
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers []UptimeCheckConfigContentMatcher `pulumi:"contentMatchers"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName string `pulumi:"displayName"`
 	// Contains information needed to make an HTTP or HTTPS check.
@@ -609,6 +637,13 @@ type UptimeCheckConfigArgs struct {
 	// The expected content on the page the check is run against. Currently, only the first entry in the list is supported, and other entries will be ignored. The server will look for an exact match of the string in the page response's content. This field is optional and should only be specified if a content match is required.
 	// Structure is documented below.
 	ContentMatchers UptimeCheckConfigContentMatcherArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.
 	DisplayName pulumi.StringInput
 	// Contains information needed to make an HTTP or HTTPS check.
@@ -739,6 +774,16 @@ func (o UptimeCheckConfigOutput) CheckerType() pulumi.StringOutput {
 // Structure is documented below.
 func (o UptimeCheckConfigOutput) ContentMatchers() UptimeCheckConfigContentMatcherArrayOutput {
 	return o.ApplyT(func(v *UptimeCheckConfig) UptimeCheckConfigContentMatcherArrayOutput { return v.ContentMatchers }).(UptimeCheckConfigContentMatcherArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o UptimeCheckConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *UptimeCheckConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human-friendly name for the uptime check configuration. The display name should be unique within a Stackdriver Workspace in order to make it easier to identify; however, uniqueness is not enforced.

@@ -1769,6 +1769,13 @@ func (o GetConnectivityTestRunReachabilityDetailTraceStepArrayOutput) Index(i pu
 type GetConnectivityTestsConnectivityTest struct {
 	// Whether the analysis should skip firewall checking.
 	BypassFirewallChecks bool `pulumi:"bypassFirewallChecks"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// The user-supplied description of the Connectivity Test.
 	Description string `pulumi:"description"`
 	// Destination specification of the Connectivity Test.
@@ -1810,6 +1817,13 @@ type GetConnectivityTestsConnectivityTestInput interface {
 type GetConnectivityTestsConnectivityTestArgs struct {
 	// Whether the analysis should skip firewall checking.
 	BypassFirewallChecks pulumi.BoolInput `pulumi:"bypassFirewallChecks"`
+	// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringInput `pulumi:"deletionPolicy"`
 	// The user-supplied description of the Connectivity Test.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Destination specification of the Connectivity Test.
@@ -1891,6 +1905,16 @@ func (o GetConnectivityTestsConnectivityTestOutput) ToGetConnectivityTestsConnec
 // Whether the analysis should skip firewall checking.
 func (o GetConnectivityTestsConnectivityTestOutput) BypassFirewallChecks() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) bool { return v.BypassFirewallChecks }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o GetConnectivityTestsConnectivityTestOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetConnectivityTestsConnectivityTest) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The user-supplied description of the Connectivity Test.

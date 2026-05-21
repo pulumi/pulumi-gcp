@@ -149,6 +149,15 @@ export class Membership extends pulumi.CustomResource {
      */
     declare public readonly authority: pulumi.Output<outputs.gkehub.MembershipAuthority | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     declare public /*out*/ readonly effectiveLabels: pulumi.Output<{[key: string]: string}>;
@@ -202,6 +211,7 @@ export class Membership extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as MembershipState | undefined;
             resourceInputs["authority"] = state?.authority;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["endpoint"] = state?.endpoint;
             resourceInputs["labels"] = state?.labels;
@@ -216,6 +226,7 @@ export class Membership extends pulumi.CustomResource {
                 throw new Error("Missing required property 'membershipId'");
             }
             resourceInputs["authority"] = args?.authority;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["endpoint"] = args?.endpoint;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -243,6 +254,15 @@ export interface MembershipState {
      * Structure is documented below.
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -295,6 +315,15 @@ export interface MembershipArgs {
      * Structure is documented below.
      */
     authority?: pulumi.Input<inputs.gkehub.MembershipAuthority | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
      * Structure is documented below.

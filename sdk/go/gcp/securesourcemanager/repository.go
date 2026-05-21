@@ -126,15 +126,13 @@ type Repository struct {
 
 	// Time the repository was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The deletion policy for the repository. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-	// by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the repository, which cannot exceed 500 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Initial configurations for the repository.
@@ -201,14 +199,12 @@ func GetRepository(ctx *pulumi.Context,
 type repositoryState struct {
 	// Time the repository was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// The deletion policy for the repository. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-	// by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the repository, which cannot exceed 500 characters.
 	Description *string `pulumi:"description"`
@@ -238,14 +234,12 @@ type repositoryState struct {
 type RepositoryState struct {
 	// Time the repository was created in UTC.
 	CreateTime pulumi.StringPtrInput
-	// The deletion policy for the repository. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-	// by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// Description of the repository, which cannot exceed 500 characters.
 	Description pulumi.StringPtrInput
@@ -277,14 +271,12 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
-	// The deletion policy for the repository. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-	// by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the repository, which cannot exceed 500 characters.
 	Description *string `pulumi:"description"`
@@ -304,14 +296,12 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// The deletion policy for the repository. Setting `ABANDON` allows the resource
-	// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-	// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-	// by erroring out during plan.
-	// Default is `PREVENT`.  Possible values are:
-	// * DELETE
-	// * PREVENT
-	// * ABANDON
+	// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	DeletionPolicy pulumi.StringPtrInput
 	// Description of the repository, which cannot exceed 500 characters.
 	Description pulumi.StringPtrInput
@@ -421,16 +411,14 @@ func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The deletion policy for the repository. Setting `ABANDON` allows the resource
-// to be abandoned, rather than deleted. Setting `DELETE` deletes the resource
-// and all its contents. Setting `PREVENT` prevents the resource from accidental deletion
-// by erroring out during plan.
-// Default is `PREVENT`.  Possible values are:
-// * DELETE
-// * PREVENT
-// * ABANDON
-func (o RepositoryOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// Whether Terraform will be prevented from destroying the resource. Defaults to PREVENT.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RepositoryOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the repository, which cannot exceed 500 characters.

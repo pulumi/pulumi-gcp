@@ -12,12 +12,9 @@ namespace Pulumi.Gcp.Chronicle
     /// <summary>
     /// A chart resource used within a NativeDashboard. Its lifecycle (Create, Update, Delete) is managed via custom methods on the NativeDashboard resource.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about DashboardChart, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1beta/projects.locations.instances.dashboardCharts)
+    /// * [API documentation](https://cloud.google.com/chronicle/docs/reference/rest/v1/projects.locations.instances.dashboardCharts)
     /// * How-to Guides
     ///     * [Google SecOps Guides](https://cloud.google.com/chronicle/docs/secops/secops-overview)
     /// 
@@ -311,6 +308,17 @@ namespace Pulumi.Gcp.Chronicle
         public Output<Outputs.DashboardChartDashboardQuery?> DashboardQuery { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the Chronicle instance.
         /// </summary>
         [Output("instance")]
@@ -409,6 +417,17 @@ namespace Pulumi.Gcp.Chronicle
         public Input<Inputs.DashboardChartDashboardQueryArgs>? DashboardQuery { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The ID of the Chronicle instance.
         /// </summary>
         [Input("instance", required: true)]
@@ -467,6 +486,17 @@ namespace Pulumi.Gcp.Chronicle
         /// </summary>
         [Input("dashboardQuery")]
         public Input<Inputs.DashboardChartDashboardQueryGetArgs>? DashboardQuery { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The ID of the Chronicle instance.

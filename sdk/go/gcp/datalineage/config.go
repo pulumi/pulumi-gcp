@@ -32,15 +32,48 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datalineage"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := datalineage.NewConfig(ctx, "default", &datalineage.ConfigArgs{
-//				Parent:   pulumi.String("projects/my-project-name"),
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("tf-test_16511"),
+//				Name:           pulumi.String("tf-test_8493"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			waitForProject, err := time.NewSleep(ctx, "wait_for_project", &time.SleepArgs{
+//				CreateDuration: pulumi.String("60s"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			datalineageApi, err := projects.NewService(ctx, "datalineage_api", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("datalineage.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				waitForProject,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = datalineage.NewConfig(ctx, "default", &datalineage.ConfigArgs{
+//				Parent: project.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					return fmt.Sprintf("projects/%v", projectId), nil
+//				}).(pulumi.StringOutput),
 //				Location: pulumi.String("global"),
 //				Ingestion: &datalineage.ConfigIngestionArgs{
 //					Rules: datalineage.ConfigIngestionRuleArray{
@@ -54,7 +87,9 @@ import (
 //						},
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				datalineageApi,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -183,6 +218,13 @@ import (
 type Config struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Used for optimistic concurrency control when patching config.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Defines how Lineage should be ingested for this resource.
@@ -240,6 +282,13 @@ func GetConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Config resources.
 type configState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Used for optimistic concurrency control when patching config.
 	Etag *string `pulumi:"etag"`
 	// Defines how Lineage should be ingested for this resource.
@@ -259,6 +308,13 @@ type configState struct {
 }
 
 type ConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Used for optimistic concurrency control when patching config.
 	Etag pulumi.StringPtrInput
 	// Defines how Lineage should be ingested for this resource.
@@ -282,6 +338,13 @@ func (ConfigState) ElementType() reflect.Type {
 }
 
 type configArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Defines how Lineage should be ingested for this resource.
 	// Structure is documented below.
 	Ingestion ConfigIngestion `pulumi:"ingestion"`
@@ -294,6 +357,13 @@ type configArgs struct {
 
 // The set of arguments for constructing a Config resource.
 type ConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Defines how Lineage should be ingested for this resource.
 	// Structure is documented below.
 	Ingestion ConfigIngestionInput
@@ -389,6 +459,16 @@ func (o ConfigOutput) ToConfigOutput() ConfigOutput {
 
 func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Used for optimistic concurrency control when patching config.

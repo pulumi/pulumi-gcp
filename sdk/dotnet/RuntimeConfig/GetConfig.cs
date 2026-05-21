@@ -156,6 +156,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     [OutputType]
     public sealed class GetConfigResult
     {
+        public readonly string DeletionPolicy;
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -166,6 +167,8 @@ namespace Pulumi.Gcp.RuntimeConfig
 
         [OutputConstructor]
         private GetConfigResult(
+            string deletionPolicy,
+
             string description,
 
             string id,
@@ -174,6 +177,7 @@ namespace Pulumi.Gcp.RuntimeConfig
 
             string? project)
         {
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Id = id;
             Name = name;

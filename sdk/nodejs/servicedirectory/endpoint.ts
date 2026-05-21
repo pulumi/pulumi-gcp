@@ -118,6 +118,15 @@ export class Endpoint extends pulumi.CustomResource {
      */
     declare public readonly address: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      */
@@ -162,6 +171,7 @@ export class Endpoint extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
             resourceInputs["address"] = state?.address;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["endpointId"] = state?.endpointId;
             resourceInputs["metadata"] = state?.metadata;
             resourceInputs["name"] = state?.name;
@@ -177,6 +187,7 @@ export class Endpoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'service'");
             }
             resourceInputs["address"] = args?.address;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["endpointId"] = args?.endpointId;
             resourceInputs["metadata"] = args?.metadata;
             resourceInputs["network"] = args?.network;
@@ -197,6 +208,15 @@ export interface EndpointState {
      * IPv4 or IPv6 address of the endpoint.
      */
     address?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
@@ -237,6 +257,15 @@ export interface EndpointArgs {
      * IPv4 or IPv6 address of the endpoint.
      */
     address?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.

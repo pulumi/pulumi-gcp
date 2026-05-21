@@ -64,6 +64,7 @@ type GetHcVpnGatewayArgs struct {
 
 // A collection of values returned by getHcVpnGateway.
 type GetHcVpnGatewayResult struct {
+	DeletionPolicy   string            `pulumi:"deletionPolicy"`
 	Description      string            `pulumi:"description"`
 	EffectiveLabels  map[string]string `pulumi:"effectiveLabels"`
 	GatewayIpVersion string            `pulumi:"gatewayIpVersion"`
@@ -122,6 +123,10 @@ func (o GetHcVpnGatewayResultOutput) ToGetHcVpnGatewayResultOutput() GetHcVpnGat
 
 func (o GetHcVpnGatewayResultOutput) ToGetHcVpnGatewayResultOutputWithContext(ctx context.Context) GetHcVpnGatewayResultOutput {
 	return o
+}
+
+func (o GetHcVpnGatewayResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHcVpnGatewayResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetHcVpnGatewayResultOutput) Description() pulumi.StringOutput {

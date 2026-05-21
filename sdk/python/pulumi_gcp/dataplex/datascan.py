@@ -29,6 +29,7 @@ class DatascanArgs:
                  data_documentation_spec: pulumi.Input[Optional['DatascanDataDocumentationSpecArgs']] = None,
                  data_profile_spec: pulumi.Input[Optional['DatascanDataProfileSpecArgs']] = None,
                  data_quality_spec: pulumi.Input[Optional['DatascanDataQualitySpecArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_identity: pulumi.Input[Optional['DatascanExecutionIdentityArgs']] = None,
@@ -50,6 +51,12 @@ class DatascanArgs:
                Structure is documented below.
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input['DatascanExecutionIdentityArgs'] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
@@ -73,6 +80,8 @@ class DatascanArgs:
             pulumi.set(__self__, "data_profile_spec", data_profile_spec)
         if data_quality_spec is not None:
             pulumi.set(__self__, "data_quality_spec", data_quality_spec)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -186,6 +195,23 @@ class DatascanArgs:
         pulumi.set(self, "data_quality_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -261,6 +287,7 @@ class _DatascanState:
                  data_profile_spec: pulumi.Input[Optional['DatascanDataProfileSpecArgs']] = None,
                  data_quality_spec: pulumi.Input[Optional['DatascanDataQualitySpecArgs']] = None,
                  data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -290,6 +317,12 @@ class _DatascanState:
         :param pulumi.Input['DatascanDataQualitySpecArgs'] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -328,6 +361,8 @@ class _DatascanState:
             pulumi.set(__self__, "data_quality_spec", data_quality_spec)
         if data_scan_id is not None:
             pulumi.set(__self__, "data_scan_id", data_scan_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -446,6 +481,23 @@ class _DatascanState:
     @data_scan_id.setter
     def data_scan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_scan_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -648,6 +700,7 @@ class Datascan(pulumi.CustomResource):
                  data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
                  data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
                  data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
@@ -945,7 +998,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_37559",
+            name="tf-test-bucket-name-_13293",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -973,13 +1026,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_91980",
+            name="tf-test-bucket-name-_40289",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_37118",
+            connection_id="tf-test-connection-_33395",
             location="us-central1",
-            friendly_name="tf-test-connection-_80332",
+            friendly_name="tf-test-connection-_76044",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -1047,7 +1100,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_13293",
+            name="tf-test-bucket-name-_69391",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -1077,11 +1130,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__40289",
+            dataset_id="tf_dataplex_test_dataset_id__8270",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__33395",
+            table_id="tf_dataplex_test_table_id__41150",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1158,11 +1211,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__76044",
+            dataset_id="tf_dataplex_test_dataset_id__89313",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__69391",
+            table_id="tf_dataplex_test_table_id__60646",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -1241,13 +1294,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__8270",
+            dataset_id="tf_test_ds__9394",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name")
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__41150",
+            table_id="tf_test_tbl__11380",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -1294,7 +1347,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_89313",
+            account_id="tf-test-sa-_35305",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -1312,7 +1365,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__60646",
+            dataset_id="tf_test_ds__62793",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -1323,7 +1376,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__9394",
+            table_id="tf_test_tbl__55438",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -1376,7 +1429,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_11380",
+            account_id="tf-test-sa-_32706",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -1392,7 +1445,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__35305",
+            dataset_id="tf_test_dataset_id__49082",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -1404,7 +1457,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__62793",
+            table_id="tf_test_table_id__60365",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -1417,12 +1470,12 @@ class Datascan(pulumi.CustomResource):
         \"\"\")
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_55438",
+            entry_group_id="test-group-_80215",
             project="my-project-name")
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_32706",
+            entry_id="test-entry-_59033",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -1562,7 +1615,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_49082",
+            account_id="tf-test-sa-_32081",
             display_name="DataScan Service Account",
             project=project.project_id)
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -1581,12 +1634,12 @@ class Datascan(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_60365",
+            entry_group_id="test-group-_10393",
             project=project.project_id)
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_80215",
+            entry_id="test-entry-_33052",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -1601,7 +1654,7 @@ class Datascan(pulumi.CustomResource):
                 },
             }])
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__59033",
+            dataset_id="tf_test_dataset_id__3684",
             default_table_expiration_ms=3600000,
             location="us-central1",
             project=project.project_id,
@@ -1612,7 +1665,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__32081",
+            table_id="tf_test_table_id__10719",
             deletion_protection=False,
             project=project.project_id,
             schema=\"\"\"    [
@@ -1695,6 +1748,12 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']] execution_identity: The identity to run the datascan. If not specified, defaults to the Dataplex Service Agent.
@@ -2004,7 +2063,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_37559",
+            name="tf-test-bucket-name-_13293",
             location="us-west1",
             uniform_bucket_level_access=True)
         basic_discovery = gcp.dataplex.Datascan("basic_discovery",
@@ -2032,13 +2091,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_91980",
+            name="tf-test-bucket-name-_40289",
             location="us-west1",
             uniform_bucket_level_access=True)
         tf_test_connection = gcp.bigquery.Connection("tf_test_connection",
-            connection_id="tf-test-connection-_37118",
+            connection_id="tf-test-connection-_33395",
             location="us-central1",
-            friendly_name="tf-test-connection-_80332",
+            friendly_name="tf-test-connection-_76044",
             description="a bigquery connection for tf test",
             cloud_resource={})
         full_discovery = gcp.dataplex.Datascan("full_discovery",
@@ -2106,7 +2165,7 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_bucket = gcp.storage.Bucket("tf_test_bucket",
-            name="tf-test-bucket-name-_13293",
+            name="tf-test-bucket-name-_69391",
             location="us-west1",
             uniform_bucket_level_access=True)
         onetime_discovery = gcp.dataplex.Datascan("onetime_discovery",
@@ -2136,11 +2195,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__40289",
+            dataset_id="tf_dataplex_test_dataset_id__8270",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__33395",
+            table_id="tf_dataplex_test_table_id__41150",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -2217,11 +2276,11 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_dataplex_test_dataset = gcp.bigquery.Dataset("tf_dataplex_test_dataset",
-            dataset_id="tf_dataplex_test_dataset_id__76044",
+            dataset_id="tf_dataplex_test_dataset_id__89313",
             default_table_expiration_ms=3600000)
         tf_dataplex_test_table = gcp.bigquery.Table("tf_dataplex_test_table",
             dataset_id=tf_dataplex_test_dataset.dataset_id,
-            table_id="tf_dataplex_test_table_id__69391",
+            table_id="tf_dataplex_test_table_id__60646",
             deletion_protection=False,
             schema=\"\"\"    [
             {
@@ -2300,13 +2359,13 @@ class Datascan(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__8270",
+            dataset_id="tf_test_ds__9394",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name")
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__41150",
+            table_id="tf_test_tbl__11380",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -2353,7 +2412,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_89313",
+            account_id="tf-test-sa-_35305",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -2371,7 +2430,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_ds__60646",
+            dataset_id="tf_test_ds__62793",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -2382,7 +2441,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_tbl__9394",
+            table_id="tf_test_tbl__55438",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -2435,7 +2494,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_11380",
+            account_id="tf-test-sa-_32706",
             display_name="DataScan Service Account",
             project="my-project-name")
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -2451,7 +2510,7 @@ class Datascan(pulumi.CustomResource):
             role="roles/bigquery.jobUser",
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__35305",
+            dataset_id="tf_test_dataset_id__49082",
             default_table_expiration_ms=3600000,
             delete_contents_on_destroy=True,
             project="my-project-name",
@@ -2463,7 +2522,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__62793",
+            table_id="tf_test_table_id__60365",
             deletion_protection=False,
             project="my-project-name",
             schema=\"\"\"    [
@@ -2476,12 +2535,12 @@ class Datascan(pulumi.CustomResource):
         \"\"\")
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_55438",
+            entry_group_id="test-group-_80215",
             project="my-project-name")
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_32706",
+            entry_id="test-entry-_59033",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -2621,7 +2680,7 @@ class Datascan(pulumi.CustomResource):
 
         project = gcp.organizations.get_project(project_id="my-project-name")
         sa = gcp.serviceaccount.Account("sa",
-            account_id="tf-test-sa-_49082",
+            account_id="tf-test-sa-_32081",
             display_name="DataScan Service Account",
             project=project.project_id)
         dataplex_sa_impersonate = gcp.serviceaccount.IAMMember("dataplex_sa_impersonate",
@@ -2640,12 +2699,12 @@ class Datascan(pulumi.CustomResource):
             member=sa.email.apply(lambda email: f"serviceAccount:{email}"))
         test_group = gcp.dataplex.EntryGroup("test_group",
             location="us-central1",
-            entry_group_id="test-group-_60365",
+            entry_group_id="test-group-_10393",
             project=project.project_id)
         test_entry = gcp.dataplex.Entry("test_entry",
             location="us-central1",
             entry_group_id=test_group.entry_group_id,
-            entry_id="test-entry-_80215",
+            entry_id="test-entry-_33052",
             entry_type="projects/655216118709/locations/global/entryTypes/data-quality-rule-template",
             project=project.number,
             aspects=[{
@@ -2660,7 +2719,7 @@ class Datascan(pulumi.CustomResource):
                 },
             }])
         tf_test_dataset = gcp.bigquery.Dataset("tf_test_dataset",
-            dataset_id="tf_test_dataset_id__59033",
+            dataset_id="tf_test_dataset_id__3684",
             default_table_expiration_ms=3600000,
             location="us-central1",
             project=project.project_id,
@@ -2671,7 +2730,7 @@ class Datascan(pulumi.CustomResource):
                 ]))
         tf_test_table = gcp.bigquery.Table("tf_test_table",
             dataset_id=tf_test_dataset.dataset_id,
-            table_id="tf_test_table_id__32081",
+            table_id="tf_test_table_id__10719",
             deletion_protection=False,
             project=project.project_id,
             schema=\"\"\"    [
@@ -2763,6 +2822,7 @@ class Datascan(pulumi.CustomResource):
                  data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
                  data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
                  data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  execution_identity: pulumi.Input[Optional[Union['DatascanExecutionIdentityArgs', 'DatascanExecutionIdentityArgsDict']]] = None,
@@ -2789,6 +2849,7 @@ class Datascan(pulumi.CustomResource):
             if data_scan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_scan_id'")
             __props__.__dict__["data_scan_id"] = data_scan_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["execution_identity"] = execution_identity
@@ -2828,6 +2889,7 @@ class Datascan(pulumi.CustomResource):
             data_profile_spec: pulumi.Input[Optional[Union['DatascanDataProfileSpecArgs', 'DatascanDataProfileSpecArgsDict']]] = None,
             data_quality_spec: pulumi.Input[Optional[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']]] = None,
             data_scan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2861,6 +2923,12 @@ class Datascan(pulumi.CustomResource):
         :param pulumi.Input[Union['DatascanDataQualitySpecArgs', 'DatascanDataQualitySpecArgsDict']] data_quality_spec: DataQualityScan related setting.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_scan_id: DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the scan.
         :param pulumi.Input[_builtins.str] display_name: User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -2896,6 +2964,7 @@ class Datascan(pulumi.CustomResource):
         __props__.__dict__["data_profile_spec"] = data_profile_spec
         __props__.__dict__["data_quality_spec"] = data_quality_spec
         __props__.__dict__["data_scan_id"] = data_scan_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -2972,6 +3041,19 @@ class Datascan(pulumi.CustomResource):
         DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
         """
         return pulumi.get(self, "data_scan_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

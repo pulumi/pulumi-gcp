@@ -315,6 +315,7 @@ namespace Pulumi.Gcp.Monitoring
     [OutputType]
     public sealed class GetAppEngineServiceResult
     {
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Name used for UI elements listing this (Monitoring) Service.
         /// </summary>
@@ -339,6 +340,8 @@ namespace Pulumi.Gcp.Monitoring
 
         [OutputConstructor]
         private GetAppEngineServiceResult(
+            string deletionPolicy,
+
             string displayName,
 
             string id,
@@ -355,6 +358,7 @@ namespace Pulumi.Gcp.Monitoring
 
             ImmutableDictionary<string, string> userLabels)
         {
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             Id = id;
             ModuleId = moduleId;

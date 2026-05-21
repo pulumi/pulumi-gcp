@@ -65,6 +65,7 @@ type LookupReservationResult struct {
 	CreationTimestamp           string                                   `pulumi:"creationTimestamp"`
 	DeleteAfterDurations        []GetReservationDeleteAfterDuration      `pulumi:"deleteAfterDurations"`
 	DeleteAtTime                string                                   `pulumi:"deleteAtTime"`
+	DeletionPolicy              string                                   `pulumi:"deletionPolicy"`
 	Description                 string                                   `pulumi:"description"`
 	EnableEmergentMaintenance   bool                                     `pulumi:"enableEmergentMaintenance"`
 	Id                          string                                   `pulumi:"id"`
@@ -140,6 +141,10 @@ func (o LookupReservationResultOutput) DeleteAfterDurations() GetReservationDele
 
 func (o LookupReservationResultOutput) DeleteAtTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.DeleteAtTime }).(pulumi.StringOutput)
+}
+
+func (o LookupReservationResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupReservationResultOutput) Description() pulumi.StringOutput {

@@ -71,6 +71,7 @@ export interface GetBackendServiceResult {
     readonly customMetrics: outputs.compute.GetBackendServiceCustomMetric[];
     readonly customRequestHeaders: string[];
     readonly customResponseHeaders: string[];
+    readonly deletionPolicy: string;
     /**
      * Textual description for the Backend Service.
      */

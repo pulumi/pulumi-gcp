@@ -65,6 +65,68 @@ import (
 //	}
 //
 // ```
+// ### Database Migration Service Private Connection Psc
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/databasemigrationservice"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databasemigrationservice.NewPrivateConnection(ctx, "default", &databasemigrationservice.PrivateConnectionArgs{
+//				DisplayName:         pulumi.String("dbms_pc"),
+//				Location:            pulumi.String("us-central1"),
+//				PrivateConnectionId: pulumi.String("my-connection"),
+//				Labels: pulumi.StringMap{
+//					"key": pulumi.String("value"),
+//				},
+//				PscInterfaceConfig: &databasemigrationservice.PrivateConnectionPscInterfaceConfigArgs{
+//					NetworkAttachment: pulumi.Any(googleComputeNetworkAttachment.Default.Id),
+//				},
+//				CreateWithoutValidation: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
+//				Name:                 pulumi.String("my-attachment"),
+//				Region:               pulumi.String("us-central1"),
+//				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
+//				Subnetworks: pulumi.StringArray{
+//					googleComputeSubnetwork.Default.Id,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("my-subnetwork"),
+//				IpCidrRange: pulumi.String("10.0.0.0/16"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -86,6 +148,13 @@ type PrivateConnection struct {
 
 	// If set to true, will skip validations.
 	CreateWithoutValidation pulumi.BoolPtrOutput `pulumi:"createWithoutValidation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -106,6 +175,10 @@ type PrivateConnection struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The PSC Interface configuration is used to create PSC Interface
+	// between DMS's internal VPC and the consumer's PSC.
+	// Structure is documented below.
+	PscInterfaceConfig PrivateConnectionPscInterfaceConfigPtrOutput `pulumi:"pscInterfaceConfig"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -114,7 +187,7 @@ type PrivateConnection struct {
 	// The VPC Peering configuration is used to create VPC peering
 	// between databasemigrationservice and the consumer's VPC.
 	// Structure is documented below.
-	VpcPeeringConfig PrivateConnectionVpcPeeringConfigOutput `pulumi:"vpcPeeringConfig"`
+	VpcPeeringConfig PrivateConnectionVpcPeeringConfigPtrOutput `pulumi:"vpcPeeringConfig"`
 }
 
 // NewPrivateConnection registers a new resource with the given unique name, arguments, and options.
@@ -129,9 +202,6 @@ func NewPrivateConnection(ctx *pulumi.Context,
 	}
 	if args.PrivateConnectionId == nil {
 		return nil, errors.New("invalid value for required argument 'PrivateConnectionId'")
-	}
-	if args.VpcPeeringConfig == nil {
-		return nil, errors.New("invalid value for required argument 'VpcPeeringConfig'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
@@ -163,6 +233,13 @@ func GetPrivateConnection(ctx *pulumi.Context,
 type privateConnectionState struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -183,6 +260,10 @@ type privateConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The PSC Interface configuration is used to create PSC Interface
+	// between DMS's internal VPC and the consumer's PSC.
+	// Structure is documented below.
+	PscInterfaceConfig *PrivateConnectionPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -197,6 +278,13 @@ type privateConnectionState struct {
 type PrivateConnectionState struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -217,6 +305,10 @@ type PrivateConnectionState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The PSC Interface configuration is used to create PSC Interface
+	// between DMS's internal VPC and the consumer's PSC.
+	// Structure is documented below.
+	PscInterfaceConfig PrivateConnectionPscInterfaceConfigPtrInput
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -235,6 +327,13 @@ func (PrivateConnectionState) ElementType() reflect.Type {
 type privateConnectionArgs struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation *bool `pulumi:"createWithoutValidation"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Labels.
@@ -248,16 +347,27 @@ type privateConnectionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The PSC Interface configuration is used to create PSC Interface
+	// between DMS's internal VPC and the consumer's PSC.
+	// Structure is documented below.
+	PscInterfaceConfig *PrivateConnectionPscInterfaceConfig `pulumi:"pscInterfaceConfig"`
 	// The VPC Peering configuration is used to create VPC peering
 	// between databasemigrationservice and the consumer's VPC.
 	// Structure is documented below.
-	VpcPeeringConfig PrivateConnectionVpcPeeringConfig `pulumi:"vpcPeeringConfig"`
+	VpcPeeringConfig *PrivateConnectionVpcPeeringConfig `pulumi:"vpcPeeringConfig"`
 }
 
 // The set of arguments for constructing a PrivateConnection resource.
 type PrivateConnectionArgs struct {
 	// If set to true, will skip validations.
 	CreateWithoutValidation pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name.
 	DisplayName pulumi.StringPtrInput
 	// Labels.
@@ -271,10 +381,14 @@ type PrivateConnectionArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The PSC Interface configuration is used to create PSC Interface
+	// between DMS's internal VPC and the consumer's PSC.
+	// Structure is documented below.
+	PscInterfaceConfig PrivateConnectionPscInterfaceConfigPtrInput
 	// The VPC Peering configuration is used to create VPC peering
 	// between databasemigrationservice and the consumer's VPC.
 	// Structure is documented below.
-	VpcPeeringConfig PrivateConnectionVpcPeeringConfigInput
+	VpcPeeringConfig PrivateConnectionVpcPeeringConfigPtrInput
 }
 
 func (PrivateConnectionArgs) ElementType() reflect.Type {
@@ -369,6 +483,16 @@ func (o PrivateConnectionOutput) CreateWithoutValidation() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *PrivateConnection) pulumi.BoolPtrOutput { return v.CreateWithoutValidation }).(pulumi.BoolPtrOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PrivateConnectionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // Display name.
 func (o PrivateConnectionOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
@@ -413,6 +537,13 @@ func (o PrivateConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The PSC Interface configuration is used to create PSC Interface
+// between DMS's internal VPC and the consumer's PSC.
+// Structure is documented below.
+func (o PrivateConnectionOutput) PscInterfaceConfig() PrivateConnectionPscInterfaceConfigPtrOutput {
+	return o.ApplyT(func(v *PrivateConnection) PrivateConnectionPscInterfaceConfigPtrOutput { return v.PscInterfaceConfig }).(PrivateConnectionPscInterfaceConfigPtrOutput)
+}
+
 // The combination of labels configured directly on the resource
 //
 //	and default labels configured on the provider.
@@ -428,8 +559,8 @@ func (o PrivateConnectionOutput) State() pulumi.StringOutput {
 // The VPC Peering configuration is used to create VPC peering
 // between databasemigrationservice and the consumer's VPC.
 // Structure is documented below.
-func (o PrivateConnectionOutput) VpcPeeringConfig() PrivateConnectionVpcPeeringConfigOutput {
-	return o.ApplyT(func(v *PrivateConnection) PrivateConnectionVpcPeeringConfigOutput { return v.VpcPeeringConfig }).(PrivateConnectionVpcPeeringConfigOutput)
+func (o PrivateConnectionOutput) VpcPeeringConfig() PrivateConnectionVpcPeeringConfigPtrOutput {
+	return o.ApplyT(func(v *PrivateConnection) PrivateConnectionVpcPeeringConfigPtrOutput { return v.VpcPeeringConfig }).(PrivateConnectionVpcPeeringConfigPtrOutput)
 }
 
 type PrivateConnectionArrayOutput struct{ *pulumi.OutputState }

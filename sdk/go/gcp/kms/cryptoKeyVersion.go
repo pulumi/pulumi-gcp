@@ -88,6 +88,13 @@ type CryptoKeyVersion struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey pulumi.StringOutput `pulumi:"cryptoKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
 	ExternalProtectionLevelOptions CryptoKeyVersionExternalProtectionLevelOptionsPtrOutput `pulumi:"externalProtectionLevelOptions"`
@@ -145,6 +152,13 @@ type cryptoKeyVersionState struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey *string `pulumi:"cryptoKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
 	ExternalProtectionLevelOptions *CryptoKeyVersionExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
@@ -170,6 +184,13 @@ type CryptoKeyVersionState struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
 	ExternalProtectionLevelOptions CryptoKeyVersionExternalProtectionLevelOptionsPtrInput
@@ -193,6 +214,13 @@ type cryptoKeyVersionArgs struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey string `pulumi:"cryptoKey"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
 	ExternalProtectionLevelOptions *CryptoKeyVersionExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
@@ -207,6 +235,13 @@ type CryptoKeyVersionArgs struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 	CryptoKey pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
 	// Structure is documented below.
 	ExternalProtectionLevelOptions CryptoKeyVersionExternalProtectionLevelOptionsPtrInput
@@ -319,6 +354,16 @@ func (o CryptoKeyVersionOutput) Attestations() CryptoKeyVersionAttestationArrayO
 // Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
 func (o CryptoKeyVersionOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.CryptoKey }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CryptoKeyVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.

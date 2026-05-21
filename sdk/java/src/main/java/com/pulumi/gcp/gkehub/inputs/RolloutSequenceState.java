@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.RolloutSequenceAutoUpgradeConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceIgnoredClustersSelectorArgs;
 import com.pulumi.gcp.gkehub.inputs.RolloutSequenceStageArgs;
 import java.lang.String;
@@ -18,6 +19,25 @@ import javax.annotation.Nullable;
 public final class RolloutSequenceState extends com.pulumi.resources.ResourceArgs {
 
     public static final RolloutSequenceState Empty = new RolloutSequenceState();
+
+    /**
+     * Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autoUpgradeConfig")
+    private @Nullable Output<RolloutSequenceAutoUpgradeConfigArgs> autoUpgradeConfig;
+
+    /**
+     * @return Configuration for automatic upgrades.
+     * If not specified, the system applies default behavior.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RolloutSequenceAutoUpgradeConfigArgs>> autoUpgradeConfig() {
+        return Optional.ofNullable(this.autoUpgradeConfig);
+    }
 
     /**
      * The timestamp at which the Rollout Sequence was created.
@@ -47,6 +67,31 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> deleteTime() {
         return Optional.ofNullable(this.deleteTime);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -246,8 +291,10 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
     private RolloutSequenceState() {}
 
     private RolloutSequenceState(RolloutSequenceState $) {
+        this.autoUpgradeConfig = $.autoUpgradeConfig;
         this.createTime = $.createTime;
         this.deleteTime = $.deleteTime;
+        this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
@@ -278,6 +325,31 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
 
         public Builder(RolloutSequenceState defaults) {
             $ = new RolloutSequenceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autoUpgradeConfig Configuration for automatic upgrades.
+         * If not specified, the system applies default behavior.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeConfig(@Nullable Output<RolloutSequenceAutoUpgradeConfigArgs> autoUpgradeConfig) {
+            $.autoUpgradeConfig = autoUpgradeConfig;
+            return this;
+        }
+
+        /**
+         * @param autoUpgradeConfig Configuration for automatic upgrades.
+         * If not specified, the system applies default behavior.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoUpgradeConfig(RolloutSequenceAutoUpgradeConfigArgs autoUpgradeConfig) {
+            return autoUpgradeConfig(Output.of(autoUpgradeConfig));
         }
 
         /**
@@ -320,6 +392,37 @@ public final class RolloutSequenceState extends com.pulumi.resources.ResourceArg
          */
         public Builder deleteTime(String deleteTime) {
             return deleteTime(Output.of(deleteTime));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

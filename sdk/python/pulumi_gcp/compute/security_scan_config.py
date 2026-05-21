@@ -25,6 +25,7 @@ class SecurityScanConfigArgs:
                  starting_urls: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  authentication: pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']] = None,
                  blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,12 @@ class SecurityScanConfigArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
                Possible values are: `ENABLED`, `DISABLED`.
@@ -62,6 +69,8 @@ class SecurityScanConfigArgs:
             pulumi.set(__self__, "authentication", authentication)
         if blacklist_patterns is not None:
             pulumi.set(__self__, "blacklist_patterns", blacklist_patterns)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if export_to_security_command_center is not None:
             pulumi.set(__self__, "export_to_security_command_center", export_to_security_command_center)
         if max_qps is not None:
@@ -125,6 +134,23 @@ class SecurityScanConfigArgs:
     @blacklist_patterns.setter
     def blacklist_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklist_patterns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="exportToSecurityCommandCenter")
@@ -212,6 +238,7 @@ class _SecurityScanConfigState:
     def __init__(__self__, *,
                  authentication: pulumi.Input[Optional['SecurityScanConfigAuthenticationArgs']] = None,
                  blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -229,6 +256,12 @@ class _SecurityScanConfigState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
@@ -252,6 +285,8 @@ class _SecurityScanConfigState:
             pulumi.set(__self__, "authentication", authentication)
         if blacklist_patterns is not None:
             pulumi.set(__self__, "blacklist_patterns", blacklist_patterns)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if export_to_security_command_center is not None:
@@ -297,6 +332,23 @@ class _SecurityScanConfigState:
     @blacklist_patterns.setter
     def blacklist_patterns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blacklist_patterns", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -424,6 +476,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
                  blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -484,6 +537,12 @@ class SecurityScanConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
@@ -568,6 +627,7 @@ class SecurityScanConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
                  blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
                  max_qps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -587,6 +647,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
             __props__.__dict__["authentication"] = authentication
             __props__.__dict__["blacklist_patterns"] = blacklist_patterns
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -612,6 +673,7 @@ class SecurityScanConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authentication: pulumi.Input[Optional[Union['SecurityScanConfigAuthenticationArgs', 'SecurityScanConfigAuthenticationArgsDict']]] = None,
             blacklist_patterns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             export_to_security_command_center: pulumi.Input[Optional[_builtins.str]] = None,
             max_qps: pulumi.Input[Optional[_builtins.int]] = None,
@@ -633,6 +695,12 @@ class SecurityScanConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blacklist_patterns: The blacklist URL patterns as described in
                https://cloud.google.com/security-scanner/docs/excluded-urls
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The user provider display name of the ScanConfig.
         :param pulumi.Input[_builtins.str] export_to_security_command_center: Controls export of scan configurations and results to Cloud Security Command Center.
                Default value is `ENABLED`.
@@ -658,6 +726,7 @@ class SecurityScanConfig(pulumi.CustomResource):
 
         __props__.__dict__["authentication"] = authentication
         __props__.__dict__["blacklist_patterns"] = blacklist_patterns
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["export_to_security_command_center"] = export_to_security_command_center
         __props__.__dict__["max_qps"] = max_qps
@@ -687,6 +756,19 @@ class SecurityScanConfig(pulumi.CustomResource):
         https://cloud.google.com/security-scanner/docs/excluded-urls
         """
         return pulumi.get(self, "blacklist_patterns")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

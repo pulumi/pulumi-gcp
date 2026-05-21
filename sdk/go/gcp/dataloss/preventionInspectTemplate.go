@@ -406,6 +406,13 @@ import (
 type PreventionInspectTemplate struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the inspect template.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the inspect template.
@@ -460,6 +467,13 @@ func GetPreventionInspectTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PreventionInspectTemplate resources.
 type preventionInspectTemplateState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the inspect template.
 	Description *string `pulumi:"description"`
 	// User set display name of the inspect template.
@@ -482,6 +496,13 @@ type preventionInspectTemplateState struct {
 }
 
 type PreventionInspectTemplateState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the inspect template.
 	Description pulumi.StringPtrInput
 	// User set display name of the inspect template.
@@ -508,6 +529,13 @@ func (PreventionInspectTemplateState) ElementType() reflect.Type {
 }
 
 type preventionInspectTemplateArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the inspect template.
 	Description *string `pulumi:"description"`
 	// User set display name of the inspect template.
@@ -529,6 +557,13 @@ type preventionInspectTemplateArgs struct {
 
 // The set of arguments for constructing a PreventionInspectTemplate resource.
 type PreventionInspectTemplateArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the inspect template.
 	Description pulumi.StringPtrInput
 	// User set display name of the inspect template.
@@ -633,6 +668,16 @@ func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutput() Pre
 
 func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutputWithContext(ctx context.Context) PreventionInspectTemplateOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PreventionInspectTemplateOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the inspect template.

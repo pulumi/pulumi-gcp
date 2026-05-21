@@ -94,6 +94,13 @@ type FolderSink struct {
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -168,6 +175,13 @@ func GetFolderSink(ctx *pulumi.Context,
 type folderSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -207,6 +221,13 @@ type folderSinkState struct {
 type FolderSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -250,6 +271,13 @@ func (FolderSinkState) ElementType() reflect.Type {
 type folderSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -287,6 +315,13 @@ type folderSinkArgs struct {
 type FolderSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
@@ -410,6 +445,16 @@ func (o FolderSinkOutput) ToFolderSinkOutputWithContext(ctx context.Context) Fol
 // Options that affect sinks exporting data to BigQuery. Structure documented below.
 func (o FolderSinkOutput) BigqueryOptions() FolderSinkBigqueryOptionsOutput {
 	return o.ApplyT(func(v *FolderSink) FolderSinkBigqueryOptionsOutput { return v.BigqueryOptions }).(FolderSinkBigqueryOptionsOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FolderSinkOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FolderSink) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of this sink. The maximum length of the description is 8000 characters.

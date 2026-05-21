@@ -31,6 +31,7 @@ class InstanceArgs:
                  custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -79,6 +80,12 @@ class InstanceArgs:
                If not specified, this defaults to 100.
         :param pulumi.Input[_builtins.str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -151,6 +158,8 @@ class InstanceArgs:
             pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
             pulumi.set(__self__, "data_disk_type", data_disk_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if disk_encryption is not None:
@@ -329,6 +338,23 @@ class InstanceArgs:
     @data_disk_type.setter
     def data_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
@@ -648,6 +674,7 @@ class _InstanceState:
                  custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -700,6 +727,12 @@ class _InstanceState:
                If not specified, this defaults to 100.
         :param pulumi.Input[_builtins.str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -780,6 +813,8 @@ class _InstanceState:
             pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         if data_disk_type is not None:
             pulumi.set(__self__, "data_disk_type", data_disk_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if disk_encryption is not None:
@@ -946,6 +981,23 @@ class _InstanceState:
     @data_disk_type.setter
     def data_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
@@ -1344,6 +1396,7 @@ class Instance(pulumi.CustomResource):
                  custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1542,6 +1595,12 @@ class Instance(pulumi.CustomResource):
                If not specified, this defaults to 100.
         :param pulumi.Input[_builtins.str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -1777,6 +1836,7 @@ class Instance(pulumi.CustomResource):
                  custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
                  data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
                  data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
                  install_gpu_driver: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1819,6 +1879,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["custom_gpu_driver_path"] = custom_gpu_driver_path
             __props__.__dict__["data_disk_size_gb"] = data_disk_size_gb
             __props__.__dict__["data_disk_type"] = data_disk_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["install_gpu_driver"] = install_gpu_driver
@@ -1872,6 +1933,7 @@ class Instance(pulumi.CustomResource):
             custom_gpu_driver_path: pulumi.Input[Optional[_builtins.str]] = None,
             data_disk_size_gb: pulumi.Input[Optional[_builtins.int]] = None,
             data_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             desired_state: pulumi.Input[Optional[_builtins.str]] = None,
             disk_encryption: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1928,6 +1990,12 @@ class Instance(pulumi.CustomResource):
                If not specified, this defaults to 100.
         :param pulumi.Input[_builtins.str] data_disk_type: Possible disk types for notebook instances.
                Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Notebook Instance. Set this field to `ACTIVE` to start the Instance, and `STOPPED` to stop the Instance.
         :param pulumi.Input[_builtins.str] disk_encryption: Disk encryption method used on the boot and data disks, defaults to GMEK.
                Possible values are: `DISK_ENCRYPTION_UNSPECIFIED`, `GMEK`, `CMEK`.
@@ -2004,6 +2072,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["custom_gpu_driver_path"] = custom_gpu_driver_path
         __props__.__dict__["data_disk_size_gb"] = data_disk_size_gb
         __props__.__dict__["data_disk_type"] = data_disk_type
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["disk_encryption"] = disk_encryption
         __props__.__dict__["effective_labels"] = effective_labels
@@ -2110,6 +2179,19 @@ class Instance(pulumi.CustomResource):
         Possible values are: `DISK_TYPE_UNSPECIFIED`, `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
         """
         return pulumi.get(self, "data_disk_type")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="desiredState")

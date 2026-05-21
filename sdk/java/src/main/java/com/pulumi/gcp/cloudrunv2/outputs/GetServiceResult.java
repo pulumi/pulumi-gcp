@@ -35,6 +35,7 @@ public final class GetServiceResult {
     private List<String> customAudiences;
     private Boolean defaultUriDisabled;
     private String deleteTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String description;
     private Map<String,String> effectiveAnnotations;
@@ -105,6 +106,9 @@ public final class GetServiceResult {
     }
     public String deleteTime() {
         return this.deleteTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -227,6 +231,7 @@ public final class GetServiceResult {
         private List<String> customAudiences;
         private Boolean defaultUriDisabled;
         private String deleteTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String description;
         private Map<String,String> effectiveAnnotations;
@@ -273,6 +278,7 @@ public final class GetServiceResult {
     	      this.customAudiences = defaults.customAudiences;
     	      this.defaultUriDisabled = defaults.defaultUriDisabled;
     	      this.deleteTime = defaults.deleteTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
@@ -405,6 +411,14 @@ public final class GetServiceResult {
               throw new MissingRequiredPropertyException("GetServiceResult", "deleteTime");
             }
             this.deleteTime = deleteTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -693,6 +707,7 @@ public final class GetServiceResult {
             _resultValue.customAudiences = customAudiences;
             _resultValue.defaultUriDisabled = defaultUriDisabled;
             _resultValue.deleteTime = deleteTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.effectiveAnnotations = effectiveAnnotations;

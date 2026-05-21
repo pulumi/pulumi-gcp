@@ -110,6 +110,13 @@ type V2FolderSccBigQueryExport struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringPtrOutput `pulumi:"dataset"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Expression that defines the filter to apply across create/update
@@ -200,6 +207,13 @@ type v2folderSccBigQueryExportState struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset *string `pulumi:"dataset"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// Expression that defines the filter to apply across create/update
@@ -255,6 +269,13 @@ type V2FolderSccBigQueryExportState struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// Expression that defines the filter to apply across create/update
@@ -310,6 +331,13 @@ type v2folderSccBigQueryExportArgs struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset *string `pulumi:"dataset"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// Expression that defines the filter to apply across create/update
@@ -349,6 +377,13 @@ type V2FolderSccBigQueryExportArgs struct {
 	// Its format is "projects/[projectId]/datasets/[bigqueryDatasetId]".
 	// BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// Expression that defines the filter to apply across create/update
@@ -484,6 +519,16 @@ func (o V2FolderSccBigQueryExportOutput) CreateTime() pulumi.StringOutput {
 // BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 func (o V2FolderSccBigQueryExportOutput) Dataset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2FolderSccBigQueryExport) pulumi.StringPtrOutput { return v.Dataset }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o V2FolderSccBigQueryExportOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *V2FolderSccBigQueryExport) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the notification config (max of 1024 characters).

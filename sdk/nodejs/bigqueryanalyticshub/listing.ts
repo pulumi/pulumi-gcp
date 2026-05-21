@@ -420,6 +420,15 @@ export class Listing extends pulumi.CustomResource {
      */
     declare public readonly deleteCommercial: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -509,6 +518,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["dataExchangeId"] = state?.dataExchangeId;
             resourceInputs["dataProvider"] = state?.dataProvider;
             resourceInputs["deleteCommercial"] = state?.deleteCommercial;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["discoveryType"] = state?.discoveryType;
             resourceInputs["displayName"] = state?.displayName;
@@ -545,6 +555,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["dataExchangeId"] = args?.dataExchangeId;
             resourceInputs["dataProvider"] = args?.dataProvider;
             resourceInputs["deleteCommercial"] = args?.deleteCommercial;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["discoveryType"] = args?.discoveryType;
             resourceInputs["displayName"] = args?.displayName;
@@ -603,6 +614,15 @@ export interface ListingState {
      * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
      */
     deleteCommercial?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */
@@ -704,6 +724,15 @@ export interface ListingArgs {
      * If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally.
      */
     deleteCommercial?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Short description of the listing. The description must not contain Unicode non-characters and C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF).
      */

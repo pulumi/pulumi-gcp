@@ -141,6 +141,7 @@ namespace Pulumi.Gcp.PubSub
     [OutputType]
     public sealed class GetTopicResult
     {
+        public readonly string DeletionPolicy;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -160,6 +161,8 @@ namespace Pulumi.Gcp.PubSub
 
         [OutputConstructor]
         private GetTopicResult(
+            string deletionPolicy,
+
             ImmutableDictionary<string, string> effectiveLabels,
 
             string id,
@@ -186,6 +189,7 @@ namespace Pulumi.Gcp.PubSub
 
             ImmutableDictionary<string, string> tags)
         {
+            DeletionPolicy = deletionPolicy;
             EffectiveLabels = effectiveLabels;
             Id = id;
             IngestionDataSourceSettings = ingestionDataSourceSettings;

@@ -23,6 +23,7 @@ class JobArgs:
     def __init__(__self__, *,
                  app_engine_http_target: pulumi.Input[Optional['JobAppEngineHttpTargetArgs']] = None,
                  attempt_deadline: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional['JobHttpTargetArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -48,6 +49,12 @@ class JobArgs:
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input['JobHttpTargetArgs'] http_target: HTTP target.
@@ -75,6 +82,8 @@ class JobArgs:
             pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
             pulumi.set(__self__, "attempt_deadline", attempt_deadline)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if http_target is not None:
@@ -129,6 +138,23 @@ class JobArgs:
     @attempt_deadline.setter
     def attempt_deadline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attempt_deadline", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -268,6 +294,7 @@ class _JobState:
     def __init__(__self__, *,
                  app_engine_http_target: pulumi.Input[Optional['JobAppEngineHttpTargetArgs']] = None,
                  attempt_deadline: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional['JobHttpTargetArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -294,6 +321,12 @@ class _JobState:
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input['JobHttpTargetArgs'] http_target: HTTP target.
@@ -322,6 +355,8 @@ class _JobState:
             pulumi.set(__self__, "app_engine_http_target", app_engine_http_target)
         if attempt_deadline is not None:
             pulumi.set(__self__, "attempt_deadline", attempt_deadline)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if http_target is not None:
@@ -378,6 +413,23 @@ class _JobState:
     @attempt_deadline.setter
     def attempt_deadline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attempt_deadline", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -532,6 +584,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_target: pulumi.Input[Optional[Union['JobAppEngineHttpTargetArgs', 'JobAppEngineHttpTargetArgsDict']]] = None,
                  attempt_deadline: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional[Union['JobHttpTargetArgs', 'JobHttpTargetArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -727,6 +780,12 @@ class Job(pulumi.CustomResource):
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input[Union['JobHttpTargetArgs', 'JobHttpTargetArgsDict']] http_target: HTTP target.
@@ -943,6 +1002,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_engine_http_target: pulumi.Input[Optional[Union['JobAppEngineHttpTargetArgs', 'JobAppEngineHttpTargetArgsDict']]] = None,
                  attempt_deadline: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  http_target: pulumi.Input[Optional[Union['JobHttpTargetArgs', 'JobHttpTargetArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -964,6 +1024,7 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["app_engine_http_target"] = app_engine_http_target
             __props__.__dict__["attempt_deadline"] = attempt_deadline
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["http_target"] = http_target
             __props__.__dict__["name"] = name
@@ -987,6 +1048,7 @@ class Job(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             app_engine_http_target: pulumi.Input[Optional[Union['JobAppEngineHttpTargetArgs', 'JobAppEngineHttpTargetArgsDict']]] = None,
             attempt_deadline: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             http_target: pulumi.Input[Optional[Union['JobHttpTargetArgs', 'JobHttpTargetArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1017,6 +1079,12 @@ class Job(pulumi.CustomResource):
                * For App Engine HTTP targets, between 15 seconds and 24 hours.
                * **Note**: For PubSub targets, this field is ignored - setting it will introduce an unresolvable diff.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-readable description for the job.
                This string must not contain more than 500 characters.
         :param pulumi.Input[Union['JobHttpTargetArgs', 'JobHttpTargetArgsDict']] http_target: HTTP target.
@@ -1047,6 +1115,7 @@ class Job(pulumi.CustomResource):
 
         __props__.__dict__["app_engine_http_target"] = app_engine_http_target
         __props__.__dict__["attempt_deadline"] = attempt_deadline
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["http_target"] = http_target
         __props__.__dict__["name"] = name
@@ -1085,6 +1154,19 @@ class Job(pulumi.CustomResource):
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s"
         """
         return pulumi.get(self, "attempt_deadline")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

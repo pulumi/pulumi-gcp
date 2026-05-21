@@ -129,12 +129,12 @@ type Table struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `=destroy` or `=update` that would delete the instance will fail.
-	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
-	// The field description.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
 	//
@@ -151,6 +151,13 @@ type Table struct {
 	// `external_data_configuration.connection_id`, schemas must be specified
 	// with `external_data_configuration.schema`. Otherwise, schemas must be
 	// specified with this top-level field.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
+	// The field description.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -307,12 +314,12 @@ type tableState struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId *string `pulumi:"datasetId"`
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `=destroy` or `=update` that would delete the instance will fail.
-	DeletionProtection *bool `pulumi:"deletionProtection"`
-	// The field description.
-	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
 	//
@@ -329,6 +336,13 @@ type tableState struct {
 	// `external_data_configuration.connection_id`, schemas must be specified
 	// with `external_data_configuration.schema`. Otherwise, schemas must be
 	// specified with this top-level field.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
+	// The field description.
+	Description *string `pulumi:"description"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -445,12 +459,12 @@ type TableState struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId pulumi.StringPtrInput
-	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-	// in state, a `=destroy` or `=update` that would delete the instance will fail.
-	DeletionProtection pulumi.BoolPtrInput
-	// The field description.
-	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
 	//
 	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
 	//
@@ -467,6 +481,13 @@ type TableState struct {
 	// `external_data_configuration.connection_id`, schemas must be specified
 	// with `external_data_configuration.schema`. Otherwise, schemas must be
 	// specified with this top-level field.
+	DeletionPolicy pulumi.StringPtrInput
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
+	DeletionProtection pulumi.BoolPtrInput
+	// The field description.
+	Description pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// Specifies how the table should be encrypted.
 	// If left blank, the table will be encrypted with a Google-managed key; that process
@@ -585,6 +606,29 @@ type tableArgs struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId string `pulumi:"datasetId"`
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced a field data type (`STRUCT` with
+	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+	// the recurring diff this causes. As a workaround, we recommend using the
+	// schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `=destroy` or `=update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -684,6 +728,29 @@ type TableArgs struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId pulumi.StringInput
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
+	//
+	// ~>**NOTE:** Because this field expects a JSON string, any changes to the
+	// string will create a diff, even if the JSON itself hasn't changed.
+	// If the API returns a different value for the same schema, e.g. it
+	// switched the order of values or replaced a field data type (`STRUCT` with
+	// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+	// the recurring diff this causes. As a workaround, we recommend using the
+	// schema as returned by the API.
+	//
+	// ~>**NOTE:**  If you use `externalDataConfiguration`
+	// documented below and do **not** set
+	// `external_data_configuration.connection_id`, schemas must be specified
+	// with `external_data_configuration.schema`. Otherwise, schemas must be
+	// specified with this top-level field.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
 	// in state, a `=destroy` or `=update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
@@ -882,18 +949,12 @@ func (o TableOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
 }
 
-// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-// in state, a `=destroy` or `=update` that would delete the instance will fail.
-func (o TableOutput) DeletionProtection() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
-}
-
-// The field description.
-func (o TableOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
 //
 // * <a name="schema"></a>`schema` - (Optional) A JSON schema for the table.
 //
@@ -910,6 +971,22 @@ func (o TableOutput) Description() pulumi.StringPtrOutput {
 // `external_data_configuration.connection_id`, schemas must be specified
 // with `external_data_configuration.schema`. Otherwise, schemas must be
 // specified with this top-level field.
+func (o TableOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+// in state, a `=destroy` or `=update` that would delete the instance will fail.
+func (o TableOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
+}
+
+// The field description.
+func (o TableOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o TableOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }

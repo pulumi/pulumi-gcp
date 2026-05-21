@@ -23,38 +23,54 @@ class PrivateConnectionArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  private_connection_id: pulumi.Input[_builtins.str],
-                 vpc_peering_config: pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'],
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 project: pulumi.Input[Optional[_builtins.str]] = None):
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']] = None,
+                 vpc_peering_config: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']] = None):
         """
         The set of arguments for constructing a PrivateConnection resource.
 
         :param pulumi.Input[_builtins.str] location: The name of the location this private connection is located in.
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
-        :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
-               between databasemigrationservice and the consumer's VPC.
-               Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['PrivateConnectionPscInterfaceConfigArgs'] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
+               between DMS's internal VPC and the consumer's PSC.
+               Structure is documented below.
+        :param pulumi.Input['PrivateConnectionVpcPeeringConfigArgs'] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
+               between databasemigrationservice and the consumer's VPC.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "private_connection_id", private_connection_id)
-        pulumi.set(__self__, "vpc_peering_config", vpc_peering_config)
         if create_without_validation is not None:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_interface_config is not None:
+            pulumi.set(__self__, "psc_interface_config", psc_interface_config)
+        if vpc_peering_config is not None:
+            pulumi.set(__self__, "vpc_peering_config", vpc_peering_config)
 
     @_builtins.property
     @pulumi.getter
@@ -81,20 +97,6 @@ class PrivateConnectionArgs:
         pulumi.set(self, "private_connection_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="vpcPeeringConfig")
-    def vpc_peering_config(self) -> pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']:
-        """
-        The VPC Peering configuration is used to create VPC peering
-        between databasemigrationservice and the consumer's VPC.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "vpc_peering_config")
-
-    @vpc_peering_config.setter
-    def vpc_peering_config(self, value: pulumi.Input['PrivateConnectionVpcPeeringConfigArgs']):
-        pulumi.set(self, "vpc_peering_config", value)
-
-    @_builtins.property
     @pulumi.getter(name="createWithoutValidation")
     def create_without_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -105,6 +107,23 @@ class PrivateConnectionArgs:
     @create_without_validation.setter
     def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -145,11 +164,40 @@ class PrivateConnectionArgs:
     def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
+    @_builtins.property
+    @pulumi.getter(name="pscInterfaceConfig")
+    def psc_interface_config(self) -> pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]:
+        """
+        The PSC Interface configuration is used to create PSC Interface
+        between DMS's internal VPC and the consumer's PSC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_config")
+
+    @psc_interface_config.setter
+    def psc_interface_config(self, value: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]):
+        pulumi.set(self, "psc_interface_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="vpcPeeringConfig")
+    def vpc_peering_config(self) -> pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']]:
+        """
+        The VPC Peering configuration is used to create VPC peering
+        between databasemigrationservice and the consumer's VPC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_peering_config")
+
+    @vpc_peering_config.setter
+    def vpc_peering_config(self, value: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']]):
+        pulumi.set(self, "vpc_peering_config", value)
+
 
 @pulumi.input_type
 class _PrivateConnectionState:
     def __init__(__self__, *,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  errors: pulumi.Input[Optional[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]]] = None,
@@ -158,6 +206,7 @@ class _PrivateConnectionState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']] = None,
                  pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_peering_config: pulumi.Input[Optional['PrivateConnectionVpcPeeringConfigArgs']] = None):
@@ -165,6 +214,12 @@ class _PrivateConnectionState:
         Input properties used for looking up and filtering PrivateConnection resources.
 
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateConnectionErrorArgs']]] errors: The PrivateConnection error in case of failure.
@@ -177,6 +232,9 @@ class _PrivateConnectionState:
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['PrivateConnectionPscInterfaceConfigArgs'] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
+               between DMS's internal VPC and the consumer's PSC.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: State of the PrivateConnection.
@@ -186,6 +244,8 @@ class _PrivateConnectionState:
         """
         if create_without_validation is not None:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -202,6 +262,8 @@ class _PrivateConnectionState:
             pulumi.set(__self__, "private_connection_id", private_connection_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_interface_config is not None:
+            pulumi.set(__self__, "psc_interface_config", psc_interface_config)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
@@ -220,6 +282,23 @@ class _PrivateConnectionState:
     @create_without_validation.setter
     def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -322,6 +401,20 @@ class _PrivateConnectionState:
         pulumi.set(self, "project", value)
 
     @_builtins.property
+    @pulumi.getter(name="pscInterfaceConfig")
+    def psc_interface_config(self) -> pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]:
+        """
+        The PSC Interface configuration is used to create PSC Interface
+        between DMS's internal VPC and the consumer's PSC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_config")
+
+    @psc_interface_config.setter
+    def psc_interface_config(self, value: pulumi.Input[Optional['PrivateConnectionPscInterfaceConfigArgs']]):
+        pulumi.set(self, "psc_interface_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
@@ -368,11 +461,13 @@ class PrivateConnection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
                  vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         """
@@ -408,6 +503,37 @@ class PrivateConnection(pulumi.CustomResource):
             name="my-network",
             auto_create_subnetworks=False)
         ```
+        ### Database Migration Service Private Connection Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.databasemigrationservice.PrivateConnection("default",
+            display_name="dbms_pc",
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            psc_interface_config={
+                "network_attachment": google_compute_network_attachment["default"]["id"],
+            },
+            create_without_validation=False)
+        default_network_attachment = gcp.compute.NetworkAttachment("default",
+            name="my-attachment",
+            region="us-central1",
+            connection_preference="ACCEPT_AUTOMATIC",
+            subnetworks=[google_compute_subnetwork["default"]["id"]])
+        default_network = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        ```
 
         ## Import
 
@@ -429,6 +555,12 @@ class PrivateConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -437,6 +569,9 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
+               between DMS's internal VPC and the consumer's PSC.
+               Structure is documented below.
         :param pulumi.Input[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']] vpc_peering_config: The VPC Peering configuration is used to create VPC peering
                between databasemigrationservice and the consumer's VPC.
                Structure is documented below.
@@ -480,6 +615,37 @@ class PrivateConnection(pulumi.CustomResource):
             name="my-network",
             auto_create_subnetworks=False)
         ```
+        ### Database Migration Service Private Connection Psc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.databasemigrationservice.PrivateConnection("default",
+            display_name="dbms_pc",
+            location="us-central1",
+            private_connection_id="my-connection",
+            labels={
+                "key": "value",
+            },
+            psc_interface_config={
+                "network_attachment": google_compute_network_attachment["default"]["id"],
+            },
+            create_without_validation=False)
+        default_network_attachment = gcp.compute.NetworkAttachment("default",
+            name="my-attachment",
+            region="us-central1",
+            connection_preference="ACCEPT_AUTOMATIC",
+            subnetworks=[google_compute_subnetwork["default"]["id"]])
+        default_network = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="my-subnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        ```
 
         ## Import
 
@@ -514,11 +680,13 @@ class PrivateConnection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
+                 psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
                  vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -530,6 +698,7 @@ class PrivateConnection(pulumi.CustomResource):
             __props__ = PrivateConnectionArgs.__new__(PrivateConnectionArgs)
 
             __props__.__dict__["create_without_validation"] = create_without_validation
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -539,8 +708,7 @@ class PrivateConnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'private_connection_id'")
             __props__.__dict__["private_connection_id"] = private_connection_id
             __props__.__dict__["project"] = project
-            if vpc_peering_config is None and not opts.urn:
-                raise TypeError("Missing required property 'vpc_peering_config'")
+            __props__.__dict__["psc_interface_config"] = psc_interface_config
             __props__.__dict__["vpc_peering_config"] = vpc_peering_config
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["errors"] = None
@@ -560,6 +728,7 @@ class PrivateConnection(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]]] = None,
@@ -568,6 +737,7 @@ class PrivateConnection(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             private_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
+            psc_interface_config: pulumi.Input[Optional[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']]] = None,
             pulumi_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
             vpc_peering_config: pulumi.Input[Optional[Union['PrivateConnectionVpcPeeringConfigArgs', 'PrivateConnectionVpcPeeringConfigArgsDict']]] = None) -> 'PrivateConnection':
@@ -579,6 +749,12 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_without_validation: If set to true, will skip validations.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PrivateConnectionErrorArgs', 'PrivateConnectionErrorArgsDict']]]] errors: The PrivateConnection error in case of failure.
@@ -591,6 +767,9 @@ class PrivateConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_connection_id: The private connectivity identifier.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['PrivateConnectionPscInterfaceConfigArgs', 'PrivateConnectionPscInterfaceConfigArgsDict']] psc_interface_config: The PSC Interface configuration is used to create PSC Interface
+               between DMS's internal VPC and the consumer's PSC.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource
                 and default labels configured on the provider.
         :param pulumi.Input[_builtins.str] state: State of the PrivateConnection.
@@ -603,6 +782,7 @@ class PrivateConnection(pulumi.CustomResource):
         __props__ = _PrivateConnectionState.__new__(_PrivateConnectionState)
 
         __props__.__dict__["create_without_validation"] = create_without_validation
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["errors"] = errors
@@ -611,6 +791,7 @@ class PrivateConnection(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["private_connection_id"] = private_connection_id
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_interface_config"] = psc_interface_config
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
         __props__.__dict__["vpc_peering_config"] = vpc_peering_config
@@ -623,6 +804,19 @@ class PrivateConnection(pulumi.CustomResource):
         If set to true, will skip validations.
         """
         return pulumi.get(self, "create_without_validation")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -693,6 +887,16 @@ class PrivateConnection(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @_builtins.property
+    @pulumi.getter(name="pscInterfaceConfig")
+    def psc_interface_config(self) -> pulumi.Output[Optional['outputs.PrivateConnectionPscInterfaceConfig']]:
+        """
+        The PSC Interface configuration is used to create PSC Interface
+        between DMS's internal VPC and the consumer's PSC.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_interface_config")
+
+    @_builtins.property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, _builtins.str]]:
         """
@@ -711,7 +915,7 @@ class PrivateConnection(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="vpcPeeringConfig")
-    def vpc_peering_config(self) -> pulumi.Output['outputs.PrivateConnectionVpcPeeringConfig']:
+    def vpc_peering_config(self) -> pulumi.Output[Optional['outputs.PrivateConnectionVpcPeeringConfig']]:
         """
         The VPC Peering configuration is used to create VPC peering
         between databasemigrationservice and the consumer's VPC.

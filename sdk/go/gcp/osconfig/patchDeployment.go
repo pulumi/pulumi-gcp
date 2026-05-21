@@ -378,6 +378,13 @@ type PatchDeployment struct {
 	// Time the patch deployment was created. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Duration of the patch. After the duration ends, the patch times out.
@@ -458,6 +465,13 @@ type patchDeploymentState struct {
 	// Time the patch deployment was created. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// Duration of the patch. After the duration ends, the patch times out.
@@ -503,6 +517,13 @@ type PatchDeploymentState struct {
 	// Time the patch deployment was created. Timestamp is in RFC3339 text format.
 	// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// Duration of the patch. After the duration ends, the patch times out.
@@ -549,6 +570,13 @@ func (PatchDeploymentState) ElementType() reflect.Type {
 }
 
 type patchDeploymentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// Duration of the patch. After the duration ends, the patch times out.
@@ -583,6 +611,13 @@ type patchDeploymentArgs struct {
 
 // The set of arguments for constructing a PatchDeployment resource.
 type PatchDeploymentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the patch deployment. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// Duration of the patch. After the duration ends, the patch times out.
@@ -706,6 +741,16 @@ func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Co
 // A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o PatchDeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PatchDeploymentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PatchDeployment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the patch deployment. Length of the description is limited to 1024 characters.

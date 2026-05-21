@@ -201,6 +201,13 @@ import (
 type PreventionStoredInfoType struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the info type.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Dictionary which defines the rule.
@@ -261,6 +268,13 @@ func GetPreventionStoredInfoType(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PreventionStoredInfoType resources.
 type preventionStoredInfoTypeState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the info type.
 	Description *string `pulumi:"description"`
 	// Dictionary which defines the rule.
@@ -289,6 +303,13 @@ type preventionStoredInfoTypeState struct {
 }
 
 type PreventionStoredInfoTypeState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the info type.
 	Description pulumi.StringPtrInput
 	// Dictionary which defines the rule.
@@ -321,6 +342,13 @@ func (PreventionStoredInfoTypeState) ElementType() reflect.Type {
 }
 
 type preventionStoredInfoTypeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the info type.
 	Description *string `pulumi:"description"`
 	// Dictionary which defines the rule.
@@ -348,6 +376,13 @@ type preventionStoredInfoTypeArgs struct {
 
 // The set of arguments for constructing a PreventionStoredInfoType resource.
 type PreventionStoredInfoTypeArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the info type.
 	Description pulumi.StringPtrInput
 	// Dictionary which defines the rule.
@@ -458,6 +493,16 @@ func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutput() Preve
 
 func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PreventionStoredInfoTypeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionStoredInfoType) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the info type.

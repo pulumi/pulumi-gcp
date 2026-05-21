@@ -24,6 +24,7 @@ class PreventionDiscoveryConfigArgs:
                  location: pulumi.Input[_builtins.str],
                  parent: pulumi.Input[_builtins.str],
                  actions: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigActionArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  inspect_templates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  org_config: pulumi.Input[Optional['PreventionDiscoveryConfigOrgConfigArgs']] = None,
@@ -39,6 +40,12 @@ class PreventionDiscoveryConfigArgs:
                * `organizations/{{organization_id}}/locations/{{location}}`
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionArgs']]] actions: Actions to execute at the completion of scanning
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input['PreventionDiscoveryConfigOrgConfigArgs'] org_config: A nested object resource.
@@ -54,6 +61,8 @@ class PreventionDiscoveryConfigArgs:
         pulumi.set(__self__, "parent", parent)
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if inspect_templates is not None:
@@ -105,6 +114,23 @@ class PreventionDiscoveryConfigArgs:
     @actions.setter
     def actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigActionArgs']]]]):
         pulumi.set(self, "actions", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -188,6 +214,7 @@ class _PreventionDiscoveryConfigState:
     def __init__(__self__, *,
                  actions: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigActionArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  errors: pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigErrorArgs']]]] = None,
                  inspect_templates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -206,6 +233,12 @@ class _PreventionDiscoveryConfigState:
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigActionArgs']]] actions: Actions to execute at the completion of scanning
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation timestamp of a DiscoveryConfig.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input['PreventionDiscoveryConfigErrorArgs']]] errors: Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
                Structure is documented below.
@@ -230,6 +263,8 @@ class _PreventionDiscoveryConfigState:
             pulumi.set(__self__, "actions", actions)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if errors is not None:
@@ -279,6 +314,23 @@ class _PreventionDiscoveryConfigState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -439,6 +491,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  inspect_templates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -478,6 +531,12 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]] actions: Actions to execute at the completion of scanning
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] inspect_templates: Detection logic for profile generation
         :param pulumi.Input[_builtins.str] location: Location to create the discovery config in.
@@ -541,6 +600,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  inspect_templates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -559,6 +619,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
             __props__ = PreventionDiscoveryConfigArgs.__new__(PreventionDiscoveryConfigArgs)
 
             __props__.__dict__["actions"] = actions
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_templates"] = inspect_templates
             if location is None and not opts.urn:
@@ -588,6 +649,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigErrorArgs', 'PreventionDiscoveryConfigErrorArgsDict']]]]] = None,
             inspect_templates: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -610,6 +672,12 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigActionArgs', 'PreventionDiscoveryConfigActionArgsDict']]]] actions: Actions to execute at the completion of scanning
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Output only. The creation timestamp of a DiscoveryConfig.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display Name (max 1000 Chars)
         :param pulumi.Input[Sequence[pulumi.Input[Union['PreventionDiscoveryConfigErrorArgs', 'PreventionDiscoveryConfigErrorArgsDict']]]] errors: Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
                Structure is documented below.
@@ -636,6 +704,7 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
 
         __props__.__dict__["actions"] = actions
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["errors"] = errors
         __props__.__dict__["inspect_templates"] = inspect_templates
@@ -666,6 +735,19 @@ class PreventionDiscoveryConfig(pulumi.CustomResource):
         Output only. The creation timestamp of a DiscoveryConfig.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

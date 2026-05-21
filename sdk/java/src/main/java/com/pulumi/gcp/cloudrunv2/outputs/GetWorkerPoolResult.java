@@ -31,6 +31,7 @@ public final class GetWorkerPoolResult {
     private String creator;
     private List<String> customAudiences;
     private String deleteTime;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String description;
     private Map<String,String> effectiveAnnotations;
@@ -89,6 +90,9 @@ public final class GetWorkerPoolResult {
     }
     public String deleteTime() {
         return this.deleteTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -191,6 +195,7 @@ public final class GetWorkerPoolResult {
         private String creator;
         private List<String> customAudiences;
         private String deleteTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String description;
         private Map<String,String> effectiveAnnotations;
@@ -229,6 +234,7 @@ public final class GetWorkerPoolResult {
     	      this.creator = defaults.creator;
     	      this.customAudiences = defaults.customAudiences;
     	      this.deleteTime = defaults.deleteTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.description = defaults.description;
     	      this.effectiveAnnotations = defaults.effectiveAnnotations;
@@ -336,6 +342,14 @@ public final class GetWorkerPoolResult {
               throw new MissingRequiredPropertyException("GetWorkerPoolResult", "deleteTime");
             }
             this.deleteTime = deleteTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetWorkerPoolResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -568,6 +582,7 @@ public final class GetWorkerPoolResult {
             _resultValue.creator = creator;
             _resultValue.customAudiences = customAudiences;
             _resultValue.deleteTime = deleteTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.description = description;
             _resultValue.effectiveAnnotations = effectiveAnnotations;

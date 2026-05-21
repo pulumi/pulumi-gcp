@@ -22,6 +22,7 @@ class InstanceArgs:
                  capacity_gib: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -41,6 +42,12 @@ class InstanceArgs:
                * Must end with a number or a letter.
                * Must be unique within the customer project/ location
         :param pulumi.Input[_builtins.str] location: Part of `parent`. See documentation of `projectsId`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Parallelstore Instance deployment type.
                Possible values:
                DEPLOYMENT_TYPE_UNSPECIFIED
@@ -96,6 +103,8 @@ class InstanceArgs:
         pulumi.set(__self__, "capacity_gib", capacity_gib)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_type is not None:
             pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
@@ -153,6 +162,23 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "location", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
@@ -301,6 +327,7 @@ class _InstanceState:
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  daos_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -325,6 +352,12 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created.
         :param pulumi.Input[_builtins.str] daos_version: The version of DAOS software running in the instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Parallelstore Instance deployment type.
                Possible values:
                DEPLOYMENT_TYPE_UNSPECIFIED
@@ -410,6 +443,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if daos_version is not None:
             pulumi.set(__self__, "daos_version", daos_version)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_type is not None:
             pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
@@ -491,6 +526,23 @@ class _InstanceState:
     @daos_version.setter
     def daos_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "daos_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")
@@ -752,6 +804,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -861,6 +914,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Parallelstore Instance deployment type.
                Possible values:
                DEPLOYMENT_TYPE_UNSPECIFIED
@@ -1037,6 +1096,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1059,6 +1119,7 @@ class Instance(pulumi.CustomResource):
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["directory_stripe_level"] = directory_stripe_level
@@ -1098,6 +1159,7 @@ class Instance(pulumi.CustomResource):
             capacity_gib: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             daos_version: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             directory_stripe_level: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1126,6 +1188,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[_builtins.str] create_time: The time when the instance was created.
         :param pulumi.Input[_builtins.str] daos_version: The version of DAOS software running in the instance.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] deployment_type: Parallelstore Instance deployment type.
                Possible values:
                DEPLOYMENT_TYPE_UNSPECIFIED
@@ -1211,6 +1279,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["daos_version"] = daos_version
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment_type"] = deployment_type
         __props__.__dict__["description"] = description
         __props__.__dict__["directory_stripe_level"] = directory_stripe_level
@@ -1261,6 +1330,19 @@ class Instance(pulumi.CustomResource):
         The version of DAOS software running in the instance.
         """
         return pulumi.get(self, "daos_version")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deploymentType")

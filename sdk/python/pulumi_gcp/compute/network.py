@@ -27,6 +27,7 @@ class NetworkArgs:
                  bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
                  delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -55,6 +56,12 @@ class NetworkArgs:
                If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
         :param pulumi.Input[_builtins.bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
@@ -107,6 +114,8 @@ class NetworkArgs:
             pulumi.set(__self__, "delete_bgp_always_compare_med", delete_bgp_always_compare_med)
         if delete_default_routes_on_create is not None:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_ula_internal_ipv6 is not None:
@@ -208,6 +217,23 @@ class NetworkArgs:
     @delete_default_routes_on_create.setter
     def delete_default_routes_on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_default_routes_on_create", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -368,6 +394,7 @@ class _NetworkState:
                  bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
                  delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  gateway_ipv4: pulumi.Input[Optional[_builtins.str]] = None,
@@ -400,6 +427,12 @@ class _NetworkState:
                If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
         :param pulumi.Input[_builtins.bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
@@ -458,6 +491,8 @@ class _NetworkState:
             pulumi.set(__self__, "delete_bgp_always_compare_med", delete_bgp_always_compare_med)
         if delete_default_routes_on_create is not None:
             pulumi.set(__self__, "delete_default_routes_on_create", delete_default_routes_on_create)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_ula_internal_ipv6 is not None:
@@ -570,6 +605,23 @@ class _NetworkState:
     @delete_default_routes_on_create.setter
     def delete_default_routes_on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_default_routes_on_create", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -784,6 +836,7 @@ class Network(pulumi.CustomResource):
                  bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
                  delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -925,6 +978,12 @@ class Network(pulumi.CustomResource):
                If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
         :param pulumi.Input[_builtins.bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
@@ -1105,6 +1164,7 @@ class Network(pulumi.CustomResource):
                  bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
                  delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
                  internal_ipv6_range: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1130,6 +1190,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["bgp_inter_region_cost"] = bgp_inter_region_cost
             __props__.__dict__["delete_bgp_always_compare_med"] = delete_bgp_always_compare_med
             __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
             __props__.__dict__["internal_ipv6_range"] = internal_ipv6_range
@@ -1160,6 +1221,7 @@ class Network(pulumi.CustomResource):
             bgp_inter_region_cost: pulumi.Input[Optional[_builtins.str]] = None,
             delete_bgp_always_compare_med: pulumi.Input[Optional[_builtins.bool]] = None,
             delete_default_routes_on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enable_ula_internal_ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
             gateway_ipv4: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1196,6 +1258,12 @@ class Network(pulumi.CustomResource):
                If set to `false` (the default), `bgp_always_compare_med` will be set to the value specified in the configuration.
         :param pulumi.Input[_builtins.bool] delete_default_routes_on_create: If set to `true`, default routes (`0.0.0.0/0`) will be deleted
                immediately after network creation. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. The resource must be
                recreated to modify this field.
         :param pulumi.Input[_builtins.bool] enable_ula_internal_ipv6: Enable ULA internal ipv6 on this network. Enabling this feature will assign
@@ -1252,6 +1320,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["bgp_inter_region_cost"] = bgp_inter_region_cost
         __props__.__dict__["delete_bgp_always_compare_med"] = delete_bgp_always_compare_med
         __props__.__dict__["delete_default_routes_on_create"] = delete_default_routes_on_create
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_ula_internal_ipv6"] = enable_ula_internal_ipv6
         __props__.__dict__["gateway_ipv4"] = gateway_ipv4
@@ -1324,6 +1393,19 @@ class Network(pulumi.CustomResource):
         immediately after network creation. Defaults to `false`.
         """
         return pulumi.get(self, "delete_default_routes_on_create")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

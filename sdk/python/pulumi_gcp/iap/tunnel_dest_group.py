@@ -21,6 +21,7 @@ class TunnelDestGroupArgs:
     def __init__(__self__, *,
                  group_name: pulumi.Input[_builtins.str],
                  cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
@@ -29,6 +30,12 @@ class TunnelDestGroupArgs:
 
         :param pulumi.Input[_builtins.str] group_name: Unique tunnel destination group name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs that this group applies to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -37,6 +44,8 @@ class TunnelDestGroupArgs:
         pulumi.set(__self__, "group_name", group_name)
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if fqdns is not None:
             pulumi.set(__self__, "fqdns", fqdns)
         if project is not None:
@@ -67,6 +76,23 @@ class TunnelDestGroupArgs:
     @cidrs.setter
     def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cidrs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -110,6 +136,7 @@ class TunnelDestGroupArgs:
 class _TunnelDestGroupState:
     def __init__(__self__, *,
                  cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -119,6 +146,12 @@ class _TunnelDestGroupState:
         Input properties used for looking up and filtering TunnelDestGroup resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs that this group applies to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[_builtins.str] group_name: Unique tunnel destination group name.
         :param pulumi.Input[_builtins.str] name: Full resource name.
@@ -128,6 +161,8 @@ class _TunnelDestGroupState:
         """
         if cidrs is not None:
             pulumi.set(__self__, "cidrs", cidrs)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if fqdns is not None:
             pulumi.set(__self__, "fqdns", fqdns)
         if group_name is not None:
@@ -150,6 +185,23 @@ class _TunnelDestGroupState:
     @cidrs.setter
     def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cidrs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -220,6 +272,7 @@ class TunnelDestGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -244,7 +297,7 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         dest_group = gcp.iap.TunnelDestGroup("dest_group",
             region="us-central1",
-            group_name="testgroup_79411",
+            group_name="testgroup_82591",
             cidrs=[
                 "10.1.0.0/16",
                 "192.168.10.0/24",
@@ -277,6 +330,12 @@ class TunnelDestGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs that this group applies to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[_builtins.str] group_name: Unique tunnel destination group name.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -308,7 +367,7 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         dest_group = gcp.iap.TunnelDestGroup("dest_group",
             region="us-central1",
-            group_name="testgroup_79411",
+            group_name="testgroup_82591",
             cidrs=[
                 "10.1.0.0/16",
                 "192.168.10.0/24",
@@ -354,6 +413,7 @@ class TunnelDestGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  fqdns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -368,6 +428,7 @@ class TunnelDestGroup(pulumi.CustomResource):
             __props__ = TunnelDestGroupArgs.__new__(TunnelDestGroupArgs)
 
             __props__.__dict__["cidrs"] = cidrs
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["fqdns"] = fqdns
             if group_name is None and not opts.urn:
                 raise TypeError("Missing required property 'group_name'")
@@ -386,6 +447,7 @@ class TunnelDestGroup(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             fqdns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             group_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -399,6 +461,12 @@ class TunnelDestGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cidrs: List of CIDRs that this group applies to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] fqdns: List of FQDNs that this group applies to.
         :param pulumi.Input[_builtins.str] group_name: Unique tunnel destination group name.
         :param pulumi.Input[_builtins.str] name: Full resource name.
@@ -411,6 +479,7 @@ class TunnelDestGroup(pulumi.CustomResource):
         __props__ = _TunnelDestGroupState.__new__(_TunnelDestGroupState)
 
         __props__.__dict__["cidrs"] = cidrs
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["fqdns"] = fqdns
         __props__.__dict__["group_name"] = group_name
         __props__.__dict__["name"] = name
@@ -425,6 +494,19 @@ class TunnelDestGroup(pulumi.CustomResource):
         List of CIDRs that this group applies to.
         """
         return pulumi.get(self, "cidrs")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

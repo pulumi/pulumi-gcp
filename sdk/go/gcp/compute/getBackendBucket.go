@@ -66,6 +66,7 @@ type LookupBackendBucketResult struct {
 	CompressionMode       string                      `pulumi:"compressionMode"`
 	CreationTimestamp     string                      `pulumi:"creationTimestamp"`
 	CustomResponseHeaders []string                    `pulumi:"customResponseHeaders"`
+	DeletionPolicy        string                      `pulumi:"deletionPolicy"`
 	Description           string                      `pulumi:"description"`
 	EdgeSecurityPolicy    string                      `pulumi:"edgeSecurityPolicy"`
 	EnableCdn             bool                        `pulumi:"enableCdn"`
@@ -135,6 +136,10 @@ func (o LookupBackendBucketResultOutput) CreationTimestamp() pulumi.StringOutput
 
 func (o LookupBackendBucketResultOutput) CustomResponseHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) []string { return v.CustomResponseHeaders }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupBackendBucketResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupBackendBucketResultOutput) Description() pulumi.StringOutput {

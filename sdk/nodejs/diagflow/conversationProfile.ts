@@ -129,6 +129,15 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     declare public readonly automatedAgentConfig: pulumi.Output<outputs.diagflow.ConversationProfileAutomatedAgentConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
     declare public readonly displayName: pulumi.Output<string>;
@@ -219,6 +228,7 @@ export class ConversationProfile extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConversationProfileState | undefined;
             resourceInputs["automatedAgentConfig"] = state?.automatedAgentConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["humanAgentAssistantConfig"] = state?.humanAgentAssistantConfig;
             resourceInputs["humanAgentHandoffConfig"] = state?.humanAgentHandoffConfig;
@@ -244,6 +254,7 @@ export class ConversationProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["automatedAgentConfig"] = args?.automatedAgentConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["humanAgentAssistantConfig"] = args?.humanAgentAssistantConfig;
             resourceInputs["humanAgentHandoffConfig"] = args?.humanAgentHandoffConfig;
@@ -275,6 +286,15 @@ export interface ConversationProfileState {
      * Structure is documented below.
      */
     automatedAgentConfig?: pulumi.Input<inputs.diagflow.ConversationProfileAutomatedAgentConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */
@@ -362,6 +382,15 @@ export interface ConversationProfileArgs {
      * Structure is documented below.
      */
     automatedAgentConfig?: pulumi.Input<inputs.diagflow.ConversationProfileAutomatedAgentConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Required. Human readable name for this profile. Max length 1024 bytes.
      */

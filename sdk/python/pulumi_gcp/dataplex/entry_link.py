@@ -27,6 +27,7 @@ class EntryLinkArgs:
                  entry_references: pulumi.Input[Sequence[pulumi.Input['EntryLinkEntryReferenceArgs']]],
                  location: pulumi.Input[_builtins.str],
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EntryLink resource.
@@ -40,6 +41,12 @@ class EntryLinkArgs:
         :param pulumi.Input[_builtins.str] location: The location for the entry.
         :param pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]] aspects: The Aspects attached to the Entry Link.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -50,6 +57,8 @@ class EntryLinkArgs:
         pulumi.set(__self__, "location", location)
         if aspects is not None:
             pulumi.set(__self__, "aspects", aspects)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -129,6 +138,23 @@ class EntryLinkArgs:
         pulumi.set(self, "aspects", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -147,6 +173,7 @@ class _EntryLinkState:
     def __init__(__self__, *,
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input['EntryLinkAspectArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -161,6 +188,12 @@ class _EntryLinkState:
         :param pulumi.Input[Sequence[pulumi.Input['EntryLinkAspectArgs']]] aspects: The Aspects attached to the Entry Link.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry Link was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
         :param pulumi.Input[_builtins.str] entry_link_type: Relative resource name of the Entry Link Type used to create this Entry Link. For example:
@@ -178,6 +211,8 @@ class _EntryLinkState:
             pulumi.set(__self__, "aspects", aspects)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if entry_group_id is not None:
             pulumi.set(__self__, "entry_group_id", entry_group_id)
         if entry_link_id is not None:
@@ -219,6 +254,23 @@ class _EntryLinkState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="entryGroupId")
@@ -328,6 +380,7 @@ class EntryLink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -354,29 +407,29 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_10393",
+            entry_group_id="tf-test-entry-group_1443",
             project="1111111111111")
         entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-            entry_type_id="tf-test-entry-type_3684",
+            entry_type_id="tf-test-entry-type_8647",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-source-entry_33052",
+            entry_id="tf-test-source-entry_26032",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         target = gcp.dataplex.Entry("target",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-target-entry_10719",
+            entry_id="tf-test-target-entry_50610",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_link_id="tf-test-entry-link_1443",
+            entry_link_id="tf-test-entry-link_77124",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
             entry_references=[
                 {
@@ -396,20 +449,20 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_26032",
+            entry_group_id="tf-test-entry-group_15335",
             project="1111111111111")
         entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-            entry_type_id="tf-test-entry-type_50610",
+            entry_type_id="tf-test-entry-type_85160",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-source-entry_8647",
+            entry_id="tf-test-source-entry_20665",
             entry_type=entry_type_full.name,
             project="1111111111111")
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_77124",
+            glossary_id="tf-test-glossary_92130",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -419,7 +472,7 @@ class EntryLink(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_15335",
+            term_id="tf-test-term-full_16199",
             labels={
                 "tag": "test-tf",
             },
@@ -432,7 +485,7 @@ class EntryLink(pulumi.CustomResource):
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_link_id="tf-test-entry-link_20665",
+            entry_link_id="tf-test-entry-link_21563",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
             entry_references=[
                 {
@@ -474,6 +527,12 @@ class EntryLink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]] aspects: The Aspects attached to the Entry Link.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
         :param pulumi.Input[_builtins.str] entry_link_type: Relative resource name of the Entry Link Type used to create this Entry Link. For example:
@@ -509,29 +568,29 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_basic = gcp.dataplex.EntryGroup("entry-group-basic",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_10393",
+            entry_group_id="tf-test-entry-group_1443",
             project="1111111111111")
         entry_type_basic = gcp.dataplex.EntryType("entry-type-basic",
-            entry_type_id="tf-test-entry-type_3684",
+            entry_type_id="tf-test-entry-type_8647",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-source-entry_33052",
+            entry_id="tf-test-source-entry_26032",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         target = gcp.dataplex.Entry("target",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_id="tf-test-target-entry_10719",
+            entry_id="tf-test-target-entry_50610",
             entry_type=entry_type_basic.name,
             project="1111111111111")
         basic_entry_link = gcp.dataplex.EntryLink("basic_entry_link",
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_basic.entry_group_id,
-            entry_link_id="tf-test-entry-link_1443",
+            entry_link_id="tf-test-entry-link_77124",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/related",
             entry_references=[
                 {
@@ -551,20 +610,20 @@ class EntryLink(pulumi.CustomResource):
 
         entry_group_full = gcp.dataplex.EntryGroup("entry-group-full",
             location="us-central1",
-            entry_group_id="tf-test-entry-group_26032",
+            entry_group_id="tf-test-entry-group_15335",
             project="1111111111111")
         entry_type_full = gcp.dataplex.EntryType("entry-type-full",
-            entry_type_id="tf-test-entry-type_50610",
+            entry_type_id="tf-test-entry-type_85160",
             location="us-central1",
             project="1111111111111")
         source = gcp.dataplex.Entry("source",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_id="tf-test-source-entry_8647",
+            entry_id="tf-test-source-entry_20665",
             entry_type=entry_type_full.name,
             project="1111111111111")
         term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-            glossary_id="tf-test-glossary_77124",
+            glossary_id="tf-test-glossary_92130",
             location="us-central1")
         term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
             parent=pulumi.Output.all(
@@ -574,7 +633,7 @@ class EntryLink(pulumi.CustomResource):
         ,
             glossary_id=term_test_id_full.glossary_id,
             location="us-central1",
-            term_id="tf-test-term-full_15335",
+            term_id="tf-test-term-full_16199",
             labels={
                 "tag": "test-tf",
             },
@@ -587,7 +646,7 @@ class EntryLink(pulumi.CustomResource):
             project="1111111111111",
             location="us-central1",
             entry_group_id=entry_group_full.entry_group_id,
-            entry_link_id="tf-test-entry-link_20665",
+            entry_link_id="tf-test-entry-link_21563",
             entry_link_type="projects/655216118709/locations/global/entryLinkTypes/definition",
             entry_references=[
                 {
@@ -641,6 +700,7 @@ class EntryLink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
                  entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -657,6 +717,7 @@ class EntryLink(pulumi.CustomResource):
             __props__ = EntryLinkArgs.__new__(EntryLinkArgs)
 
             __props__.__dict__["aspects"] = aspects
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if entry_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_group_id'")
             __props__.__dict__["entry_group_id"] = entry_group_id
@@ -688,6 +749,7 @@ class EntryLink(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             aspects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             entry_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             entry_link_id: pulumi.Input[Optional[_builtins.str]] = None,
             entry_link_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -706,6 +768,12 @@ class EntryLink(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['EntryLinkAspectArgs', 'EntryLinkAspectArgsDict']]]] aspects: The Aspects attached to the Entry Link.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The time when the Entry Link was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] entry_group_id: The id of the entry group this entry link is in.
         :param pulumi.Input[_builtins.str] entry_link_id: The id of the entry link to create.
         :param pulumi.Input[_builtins.str] entry_link_type: Relative resource name of the Entry Link Type used to create this Entry Link. For example:
@@ -725,6 +793,7 @@ class EntryLink(pulumi.CustomResource):
 
         __props__.__dict__["aspects"] = aspects
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["entry_group_id"] = entry_group_id
         __props__.__dict__["entry_link_id"] = entry_link_id
         __props__.__dict__["entry_link_type"] = entry_link_type
@@ -751,6 +820,19 @@ class EntryLink(pulumi.CustomResource):
         The time when the Entry Link was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="entryGroupId")

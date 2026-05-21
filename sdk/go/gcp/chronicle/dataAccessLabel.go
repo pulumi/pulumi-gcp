@@ -79,6 +79,13 @@ type DataAccessLabel struct {
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
 	DataAccessLabelId pulumi.StringOutput `pulumi:"dataAccessLabelId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. A description of the data access label for a human reader.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
@@ -153,6 +160,13 @@ type dataAccessLabelState struct {
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
 	DataAccessLabelId *string `pulumi:"dataAccessLabelId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. A description of the data access label for a human reader.
 	Description *string `pulumi:"description"`
 	// Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
@@ -186,6 +200,13 @@ type DataAccessLabelState struct {
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
 	DataAccessLabelId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. A description of the data access label for a human reader.
 	Description pulumi.StringPtrInput
 	// Output only. The short name displayed for the label as it appears on event data. This is same as data access label id.
@@ -219,6 +240,13 @@ type dataAccessLabelArgs struct {
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
 	DataAccessLabelId string `pulumi:"dataAccessLabelId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. A description of the data access label for a human reader.
 	Description *string `pulumi:"description"`
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
@@ -239,6 +267,13 @@ type DataAccessLabelArgs struct {
 	// maximum number of characters should be 63. Regex pattern is as per AIP:
 	// https://google.aip.dev/122#resource-id-segments
 	DataAccessLabelId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. A description of the data access label for a human reader.
 	Description pulumi.StringPtrInput
 	// The unique identifier for the Chronicle instance, which is the same as the customer ID.
@@ -355,6 +390,16 @@ func (o DataAccessLabelOutput) CreateTime() pulumi.StringOutput {
 // https://google.aip.dev/122#resource-id-segments
 func (o DataAccessLabelOutput) DataAccessLabelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAccessLabel) pulumi.StringOutput { return v.DataAccessLabelId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataAccessLabelOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataAccessLabel) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. A description of the data access label for a human reader.

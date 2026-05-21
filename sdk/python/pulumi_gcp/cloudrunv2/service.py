@@ -30,6 +30,7 @@ class ServiceArgs:
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -63,6 +64,12 @@ class ServiceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -110,6 +117,8 @@ class ServiceArgs:
             pulumi.set(__self__, "custom_audiences", custom_audiences)
         if default_uri_disabled is not None:
             pulumi.set(__self__, "default_uri_disabled", default_uri_disabled)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -251,6 +260,23 @@ class ServiceArgs:
     @default_uri_disabled.setter
     def default_uri_disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_uri_disabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -429,6 +455,7 @@ class _ServiceState:
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -483,6 +510,12 @@ class _ServiceState:
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -563,6 +596,8 @@ class _ServiceState:
             pulumi.set(__self__, "default_uri_disabled", default_uri_disabled)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -766,6 +801,23 @@ class _ServiceState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -1179,6 +1231,7 @@ class Service(pulumi.CustomResource):
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1809,6 +1862,12 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -2469,6 +2528,7 @@ class Service(pulumi.CustomResource):
                  client_version: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  iap_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2499,6 +2559,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["custom_audiences"] = custom_audiences
             __props__.__dict__["default_uri_disabled"] = default_uri_disabled
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["iap_enabled"] = iap_enabled
@@ -2561,6 +2622,7 @@ class Service(pulumi.CustomResource):
             custom_audiences: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             default_uri_disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2619,6 +2681,12 @@ class Service(pulumi.CustomResource):
                For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
         :param pulumi.Input[_builtins.bool] default_uri_disabled: Disables public resolution of the default URI of this service.
         :param pulumi.Input[_builtins.str] delete_time: The deletion time.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the service. Defaults to true.
                When a`terraform destroy` or `pulumi up` would delete the service,
                the command will fail if this field is not set to false in Terraform state.
@@ -2692,6 +2760,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["custom_audiences"] = custom_audiences
         __props__.__dict__["default_uri_disabled"] = default_uri_disabled
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -2821,6 +2890,19 @@ class Service(pulumi.CustomResource):
         The deletion time.
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

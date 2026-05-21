@@ -29,6 +29,7 @@ class ControlArgs:
                  boost_action: pulumi.Input[Optional['ControlBoostActionArgs']] = None,
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ControlConditionArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_action: pulumi.Input[Optional['ControlFilterActionArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  promote_action: pulumi.Input[Optional['ControlPromoteActionArgs']] = None,
@@ -51,6 +52,12 @@ class ControlArgs:
         :param pulumi.Input[_builtins.str] collection_id: The collection ID. Currently only accepts "default_collection".
         :param pulumi.Input[Sequence[pulumi.Input['ControlConditionArgs']]] conditions: The conditions under which the control is active.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['ControlFilterActionArgs'] filter_action: Removes entries from returned results.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -75,6 +82,8 @@ class ControlArgs:
             pulumi.set(__self__, "collection_id", collection_id)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if filter_action is not None:
             pulumi.set(__self__, "filter_action", filter_action)
         if project is not None:
@@ -190,6 +199,23 @@ class ControlArgs:
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="filterAction")
     def filter_action(self) -> pulumi.Input[Optional['ControlFilterActionArgs']]:
         """
@@ -275,6 +301,7 @@ class _ControlState:
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ControlConditionArgs']]]] = None,
                  control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_action: pulumi.Input[Optional['ControlFilterActionArgs']] = None,
@@ -295,6 +322,12 @@ class _ControlState:
         :param pulumi.Input[Sequence[pulumi.Input['ControlConditionArgs']]] conditions: The conditions under which the control is active.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] control_id: The unique id of the control.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the control. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[_builtins.str] engine_id: The engine to add the control to.
@@ -327,6 +360,8 @@ class _ControlState:
             pulumi.set(__self__, "conditions", conditions)
         if control_id is not None:
             pulumi.set(__self__, "control_id", control_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if engine_id is not None:
@@ -399,6 +434,23 @@ class _ControlState:
     @control_id.setter
     def control_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -555,6 +607,7 @@ class Control(pulumi.CustomResource):
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]]] = None,
                  control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']]] = None,
@@ -640,6 +693,12 @@ class Control(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]] conditions: The conditions under which the control is active.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] control_id: The unique id of the control.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the control. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[_builtins.str] engine_id: The engine to add the control to.
@@ -751,6 +810,7 @@ class Control(pulumi.CustomResource):
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]]] = None,
                  control_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']]] = None,
@@ -776,6 +836,7 @@ class Control(pulumi.CustomResource):
             if control_id is None and not opts.urn:
                 raise TypeError("Missing required property 'control_id'")
             __props__.__dict__["control_id"] = control_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -809,6 +870,7 @@ class Control(pulumi.CustomResource):
             collection_id: pulumi.Input[Optional[_builtins.str]] = None,
             conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]]] = None,
             control_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             engine_id: pulumi.Input[Optional[_builtins.str]] = None,
             filter_action: pulumi.Input[Optional[Union['ControlFilterActionArgs', 'ControlFilterActionArgsDict']]] = None,
@@ -833,6 +895,12 @@ class Control(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ControlConditionArgs', 'ControlConditionArgsDict']]]] conditions: The conditions under which the control is active.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] control_id: The unique id of the control.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the control. This field must be a UTF-8 encoded
                string with a length limit of 128 characters.
         :param pulumi.Input[_builtins.str] engine_id: The engine to add the control to.
@@ -865,6 +933,7 @@ class Control(pulumi.CustomResource):
         __props__.__dict__["collection_id"] = collection_id
         __props__.__dict__["conditions"] = conditions
         __props__.__dict__["control_id"] = control_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["engine_id"] = engine_id
         __props__.__dict__["filter_action"] = filter_action
@@ -911,6 +980,19 @@ class Control(pulumi.CustomResource):
         The unique id of the control.
         """
         return pulumi.get(self, "control_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

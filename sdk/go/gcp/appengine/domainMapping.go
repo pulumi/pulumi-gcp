@@ -69,6 +69,13 @@ import (
 type DomainMapping struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
@@ -123,6 +130,13 @@ func GetDomainMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainMapping resources.
 type domainMappingState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName *string `pulumi:"domainName"`
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
@@ -145,6 +159,13 @@ type domainMappingState struct {
 }
 
 type DomainMappingState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName pulumi.StringPtrInput
 	// Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'.
@@ -171,6 +192,13 @@ func (DomainMappingState) ElementType() reflect.Type {
 }
 
 type domainMappingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName string `pulumi:"domainName"`
 	// Whether the domain creation should override any existing mappings for this domain.
@@ -188,6 +216,13 @@ type domainMappingArgs struct {
 
 // The set of arguments for constructing a DomainMapping resource.
 type DomainMappingArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Relative name of the domain serving the application. Example: example.com.
 	DomainName pulumi.StringInput
 	// Whether the domain creation should override any existing mappings for this domain.
@@ -288,6 +323,16 @@ func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
 
 func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DomainMappingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Relative name of the domain serving the application. Example: example.com.

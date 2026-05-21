@@ -198,6 +198,15 @@ export class ConnectivityTest extends pulumi.CustomResource {
      */
     declare public readonly bypassFirewallChecks: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.
      */
@@ -277,6 +286,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ConnectivityTestState | undefined;
             resourceInputs["bypassFirewallChecks"] = state?.bypassFirewallChecks;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["destination"] = state?.destination;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -297,6 +307,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
                 throw new Error("Missing required property 'source'");
             }
             resourceInputs["bypassFirewallChecks"] = args?.bypassFirewallChecks;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["destination"] = args?.destination;
             resourceInputs["labels"] = args?.labels;
@@ -324,6 +335,15 @@ export interface ConnectivityTestState {
      * Whether the analysis should skip firewall checking. Default value is false.
      */
     bypassFirewallChecks?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.
@@ -399,6 +419,15 @@ export interface ConnectivityTestArgs {
      * Whether the analysis should skip firewall checking. Default value is false.
      */
     bypassFirewallChecks?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-supplied description of the Connectivity Test.
      * Maximum of 512 characters.

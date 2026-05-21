@@ -143,6 +143,13 @@ type AccessLevelCondition struct {
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -223,6 +230,13 @@ type accessLevelConditionState struct {
 	AccessLevel *string `pulumi:"accessLevel"`
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId *string `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -271,6 +285,13 @@ type AccessLevelConditionState struct {
 	AccessLevel pulumi.StringPtrInput
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -321,6 +342,13 @@ func (AccessLevelConditionState) ElementType() reflect.Type {
 type accessLevelConditionArgs struct {
 	// The name of the Access Level to add this condition to.
 	AccessLevel string `pulumi:"accessLevel"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -368,6 +396,13 @@ type accessLevelConditionArgs struct {
 type AccessLevelConditionArgs struct {
 	// The name of the Access Level to add this condition to.
 	AccessLevel pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -506,6 +541,16 @@ func (o AccessLevelConditionOutput) AccessLevel() pulumi.StringOutput {
 // The name of the Access Policy this resource belongs to.
 func (o AccessLevelConditionOutput) AccessPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessLevelCondition) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AccessLevelConditionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevelCondition) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Device specific restrictions, all restrictions must hold for

@@ -60,6 +60,7 @@ export interface GetInstanceGroupArgs {
  * A collection of values returned by getInstanceGroup.
  */
 export interface GetInstanceGroupResult {
+    readonly deletionPolicy: string;
     /**
      * Textual description of the instance group.
      */

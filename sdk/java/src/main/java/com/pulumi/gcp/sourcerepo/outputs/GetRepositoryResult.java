@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRepositoryResult {
     private Boolean createIgnoreAlreadyExists;
+    private String deletionPolicy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -31,6 +32,9 @@ public final class GetRepositoryResult {
     private GetRepositoryResult() {}
     public Boolean createIgnoreAlreadyExists() {
         return this.createIgnoreAlreadyExists;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -65,6 +69,7 @@ public final class GetRepositoryResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean createIgnoreAlreadyExists;
+        private String deletionPolicy;
         private String id;
         private String name;
         private @Nullable String project;
@@ -75,6 +80,7 @@ public final class GetRepositoryResult {
         public Builder(GetRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createIgnoreAlreadyExists = defaults.createIgnoreAlreadyExists;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
@@ -89,6 +95,14 @@ public final class GetRepositoryResult {
               throw new MissingRequiredPropertyException("GetRepositoryResult", "createIgnoreAlreadyExists");
             }
             this.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -143,6 +157,7 @@ public final class GetRepositoryResult {
         public GetRepositoryResult build() {
             final var _resultValue = new GetRepositoryResult();
             _resultValue.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.project = project;

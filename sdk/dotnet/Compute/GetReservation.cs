@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<Outputs.GetReservationDeleteAfterDurationResult> DeleteAfterDurations;
         public readonly string DeleteAtTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly bool EnableEmergentMaintenance;
         public readonly string Id;
@@ -175,6 +176,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetReservationDeleteAfterDurationResult> deleteAfterDurations,
 
             string deleteAtTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -215,6 +218,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             DeleteAfterDurations = deleteAfterDurations;
             DeleteAtTime = deleteAtTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EnableEmergentMaintenance = enableEmergentMaintenance;
             Id = id;

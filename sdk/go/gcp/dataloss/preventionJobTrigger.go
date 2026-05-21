@@ -852,6 +852,13 @@ type PreventionJobTrigger struct {
 
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A description of the job trigger.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User set display name of the job trigger.
@@ -919,6 +926,13 @@ func GetPreventionJobTrigger(ctx *pulumi.Context,
 type preventionJobTriggerState struct {
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the job trigger.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
@@ -951,6 +965,13 @@ type preventionJobTriggerState struct {
 type PreventionJobTriggerState struct {
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the job trigger.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
@@ -985,6 +1006,13 @@ func (PreventionJobTriggerState) ElementType() reflect.Type {
 }
 
 type preventionJobTriggerArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A description of the job trigger.
 	Description *string `pulumi:"description"`
 	// User set display name of the job trigger.
@@ -1010,6 +1038,13 @@ type preventionJobTriggerArgs struct {
 
 // The set of arguments for constructing a PreventionJobTrigger resource.
 type PreventionJobTriggerArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A description of the job trigger.
 	Description pulumi.StringPtrInput
 	// User set display name of the job trigger.
@@ -1123,6 +1158,16 @@ func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutputWithContext(ctx 
 // The creation timestamp of an inspectTemplate. Set by the server.
 func (o PreventionJobTriggerOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PreventionJobTriggerOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A description of the job trigger.

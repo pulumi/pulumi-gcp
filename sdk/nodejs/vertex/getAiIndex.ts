@@ -43,6 +43,7 @@ export interface GetAiIndexArgs {
  */
 export interface GetAiIndexResult {
     readonly createTime: string;
+    readonly deletionPolicy: string;
     readonly deployedIndexes: outputs.vertex.GetAiIndexDeployedIndex[];
     readonly description: string;
     readonly displayName: string;

@@ -56,6 +56,7 @@ export interface GetMembershipArgs {
  */
 export interface GetMembershipResult {
     readonly authorities: outputs.gkehub.GetMembershipAuthority[];
+    readonly deletionPolicy: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly endpoints: outputs.gkehub.GetMembershipEndpoint[];
     /**

@@ -17,6 +17,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKMSCryptoKeyResult {
     private String cryptoKeyBackend;
+    private String deletionPolicy;
     private String destroyScheduledDuration;
     private Map<String,String> effectiveLabels;
     /**
@@ -49,6 +50,9 @@ public final class GetKMSCryptoKeyResult {
     private GetKMSCryptoKeyResult() {}
     public String cryptoKeyBackend() {
         return this.cryptoKeyBackend;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String destroyScheduledDuration() {
         return this.destroyScheduledDuration;
@@ -117,6 +121,7 @@ public final class GetKMSCryptoKeyResult {
     @CustomType.Builder
     public static final class Builder {
         private String cryptoKeyBackend;
+        private String deletionPolicy;
         private String destroyScheduledDuration;
         private Map<String,String> effectiveLabels;
         private String id;
@@ -135,6 +140,7 @@ public final class GetKMSCryptoKeyResult {
         public Builder(GetKMSCryptoKeyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cryptoKeyBackend = defaults.cryptoKeyBackend;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.destroyScheduledDuration = defaults.destroyScheduledDuration;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
@@ -157,6 +163,14 @@ public final class GetKMSCryptoKeyResult {
               throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "cryptoKeyBackend");
             }
             this.cryptoKeyBackend = cryptoKeyBackend;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -283,6 +297,7 @@ public final class GetKMSCryptoKeyResult {
         public GetKMSCryptoKeyResult build() {
             final var _resultValue = new GetKMSCryptoKeyResult();
             _resultValue.cryptoKeyBackend = cryptoKeyBackend;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.destroyScheduledDuration = destroyScheduledDuration;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;

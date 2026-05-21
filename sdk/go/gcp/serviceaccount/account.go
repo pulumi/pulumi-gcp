@@ -61,6 +61,13 @@ type Account struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -128,6 +135,13 @@ type accountState struct {
 	AccountId *string `pulumi:"accountId"`
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
@@ -160,6 +174,13 @@ type AccountState struct {
 	AccountId pulumi.StringPtrInput
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput
@@ -196,6 +217,13 @@ type accountArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
@@ -219,6 +247,13 @@ type AccountArgs struct {
 	AccountId pulumi.StringPtrInput
 	// If set to true, skip service account creation if a service account with the same email already exists.
 	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput
@@ -331,6 +366,16 @@ func (o AccountOutput) AccountId() pulumi.StringOutput {
 // If set to true, skip service account creation if a service account with the same email already exists.
 func (o AccountOutput) CreateIgnoreAlreadyExists() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Account) pulumi.BoolPtrOutput { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AccountOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A text description of the service account.

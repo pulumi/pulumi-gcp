@@ -240,6 +240,13 @@ type RegionalParameterVersion struct {
 
 	// The time at which the Regional Parameter Version was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
@@ -309,6 +316,13 @@ func GetRegionalParameterVersion(ctx *pulumi.Context,
 type regionalParameterVersionState struct {
 	// The time at which the Regional Parameter Version was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled *bool `pulumi:"disabled"`
 	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
@@ -333,6 +347,13 @@ type regionalParameterVersionState struct {
 type RegionalParameterVersionState struct {
 	// The time at which the Regional Parameter Version was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled pulumi.BoolPtrInput
 	// The resource name of the Cloud KMS CryptoKeyVersion used to decrypt regional parameter version payload. Format
@@ -359,6 +380,13 @@ func (RegionalParameterVersionState) ElementType() reflect.Type {
 }
 
 type regionalParameterVersionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled *bool `pulumi:"disabled"`
 	// Parameter Manager Regional Parameter resource.
@@ -372,6 +400,13 @@ type regionalParameterVersionArgs struct {
 
 // The set of arguments for constructing a RegionalParameterVersion resource.
 type RegionalParameterVersionArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
 	Disabled pulumi.BoolPtrInput
 	// Parameter Manager Regional Parameter resource.
@@ -473,6 +508,16 @@ func (o RegionalParameterVersionOutput) ToRegionalParameterVersionOutputWithCont
 // The time at which the Regional Parameter Version was created.
 func (o RegionalParameterVersionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionalParameterVersion) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionalParameterVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionalParameterVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.

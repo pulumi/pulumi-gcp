@@ -117,6 +117,15 @@ export class UnitKind extends pulumi.CustomResource {
      */
     declare public readonly defaultRelease: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * List of other unit kinds that this release will depend on. Dependencies
      * will be automatically provisioned if not found. Maximum 10.
      * Structure is documented below.
@@ -217,6 +226,7 @@ export class UnitKind extends pulumi.CustomResource {
             resourceInputs["annotations"] = state?.annotations;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["defaultRelease"] = state?.defaultRelease;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["dependencies"] = state?.dependencies;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -245,6 +255,7 @@ export class UnitKind extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["defaultRelease"] = args?.defaultRelease;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["dependencies"] = args?.dependencies;
             resourceInputs["inputVariableMappings"] = args?.inputVariableMappings;
             resourceInputs["labels"] = args?.labels;
@@ -293,6 +304,15 @@ export interface UnitKindState {
      * for its creation.
      */
     defaultRelease?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * List of other unit kinds that this release will depend on. Dependencies
      * will be automatically provisioned if not found. Maximum 10.
@@ -399,6 +419,15 @@ export interface UnitKindArgs {
      * for its creation.
      */
     defaultRelease?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * List of other unit kinds that this release will depend on. Dependencies
      * will be automatically provisioned if not found. Maximum 10.

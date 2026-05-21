@@ -64,6 +64,7 @@ type LookupRegionalSecretResult struct {
 	Annotations                map[string]string                            `pulumi:"annotations"`
 	CreateTime                 string                                       `pulumi:"createTime"`
 	CustomerManagedEncryptions []GetRegionalSecretCustomerManagedEncryption `pulumi:"customerManagedEncryptions"`
+	DeletionPolicy             string                                       `pulumi:"deletionPolicy"`
 	DeletionProtection         bool                                         `pulumi:"deletionProtection"`
 	EffectiveAnnotations       map[string]string                            `pulumi:"effectiveAnnotations"`
 	EffectiveLabels            map[string]string                            `pulumi:"effectiveLabels"`
@@ -134,6 +135,10 @@ func (o LookupRegionalSecretResultOutput) CustomerManagedEncryptions() GetRegion
 	return o.ApplyT(func(v LookupRegionalSecretResult) []GetRegionalSecretCustomerManagedEncryption {
 		return v.CustomerManagedEncryptions
 	}).(GetRegionalSecretCustomerManagedEncryptionArrayOutput)
+}
+
+func (o LookupRegionalSecretResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionalSecretResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionalSecretResultOutput) DeletionProtection() pulumi.BoolOutput {

@@ -59,6 +59,7 @@ export interface GetRegionSslCertificateResult {
     readonly certificate: string;
     readonly certificateId: number;
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly expireTime: string;
     /**

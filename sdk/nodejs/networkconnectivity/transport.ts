@@ -26,11 +26,11 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const primary_network = new gcp.compute.Network("primary-network", {
- *     name: "tf-test-my-vpc-network_79580",
+ *     name: "tf-test-my-vpc-network_44154",
  *     autoCreateSubnetworks: false,
  * });
  * const primary = new gcp.networkconnectivity.Transport("primary", {
- *     name: "tf-test-basic-transport_98863",
+ *     name: "tf-test-basic-transport_90221",
  *     region: "us-east4",
  *     description: "A sample transport",
  *     remoteProfile: project.then(project => `https://networkconnectivity.googleapis.com/v1beta/${project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1`),
@@ -105,6 +105,15 @@ export class Transport extends pulumi.CustomResource {
      * Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
      */
     declare public readonly bandwidth: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * An optional description of this resource.
      */
@@ -201,6 +210,7 @@ export class Transport extends pulumi.CustomResource {
             resourceInputs["advertisedRoutes"] = state?.advertisedRoutes;
             resourceInputs["autoAccept"] = state?.autoAccept;
             resourceInputs["bandwidth"] = state?.bandwidth;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["generatedActivationKey"] = state?.generatedActivationKey;
@@ -234,6 +244,7 @@ export class Transport extends pulumi.CustomResource {
             resourceInputs["advertisedRoutes"] = args?.advertisedRoutes;
             resourceInputs["autoAccept"] = args?.autoAccept;
             resourceInputs["bandwidth"] = args?.bandwidth;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["hub"] = args?.hub;
             resourceInputs["labels"] = args?.labels;
@@ -280,6 +291,15 @@ export interface TransportState {
      * Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
      */
     bandwidth?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -380,6 +400,15 @@ export interface TransportArgs {
      * Bandwidth of the Transport. This must be one of the supported bandwidths for the remote profile.
      */
     bandwidth?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

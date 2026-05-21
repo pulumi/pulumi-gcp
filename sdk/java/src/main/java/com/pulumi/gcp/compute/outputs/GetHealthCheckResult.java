@@ -24,6 +24,7 @@ import javax.annotation.Nullable;
 public final class GetHealthCheckResult {
     private Integer checkIntervalSec;
     private String creationTimestamp;
+    private String deletionPolicy;
     private String description;
     private List<GetHealthCheckGrpcHealthCheck> grpcHealthChecks;
     private List<GetHealthCheckGrpcTlsHealthCheck> grpcTlsHealthChecks;
@@ -53,6 +54,9 @@ public final class GetHealthCheckResult {
     }
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -124,6 +128,7 @@ public final class GetHealthCheckResult {
     public static final class Builder {
         private Integer checkIntervalSec;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private List<GetHealthCheckGrpcHealthCheck> grpcHealthChecks;
         private List<GetHealthCheckGrpcTlsHealthCheck> grpcTlsHealthChecks;
@@ -147,6 +152,7 @@ public final class GetHealthCheckResult {
     	      Objects.requireNonNull(defaults);
     	      this.checkIntervalSec = defaults.checkIntervalSec;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.grpcHealthChecks = defaults.grpcHealthChecks;
     	      this.grpcTlsHealthChecks = defaults.grpcTlsHealthChecks;
@@ -181,6 +187,14 @@ public final class GetHealthCheckResult {
               throw new MissingRequiredPropertyException("GetHealthCheckResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -356,6 +370,7 @@ public final class GetHealthCheckResult {
             final var _resultValue = new GetHealthCheckResult();
             _resultValue.checkIntervalSec = checkIntervalSec;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.grpcHealthChecks = grpcHealthChecks;
             _resultValue.grpcTlsHealthChecks = grpcTlsHealthChecks;

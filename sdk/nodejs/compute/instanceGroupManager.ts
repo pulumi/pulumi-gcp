@@ -239,6 +239,17 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional textual description of the instance
      * group manager.
      */
@@ -333,8 +344,6 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     declare public readonly targetSize: pulumi.Output<number>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     *
-     * - - -
      */
     declare public readonly targetSizePolicies: pulumi.Output<outputs.compute.InstanceGroupManagerTargetSizePolicy[]>;
     /**
@@ -393,6 +402,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["autoHealingPolicies"] = state?.autoHealingPolicies;
             resourceInputs["baseInstanceName"] = state?.baseInstanceName;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["fingerprint"] = state?.fingerprint;
             resourceInputs["instanceGroup"] = state?.instanceGroup;
@@ -432,6 +442,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["allInstancesConfig"] = args?.allInstancesConfig;
             resourceInputs["autoHealingPolicies"] = args?.autoHealingPolicies;
             resourceInputs["baseInstanceName"] = args?.baseInstanceName;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceLifecyclePolicy"] = args?.instanceLifecyclePolicy;
             resourceInputs["listManagedInstancesResults"] = args?.listManagedInstancesResults;
@@ -495,6 +506,17 @@ export interface InstanceGroupManagerState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the instance
      * group manager.
@@ -590,8 +612,6 @@ export interface InstanceGroupManagerState {
     targetSize?: pulumi.Input<number | undefined>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     *
-     * - - -
      */
     targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerTargetSizePolicy>[] | undefined>;
     /**
@@ -658,6 +678,17 @@ export interface InstanceGroupManagerArgs {
      * name.
      */
     baseInstanceName: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * - - -
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the instance
      * group manager.
@@ -732,8 +763,6 @@ export interface InstanceGroupManagerArgs {
     targetSize?: pulumi.Input<number | undefined>;
     /**
      * The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-     *
-     * - - -
      */
     targetSizePolicies?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerTargetSizePolicy>[] | undefined>;
     /**

@@ -155,6 +155,15 @@ export class NodeTemplate extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional textual description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -223,6 +232,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             resourceInputs["accelerators"] = state?.accelerators;
             resourceInputs["cpuOvercommitType"] = state?.cpuOvercommitType;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["disks"] = state?.disks;
             resourceInputs["name"] = state?.name;
@@ -237,6 +247,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             const args = argsOrState as NodeTemplateArgs | undefined;
             resourceInputs["accelerators"] = args?.accelerators;
             resourceInputs["cpuOvercommitType"] = args?.cpuOvercommitType;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["disks"] = args?.disks;
             resourceInputs["name"] = args?.name;
@@ -274,6 +285,15 @@ export interface NodeTemplateState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource.
      */
@@ -344,6 +364,15 @@ export interface NodeTemplateArgs {
      * Possible values are: `ENABLED`, `NONE`.
      */
     cpuOvercommitType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource.
      */

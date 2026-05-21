@@ -59,11 +59,12 @@ type LookupApplicationArgs struct {
 
 // A collection of values returned by getApplication.
 type LookupApplicationResult struct {
-	ApplicationId string                    `pulumi:"applicationId"`
-	Attributes    []GetApplicationAttribute `pulumi:"attributes"`
-	CreateTime    string                    `pulumi:"createTime"`
-	Description   string                    `pulumi:"description"`
-	DisplayName   string                    `pulumi:"displayName"`
+	ApplicationId  string                    `pulumi:"applicationId"`
+	Attributes     []GetApplicationAttribute `pulumi:"attributes"`
+	CreateTime     string                    `pulumi:"createTime"`
+	DeletionPolicy string                    `pulumi:"deletionPolicy"`
+	Description    string                    `pulumi:"description"`
+	DisplayName    string                    `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id         string                `pulumi:"id"`
 	Location   string                `pulumi:"location"`
@@ -120,6 +121,10 @@ func (o LookupApplicationResultOutput) Attributes() GetApplicationAttributeArray
 
 func (o LookupApplicationResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupApplicationResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupApplicationResultOutput) Description() pulumi.StringOutput {

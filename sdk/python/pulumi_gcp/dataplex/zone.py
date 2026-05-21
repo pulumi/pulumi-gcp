@@ -26,6 +26,7 @@ class ZoneArgs:
                  location: pulumi.Input[_builtins.str],
                  resource_spec: pulumi.Input['ZoneResourceSpecArgs'],
                  type: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -39,6 +40,12 @@ class ZoneArgs:
         :param pulumi.Input[_builtins.str] location: The location for the resource
         :param pulumi.Input['ZoneResourceSpecArgs'] resource_spec: Required. Immutable. Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input[_builtins.str] type: Required. Immutable. The type of the zone. Possible values: TYPE_UNSPECIFIED, RAW, CURATED
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Optional. User defined labels for the zone.
@@ -53,6 +60,8 @@ class ZoneArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "resource_spec", resource_spec)
         pulumi.set(__self__, "type", type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -125,6 +134,23 @@ class ZoneArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -193,6 +219,7 @@ class _ZoneState:
     def __init__(__self__, *,
                  asset_statuses: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneAssetStatusArgs']]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_spec: pulumi.Input[Optional['ZoneDiscoverySpecArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -213,6 +240,12 @@ class _ZoneState:
 
         :param pulumi.Input[Sequence[pulumi.Input['ZoneAssetStatusArgs']]] asset_statuses: Output only. Aggregated status of the underlying assets of the zone.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the zone was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
         :param pulumi.Input['ZoneDiscoverySpecArgs'] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
@@ -236,6 +269,8 @@ class _ZoneState:
             pulumi.set(__self__, "asset_statuses", asset_statuses)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if discovery_spec is not None:
@@ -290,6 +325,23 @@ class _ZoneState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -481,6 +533,7 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -547,6 +600,12 @@ class Zone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
         :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
@@ -635,6 +694,7 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -654,6 +714,7 @@ class Zone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneArgs.__new__(ZoneArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if discovery_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'discovery_spec'")
@@ -695,6 +756,7 @@ class Zone(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             asset_statuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict']]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             discovery_spec: pulumi.Input[Optional[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -719,6 +781,12 @@ class Zone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ZoneAssetStatusArgs', 'ZoneAssetStatusArgsDict']]]] asset_statuses: Output only. Aggregated status of the underlying assets of the zone.
         :param pulumi.Input[_builtins.str] create_time: Output only. The time when the zone was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Description of the zone.
         :param pulumi.Input[Union['ZoneDiscoverySpecArgs', 'ZoneDiscoverySpecArgsDict']] discovery_spec: Required. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[_builtins.str] display_name: Optional. User friendly display name.
@@ -744,6 +812,7 @@ class Zone(pulumi.CustomResource):
 
         __props__.__dict__["asset_statuses"] = asset_statuses
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["discovery_spec"] = discovery_spec
         __props__.__dict__["display_name"] = display_name
@@ -776,6 +845,19 @@ class Zone(pulumi.CustomResource):
         Output only. The time when the zone was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

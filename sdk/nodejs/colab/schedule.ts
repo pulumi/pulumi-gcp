@@ -333,6 +333,15 @@ export class Schedule extends pulumi.CustomResource {
      */
     declare public readonly cron: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
     declare public readonly desiredState: pulumi.Output<string | undefined>;
@@ -390,6 +399,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["allowQueueing"] = state?.allowQueueing;
             resourceInputs["createNotebookExecutionJobRequest"] = state?.createNotebookExecutionJobRequest;
             resourceInputs["cron"] = state?.cron;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["desiredState"] = state?.desiredState;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["endTime"] = state?.endTime;
@@ -420,6 +430,7 @@ export class Schedule extends pulumi.CustomResource {
             resourceInputs["allowQueueing"] = args?.allowQueueing;
             resourceInputs["createNotebookExecutionJobRequest"] = args?.createNotebookExecutionJobRequest;
             resourceInputs["cron"] = args?.cron;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["desiredState"] = args?.desiredState;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["endTime"] = args?.endTime;
@@ -453,6 +464,15 @@ export interface ScheduleState {
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      */
     cron?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */
@@ -513,6 +533,15 @@ export interface ScheduleArgs {
      * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
      */
     cron: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Desired state of the Colab Schedule. Set this field to `ACTIVE` to start/resume the schedule, and `PAUSED` to pause the schedule.
      */

@@ -129,16 +129,12 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
      * 
-     * ***
-     * 
      */
     @Export(name="automatedBackupPolicy", refs={TableAutomatedBackupPolicy.class}, tree="[0]")
     private Output<TableAutomatedBackupPolicy> automatedBackupPolicy;
 
     /**
      * @return Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the automatedBackupPolicy argument, or set both Retention Period and Frequency properties to &#34;0&#34;. To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to &#34;0&#34;. When updating an existing table, to modify the Retention Period or Frequency properties of the resource&#39;s automated backup policy, set the respective property to a non-zero value. If the automatedBackupPolicy argument is not provided in the configuration on update, the resource&#39;s automated backup policy will _not_ be modified.
-     * 
-     * ***
      * 
      */
     public Output<TableAutomatedBackupPolicy> automatedBackupPolicy() {
@@ -171,6 +167,34 @@ public class Table extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<TableColumnFamily>>> columnFamilies() {
         return Codegen.optional(this.columnFamilies);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * ***
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.

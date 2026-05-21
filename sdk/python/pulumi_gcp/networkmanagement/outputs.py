@@ -752,6 +752,7 @@ class GetConnectivityTestRunReachabilityDetailTraceStepResult(dict):
 class GetConnectivityTestsConnectivityTestResult(dict):
     def __init__(__self__, *,
                  bypass_firewall_checks: _builtins.bool,
+                 deletion_policy: _builtins.str,
                  description: _builtins.str,
                  destinations: Sequence['outputs.GetConnectivityTestsConnectivityTestDestinationResult'],
                  effective_labels: Mapping[str, _builtins.str],
@@ -765,6 +766,12 @@ class GetConnectivityTestsConnectivityTestResult(dict):
                  sources: Sequence['outputs.GetConnectivityTestsConnectivityTestSourceResult']):
         """
         :param _builtins.bool bypass_firewall_checks: Whether the analysis should skip firewall checking.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str description: The user-supplied description of the Connectivity Test.
         :param Sequence['GetConnectivityTestsConnectivityTestDestinationArgs'] destinations: Destination specification of the Connectivity Test.
                Structure is documented below.
@@ -781,6 +788,7 @@ class GetConnectivityTestsConnectivityTestResult(dict):
                Structure is documented below.
         """
         pulumi.set(__self__, "bypass_firewall_checks", bypass_firewall_checks)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "destinations", destinations)
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -800,6 +808,19 @@ class GetConnectivityTestsConnectivityTestResult(dict):
         Whether the analysis should skip firewall checking.
         """
         return pulumi.get(self, "bypass_firewall_checks")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

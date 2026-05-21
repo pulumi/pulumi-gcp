@@ -519,6 +519,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigArgs;
  * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigTextSpecArgs;
+ * import com.pulumi.gcp.firestore.inputs.IndexFieldSearchConfigTextSpecIndexSpecArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -748,24 +749,28 @@ public class Index extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.database);
     }
     /**
-     * Deletion behavior for this index.
-     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-     * The default value is `DELETE`.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
-     * @return Deletion behavior for this index.
-     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-     * The default value is `DELETE`.
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The density configuration for this index.

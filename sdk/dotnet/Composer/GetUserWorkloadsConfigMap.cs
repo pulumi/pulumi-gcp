@@ -12,13 +12,13 @@ namespace Pulumi.Gcp.Composer
     public static class GetUserWorkloadsConfigMap
     {
         /// <summary>
-        /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+        /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
         /// 
-        /// To get more information about Composer User Workloads Config Map, see:
+        /// To get more information about Managed Airflow User Workloads Config Map, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
         /// 
         /// ## Example Usage
         /// 
@@ -70,13 +70,13 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserWorkloadsConfigMapResult>("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args ?? new GetUserWorkloadsConfigMapArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+        /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
         /// 
-        /// To get more information about Composer User Workloads Config Map, see:
+        /// To get more information about Managed Airflow User Workloads Config Map, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
         /// 
         /// ## Example Usage
         /// 
@@ -128,13 +128,13 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.Invoke<GetUserWorkloadsConfigMapResult>("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args ?? new GetUserWorkloadsConfigMapInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+        /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
         /// 
-        /// To get more information about Composer User Workloads Config Map, see:
+        /// To get more information about Managed Airflow User Workloads Config Map, see:
         /// 
         /// * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
         /// * How-to Guides
-        ///     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+        ///     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
         /// 
         /// ## Example Usage
         /// 
@@ -262,6 +262,7 @@ namespace Pulumi.Gcp.Composer
         /// For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
         /// </summary>
         public readonly ImmutableDictionary<string, string> Data;
+        public readonly string DeletionPolicy;
         public readonly string Environment;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -275,6 +276,8 @@ namespace Pulumi.Gcp.Composer
         private GetUserWorkloadsConfigMapResult(
             ImmutableDictionary<string, string> data,
 
+            string deletionPolicy,
+
             string environment,
 
             string id,
@@ -286,6 +289,7 @@ namespace Pulumi.Gcp.Composer
             string? region)
         {
             Data = data;
+            DeletionPolicy = deletionPolicy;
             Environment = environment;
             Id = id;
             Name = name;

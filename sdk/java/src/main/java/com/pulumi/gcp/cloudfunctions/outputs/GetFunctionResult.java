@@ -31,6 +31,7 @@ public final class GetFunctionResult {
     private Map<String,String> buildEnvironmentVariables;
     private String buildServiceAccount;
     private String buildWorkerPool;
+    private String deletionPolicy;
     /**
      * @return Description of the function.
      * 
@@ -156,6 +157,9 @@ public final class GetFunctionResult {
     }
     public String buildWorkerPool() {
         return this.buildWorkerPool;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Description of the function.
@@ -343,6 +347,7 @@ public final class GetFunctionResult {
         private Map<String,String> buildEnvironmentVariables;
         private String buildServiceAccount;
         private String buildWorkerPool;
+        private String deletionPolicy;
         private String description;
         private String dockerRegistry;
         private String dockerRepository;
@@ -384,6 +389,7 @@ public final class GetFunctionResult {
     	      this.buildEnvironmentVariables = defaults.buildEnvironmentVariables;
     	      this.buildServiceAccount = defaults.buildServiceAccount;
     	      this.buildWorkerPool = defaults.buildWorkerPool;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.dockerRegistry = defaults.dockerRegistry;
     	      this.dockerRepository = defaults.dockerRepository;
@@ -460,6 +466,14 @@ public final class GetFunctionResult {
               throw new MissingRequiredPropertyException("GetFunctionResult", "buildWorkerPool");
             }
             this.buildWorkerPool = buildWorkerPool;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -744,6 +758,7 @@ public final class GetFunctionResult {
             _resultValue.buildEnvironmentVariables = buildEnvironmentVariables;
             _resultValue.buildServiceAccount = buildServiceAccount;
             _resultValue.buildWorkerPool = buildWorkerPool;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.dockerRegistry = dockerRegistry;
             _resultValue.dockerRepository = dockerRepository;

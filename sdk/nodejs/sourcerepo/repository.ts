@@ -93,6 +93,15 @@ export class Repository extends pulumi.CustomResource {
      */
     declare public readonly createIgnoreAlreadyExists: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
      */
@@ -131,6 +140,7 @@ export class Repository extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
             resourceInputs["createIgnoreAlreadyExists"] = state?.createIgnoreAlreadyExists;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["pubsubConfigs"] = state?.pubsubConfigs;
@@ -139,6 +149,7 @@ export class Repository extends pulumi.CustomResource {
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
             resourceInputs["createIgnoreAlreadyExists"] = args?.createIgnoreAlreadyExists;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["pubsubConfigs"] = args?.pubsubConfigs;
@@ -158,6 +169,15 @@ export interface RepositoryState {
      * If set to true, skip repository creation if a repository with the same name already exists.
      */
     createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
@@ -192,6 +212,15 @@ export interface RepositoryArgs {
      * If set to true, skip repository creation if a repository with the same name already exists.
      */
     createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`

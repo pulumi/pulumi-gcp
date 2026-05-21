@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSpark = new gcp.dataproc.Batch("example_batch_spark", {
- *     batchId: "tf-test-batch_64612",
+ *     batchId: "tf-test-batch_60461",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",
@@ -155,7 +155,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparsql = new gcp.dataproc.Batch("example_batch_sparsql", {
- *     batchId: "tf-test-batch_34242",
+ *     batchId: "tf-test-batch_45397",
  *     location: "us-central1",
  *     runtimeConfig: {
  *         properties: {
@@ -184,7 +184,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchPyspark = new gcp.dataproc.Batch("example_batch_pyspark", {
- *     batchId: "tf-test-batch_9723",
+ *     batchId: "tf-test-batch_16451",
  *     location: "us-central1",
  *     runtimeConfig: {
  *         properties: {
@@ -218,7 +218,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchSparkr = new gcp.dataproc.Batch("example_batch_sparkr", {
- *     batchId: "tf-test-batch_22061",
+ *     batchId: "tf-test-batch_3686",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",
@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const exampleBatchAutotuning = new gcp.dataproc.Batch("example_batch_autotuning", {
- *     batchId: "tf-test-batch_60461",
+ *     batchId: "tf-test-batch_54136",
  *     location: "us-central1",
  *     labels: {
  *         batch_test: "terraform",
@@ -340,6 +340,15 @@ export class Batch extends pulumi.CustomResource {
      * The email address of the user who created the batch.
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -448,6 +457,7 @@ export class Batch extends pulumi.CustomResource {
             resourceInputs["batchId"] = state?.batchId;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["creator"] = state?.creator;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["environmentConfig"] = state?.environmentConfig;
             resourceInputs["labels"] = state?.labels;
@@ -470,6 +480,7 @@ export class Batch extends pulumi.CustomResource {
         } else {
             const args = argsOrState as BatchArgs | undefined;
             resourceInputs["batchId"] = args?.batchId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["environmentConfig"] = args?.environmentConfig;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -516,6 +527,15 @@ export interface BatchState {
      * The email address of the user who created the batch.
      */
     creator?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -618,6 +638,15 @@ export interface BatchArgs {
      * This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
      */
     batchId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Environment configuration for the batch execution.
      * Structure is documented below.

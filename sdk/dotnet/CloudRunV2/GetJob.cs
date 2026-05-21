@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly string CreateTime;
         public readonly string Creator;
         public readonly string DeleteTime;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveAnnotations;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -209,6 +210,8 @@ namespace Pulumi.Gcp.CloudRunV2
             string creator,
 
             string deleteTime,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -266,6 +269,7 @@ namespace Pulumi.Gcp.CloudRunV2
             CreateTime = createTime;
             Creator = creator;
             DeleteTime = deleteTime;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EffectiveAnnotations = effectiveAnnotations;
             EffectiveLabels = effectiveLabels;

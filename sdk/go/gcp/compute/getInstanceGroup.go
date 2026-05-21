@@ -65,6 +65,7 @@ type LookupInstanceGroupArgs struct {
 
 // A collection of values returned by getInstanceGroup.
 type LookupInstanceGroupResult struct {
+	DeletionPolicy string `pulumi:"deletionPolicy"`
 	// Textual description of the instance group.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -124,6 +125,10 @@ func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutput() Loo
 
 func (o LookupInstanceGroupResultOutput) ToLookupInstanceGroupResultOutputWithContext(ctx context.Context) LookupInstanceGroupResultOutput {
 	return o
+}
+
+func (o LookupInstanceGroupResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceGroupResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Textual description of the instance group.

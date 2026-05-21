@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRegionalParameterResult {
     private String createTime;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private String format;
     /**
@@ -36,6 +37,9 @@ public final class GetRegionalParameterResult {
     private GetRegionalParameterResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -88,6 +92,7 @@ public final class GetRegionalParameterResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private String format;
         private String id;
@@ -104,6 +109,7 @@ public final class GetRegionalParameterResult {
         public Builder(GetRegionalParameterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.format = defaults.format;
     	      this.id = defaults.id;
@@ -124,6 +130,14 @@ public final class GetRegionalParameterResult {
               throw new MissingRequiredPropertyException("GetRegionalParameterResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRegionalParameterResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -226,6 +240,7 @@ public final class GetRegionalParameterResult {
         public GetRegionalParameterResult build() {
             final var _resultValue = new GetRegionalParameterResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.format = format;
             _resultValue.id = id;

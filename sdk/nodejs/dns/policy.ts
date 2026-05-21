@@ -110,6 +110,15 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly alternativeNameServerConfig: pulumi.Output<outputs.dns.PolicyAlternativeNameServerConfig | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -159,6 +168,7 @@ export class Policy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["alternativeNameServerConfig"] = state?.alternativeNameServerConfig;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["dns64Config"] = state?.dns64Config;
             resourceInputs["enableInboundForwarding"] = state?.enableInboundForwarding;
@@ -169,6 +179,7 @@ export class Policy extends pulumi.CustomResource {
         } else {
             const args = argsOrState as PolicyArgs | undefined;
             resourceInputs["alternativeNameServerConfig"] = args?.alternativeNameServerConfig;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["dns64Config"] = args?.dns64Config;
             resourceInputs["enableInboundForwarding"] = args?.enableInboundForwarding;
@@ -193,6 +204,15 @@ export interface PolicyState {
      * Structure is documented below.
      */
     alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */
@@ -241,6 +261,15 @@ export interface PolicyArgs {
      * Structure is documented below.
      */
     alternativeNameServerConfig?: pulumi.Input<inputs.dns.PolicyAlternativeNameServerConfig | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A textual description field. Defaults to 'Managed by Pulumi'.
      */

@@ -609,6 +609,13 @@ type RouterPeer struct {
 	// You can choose a value from 0 to 65335. If you don't provide a value,
 	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority pulumi.IntPtrOutput `pulumi:"customLearnedRoutePriority"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -777,6 +784,13 @@ type routerPeerState struct {
 	// You can choose a value from 0 to 65335. If you don't provide a value,
 	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority *int `pulumi:"customLearnedRoutePriority"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -907,6 +921,13 @@ type RouterPeerState struct {
 	// You can choose a value from 0 to 65335. If you don't provide a value,
 	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -1041,6 +1062,13 @@ type routerPeerArgs struct {
 	// You can choose a value from 0 to 65335. If you don't provide a value,
 	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority *int `pulumi:"customLearnedRoutePriority"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -1158,6 +1186,13 @@ type RouterPeerArgs struct {
 	// You can choose a value from 0 to 65335. If you don't provide a value,
 	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority pulumi.IntPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
 	// If set to true, the peer connection can be established with routing information.
@@ -1379,6 +1414,16 @@ func (o RouterPeerOutput) CustomLearnedIpRanges() RouterPeerCustomLearnedIpRange
 // Google Cloud assigns a priority of 100 to the ranges.
 func (o RouterPeerOutput) CustomLearnedRoutePriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.IntPtrOutput { return v.CustomLearnedRoutePriority }).(pulumi.IntPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RouterPeerOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The status of the BGP peer connection. If set to false, any active session

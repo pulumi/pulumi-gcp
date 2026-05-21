@@ -55,10 +55,16 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
         /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        /// Default is "".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "".
+        /// 
+        /// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The display name of the billing account.
@@ -134,7 +140,13 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
         /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        /// Default is "".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "".
+        /// 
+        /// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -169,7 +181,13 @@ namespace Pulumi.Gcp.Billing
         /// <summary>
         /// If set to "RENAME_ON_DESTROY" the billing account DisplayName
         /// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-        /// Default is "".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", the command will behave as if set to "".
+        /// 
+        /// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

@@ -74,6 +74,7 @@ type LookupRegionNetworkEndpointGroupResult struct {
 	AppEngines     []GetRegionNetworkEndpointGroupAppEngine     `pulumi:"appEngines"`
 	CloudFunctions []GetRegionNetworkEndpointGroupCloudFunction `pulumi:"cloudFunctions"`
 	CloudRuns      []GetRegionNetworkEndpointGroupCloudRun      `pulumi:"cloudRuns"`
+	DeletionPolicy string                                       `pulumi:"deletionPolicy"`
 	// The RNEG description.
 	Description string `pulumi:"description"`
 	// The provider-assigned unique ID for this managed resource.
@@ -150,6 +151,10 @@ func (o LookupRegionNetworkEndpointGroupResultOutput) CloudRuns() GetRegionNetwo
 	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) []GetRegionNetworkEndpointGroupCloudRun {
 		return v.CloudRuns
 	}).(GetRegionNetworkEndpointGroupCloudRunArrayOutput)
+}
+
+func (o LookupRegionNetworkEndpointGroupResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The RNEG description.

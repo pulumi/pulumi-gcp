@@ -411,6 +411,17 @@ namespace Pulumi.Gcp.DataCatalog
         public Output<string?> Column { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// This maps the ID of a tag field to the value of and additional information about that field.
         /// Valid field IDs are defined by the tag's template. A tag must have at least 1 field and at most 500 fields.
         /// Structure is documented below.
@@ -503,6 +514,17 @@ namespace Pulumi.Gcp.DataCatalog
         [Input("column")]
         public Input<string>? Column { get; set; }
 
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         [Input("fields", required: true)]
         private InputList<Inputs.TagFieldArgs>? _fields;
 
@@ -548,6 +570,17 @@ namespace Pulumi.Gcp.DataCatalog
         /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         [Input("fields")]
         private InputList<Inputs.TagFieldGetArgs>? _fields;

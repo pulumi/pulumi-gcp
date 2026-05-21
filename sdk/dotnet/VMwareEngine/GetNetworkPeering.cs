@@ -133,6 +133,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetNetworkPeeringResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly bool ExportCustomRoutes;
         public readonly bool ExportCustomRoutesWithPublicIp;
@@ -156,6 +157,8 @@ namespace Pulumi.Gcp.VMwareEngine
         [OutputConstructor]
         private GetNetworkPeeringResult(
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -190,6 +193,7 @@ namespace Pulumi.Gcp.VMwareEngine
             string vmwareEngineNetworkCanonical)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             ExportCustomRoutes = exportCustomRoutes;
             ExportCustomRoutesWithPublicIp = exportCustomRoutesWithPublicIp;

@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.Kms
     [OutputType]
     public sealed class GetAutokeyConfigResult
     {
+        public readonly string DeletionPolicy;
         public readonly string Etag;
         public readonly string Folder;
         /// <summary>
@@ -148,6 +149,8 @@ namespace Pulumi.Gcp.Kms
 
         [OutputConstructor]
         private GetAutokeyConfigResult(
+            string deletionPolicy,
+
             string etag,
 
             string folder,
@@ -158,6 +161,7 @@ namespace Pulumi.Gcp.Kms
 
             string keyProjectResolutionMode)
         {
+            DeletionPolicy = deletionPolicy;
             Etag = etag;
             Folder = folder;
             Id = id;

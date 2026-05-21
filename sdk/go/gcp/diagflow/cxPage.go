@@ -965,6 +965,13 @@ type CxPage struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings CxPageAdvancedSettingsPtrOutput `pulumi:"advancedSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -1052,6 +1059,13 @@ type cxPageState struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings *CxPageAdvancedSettings `pulumi:"advancedSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the page, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -1107,6 +1121,13 @@ type CxPageState struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings CxPageAdvancedSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// The fulfillment to call when the session is entering the page.
@@ -1166,6 +1187,13 @@ type cxPageArgs struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings *CxPageAdvancedSettings `pulumi:"advancedSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the page, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
@@ -1219,6 +1247,13 @@ type CxPageArgs struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings CxPageAdvancedSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringInput
 	// The fulfillment to call when the session is entering the page.
@@ -1358,6 +1393,16 @@ func (o CxPageOutput) ToCxPageOutputWithContext(ctx context.Context) CxPageOutpu
 // Structure is documented below.
 func (o CxPageOutput) AdvancedSettings() CxPageAdvancedSettingsPtrOutput {
 	return o.ApplyT(func(v *CxPage) CxPageAdvancedSettingsPtrOutput { return v.AdvancedSettings }).(CxPageAdvancedSettingsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxPageOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxPage) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the page, unique within the agent.

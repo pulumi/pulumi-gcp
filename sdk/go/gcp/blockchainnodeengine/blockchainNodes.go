@@ -183,6 +183,13 @@ type BlockchainNodes struct {
 	ConnectionInfos BlockchainNodesConnectionInfoArrayOutput `pulumi:"connectionInfos"`
 	// The timestamp at which the blockchain node was first created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// User-provided key-value pairs
@@ -258,6 +265,13 @@ type blockchainNodesState struct {
 	ConnectionInfos []BlockchainNodesConnectionInfo `pulumi:"connectionInfos"`
 	// The timestamp at which the blockchain node was first created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// User-provided key-value pairs
@@ -293,6 +307,13 @@ type BlockchainNodesState struct {
 	ConnectionInfos BlockchainNodesConnectionInfoArrayInput
 	// The timestamp at which the blockchain node was first created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// User-provided key-value pairs
@@ -327,6 +348,13 @@ type blockchainNodesArgs struct {
 	// User-provided key-value pairs
 	// Possible values are: `ETHEREUM`.
 	BlockchainType *string `pulumi:"blockchainType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided key-value pairs
 	// Structure is documented below.
 	EthereumDetails *BlockchainNodesEthereumDetails `pulumi:"ethereumDetails"`
@@ -349,6 +377,13 @@ type BlockchainNodesArgs struct {
 	// User-provided key-value pairs
 	// Possible values are: `ETHEREUM`.
 	BlockchainType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided key-value pairs
 	// Structure is documented below.
 	EthereumDetails BlockchainNodesEthereumDetailsPtrInput
@@ -471,6 +506,16 @@ func (o BlockchainNodesOutput) ConnectionInfos() BlockchainNodesConnectionInfoAr
 // The timestamp at which the blockchain node was first created.
 func (o BlockchainNodesOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlockchainNodes) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BlockchainNodesOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BlockchainNodes) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

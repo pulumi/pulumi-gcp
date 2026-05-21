@@ -26,6 +26,7 @@ class ConnectionProfileArgs:
                  location: pulumi.Input[_builtins.str],
                  bigquery_profile: pulumi.Input[Optional['ConnectionProfileBigqueryProfileArgs']] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_ssh_connectivity: pulumi.Input[Optional['ConnectionProfileForwardSshConnectivityArgs']] = None,
                  gcs_profile: pulumi.Input[Optional['ConnectionProfileGcsProfileArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -46,6 +47,12 @@ class ConnectionProfileArgs:
         :param pulumi.Input[_builtins.str] location: The name of the location this connection profile is located in.
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
         :param pulumi.Input['ConnectionProfileGcsProfileArgs'] gcs_profile: Cloud Storage bucket profile.
@@ -81,6 +88,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "bigquery_profile", bigquery_profile)
         if create_without_validation is not None:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if forward_ssh_connectivity is not None:
             pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
         if gcs_profile is not None:
@@ -165,6 +174,23 @@ class ConnectionProfileArgs:
     @create_without_validation.setter
     def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardSshConnectivity")
@@ -332,6 +358,7 @@ class _ConnectionProfileState:
                  bigquery_profile: pulumi.Input[Optional['ConnectionProfileBigqueryProfileArgs']] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  forward_ssh_connectivity: pulumi.Input[Optional['ConnectionProfileForwardSshConnectivityArgs']] = None,
@@ -355,6 +382,12 @@ class _ConnectionProfileState:
         :param pulumi.Input['ConnectionProfileBigqueryProfileArgs'] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['ConnectionProfileForwardSshConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
@@ -395,6 +428,8 @@ class _ConnectionProfileState:
             pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if create_without_validation is not None:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -465,6 +500,23 @@ class _ConnectionProfileState:
     @create_without_validation.setter
     def create_without_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_without_validation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -696,6 +748,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']]] = None,
                  gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
@@ -1134,6 +1187,12 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
                Structure is documented below.
@@ -1606,6 +1665,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']]] = None,
                  connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']]] = None,
                  gcs_profile: pulumi.Input[Optional[Union['ConnectionProfileGcsProfileArgs', 'ConnectionProfileGcsProfileArgsDict']]] = None,
@@ -1634,6 +1694,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connection_profile_id'")
             __props__.__dict__["connection_profile_id"] = connection_profile_id
             __props__.__dict__["create_without_validation"] = create_without_validation
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -1670,6 +1731,7 @@ class ConnectionProfile(pulumi.CustomResource):
             bigquery_profile: pulumi.Input[Optional[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']]] = None,
             connection_profile_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             forward_ssh_connectivity: pulumi.Input[Optional[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']]] = None,
@@ -1697,6 +1759,12 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConnectionProfileBigqueryProfileArgs', 'ConnectionProfileBigqueryProfileArgsDict']] bigquery_profile: BigQuery warehouse profile.
         :param pulumi.Input[_builtins.str] connection_profile_id: The connection profile identifier.
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the connection profile without validating it.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['ConnectionProfileForwardSshConnectivityArgs', 'ConnectionProfileForwardSshConnectivityArgsDict']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
@@ -1738,6 +1806,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["bigquery_profile"] = bigquery_profile
         __props__.__dict__["connection_profile_id"] = connection_profile_id
         __props__.__dict__["create_without_validation"] = create_without_validation
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["forward_ssh_connectivity"] = forward_ssh_connectivity
@@ -1780,6 +1849,19 @@ class ConnectionProfile(pulumi.CustomResource):
         Create the connection profile without validating it.
         """
         return pulumi.get(self, "create_without_validation")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

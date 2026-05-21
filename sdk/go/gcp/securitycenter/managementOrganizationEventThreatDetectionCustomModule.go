@@ -92,6 +92,13 @@ type ManagementOrganizationEventThreatDetectionCustomModule struct {
 	// Config for the module. For the resident module, its config value is defined at this level.
 	// For the inherited module, its config value is inherited from the ancestor module.
 	Config pulumi.StringPtrOutput `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The human readable name to be displayed for the module.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The state of enablement for the module at the given level of the hierarchy.
@@ -150,6 +157,13 @@ type managementOrganizationEventThreatDetectionCustomModuleState struct {
 	// Config for the module. For the resident module, its config value is defined at this level.
 	// For the inherited module, its config value is inherited from the ancestor module.
 	Config *string `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human readable name to be displayed for the module.
 	DisplayName *string `pulumi:"displayName"`
 	// The state of enablement for the module at the given level of the hierarchy.
@@ -176,6 +190,13 @@ type ManagementOrganizationEventThreatDetectionCustomModuleState struct {
 	// Config for the module. For the resident module, its config value is defined at this level.
 	// For the inherited module, its config value is inherited from the ancestor module.
 	Config pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human readable name to be displayed for the module.
 	DisplayName pulumi.StringPtrInput
 	// The state of enablement for the module at the given level of the hierarchy.
@@ -206,6 +227,13 @@ type managementOrganizationEventThreatDetectionCustomModuleArgs struct {
 	// Config for the module. For the resident module, its config value is defined at this level.
 	// For the inherited module, its config value is inherited from the ancestor module.
 	Config *string `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human readable name to be displayed for the module.
 	DisplayName *string `pulumi:"displayName"`
 	// The state of enablement for the module at the given level of the hierarchy.
@@ -224,6 +252,13 @@ type ManagementOrganizationEventThreatDetectionCustomModuleArgs struct {
 	// Config for the module. For the resident module, its config value is defined at this level.
 	// For the inherited module, its config value is inherited from the ancestor module.
 	Config pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human readable name to be displayed for the module.
 	DisplayName pulumi.StringPtrInput
 	// The state of enablement for the module at the given level of the hierarchy.
@@ -330,6 +365,18 @@ func (o ManagementOrganizationEventThreatDetectionCustomModuleOutput) Config() p
 	return o.ApplyT(func(v *ManagementOrganizationEventThreatDetectionCustomModule) pulumi.StringPtrOutput {
 		return v.Config
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ManagementOrganizationEventThreatDetectionCustomModuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementOrganizationEventThreatDetectionCustomModule) pulumi.StringOutput {
+		return v.DeletionPolicy
+	}).(pulumi.StringOutput)
 }
 
 // The human readable name to be displayed for the module.

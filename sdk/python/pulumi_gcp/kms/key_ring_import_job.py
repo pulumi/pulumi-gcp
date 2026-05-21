@@ -24,7 +24,8 @@ class KeyRingImportJobArgs:
                  import_job_id: pulumi.Input[_builtins.str],
                  import_method: pulumi.Input[_builtins.str],
                  key_ring: pulumi.Input[_builtins.str],
-                 protection_level: pulumi.Input[_builtins.str]):
+                 protection_level: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyRingImportJob resource.
 
@@ -36,11 +37,19 @@ class KeyRingImportJobArgs:
         :param pulumi.Input[_builtins.str] protection_level: The protection level of the ImportJob. This must match the protectionLevel of the
                versionTemplate on the CryptoKey you attempt to import into.
                Possible values are: `SOFTWARE`, `HSM`, `EXTERNAL`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         """
         pulumi.set(__self__, "import_job_id", import_job_id)
         pulumi.set(__self__, "import_method", import_method)
         pulumi.set(__self__, "key_ring", key_ring)
         pulumi.set(__self__, "protection_level", protection_level)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @_builtins.property
     @pulumi.getter(name="importJobId")
@@ -94,11 +103,29 @@ class KeyRingImportJobArgs:
     def protection_level(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "protection_level", value)
 
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _KeyRingImportJobState:
     def __init__(__self__, *,
                  attestations: pulumi.Input[Optional[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  import_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  import_method: pulumi.Input[Optional[_builtins.str]] = None,
@@ -114,6 +141,12 @@ class _KeyRingImportJobState:
                Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only present if the chosen ImportMethod is one with a protection level of HSM.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used.
                This is in RFC3339 text format.
         :param pulumi.Input[_builtins.str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
@@ -131,6 +164,8 @@ class _KeyRingImportJobState:
         """
         if attestations is not None:
             pulumi.set(__self__, "attestations", attestations)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if import_job_id is not None:
@@ -162,6 +197,23 @@ class _KeyRingImportJobState:
     @attestations.setter
     def attestations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KeyRingImportJobAttestationArgs']]]]):
         pulumi.set(self, "attestations", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
@@ -272,6 +324,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  import_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  import_method: pulumi.Input[Optional[_builtins.str]] = None,
                  key_ring: pulumi.Input[Optional[_builtins.str]] = None,
@@ -310,6 +363,12 @@ class KeyRingImportJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
         :param pulumi.Input[_builtins.str] import_method: The wrapping method to be used for incoming key material.
                Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`, `RSA_OAEP_3072_SHA256_AES_256`, `RSA_OAEP_4096_SHA256_AES_256`, `RSA_OAEP_3072_SHA256`, `RSA_OAEP_4096_SHA256`.
@@ -371,6 +430,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  import_job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  import_method: pulumi.Input[Optional[_builtins.str]] = None,
                  key_ring: pulumi.Input[Optional[_builtins.str]] = None,
@@ -384,6 +444,7 @@ class KeyRingImportJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyRingImportJobArgs.__new__(KeyRingImportJobArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if import_job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'import_job_id'")
             __props__.__dict__["import_job_id"] = import_job_id
@@ -412,6 +473,7 @@ class KeyRingImportJob(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attestations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KeyRingImportJobAttestationArgs', 'KeyRingImportJobAttestationArgsDict']]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             import_job_id: pulumi.Input[Optional[_builtins.str]] = None,
             import_method: pulumi.Input[Optional[_builtins.str]] = None,
@@ -431,6 +493,12 @@ class KeyRingImportJob(pulumi.CustomResource):
                Use this statement to verify attributes of the key as stored on the HSM, independently of Google.
                Only present if the chosen ImportMethod is one with a protection level of HSM.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] expire_time: The time at which this resource is scheduled for expiration and can no longer be used.
                This is in RFC3339 text format.
         :param pulumi.Input[_builtins.str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
@@ -451,6 +519,7 @@ class KeyRingImportJob(pulumi.CustomResource):
         __props__ = _KeyRingImportJobState.__new__(_KeyRingImportJobState)
 
         __props__.__dict__["attestations"] = attestations
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["import_job_id"] = import_job_id
         __props__.__dict__["import_method"] = import_method
@@ -471,6 +540,19 @@ class KeyRingImportJob(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "attestations")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="expireTime")

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.netapp.BackupArgs;
 import com.pulumi.gcp.netapp.inputs.BackupState;
+import com.pulumi.gcp.netapp.outputs.BackupOntapSource;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -193,6 +194,30 @@ public class Backup extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      * 
      */
@@ -267,6 +292,24 @@ public class Backup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * (Optional, Beta)
+     * Details of the ONTAP source volume and snapshot.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="ontapSource", refs={BackupOntapSource.class}, tree="[0]")
+    private Output</* @Nullable */ BackupOntapSource> ontapSource;
+
+    /**
+     * @return (Optional, Beta)
+     * Details of the ONTAP source volume and snapshot.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<BackupOntapSource>> ontapSource() {
+        return Codegen.optional(this.ontapSource);
     }
     /**
      * The ID of the project in which the resource belongs.

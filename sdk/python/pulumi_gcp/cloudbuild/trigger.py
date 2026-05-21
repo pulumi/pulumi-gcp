@@ -24,6 +24,7 @@ class TriggerArgs:
                  approval_config: pulumi.Input[Optional['TriggerApprovalConfigArgs']] = None,
                  bitbucket_server_trigger_config: pulumi.Input[Optional['TriggerBitbucketServerTriggerConfigArgs']] = None,
                  build: pulumi.Input[Optional['TriggerBuildArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_connect_event_config: pulumi.Input[Optional['TriggerDeveloperConnectEventConfigArgs']] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -56,6 +57,12 @@ class TriggerArgs:
                Structure is documented below.
         :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
         :param pulumi.Input['TriggerDeveloperConnectEventConfigArgs'] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
                Structure is documented below.
@@ -125,6 +132,8 @@ class TriggerArgs:
             pulumi.set(__self__, "bitbucket_server_trigger_config", bitbucket_server_trigger_config)
         if build is not None:
             pulumi.set(__self__, "build", build)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if developer_connect_event_config is not None:
@@ -208,6 +217,23 @@ class TriggerArgs:
     @build.setter
     def build(self, value: pulumi.Input[Optional['TriggerBuildArgs']]):
         pulumi.set(self, "build", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -510,6 +536,7 @@ class _TriggerState:
                  bitbucket_server_trigger_config: pulumi.Input[Optional['TriggerBitbucketServerTriggerConfigArgs']] = None,
                  build: pulumi.Input[Optional['TriggerBuildArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_connect_event_config: pulumi.Input[Optional['TriggerDeveloperConnectEventConfigArgs']] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -544,6 +571,12 @@ class _TriggerState:
         :param pulumi.Input['TriggerBuildArgs'] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time when the trigger was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
         :param pulumi.Input['TriggerDeveloperConnectEventConfigArgs'] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
                Structure is documented below.
@@ -616,6 +649,8 @@ class _TriggerState:
             pulumi.set(__self__, "build", build)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if developer_connect_event_config is not None:
@@ -713,6 +748,23 @@ class _TriggerState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1029,6 +1081,7 @@ class Trigger(pulumi.CustomResource):
                  approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
                  bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
                  build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1729,6 +1782,12 @@ class Trigger(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
         :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
                Structure is documented below.
@@ -2484,6 +2543,7 @@ class Trigger(pulumi.CustomResource):
                  approval_config: pulumi.Input[Optional[Union['TriggerApprovalConfigArgs', 'TriggerApprovalConfigArgsDict']]] = None,
                  bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
                  build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2517,6 +2577,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["approval_config"] = approval_config
             __props__.__dict__["bitbucket_server_trigger_config"] = bitbucket_server_trigger_config
             __props__.__dict__["build"] = build
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["developer_connect_event_config"] = developer_connect_event_config
             __props__.__dict__["disabled"] = disabled
@@ -2554,6 +2615,7 @@ class Trigger(pulumi.CustomResource):
             bitbucket_server_trigger_config: pulumi.Input[Optional[Union['TriggerBitbucketServerTriggerConfigArgs', 'TriggerBitbucketServerTriggerConfigArgsDict']]] = None,
             build: pulumi.Input[Optional[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             developer_connect_event_config: pulumi.Input[Optional[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2592,6 +2654,12 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[Union['TriggerBuildArgs', 'TriggerBuildArgsDict']] build: Contents of the build template. Either a filename or build template must be provided.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time when the trigger was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the trigger.
         :param pulumi.Input[Union['TriggerDeveloperConnectEventConfigArgs', 'TriggerDeveloperConnectEventConfigArgsDict']] developer_connect_event_config: Configuration for triggers that respond to Developer Connect events.
                Structure is documented below.
@@ -2664,6 +2732,7 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["bitbucket_server_trigger_config"] = bitbucket_server_trigger_config
         __props__.__dict__["build"] = build
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["developer_connect_event_config"] = developer_connect_event_config
         __props__.__dict__["disabled"] = disabled
@@ -2724,6 +2793,19 @@ class Trigger(pulumi.CustomResource):
         Time when the trigger was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

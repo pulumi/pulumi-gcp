@@ -7,7 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Description
+ * Customer Engagement Suite App
+ *
+ * To get more information about App, see:
+ *
+ * * [API documentation](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rest/v1/projects.locations.apps)
  *
  * ## Example Usage
  *
@@ -411,6 +415,15 @@ export class App extends pulumi.CustomResource {
      */
     declare public readonly defaultChannelProfile: pulumi.Output<outputs.ces.AppDefaultChannelProfile | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Number of deployments in the app.
      */
     declare public /*out*/ readonly deploymentCount: pulumi.Output<number>;
@@ -494,6 +507,11 @@ export class App extends pulumi.CustomResource {
      */
     declare public readonly timeZoneSettings: pulumi.Output<outputs.ces.AppTimeZoneSettings | undefined>;
     /**
+     * The tool execution mode for the app.
+     * See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+     */
+    declare public readonly toolExecutionMode: pulumi.Output<string | undefined>;
+    /**
      * Timestamp when the app was last updated.
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
@@ -522,6 +540,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataStoreSettings"] = state?.dataStoreSettings;
             resourceInputs["defaultChannelProfile"] = state?.defaultChannelProfile;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deploymentCount"] = state?.deploymentCount;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
@@ -539,6 +558,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["project"] = state?.project;
             resourceInputs["rootAgent"] = state?.rootAgent;
             resourceInputs["timeZoneSettings"] = state?.timeZoneSettings;
+            resourceInputs["toolExecutionMode"] = state?.toolExecutionMode;
             resourceInputs["updateTime"] = state?.updateTime;
             resourceInputs["variableDeclarations"] = state?.variableDeclarations;
         } else {
@@ -557,6 +577,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["clientCertificateSettings"] = args?.clientCertificateSettings;
             resourceInputs["dataStoreSettings"] = args?.dataStoreSettings;
             resourceInputs["defaultChannelProfile"] = args?.defaultChannelProfile;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["evaluationMetricsThresholds"] = args?.evaluationMetricsThresholds;
@@ -571,6 +592,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["project"] = args?.project;
             resourceInputs["rootAgent"] = args?.rootAgent;
             resourceInputs["timeZoneSettings"] = args?.timeZoneSettings;
+            resourceInputs["toolExecutionMode"] = args?.toolExecutionMode;
             resourceInputs["variableDeclarations"] = args?.variableDeclarations;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deploymentCount"] = undefined /*out*/;
@@ -619,6 +641,15 @@ export interface AppState {
      * Structure is documented below.
      */
     defaultChannelProfile?: pulumi.Input<inputs.ces.AppDefaultChannelProfile | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Number of deployments in the app.
      */
@@ -703,6 +734,11 @@ export interface AppState {
      */
     timeZoneSettings?: pulumi.Input<inputs.ces.AppTimeZoneSettings | undefined>;
     /**
+     * The tool execution mode for the app.
+     * See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+     */
+    toolExecutionMode?: pulumi.Input<string | undefined>;
+    /**
      * Timestamp when the app was last updated.
      */
     updateTime?: pulumi.Input<string | undefined>;
@@ -745,6 +781,15 @@ export interface AppArgs {
      * Structure is documented below.
      */
     defaultChannelProfile?: pulumi.Input<inputs.ces.AppDefaultChannelProfile | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Human-readable description of the app.
      */
@@ -813,6 +858,11 @@ export interface AppArgs {
      * Structure is documented below.
      */
     timeZoneSettings?: pulumi.Input<inputs.ces.AppTimeZoneSettings | undefined>;
+    /**
+     * The tool execution mode for the app.
+     * See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+     */
+    toolExecutionMode?: pulumi.Input<string | undefined>;
     /**
      * The declarations of the variables.
      * Structure is documented below.

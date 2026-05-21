@@ -125,6 +125,15 @@ export class Schema extends pulumi.CustomResource {
      */
     declare public readonly definition: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -154,12 +163,14 @@ export class Schema extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SchemaState | undefined;
             resourceInputs["definition"] = state?.definition;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
             resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as SchemaArgs | undefined;
             resourceInputs["definition"] = args?.definition;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["type"] = args?.type;
@@ -183,6 +194,15 @@ export interface SchemaState {
      * [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
      */
     definition?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */
@@ -214,6 +234,15 @@ export interface SchemaArgs {
      * [deleting old revisions](https://cloud.google.com/pubsub/docs/delete-schema-revision).
      */
     definition?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
      */

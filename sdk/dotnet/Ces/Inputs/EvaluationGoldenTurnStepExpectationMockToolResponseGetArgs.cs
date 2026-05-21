@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.Ces.Inputs
     {
         /// <summary>
         /// (Output)
-        /// Display name of the tool.
+        /// Output only. Display name of the tool.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The matching ID of the tool call the response is for.
+        /// Optional. Matching ID of the tool call.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -38,13 +38,13 @@ namespace Pulumi.Gcp.Ces.Inputs
         }
 
         /// <summary>
-        /// The resource name of the tool.
+        /// Name of the tool to execute.
         /// </summary>
         [Input("tool")]
         public Input<string>? Tool { get; set; }
 
         /// <summary>
-        /// A tool that is created from a toolset.
+        /// The toolset tool that got executed.
         /// Structure is documented below.
         /// </summary>
         [Input("toolsetTool")]

@@ -62,6 +62,65 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// ### Ces Deployment Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_app = new Gcp.Ces.App("my-app", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "my-app",
+    ///         AppId = "app-id",
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var my_deployment = new Gcp.Ces.Deployment("my-deployment", new()
+    ///     {
+    ///         Location = "us",
+    ///         DisplayName = "my-deployment",
+    ///         App = my_app.Name,
+    ///         AppVersion = "projects/example-project/locations/us/apps/example-app/versions/example-version",
+    ///         ChannelProfile = new Gcp.Ces.Inputs.DeploymentChannelProfileArgs
+    ///         {
+    ///             ChannelType = "API",
+    ///             DisableBargeInControl = true,
+    ///             DisableDtmf = true,
+    ///             PersonaProperty = new Gcp.Ces.Inputs.DeploymentChannelProfilePersonaPropertyArgs
+    ///             {
+    ///                 Persona = "CHATTY",
+    ///             },
+    ///             ProfileId = "temp_profile_id",
+    ///             WebWidgetConfig = new Gcp.Ces.Inputs.DeploymentChannelProfileWebWidgetConfigArgs
+    ///             {
+    ///                 Modality = "CHAT_AND_VOICE",
+    ///                 Theme = "DARK",
+    ///                 WebWidgetTitle = "temp_webwidget_title",
+    ///                 SecuritySettings = new Gcp.Ces.Inputs.DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs
+    ///                 {
+    ///                     EnablePublicAccess = true,
+    ///                     EnableOriginCheck = true,
+    ///                     AllowedOrigins = new[]
+    ///                     {
+    ///                         "https://example.com",
+    ///                         "https://test.com",
+    ///                     },
+    ///                     EnableRecaptcha = true,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -109,6 +168,17 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Display name of the deployment.
@@ -220,6 +290,17 @@ namespace Pulumi.Gcp.Ces
         public Input<Inputs.DeploymentChannelProfileArgs> ChannelProfile { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Display name of the deployment.
         /// </summary>
         [Input("displayName", required: true)]
@@ -273,6 +354,17 @@ namespace Pulumi.Gcp.Ces
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Display name of the deployment.

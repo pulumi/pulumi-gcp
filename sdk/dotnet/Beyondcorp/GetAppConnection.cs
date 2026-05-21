@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.Beyondcorp
     {
         public readonly ImmutableArray<Outputs.GetAppConnectionApplicationEndpointResult> ApplicationEndpoints;
         public readonly ImmutableArray<string> Connectors;
+        public readonly string DeletionPolicy;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetAppConnectionGatewayResult> Gateways;
@@ -170,6 +171,8 @@ namespace Pulumi.Gcp.Beyondcorp
             ImmutableArray<Outputs.GetAppConnectionApplicationEndpointResult> applicationEndpoints,
 
             ImmutableArray<string> connectors,
+
+            string deletionPolicy,
 
             string displayName,
 
@@ -193,6 +196,7 @@ namespace Pulumi.Gcp.Beyondcorp
         {
             ApplicationEndpoints = applicationEndpoints;
             Connectors = connectors;
+            DeletionPolicy = deletionPolicy;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             Gateways = gateways;

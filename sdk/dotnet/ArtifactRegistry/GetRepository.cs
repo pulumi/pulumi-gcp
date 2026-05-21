@@ -159,6 +159,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly ImmutableArray<Outputs.GetRepositoryCleanupPolicyResult> CleanupPolicies;
         public readonly bool CleanupPolicyDryRun;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetRepositoryDockerConfigResult> DockerConfigs;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -189,6 +190,8 @@ namespace Pulumi.Gcp.ArtifactRegistry
             bool cleanupPolicyDryRun,
 
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -231,6 +234,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             CleanupPolicies = cleanupPolicies;
             CleanupPolicyDryRun = cleanupPolicyDryRun;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DockerConfigs = dockerConfigs;
             EffectiveLabels = effectiveLabels;

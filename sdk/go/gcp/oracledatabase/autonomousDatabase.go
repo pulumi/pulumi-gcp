@@ -98,8 +98,6 @@ import (
 //				DisplayName:          pulumi.String("autonomousDatabase displayname"),
 //				Database:             pulumi.String("mydatabase"),
 //				AdminPassword:        pulumi.String("123Abpassword"),
-//				OdbNetwork:           pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork"),
-//				OdbSubnet:            pulumi.String("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"),
 //				Network:              pulumi.String(pulumi.String(_default.Id)),
 //				Cidr:                 pulumi.String("10.5.0.0/24"),
 //				Labels: pulumi.StringMap{
@@ -300,6 +298,13 @@ type AutonomousDatabase struct {
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
 	Database pulumi.StringOutput `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -406,6 +411,13 @@ type autonomousDatabaseState struct {
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -472,6 +484,13 @@ type AutonomousDatabaseState struct {
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// List of supported GCP region to clone the Autonomous Database for disaster recovery.
@@ -540,6 +559,13 @@ type autonomousDatabaseArgs struct {
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to
@@ -590,6 +616,13 @@ type AutonomousDatabaseArgs struct {
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the Autonomous Database. The name does not have to
@@ -740,6 +773,16 @@ func (o AutonomousDatabaseOutput) CreateTime() pulumi.StringOutput {
 // contain a maximum of 30 alphanumeric characters.
 func (o AutonomousDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AutonomousDatabaseOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.

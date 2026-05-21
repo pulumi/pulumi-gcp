@@ -34,6 +34,7 @@ __all__ = [
     'ConnectionProfileOracleSsl',
     'ConnectionProfileOracleStaticServiceIpConnectivity',
     'ConnectionProfilePostgresql',
+    'ConnectionProfilePostgresqlPrivateConnectivity',
     'ConnectionProfilePostgresqlSsl',
     'MigrationJobDumpFlags',
     'MigrationJobDumpFlagsDumpFlag',
@@ -43,10 +44,12 @@ __all__ = [
     'MigrationJobObjectsConfigSourceObjectsConfigObjectConfig',
     'MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifier',
     'MigrationJobPerformanceConfig',
+    'MigrationJobPostgresHomogeneousConfig',
     'MigrationJobReverseSshConnectivity',
     'MigrationJobStaticIpConnectivity',
     'MigrationJobVpcPeeringConnectivity',
     'PrivateConnectionError',
+    'PrivateConnectionPscInterfaceConfig',
     'PrivateConnectionVpcPeeringConfig',
 ]
 
@@ -951,7 +954,7 @@ class ConnectionProfileMysql(dict):
                  ssl: Optional['outputs.ConnectionProfileMysqlSsl'] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        :param _builtins.str cloud_sql_id: If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
         :param _builtins.str host: The IP or hostname of the source MySQL database.
         :param _builtins.str password: Input only. The password for the user that Database Migration Service will be using to connect to the database.
                This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
@@ -982,7 +985,7 @@ class ConnectionProfileMysql(dict):
     @pulumi.getter(name="cloudSqlId")
     def cloud_sql_id(self) -> Optional[_builtins.str]:
         """
-        If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
         """
         return pulumi.get(self, "cloud_sql_id")
 
@@ -1519,6 +1522,8 @@ class ConnectionProfilePostgresql(dict):
             suggest = "network_architecture"
         elif key == "passwordSet":
             suggest = "password_set"
+        elif key == "privateConnectivity":
+            suggest = "private_connectivity"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ConnectionProfilePostgresql. Access the value via the '{suggest}' property getter instead.")
@@ -1534,16 +1539,19 @@ class ConnectionProfilePostgresql(dict):
     def __init__(__self__, *,
                  alloydb_cluster_id: Optional[_builtins.str] = None,
                  cloud_sql_id: Optional[_builtins.str] = None,
+                 database: Optional[_builtins.str] = None,
                  host: Optional[_builtins.str] = None,
                  network_architecture: Optional[_builtins.str] = None,
                  password: Optional[_builtins.str] = None,
                  password_set: Optional[_builtins.bool] = None,
                  port: Optional[_builtins.int] = None,
+                 private_connectivity: Optional['outputs.ConnectionProfilePostgresqlPrivateConnectivity'] = None,
                  ssl: Optional['outputs.ConnectionProfilePostgresqlSsl'] = None,
                  username: Optional[_builtins.str] = None):
         """
-        :param _builtins.str alloydb_cluster_id: If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
-        :param _builtins.str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        :param _builtins.str alloydb_cluster_id: If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+        :param _builtins.str cloud_sql_id: If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
+        :param _builtins.str database: The name of the specific database within the host.
         :param _builtins.str host: The IP or hostname of the source MySQL database.
         :param _builtins.str network_architecture: (Output)
                Output only. If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
@@ -1553,6 +1561,8 @@ class ConnectionProfilePostgresql(dict):
         :param _builtins.bool password_set: (Output)
                Output only. Indicates If this connection profile password is stored.
         :param _builtins.int port: The network port of the source MySQL database.
+        :param 'ConnectionProfilePostgresqlPrivateConnectivityArgs' private_connectivity: Private connectivity.
+               Structure is documented below.
         :param 'ConnectionProfilePostgresqlSslArgs' ssl: SSL configuration for the destination to connect to the source database.
                Structure is documented below.
         :param _builtins.str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -1561,6 +1571,8 @@ class ConnectionProfilePostgresql(dict):
             pulumi.set(__self__, "alloydb_cluster_id", alloydb_cluster_id)
         if cloud_sql_id is not None:
             pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if network_architecture is not None:
@@ -1571,6 +1583,8 @@ class ConnectionProfilePostgresql(dict):
             pulumi.set(__self__, "password_set", password_set)
         if port is not None:
             pulumi.set(__self__, "port", port)
+        if private_connectivity is not None:
+            pulumi.set(__self__, "private_connectivity", private_connectivity)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
         if username is not None:
@@ -1580,7 +1594,7 @@ class ConnectionProfilePostgresql(dict):
     @pulumi.getter(name="alloydbClusterId")
     def alloydb_cluster_id(self) -> Optional[_builtins.str]:
         """
-        If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+        If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
         """
         return pulumi.get(self, "alloydb_cluster_id")
 
@@ -1588,9 +1602,17 @@ class ConnectionProfilePostgresql(dict):
     @pulumi.getter(name="cloudSqlId")
     def cloud_sql_id(self) -> Optional[_builtins.str]:
         """
-        If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
         """
         return pulumi.get(self, "cloud_sql_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        The name of the specific database within the host.
+        """
+        return pulumi.get(self, "database")
 
     @_builtins.property
     @pulumi.getter
@@ -1637,6 +1659,15 @@ class ConnectionProfilePostgresql(dict):
         return pulumi.get(self, "port")
 
     @_builtins.property
+    @pulumi.getter(name="privateConnectivity")
+    def private_connectivity(self) -> Optional['outputs.ConnectionProfilePostgresqlPrivateConnectivity']:
+        """
+        Private connectivity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_connectivity")
+
+    @_builtins.property
     @pulumi.getter
     def ssl(self) -> Optional['outputs.ConnectionProfilePostgresqlSsl']:
         """
@@ -1652,6 +1683,41 @@ class ConnectionProfilePostgresql(dict):
         The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionProfilePostgresqlPrivateConnectivity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateConnection":
+            suggest = "private_connection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionProfilePostgresqlPrivateConnectivity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionProfilePostgresqlPrivateConnectivity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionProfilePostgresqlPrivateConnectivity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_connection: _builtins.str):
+        """
+        :param _builtins.str private_connection: Required. The resource name (URI) of the private connection.
+        """
+        pulumi.set(__self__, "private_connection", private_connection)
+
+    @_builtins.property
+    @pulumi.getter(name="privateConnection")
+    def private_connection(self) -> _builtins.str:
+        """
+        Required. The resource name (URI) of the private connection.
+        """
+        return pulumi.get(self, "private_connection")
 
 
 @pulumi.output_type
@@ -2103,6 +2169,55 @@ class MigrationJobPerformanceConfig(dict):
 
 
 @pulumi.output_type
+class MigrationJobPostgresHomogeneousConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isNativeLogical":
+            suggest = "is_native_logical"
+        elif key == "maxAdditionalSubscriptions":
+            suggest = "max_additional_subscriptions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationJobPostgresHomogeneousConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationJobPostgresHomogeneousConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationJobPostgresHomogeneousConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_native_logical: _builtins.bool,
+                 max_additional_subscriptions: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool is_native_logical: Whether the migration uses native logical replication.
+        :param _builtins.int max_additional_subscriptions: Maximum number of additional subscriptions to use for the migration job.
+        """
+        pulumi.set(__self__, "is_native_logical", is_native_logical)
+        if max_additional_subscriptions is not None:
+            pulumi.set(__self__, "max_additional_subscriptions", max_additional_subscriptions)
+
+    @_builtins.property
+    @pulumi.getter(name="isNativeLogical")
+    def is_native_logical(self) -> _builtins.bool:
+        """
+        Whether the migration uses native logical replication.
+        """
+        return pulumi.get(self, "is_native_logical")
+
+    @_builtins.property
+    @pulumi.getter(name="maxAdditionalSubscriptions")
+    def max_additional_subscriptions(self) -> Optional[_builtins.int]:
+        """
+        Maximum number of additional subscriptions to use for the migration job.
+        """
+        return pulumi.get(self, "max_additional_subscriptions")
+
+
+@pulumi.output_type
 class MigrationJobReverseSshConnectivity(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2236,6 +2351,43 @@ class PrivateConnectionError(dict):
         A message containing more information about the error that occurred.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class PrivateConnectionPscInterfaceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachment":
+            suggest = "network_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateConnectionPscInterfaceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateConnectionPscInterfaceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateConnectionPscInterfaceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment: _builtins.str):
+        """
+        :param _builtins.str network_attachment: Fully qualified name of the Network Attachment that DMS will connect to.
+               Format: projects/{project}/regions/{region}/networkAttachments/{name}
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+
+    @_builtins.property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> _builtins.str:
+        """
+        Fully qualified name of the Network Attachment that DMS will connect to.
+        Format: projects/{project}/regions/{region}/networkAttachments/{name}
+        """
+        return pulumi.get(self, "network_attachment")
 
 
 @pulumi.output_type

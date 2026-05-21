@@ -22,6 +22,7 @@ __all__ = ['LiteSubscriptionArgs', 'LiteSubscription']
 class LiteSubscriptionArgs:
     def __init__(__self__, *,
                  topic: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_config: pulumi.Input[Optional['LiteSubscriptionDeliveryConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -31,6 +32,12 @@ class LiteSubscriptionArgs:
         The set of arguments for constructing a LiteSubscription resource.
 
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
@@ -40,6 +47,8 @@ class LiteSubscriptionArgs:
         :param pulumi.Input[_builtins.str] zone: The zone of the pubsub lite topic.
         """
         pulumi.set(__self__, "topic", topic)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if delivery_config is not None:
             pulumi.set(__self__, "delivery_config", delivery_config)
         if name is not None:
@@ -62,6 +71,23 @@ class LiteSubscriptionArgs:
     @topic.setter
     def topic(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "topic", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryConfig")
@@ -129,6 +155,7 @@ class LiteSubscriptionArgs:
 @pulumi.input_type
 class _LiteSubscriptionState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_config: pulumi.Input[Optional['LiteSubscriptionDeliveryConfigArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -138,6 +165,12 @@ class _LiteSubscriptionState:
         """
         Input properties used for looking up and filtering LiteSubscription resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
@@ -147,6 +180,8 @@ class _LiteSubscriptionState:
         :param pulumi.Input[_builtins.str] topic: A reference to a Topic resource.
         :param pulumi.Input[_builtins.str] zone: The zone of the pubsub lite topic.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if delivery_config is not None:
             pulumi.set(__self__, "delivery_config", delivery_config)
         if name is not None:
@@ -159,6 +194,23 @@ class _LiteSubscriptionState:
             pulumi.set(__self__, "topic", topic)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryConfig")
@@ -241,6 +293,7 @@ class LiteSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -311,6 +364,12 @@ class LiteSubscription(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
@@ -402,6 +461,7 @@ class LiteSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -417,6 +477,7 @@ class LiteSubscription(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LiteSubscriptionArgs.__new__(LiteSubscriptionArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["delivery_config"] = delivery_config
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -435,6 +496,7 @@ class LiteSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             delivery_config: pulumi.Input[Optional[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -448,6 +510,12 @@ class LiteSubscription(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['LiteSubscriptionDeliveryConfigArgs', 'LiteSubscriptionDeliveryConfigArgsDict']] delivery_config: The settings for this subscription's message delivery.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] name: Name of the subscription.
@@ -461,6 +529,7 @@ class LiteSubscription(pulumi.CustomResource):
 
         __props__ = _LiteSubscriptionState.__new__(_LiteSubscriptionState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["delivery_config"] = delivery_config
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -468,6 +537,19 @@ class LiteSubscription(pulumi.CustomResource):
         __props__.__dict__["topic"] = topic
         __props__.__dict__["zone"] = zone
         return LiteSubscription(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deliveryConfig")

@@ -41,6 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.tpu.V2QueuedResource;
  * import com.pulumi.gcp.tpu.V2QueuedResourceArgs;
  * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecNodeArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -91,6 +93,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.tpu.V2QueuedResource;
  * import com.pulumi.gcp.tpu.V2QueuedResourceArgs;
  * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecNodeArgs;
+ * import com.pulumi.gcp.tpu.inputs.V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -166,6 +171,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:tpu/v2QueuedResource:V2QueuedResource")
 public class V2QueuedResource extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * The immutable name of the Queued Resource.
      * 

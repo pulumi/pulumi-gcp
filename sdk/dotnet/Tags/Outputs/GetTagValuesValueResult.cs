@@ -19,6 +19,15 @@ namespace Pulumi.Gcp.Tags.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        public readonly string DeletionPolicy;
+        /// <summary>
         /// User-assigned description of the TagValue.
         /// </summary>
         public readonly string Description;
@@ -48,6 +57,8 @@ namespace Pulumi.Gcp.Tags.Outputs
         private GetTagValuesValueResult(
             string createTime,
 
+            string deletionPolicy,
+
             string description,
 
             string name,
@@ -61,6 +72,7 @@ namespace Pulumi.Gcp.Tags.Outputs
             string updateTime)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Name = name;
             NamespacedName = namespacedName;

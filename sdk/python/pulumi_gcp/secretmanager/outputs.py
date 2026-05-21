@@ -820,6 +820,7 @@ class GetRegionalSecretsSecretResult(dict):
                  annotations: Mapping[str, _builtins.str],
                  create_time: _builtins.str,
                  customer_managed_encryptions: Sequence['outputs.GetRegionalSecretsSecretCustomerManagedEncryptionResult'],
+                 deletion_policy: _builtins.str,
                  deletion_protection: _builtins.bool,
                  effective_annotations: Mapping[str, _builtins.str],
                  effective_labels: Mapping[str, _builtins.str],
@@ -841,6 +842,12 @@ class GetRegionalSecretsSecretResult(dict):
         :param _builtins.str create_time: The time at which the regional secret was created.
         :param Sequence['GetRegionalSecretsSecretCustomerManagedEncryptionArgs'] customer_managed_encryptions: Customer Managed Encryption for the regional secret.
                Structure is documented below.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.bool deletion_protection: Whether Terraform will be prevented from destroying the regional secret. Defaults to false.
                When the field is set to true in Terraform state, a 'terraform apply'
                or 'terraform destroy' that would delete the federation will fail.
@@ -869,6 +876,7 @@ class GetRegionalSecretsSecretResult(dict):
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "customer_managed_encryptions", customer_managed_encryptions)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "effective_annotations", effective_annotations)
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -910,6 +918,19 @@ class GetRegionalSecretsSecretResult(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "customer_managed_encryptions")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -1305,6 +1326,7 @@ class GetSecretsSecretResult(dict):
     def __init__(__self__, *,
                  annotations: Mapping[str, _builtins.str],
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  deletion_protection: _builtins.bool,
                  effective_annotations: Mapping[str, _builtins.str],
                  effective_labels: Mapping[str, _builtins.str],
@@ -1324,6 +1346,12 @@ class GetSecretsSecretResult(dict):
         """
         :param Mapping[str, _builtins.str] annotations: Custom metadata about the secret.
         :param _builtins.str create_time: The time at which the Secret was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.bool deletion_protection: Whether Terraform will be prevented from destroying the secret. Defaults to false.
                When the field is set to true in Terraform state, a 'terraform apply'
                or 'terraform destroy' that would delete the secret will fail.
@@ -1353,6 +1381,7 @@ class GetSecretsSecretResult(dict):
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "effective_annotations", effective_annotations)
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -1385,6 +1414,19 @@ class GetSecretsSecretResult(dict):
         The time at which the Secret was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

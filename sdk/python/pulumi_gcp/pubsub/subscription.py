@@ -26,6 +26,7 @@ class SubscriptionArgs:
                  bigquery_config: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']] = None,
                  cloud_storage_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']] = None,
                  dead_letter_policy: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiration_policy: pulumi.Input[Optional['SubscriptionExpirationPolicyArgs']] = None,
@@ -76,6 +77,12 @@ class SubscriptionArgs:
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -145,6 +152,8 @@ class SubscriptionArgs:
             pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy is not None:
             pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable_exactly_once_delivery is not None:
             pulumi.set(__self__, "enable_exactly_once_delivery", enable_exactly_once_delivery)
         if enable_message_ordering is not None:
@@ -260,6 +269,23 @@ class SubscriptionArgs:
     @dead_letter_policy.setter
     def dead_letter_policy(self, value: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']]):
         pulumi.set(self, "dead_letter_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableExactlyOnceDelivery")
@@ -471,6 +497,7 @@ class _SubscriptionState:
                  bigquery_config: pulumi.Input[Optional['SubscriptionBigqueryConfigArgs']] = None,
                  cloud_storage_config: pulumi.Input[Optional['SubscriptionCloudStorageConfigArgs']] = None,
                  dead_letter_policy: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -521,6 +548,12 @@ class _SubscriptionState:
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
@@ -595,6 +628,8 @@ class _SubscriptionState:
             pulumi.set(__self__, "cloud_storage_config", cloud_storage_config)
         if dead_letter_policy is not None:
             pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_exactly_once_delivery is not None:
@@ -702,6 +737,23 @@ class _SubscriptionState:
     @dead_letter_policy.setter
     def dead_letter_policy(self, value: pulumi.Input[Optional['SubscriptionDeadLetterPolicyArgs']]):
         pulumi.set(self, "dead_letter_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -955,6 +1007,7 @@ class Subscription(pulumi.CustomResource):
                  bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
                  cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
                  dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiration_policy: pulumi.Input[Optional[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
@@ -1206,7 +1259,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_63399",
+                "filename_suffix": "-_34534",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1239,7 +1292,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_97523",
+                "filename_suffix": "-_87829",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1273,7 +1326,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_31660",
+                "filename_suffix": "-_44023",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1312,7 +1365,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_97962",
+                "filename_suffix": "-_50206",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1497,6 +1550,12 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
                - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -1802,7 +1861,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_63399",
+                "filename_suffix": "-_34534",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1835,7 +1894,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_97523",
+                "filename_suffix": "-_87829",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1869,7 +1928,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_31660",
+                "filename_suffix": "-_44023",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -1908,7 +1967,7 @@ class Subscription(pulumi.CustomResource):
             cloud_storage_config={
                 "bucket": example.name,
                 "filename_prefix": "pre-",
-                "filename_suffix": "-_97962",
+                "filename_suffix": "-_50206",
                 "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
                 "max_bytes": 1000,
                 "max_duration": "300s",
@@ -2079,6 +2138,7 @@ class Subscription(pulumi.CustomResource):
                  bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
                  cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
                  dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
                  expiration_policy: pulumi.Input[Optional[Union['SubscriptionExpirationPolicyArgs', 'SubscriptionExpirationPolicyArgsDict']]] = None,
@@ -2106,6 +2166,7 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["bigquery_config"] = bigquery_config
             __props__.__dict__["cloud_storage_config"] = cloud_storage_config
             __props__.__dict__["dead_letter_policy"] = dead_letter_policy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
             __props__.__dict__["enable_message_ordering"] = enable_message_ordering
             __props__.__dict__["expiration_policy"] = expiration_policy
@@ -2140,6 +2201,7 @@ class Subscription(pulumi.CustomResource):
             bigquery_config: pulumi.Input[Optional[Union['SubscriptionBigqueryConfigArgs', 'SubscriptionBigqueryConfigArgsDict']]] = None,
             cloud_storage_config: pulumi.Input[Optional[Union['SubscriptionCloudStorageConfigArgs', 'SubscriptionCloudStorageConfigArgsDict']]] = None,
             dead_letter_policy: pulumi.Input[Optional[Union['SubscriptionDeadLetterPolicyArgs', 'SubscriptionDeadLetterPolicyArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_exactly_once_delivery: pulumi.Input[Optional[_builtins.bool]] = None,
             enable_message_ordering: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2194,6 +2256,12 @@ class Subscription(pulumi.CustomResource):
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_exactly_once_delivery: If `true`, Pub/Sub provides the following guarantees for the delivery
                of a message with a given value of messageId on this Subscriptions':
@@ -2268,6 +2336,7 @@ class Subscription(pulumi.CustomResource):
         __props__.__dict__["bigquery_config"] = bigquery_config
         __props__.__dict__["cloud_storage_config"] = cloud_storage_config
         __props__.__dict__["dead_letter_policy"] = dead_letter_policy
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_exactly_once_delivery"] = enable_exactly_once_delivery
         __props__.__dict__["enable_message_ordering"] = enable_message_ordering
@@ -2344,6 +2413,19 @@ class Subscription(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "dead_letter_policy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

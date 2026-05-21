@@ -111,6 +111,13 @@ type ExtensionsInstance struct {
 	Config ExtensionsInstanceConfigOutput `pulumi:"config"`
 	// The time at which the Extension Instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If this Instance has `state: ERRORED`, the error messages
 	// will be found here.
 	// Structure is documented below.
@@ -185,6 +192,13 @@ type extensionsInstanceState struct {
 	Config *ExtensionsInstanceConfig `pulumi:"config"`
 	// The time at which the Extension Instance was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If this Instance has `state: ERRORED`, the error messages
 	// will be found here.
 	// Structure is documented below.
@@ -224,6 +238,13 @@ type ExtensionsInstanceState struct {
 	Config ExtensionsInstanceConfigPtrInput
 	// The time at which the Extension Instance was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If this Instance has `state: ERRORED`, the error messages
 	// will be found here.
 	// Structure is documented below.
@@ -265,6 +286,13 @@ type extensionsInstanceArgs struct {
 	// The current Config of the Extension Instance.
 	// Structure is documented below.
 	Config ExtensionsInstanceConfig `pulumi:"config"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID to use for the Extension Instance, which will become the final
 	// component of the instance's name.
 	InstanceId string `pulumi:"instanceId"`
@@ -278,6 +306,13 @@ type ExtensionsInstanceArgs struct {
 	// The current Config of the Extension Instance.
 	// Structure is documented below.
 	Config ExtensionsInstanceConfigInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID to use for the Extension Instance, which will become the final
 	// component of the instance's name.
 	InstanceId pulumi.StringInput
@@ -382,6 +417,16 @@ func (o ExtensionsInstanceOutput) Config() ExtensionsInstanceConfigOutput {
 // The time at which the Extension Instance was created.
 func (o ExtensionsInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExtensionsInstance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ExtensionsInstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExtensionsInstance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // If this Instance has `state: ERRORED`, the error messages

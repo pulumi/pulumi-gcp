@@ -137,6 +137,13 @@ type SecurityMonitoringCondition struct {
 	ConditionId pulumi.StringOutput `pulumi:"conditionId"`
 	// The timestamp at which this profile was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A nested object resource.
 	IncludeAllResources SecurityMonitoringConditionIncludeAllResourcesPtrOutput `pulumi:"includeAllResources"`
 	// Name of the security monitoring condition resource,
@@ -203,6 +210,13 @@ type securityMonitoringConditionState struct {
 	ConditionId *string `pulumi:"conditionId"`
 	// The timestamp at which this profile was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A nested object resource.
 	IncludeAllResources *SecurityMonitoringConditionIncludeAllResources `pulumi:"includeAllResources"`
 	// Name of the security monitoring condition resource,
@@ -228,6 +242,13 @@ type SecurityMonitoringConditionState struct {
 	ConditionId pulumi.StringPtrInput
 	// The timestamp at which this profile was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A nested object resource.
 	IncludeAllResources SecurityMonitoringConditionIncludeAllResourcesPtrInput
 	// Name of the security monitoring condition resource,
@@ -255,6 +276,13 @@ func (SecurityMonitoringConditionState) ElementType() reflect.Type {
 type securityMonitoringConditionArgs struct {
 	// Resource ID of the security monitoring condition.
 	ConditionId string `pulumi:"conditionId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A nested object resource.
 	IncludeAllResources *SecurityMonitoringConditionIncludeAllResources `pulumi:"includeAllResources"`
 	// The Apigee Organization associated with the Apigee Security Monitoring Condition,
@@ -270,6 +298,13 @@ type securityMonitoringConditionArgs struct {
 type SecurityMonitoringConditionArgs struct {
 	// Resource ID of the security monitoring condition.
 	ConditionId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A nested object resource.
 	IncludeAllResources SecurityMonitoringConditionIncludeAllResourcesPtrInput
 	// The Apigee Organization associated with the Apigee Security Monitoring Condition,
@@ -376,6 +411,16 @@ func (o SecurityMonitoringConditionOutput) ConditionId() pulumi.StringOutput {
 // The timestamp at which this profile was created.
 func (o SecurityMonitoringConditionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityMonitoringCondition) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SecurityMonitoringConditionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityMonitoringCondition) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A nested object resource.

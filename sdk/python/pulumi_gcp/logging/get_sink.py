@@ -27,10 +27,13 @@ class GetSinkResult:
     """
     A collection of values returned by getSink.
     """
-    def __init__(__self__, bigquery_options=None, description=None, destination=None, disabled=None, exclusions=None, filter=None, id=None, name=None, writer_identity=None):
+    def __init__(__self__, bigquery_options=None, deletion_policy=None, description=None, destination=None, disabled=None, exclusions=None, filter=None, id=None, name=None, writer_identity=None):
         if bigquery_options and not isinstance(bigquery_options, list):
             raise TypeError("Expected argument 'bigquery_options' to be a list")
         pulumi.set(__self__, "bigquery_options", bigquery_options)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -63,6 +66,11 @@ class GetSinkResult:
         Options that affect sinks exporting data to BigQuery. Structure is documented below.
         """
         return pulumi.get(self, "bigquery_options")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -133,6 +141,7 @@ class AwaitableGetSinkResult(GetSinkResult):
             yield self
         return GetSinkResult(
             bigquery_options=self.bigquery_options,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             destination=self.destination,
             disabled=self.disabled,
@@ -178,6 +187,7 @@ def get_sink(id: Optional[_builtins.str] = None,
 
     return AwaitableGetSinkResult(
         bigquery_options=pulumi.get(__ret__, 'bigquery_options'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         destination=pulumi.get(__ret__, 'destination'),
         disabled=pulumi.get(__ret__, 'disabled'),
@@ -220,6 +230,7 @@ def get_sink_output(id: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:logging/getSink:getSink', __args__, opts=opts, typ=GetSinkResult)
     return __ret__.apply(lambda __response__: GetSinkResult(
         bigquery_options=pulumi.get(__response__, 'bigquery_options'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         destination=pulumi.get(__response__, 'destination'),
         disabled=pulumi.get(__response__, 'disabled'),

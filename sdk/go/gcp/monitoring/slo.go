@@ -369,6 +369,13 @@ type Slo struct {
 	// <calendarPeriod>".
 	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod pulumi.StringPtrOutput `pulumi:"calendarPeriod"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The fraction of service that must be good in order for this objective
@@ -462,6 +469,13 @@ type sloState struct {
 	// <calendarPeriod>".
 	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this SLO.
 	DisplayName *string `pulumi:"displayName"`
 	// The fraction of service that must be good in order for this objective
@@ -520,6 +534,13 @@ type SloState struct {
 	// <calendarPeriod>".
 	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrInput
 	// The fraction of service that must be good in order for this objective
@@ -582,6 +603,13 @@ type sloArgs struct {
 	// <calendarPeriod>".
 	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod *string `pulumi:"calendarPeriod"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name used for UI elements listing this SLO.
 	DisplayName *string `pulumi:"displayName"`
 	// The fraction of service that must be good in order for this objective
@@ -638,6 +666,13 @@ type SloArgs struct {
 	// <calendarPeriod>".
 	// Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 	CalendarPeriod pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name used for UI elements listing this SLO.
 	DisplayName pulumi.StringPtrInput
 	// The fraction of service that must be good in order for this objective
@@ -783,6 +818,16 @@ func (o SloOutput) BasicSli() SloBasicSliPtrOutput {
 // Possible values are: `DAY`, `WEEK`, `FORTNIGHT`, `MONTH`.
 func (o SloOutput) CalendarPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Slo) pulumi.StringPtrOutput { return v.CalendarPeriod }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SloOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Slo) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name used for UI elements listing this SLO.

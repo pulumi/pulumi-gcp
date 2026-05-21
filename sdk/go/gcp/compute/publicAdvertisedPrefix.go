@@ -127,6 +127,13 @@ import (
 type PublicAdvertisedPrefix struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
@@ -199,6 +206,13 @@ func GetPublicAdvertisedPrefix(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PublicAdvertisedPrefix resources.
 type publicAdvertisedPrefixState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
@@ -239,6 +253,13 @@ type publicAdvertisedPrefixState struct {
 }
 
 type PublicAdvertisedPrefixState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
@@ -283,6 +304,13 @@ func (PublicAdvertisedPrefixState) ElementType() reflect.Type {
 }
 
 type publicAdvertisedPrefixArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The IPv4 address to be used for reverse DNS verification.
@@ -320,6 +348,13 @@ type publicAdvertisedPrefixArgs struct {
 
 // The set of arguments for constructing a PublicAdvertisedPrefix resource.
 type PublicAdvertisedPrefixArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The IPv4 address to be used for reverse DNS verification.
@@ -440,6 +475,16 @@ func (o PublicAdvertisedPrefixOutput) ToPublicAdvertisedPrefixOutput() PublicAdv
 
 func (o PublicAdvertisedPrefixOutput) ToPublicAdvertisedPrefixOutputWithContext(ctx context.Context) PublicAdvertisedPrefixOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PublicAdvertisedPrefixOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

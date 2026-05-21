@@ -30,6 +30,7 @@ class StreamArgs:
                  backfill_none: pulumi.Input[Optional['StreamBackfillNoneArgs']] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,6 +51,12 @@ class StreamArgs:
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[_builtins.str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
                will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream,
                `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
                the stream from a `RUNNING` state.
@@ -75,6 +82,8 @@ class StreamArgs:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
         if customer_managed_encryption_key is not None:
             pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if labels is not None:
@@ -197,6 +206,23 @@ class StreamArgs:
         pulumi.set(self, "customer_managed_encryption_key", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="desiredState")
     def desired_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -259,6 +285,7 @@ class _StreamState:
                  backfill_none: pulumi.Input[Optional['StreamBackfillNoneArgs']] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_config: pulumi.Input[Optional['StreamDestinationConfigArgs']] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -281,6 +308,12 @@ class _StreamState:
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[_builtins.str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
                will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream,
                `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
                the stream from a `RUNNING` state.
@@ -313,6 +346,8 @@ class _StreamState:
             pulumi.set(__self__, "create_without_validation", create_without_validation)
         if customer_managed_encryption_key is not None:
             pulumi.set(__self__, "customer_managed_encryption_key", customer_managed_encryption_key)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if destination_config is not None:
@@ -389,6 +424,23 @@ class _StreamState:
     @customer_managed_encryption_key.setter
     def customer_managed_encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_managed_encryption_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredState")
@@ -567,6 +619,7 @@ class Stream(pulumi.CustomResource):
                  backfill_none: pulumi.Input[Optional[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_config: pulumi.Input[Optional[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1378,8 +1431,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_45397",
-            name="tf-test_16451",
+            project_id="tf-test_11171",
+            name="tf-test_40472",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -1823,6 +1876,12 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[_builtins.str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
                will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream,
                `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
                the stream from a `RUNNING` state.
@@ -2649,8 +2708,8 @@ class Stream(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         cross_project_dataset = gcp.organizations.Project("cross-project-dataset",
-            project_id="tf-test_45397",
-            name="tf-test_16451",
+            project_id="tf-test_11171",
+            name="tf-test_40472",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             deletion_policy="DELETE")
@@ -3105,6 +3164,7 @@ class Stream(pulumi.CustomResource):
                  backfill_none: pulumi.Input[Optional[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
                  create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
                  customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_config: pulumi.Input[Optional[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3127,6 +3187,7 @@ class Stream(pulumi.CustomResource):
             __props__.__dict__["backfill_none"] = backfill_none
             __props__.__dict__["create_without_validation"] = create_without_validation
             __props__.__dict__["customer_managed_encryption_key"] = customer_managed_encryption_key
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["desired_state"] = desired_state
             if destination_config is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_config'")
@@ -3166,6 +3227,7 @@ class Stream(pulumi.CustomResource):
             backfill_none: pulumi.Input[Optional[Union['StreamBackfillNoneArgs', 'StreamBackfillNoneArgsDict']]] = None,
             create_without_validation: pulumi.Input[Optional[_builtins.bool]] = None,
             customer_managed_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             desired_state: pulumi.Input[Optional[_builtins.str]] = None,
             destination_config: pulumi.Input[Optional[Union['StreamDestinationConfigArgs', 'StreamDestinationConfigArgsDict']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3192,6 +3254,12 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] create_without_validation: Create the stream without validating it.
         :param pulumi.Input[_builtins.str] customer_managed_encryption_key: A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data
                will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] desired_state: Desired state of the Stream. Set this field to `RUNNING` to start the stream,
                `NOT_STARTED` to create the stream without starting and `PAUSED` to pause
                the stream from a `RUNNING` state.
@@ -3224,6 +3292,7 @@ class Stream(pulumi.CustomResource):
         __props__.__dict__["backfill_none"] = backfill_none
         __props__.__dict__["create_without_validation"] = create_without_validation
         __props__.__dict__["customer_managed_encryption_key"] = customer_managed_encryption_key
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["destination_config"] = destination_config
         __props__.__dict__["display_name"] = display_name
@@ -3272,6 +3341,19 @@ class Stream(pulumi.CustomResource):
         will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         """
         return pulumi.get(self, "customer_managed_encryption_key")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="desiredState")

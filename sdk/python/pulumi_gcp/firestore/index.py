@@ -47,10 +47,12 @@ class IndexArgs:
                Default value is `ANY_API`.
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
-               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-               The default value is `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[_builtins.bool] multikey: Optional. Whether the index is multikey. By default, the index is not multikey. For non-multikey indexes, none of the paths in the index definition reach or traverse an array, except via an explicit array index. For multikey indexes, at most one of the paths in the index definition reach or traverse an array, except via an explicit array index. Violations will result in errors. Note this field only applies to indexes with MONGODB_COMPATIBLE_API ApiScope.
@@ -143,10 +145,12 @@ class IndexArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Deletion behavior for this index.
-        If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-        If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-        The default value is `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -254,10 +258,12 @@ class _IndexState:
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
-               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-               The default value is `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input['IndexFieldArgs']]] fields: The fields supported by this index. The last non-stored field entry is
@@ -345,10 +351,12 @@ class _IndexState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Deletion behavior for this index.
-        If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-        If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-        The default value is `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -861,10 +869,12 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
-               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-               The default value is `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
@@ -1346,10 +1356,12 @@ class Index(pulumi.CustomResource):
                Possible values are: `ANY_API`, `DATASTORE_MODE_API`, `MONGODB_COMPATIBLE_API`.
         :param pulumi.Input[_builtins.str] collection: The collection being indexed.
         :param pulumi.Input[_builtins.str] database: The Firestore database id. Defaults to `"(default)"`.
-        :param pulumi.Input[_builtins.str] deletion_policy: Deletion behavior for this index.
-               If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-               If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-               The default value is `DELETE`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] density: The density configuration for this index.
                Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['IndexFieldArgs', 'IndexFieldArgsDict']]]] fields: The fields supported by this index. The last non-stored field entry is
@@ -1416,12 +1428,14 @@ class Index(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        Deletion behavior for this index.
-        If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-        If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-        The default value is `DELETE`.
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

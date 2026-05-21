@@ -23,6 +23,7 @@ class BackupPolicyArgs:
                  location: pulumi.Input[_builtins.str],
                  monthly_backup_limit: pulumi.Input[_builtins.int],
                  weekly_backup_limit: pulumi.Input[_builtins.int],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -35,6 +36,12 @@ class BackupPolicyArgs:
         :param pulumi.Input[_builtins.str] location: Name of the region for the policy to apply to.
         :param pulumi.Input[_builtins.int] monthly_backup_limit: Number of monthly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
         :param pulumi.Input[_builtins.int] weekly_backup_limit: Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enabled: If enabled, make backups automatically according to the schedules.
                This will be applied to all volumes that have this policy attached and enforced on volume level.
@@ -50,6 +57,8 @@ class BackupPolicyArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "monthly_backup_limit", monthly_backup_limit)
         pulumi.set(__self__, "weekly_backup_limit", weekly_backup_limit)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enabled is not None:
@@ -108,6 +117,23 @@ class BackupPolicyArgs:
     @weekly_backup_limit.setter
     def weekly_backup_limit(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "weekly_backup_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -181,6 +207,7 @@ class _BackupPolicyState:
                  assigned_volume_count: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  daily_backup_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -198,6 +225,12 @@ class _BackupPolicyState:
         :param pulumi.Input[_builtins.int] assigned_volume_count: The total number of volumes assigned by this backup policy.
         :param pulumi.Input[_builtins.str] create_time: Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.int] daily_backup_limit: Number of daily backups to keep. Note that the minimum daily backup limit is 2.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enabled: If enabled, make backups automatically according to the schedules.
@@ -222,6 +255,8 @@ class _BackupPolicyState:
             pulumi.set(__self__, "create_time", create_time)
         if daily_backup_limit is not None:
             pulumi.set(__self__, "daily_backup_limit", daily_backup_limit)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -280,6 +315,23 @@ class _BackupPolicyState:
     @daily_backup_limit.setter
     def daily_backup_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "daily_backup_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -427,6 +479,7 @@ class BackupPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  daily_backup_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -488,6 +541,12 @@ class BackupPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] daily_backup_limit: Number of daily backups to keep. Note that the minimum daily backup limit is 2.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enabled: If enabled, make backups automatically according to the schedules.
                This will be applied to all volumes that have this policy attached and enforced on volume level.
@@ -573,6 +632,7 @@ class BackupPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  daily_backup_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -593,6 +653,7 @@ class BackupPolicy(pulumi.CustomResource):
             if daily_backup_limit is None and not opts.urn:
                 raise TypeError("Missing required property 'daily_backup_limit'")
             __props__.__dict__["daily_backup_limit"] = daily_backup_limit
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["labels"] = labels
@@ -627,6 +688,7 @@ class BackupPolicy(pulumi.CustomResource):
             assigned_volume_count: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             daily_backup_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -648,6 +710,12 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] assigned_volume_count: The total number of volumes assigned by this backup policy.
         :param pulumi.Input[_builtins.str] create_time: Create time of the backup policy. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
         :param pulumi.Input[_builtins.int] daily_backup_limit: Number of daily backups to keep. Note that the minimum daily backup limit is 2.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enabled: If enabled, make backups automatically according to the schedules.
@@ -673,6 +741,7 @@ class BackupPolicy(pulumi.CustomResource):
         __props__.__dict__["assigned_volume_count"] = assigned_volume_count
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["daily_backup_limit"] = daily_backup_limit
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enabled"] = enabled
@@ -709,6 +778,19 @@ class BackupPolicy(pulumi.CustomResource):
         Number of daily backups to keep. Note that the minimum daily backup limit is 2.
         """
         return pulumi.get(self, "daily_backup_limit")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

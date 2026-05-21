@@ -108,6 +108,13 @@ type AppGateway struct {
 	// A list of connections allocated for the Gateway.
 	// Structure is documented below.
 	AllocatedConnections AppGatewayAllocatedConnectionArrayOutput `pulumi:"allocatedConnections"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -179,6 +186,13 @@ type appGatewayState struct {
 	// A list of connections allocated for the Gateway.
 	// Structure is documented below.
 	AllocatedConnections []AppGatewayAllocatedConnection `pulumi:"allocatedConnections"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -216,6 +230,13 @@ type AppGatewayState struct {
 	// A list of connections allocated for the Gateway.
 	// Structure is documented below.
 	AllocatedConnections AppGatewayAllocatedConnectionArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -254,6 +275,13 @@ func (AppGatewayState) ElementType() reflect.Type {
 }
 
 type appGatewayArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName *string `pulumi:"displayName"`
 	// The type of hosting used by the AppGateway.
@@ -280,6 +308,13 @@ type appGatewayArgs struct {
 
 // The set of arguments for constructing a AppGateway resource.
 type AppGatewayArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An arbitrary user-provided name for the AppGateway.
 	DisplayName pulumi.StringPtrInput
 	// The type of hosting used by the AppGateway.
@@ -395,6 +430,16 @@ func (o AppGatewayOutput) ToAppGatewayOutputWithContext(ctx context.Context) App
 // Structure is documented below.
 func (o AppGatewayOutput) AllocatedConnections() AppGatewayAllocatedConnectionArrayOutput {
 	return o.ApplyT(func(v *AppGateway) AppGatewayAllocatedConnectionArrayOutput { return v.AllocatedConnections }).(AppGatewayAllocatedConnectionArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AppGatewayOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An arbitrary user-provided name for the AppGateway.

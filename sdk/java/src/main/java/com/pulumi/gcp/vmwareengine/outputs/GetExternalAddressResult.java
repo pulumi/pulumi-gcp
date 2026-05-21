@@ -11,6 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetExternalAddressResult {
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private String externalIp;
     /**
@@ -28,6 +29,9 @@ public final class GetExternalAddressResult {
     private GetExternalAddressResult() {}
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -71,6 +75,7 @@ public final class GetExternalAddressResult {
     @CustomType.Builder
     public static final class Builder {
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private String externalIp;
         private String id;
@@ -84,6 +89,7 @@ public final class GetExternalAddressResult {
         public Builder(GetExternalAddressResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.externalIp = defaults.externalIp;
     	      this.id = defaults.id;
@@ -101,6 +107,14 @@ public final class GetExternalAddressResult {
               throw new MissingRequiredPropertyException("GetExternalAddressResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetExternalAddressResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -178,6 +192,7 @@ public final class GetExternalAddressResult {
         public GetExternalAddressResult build() {
             final var _resultValue = new GetExternalAddressResult();
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.externalIp = externalIp;
             _resultValue.id = id;

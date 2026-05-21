@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.Projects
     public sealed class GetIamCustomRoleResult
     {
         public readonly bool Deleted;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -163,6 +164,8 @@ namespace Pulumi.Gcp.Projects
         [OutputConstructor]
         private GetIamCustomRoleResult(
             bool deleted,
+
+            string deletionPolicy,
 
             string description,
 
@@ -181,6 +184,7 @@ namespace Pulumi.Gcp.Projects
             string title)
         {
             Deleted = deleted;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Id = id;
             Name = name;

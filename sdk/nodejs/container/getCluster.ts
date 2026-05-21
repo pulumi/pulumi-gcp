@@ -93,6 +93,7 @@ export interface GetClusterResult {
     readonly datapathProvider: string;
     readonly defaultMaxPodsPerNode: number;
     readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
+    readonly deletionPolicy: string;
     readonly deletionProtection: boolean;
     readonly description: string;
     readonly disableL4LbFirewallReconciliation: boolean;

@@ -276,6 +276,15 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
      */
     declare public readonly customTlsFeatures: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Free-text description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -333,6 +342,7 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
             resourceInputs["caPool"] = state?.caPool;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customTlsFeatures"] = state?.customTlsFeatures;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["excludePublicCaSet"] = state?.excludePublicCaSet;
             resourceInputs["location"] = state?.location;
@@ -349,6 +359,7 @@ export class TlsInspectionPolicy extends pulumi.CustomResource {
             }
             resourceInputs["caPool"] = args?.caPool;
             resourceInputs["customTlsFeatures"] = args?.customTlsFeatures;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["excludePublicCaSet"] = args?.excludePublicCaSet;
             resourceInputs["location"] = args?.location;
@@ -381,6 +392,15 @@ export interface TlsInspectionPolicyState {
      * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      */
     customTlsFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Free-text description of the resource.
      */
@@ -436,6 +456,15 @@ export interface TlsInspectionPolicyArgs {
      * List of custom TLS cipher suites selected. This field is valid only if the selected tlsFeatureProfile is CUSTOM. The compute.SslPoliciesService.ListAvailableFeatures method returns the set of features that can be specified in this list. Note that Secure Web Proxy does not yet honor this field.
      */
     customTlsFeatures?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Free-text description of the resource.
      */

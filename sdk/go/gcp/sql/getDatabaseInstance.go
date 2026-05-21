@@ -63,6 +63,7 @@ type LookupDatabaseInstanceResult struct {
 	Clones                       []GetDatabaseInstanceClone   `pulumi:"clones"`
 	ConnectionName               string                       `pulumi:"connectionName"`
 	DatabaseVersion              string                       `pulumi:"databaseVersion"`
+	DeletionPolicy               string                       `pulumi:"deletionPolicy"`
 	DeletionProtection           bool                         `pulumi:"deletionProtection"`
 	DnsName                      string                       `pulumi:"dnsName"`
 	DnsNames                     []GetDatabaseInstanceDnsName `pulumi:"dnsNames"`
@@ -150,6 +151,10 @@ func (o LookupDatabaseInstanceResultOutput) ConnectionName() pulumi.StringOutput
 
 func (o LookupDatabaseInstanceResultOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.DatabaseVersion }).(pulumi.StringOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) DeletionProtection() pulumi.BoolOutput {

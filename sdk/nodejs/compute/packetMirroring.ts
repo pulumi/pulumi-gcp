@@ -151,6 +151,15 @@ export class PacketMirroring extends pulumi.CustomResource {
      */
     declare public readonly collectorIlb: pulumi.Output<outputs.compute.PacketMirroringCollectorIlb>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-readable description of the rule.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -212,6 +221,7 @@ export class PacketMirroring extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PacketMirroringState | undefined;
             resourceInputs["collectorIlb"] = state?.collectorIlb;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["enable"] = state?.enable;
             resourceInputs["filter"] = state?.filter;
@@ -233,6 +243,7 @@ export class PacketMirroring extends pulumi.CustomResource {
                 throw new Error("Missing required property 'network'");
             }
             resourceInputs["collectorIlb"] = args?.collectorIlb;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["enable"] = args?.enable;
             resourceInputs["filter"] = args?.filter;
@@ -260,6 +271,15 @@ export interface PacketMirroringState {
      * Structure is documented below.
      */
     collectorIlb?: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the rule.
      */
@@ -321,6 +341,15 @@ export interface PacketMirroringArgs {
      * Structure is documented below.
      */
     collectorIlb: pulumi.Input<inputs.compute.PacketMirroringCollectorIlb>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the rule.
      */

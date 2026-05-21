@@ -24,6 +24,7 @@ class WorkforcePoolProviderScimTenantArgs:
                  scim_tenant_id: pulumi.Input[_builtins.str],
                  workforce_pool_id: pulumi.Input[_builtins.str],
                  claim_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hard_delete: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -35,6 +36,12 @@ class WorkforcePoolProviderScimTenantArgs:
         :param pulumi.Input[_builtins.str] scim_tenant_id: The ID to use for the SCIM tenant, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         :param pulumi.Input[_builtins.str] workforce_pool_id: The ID of the workforce pool.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
@@ -45,6 +52,8 @@ class WorkforcePoolProviderScimTenantArgs:
         pulumi.set(__self__, "workforce_pool_id", workforce_pool_id)
         if claim_mapping is not None:
             pulumi.set(__self__, "claim_mapping", claim_mapping)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -113,6 +122,23 @@ class WorkforcePoolProviderScimTenantArgs:
         pulumi.set(self, "claim_mapping", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -154,6 +180,7 @@ class _WorkforcePoolProviderScimTenantState:
     def __init__(__self__, *,
                  base_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  claim_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hard_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -174,6 +201,12 @@ class _WorkforcePoolProviderScimTenantState:
                Format:
                https://iamscim.googleapis.com/{version}/{tenant_id}/
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
@@ -195,6 +228,8 @@ class _WorkforcePoolProviderScimTenantState:
             pulumi.set(__self__, "base_uri", base_uri)
         if claim_mapping is not None:
             pulumi.set(__self__, "claim_mapping", claim_mapping)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -245,6 +280,23 @@ class _WorkforcePoolProviderScimTenantState:
     @claim_mapping.setter
     def claim_mapping(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "claim_mapping", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -391,6 +443,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  claim_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hard_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -481,6 +534,12 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
@@ -590,6 +649,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  claim_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  hard_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -607,6 +667,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             __props__ = WorkforcePoolProviderScimTenantArgs.__new__(WorkforcePoolProviderScimTenantArgs)
 
             __props__.__dict__["claim_mapping"] = claim_mapping
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["hard_delete"] = hard_delete
@@ -639,6 +700,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             base_uri: pulumi.Input[Optional[_builtins.str]] = None,
             claim_mapping: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             hard_delete: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -663,6 +725,12 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
                Format:
                https://iamscim.googleapis.com/{version}/{tenant_id}/
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] claim_mapping: Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A user-specified description of the provider. Cannot exceed 256 characters.
         :param pulumi.Input[_builtins.str] display_name: A user-specified display name for the scim tenant. Cannot exceed 32 characters.
         :param pulumi.Input[_builtins.bool] hard_delete: Deletes the SCIM tenant immediately. This operation cannot be undone.
@@ -686,6 +754,7 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
 
         __props__.__dict__["base_uri"] = base_uri
         __props__.__dict__["claim_mapping"] = claim_mapping
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["hard_delete"] = hard_delete
@@ -718,6 +787,19 @@ class WorkforcePoolProviderScimTenant(pulumi.CustomResource):
         Maps BYOID claims to SCIM claims. This is a required field for new SCIM Tenants being created.
         """
         return pulumi.get(self, "claim_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

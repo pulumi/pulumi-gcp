@@ -180,6 +180,13 @@ type Function struct {
 	BuildServiceAccount pulumi.StringOutput `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool pulumi.StringPtrOutput `pulumi:"buildWorkerPool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the function.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -305,6 +312,13 @@ type functionState struct {
 	BuildServiceAccount *string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool *string `pulumi:"buildWorkerPool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
 	// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -393,6 +407,13 @@ type FunctionState struct {
 	BuildServiceAccount pulumi.StringPtrInput
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
 	// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -485,6 +506,13 @@ type functionArgs struct {
 	BuildServiceAccount *string `pulumi:"buildServiceAccount"`
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool *string `pulumi:"buildWorkerPool"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the function.
 	Description *string `pulumi:"description"`
 	// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -566,6 +594,13 @@ type FunctionArgs struct {
 	BuildServiceAccount pulumi.StringPtrInput
 	// Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 	BuildWorkerPool pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the function.
 	Description pulumi.StringPtrInput
 	// Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
@@ -745,6 +780,16 @@ func (o FunctionOutput) BuildServiceAccount() pulumi.StringOutput {
 // Name of the Cloud Build Custom Worker Pool that should be used to build the function.
 func (o FunctionOutput) BuildWorkerPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringPtrOutput { return v.BuildWorkerPool }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FunctionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the function.

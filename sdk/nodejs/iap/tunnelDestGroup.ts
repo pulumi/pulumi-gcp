@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const destGroup = new gcp.iap.TunnelDestGroup("dest_group", {
  *     region: "us-central1",
- *     groupName: "testgroup_79411",
+ *     groupName: "testgroup_82591",
  *     cidrs: [
  *         "10.1.0.0/16",
  *         "192.168.10.0/24",
@@ -86,6 +86,15 @@ export class TunnelDestGroup extends pulumi.CustomResource {
      */
     declare public readonly cidrs: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * List of FQDNs that this group applies to.
      */
     declare public readonly fqdns: pulumi.Output<string[] | undefined>;
@@ -121,6 +130,7 @@ export class TunnelDestGroup extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TunnelDestGroupState | undefined;
             resourceInputs["cidrs"] = state?.cidrs;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["fqdns"] = state?.fqdns;
             resourceInputs["groupName"] = state?.groupName;
             resourceInputs["name"] = state?.name;
@@ -132,6 +142,7 @@ export class TunnelDestGroup extends pulumi.CustomResource {
                 throw new Error("Missing required property 'groupName'");
             }
             resourceInputs["cidrs"] = args?.cidrs;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["fqdns"] = args?.fqdns;
             resourceInputs["groupName"] = args?.groupName;
             resourceInputs["project"] = args?.project;
@@ -151,6 +162,15 @@ export interface TunnelDestGroupState {
      * List of CIDRs that this group applies to.
      */
     cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * List of FQDNs that this group applies to.
      */
@@ -182,6 +202,15 @@ export interface TunnelDestGroupArgs {
      * List of CIDRs that this group applies to.
      */
     cidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * List of FQDNs that this group applies to.
      */

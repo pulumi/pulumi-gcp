@@ -66,6 +66,56 @@ import (
 //	}
 //
 // ```
+// ### Storage Batch Operations Description
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:         pulumi.String("tf-sample-bucket"),
+//				Location:     pulumi.String("us-central1"),
+//				ForceDestroy: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBatchOperationsJob(ctx, "tf-job", &storage.BatchOperationsJobArgs{
+//				JobId:       pulumi.String("tf-job"),
+//				Description: pulumi.String("A sample job description"),
+//				BucketList: &storage.BatchOperationsJobBucketListArgs{
+//					Buckets: &storage.BatchOperationsJobBucketListBucketsArgs{
+//						Bucket: bucket.Name,
+//						PrefixList: &storage.BatchOperationsJobBucketListBucketsPrefixListArgs{
+//							IncludedObjectPrefixes: pulumi.StringArray{
+//								pulumi.String("bkt"),
+//							},
+//						},
+//					},
+//				},
+//				PutMetadata: &storage.BatchOperationsJobPutMetadataArgs{
+//					CustomMetadata: pulumi.StringMap{
+//						"key": pulumi.String("value"),
+//					},
+//				},
+//				DeleteProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -97,6 +147,15 @@ type BatchOperationsJob struct {
 	DeleteObject BatchOperationsJobDeleteObjectPtrOutput `pulumi:"deleteObject"`
 	// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
 	DeleteProtection pulumi.BoolPtrOutput `pulumi:"deleteProtection"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The ID of the job.
 	JobId pulumi.StringPtrOutput `pulumi:"jobId"`
 	// The ID of the project in which the resource belongs.
@@ -161,6 +220,15 @@ type batchOperationsJobState struct {
 	DeleteObject *BatchOperationsJobDeleteObject `pulumi:"deleteObject"`
 	// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
 	DeleteProtection *bool `pulumi:"deleteProtection"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+	Description *string `pulumi:"description"`
 	// The ID of the job.
 	JobId *string `pulumi:"jobId"`
 	// The ID of the project in which the resource belongs.
@@ -196,6 +264,15 @@ type BatchOperationsJobState struct {
 	DeleteObject BatchOperationsJobDeleteObjectPtrInput
 	// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
 	DeleteProtection pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
+	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+	Description pulumi.StringPtrInput
 	// The ID of the job.
 	JobId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -231,6 +308,15 @@ type batchOperationsJobArgs struct {
 	DeleteObject *BatchOperationsJobDeleteObject `pulumi:"deleteObject"`
 	// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
 	DeleteProtection *bool `pulumi:"deleteProtection"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+	Description *string `pulumi:"description"`
 	// The ID of the job.
 	JobId *string `pulumi:"jobId"`
 	// The ID of the project in which the resource belongs.
@@ -257,6 +343,15 @@ type BatchOperationsJobArgs struct {
 	DeleteObject BatchOperationsJobDeleteObjectPtrInput
 	// If set to `true`, the storage batch operation job will not be deleted and new job will be created.
 	DeleteProtection pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
+	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+	Description pulumi.StringPtrInput
 	// The ID of the job.
 	JobId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -385,6 +480,21 @@ func (o BatchOperationsJobOutput) DeleteObject() BatchOperationsJobDeleteObjectP
 // If set to `true`, the storage batch operation job will not be deleted and new job will be created.
 func (o BatchOperationsJobOutput) DeleteProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BatchOperationsJob) pulumi.BoolPtrOutput { return v.DeleteProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BatchOperationsJobOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BatchOperationsJob) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+func (o BatchOperationsJobOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchOperationsJob) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the job.

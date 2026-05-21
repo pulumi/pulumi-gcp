@@ -246,6 +246,8 @@ type Address struct {
 	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address pulumi.StringOutput `pulumi:"address"`
+	// The unique numeric identifier for the resource. This identifier is defined by the server.
+	AddressId pulumi.StringOutput `pulumi:"addressId"`
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
@@ -253,6 +255,13 @@ type Address struct {
 	AddressType pulumi.StringPtrOutput `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -373,6 +382,8 @@ type addressState struct {
 	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address *string `pulumi:"address"`
+	// The unique numeric identifier for the resource. This identifier is defined by the server.
+	AddressId *string `pulumi:"addressId"`
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
@@ -380,6 +391,13 @@ type addressState struct {
 	AddressType *string `pulumi:"addressType"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -466,6 +484,8 @@ type AddressState struct {
 	// The IP address must be inside the specified subnetwork,
 	// if any. Set by the API if undefined.
 	Address pulumi.StringPtrInput
+	// The unique numeric identifier for the resource. This identifier is defined by the server.
+	AddressId pulumi.StringPtrInput
 	// The type of address to reserve.
 	// Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 	// Default value is `EXTERNAL`.
@@ -473,6 +493,13 @@ type AddressState struct {
 	AddressType pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -568,6 +595,13 @@ type addressArgs struct {
 	// Default value is `EXTERNAL`.
 	// Possible values are: `INTERNAL`, `EXTERNAL`.
 	AddressType *string `pulumi:"addressType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
@@ -648,6 +682,13 @@ type AddressArgs struct {
 	// Default value is `EXTERNAL`.
 	// Possible values are: `INTERNAL`, `EXTERNAL`.
 	AddressType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// Reference to the source of external IPv4 addresses, like a PublicDelegatedPrefix(PDP) for BYOIP.
@@ -811,6 +852,11 @@ func (o AddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Address }).(pulumi.StringOutput)
 }
 
+// The unique numeric identifier for the resource. This identifier is defined by the server.
+func (o AddressOutput) AddressId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.AddressId }).(pulumi.StringOutput)
+}
+
 // The type of address to reserve.
 // Note: if you set this argument's value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
 // Default value is `EXTERNAL`.
@@ -822,6 +868,16 @@ func (o AddressOutput) AddressType() pulumi.StringPtrOutput {
 // Creation timestamp in RFC3339 text format.
 func (o AddressOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AddressOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

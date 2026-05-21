@@ -22,6 +22,7 @@ __all__ = ['CxWebhookArgs', 'CxWebhook']
 class CxWebhookArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_stackdriver_logging: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -34,6 +35,12 @@ class CxWebhookArgs:
         The set of arguments for constructing a CxWebhook resource.
 
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[_builtins.bool] enable_stackdriver_logging: Deprecated. Determines whether this agent should log conversation queries.
@@ -47,6 +54,8 @@ class CxWebhookArgs:
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if enable_spell_correction is not None:
@@ -75,6 +84,23 @@ class CxWebhookArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -179,6 +205,7 @@ class CxWebhookArgs:
 @pulumi.input_type
 class _CxWebhookState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -193,6 +220,12 @@ class _CxWebhookState:
         """
         Input properties used for looking up and filtering CxWebhook resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
@@ -209,6 +242,8 @@ class _CxWebhookState:
         :param pulumi.Input[_builtins.str] start_flow: Deprecated. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: projects/<Project ID>/locations/<Location ID>/agents/<Agent ID>/flows/<Flow ID>.
         :param pulumi.Input[_builtins.str] timeout: Webhook execution timeout.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if display_name is not None:
@@ -231,6 +266,23 @@ class _CxWebhookState:
             pulumi.set(__self__, "start_flow", start_flow)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -375,6 +427,7 @@ class CxWebhook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -687,6 +740,12 @@ class CxWebhook(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
@@ -1021,6 +1080,7 @@ class CxWebhook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1039,6 +1099,7 @@ class CxWebhook(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CxWebhookArgs.__new__(CxWebhookArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disabled"] = disabled
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1062,6 +1123,7 @@ class CxWebhook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1080,6 +1142,12 @@ class CxWebhook(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Deprecated. Indicates if automatic spell correction is enabled in detect intent requests.
@@ -1100,6 +1168,7 @@ class CxWebhook(pulumi.CustomResource):
 
         __props__ = _CxWebhookState.__new__(_CxWebhookState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_spell_correction"] = enable_spell_correction
@@ -1112,6 +1181,19 @@ class CxWebhook(pulumi.CustomResource):
         __props__.__dict__["start_flow"] = start_flow
         __props__.__dict__["timeout"] = timeout
         return CxWebhook(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

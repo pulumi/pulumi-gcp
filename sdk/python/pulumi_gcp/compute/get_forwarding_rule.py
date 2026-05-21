@@ -27,7 +27,7 @@ class GetForwardingRuleResult:
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, effective_labels=None, forwarding_rule_id=None, id=None, ip_address=None, ip_collection=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, recreate_closed_psc=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, deletion_policy=None, description=None, effective_labels=None, forwarding_rule_id=None, id=None, ip_address=None, ip_collection=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, recreate_closed_psc=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -46,6 +46,9 @@ class GetForwardingRuleResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -169,6 +172,11 @@ class GetForwardingRuleResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -341,6 +349,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             backend_service=self.backend_service,
             base_forwarding_rule=self.base_forwarding_rule,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             effective_labels=self.effective_labels,
             forwarding_rule_id=self.forwarding_rule_id,
@@ -414,6 +423,7 @@ def get_forwarding_rule(name: Optional[_builtins.str] = None,
         backend_service=pulumi.get(__ret__, 'backend_service'),
         base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         forwarding_rule_id=pulumi.get(__ret__, 'forwarding_rule_id'),
@@ -484,6 +494,7 @@ def get_forwarding_rule_output(name: pulumi.Input[Optional[_builtins.str]] = Non
         backend_service=pulumi.get(__response__, 'backend_service'),
         base_forwarding_rule=pulumi.get(__response__, 'base_forwarding_rule'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         forwarding_rule_id=pulumi.get(__response__, 'forwarding_rule_id'),

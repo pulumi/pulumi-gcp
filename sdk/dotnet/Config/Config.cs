@@ -571,6 +571,13 @@ namespace Pulumi.Gcp
             set => _defaultLabels.Set(value);
         }
 
+        private static readonly __Value<string?> _deletionPolicy = new __Value<string?>(() => __config.Get("deletionPolicy"));
+        public static string? DeletionPolicy
+        {
+            get => _deletionPolicy.Get();
+            set => _deletionPolicy.Set(value);
+        }
+
         private static readonly __Value<string?> _deploymentManagerCustomEndpoint = new __Value<string?>(() => __config.Get("deploymentManagerCustomEndpoint"));
         public static string? DeploymentManagerCustomEndpoint
         {

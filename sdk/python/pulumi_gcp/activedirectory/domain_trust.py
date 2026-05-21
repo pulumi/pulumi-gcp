@@ -25,6 +25,7 @@ class DomainTrustArgs:
                  trust_direction: pulumi.Input[_builtins.str],
                  trust_handshake_secret: pulumi.Input[_builtins.str],
                  trust_type: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  selective_authentication: pulumi.Input[Optional[_builtins.bool]] = None):
         """
@@ -40,6 +41,12 @@ class DomainTrustArgs:
                **Note**: This property is sensitive and will not be displayed in the plan.
         :param pulumi.Input[_builtins.str] trust_type: The type of trust represented by the trust resource.
                Possible values are: `FOREST`, `EXTERNAL`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -50,6 +57,8 @@ class DomainTrustArgs:
         pulumi.set(__self__, "trust_direction", trust_direction)
         pulumi.set(__self__, "trust_handshake_secret", trust_handshake_secret)
         pulumi.set(__self__, "trust_type", trust_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if selective_authentication is not None:
@@ -132,6 +141,23 @@ class DomainTrustArgs:
         pulumi.set(self, "trust_type", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -160,6 +186,7 @@ class DomainTrustArgs:
 @pulumi.input_type
 class _DomainTrustState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  selective_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -171,6 +198,12 @@ class _DomainTrustState:
         """
         Input properties used for looking up and filtering DomainTrust resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -185,6 +218,8 @@ class _DomainTrustState:
         :param pulumi.Input[_builtins.str] trust_type: The type of trust represented by the trust resource.
                Possible values are: `FOREST`, `EXTERNAL`.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if project is not None:
@@ -201,6 +236,23 @@ class _DomainTrustState:
             pulumi.set(__self__, "trust_handshake_secret", trust_handshake_secret)
         if trust_type is not None:
             pulumi.set(__self__, "trust_type", trust_type)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -310,6 +362,7 @@ class DomainTrust(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  selective_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -365,6 +418,12 @@ class DomainTrust(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -444,6 +503,7 @@ class DomainTrust(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  selective_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -461,6 +521,7 @@ class DomainTrust(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainTrustArgs.__new__(DomainTrustArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
@@ -493,6 +554,7 @@ class DomainTrust(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             selective_authentication: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -508,6 +570,12 @@ class DomainTrust(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions
                of https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -526,6 +594,7 @@ class DomainTrust(pulumi.CustomResource):
 
         __props__ = _DomainTrustState.__new__(_DomainTrustState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["domain"] = domain
         __props__.__dict__["project"] = project
         __props__.__dict__["selective_authentication"] = selective_authentication
@@ -535,6 +604,19 @@ class DomainTrust(pulumi.CustomResource):
         __props__.__dict__["trust_handshake_secret"] = trust_handshake_secret
         __props__.__dict__["trust_type"] = trust_type
         return DomainTrust(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

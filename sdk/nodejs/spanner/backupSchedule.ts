@@ -151,6 +151,15 @@ export class BackupSchedule extends pulumi.CustomResource {
      */
     declare public readonly database: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Configuration for the encryption of the backup schedule.
      * Structure is documented below.
      */
@@ -203,6 +212,7 @@ export class BackupSchedule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as BackupScheduleState | undefined;
             resourceInputs["database"] = state?.database;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["encryptionConfig"] = state?.encryptionConfig;
             resourceInputs["fullBackupSpec"] = state?.fullBackupSpec;
             resourceInputs["incrementalBackupSpec"] = state?.incrementalBackupSpec;
@@ -223,6 +233,7 @@ export class BackupSchedule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'retentionDuration'");
             }
             resourceInputs["database"] = args?.database;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["encryptionConfig"] = args?.encryptionConfig;
             resourceInputs["fullBackupSpec"] = args?.fullBackupSpec;
             resourceInputs["incrementalBackupSpec"] = args?.incrementalBackupSpec;
@@ -245,6 +256,15 @@ export interface BackupScheduleState {
      * The database to create the backup schedule on.
      */
     database?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the encryption of the backup schedule.
      * Structure is documented below.
@@ -293,6 +313,15 @@ export interface BackupScheduleArgs {
      * The database to create the backup schedule on.
      */
     database: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Configuration for the encryption of the backup schedule.
      * Structure is documented below.

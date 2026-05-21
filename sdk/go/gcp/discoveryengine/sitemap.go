@@ -82,6 +82,13 @@ type Sitemap struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The unique id of the data store.
 	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -139,6 +146,13 @@ type sitemapState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The unique id of the data store.
 	DataStoreId *string `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location *string `pulumi:"location"`
@@ -161,6 +175,13 @@ type SitemapState struct {
 	CreateTime pulumi.StringPtrInput
 	// The unique id of the data store.
 	DataStoreId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location pulumi.StringPtrInput
@@ -185,6 +206,13 @@ func (SitemapState) ElementType() reflect.Type {
 type sitemapArgs struct {
 	// The unique id of the data store.
 	DataStoreId string `pulumi:"dataStoreId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location string `pulumi:"location"`
@@ -199,6 +227,13 @@ type sitemapArgs struct {
 type SitemapArgs struct {
 	// The unique id of the data store.
 	DataStoreId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The geographic location where the data store should reside. The value can
 	// only be one of "global", "us" and "eu".
 	Location pulumi.StringInput
@@ -304,6 +339,16 @@ func (o SitemapOutput) CreateTime() pulumi.StringOutput {
 // The unique id of the data store.
 func (o SitemapOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sitemap) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SitemapOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Sitemap) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The geographic location where the data store should reside. The value can

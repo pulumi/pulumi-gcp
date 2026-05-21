@@ -23,6 +23,7 @@ class NodeGroupArgs:
     def __init__(__self__, *,
                  node_template: pulumi.Input[_builtins.str],
                  autoscaling_policy: pulumi.Input[Optional['NodeGroupAutoscalingPolicyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_size: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,6 +41,12 @@ class NodeGroupArgs:
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource.
         :param pulumi.Input[_builtins.int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[_builtins.str] maintenance_interval: (Optional, Beta)
@@ -60,6 +67,8 @@ class NodeGroupArgs:
         pulumi.set(__self__, "node_template", node_template)
         if autoscaling_policy is not None:
             pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if initial_size is not None:
@@ -105,6 +114,23 @@ class NodeGroupArgs:
     @autoscaling_policy.setter
     def autoscaling_policy(self, value: pulumi.Input[Optional['NodeGroupAutoscalingPolicyArgs']]):
         pulumi.set(self, "autoscaling_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -227,6 +253,7 @@ class _NodeGroupState:
     def __init__(__self__, *,
                  autoscaling_policy: pulumi.Input[Optional['NodeGroupAutoscalingPolicyArgs']] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_size: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -247,6 +274,12 @@ class _NodeGroupState:
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource.
         :param pulumi.Input[_builtins.int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[_builtins.str] maintenance_interval: (Optional, Beta)
@@ -271,6 +304,8 @@ class _NodeGroupState:
             pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if initial_size is not None:
@@ -322,6 +357,23 @@ class _NodeGroupState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -482,6 +534,7 @@ class NodeGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_size: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -635,6 +688,12 @@ class NodeGroup(pulumi.CustomResource):
                group autoscaler to automatically manage the sizes of your node groups.
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource.
         :param pulumi.Input[_builtins.int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[_builtins.str] maintenance_interval: (Optional, Beta)
@@ -811,6 +870,7 @@ class NodeGroup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  initial_size: pulumi.Input[Optional[_builtins.int]] = None,
                  maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -831,6 +891,7 @@ class NodeGroup(pulumi.CustomResource):
             __props__ = NodeGroupArgs.__new__(NodeGroupArgs)
 
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["initial_size"] = initial_size
             __props__.__dict__["maintenance_interval"] = maintenance_interval
@@ -858,6 +919,7 @@ class NodeGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling_policy: pulumi.Input[Optional[Union['NodeGroupAutoscalingPolicyArgs', 'NodeGroupAutoscalingPolicyArgsDict']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             initial_size: pulumi.Input[Optional[_builtins.int]] = None,
             maintenance_interval: pulumi.Input[Optional[_builtins.str]] = None,
@@ -882,6 +944,12 @@ class NodeGroup(pulumi.CustomResource):
                One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional textual description of the resource.
         :param pulumi.Input[_builtins.int] initial_size: The initial number of nodes in the node group. One of `initial_size` or `autoscaling_policy` must be configured on resource creation.
         :param pulumi.Input[_builtins.str] maintenance_interval: (Optional, Beta)
@@ -908,6 +976,7 @@ class NodeGroup(pulumi.CustomResource):
 
         __props__.__dict__["autoscaling_policy"] = autoscaling_policy
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["initial_size"] = initial_size
         __props__.__dict__["maintenance_interval"] = maintenance_interval
@@ -940,6 +1009,19 @@ class NodeGroup(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -248,6 +248,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when
         /// you create the resource.
         /// </summary>
@@ -295,6 +306,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("guestOsFeatures")]
         public Output<ImmutableArray<Outputs.RegionDiskGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
+
+        /// <summary>
+        /// The image from which to initialize this disk. This can be
+        /// one of: the image's `SelfLink`, `projects/{project}/global/images/{image}`,
+        /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        /// images names must include the family name. If they don't, use the
+        /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        /// These images can be referred by family name here.
+        /// </summary>
+        [Output("image")]
+        public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
         /// (Optional, Beta, Deprecated)
@@ -453,6 +478,24 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SourceDiskId { get; private set; } = null!;
 
         /// <summary>
+        /// The customer-supplied encryption key of the source image. Required if
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sourceImageEncryptionKey")]
+        public Output<Outputs.RegionDiskSourceImageEncryptionKey?> SourceImageEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID value of the image used to create this disk. This value
+        /// identifies the exact image that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from an image
+        /// that was later deleted and recreated under the same name, the source
+        /// image ID would identify the exact version of the image that was used.
+        /// </summary>
+        [Output("sourceImageId")]
+        public Output<string> SourceImageId { get; private set; } = null!;
+
+        /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
         /// key.
@@ -570,6 +613,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? CreateSnapshotBeforeDestroyPrefix { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when
         /// you create the resource.
         /// </summary>
@@ -611,6 +665,20 @@ namespace Pulumi.Gcp.Compute
             get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.RegionDiskGuestOsFeatureArgs>());
             set => _guestOsFeatures = value;
         }
+
+        /// <summary>
+        /// The image from which to initialize this disk. This can be
+        /// one of: the image's `SelfLink`, `projects/{project}/global/images/{image}`,
+        /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        /// images names must include the family name. If they don't, use the
+        /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        /// These images can be referred by family name here.
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
 
         /// <summary>
         /// (Optional, Beta, Deprecated)
@@ -747,6 +815,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SourceDisk { get; set; }
 
         /// <summary>
+        /// The customer-supplied encryption key of the source image. Required if
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceImageEncryptionKey")]
+        public Input<Inputs.RegionDiskSourceImageEncryptionKeyArgs>? SourceImageEncryptionKey { get; set; }
+
+        /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required
         /// if the source snapshot is protected by a customer-supplied encryption
         /// key.
@@ -807,6 +883,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when
@@ -872,6 +959,20 @@ namespace Pulumi.Gcp.Compute
             get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.RegionDiskGuestOsFeatureGetArgs>());
             set => _guestOsFeatures = value;
         }
+
+        /// <summary>
+        /// The image from which to initialize this disk. This can be
+        /// one of: the image's `SelfLink`, `projects/{project}/global/images/{image}`,
+        /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        /// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        /// `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+        /// images names must include the family name. If they don't, use the
+        /// [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+        /// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+        /// These images can be referred by family name here.
+        /// </summary>
+        [Input("image")]
+        public Input<string>? Image { get; set; }
 
         /// <summary>
         /// (Optional, Beta, Deprecated)
@@ -1056,6 +1157,24 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceDiskId")]
         public Input<string>? SourceDiskId { get; set; }
+
+        /// <summary>
+        /// The customer-supplied encryption key of the source image. Required if
+        /// the source image is protected by a customer-supplied encryption key.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sourceImageEncryptionKey")]
+        public Input<Inputs.RegionDiskSourceImageEncryptionKeyGetArgs>? SourceImageEncryptionKey { get; set; }
+
+        /// <summary>
+        /// The ID value of the image used to create this disk. This value
+        /// identifies the exact image that was used to create this persistent
+        /// disk. For example, if you created the persistent disk from an image
+        /// that was later deleted and recreated under the same name, the source
+        /// image ID would identify the exact version of the image that was used.
+        /// </summary>
+        [Input("sourceImageId")]
+        public Input<string>? SourceImageId { get; set; }
 
         /// <summary>
         /// The customer-supplied encryption key of the source snapshot. Required

@@ -606,6 +606,13 @@ type Service struct {
 	// (For legacy support, if `template.metadata.name` is unset in state while
 	// this field is set to false, the revision name will still autogenerate.)
 	AutogenerateRevisionName pulumi.BoolPtrOutput `pulumi:"autogenerateRevisionName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels,
@@ -679,6 +686,13 @@ type serviceState struct {
 	// (For legacy support, if `template.metadata.name` is unset in state while
 	// this field is set to false, the revision name will still autogenerate.)
 	AutogenerateRevisionName *bool `pulumi:"autogenerateRevisionName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the cloud run instance. eg us-central1
 	Location *string `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels,
@@ -720,6 +734,13 @@ type ServiceState struct {
 	// (For legacy support, if `template.metadata.name` is unset in state while
 	// this field is set to false, the revision name will still autogenerate.)
 	AutogenerateRevisionName pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringPtrInput
 	// Metadata associated with this Service, including name, namespace, labels,
@@ -765,6 +786,13 @@ type serviceArgs struct {
 	// (For legacy support, if `template.metadata.name` is unset in state while
 	// this field is set to false, the revision name will still autogenerate.)
 	AutogenerateRevisionName *bool `pulumi:"autogenerateRevisionName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location of the cloud run instance. eg us-central1
 	Location string `pulumi:"location"`
 	// Metadata associated with this Service, including name, namespace, labels,
@@ -804,6 +832,13 @@ type ServiceArgs struct {
 	// (For legacy support, if `template.metadata.name` is unset in state while
 	// this field is set to false, the revision name will still autogenerate.)
 	AutogenerateRevisionName pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location of the cloud run instance. eg us-central1
 	Location pulumi.StringInput
 	// Metadata associated with this Service, including name, namespace, labels,
@@ -929,6 +964,16 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 // this field is set to false, the revision name will still autogenerate.)
 func (o ServiceOutput) AutogenerateRevisionName() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.AutogenerateRevisionName }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ServiceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The location of the cloud run instance. eg us-central1

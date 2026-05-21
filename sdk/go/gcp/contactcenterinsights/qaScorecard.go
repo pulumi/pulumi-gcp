@@ -36,6 +36,13 @@ type QaScorecard struct {
 
 	// The time at which this scorecard was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A text description explaining the intent of the scorecard.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The user-specified display name of the scorecard.
@@ -105,6 +112,13 @@ func GetQaScorecard(ctx *pulumi.Context,
 type qaScorecardState struct {
 	// The time at which this scorecard was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A text description explaining the intent of the scorecard.
 	Description *string `pulumi:"description"`
 	// The user-specified display name of the scorecard.
@@ -139,6 +153,13 @@ type qaScorecardState struct {
 type QaScorecardState struct {
 	// The time at which this scorecard was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A text description explaining the intent of the scorecard.
 	Description pulumi.StringPtrInput
 	// The user-specified display name of the scorecard.
@@ -175,6 +196,13 @@ func (QaScorecardState) ElementType() reflect.Type {
 }
 
 type qaScorecardArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A text description explaining the intent of the scorecard.
 	Description *string `pulumi:"description"`
 	// The user-specified display name of the scorecard.
@@ -202,6 +230,13 @@ type qaScorecardArgs struct {
 
 // The set of arguments for constructing a QaScorecard resource.
 type QaScorecardArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A text description explaining the intent of the scorecard.
 	Description pulumi.StringPtrInput
 	// The user-specified display name of the scorecard.
@@ -317,6 +352,16 @@ func (o QaScorecardOutput) ToQaScorecardOutputWithContext(ctx context.Context) Q
 // The time at which this scorecard was created.
 func (o QaScorecardOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *QaScorecard) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o QaScorecardOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *QaScorecard) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A text description explaining the intent of the scorecard.

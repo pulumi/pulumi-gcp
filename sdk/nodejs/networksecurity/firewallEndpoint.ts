@@ -42,6 +42,21 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Security Firewall Endpoint Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.networksecurity.FirewallEndpoint("default", {
+ *     name: "my-firewall-endpoint",
+ *     parent: "projects/my-project-name",
+ *     location: "us-central1-a",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -91,13 +106,25 @@ export class FirewallEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly associatedNetworks: pulumi.Output<string[]>;
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint's project if specified.
      */
     declare public readonly billingProjectId: pulumi.Output<string>;
     /**
      * Time the firewall endpoint was created in UTC.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -124,7 +151,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
@@ -165,6 +192,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["associatedNetworks"] = state?.associatedNetworks;
             resourceInputs["billingProjectId"] = state?.billingProjectId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["endpointSettings"] = state?.endpointSettings;
             resourceInputs["labels"] = state?.labels;
@@ -178,9 +206,6 @@ export class FirewallEndpoint extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state?.updateTime;
         } else {
             const args = argsOrState as FirewallEndpointArgs | undefined;
-            if (args?.billingProjectId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'billingProjectId'");
-            }
             if (args?.location === undefined && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -188,6 +213,7 @@ export class FirewallEndpoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["billingProjectId"] = args?.billingProjectId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["endpointSettings"] = args?.endpointSettings;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -221,13 +247,25 @@ export interface FirewallEndpointState {
      */
     associatedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint's project if specified.
      */
     billingProjectId?: pulumi.Input<string | undefined>;
     /**
      * Time the firewall endpoint was created in UTC.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
@@ -254,7 +292,7 @@ export interface FirewallEndpointState {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent?: pulumi.Input<string | undefined>;
     /**
@@ -285,9 +323,21 @@ export interface FirewallEndpointState {
  */
 export interface FirewallEndpointArgs {
     /**
-     * Project to bill on endpoint uptime usage.
+     * Project to charge for the deployed firewall endpoint.
+     * This field is required for organization-scoped endpoints.
+     * For project-scoped endpoints, it is optional but must match the
+     * endpoint's project if specified.
      */
-    billingProjectId: pulumi.Input<string>;
+    billingProjectId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Settings for the endpoint.
      * Structure is documented below.
@@ -310,7 +360,7 @@ export interface FirewallEndpointArgs {
     name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parent this firewall endpoint belongs to.
-     * Format: organizations/{organization_id}.
+     * Format: `organizations/{organization_id}` or `projects/{project_id}`.
      */
     parent: pulumi.Input<string>;
 }

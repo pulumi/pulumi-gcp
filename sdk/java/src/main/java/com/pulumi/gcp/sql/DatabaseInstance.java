@@ -215,6 +215,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstance;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsConnectionPoolConfigArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsConnectionPoolConfigFlagArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -263,6 +265,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -315,6 +318,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -371,6 +376,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs;
  * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -457,7 +463,7 @@ import javax.annotation.Nullable;
  * </pre>
  * 
  * ### Cloud SQL Instance created using pointInTimeRestore
- * &gt; **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+ * &gt; **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`. The `targetInstance` is required field and must match the name of the resource.
  * 
  * <pre>
  * {@code
@@ -496,7 +502,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .pointInTimeRestoreContext(DatabaseInstancePointInTimeRestoreContextArgs.builder()
  *                 .datasource("backupdr_datasource")
- *                 .targetInstance("target_instance_name")
+ *                 .targetInstance("main-instance")
  *                 .pointInTime("time_stamp")
  *                 .build())
  *             .build());
@@ -507,7 +513,7 @@ import javax.annotation.Nullable;
  * </pre>
  * 
  * ### Cloud SQL Instance created using pointInTimeRestore using multiregion datasource
- * &gt; **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+ * &gt; **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region. The `targetInstance` is required field and must match the name of the resource.
  * 
  * <pre>
  * {@code
@@ -546,7 +552,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .pointInTimeRestoreContext(DatabaseInstancePointInTimeRestoreContextArgs.builder()
  *                 .datasource("backupdr_datasource")
- *                 .targetInstance("target_instance_name")
+ *                 .targetInstance("main-instance")
  *                 .pointInTime("time_stamp")
  *                 .region("region")
  *                 .build())
@@ -715,6 +721,30 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> databaseVersion() {
         return this.databaseVersion;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false

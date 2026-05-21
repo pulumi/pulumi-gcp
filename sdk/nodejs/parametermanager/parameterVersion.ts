@@ -146,6 +146,15 @@ export class ParameterVersion extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The current state of Parameter Version. This field is only applicable for updating Parameter Version.
      */
     declare public readonly disabled: pulumi.Output<boolean | undefined>;
@@ -191,6 +200,7 @@ export class ParameterVersion extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ParameterVersionState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["kmsKeyVersion"] = state?.kmsKeyVersion;
             resourceInputs["name"] = state?.name;
@@ -209,6 +219,7 @@ export class ParameterVersion extends pulumi.CustomResource {
             if (args?.parameterVersionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parameterVersionId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["parameter"] = args?.parameter;
             resourceInputs["parameterData"] = args?.parameterData ? pulumi.secret(args.parameterData) : undefined;
@@ -233,6 +244,15 @@ export interface ParameterVersionState {
      * The time at which the Parameter Version was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The current state of Parameter Version. This field is only applicable for updating Parameter Version.
      */
@@ -270,6 +290,15 @@ export interface ParameterVersionState {
  * The set of arguments for constructing a ParameterVersion resource.
  */
 export interface ParameterVersionArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The current state of Parameter Version. This field is only applicable for updating Parameter Version.
      */

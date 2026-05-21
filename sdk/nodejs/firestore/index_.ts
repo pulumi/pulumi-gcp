@@ -442,12 +442,14 @@ export class Index extends pulumi.CustomResource {
      */
     declare public readonly database: pulumi.Output<string | undefined>;
     /**
-     * Deletion behavior for this index.
-     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-     * The default value is `DELETE`.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      */
-    declare public readonly deletionPolicy: pulumi.Output<string | undefined>;
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * The density configuration for this index.
      * Possible values are: `SPARSE_ALL`, `SPARSE_ANY`, `DENSE`.
@@ -562,10 +564,12 @@ export interface IndexState {
      */
     database?: pulumi.Input<string | undefined>;
     /**
-     * Deletion behavior for this index.
-     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-     * The default value is `DELETE`.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -632,10 +636,12 @@ export interface IndexArgs {
      */
     database?: pulumi.Input<string | undefined>;
     /**
-     * Deletion behavior for this index.
-     * If the deletion policy is `PREVENT`, the index cannot be deleted and a terraform destroy will fail.
-     * If the deletion policy is `DELETE`, the index will both be removed from Terraform state and deleted from Google Cloud upon destruction.
-     * The default value is `DELETE`.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
      */
     deletionPolicy?: pulumi.Input<string | undefined>;
     /**

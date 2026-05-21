@@ -59,7 +59,7 @@ import (
 //			_, err = firestore.NewField(ctx, "basic", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__34599"),
+//				Collection: pulumi.String("chatrooms__49547"),
 //				Field:      pulumi.String("basic"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -150,7 +150,7 @@ import (
 //			_, err = firestore.NewField(ctx, "match_override", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__79513"),
+//				Collection: pulumi.String("chatrooms__48675"),
 //				Field:      pulumi.String("field_with_same_configuration_as_ancestor"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -202,7 +202,7 @@ import (
 //			_, err = firestore.NewField(ctx, "wildcard", &firestore.FieldArgs{
 //				Project:    pulumi.String("my-project-name"),
 //				Database:   database.Name,
-//				Collection: pulumi.String("chatrooms__55500"),
+//				Collection: pulumi.String("chatrooms__42702"),
 //				Field:      pulumi.String("*"),
 //				IndexConfig: &firestore.FieldIndexConfigArgs{
 //					Indexes: firestore.FieldIndexConfigIndexArray{
@@ -243,6 +243,13 @@ type Field struct {
 	Collection pulumi.StringOutput `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The id of the field to configure.
 	Field pulumi.StringOutput `pulumi:"field"`
 	// The single field index configuration for this field.
@@ -302,6 +309,13 @@ type fieldState struct {
 	Collection *string `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The id of the field to configure.
 	Field *string `pulumi:"field"`
 	// The single field index configuration for this field.
@@ -326,6 +340,13 @@ type FieldState struct {
 	Collection pulumi.StringPtrInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The id of the field to configure.
 	Field pulumi.StringPtrInput
 	// The single field index configuration for this field.
@@ -354,6 +375,13 @@ type fieldArgs struct {
 	Collection string `pulumi:"collection"`
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The id of the field to configure.
 	Field string `pulumi:"field"`
 	// The single field index configuration for this field.
@@ -376,6 +404,13 @@ type FieldArgs struct {
 	Collection pulumi.StringInput
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The id of the field to configure.
 	Field pulumi.StringInput
 	// The single field index configuration for this field.
@@ -487,6 +522,16 @@ func (o FieldOutput) Collection() pulumi.StringOutput {
 // The Firestore database id. Defaults to `"(default)"`.
 func (o FieldOutput) Database() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringPtrOutput { return v.Database }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FieldOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The id of the field to configure.

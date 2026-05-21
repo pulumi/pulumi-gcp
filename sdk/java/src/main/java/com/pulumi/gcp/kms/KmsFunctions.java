@@ -3537,6 +3537,7 @@ public final class KmsFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import java.util.ArrayList;
@@ -3658,6 +3659,7 @@ public final class KmsFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import java.util.ArrayList;
@@ -3779,6 +3781,7 @@ public final class KmsFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import java.util.ArrayList;
@@ -3900,6 +3903,7 @@ public final class KmsFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import java.util.ArrayList;
@@ -4021,6 +4025,7 @@ public final class KmsFunctions {
      * import com.pulumi.gcp.compute.Instance;
      * import com.pulumi.gcp.compute.InstanceArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceAccessConfigArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
      * import com.pulumi.gcp.compute.inputs.InstanceBootDiskInitializeParamsArgs;
      * import java.util.ArrayList;

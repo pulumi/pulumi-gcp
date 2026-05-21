@@ -135,7 +135,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterAddonsConfigParallelstoreCsiDriverConfigGetArgs>? ParallelstoreCsiDriverConfig { get; set; }
 
         /// <summary>
-        /// ) The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
+        /// The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
         /// 
         /// This example `AddonsConfig` disables two addons:
         /// </summary>

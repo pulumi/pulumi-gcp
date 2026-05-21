@@ -184,6 +184,15 @@ type Cluster struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigOutput `pulumi:"clusterConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
@@ -196,7 +205,6 @@ type Cluster struct {
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	// Only supported on Dataproc image versions 1.2 and higher.
 	// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-	// ***
 	GracefulDecommissionTimeout pulumi.StringPtrOutput `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
 	// instances in the cluster.
@@ -258,6 +266,15 @@ type clusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig *ClusterClusterConfig `pulumi:"clusterConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
@@ -270,7 +287,6 @@ type clusterState struct {
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	// Only supported on Dataproc image versions 1.2 and higher.
 	// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-	// ***
 	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
 	// instances in the cluster.
@@ -298,6 +314,15 @@ type ClusterState struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// The list of labels (key/value pairs) to be applied to
 	// instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 	// which is the name of the cluster.
@@ -310,7 +335,6 @@ type ClusterState struct {
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	// Only supported on Dataproc image versions 1.2 and higher.
 	// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-	// ***
 	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
 	// instances in the cluster.
@@ -342,6 +366,15 @@ type clusterArgs struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig *ClusterClusterConfig `pulumi:"clusterConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
 	// Does not affect auto scaling decomissioning from an autoscaling policy.
 	// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -350,7 +383,6 @@ type clusterArgs struct {
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	// Only supported on Dataproc image versions 1.2 and higher.
 	// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-	// ***
 	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
 	// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
 	// instances in the cluster.
@@ -377,6 +409,15 @@ type ClusterArgs struct {
 	// Allows you to configure various aspects of the cluster.
 	// Structure defined below.
 	ClusterConfig ClusterClusterConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// Allows graceful decomissioning when you change the number of worker nodes directly through an apply.
 	// Does not affect auto scaling decomissioning from an autoscaling policy.
 	// Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
@@ -385,7 +426,6 @@ type ClusterArgs struct {
 	// [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	// Only supported on Dataproc image versions 1.2 and higher.
 	// For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-	// ***
 	GracefulDecommissionTimeout pulumi.StringPtrInput
 	// The list of labels (key/value pairs) configured on the resource through Terraform and to be applied to
 	// instances in the cluster.
@@ -500,6 +540,18 @@ func (o ClusterOutput) ClusterConfig() ClusterClusterConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterClusterConfigOutput { return v.ClusterConfig }).(ClusterClusterConfigOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// ***
+func (o ClusterOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // The list of labels (key/value pairs) to be applied to
 // instances in the cluster. GCP generates some itself including `goog-dataproc-cluster-name`
 // which is the name of the cluster.
@@ -515,7 +567,6 @@ func (o ClusterOutput) EffectiveLabels() pulumi.StringMapOutput {
 // [Duration](https://developers.google.com/protocol-buffers/docs/proto3#json)).
 // Only supported on Dataproc image versions 1.2 and higher.
 // For more context see the [docs](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters/patch#query-parameters)
-// ***
 func (o ClusterOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.GracefulDecommissionTimeout }).(pulumi.StringPtrOutput)
 }

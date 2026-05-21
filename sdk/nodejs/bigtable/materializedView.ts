@@ -94,6 +94,15 @@ export class MaterializedView extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Set to true to make the MaterializedView protected against deletion.
      */
     declare public readonly deletionProtection: pulumi.Output<boolean | undefined>;
@@ -132,6 +141,7 @@ export class MaterializedView extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MaterializedViewState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["materializedViewId"] = state?.materializedViewId;
@@ -146,6 +156,7 @@ export class MaterializedView extends pulumi.CustomResource {
             if (args?.query === undefined && !opts.urn) {
                 throw new Error("Missing required property 'query'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["materializedViewId"] = args?.materializedViewId;
@@ -162,6 +173,15 @@ export class MaterializedView extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MaterializedView resources.
  */
 export interface MaterializedViewState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Set to true to make the MaterializedView protected against deletion.
      */
@@ -193,6 +213,15 @@ export interface MaterializedViewState {
  * The set of arguments for constructing a MaterializedView resource.
  */
 export interface MaterializedViewArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Set to true to make the MaterializedView protected against deletion.
      */

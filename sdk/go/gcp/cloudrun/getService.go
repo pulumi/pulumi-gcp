@@ -66,7 +66,8 @@ type LookupServiceArgs struct {
 
 // A collection of values returned by getService.
 type LookupServiceResult struct {
-	AutogenerateRevisionName bool `pulumi:"autogenerateRevisionName"`
+	AutogenerateRevisionName bool   `pulumi:"autogenerateRevisionName"`
+	DeletionPolicy           string `pulumi:"deletionPolicy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id        string               `pulumi:"id"`
 	Location  string               `pulumi:"location"`
@@ -121,6 +122,10 @@ func (o LookupServiceResultOutput) ToLookupServiceResultOutputWithContext(ctx co
 
 func (o LookupServiceResultOutput) AutogenerateRevisionName() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceResult) bool { return v.AutogenerateRevisionName }).(pulumi.BoolOutput)
+}
+
+func (o LookupServiceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

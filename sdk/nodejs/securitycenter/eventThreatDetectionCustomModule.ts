@@ -91,6 +91,15 @@ export class EventThreatDetectionCustomModule extends pulumi.CustomResource {
      */
     declare public readonly config: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The human readable name to be displayed for the module.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -137,6 +146,7 @@ export class EventThreatDetectionCustomModule extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EventThreatDetectionCustomModuleState | undefined;
             resourceInputs["config"] = state?.config;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["enablementState"] = state?.enablementState;
             resourceInputs["lastEditor"] = state?.lastEditor;
@@ -159,6 +169,7 @@ export class EventThreatDetectionCustomModule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'type'");
             }
             resourceInputs["config"] = args?.config;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["enablementState"] = args?.enablementState;
             resourceInputs["organization"] = args?.organization;
@@ -181,6 +192,15 @@ export interface EventThreatDetectionCustomModuleState {
      * For the inherited module, its config value is inherited from the ancestor module.
      */
     config?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human readable name to be displayed for the module.
      */
@@ -224,6 +244,15 @@ export interface EventThreatDetectionCustomModuleArgs {
      * For the inherited module, its config value is inherited from the ancestor module.
      */
     config: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The human readable name to be displayed for the module.
      */

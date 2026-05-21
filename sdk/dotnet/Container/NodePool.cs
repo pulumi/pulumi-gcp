@@ -156,6 +156,19 @@ namespace Pulumi.Gcp.Container
         public Output<string> Cluster { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The initial number of nodes for the pool. In
         /// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
         /// this will force recreation of the resource. WARNING: Resizing your node pool manually
@@ -279,8 +292,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
-        /// 
-        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Output("queuedProvisioning")]
         public Output<Outputs.NodePoolQueuedProvisioning?> QueuedProvisioning { get; private set; } = null!;
@@ -363,6 +374,19 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The initial number of nodes for the pool. In
@@ -485,8 +509,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
-        /// 
-        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("queuedProvisioning")]
         public Input<Inputs.NodePoolQueuedProvisioningArgs>? QueuedProvisioning { get; set; }
@@ -531,6 +553,19 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// The initial number of nodes for the pool. In
@@ -680,8 +715,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies node pool-level settings of queued provisioning.
         /// Structure is documented below.
-        /// 
-        /// &lt;a name="NestedAutoscaling"&gt;&lt;/a&gt;The `Autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("queuedProvisioning")]
         public Input<Inputs.NodePoolQueuedProvisioningGetArgs>? QueuedProvisioning { get; set; }

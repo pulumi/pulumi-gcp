@@ -17,6 +17,35 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
     public static final DiskAsyncReplicationState Empty = new DiskAsyncReplicationState();
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * The `secondaryDisk` block includes:
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * The `secondaryDisk` block includes:
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * The primary disk (source of replication).
      * 
      */
@@ -34,16 +63,12 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
      * 
-     * The `secondaryDisk` block includes:
-     * 
      */
     @Import(name="secondaryDisk")
     private @Nullable Output<DiskAsyncReplicationSecondaryDiskArgs> secondaryDisk;
 
     /**
      * @return The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-     * 
-     * The `secondaryDisk` block includes:
      * 
      */
     public Optional<Output<DiskAsyncReplicationSecondaryDiskArgs>> secondaryDisk() {
@@ -53,6 +78,7 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
     private DiskAsyncReplicationState() {}
 
     private DiskAsyncReplicationState(DiskAsyncReplicationState $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.primaryDisk = $.primaryDisk;
         this.secondaryDisk = $.secondaryDisk;
     }
@@ -73,6 +99,41 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
 
         public Builder(DiskAsyncReplicationState defaults) {
             $ = new DiskAsyncReplicationState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * The `secondaryDisk` block includes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * The `secondaryDisk` block includes:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**
@@ -99,8 +160,6 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
         /**
          * @param secondaryDisk The secondary disk (target of replication). You can specify only one value. Structure is documented below.
          * 
-         * The `secondaryDisk` block includes:
-         * 
          * @return builder
          * 
          */
@@ -111,8 +170,6 @@ public final class DiskAsyncReplicationState extends com.pulumi.resources.Resour
 
         /**
          * @param secondaryDisk The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-         * 
-         * The `secondaryDisk` block includes:
          * 
          * @return builder
          * 

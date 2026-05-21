@@ -37,7 +37,14 @@ class AiReasoningEngineArgs:
         :param pulumi.Input['AiReasoningEngineContextSpecArgs'] context_spec: (Optional, Beta)
                Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine.
+               Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is permitted.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input['AiReasoningEngineEncryptionSpecArgs'] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
                If set, this ReasoningEngine and all sub-resources of this ReasoningEngine
@@ -102,7 +109,14 @@ class AiReasoningEngineArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        Optional. The deletion policy for the reasoning engine.
+        Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is permitted.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -217,7 +231,14 @@ class _AiReasoningEngineState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine.
+               Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is permitted.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -302,7 +323,14 @@ class _AiReasoningEngineState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        Optional. The deletion policy for the reasoning engine.
+        Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is permitted.
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -588,7 +616,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
             project=project.project_id,
             role="roles/artifactregistry.reader",
-            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+            member=std.jsondecode_output(input=tenant_mds.output).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
         reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
             display_name="reasoning-engine",
             description="Deployed with BYOC through Terraform",
@@ -904,7 +932,14 @@ class AiReasoningEngine(pulumi.CustomResource):
         :param pulumi.Input[Union['AiReasoningEngineContextSpecArgs', 'AiReasoningEngineContextSpecArgsDict']] context_spec: (Optional, Beta)
                Optional. Configuration for how Agent Engine sub-resources should manage context.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine.
+               Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is permitted.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input[Union['AiReasoningEngineEncryptionSpecArgs', 'AiReasoningEngineEncryptionSpecArgsDict']] encryption_spec: Optional. Customer-managed encryption key spec for a ReasoningEngine.
@@ -1045,7 +1080,7 @@ class AiReasoningEngine(pulumi.CustomResource):
         tenant_ar_reader = gcp.projects.IAMMember("tenant_ar_reader",
             project=project.project_id,
             role="roles/artifactregistry.reader",
-            member=tenant_mds.apply(lambda tenant_mds: std.jsondecode_output(input=tenant_mds.output)).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
+            member=std.jsondecode_output(input=tenant_mds.output).apply(lambda invoke: f"serviceAccount:{invoke.result['output']}"))
         reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
             display_name="reasoning-engine",
             description="Deployed with BYOC through Terraform",
@@ -1443,7 +1478,14 @@ class AiReasoningEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: The timestamp of when the Index was created in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        :param pulumi.Input[_builtins.str] deletion_policy: Optional. The deletion policy for the reasoning engine.
+               Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+               
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is permitted.
         :param pulumi.Input[_builtins.str] description: The description of the ReasoningEngine.
         :param pulumi.Input[_builtins.str] display_name: The display name of the ReasoningEngine.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1509,9 +1551,16 @@ class AiReasoningEngine(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        Optional. The deletion policy for the reasoning engine. Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+        Optional. The deletion policy for the reasoning engine.
+        Setting this to FORCE allows the reasoning engine to be deleted regardless of child undeleted resources.
+
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is permitted.
         """
         return pulumi.get(self, "deletion_policy")
 

@@ -69,6 +69,68 @@ import (
 //	}
 //
 // ```
+// ### Ces Deployment Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-app"),
+//				AppId:       pulumi.String("app-id"),
+//				TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+//					TimeZone: pulumi.String("America/Los_Angeles"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ces.NewDeployment(ctx, "my-deployment", &ces.DeploymentArgs{
+//				Location:    pulumi.String("us"),
+//				DisplayName: pulumi.String("my-deployment"),
+//				App:         my_app.Name,
+//				AppVersion:  pulumi.String("projects/example-project/locations/us/apps/example-app/versions/example-version"),
+//				ChannelProfile: &ces.DeploymentChannelProfileArgs{
+//					ChannelType:           pulumi.String("API"),
+//					DisableBargeInControl: pulumi.Bool(true),
+//					DisableDtmf:           pulumi.Bool(true),
+//					PersonaProperty: &ces.DeploymentChannelProfilePersonaPropertyArgs{
+//						Persona: pulumi.String("CHATTY"),
+//					},
+//					ProfileId: pulumi.String("temp_profile_id"),
+//					WebWidgetConfig: &ces.DeploymentChannelProfileWebWidgetConfigArgs{
+//						Modality:       pulumi.String("CHAT_AND_VOICE"),
+//						Theme:          pulumi.String("DARK"),
+//						WebWidgetTitle: pulumi.String("temp_webwidget_title"),
+//						SecuritySettings: &ces.DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs{
+//							EnablePublicAccess: pulumi.Bool(true),
+//							EnableOriginCheck:  pulumi.Bool(true),
+//							AllowedOrigins: pulumi.StringArray{
+//								pulumi.String("https://example.com"),
+//								pulumi.String("https://test.com"),
+//							},
+//							EnableRecaptcha: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -100,6 +162,13 @@ type Deployment struct {
 	ChannelProfile DeploymentChannelProfileOutput `pulumi:"channelProfile"`
 	// Timestamp when this deployment was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Display name of the deployment.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
@@ -176,6 +245,13 @@ type deploymentState struct {
 	ChannelProfile *DeploymentChannelProfile `pulumi:"channelProfile"`
 	// Timestamp when this deployment was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name of the deployment.
 	DisplayName *string `pulumi:"displayName"`
 	// Etag used to ensure the object hasn't changed during a read-modify-write
@@ -208,6 +284,13 @@ type DeploymentState struct {
 	ChannelProfile DeploymentChannelProfilePtrInput
 	// Timestamp when this deployment was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name of the deployment.
 	DisplayName pulumi.StringPtrInput
 	// Etag used to ensure the object hasn't changed during a read-modify-write
@@ -242,6 +325,13 @@ type deploymentArgs struct {
 	// channel, such as web UI or telephony.
 	// Structure is documented below.
 	ChannelProfile DeploymentChannelProfile `pulumi:"channelProfile"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display name of the deployment.
 	DisplayName string `pulumi:"displayName"`
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -263,6 +353,13 @@ type DeploymentArgs struct {
 	// channel, such as web UI or telephony.
 	// Structure is documented below.
 	ChannelProfile DeploymentChannelProfileInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display name of the deployment.
 	DisplayName pulumi.StringInput
 	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
@@ -381,6 +478,16 @@ func (o DeploymentOutput) ChannelProfile() DeploymentChannelProfileOutput {
 // Timestamp when this deployment was created.
 func (o DeploymentOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DeploymentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Display name of the deployment.

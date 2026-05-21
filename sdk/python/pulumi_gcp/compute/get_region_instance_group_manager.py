@@ -27,7 +27,7 @@ class GetRegionInstanceGroupManagerResult:
     """
     A collection of values returned by getRegionInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, distribution_policy_target_shape=None, distribution_policy_zones=None, fingerprint=None, id=None, instance_flexibility_policies=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, params=None, project=None, region=None, resource_policies=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_size_policies=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, deletion_policy=None, description=None, distribution_policy_target_shape=None, distribution_policy_zones=None, fingerprint=None, id=None, instance_flexibility_policies=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, params=None, project=None, region=None, resource_policies=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_size_policies=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -40,6 +40,9 @@ class GetRegionInstanceGroupManagerResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -153,6 +156,11 @@ class GetRegionInstanceGroupManagerResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -323,6 +331,7 @@ class AwaitableGetRegionInstanceGroupManagerResult(GetRegionInstanceGroupManager
             auto_healing_policies=self.auto_healing_policies,
             base_instance_name=self.base_instance_name,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             distribution_policy_target_shape=self.distribution_policy_target_shape,
             distribution_policy_zones=self.distribution_policy_zones,
@@ -396,6 +405,7 @@ def get_region_instance_group_manager(name: Optional[_builtins.str] = None,
         auto_healing_policies=pulumi.get(__ret__, 'auto_healing_policies'),
         base_instance_name=pulumi.get(__ret__, 'base_instance_name'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         distribution_policy_target_shape=pulumi.get(__ret__, 'distribution_policy_target_shape'),
         distribution_policy_zones=pulumi.get(__ret__, 'distribution_policy_zones'),
@@ -466,6 +476,7 @@ def get_region_instance_group_manager_output(name: pulumi.Input[Optional[Optiona
         auto_healing_policies=pulumi.get(__response__, 'auto_healing_policies'),
         base_instance_name=pulumi.get(__response__, 'base_instance_name'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         distribution_policy_target_shape=pulumi.get(__response__, 'distribution_policy_target_shape'),
         distribution_policy_zones=pulumi.get(__response__, 'distribution_policy_zones'),

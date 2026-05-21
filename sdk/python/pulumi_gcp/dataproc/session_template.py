@@ -21,6 +21,7 @@ __all__ = ['SessionTemplateArgs', 'SessionTemplate']
 @pulumi.input_type
 class SessionTemplateArgs:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_config: pulumi.Input[Optional['SessionTemplateEnvironmentConfigArgs']] = None,
                  jupyter_session: pulumi.Input[Optional['SessionTemplateJupyterSessionArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -32,6 +33,12 @@ class SessionTemplateArgs:
         """
         The set of arguments for constructing a SessionTemplate resource.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['SessionTemplateEnvironmentConfigArgs'] environment_config: Environment configuration for the session execution.
                Structure is documented below.
         :param pulumi.Input['SessionTemplateJupyterSessionArgs'] jupyter_session: Jupyter configuration for an interactive session.
@@ -49,6 +56,8 @@ class SessionTemplateArgs:
                Structure is documented below.
         :param pulumi.Input['SessionTemplateSparkConnectSessionArgs'] spark_connect_session: Spark connect configuration for an interactive session.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if environment_config is not None:
             pulumi.set(__self__, "environment_config", environment_config)
         if jupyter_session is not None:
@@ -65,6 +74,23 @@ class SessionTemplateArgs:
             pulumi.set(__self__, "runtime_config", runtime_config)
         if spark_connect_session is not None:
             pulumi.set(__self__, "spark_connect_session", spark_connect_session)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentConfig")
@@ -176,6 +202,7 @@ class _SessionTemplateState:
     def __init__(__self__, *,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  creator: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  environment_config: pulumi.Input[Optional['SessionTemplateEnvironmentConfigArgs']] = None,
                  jupyter_session: pulumi.Input[Optional['SessionTemplateJupyterSessionArgs']] = None,
@@ -193,6 +220,12 @@ class _SessionTemplateState:
 
         :param pulumi.Input[_builtins.str] create_time: The time when the session template was created.
         :param pulumi.Input[_builtins.str] creator: The email address of the user who created the session template.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['SessionTemplateEnvironmentConfigArgs'] environment_config: Environment configuration for the session execution.
                Structure is documented below.
@@ -219,6 +252,8 @@ class _SessionTemplateState:
             pulumi.set(__self__, "create_time", create_time)
         if creator is not None:
             pulumi.set(__self__, "creator", creator)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if environment_config is not None:
@@ -267,6 +302,23 @@ class _SessionTemplateState:
     @creator.setter
     def creator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creator", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -428,6 +480,7 @@ class SessionTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']]] = None,
                  jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -624,6 +677,12 @@ class SessionTemplate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']] environment_config: Environment configuration for the session execution.
                Structure is documented below.
         :param pulumi.Input[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']] jupyter_session: Jupyter configuration for an interactive session.
@@ -847,6 +906,7 @@ class SessionTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']]] = None,
                  jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -864,6 +924,7 @@ class SessionTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SessionTemplateArgs.__new__(SessionTemplateArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["environment_config"] = environment_config
             __props__.__dict__["jupyter_session"] = jupyter_session
             __props__.__dict__["labels"] = labels
@@ -892,6 +953,7 @@ class SessionTemplate(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             creator: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             environment_config: pulumi.Input[Optional[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']]] = None,
             jupyter_session: pulumi.Input[Optional[Union['SessionTemplateJupyterSessionArgs', 'SessionTemplateJupyterSessionArgsDict']]] = None,
@@ -913,6 +975,12 @@ class SessionTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: The time when the session template was created.
         :param pulumi.Input[_builtins.str] creator: The email address of the user who created the session template.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['SessionTemplateEnvironmentConfigArgs', 'SessionTemplateEnvironmentConfigArgsDict']] environment_config: Environment configuration for the session execution.
                Structure is documented below.
@@ -941,6 +1009,7 @@ class SessionTemplate(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["creator"] = creator
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["environment_config"] = environment_config
         __props__.__dict__["jupyter_session"] = jupyter_session
@@ -970,6 +1039,19 @@ class SessionTemplate(pulumi.CustomResource):
         The email address of the user who created the session template.
         """
         return pulumi.get(self, "creator")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

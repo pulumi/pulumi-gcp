@@ -176,6 +176,15 @@ export class Target extends pulumi.CustomResource {
      */
     declare public readonly customTarget: pulumi.Output<outputs.clouddeploy.TargetCustomTarget | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Optional. The deploy parameters to use for this target.
      */
     declare public readonly deployParameters: pulumi.Output<{[key: string]: string} | undefined>;
@@ -273,6 +282,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["associatedEntities"] = state?.associatedEntities;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["customTarget"] = state?.customTarget;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deployParameters"] = state?.deployParameters;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
@@ -300,6 +310,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["anthosCluster"] = args?.anthosCluster;
             resourceInputs["associatedEntities"] = args?.associatedEntities;
             resourceInputs["customTarget"] = args?.customTarget;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deployParameters"] = args?.deployParameters;
             resourceInputs["description"] = args?.description;
             resourceInputs["executionConfigs"] = args?.executionConfigs;
@@ -354,6 +365,15 @@ export interface TargetState {
      * Optional. Information specifying a Custom Target.
      */
     customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The deploy parameters to use for this target.
      */
@@ -458,6 +478,15 @@ export interface TargetArgs {
      * Optional. Information specifying a Custom Target.
      */
     customTarget?: pulumi.Input<inputs.clouddeploy.TargetCustomTarget | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Optional. The deploy parameters to use for this target.
      */

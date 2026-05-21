@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.Redis
         public readonly string BackupCollection;
         public readonly string CreateTime;
         public readonly ImmutableArray<Outputs.GetClusterCrossClusterReplicationConfigResult> CrossClusterReplicationConfigs;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetClusterDiscoveryEndpointResult> DiscoveryEndpoints;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
@@ -203,6 +204,8 @@ namespace Pulumi.Gcp.Redis
             string createTime,
 
             ImmutableArray<Outputs.GetClusterCrossClusterReplicationConfigResult> crossClusterReplicationConfigs,
+
+            string deletionPolicy,
 
             bool deletionProtectionEnabled,
 
@@ -278,6 +281,7 @@ namespace Pulumi.Gcp.Redis
             BackupCollection = backupCollection;
             CreateTime = createTime;
             CrossClusterReplicationConfigs = crossClusterReplicationConfigs;
+            DeletionPolicy = deletionPolicy;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DiscoveryEndpoints = discoveryEndpoints;
             EffectiveLabels = effectiveLabels;

@@ -26,7 +26,7 @@ class GetRegionSslCertificateResult:
     """
     A collection of values returned by getRegionSslCertificate.
     """
-    def __init__(__self__, certificate=None, certificate_id=None, creation_timestamp=None, description=None, expire_time=None, id=None, name=None, name_prefix=None, private_key=None, private_key_wo=None, private_key_wo_version=None, project=None, region=None, self_link=None):
+    def __init__(__self__, certificate=None, certificate_id=None, creation_timestamp=None, deletion_policy=None, description=None, expire_time=None, id=None, name=None, name_prefix=None, private_key=None, private_key_wo=None, private_key_wo_version=None, project=None, region=None, self_link=None):
         if certificate and not isinstance(certificate, str):
             raise TypeError("Expected argument 'certificate' to be a str")
         pulumi.set(__self__, "certificate", certificate)
@@ -36,6 +36,9 @@ class GetRegionSslCertificateResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -84,6 +87,11 @@ class GetRegionSslCertificateResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -153,6 +161,7 @@ class AwaitableGetRegionSslCertificateResult(GetRegionSslCertificateResult):
             certificate=self.certificate,
             certificate_id=self.certificate_id,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             expire_time=self.expire_time,
             id=self.id,
@@ -205,6 +214,7 @@ def get_region_ssl_certificate(name: Optional[_builtins.str] = None,
         certificate=pulumi.get(__ret__, 'certificate'),
         certificate_id=pulumi.get(__ret__, 'certificate_id'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         expire_time=pulumi.get(__ret__, 'expire_time'),
         id=pulumi.get(__ret__, 'id'),
@@ -254,6 +264,7 @@ def get_region_ssl_certificate_output(name: pulumi.Input[Optional[_builtins.str]
         certificate=pulumi.get(__response__, 'certificate'),
         certificate_id=pulumi.get(__response__, 'certificate_id'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         expire_time=pulumi.get(__response__, 'expire_time'),
         id=pulumi.get(__response__, 'id'),

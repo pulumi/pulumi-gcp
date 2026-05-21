@@ -181,6 +181,13 @@ type ListingSubscription struct {
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringOutput `pulumi:"dataExchangeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The destination dataset for this subscription.
 	// Structure is documented below.
 	DestinationDataset ListingSubscriptionDestinationDatasetOutput `pulumi:"destinationDataset"`
@@ -267,6 +274,13 @@ type listingSubscriptionState struct {
 	CreationTime *string `pulumi:"creationTime"`
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId *string `pulumi:"dataExchangeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The destination dataset for this subscription.
 	// Structure is documented below.
 	DestinationDataset *ListingSubscriptionDestinationDataset `pulumi:"destinationDataset"`
@@ -312,6 +326,13 @@ type ListingSubscriptionState struct {
 	CreationTime pulumi.StringPtrInput
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The destination dataset for this subscription.
 	// Structure is documented below.
 	DestinationDataset ListingSubscriptionDestinationDatasetPtrInput
@@ -356,6 +377,13 @@ func (ListingSubscriptionState) ElementType() reflect.Type {
 type listingSubscriptionArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId string `pulumi:"dataExchangeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The destination dataset for this subscription.
 	// Structure is documented below.
 	DestinationDataset ListingSubscriptionDestinationDataset `pulumi:"destinationDataset"`
@@ -372,6 +400,13 @@ type listingSubscriptionArgs struct {
 type ListingSubscriptionArgs struct {
 	// The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 	DataExchangeId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The destination dataset for this subscription.
 	// Structure is documented below.
 	DestinationDataset ListingSubscriptionDestinationDatasetInput
@@ -485,6 +520,16 @@ func (o ListingSubscriptionOutput) CreationTime() pulumi.StringOutput {
 // The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
 func (o ListingSubscriptionOutput) DataExchangeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ListingSubscription) pulumi.StringOutput { return v.DataExchangeId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ListingSubscriptionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ListingSubscription) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The destination dataset for this subscription.

@@ -173,6 +173,13 @@ type Intent struct {
 	// (i.e. default platform).
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayOutput `pulumi:"defaultResponsePlatforms"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
@@ -260,6 +267,13 @@ type intentState struct {
 	// (i.e. default platform).
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of this intent to be displayed on the console.
 	DisplayName *string `pulumi:"displayName"`
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
@@ -315,6 +329,13 @@ type IntentState struct {
 	// (i.e. default platform).
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringPtrInput
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
@@ -374,6 +395,13 @@ type intentArgs struct {
 	// (i.e. default platform).
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of this intent to be displayed on the console.
 	DisplayName string `pulumi:"displayName"`
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
@@ -419,6 +447,13 @@ type IntentArgs struct {
 	// (i.e. default platform).
 	// Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 	DefaultResponsePlatforms pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of this intent to be displayed on the console.
 	DisplayName pulumi.StringInput
 	// The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of
@@ -553,6 +588,16 @@ func (o IntentOutput) Action() pulumi.StringOutput {
 // Each value may be one of: `FACEBOOK`, `SLACK`, `TELEGRAM`, `KIK`, `SKYPE`, `LINE`, `VIBER`, `ACTIONS_ON_GOOGLE`, `GOOGLE_HANGOUTS`.
 func (o IntentOutput) DefaultResponsePlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Intent) pulumi.StringArrayOutput { return v.DefaultResponsePlatforms }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o IntentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Intent) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The name of this intent to be displayed on the console.

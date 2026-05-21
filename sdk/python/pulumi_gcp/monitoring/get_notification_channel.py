@@ -27,7 +27,10 @@ class GetNotificationChannelResult:
     """
     A collection of values returned by getNotificationChannel.
     """
-    def __init__(__self__, description=None, display_name=None, enabled=None, force_delete=None, id=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
+    def __init__(__self__, deletion_policy=None, description=None, display_name=None, enabled=None, force_delete=None, id=None, labels=None, name=None, project=None, sensitive_labels=None, type=None, user_labels=None, verification_status=None):
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -64,6 +67,11 @@ class GetNotificationChannelResult:
         if verification_status and not isinstance(verification_status, str):
             raise TypeError("Expected argument 'verification_status' to be a str")
         pulumi.set(__self__, "verification_status", verification_status)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -154,6 +162,7 @@ class AwaitableGetNotificationChannelResult(GetNotificationChannelResult):
         if False:
             yield self
         return GetNotificationChannelResult(
+            deletion_policy=self.deletion_policy,
             description=self.description,
             display_name=self.display_name,
             enabled=self.enabled,
@@ -237,6 +246,7 @@ def get_notification_channel(display_name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult).value
 
     return AwaitableGetNotificationChannelResult(
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
         enabled=pulumi.get(__ret__, 'enabled'),
@@ -317,6 +327,7 @@ def get_notification_channel_output(display_name: pulumi.Input[Optional[Optional
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult)
     return __ret__.apply(lambda __response__: GetNotificationChannelResult(
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         display_name=pulumi.get(__response__, 'display_name'),
         enabled=pulumi.get(__response__, 'enabled'),

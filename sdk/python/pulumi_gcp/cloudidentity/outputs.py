@@ -512,6 +512,7 @@ class GetGroupMembershipsMembershipResult(dict):
     def __init__(__self__, *,
                  create_ignore_already_exists: _builtins.bool,
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  group: _builtins.str,
                  member_keys: Sequence['outputs.GetGroupMembershipsMembershipMemberKeyResult'],
                  name: _builtins.str,
@@ -522,6 +523,12 @@ class GetGroupMembershipsMembershipResult(dict):
         """
         :param _builtins.bool create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param _builtins.str create_time: The time when the Membership was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str group: The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
         :param Sequence['GetGroupMembershipsMembershipMemberKeyArgs'] member_keys: EntityKey of the member.  Structure is documented below.
         :param _builtins.str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
@@ -532,6 +539,7 @@ class GetGroupMembershipsMembershipResult(dict):
         """
         pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "group", group)
         pulumi.set(__self__, "member_keys", member_keys)
         pulumi.set(__self__, "name", name)
@@ -555,6 +563,19 @@ class GetGroupMembershipsMembershipResult(dict):
         The time when the Membership was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -863,6 +884,7 @@ class GetGroupsGroupResult(dict):
     def __init__(__self__, *,
                  additional_group_keys: Sequence['outputs.GetGroupsGroupAdditionalGroupKeyResult'],
                  create_time: _builtins.str,
+                 deletion_policy: _builtins.str,
                  description: _builtins.str,
                  display_name: _builtins.str,
                  group_keys: Sequence['outputs.GetGroupsGroupGroupKeyResult'],
@@ -874,6 +896,12 @@ class GetGroupsGroupResult(dict):
         """
         :param Sequence['GetGroupsGroupAdditionalGroupKeyArgs'] additional_group_keys: Additional group keys associated with the Group
         :param _builtins.str create_time: The time when the Group was created.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str description: An extended description to help users determine the purpose of a Group.
         :param _builtins.str display_name: The display name of the Group.
         :param Sequence['GetGroupsGroupGroupKeyArgs'] group_keys: EntityKey of the Group.  Structure is documented below.
@@ -891,6 +919,7 @@ class GetGroupsGroupResult(dict):
         """
         pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "group_keys", group_keys)
@@ -915,6 +944,19 @@ class GetGroupsGroupResult(dict):
         The time when the Group was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

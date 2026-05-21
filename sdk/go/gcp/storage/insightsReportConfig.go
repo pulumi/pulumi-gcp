@@ -126,6 +126,13 @@ type InsightsReportConfig struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
 	CsvOptions InsightsReportConfigCsvOptionsPtrOutput `pulumi:"csvOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// If set, all the inventory report details associated with this report configuration are deleted.
@@ -184,6 +191,13 @@ type insightsReportConfigState struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
 	CsvOptions *InsightsReportConfigCsvOptions `pulumi:"csvOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
 	// If set, all the inventory report details associated with this report configuration are deleted.
@@ -210,6 +224,13 @@ type InsightsReportConfigState struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
 	CsvOptions InsightsReportConfigCsvOptionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
 	// If set, all the inventory report details associated with this report configuration are deleted.
@@ -240,6 +261,13 @@ type insightsReportConfigArgs struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
 	CsvOptions *InsightsReportConfigCsvOptions `pulumi:"csvOptions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName *string `pulumi:"displayName"`
 	// If set, all the inventory report details associated with this report configuration are deleted.
@@ -265,6 +293,13 @@ type InsightsReportConfigArgs struct {
 	// Options for configuring the format of the inventory report CSV file.
 	// Structure is documented below.
 	CsvOptions InsightsReportConfigCsvOptionsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.
 	DisplayName pulumi.StringPtrInput
 	// If set, all the inventory report details associated with this report configuration are deleted.
@@ -376,6 +411,16 @@ func (o InsightsReportConfigOutput) ToInsightsReportConfigOutputWithContext(ctx 
 // Structure is documented below.
 func (o InsightsReportConfigOutput) CsvOptions() InsightsReportConfigCsvOptionsPtrOutput {
 	return o.ApplyT(func(v *InsightsReportConfig) InsightsReportConfigCsvOptionsPtrOutput { return v.CsvOptions }).(InsightsReportConfigCsvOptionsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o InsightsReportConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *InsightsReportConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The editable display name of the inventory report configuration. Has a limit of 256 characters. Can be empty.

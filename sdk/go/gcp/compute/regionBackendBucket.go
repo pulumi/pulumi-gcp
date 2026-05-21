@@ -217,6 +217,13 @@ type RegionBackendBucket struct {
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -285,6 +292,13 @@ type regionBackendBucketState struct {
 	BucketName *string `pulumi:"bucketName"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description *string `pulumi:"description"`
@@ -318,6 +332,13 @@ type RegionBackendBucketState struct {
 	BucketName pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrInput
@@ -353,6 +374,13 @@ type regionBackendBucketArgs struct {
 	// Cloud Storage bucket name. The bucket must be in the same region as this
 	// backend bucket.
 	BucketName string `pulumi:"bucketName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description *string `pulumi:"description"`
@@ -383,6 +411,13 @@ type RegionBackendBucketArgs struct {
 	// Cloud Storage bucket name. The bucket must be in the same region as this
 	// backend bucket.
 	BucketName pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrInput
@@ -504,6 +539,16 @@ func (o RegionBackendBucketOutput) BucketName() pulumi.StringOutput {
 // Creation timestamp in RFC3339 text format.
 func (o RegionBackendBucketOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendBucket) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RegionBackendBucketOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegionBackendBucket) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional textual description of the resource; provided by the

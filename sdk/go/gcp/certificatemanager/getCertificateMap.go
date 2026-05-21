@@ -62,6 +62,7 @@ type GetCertificateMapArgs struct {
 // A collection of values returned by getCertificateMap.
 type GetCertificateMapResult struct {
 	CreateTime      string                        `pulumi:"createTime"`
+	DeletionPolicy  string                        `pulumi:"deletionPolicy"`
 	Description     string                        `pulumi:"description"`
 	EffectiveLabels map[string]string             `pulumi:"effectiveLabels"`
 	GclbTargets     []GetCertificateMapGclbTarget `pulumi:"gclbTargets"`
@@ -115,6 +116,10 @@ func (o GetCertificateMapResultOutput) ToGetCertificateMapResultOutputWithContex
 
 func (o GetCertificateMapResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateMapResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateMapResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateMapResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetCertificateMapResultOutput) Description() pulumi.StringOutput {

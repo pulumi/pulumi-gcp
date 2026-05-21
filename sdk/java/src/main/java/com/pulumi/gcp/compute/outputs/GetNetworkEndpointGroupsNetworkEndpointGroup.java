@@ -18,6 +18,16 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
      */
     private Integer defaultPort;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return An optional description of this resource. Provide this property when
      * you create the resource.
      * 
@@ -54,7 +64,7 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
      * 
-     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT. Default value: &#34;GCE_VM_IP_PORT&#34; Possible values: [&#34;GCE_VM_IP&#34;, &#34;GCE_VM_IP_PORT&#34;, &#34;NON_GCP_PRIVATE_IP_PORT&#34;, &#34;INTERNET_IP_PORT&#34;, &#34;INTERNET_FQDN_PORT&#34;, &#34;SERVERLESS&#34;, &#34;PRIVATE_SERVICE_CONNECT&#34;]
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT. Default value: &#34;GCE_VM_IP_PORT&#34; Possible values: [&#34;GCE_VM_IP&#34;, &#34;GCE_VM_IP_PORT&#34;, &#34;NON_GCP_PRIVATE_IP_PORT&#34;, &#34;INTERNET_IP_PORT&#34;, &#34;INTERNET_FQDN_PORT&#34;, &#34;SERVERLESS&#34;, &#34;PRIVATE_SERVICE_CONNECT&#34;, &#34;GCE_VM_IP_DEDICATED_BACKEND&#34;]
      * 
      */
     private String networkEndpointType;
@@ -89,6 +99,18 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
      */
     public Integer defaultPort() {
         return this.defaultPort;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return An optional description of this resource. Provide this property when
@@ -135,7 +157,7 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
      * INTERNAL_MANAGED, and INTERNAL_SELF_MANAGED and 2) support the RATE or
      * CONNECTION balancing modes.
      * 
-     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT. Default value: &#34;GCE_VM_IP_PORT&#34; Possible values: [&#34;GCE_VM_IP&#34;, &#34;GCE_VM_IP_PORT&#34;, &#34;NON_GCP_PRIVATE_IP_PORT&#34;, &#34;INTERNET_IP_PORT&#34;, &#34;INTERNET_FQDN_PORT&#34;, &#34;SERVERLESS&#34;, &#34;PRIVATE_SERVICE_CONNECT&#34;]
+     * Possible values include: GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_IP_PORT, INTERNET_FQDN_PORT, SERVERLESS, and PRIVATE_SERVICE_CONNECT. Default value: &#34;GCE_VM_IP_PORT&#34; Possible values: [&#34;GCE_VM_IP&#34;, &#34;GCE_VM_IP_PORT&#34;, &#34;NON_GCP_PRIVATE_IP_PORT&#34;, &#34;INTERNET_IP_PORT&#34;, &#34;INTERNET_FQDN_PORT&#34;, &#34;SERVERLESS&#34;, &#34;PRIVATE_SERVICE_CONNECT&#34;, &#34;GCE_VM_IP_DEDICATED_BACKEND&#34;]
      * 
      */
     public String networkEndpointType() {
@@ -184,6 +206,7 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
     @CustomType.Builder
     public static final class Builder {
         private Integer defaultPort;
+        private String deletionPolicy;
         private String description;
         private Integer generatedId;
         private String name;
@@ -198,6 +221,7 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
         public Builder(GetNetworkEndpointGroupsNetworkEndpointGroup defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.defaultPort = defaults.defaultPort;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.generatedId = defaults.generatedId;
     	      this.name = defaults.name;
@@ -216,6 +240,14 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
               throw new MissingRequiredPropertyException("GetNetworkEndpointGroupsNetworkEndpointGroup", "defaultPort");
             }
             this.defaultPort = defaultPort;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetNetworkEndpointGroupsNetworkEndpointGroup", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -301,6 +333,7 @@ public final class GetNetworkEndpointGroupsNetworkEndpointGroup {
         public GetNetworkEndpointGroupsNetworkEndpointGroup build() {
             final var _resultValue = new GetNetworkEndpointGroupsNetworkEndpointGroup();
             _resultValue.defaultPort = defaultPort;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.generatedId = generatedId;
             _resultValue.name = name;

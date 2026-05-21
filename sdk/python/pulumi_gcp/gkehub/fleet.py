@@ -22,6 +22,7 @@ __all__ = ['FleetArgs', 'Fleet']
 class FleetArgs:
     def __init__(__self__, *,
                  default_cluster_config: pulumi.Input[Optional['FleetDefaultClusterConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -29,6 +30,12 @@ class FleetArgs:
 
         :param pulumi.Input['FleetDefaultClusterConfigArgs'] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -36,6 +43,8 @@ class FleetArgs:
         """
         if default_cluster_config is not None:
             pulumi.set(__self__, "default_cluster_config", default_cluster_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
@@ -53,6 +62,23 @@ class FleetArgs:
     @default_cluster_config.setter
     def default_cluster_config(self, value: pulumi.Input[Optional['FleetDefaultClusterConfigArgs']]):
         pulumi.set(self, "default_cluster_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -87,6 +113,7 @@ class _FleetState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  default_cluster_config: pulumi.Input[Optional['FleetDefaultClusterConfigArgs']] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  states: pulumi.Input[Optional[Sequence[pulumi.Input['FleetStateArgs']]]] = None,
@@ -99,6 +126,12 @@ class _FleetState:
         :param pulumi.Input['FleetDefaultClusterConfigArgs'] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: The time the fleet was deleted, in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -116,6 +149,8 @@ class _FleetState:
             pulumi.set(__self__, "default_cluster_config", default_cluster_config)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
@@ -163,6 +198,23 @@ class _FleetState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -237,6 +289,7 @@ class Fleet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -286,6 +339,12 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -355,6 +414,7 @@ class Fleet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -367,6 +427,7 @@ class Fleet(pulumi.CustomResource):
             __props__ = FleetArgs.__new__(FleetArgs)
 
             __props__.__dict__["default_cluster_config"] = default_cluster_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -387,6 +448,7 @@ class Fleet(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             default_cluster_config: pulumi.Input[Optional[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             states: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FleetStateArgs', 'FleetStateArgsDict']]]]] = None,
@@ -403,6 +465,12 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[Union['FleetDefaultClusterConfigArgs', 'FleetDefaultClusterConfigArgsDict']] default_cluster_config: The default cluster configurations to apply across the fleet.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_time: The time the fleet was deleted, in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -421,6 +489,7 @@ class Fleet(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["default_cluster_config"] = default_cluster_config
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["project"] = project
         __props__.__dict__["states"] = states
@@ -452,6 +521,19 @@ class Fleet(pulumi.CustomResource):
         The time the fleet was deleted, in RFC3339 text format.
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

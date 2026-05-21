@@ -158,6 +158,7 @@ namespace Pulumi.Gcp.VMwareEngine
     public sealed class GetNetworkResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string Etag;
         /// <summary>
@@ -176,6 +177,8 @@ namespace Pulumi.Gcp.VMwareEngine
         [OutputConstructor]
         private GetNetworkResult(
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -200,6 +203,7 @@ namespace Pulumi.Gcp.VMwareEngine
             ImmutableArray<Outputs.GetNetworkVpcNetworkResult> vpcNetworks)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Etag = etag;
             Id = id;

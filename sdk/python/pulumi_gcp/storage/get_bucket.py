@@ -27,7 +27,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, hierarchical_namespaces=None, id=None, ip_filters=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, time_created=None, uniform_bucket_level_access=None, updated=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, deletion_policy=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, hierarchical_namespaces=None, id=None, ip_filters=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, project_number=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, soft_delete_policies=None, storage_class=None, time_created=None, uniform_bucket_level_access=None, updated=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -40,6 +40,9 @@ class GetBucketResult:
         if default_event_based_hold and not isinstance(default_event_based_hold, bool):
             raise TypeError("Expected argument 'default_event_based_hold' to be a bool")
         pulumi.set(__self__, "default_event_based_hold", default_event_based_hold)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels and not isinstance(effective_labels, dict):
             raise TypeError("Expected argument 'effective_labels' to be a dict")
         pulumi.set(__self__, "effective_labels", effective_labels)
@@ -144,6 +147,11 @@ class GetBucketResult:
     @pulumi.getter(name="defaultEventBasedHold")
     def default_event_based_hold(self) -> _builtins.bool:
         return pulumi.get(self, "default_event_based_hold")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -299,6 +307,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             cors=self.cors,
             custom_placement_configs=self.custom_placement_configs,
             default_event_based_hold=self.default_event_based_hold,
+            deletion_policy=self.deletion_policy,
             effective_labels=self.effective_labels,
             enable_object_retention=self.enable_object_retention,
             encryptions=self.encryptions,
@@ -362,6 +371,7 @@ def get_bucket(name: Optional[_builtins.str] = None,
         cors=pulumi.get(__ret__, 'cors'),
         custom_placement_configs=pulumi.get(__ret__, 'custom_placement_configs'),
         default_event_based_hold=pulumi.get(__ret__, 'default_event_based_hold'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         enable_object_retention=pulumi.get(__ret__, 'enable_object_retention'),
         encryptions=pulumi.get(__ret__, 'encryptions'),
@@ -422,6 +432,7 @@ def get_bucket_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         cors=pulumi.get(__response__, 'cors'),
         custom_placement_configs=pulumi.get(__response__, 'custom_placement_configs'),
         default_event_based_hold=pulumi.get(__response__, 'default_event_based_hold'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         enable_object_retention=pulumi.get(__response__, 'enable_object_retention'),
         encryptions=pulumi.get(__response__, 'encryptions'),

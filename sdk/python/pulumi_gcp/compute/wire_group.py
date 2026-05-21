@@ -23,6 +23,7 @@ class WireGroupArgs:
     def __init__(__self__, *,
                  cross_site_network: pulumi.Input[_builtins.str],
                  admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['WireGroupEndpointArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,6 +35,12 @@ class WireGroupArgs:
 
         :param pulumi.Input[_builtins.str] cross_site_network: Required cross site network to which wire group belongs.
         :param pulumi.Input[_builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointArgs']]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
@@ -53,6 +60,8 @@ class WireGroupArgs:
         pulumi.set(__self__, "cross_site_network", cross_site_network)
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if endpoints is not None:
@@ -89,6 +98,23 @@ class WireGroupArgs:
     @admin_enabled.setter
     def admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "admin_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -178,6 +204,7 @@ class _WireGroupState:
                  admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['WireGroupEndpointArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -192,6 +219,12 @@ class _WireGroupState:
         :param pulumi.Input[_builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] cross_site_network: Required cross site network to which wire group belongs.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['WireGroupEndpointArgs']]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
@@ -218,6 +251,8 @@ class _WireGroupState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if cross_site_network is not None:
             pulumi.set(__self__, "cross_site_network", cross_site_network)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if endpoints is not None:
@@ -270,6 +305,23 @@ class _WireGroupState:
     @cross_site_network.setter
     def cross_site_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_site_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -387,6 +439,7 @@ class WireGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -474,6 +527,12 @@ class WireGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[_builtins.str] cross_site_network: Required cross site network to which wire group belongs.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
@@ -589,6 +648,7 @@ class WireGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -608,6 +668,7 @@ class WireGroup(pulumi.CustomResource):
             if cross_site_network is None and not opts.urn:
                 raise TypeError("Missing required property 'cross_site_network'")
             __props__.__dict__["cross_site_network"] = cross_site_network
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["endpoints"] = endpoints
             __props__.__dict__["name"] = name
@@ -630,6 +691,7 @@ class WireGroup(pulumi.CustomResource):
             admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             cross_site_network: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -648,6 +710,12 @@ class WireGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] admin_enabled: Indicates whether the wire group is administratively enabled.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[_builtins.str] cross_site_network: Required cross site network to which wire group belongs.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['WireGroupEndpointArgs', 'WireGroupEndpointArgsDict']]]] endpoints: Endpoints grouped by location, each mapping to interconnect configurations.
                Structure is documented below.
@@ -675,6 +743,7 @@ class WireGroup(pulumi.CustomResource):
         __props__.__dict__["admin_enabled"] = admin_enabled
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["cross_site_network"] = cross_site_network
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["endpoints"] = endpoints
         __props__.__dict__["name"] = name
@@ -708,6 +777,19 @@ class WireGroup(pulumi.CustomResource):
         Required cross site network to which wire group belongs.
         """
         return pulumi.get(self, "cross_site_network")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

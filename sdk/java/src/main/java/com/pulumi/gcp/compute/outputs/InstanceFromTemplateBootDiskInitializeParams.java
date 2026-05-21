@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromTemplateBootDiskInitializePara
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -46,6 +47,11 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
      * 
      */
     private @Nullable Integer provisionedThroughput;
+    /**
+     * @return A list of short names or selfLinks of zones in which to create a regional disk.
+     * 
+     */
+    private @Nullable List<String> replicaZones;
     /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
@@ -131,6 +137,13 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
         return Optional.ofNullable(this.provisionedThroughput);
     }
     /**
+     * @return A list of short names or selfLinks of zones in which to create a regional disk.
+     * 
+     */
+    public List<String> replicaZones() {
+        return this.replicaZones == null ? List.of() : this.replicaZones;
+    }
+    /**
      * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT &amp; PATCH) when empty.
      * 
      */
@@ -202,6 +215,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
         private @Nullable Map<String,String> labels;
         private @Nullable Integer provisionedIops;
         private @Nullable Integer provisionedThroughput;
+        private @Nullable List<String> replicaZones;
         private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable String resourcePolicies;
         private @Nullable Integer size;
@@ -219,6 +233,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     	      this.labels = defaults.labels;
     	      this.provisionedIops = defaults.provisionedIops;
     	      this.provisionedThroughput = defaults.provisionedThroughput;
+    	      this.replicaZones = defaults.replicaZones;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.size = defaults.size;
@@ -264,6 +279,15 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
 
             this.provisionedThroughput = provisionedThroughput;
             return this;
+        }
+        @CustomType.Setter
+        public Builder replicaZones(@Nullable List<String> replicaZones) {
+
+            this.replicaZones = replicaZones;
+            return this;
+        }
+        public Builder replicaZones(String... replicaZones) {
+            return replicaZones(List.of(replicaZones));
         }
         @CustomType.Setter
         public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
@@ -321,6 +345,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
             _resultValue.labels = labels;
             _resultValue.provisionedIops = provisionedIops;
             _resultValue.provisionedThroughput = provisionedThroughput;
+            _resultValue.replicaZones = replicaZones;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.size = size;

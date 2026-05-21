@@ -188,6 +188,17 @@ namespace Pulumi.Gcp.NetworkServices
         public Output<Outputs.EdgeCacheOriginAwsV4Authentication?> AwsV4Authentication { get; private set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A human-readable description of the resource.
         /// </summary>
         [Output("description")]
@@ -383,6 +394,17 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<Inputs.EdgeCacheOriginAwsV4AuthenticationArgs>? AwsV4Authentication { get; set; }
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A human-readable description of the resource.
         /// </summary>
         [Input("description")]
@@ -532,6 +554,17 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("awsV4Authentication")]
         public Input<Inputs.EdgeCacheOriginAwsV4AuthenticationGetArgs>? AwsV4Authentication { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// A human-readable description of the resource.

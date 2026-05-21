@@ -43,6 +43,13 @@ type PreventionDiscoveryConfig struct {
 	Actions PreventionDiscoveryConfigActionArrayOutput `pulumi:"actions"`
 	// Output only. The creation timestamp of a DiscoveryConfig.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Display Name (max 1000 Chars)
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
@@ -117,6 +124,13 @@ type preventionDiscoveryConfigState struct {
 	Actions []PreventionDiscoveryConfigAction `pulumi:"actions"`
 	// Output only. The creation timestamp of a DiscoveryConfig.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display Name (max 1000 Chars)
 	DisplayName *string `pulumi:"displayName"`
 	// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
@@ -156,6 +170,13 @@ type PreventionDiscoveryConfigState struct {
 	Actions PreventionDiscoveryConfigActionArrayInput
 	// Output only. The creation timestamp of a DiscoveryConfig.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display Name (max 1000 Chars)
 	DisplayName pulumi.StringPtrInput
 	// Output only. A stream of errors encountered when the config was activated. Repeated errors may result in the config automatically being paused. Output only field. Will return the last 100 errors. Whenever the config is modified this list will be cleared.
@@ -197,6 +218,13 @@ type preventionDiscoveryConfigArgs struct {
 	// Actions to execute at the completion of scanning
 	// Structure is documented below.
 	Actions []PreventionDiscoveryConfigAction `pulumi:"actions"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display Name (max 1000 Chars)
 	DisplayName *string `pulumi:"displayName"`
 	// Detection logic for profile generation
@@ -226,6 +254,13 @@ type PreventionDiscoveryConfigArgs struct {
 	// Actions to execute at the completion of scanning
 	// Structure is documented below.
 	Actions PreventionDiscoveryConfigActionArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display Name (max 1000 Chars)
 	DisplayName pulumi.StringPtrInput
 	// Detection logic for profile generation
@@ -346,6 +381,16 @@ func (o PreventionDiscoveryConfigOutput) Actions() PreventionDiscoveryConfigActi
 // Output only. The creation timestamp of a DiscoveryConfig.
 func (o PreventionDiscoveryConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDiscoveryConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PreventionDiscoveryConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionDiscoveryConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Display Name (max 1000 Chars)

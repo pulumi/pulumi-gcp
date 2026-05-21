@@ -26,6 +26,7 @@ class DataExchangeSubscriptionArgs:
                  data_exchange_project: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  subscription_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset: pulumi.Input[Optional['DataExchangeSubscriptionDestinationDatasetArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_policy: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,6 +41,12 @@ class DataExchangeSubscriptionArgs:
                This is the subscriber's desired location for the created resources.
                See https://cloud.google.com/bigquery/docs/locations for supported locations.
         :param pulumi.Input[_builtins.str] subscription_id: Name of the subscription to create.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['DataExchangeSubscriptionDestinationDatasetArgs'] destination_dataset: BigQuery destination dataset to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -55,6 +62,8 @@ class DataExchangeSubscriptionArgs:
         pulumi.set(__self__, "data_exchange_project", data_exchange_project)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "subscription_id", subscription_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination_dataset is not None:
             pulumi.set(__self__, "destination_dataset", destination_dataset)
         if project is not None:
@@ -127,6 +136,23 @@ class DataExchangeSubscriptionArgs:
         pulumi.set(self, "subscription_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="destinationDataset")
     def destination_dataset(self) -> pulumi.Input[Optional['DataExchangeSubscriptionDestinationDatasetArgs']]:
         """
@@ -188,6 +214,7 @@ class _DataExchangeSubscriptionState:
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset: pulumi.Input[Optional['DataExchangeSubscriptionDestinationDatasetArgs']] = None,
                  last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
                  linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input['DataExchangeSubscriptionLinkedDatasetMapArgs']]]] = None,
@@ -211,6 +238,12 @@ class _DataExchangeSubscriptionState:
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] data_exchange_location: The name of the location of the Data Exchange.
         :param pulumi.Input[_builtins.str] data_exchange_project: The ID of the Google Cloud project where the Data Exchange is located.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['DataExchangeSubscriptionDestinationDatasetArgs'] destination_dataset: BigQuery destination dataset to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_modify_time: Timestamp when the subscription was last modified.
@@ -248,6 +281,8 @@ class _DataExchangeSubscriptionState:
             pulumi.set(__self__, "data_exchange_location", data_exchange_location)
         if data_exchange_project is not None:
             pulumi.set(__self__, "data_exchange_project", data_exchange_project)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destination_dataset is not None:
             pulumi.set(__self__, "destination_dataset", destination_dataset)
         if last_modify_time is not None:
@@ -338,6 +373,23 @@ class _DataExchangeSubscriptionState:
     @data_exchange_project.setter
     def data_exchange_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_exchange_project", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationDataset")
@@ -540,6 +592,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -665,6 +718,12 @@ class DataExchangeSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] data_exchange_location: The name of the location of the Data Exchange.
         :param pulumi.Input[_builtins.str] data_exchange_project: The ID of the Google Cloud project where the Data Exchange is located.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']] destination_dataset: BigQuery destination dataset to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] location: The geographic location where the Subscription (and its linked dataset) should reside.
@@ -816,6 +875,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
                  data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
                  data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -840,6 +900,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
             if data_exchange_project is None and not opts.urn:
                 raise TypeError("Missing required property 'data_exchange_project'")
             __props__.__dict__["data_exchange_project"] = data_exchange_project
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["destination_dataset"] = destination_dataset
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -876,6 +937,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
             data_exchange_id: pulumi.Input[Optional[_builtins.str]] = None,
             data_exchange_location: pulumi.Input[Optional[_builtins.str]] = None,
             data_exchange_project: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destination_dataset: pulumi.Input[Optional[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']]] = None,
             last_modify_time: pulumi.Input[Optional[_builtins.str]] = None,
             linked_dataset_maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DataExchangeSubscriptionLinkedDatasetMapArgs', 'DataExchangeSubscriptionLinkedDatasetMapArgsDict']]]]] = None,
@@ -903,6 +965,12 @@ class DataExchangeSubscription(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] data_exchange_id: The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
         :param pulumi.Input[_builtins.str] data_exchange_location: The name of the location of the Data Exchange.
         :param pulumi.Input[_builtins.str] data_exchange_project: The ID of the Google Cloud project where the Data Exchange is located.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Union['DataExchangeSubscriptionDestinationDatasetArgs', 'DataExchangeSubscriptionDestinationDatasetArgsDict']] destination_dataset: BigQuery destination dataset to create for the subscriber.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] last_modify_time: Timestamp when the subscription was last modified.
@@ -939,6 +1007,7 @@ class DataExchangeSubscription(pulumi.CustomResource):
         __props__.__dict__["data_exchange_id"] = data_exchange_id
         __props__.__dict__["data_exchange_location"] = data_exchange_location
         __props__.__dict__["data_exchange_project"] = data_exchange_project
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destination_dataset"] = destination_dataset
         __props__.__dict__["last_modify_time"] = last_modify_time
         __props__.__dict__["linked_dataset_maps"] = linked_dataset_maps
@@ -995,6 +1064,19 @@ class DataExchangeSubscription(pulumi.CustomResource):
         The ID of the Google Cloud project where the Data Exchange is located.
         """
         return pulumi.get(self, "data_exchange_project")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="destinationDataset")

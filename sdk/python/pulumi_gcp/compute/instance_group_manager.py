@@ -25,6 +25,7 @@ class InstanceGroupManagerArgs:
                  versions: pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]],
                  all_instances_config: pulumi.Input[Optional['InstanceGroupManagerAllInstancesConfigArgs']] = None,
                  auto_healing_policies: pulumi.Input[Optional['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_lifecycle_policy: pulumi.Input[Optional['InstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
@@ -63,6 +64,14 @@ class InstanceGroupManagerArgs:
                apply the configuration.
         :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
                group. You can specify only one value. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances#monitoring_groups).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
@@ -94,8 +103,6 @@ class InstanceGroupManagerArgs:
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-               
-               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -117,6 +124,8 @@ class InstanceGroupManagerArgs:
             pulumi.set(__self__, "all_instances_config", all_instances_config)
         if auto_healing_policies is not None:
             pulumi.set(__self__, "auto_healing_policies", auto_healing_policies)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if instance_lifecycle_policy is not None:
@@ -217,6 +226,25 @@ class InstanceGroupManagerArgs:
     @auto_healing_policies.setter
     def auto_healing_policies(self, value: pulumi.Input[Optional['InstanceGroupManagerAutoHealingPoliciesArgs']]):
         pulumi.set(self, "auto_healing_policies", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -407,8 +435,6 @@ class InstanceGroupManagerArgs:
     def target_size_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]]:
         """
         The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "target_size_policies")
 
@@ -504,6 +530,7 @@ class _InstanceGroupManagerState:
                  auto_healing_policies: pulumi.Input[Optional['InstanceGroupManagerAutoHealingPoliciesArgs']] = None,
                  base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -547,6 +574,14 @@ class _InstanceGroupManagerState:
                appending a hyphen and a random four-character string to the base instance
                name.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
@@ -583,8 +618,6 @@ class _InstanceGroupManagerState:
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-               
-               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -611,6 +644,8 @@ class _InstanceGroupManagerState:
             pulumi.set(__self__, "base_instance_name", base_instance_name)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if fingerprint is not None:
@@ -723,6 +758,25 @@ class _InstanceGroupManagerState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -982,8 +1036,6 @@ class _InstanceGroupManagerState:
     def target_size_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGroupManagerTargetSizePolicyArgs']]]]:
         """
         The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "target_size_policies")
 
@@ -1095,6 +1147,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  all_instances_config: pulumi.Input[Optional[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
                  auto_healing_policies: pulumi.Input[Optional[Union['InstanceGroupManagerAutoHealingPoliciesArgs', 'InstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
                  base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_lifecycle_policy: pulumi.Input[Optional[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
                  list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1303,6 +1356,14 @@ class InstanceGroupManager(pulumi.CustomResource):
                are lowercase letters, numbers, and hyphens (-). Instances are named by
                appending a hyphen and a random four-character string to the base instance
                name.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
@@ -1334,8 +1395,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict']]]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-               
-               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -1550,6 +1609,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                  all_instances_config: pulumi.Input[Optional[Union['InstanceGroupManagerAllInstancesConfigArgs', 'InstanceGroupManagerAllInstancesConfigArgsDict']]] = None,
                  auto_healing_policies: pulumi.Input[Optional[Union['InstanceGroupManagerAutoHealingPoliciesArgs', 'InstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
                  base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_lifecycle_policy: pulumi.Input[Optional[Union['InstanceGroupManagerInstanceLifecyclePolicyArgs', 'InstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
                  list_managed_instances_results: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1586,6 +1646,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             if base_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__.__dict__["base_instance_name"] = base_instance_name
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
             __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
@@ -1631,6 +1692,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             auto_healing_policies: pulumi.Input[Optional[Union['InstanceGroupManagerAutoHealingPoliciesArgs', 'InstanceGroupManagerAutoHealingPoliciesArgsDict']]] = None,
             base_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
             instance_group: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1678,6 +1740,14 @@ class InstanceGroupManager(pulumi.CustomResource):
                appending a hyphen and a random four-character string to the base instance
                name.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] description: An optional textual description of the instance
                group manager.
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the instance group manager.
@@ -1714,8 +1784,6 @@ class InstanceGroupManager(pulumi.CustomResource):
                when using one. If a value is required, such as to specify a creation-time target size for the MIG,
                `lifecycle.ignore_changes` can be used to prevent Terraform from modifying the value. Defaults to `0`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerTargetSizePolicyArgs', 'InstanceGroupManagerTargetSizePolicyArgsDict']]]] target_size_policies: The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-               
-               - - -
         :param pulumi.Input[_builtins.int] target_stopped_size: The target number of stopped instances for this managed instance group.
         :param pulumi.Input[_builtins.int] target_suspended_size: The target number of suspended instances for this managed instance group.
         :param pulumi.Input[Union['InstanceGroupManagerUpdatePolicyArgs', 'InstanceGroupManagerUpdatePolicyArgsDict']] update_policy: The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch).
@@ -1742,6 +1810,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["auto_healing_policies"] = auto_healing_policies
         __props__.__dict__["base_instance_name"] = base_instance_name
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["instance_group"] = instance_group
@@ -1811,6 +1880,21 @@ class InstanceGroupManager(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -1990,8 +2074,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     def target_size_policies(self) -> pulumi.Output[Sequence['outputs.InstanceGroupManagerTargetSizePolicy']]:
         """
         The policy that specifies how the MIG creates its VMs to achieve the target size. Structure is documented below.
-
-        - - -
         """
         return pulumi.get(self, "target_size_policies")
 

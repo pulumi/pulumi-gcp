@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetResourcePolicyResult {
+    private String deletionPolicy;
     /**
      * @return Description of this Resource Policy.
      * 
@@ -43,6 +44,9 @@ public final class GetResourcePolicyResult {
     private List<GetResourcePolicyWorkloadPolicy> workloadPolicies;
 
     private GetResourcePolicyResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * @return Description of this Resource Policy.
      * 
@@ -98,6 +102,7 @@ public final class GetResourcePolicyResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String description;
         private List<GetResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicies;
         private List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies;
@@ -112,6 +117,7 @@ public final class GetResourcePolicyResult {
         public Builder() {}
         public Builder(GetResourcePolicyResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.diskConsistencyGroupPolicies = defaults.diskConsistencyGroupPolicies;
     	      this.groupPlacementPolicies = defaults.groupPlacementPolicies;
@@ -125,6 +131,14 @@ public final class GetResourcePolicyResult {
     	      this.workloadPolicies = defaults.workloadPolicies;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder description(String description) {
             if (description == null) {
@@ -226,6 +240,7 @@ public final class GetResourcePolicyResult {
         }
         public GetResourcePolicyResult build() {
             final var _resultValue = new GetResourcePolicyResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.diskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
             _resultValue.groupPlacementPolicies = groupPlacementPolicies;

@@ -54,6 +54,13 @@ type AssessmentRule struct {
 	AssessmentRuleId pulumi.StringPtrOutput `pulumi:"assessmentRuleId"`
 	// The time at which this assessment rule was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Display Name of the assessment rule.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Location of the resource.
@@ -119,6 +126,13 @@ type assessmentRuleState struct {
 	AssessmentRuleId *string `pulumi:"assessmentRuleId"`
 	// The time at which this assessment rule was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display Name of the assessment rule.
 	DisplayName *string `pulumi:"displayName"`
 	// Location of the resource.
@@ -152,6 +166,13 @@ type AssessmentRuleState struct {
 	AssessmentRuleId pulumi.StringPtrInput
 	// The time at which this assessment rule was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display Name of the assessment rule.
 	DisplayName pulumi.StringPtrInput
 	// Location of the resource.
@@ -187,6 +208,13 @@ type assessmentRuleArgs struct {
 	// This value should be 4-64 characters and must match the regular
 	// expression `^[A-Za-z0-9]{4,64}$`.
 	AssessmentRuleId *string `pulumi:"assessmentRuleId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Display Name of the assessment rule.
 	DisplayName *string `pulumi:"displayName"`
 	// Location of the resource.
@@ -213,6 +241,13 @@ type AssessmentRuleArgs struct {
 	// This value should be 4-64 characters and must match the regular
 	// expression `^[A-Za-z0-9]{4,64}$`.
 	AssessmentRuleId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Display Name of the assessment rule.
 	DisplayName pulumi.StringPtrInput
 	// Location of the resource.
@@ -333,6 +368,16 @@ func (o AssessmentRuleOutput) AssessmentRuleId() pulumi.StringPtrOutput {
 // The time at which this assessment rule was created.
 func (o AssessmentRuleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssessmentRule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AssessmentRuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssessmentRule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Display Name of the assessment rule.

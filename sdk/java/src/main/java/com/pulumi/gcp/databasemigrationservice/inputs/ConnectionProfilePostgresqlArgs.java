@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlPrivateConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfilePostgresqlSslArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -19,14 +20,14 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     public static final ConnectionProfilePostgresqlArgs Empty = new ConnectionProfilePostgresqlArgs();
 
     /**
-     * If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
      * 
      */
     @Import(name="alloydbClusterId")
     private @Nullable Output<String> alloydbClusterId;
 
     /**
-     * @return If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+     * @return If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
      * 
      */
     public Optional<Output<String>> alloydbClusterId() {
@@ -34,18 +35,33 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     }
 
     /**
-     * If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     @Import(name="cloudSqlId")
     private @Nullable Output<String> cloudSqlId;
 
     /**
-     * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * @return If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     public Optional<Output<String>> cloudSqlId() {
         return Optional.ofNullable(this.cloudSqlId);
+    }
+
+    /**
+     * The name of the specific database within the host.
+     * 
+     */
+    @Import(name="database")
+    private @Nullable Output<String> database;
+
+    /**
+     * @return The name of the specific database within the host.
+     * 
+     */
+    public Optional<Output<String>> database() {
+        return Optional.ofNullable(this.database);
     }
 
     /**
@@ -132,6 +148,23 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     }
 
     /**
+     * Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateConnectivity")
+    private @Nullable Output<ConnectionProfilePostgresqlPrivateConnectivityArgs> privateConnectivity;
+
+    /**
+     * @return Private connectivity.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionProfilePostgresqlPrivateConnectivityArgs>> privateConnectivity() {
+        return Optional.ofNullable(this.privateConnectivity);
+    }
+
+    /**
      * SSL configuration for the destination to connect to the source database.
      * Structure is documented below.
      * 
@@ -168,11 +201,13 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
     private ConnectionProfilePostgresqlArgs(ConnectionProfilePostgresqlArgs $) {
         this.alloydbClusterId = $.alloydbClusterId;
         this.cloudSqlId = $.cloudSqlId;
+        this.database = $.database;
         this.host = $.host;
         this.networkArchitecture = $.networkArchitecture;
         this.password = $.password;
         this.passwordSet = $.passwordSet;
         this.port = $.port;
+        this.privateConnectivity = $.privateConnectivity;
         this.ssl = $.ssl;
         this.username = $.username;
     }
@@ -196,7 +231,7 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param alloydbClusterId If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+         * @param alloydbClusterId If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
          * 
          * @return builder
          * 
@@ -207,7 +242,7 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param alloydbClusterId If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+         * @param alloydbClusterId If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
          * 
          * @return builder
          * 
@@ -217,7 +252,7 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cloudSqlId If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+         * @param cloudSqlId If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
          * 
          * @return builder
          * 
@@ -228,13 +263,34 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param cloudSqlId If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+         * @param cloudSqlId If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
          * 
          * @return builder
          * 
          */
         public Builder cloudSqlId(String cloudSqlId) {
             return cloudSqlId(Output.of(cloudSqlId));
+        }
+
+        /**
+         * @param database The name of the specific database within the host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder database(@Nullable Output<String> database) {
+            $.database = database;
+            return this;
+        }
+
+        /**
+         * @param database The name of the specific database within the host.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder database(String database) {
+            return database(Output.of(database));
         }
 
         /**
@@ -348,6 +404,29 @@ public final class ConnectionProfilePostgresqlArgs extends com.pulumi.resources.
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param privateConnectivity Private connectivity.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConnectivity(@Nullable Output<ConnectionProfilePostgresqlPrivateConnectivityArgs> privateConnectivity) {
+            $.privateConnectivity = privateConnectivity;
+            return this;
+        }
+
+        /**
+         * @param privateConnectivity Private connectivity.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConnectivity(ConnectionProfilePostgresqlPrivateConnectivityArgs privateConnectivity) {
+            return privateConnectivity(Output.of(privateConnectivity));
         }
 
         /**

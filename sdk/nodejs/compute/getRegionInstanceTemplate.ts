@@ -89,6 +89,7 @@ export interface GetRegionInstanceTemplateResult {
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
+    readonly deletionPolicy: string;
     /**
      * A brief description of this resource.
      */

@@ -67,6 +67,13 @@ import (
 type BiReservation struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// LOCATION_DESCRIPTION
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
@@ -117,6 +124,13 @@ func GetBiReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BiReservation resources.
 type biReservationState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// LOCATION_DESCRIPTION
 	Location *string `pulumi:"location"`
 	// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
@@ -135,6 +149,13 @@ type biReservationState struct {
 }
 
 type BiReservationState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// LOCATION_DESCRIPTION
 	Location pulumi.StringPtrInput
 	// The resource name of the singleton BI reservation. Reservation names have the form `projects/{projectId}/locations/{locationId}/biReservation`.
@@ -157,6 +178,13 @@ func (BiReservationState) ElementType() reflect.Type {
 }
 
 type biReservationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// LOCATION_DESCRIPTION
 	Location string `pulumi:"location"`
 	// Preferred tables to use BI capacity for.
@@ -171,6 +199,13 @@ type biReservationArgs struct {
 
 // The set of arguments for constructing a BiReservation resource.
 type BiReservationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// LOCATION_DESCRIPTION
 	Location pulumi.StringInput
 	// Preferred tables to use BI capacity for.
@@ -268,6 +303,16 @@ func (o BiReservationOutput) ToBiReservationOutput() BiReservationOutput {
 
 func (o BiReservationOutput) ToBiReservationOutputWithContext(ctx context.Context) BiReservationOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BiReservationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BiReservation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // LOCATION_DESCRIPTION

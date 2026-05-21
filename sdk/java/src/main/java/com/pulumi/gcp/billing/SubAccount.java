@@ -12,7 +12,6 @@ import com.pulumi.gcp.billing.SubAccountArgs;
 import com.pulumi.gcp.billing.inputs.SubAccountState;
 import java.lang.Boolean;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -84,20 +83,32 @@ public class SubAccount extends com.pulumi.resources.CustomResource {
     /**
      * If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
      * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;&#34;.
+     * 
+     * Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
      * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
      * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;&#34;.
+     * 
+     * Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The display name of the billing account.

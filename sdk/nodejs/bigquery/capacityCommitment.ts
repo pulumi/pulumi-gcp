@@ -92,6 +92,15 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly commitmentStartTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
     declare public readonly edition: pulumi.Output<string | undefined>;
@@ -146,6 +155,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["capacityCommitmentId"] = state?.capacityCommitmentId;
             resourceInputs["commitmentEndTime"] = state?.commitmentEndTime;
             resourceInputs["commitmentStartTime"] = state?.commitmentStartTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["edition"] = state?.edition;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = state?.enforceSingleAdminProjectPerOrg;
             resourceInputs["location"] = state?.location;
@@ -164,6 +174,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'slotCount'");
             }
             resourceInputs["capacityCommitmentId"] = args?.capacityCommitmentId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["edition"] = args?.edition;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = args?.enforceSingleAdminProjectPerOrg;
             resourceInputs["location"] = args?.location;
@@ -200,6 +211,15 @@ export interface CapacityCommitmentState {
      * The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
      */
     commitmentStartTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
@@ -251,6 +271,15 @@ export interface CapacityCommitmentArgs {
      * or merged.
      */
     capacityCommitmentId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */

@@ -75,6 +75,13 @@ type EnvironmentApiRevisionDeployment struct {
 	Api pulumi.StringOutput `pulumi:"api"`
 	// Basepaths associated with the deployed proxy.
 	Basepaths pulumi.StringArrayOutput `pulumi:"basepaths"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// RFC3339 timestamp when deployment started.
 	DeployStartTime pulumi.StringOutput `pulumi:"deployStartTime"`
 	// Apigee environment name.
@@ -139,6 +146,13 @@ type environmentApiRevisionDeploymentState struct {
 	Api *string `pulumi:"api"`
 	// Basepaths associated with the deployed proxy.
 	Basepaths []string `pulumi:"basepaths"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// RFC3339 timestamp when deployment started.
 	DeployStartTime *string `pulumi:"deployStartTime"`
 	// Apigee environment name.
@@ -162,6 +176,13 @@ type EnvironmentApiRevisionDeploymentState struct {
 	Api pulumi.StringPtrInput
 	// Basepaths associated with the deployed proxy.
 	Basepaths pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// RFC3339 timestamp when deployment started.
 	DeployStartTime pulumi.StringPtrInput
 	// Apigee environment name.
@@ -187,6 +208,13 @@ func (EnvironmentApiRevisionDeploymentState) ElementType() reflect.Type {
 type environmentApiRevisionDeploymentArgs struct {
 	// Apigee API proxy name.
 	Api string `pulumi:"api"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Apigee environment name.
 	Environment string `pulumi:"environment"`
 	// Apigee organization ID.
@@ -205,6 +233,13 @@ type environmentApiRevisionDeploymentArgs struct {
 type EnvironmentApiRevisionDeploymentArgs struct {
 	// Apigee API proxy name.
 	Api pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Apigee environment name.
 	Environment pulumi.StringInput
 	// Apigee organization ID.
@@ -314,6 +349,16 @@ func (o EnvironmentApiRevisionDeploymentOutput) Api() pulumi.StringOutput {
 // Basepaths associated with the deployed proxy.
 func (o EnvironmentApiRevisionDeploymentOutput) Basepaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EnvironmentApiRevisionDeployment) pulumi.StringArrayOutput { return v.Basepaths }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnvironmentApiRevisionDeploymentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentApiRevisionDeployment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // RFC3339 timestamp when deployment started.

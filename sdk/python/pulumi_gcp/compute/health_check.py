@@ -22,6 +22,7 @@ __all__ = ['HealthCheckArgs', 'HealthCheck']
 class HealthCheckArgs:
     def __init__(__self__, *,
                  check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  grpc_health_check: pulumi.Input[Optional['HealthCheckGrpcHealthCheckArgs']] = None,
                  grpc_tls_health_check: pulumi.Input[Optional['HealthCheckGrpcTlsHealthCheckArgs']] = None,
@@ -42,6 +43,12 @@ class HealthCheckArgs:
 
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['HealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource.
@@ -91,6 +98,8 @@ class HealthCheckArgs:
         """
         if check_interval_sec is not None:
             pulumi.set(__self__, "check_interval_sec", check_interval_sec)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if grpc_health_check is not None:
@@ -134,6 +143,23 @@ class HealthCheckArgs:
     @check_interval_sec.setter
     def check_interval_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_interval_sec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -352,6 +378,7 @@ class _HealthCheckState:
     def __init__(__self__, *,
                  check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  grpc_health_check: pulumi.Input[Optional['HealthCheckGrpcHealthCheckArgs']] = None,
                  grpc_tls_health_check: pulumi.Input[Optional['HealthCheckGrpcTlsHealthCheckArgs']] = None,
@@ -375,6 +402,12 @@ class _HealthCheckState:
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['HealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource.
@@ -428,6 +461,8 @@ class _HealthCheckState:
             pulumi.set(__self__, "check_interval_sec", check_interval_sec)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if grpc_health_check is not None:
@@ -487,6 +522,23 @@ class _HealthCheckState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -731,6 +783,7 @@ class HealthCheck(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
                  grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']]] = None,
@@ -1109,6 +1162,12 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
@@ -1536,6 +1595,7 @@ class HealthCheck(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
                  grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']]] = None,
@@ -1561,6 +1621,7 @@ class HealthCheck(pulumi.CustomResource):
             __props__ = HealthCheckArgs.__new__(HealthCheckArgs)
 
             __props__.__dict__["check_interval_sec"] = check_interval_sec
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["grpc_health_check"] = grpc_health_check
             __props__.__dict__["grpc_tls_health_check"] = grpc_tls_health_check
@@ -1591,6 +1652,7 @@ class HealthCheck(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             check_interval_sec: pulumi.Input[Optional[_builtins.int]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             grpc_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']]] = None,
             grpc_tls_health_check: pulumi.Input[Optional[Union['HealthCheckGrpcTlsHealthCheckArgs', 'HealthCheckGrpcTlsHealthCheckArgsDict']]] = None,
@@ -1618,6 +1680,12 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] check_interval_sec: How often (in seconds) to send a health check. The default value is 5
                seconds.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
@@ -1673,6 +1741,7 @@ class HealthCheck(pulumi.CustomResource):
 
         __props__.__dict__["check_interval_sec"] = check_interval_sec
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["grpc_health_check"] = grpc_health_check
         __props__.__dict__["grpc_tls_health_check"] = grpc_tls_health_check
@@ -1708,6 +1777,19 @@ class HealthCheck(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

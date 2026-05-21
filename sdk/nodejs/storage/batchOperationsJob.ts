@@ -42,6 +42,36 @@ import * as utilities from "../utilities";
  *     deleteProtection: false,
  * });
  * ```
+ * ### Storage Batch Operations Description
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: "tf-sample-bucket",
+ *     location: "us-central1",
+ *     forceDestroy: true,
+ * });
+ * const tf_job = new gcp.storage.BatchOperationsJob("tf-job", {
+ *     jobId: "tf-job",
+ *     description: "A sample job description",
+ *     bucketList: {
+ *         buckets: {
+ *             bucket: bucket.name,
+ *             prefixList: {
+ *                 includedObjectPrefixes: ["bkt"],
+ *             },
+ *         },
+ *     },
+ *     putMetadata: {
+ *         customMetadata: {
+ *             key: "value",
+ *         },
+ *     },
+ *     deleteProtection: false,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -110,6 +140,19 @@ export class BatchOperationsJob extends pulumi.CustomResource {
      */
     declare public readonly deleteProtection: pulumi.Output<boolean | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
+     * A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+     */
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
      * The ID of the job.
      */
     declare public readonly jobId: pulumi.Output<string | undefined>;
@@ -164,6 +207,8 @@ export class BatchOperationsJob extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["deleteObject"] = state?.deleteObject;
             resourceInputs["deleteProtection"] = state?.deleteProtection;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
+            resourceInputs["description"] = state?.description;
             resourceInputs["jobId"] = state?.jobId;
             resourceInputs["project"] = state?.project;
             resourceInputs["putMetadata"] = state?.putMetadata;
@@ -177,6 +222,8 @@ export class BatchOperationsJob extends pulumi.CustomResource {
             resourceInputs["bucketList"] = args?.bucketList;
             resourceInputs["deleteObject"] = args?.deleteObject;
             resourceInputs["deleteProtection"] = args?.deleteProtection;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
+            resourceInputs["description"] = args?.description;
             resourceInputs["jobId"] = args?.jobId;
             resourceInputs["project"] = args?.project;
             resourceInputs["putMetadata"] = args?.putMetadata;
@@ -219,6 +266,19 @@ export interface BatchOperationsJobState {
      * If set to `true`, the storage batch operation job will not be deleted and new job will be created.
      */
     deleteProtection?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+     */
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the job.
      */
@@ -275,6 +335,19 @@ export interface BatchOperationsJobArgs {
      * If set to `true`, the storage batch operation job will not be deleted and new job will be created.
      */
     deleteProtection?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+     */
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the job.
      */

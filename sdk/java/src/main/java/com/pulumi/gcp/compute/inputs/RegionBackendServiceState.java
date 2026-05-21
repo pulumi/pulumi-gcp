@@ -131,7 +131,6 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional, Beta)
      * Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
@@ -142,8 +141,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     private @Nullable Output<RegionBackendServiceConnectionTrackingPolicyArgs> connectionTrackingPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * Connection Tracking configuration for this BackendService.
+     * @return Connection Tracking configuration for this BackendService.
      * This is available only for Layer 4 Internal Load Balancing and
      * Network Load Balancing.
      * Structure is documented below.
@@ -210,6 +208,31 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
      */
     public Optional<Output<List<RegionBackendServiceCustomMetricArgs>>> customMetrics() {
         return Optional.ofNullable(this.customMetrics);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -885,6 +908,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         this.consistentHash = $.consistentHash;
         this.creationTimestamp = $.creationTimestamp;
         this.customMetrics = $.customMetrics;
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.dynamicForwarding = $.dynamicForwarding;
         this.enableCdn = $.enableCdn;
@@ -1071,8 +1095,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param connectionTrackingPolicy (Optional, Beta)
-         * Connection Tracking configuration for this BackendService.
+         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
          * This is available only for Layer 4 Internal Load Balancing and
          * Network Load Balancing.
          * Structure is documented below.
@@ -1086,8 +1109,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param connectionTrackingPolicy (Optional, Beta)
-         * Connection Tracking configuration for this BackendService.
+         * @param connectionTrackingPolicy Connection Tracking configuration for this BackendService.
          * This is available only for Layer 4 Internal Load Balancing and
          * Network Load Balancing.
          * Structure is documented below.
@@ -1185,6 +1207,37 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          */
         public Builder customMetrics(RegionBackendServiceCustomMetricArgs... customMetrics) {
             return customMetrics(List.of(customMetrics));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

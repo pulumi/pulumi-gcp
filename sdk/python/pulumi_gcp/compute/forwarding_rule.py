@@ -25,6 +25,7 @@ class ForwardingRuleArgs:
                  allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  backend_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -75,6 +76,12 @@ class ForwardingRuleArgs:
         :param pulumi.Input[_builtins.str] backend_service: Identifies the backend service to which the forwarding rule sends traffic.
                Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
                must be omitted for all other load balancer types.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
@@ -260,6 +267,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
         if backend_service is not None:
             pulumi.set(__self__, "backend_service", backend_service)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if ip_address is not None:
@@ -373,6 +382,23 @@ class ForwardingRuleArgs:
     @backend_service.setter
     def backend_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_service", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -802,6 +828,7 @@ class _ForwardingRuleState:
                  backend_service: pulumi.Input[Optional[_builtins.str]] = None,
                  base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -862,6 +889,12 @@ class _ForwardingRuleState:
                must be omitted for all other load balancer types.
         :param pulumi.Input[_builtins.str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1062,6 +1095,8 @@ class _ForwardingRuleState:
             pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -1215,6 +1250,23 @@ class _ForwardingRuleState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1744,6 +1796,7 @@ class ForwardingRule(pulumi.CustomResource):
                  allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  backend_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2477,6 +2530,12 @@ class ForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backend_service: Identifies the backend service to which the forwarding rule sends traffic.
                Required for Internal TCP/UDP Load Balancing and Network Load Balancing;
                must be omitted for all other load balancer types.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[_builtins.str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
@@ -3362,6 +3421,7 @@ class ForwardingRule(pulumi.CustomResource):
                  allow_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  allow_psc_global_access: pulumi.Input[Optional[_builtins.bool]] = None,
                  backend_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_collection: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3397,6 +3457,7 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["allow_global_access"] = allow_global_access
             __props__.__dict__["allow_psc_global_access"] = allow_psc_global_access
             __props__.__dict__["backend_service"] = backend_service
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["ip_collection"] = ip_collection
@@ -3447,6 +3508,7 @@ class ForwardingRule(pulumi.CustomResource):
             backend_service: pulumi.Input[Optional[_builtins.str]] = None,
             base_forwarding_rule: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             forwarding_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
@@ -3511,6 +3573,12 @@ class ForwardingRule(pulumi.CustomResource):
                must be omitted for all other load balancer types.
         :param pulumi.Input[_builtins.str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -3709,6 +3777,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["backend_service"] = backend_service
         __props__.__dict__["base_forwarding_rule"] = base_forwarding_rule
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["forwarding_rule_id"] = forwarding_rule_id
@@ -3809,6 +3878,19 @@ class ForwardingRule(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

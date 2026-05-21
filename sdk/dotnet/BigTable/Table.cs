@@ -112,8 +112,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the AutomatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the AutomatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
-        /// 
-        /// -----
         /// </summary>
         [Output("automatedBackupPolicy")]
         public Output<Outputs.TableAutomatedBackupPolicy> AutomatedBackupPolicy { get; private set; } = null!;
@@ -129,6 +127,19 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         [Output("columnFamilies")]
         public Output<ImmutableArray<Outputs.TableColumnFamily>> ColumnFamilies { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// -----
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
@@ -222,8 +233,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the AutomatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the AutomatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
-        /// 
-        /// -----
         /// </summary>
         [Input("automatedBackupPolicy")]
         public Input<Inputs.TableAutomatedBackupPolicyArgs>? AutomatedBackupPolicy { get; set; }
@@ -245,6 +254,19 @@ namespace Pulumi.Gcp.BigTable
             get => _columnFamilies ?? (_columnFamilies = new InputList<Inputs.TableColumnFamilyArgs>());
             set => _columnFamilies = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// -----
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
@@ -306,8 +328,6 @@ namespace Pulumi.Gcp.BigTable
     {
         /// <summary>
         /// Defines an automated backup policy for a table, specified by Retention Period and Frequency. To _create_ a table with automated backup disabled, either omit the AutomatedBackupPolicy argument, or set both Retention Period and Frequency properties to "0". To disable automated backup on an _existing_ table that has automated backup enabled, set _both_ Retention Period and Frequency properties to "0". When updating an existing table, to modify the Retention Period or Frequency properties of the resource's automated backup policy, set the respective property to a non-zero value. If the AutomatedBackupPolicy argument is not provided in the configuration on update, the resource's automated backup policy will _not_ be modified.
-        /// 
-        /// -----
         /// </summary>
         [Input("automatedBackupPolicy")]
         public Input<Inputs.TableAutomatedBackupPolicyGetArgs>? AutomatedBackupPolicy { get; set; }
@@ -329,6 +349,19 @@ namespace Pulumi.Gcp.BigTable
             get => _columnFamilies ?? (_columnFamilies = new InputList<Inputs.TableColumnFamilyGetArgs>());
             set => _columnFamilies = value;
         }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// -----
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.

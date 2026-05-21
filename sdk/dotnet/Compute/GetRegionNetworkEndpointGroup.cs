@@ -180,6 +180,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetRegionNetworkEndpointGroupAppEngineResult> AppEngines;
         public readonly ImmutableArray<Outputs.GetRegionNetworkEndpointGroupCloudFunctionResult> CloudFunctions;
         public readonly ImmutableArray<Outputs.GetRegionNetworkEndpointGroupCloudRunResult> CloudRuns;
+        public readonly string DeletionPolicy;
         /// <summary>
         /// The RNEG description.
         /// </summary>
@@ -219,6 +220,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetRegionNetworkEndpointGroupCloudRunResult> cloudRuns,
 
+            string deletionPolicy,
+
             string description,
 
             string id,
@@ -246,6 +249,7 @@ namespace Pulumi.Gcp.Compute
             AppEngines = appEngines;
             CloudFunctions = cloudFunctions;
             CloudRuns = cloudRuns;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Id = id;
             Name = name;

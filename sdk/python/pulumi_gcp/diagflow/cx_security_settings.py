@@ -25,6 +25,7 @@ class CxSecuritySettingsArgs:
                  location: pulumi.Input[_builtins.str],
                  audio_export_settings: pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']] = None,
                  deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_export_settings: pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
                  inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -47,6 +48,12 @@ class CxSecuritySettingsArgs:
         :param pulumi.Input[_builtins.str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
                Structure is documented below.
@@ -75,6 +82,8 @@ class CxSecuritySettingsArgs:
             pulumi.set(__self__, "audio_export_settings", audio_export_settings)
         if deidentify_template is not None:
             pulumi.set(__self__, "deidentify_template", deidentify_template)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if insights_export_settings is not None:
             pulumi.set(__self__, "insights_export_settings", insights_export_settings)
         if inspect_template is not None:
@@ -146,6 +155,23 @@ class CxSecuritySettingsArgs:
     @deidentify_template.setter
     def deidentify_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deidentify_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="insightsExportSettings")
@@ -262,6 +288,7 @@ class _CxSecuritySettingsState:
     def __init__(__self__, *,
                  audio_export_settings: pulumi.Input[Optional['CxSecuritySettingsAudioExportSettingsArgs']] = None,
                  deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_export_settings: pulumi.Input[Optional['CxSecuritySettingsInsightsExportSettingsArgs']] = None,
                  inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -284,6 +311,12 @@ class _CxSecuritySettingsState:
         :param pulumi.Input[_builtins.str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the security settings, unique within the location.
         :param pulumi.Input['CxSecuritySettingsInsightsExportSettingsArgs'] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -315,6 +348,8 @@ class _CxSecuritySettingsState:
             pulumi.set(__self__, "audio_export_settings", audio_export_settings)
         if deidentify_template is not None:
             pulumi.set(__self__, "deidentify_template", deidentify_template)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if insights_export_settings is not None:
@@ -367,6 +402,23 @@ class _CxSecuritySettingsState:
     @deidentify_template.setter
     def deidentify_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deidentify_template", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -524,6 +576,7 @@ class CxSecuritySettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audio_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
                  deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
                  inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -640,6 +693,12 @@ class CxSecuritySettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the security settings, unique within the location.
         :param pulumi.Input[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -783,6 +842,7 @@ class CxSecuritySettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  audio_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
                  deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  insights_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
                  inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -804,6 +864,7 @@ class CxSecuritySettings(pulumi.CustomResource):
 
             __props__.__dict__["audio_export_settings"] = audio_export_settings
             __props__.__dict__["deidentify_template"] = deidentify_template
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -831,6 +892,7 @@ class CxSecuritySettings(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             audio_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsAudioExportSettingsArgs', 'CxSecuritySettingsAudioExportSettingsArgsDict']]] = None,
             deidentify_template: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             insights_export_settings: pulumi.Input[Optional[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']]] = None,
             inspect_template: pulumi.Input[Optional[_builtins.str]] = None,
@@ -857,6 +919,12 @@ class CxSecuritySettings(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] deidentify_template: [DLP](https://cloud.google.com/dlp/docs) deidentify template name. Use this template to define de-identification configuration for the content. If empty, Dialogflow replaces sensitive info with [redacted] text.
                Note: deidentifyTemplate must be located in the same region as the SecuritySettings.
                Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the security settings, unique within the location.
         :param pulumi.Input[Union['CxSecuritySettingsInsightsExportSettingsArgs', 'CxSecuritySettingsInsightsExportSettingsArgsDict']] insights_export_settings: Controls conversation exporting settings to Insights after conversation is completed.
                If retentionStrategy is set to REMOVE_AFTER_CONVERSATION, Insights export is disabled no matter what you configure here.
@@ -890,6 +958,7 @@ class CxSecuritySettings(pulumi.CustomResource):
 
         __props__.__dict__["audio_export_settings"] = audio_export_settings
         __props__.__dict__["deidentify_template"] = deidentify_template
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["insights_export_settings"] = insights_export_settings
         __props__.__dict__["inspect_template"] = inspect_template
@@ -924,6 +993,19 @@ class CxSecuritySettings(pulumi.CustomResource):
         Format: projects/<Project ID>/locations/<Location ID>/deidentifyTemplates/<Template ID> OR organizations/<Organization ID>/locations/<Location ID>/deidentifyTemplates/<Template ID>
         """
         return pulumi.get(self, "deidentify_template")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

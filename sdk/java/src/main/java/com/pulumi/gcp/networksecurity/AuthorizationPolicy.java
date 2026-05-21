@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.AuthorizationPolicy;
  * import com.pulumi.gcp.networksecurity.AuthorizationPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleSourceArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -83,6 +84,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.AuthorizationPolicy;
  * import com.pulumi.gcp.networksecurity.AuthorizationPolicyArgs;
  * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleSourceArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleDestinationArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -171,6 +175,30 @@ public class AuthorizationPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A free-text description of the resource. Max length 1024 characters.

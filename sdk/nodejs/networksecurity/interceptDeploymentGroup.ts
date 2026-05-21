@@ -89,6 +89,15 @@ export class InterceptDeploymentGroup extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-provided description of the deployment group.
      * Used as additional context for the deployment group.
      */
@@ -177,6 +186,7 @@ export class InterceptDeploymentGroup extends pulumi.CustomResource {
             const state = argsOrState as InterceptDeploymentGroupState | undefined;
             resourceInputs["connectedEndpointGroups"] = state?.connectedEndpointGroups;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["interceptDeploymentGroupId"] = state?.interceptDeploymentGroupId;
@@ -201,6 +211,7 @@ export class InterceptDeploymentGroup extends pulumi.CustomResource {
             if (args?.network === undefined && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["interceptDeploymentGroupId"] = args?.interceptDeploymentGroupId;
             resourceInputs["labels"] = args?.labels;
@@ -238,6 +249,15 @@ export interface InterceptDeploymentGroupState {
      * See https://google.aip.dev/148#timestamps.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the deployment group.
      * Used as additional context for the deployment group.
@@ -317,6 +337,15 @@ export interface InterceptDeploymentGroupState {
  * The set of arguments for constructing a InterceptDeploymentGroup resource.
  */
 export interface InterceptDeploymentGroupArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-provided description of the deployment group.
      * Used as additional context for the deployment group.

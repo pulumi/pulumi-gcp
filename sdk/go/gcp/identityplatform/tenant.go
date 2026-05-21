@@ -73,6 +73,13 @@ type Tenant struct {
 	// Options related to how clients making requests on behalf of a tenant should be configured.
 	// Structure is documented below.
 	Client TenantClientPtrOutput `pulumi:"client"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -126,6 +133,13 @@ type tenantState struct {
 	// Options related to how clients making requests on behalf of a tenant should be configured.
 	// Structure is documented below.
 	Client *TenantClient `pulumi:"client"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -147,6 +161,13 @@ type TenantState struct {
 	// Options related to how clients making requests on behalf of a tenant should be configured.
 	// Structure is documented below.
 	Client TenantClientPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -172,6 +193,13 @@ type tenantArgs struct {
 	// Options related to how clients making requests on behalf of a tenant should be configured.
 	// Structure is documented below.
 	Client *TenantClient `pulumi:"client"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -192,6 +220,13 @@ type TenantArgs struct {
 	// Options related to how clients making requests on behalf of a tenant should be configured.
 	// Structure is documented below.
 	Client TenantClientPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether authentication is disabled for the tenant. If true, the users under
 	// the disabled tenant are not allowed to sign-in. Admins of the disabled tenant
 	// are not able to manage its users.
@@ -301,6 +336,16 @@ func (o TenantOutput) AllowPasswordSignup() pulumi.BoolPtrOutput {
 // Structure is documented below.
 func (o TenantOutput) Client() TenantClientPtrOutput {
 	return o.ApplyT(func(v *Tenant) TenantClientPtrOutput { return v.Client }).(TenantClientPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o TenantOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether authentication is disabled for the tenant. If true, the users under

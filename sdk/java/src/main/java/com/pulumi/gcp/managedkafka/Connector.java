@@ -39,11 +39,13 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
  * import com.pulumi.gcp.managedkafka.ConnectCluster;
  * import com.pulumi.gcp.managedkafka.ConnectClusterArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterCapacityConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigAccessConfigArgs;
+ * import com.pulumi.gcp.managedkafka.inputs.ConnectClusterGcpConfigAccessConfigNetworkConfigArgs;
  * import com.pulumi.gcp.managedkafka.Connector;
  * import com.pulumi.gcp.managedkafka.ConnectorArgs;
  * import com.pulumi.gcp.managedkafka.inputs.ConnectorTaskRestartPolicyArgs;
@@ -206,6 +208,30 @@ public class Connector extends com.pulumi.resources.CustomResource {
      */
     public Output<String> connectorId() {
         return this.connectorId;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.

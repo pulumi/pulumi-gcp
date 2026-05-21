@@ -25,6 +25,7 @@ class CxToolArgs:
                  display_name: pulumi.Input[_builtins.str],
                  connector_spec: pulumi.Input[Optional['CxToolConnectorSpecArgs']] = None,
                  data_store_spec: pulumi.Input[Optional['CxToolDataStoreSpecArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  function_spec: pulumi.Input[Optional['CxToolFunctionSpecArgs']] = None,
                  open_api_spec: pulumi.Input[Optional['CxToolOpenApiSpecArgs']] = None,
                  parent: pulumi.Input[Optional[_builtins.str]] = None):
@@ -40,6 +41,12 @@ class CxToolArgs:
         :param pulumi.Input['CxToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['CxToolFunctionSpecArgs'] function_spec: Client side executed function specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
@@ -55,6 +62,8 @@ class CxToolArgs:
             pulumi.set(__self__, "connector_spec", connector_spec)
         if data_store_spec is not None:
             pulumi.set(__self__, "data_store_spec", data_store_spec)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if function_spec is not None:
             pulumi.set(__self__, "function_spec", function_spec)
         if open_api_spec is not None:
@@ -116,6 +125,23 @@ class CxToolArgs:
         pulumi.set(self, "data_store_spec", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="functionSpec")
     def function_spec(self) -> pulumi.Input[Optional['CxToolFunctionSpecArgs']]:
         """
@@ -162,6 +188,7 @@ class _CxToolState:
     def __init__(__self__, *,
                  connector_spec: pulumi.Input[Optional['CxToolConnectorSpecArgs']] = None,
                  data_store_spec: pulumi.Input[Optional['CxToolDataStoreSpecArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  function_spec: pulumi.Input[Optional['CxToolFunctionSpecArgs']] = None,
@@ -179,6 +206,12 @@ class _CxToolState:
         :param pulumi.Input['CxToolDataStoreSpecArgs'] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input['CxToolFunctionSpecArgs'] function_spec: Client side executed function specification.
@@ -197,6 +230,8 @@ class _CxToolState:
             pulumi.set(__self__, "connector_spec", connector_spec)
         if data_store_spec is not None:
             pulumi.set(__self__, "data_store_spec", data_store_spec)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -240,6 +275,23 @@ class _CxToolState:
     @data_store_spec.setter
     def data_store_spec(self, value: pulumi.Input[Optional['CxToolDataStoreSpecArgs']]):
         pulumi.set(self, "data_store_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -340,6 +392,7 @@ class CxTool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
                  data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
@@ -625,6 +678,12 @@ class CxTool(pulumi.CustomResource):
         :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']] function_spec: Client side executed function specification.
@@ -929,6 +988,7 @@ class CxTool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
                  data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
@@ -945,6 +1005,7 @@ class CxTool(pulumi.CustomResource):
 
             __props__.__dict__["connector_spec"] = connector_spec
             __props__.__dict__["data_store_spec"] = data_store_spec
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
@@ -968,6 +1029,7 @@ class CxTool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             connector_spec: pulumi.Input[Optional[Union['CxToolConnectorSpecArgs', 'CxToolConnectorSpecArgsDict']]] = None,
             data_store_spec: pulumi.Input[Optional[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             function_spec: pulumi.Input[Optional[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']]] = None,
@@ -989,6 +1051,12 @@ class CxTool(pulumi.CustomResource):
         :param pulumi.Input[Union['CxToolDataStoreSpecArgs', 'CxToolDataStoreSpecArgsDict']] data_store_spec: Data store search tool specification.
                This field is part of a union field `specification`: Only one of `openApiSpec`, `dataStoreSpec`, or `functionSpec` may be set.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: High level description of the Tool and its usage.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the tool, unique within the agent.
         :param pulumi.Input[Union['CxToolFunctionSpecArgs', 'CxToolFunctionSpecArgsDict']] function_spec: Client side executed function specification.
@@ -1009,6 +1077,7 @@ class CxTool(pulumi.CustomResource):
 
         __props__.__dict__["connector_spec"] = connector_spec
         __props__.__dict__["data_store_spec"] = data_store_spec
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["function_spec"] = function_spec
@@ -1038,6 +1107,19 @@ class CxTool(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "data_store_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

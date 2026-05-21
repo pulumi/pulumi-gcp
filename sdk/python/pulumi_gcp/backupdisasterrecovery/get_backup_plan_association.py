@@ -27,7 +27,7 @@ class GetBackupPlanAssociationResult:
     """
     A collection of values returned by getBackupPlanAssociation.
     """
-    def __init__(__self__, backup_plan=None, backup_plan_association_id=None, create_time=None, data_source=None, id=None, location=None, name=None, project=None, resource=None, resource_type=None, rules_config_infos=None, update_time=None):
+    def __init__(__self__, backup_plan=None, backup_plan_association_id=None, create_time=None, data_source=None, deletion_policy=None, id=None, location=None, name=None, project=None, resource=None, resource_type=None, rules_config_infos=None, update_time=None):
         if backup_plan and not isinstance(backup_plan, str):
             raise TypeError("Expected argument 'backup_plan' to be a str")
         pulumi.set(__self__, "backup_plan", backup_plan)
@@ -40,6 +40,9 @@ class GetBackupPlanAssociationResult:
         if data_source and not isinstance(data_source, str):
             raise TypeError("Expected argument 'data_source' to be a str")
         pulumi.set(__self__, "data_source", data_source)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -84,6 +87,11 @@ class GetBackupPlanAssociationResult:
     @pulumi.getter(name="dataSource")
     def data_source(self) -> _builtins.str:
         return pulumi.get(self, "data_source")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -139,6 +147,7 @@ class AwaitableGetBackupPlanAssociationResult(GetBackupPlanAssociationResult):
             backup_plan_association_id=self.backup_plan_association_id,
             create_time=self.create_time,
             data_source=self.data_source,
+            deletion_policy=self.deletion_policy,
             id=self.id,
             location=self.location,
             name=self.name,
@@ -184,6 +193,7 @@ def get_backup_plan_association(backup_plan_association_id: Optional[_builtins.s
         backup_plan_association_id=pulumi.get(__ret__, 'backup_plan_association_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
         data_source=pulumi.get(__ret__, 'data_source'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
@@ -226,6 +236,7 @@ def get_backup_plan_association_output(backup_plan_association_id: pulumi.Input[
         backup_plan_association_id=pulumi.get(__response__, 'backup_plan_association_id'),
         create_time=pulumi.get(__response__, 'create_time'),
         data_source=pulumi.get(__response__, 'data_source'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),

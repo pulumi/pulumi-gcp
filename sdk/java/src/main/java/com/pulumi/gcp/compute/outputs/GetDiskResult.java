@@ -32,6 +32,7 @@ public final class GetDiskResult {
      * 
      */
     private String creationTimestamp;
+    private String deletionPolicy;
     /**
      * @return The optional description of this resource.
      * 
@@ -179,6 +180,9 @@ public final class GetDiskResult {
      */
     public String creationTimestamp() {
         return this.creationTimestamp;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The optional description of this resource.
@@ -400,6 +404,7 @@ public final class GetDiskResult {
         private Boolean createSnapshotBeforeDestroy;
         private String createSnapshotBeforeDestroyPrefix;
         private String creationTimestamp;
+        private String deletionPolicy;
         private String description;
         private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
         private String diskId;
@@ -449,6 +454,7 @@ public final class GetDiskResult {
     	      this.createSnapshotBeforeDestroy = defaults.createSnapshotBeforeDestroy;
     	      this.createSnapshotBeforeDestroyPrefix = defaults.createSnapshotBeforeDestroyPrefix;
     	      this.creationTimestamp = defaults.creationTimestamp;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
     	      this.diskId = defaults.diskId;
@@ -540,6 +546,14 @@ public final class GetDiskResult {
               throw new MissingRequiredPropertyException("GetDiskResult", "creationTimestamp");
             }
             this.creationTimestamp = creationTimestamp;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -890,6 +904,7 @@ public final class GetDiskResult {
             _resultValue.createSnapshotBeforeDestroy = createSnapshotBeforeDestroy;
             _resultValue.createSnapshotBeforeDestroyPrefix = createSnapshotBeforeDestroyPrefix;
             _resultValue.creationTimestamp = creationTimestamp;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.diskEncryptionKeys = diskEncryptionKeys;
             _resultValue.diskId = diskId;

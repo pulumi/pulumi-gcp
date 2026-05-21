@@ -25,6 +25,16 @@ public final class GetCryptoKeysKey {
      */
     private String cryptoKeyBackend;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
      * If not specified at creation time, the default duration is 30 days.
      * 
@@ -121,6 +131,18 @@ public final class GetCryptoKeysKey {
      */
     public String cryptoKeyBackend() {
         return this.cryptoKeyBackend;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
@@ -249,6 +271,7 @@ public final class GetCryptoKeysKey {
     @CustomType.Builder
     public static final class Builder {
         private String cryptoKeyBackend;
+        private String deletionPolicy;
         private String destroyScheduledDuration;
         private Map<String,String> effectiveLabels;
         private String id;
@@ -267,6 +290,7 @@ public final class GetCryptoKeysKey {
         public Builder(GetCryptoKeysKey defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cryptoKeyBackend = defaults.cryptoKeyBackend;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.destroyScheduledDuration = defaults.destroyScheduledDuration;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
@@ -289,6 +313,14 @@ public final class GetCryptoKeysKey {
               throw new MissingRequiredPropertyException("GetCryptoKeysKey", "cryptoKeyBackend");
             }
             this.cryptoKeyBackend = cryptoKeyBackend;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCryptoKeysKey", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -411,6 +443,7 @@ public final class GetCryptoKeysKey {
         public GetCryptoKeysKey build() {
             final var _resultValue = new GetCryptoKeysKey();
             _resultValue.cryptoKeyBackend = cryptoKeyBackend;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.destroyScheduledDuration = destroyScheduledDuration;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;

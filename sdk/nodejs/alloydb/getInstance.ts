@@ -67,6 +67,7 @@ export interface GetInstanceResult {
     readonly connectionPoolConfigs: outputs.alloydb.GetInstanceConnectionPoolConfig[];
     readonly createTime: string;
     readonly databaseFlags: {[key: string]: string};
+    readonly deletionPolicy: string;
     readonly displayName: string;
     readonly effectiveAnnotations: {[key: string]: string};
     readonly effectiveLabels: {[key: string]: string};

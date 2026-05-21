@@ -107,6 +107,13 @@ type Policy struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrOutput `pulumi:"alternativeNameServerConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Configurations related to DNS64 for this Policy.
@@ -165,6 +172,13 @@ type policyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// Configurations related to DNS64 for this Policy.
@@ -194,6 +208,13 @@ type PolicyState struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// Configurations related to DNS64 for this Policy.
@@ -227,6 +248,13 @@ type policyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description *string `pulumi:"description"`
 	// Configurations related to DNS64 for this Policy.
@@ -257,6 +285,13 @@ type PolicyArgs struct {
 	// Names such as .internal are not available when an alternative name server is specified.
 	// Structure is documented below.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A textual description field. Defaults to 'Managed by Pulumi'.
 	Description pulumi.StringPtrInput
 	// Configurations related to DNS64 for this Policy.
@@ -373,6 +408,16 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 // Structure is documented below.
 func (o PolicyOutput) AlternativeNameServerConfig() PolicyAlternativeNameServerConfigPtrOutput {
 	return o.ApplyT(func(v *Policy) PolicyAlternativeNameServerConfigPtrOutput { return v.AlternativeNameServerConfig }).(PolicyAlternativeNameServerConfigPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o PolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A textual description field. Defaults to 'Managed by Pulumi'.

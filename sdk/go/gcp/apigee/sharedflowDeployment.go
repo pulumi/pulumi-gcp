@@ -36,13 +36,20 @@ import (
 type SharedflowDeployment struct {
 	pulumi.CustomResourceState
 
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The resource ID of the environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// The Apigee Organization associated with the Sharedflow
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision pulumi.StringOutput `pulumi:"revision"`
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount pulumi.StringPtrOutput `pulumi:"serviceAccount"`
@@ -92,13 +99,20 @@ func GetSharedflowDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SharedflowDeployment resources.
 type sharedflowDeploymentState struct {
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource ID of the environment.
 	Environment *string `pulumi:"environment"`
 	// The Apigee Organization associated with the Sharedflow
 	OrgId *string `pulumi:"orgId"`
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision *string `pulumi:"revision"`
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -107,13 +121,20 @@ type sharedflowDeploymentState struct {
 }
 
 type SharedflowDeploymentState struct {
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Environment pulumi.StringPtrInput
 	// The Apigee Organization associated with the Sharedflow
 	OrgId pulumi.StringPtrInput
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision pulumi.StringPtrInput
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount pulumi.StringPtrInput
@@ -126,13 +147,20 @@ func (SharedflowDeploymentState) ElementType() reflect.Type {
 }
 
 type sharedflowDeploymentArgs struct {
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource ID of the environment.
 	Environment string `pulumi:"environment"`
 	// The Apigee Organization associated with the Sharedflow
 	OrgId string `pulumi:"orgId"`
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision string `pulumi:"revision"`
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -142,13 +170,20 @@ type sharedflowDeploymentArgs struct {
 
 // The set of arguments for constructing a SharedflowDeployment resource.
 type SharedflowDeploymentArgs struct {
+	// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	//
+	// ***
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource ID of the environment.
 	Environment pulumi.StringInput
 	// The Apigee Organization associated with the Sharedflow
 	OrgId pulumi.StringInput
 	// Revision of the Sharedflow to be deployed.
-	//
-	// ***
 	Revision pulumi.StringInput
 	// The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
 	ServiceAccount pulumi.StringPtrInput
@@ -243,6 +278,18 @@ func (o SharedflowDeploymentOutput) ToSharedflowDeploymentOutputWithContext(ctx 
 	return o
 }
 
+// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+//
+// ***
+func (o SharedflowDeploymentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedflowDeployment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // The resource ID of the environment.
 func (o SharedflowDeploymentOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedflowDeployment) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
@@ -254,8 +301,6 @@ func (o SharedflowDeploymentOutput) OrgId() pulumi.StringOutput {
 }
 
 // Revision of the Sharedflow to be deployed.
-//
-// ***
 func (o SharedflowDeploymentOutput) Revision() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedflowDeployment) pulumi.StringOutput { return v.Revision }).(pulumi.StringOutput)
 }

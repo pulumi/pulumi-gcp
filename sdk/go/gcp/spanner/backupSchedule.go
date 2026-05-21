@@ -169,6 +169,13 @@ type BackupSchedule struct {
 
 	// The database to create the backup schedule on.
 	Database pulumi.StringOutput `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
 	EncryptionConfig BackupScheduleEncryptionConfigOutput `pulumi:"encryptionConfig"`
@@ -234,6 +241,13 @@ func GetBackupSchedule(ctx *pulumi.Context,
 type backupScheduleState struct {
 	// The database to create the backup schedule on.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
 	EncryptionConfig *BackupScheduleEncryptionConfig `pulumi:"encryptionConfig"`
@@ -261,6 +275,13 @@ type backupScheduleState struct {
 type BackupScheduleState struct {
 	// The database to create the backup schedule on.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
 	EncryptionConfig BackupScheduleEncryptionConfigPtrInput
@@ -292,6 +313,13 @@ func (BackupScheduleState) ElementType() reflect.Type {
 type backupScheduleArgs struct {
 	// The database to create the backup schedule on.
 	Database string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
 	EncryptionConfig *BackupScheduleEncryptionConfig `pulumi:"encryptionConfig"`
@@ -320,6 +348,13 @@ type backupScheduleArgs struct {
 type BackupScheduleArgs struct {
 	// The database to create the backup schedule on.
 	Database pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Configuration for the encryption of the backup schedule.
 	// Structure is documented below.
 	EncryptionConfig BackupScheduleEncryptionConfigPtrInput
@@ -434,6 +469,16 @@ func (o BackupScheduleOutput) ToBackupScheduleOutputWithContext(ctx context.Cont
 // The database to create the backup schedule on.
 func (o BackupScheduleOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupScheduleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupSchedule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Configuration for the encryption of the backup schedule.

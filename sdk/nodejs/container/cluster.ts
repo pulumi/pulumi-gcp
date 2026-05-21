@@ -251,6 +251,17 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly defaultSnatStatus: pulumi.Output<outputs.container.ClusterDefaultSnatStatus>;
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether Terraform will be prevented from
      * destroying the cluster.  Deleting this cluster via `terraform destroy` or
      * `pulumi up` will only succeed if this field is `false` in the Terraform
@@ -589,8 +600,6 @@ export class Cluster extends pulumi.CustomResource {
     declare public /*out*/ readonly pulumiLabels: pulumi.Output<{[key: string]: string}>;
     /**
      * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     declare public readonly rbacBindingConfig: pulumi.Output<outputs.container.ClusterRbacBindingConfig>;
     /**
@@ -632,7 +641,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly secretManagerConfig: pulumi.Output<outputs.container.ClusterSecretManagerConfig | undefined>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      */
@@ -722,6 +731,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["datapathProvider"] = state?.datapathProvider;
             resourceInputs["defaultMaxPodsPerNode"] = state?.defaultMaxPodsPerNode;
             resourceInputs["defaultSnatStatus"] = state?.defaultSnatStatus;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["disableL4LbFirewallReconciliation"] = state?.disableL4LbFirewallReconciliation;
@@ -818,6 +828,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["datapathProvider"] = args?.datapathProvider;
             resourceInputs["defaultMaxPodsPerNode"] = args?.defaultMaxPodsPerNode;
             resourceInputs["defaultSnatStatus"] = args?.defaultSnatStatus;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["disableL4LbFirewallReconciliation"] = args?.disableL4LbFirewallReconciliation;
@@ -1001,6 +1012,17 @@ export interface ClusterState {
      * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus | undefined>;
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from
      * destroying the cluster.  Deleting this cluster via `terraform destroy` or
@@ -1340,8 +1362,6 @@ export interface ClusterState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     rbacBindingConfig?: pulumi.Input<inputs.container.ClusterRbacBindingConfig | undefined>;
     /**
@@ -1383,7 +1403,7 @@ export interface ClusterState {
      */
     secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig | undefined>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      */
@@ -1542,6 +1562,17 @@ export interface ClusterArgs {
      * [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
      */
     defaultSnatStatus?: pulumi.Input<inputs.container.ClusterDefaultSnatStatus | undefined>;
+    /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from
      * destroying the cluster.  Deleting this cluster via `terraform destroy` or
@@ -1858,8 +1889,6 @@ export interface ClusterArgs {
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig | undefined>;
     /**
      * RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     rbacBindingConfig?: pulumi.Input<inputs.container.ClusterRbacBindingConfig | undefined>;
     /**
@@ -1901,7 +1930,7 @@ export interface ClusterArgs {
      */
     secretManagerConfig?: pulumi.Input<inputs.container.ClusterSecretManagerConfig | undefined>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
      * Structure is documented below.
      */

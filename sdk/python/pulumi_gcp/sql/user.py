@@ -45,11 +45,14 @@ class UserArgs:
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
                **Caution**: Existing database roles will be overwriten with new values from this field.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
-               Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
-               Possible values are: `ABANDON`.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
@@ -136,11 +139,14 @@ class UserArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the user.
-        Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API. This is useful
         for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 
-        Possible values are: `ABANDON`.
+        When set to "DELETE", deleting the resource is allowed.
 
         - - -
         """
@@ -289,11 +295,14 @@ class _UserState:
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
                **Caution**: Existing database roles will be overwriten with new values from this field.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
-               Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
-               Possible values are: `ABANDON`.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
@@ -375,11 +384,14 @@ class _UserState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The deletion policy for the user.
-        Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API. This is useful
         for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 
-        Possible values are: `ABANDON`.
+        When set to "DELETE", deleting the resource is allowed.
 
         - - -
         """
@@ -696,11 +708,14 @@ class User(pulumi.CustomResource):
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
                **Caution**: Existing database roles will be overwriten with new values from this field.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
-               Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
-               Possible values are: `ABANDON`.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
@@ -960,11 +975,14 @@ class User(pulumi.CustomResource):
                statement for both MySQL and PostgreSQL.
                **Note**: This property is write-only and will not be read from the API.
                **Caution**: Existing database roles will be overwriten with new values from this field.
-        :param pulumi.Input[_builtins.str] deletion_policy: The deletion policy for the user.
-               Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API. This is useful
                for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
                
-               Possible values are: `ABANDON`.
+               When set to "DELETE", deleting the resource is allowed.
                
                - - -
         :param pulumi.Input[_builtins.str] host: The host the user can connect from. This is only supported
@@ -1032,13 +1050,16 @@ class User(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
-    def deletion_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
         """
-        The deletion policy for the user.
-        Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API. This is useful
         for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
 
-        Possible values are: `ABANDON`.
+        When set to "DELETE", deleting the resource is allowed.
 
         - - -
         """

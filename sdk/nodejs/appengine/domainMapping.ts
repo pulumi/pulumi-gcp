@@ -76,6 +76,15 @@ export class DomainMapping extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Relative name of the domain serving the application. Example: example.com.
      */
     declare public readonly domainName: pulumi.Output<string>;
@@ -120,6 +129,7 @@ export class DomainMapping extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainMappingState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["domainName"] = state?.domainName;
             resourceInputs["name"] = state?.name;
             resourceInputs["overrideStrategy"] = state?.overrideStrategy;
@@ -131,6 +141,7 @@ export class DomainMapping extends pulumi.CustomResource {
             if (args?.domainName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["domainName"] = args?.domainName;
             resourceInputs["overrideStrategy"] = args?.overrideStrategy;
             resourceInputs["project"] = args?.project;
@@ -147,6 +158,15 @@ export class DomainMapping extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DomainMapping resources.
  */
 export interface DomainMappingState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */
@@ -184,6 +204,15 @@ export interface DomainMappingState {
  * The set of arguments for constructing a DomainMapping resource.
  */
 export interface DomainMappingArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Relative name of the domain serving the application. Example: example.com.
      */

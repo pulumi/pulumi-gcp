@@ -228,6 +228,13 @@ type User struct {
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// List of database roles this database user has.
 	DatabaseRoles pulumi.StringArrayOutput `pulumi:"databaseRoles"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Password for this database user.
@@ -304,6 +311,13 @@ type userState struct {
 	Cluster *string `pulumi:"cluster"`
 	// List of database roles this database user has.
 	DatabaseRoles []string `pulumi:"databaseRoles"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
 	Name *string `pulumi:"name"`
 	// Password for this database user.
@@ -331,6 +345,13 @@ type UserState struct {
 	Cluster pulumi.StringPtrInput
 	// List of database roles this database user has.
 	DatabaseRoles pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.
 	Name pulumi.StringPtrInput
 	// Password for this database user.
@@ -362,6 +383,13 @@ type userArgs struct {
 	Cluster string `pulumi:"cluster"`
 	// List of database roles this database user has.
 	DatabaseRoles []string `pulumi:"databaseRoles"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Password for this database user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password *string `pulumi:"password"`
@@ -388,6 +416,13 @@ type UserArgs struct {
 	Cluster pulumi.StringInput
 	// List of database roles this database user has.
 	DatabaseRoles pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Password for this database user.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	Password pulumi.StringPtrInput
@@ -503,6 +538,16 @@ func (o UserOutput) Cluster() pulumi.StringOutput {
 // List of database roles this database user has.
 func (o UserOutput) DatabaseRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.DatabaseRoles }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o UserOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name of the resource in the form of projects/{project}/locations/{location}/clusters/{cluster}/users/{user}.

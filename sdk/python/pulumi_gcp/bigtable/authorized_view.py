@@ -23,6 +23,7 @@ class AuthorizedViewArgs:
     def __init__(__self__, *,
                  instance_name: pulumi.Input[_builtins.str],
                  table_name: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -32,17 +33,25 @@ class AuthorizedViewArgs:
 
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               -----
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] name: The name of the authorized view. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['AuthorizedViewSubsetViewArgs'] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-               
-               -----
         """
         pulumi.set(__self__, "instance_name", instance_name)
         pulumi.set(__self__, "table_name", table_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if name is not None:
@@ -75,6 +84,25 @@ class AuthorizedViewArgs:
     @table_name.setter
     def table_name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "table_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        -----
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -119,8 +147,6 @@ class AuthorizedViewArgs:
     def subset_view(self) -> pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']]:
         """
         An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-
-        -----
         """
         return pulumi.get(self, "subset_view")
 
@@ -132,6 +158,7 @@ class AuthorizedViewArgs:
 @pulumi.input_type
 class _AuthorizedViewState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -141,6 +168,14 @@ class _AuthorizedViewState:
         """
         Input properties used for looking up and filtering AuthorizedView resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               -----
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
@@ -148,10 +183,10 @@ class _AuthorizedViewState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['AuthorizedViewSubsetViewArgs'] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-               
-               -----
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if instance_name is not None:
@@ -164,6 +199,25 @@ class _AuthorizedViewState:
             pulumi.set(__self__, "subset_view", subset_view)
         if table_name is not None:
             pulumi.set(__self__, "table_name", table_name)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        -----
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -220,8 +274,6 @@ class _AuthorizedViewState:
     def subset_view(self) -> pulumi.Input[Optional['AuthorizedViewSubsetViewArgs']]:
         """
         An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-
-        -----
         """
         return pulumi.get(self, "subset_view")
 
@@ -248,6 +300,7 @@ class AuthorizedView(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -338,6 +391,14 @@ class AuthorizedView(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               -----
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
@@ -345,8 +406,6 @@ class AuthorizedView(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-               
-               -----
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
         """
         ...
@@ -451,6 +510,7 @@ class AuthorizedView(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -466,6 +526,7 @@ class AuthorizedView(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AuthorizedViewArgs.__new__(AuthorizedViewArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
@@ -486,6 +547,7 @@ class AuthorizedView(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
             instance_name: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -499,6 +561,14 @@ class AuthorizedView(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               -----
         :param pulumi.Input[_builtins.str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
                If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         :param pulumi.Input[_builtins.str] instance_name: The name of the Bigtable instance in which the authorized view belongs.
@@ -506,14 +576,13 @@ class AuthorizedView(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[Union['AuthorizedViewSubsetViewArgs', 'AuthorizedViewSubsetViewArgsDict']] subset_view: An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-               
-               -----
         :param pulumi.Input[_builtins.str] table_name: The name of the Bigtable table in which the authorized view belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _AuthorizedViewState.__new__(_AuthorizedViewState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["instance_name"] = instance_name
         __props__.__dict__["name"] = name
@@ -521,6 +590,21 @@ class AuthorizedView(pulumi.CustomResource):
         __props__.__dict__["subset_view"] = subset_view
         __props__.__dict__["table_name"] = table_name
         return AuthorizedView(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        -----
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -561,8 +645,6 @@ class AuthorizedView(pulumi.CustomResource):
     def subset_view(self) -> pulumi.Output[Optional['outputs.AuthorizedViewSubsetView']]:
         """
         An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-
-        -----
         """
         return pulumi.get(self, "subset_view")
 

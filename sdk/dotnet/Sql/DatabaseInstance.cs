@@ -436,7 +436,7 @@ namespace Pulumi.Gcp.Sql
     /// ```
     /// 
     /// ### Cloud SQL Instance created using PointInTimeRestore
-    /// &gt; **NOTE:** Replace `BackupdrDatasource` with the full datasource path, `TimeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+    /// &gt; **NOTE:** Replace `BackupdrDatasource` with the full datasource path, `TimeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`. The `TargetInstance` is required field and must match the name of the resource.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -462,7 +462,7 @@ namespace Pulumi.Gcp.Sql
     ///         PointInTimeRestoreContext = new Gcp.Sql.Inputs.DatabaseInstancePointInTimeRestoreContextArgs
     ///         {
     ///             Datasource = "backupdr_datasource",
-    ///             TargetInstance = "target_instance_name",
+    ///             TargetInstance = "main-instance",
     ///             PointInTime = "time_stamp",
     ///         },
     ///     });
@@ -471,7 +471,7 @@ namespace Pulumi.Gcp.Sql
     /// ```
     /// 
     /// ### Cloud SQL Instance created using PointInTimeRestore using multiregion datasource
-    /// &gt; **NOTE:** Replace `BackupdrDatasource` with the full datasource path, `TimeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `Region` with the target instance region.
+    /// &gt; **NOTE:** Replace `BackupdrDatasource` with the full datasource path, `TimeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `Region` with the target instance region. The `TargetInstance` is required field and must match the name of the resource.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -497,7 +497,7 @@ namespace Pulumi.Gcp.Sql
     ///         PointInTimeRestoreContext = new Gcp.Sql.Inputs.DatabaseInstancePointInTimeRestoreContextArgs
     ///         {
     ///             Datasource = "backupdr_datasource",
-    ///             TargetInstance = "target_instance_name",
+    ///             TargetInstance = "main-instance",
     ///             PointInTime = "time_stamp",
     ///             Region = "region",
     ///         },
@@ -610,6 +610,17 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
@@ -895,6 +906,17 @@ namespace Pulumi.Gcp.Sql
         public Input<string> DatabaseVersion { get; set; } = null!;
 
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         /// in state, a `Destroy` or `Update` command that deletes the instance will fail. Defaults to `True`.
         /// 
@@ -1131,6 +1153,17 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
+
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
 
         /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false

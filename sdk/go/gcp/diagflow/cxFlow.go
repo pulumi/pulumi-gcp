@@ -711,6 +711,13 @@ type CxFlow struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings CxFlowAdvancedSettingsPtrOutput `pulumi:"advancedSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The human-readable name of the flow.
@@ -798,6 +805,13 @@ type cxFlowState struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings *CxFlowAdvancedSettings `pulumi:"advancedSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the flow.
@@ -853,6 +867,13 @@ type CxFlowState struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings CxFlowAdvancedSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the flow.
@@ -912,6 +933,13 @@ type cxFlowArgs struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings *CxFlowAdvancedSettings `pulumi:"advancedSettings"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
 	// The human-readable name of the flow.
@@ -965,6 +993,13 @@ type CxFlowArgs struct {
 	// Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 	// Structure is documented below.
 	AdvancedSettings CxFlowAdvancedSettingsPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
 	// The human-readable name of the flow.
@@ -1104,6 +1139,16 @@ func (o CxFlowOutput) ToCxFlowOutputWithContext(ctx context.Context) CxFlowOutpu
 // Structure is documented below.
 func (o CxFlowOutput) AdvancedSettings() CxFlowAdvancedSettingsPtrOutput {
 	return o.ApplyT(func(v *CxFlow) CxFlowAdvancedSettingsPtrOutput { return v.AdvancedSettings }).(CxFlowAdvancedSettingsPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxFlowOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxFlow) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.

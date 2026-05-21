@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.compute.RolloutPlan("default", {
- *     name: "tf-test-rollout-plan-_34962",
+ *     name: "tf-test-rollout-plan-_75125",
  *     description: "A test rollout plan",
  *     locationScope: "ZONAL",
  *     waves: [{
@@ -90,6 +90,15 @@ export class RolloutPlan extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -131,6 +140,7 @@ export class RolloutPlan extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RolloutPlanState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["locationScope"] = state?.locationScope;
             resourceInputs["name"] = state?.name;
@@ -142,6 +152,7 @@ export class RolloutPlan extends pulumi.CustomResource {
             if (args?.waves === undefined && !opts.urn) {
                 throw new Error("Missing required property 'waves'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["locationScope"] = args?.locationScope;
             resourceInputs["name"] = args?.name;
@@ -158,6 +169,15 @@ export class RolloutPlan extends pulumi.CustomResource {
  * Input properties used for looking up and filtering RolloutPlan resources.
  */
 export interface RolloutPlanState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -192,6 +212,15 @@ export interface RolloutPlanState {
  * The set of arguments for constructing a RolloutPlan resource.
  */
 export interface RolloutPlanArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

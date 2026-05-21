@@ -135,6 +135,15 @@ export class Occurence extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The note kind which explicitly denotes which of the occurrence
      * details are specified. This field can be used as a filter in list
      * requests.
@@ -185,6 +194,7 @@ export class Occurence extends pulumi.CustomResource {
             const state = argsOrState as OccurenceState | undefined;
             resourceInputs["attestation"] = state?.attestation;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["kind"] = state?.kind;
             resourceInputs["name"] = state?.name;
             resourceInputs["noteName"] = state?.noteName;
@@ -204,6 +214,7 @@ export class Occurence extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceUri'");
             }
             resourceInputs["attestation"] = args?.attestation;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["noteName"] = args?.noteName;
             resourceInputs["project"] = args?.project;
             resourceInputs["remediation"] = args?.remediation;
@@ -238,6 +249,15 @@ export interface OccurenceState {
      * The time when the repository was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The note kind which explicitly denotes which of the occurrence
      * details are specified. This field can be used as a filter in list
@@ -291,6 +311,15 @@ export interface OccurenceArgs {
      * Structure is documented below.
      */
     attestation: pulumi.Input<inputs.containeranalysis.OccurenceAttestation>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The analysis note associated with this occurrence, in the form of
      * projects/[PROJECT]/notes/[NOTE_ID]. This field can be used as a

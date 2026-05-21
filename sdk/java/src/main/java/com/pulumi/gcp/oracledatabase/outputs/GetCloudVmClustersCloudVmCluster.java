@@ -45,6 +45,16 @@ public final class GetCloudVmClustersCloudVmCluster {
      */
     private String createTime;
     /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    private String deletionPolicy;
+    /**
      * @return Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
      * 
      */
@@ -173,6 +183,18 @@ public final class GetCloudVmClustersCloudVmCluster {
      */
     public String createTime() {
         return this.createTime;
+    }
+    /**
+     * @return Whether Terraform will be prevented from destroying the instance. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;terraform apply&#39; would delete the instance,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state.
@@ -305,6 +327,7 @@ public final class GetCloudVmClustersCloudVmCluster {
         private String cidr;
         private String cloudVmClusterId;
         private String createTime;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
@@ -327,6 +350,7 @@ public final class GetCloudVmClustersCloudVmCluster {
     	      this.cidr = defaults.cidr;
     	      this.cloudVmClusterId = defaults.cloudVmClusterId;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -381,6 +405,14 @@ public final class GetCloudVmClustersCloudVmCluster {
               throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -505,6 +537,7 @@ public final class GetCloudVmClustersCloudVmCluster {
             _resultValue.cidr = cidr;
             _resultValue.cloudVmClusterId = cloudVmClusterId;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;

@@ -494,7 +494,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_63399"),
+//					FilenameSuffix:         pulumi.String("-_34534"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -560,7 +560,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_97523"),
+//					FilenameSuffix:         pulumi.String("-_87829"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -627,7 +627,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_31660"),
+//					FilenameSuffix:         pulumi.String("-_44023"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -705,7 +705,7 @@ import (
 //				CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 //					Bucket:                 example.Name,
 //					FilenamePrefix:         pulumi.String("pre-"),
-//					FilenameSuffix:         pulumi.String("-_97962"),
+//					FilenameSuffix:         pulumi.String("-_50206"),
 //					FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 //					MaxBytes:               pulumi.Int(1000),
 //					MaxDuration:            pulumi.String("300s"),
@@ -842,52 +842,53 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
-// Name: pulumi.String("example-topic"),
-// })
-// if err != nil {
-// return err
-// }
-// project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
-// Parent: pulumi.String(pulumi.String(project.Id)),
-// ShortName: pulumi.String("tag_key"),
-// }, pulumi.DependsOn([]pulumi.Resource{
-// example,
-// }))
-// if err != nil {
-// return err
-// }
-// tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
-// Parent: tagKey.ID(),
-// ShortName: pulumi.String("tag_value"),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
-// Name: pulumi.String("example-subscription"),
-// Topic: example.ID(),
-// Tags: pulumi.All(tagKey.NamespacedName,tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
-// namespacedName := _args[0].(string)
-// shortName := _args[1].(string)
-// return map[string]string{
-// namespacedName: shortName,
-// }, nil
-// }).(pulumi.Map[string]stringOutput),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			tagKey, err := tags.NewTagKey(ctx, "tag_key", &tags.TagKeyArgs{
+//				Parent:    pulumi.String(pulumi.String(project.Id)),
+//				ShortName: pulumi.String("tag_key"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			tagValue, err := tags.NewTagValue(ctx, "tag_value", &tags.TagValueArgs{
+//				Parent:    tagKey.ID(),
+//				ShortName: pulumi.String("tag_value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pubsub.NewSubscription(ctx, "example", &pubsub.SubscriptionArgs{
+//				Name:  pulumi.String("example-subscription"),
+//				Topic: example.ID(),
+//				Tags: pulumi.All(tagKey.NamespacedName, tagValue.ShortName).ApplyT(func(_args []interface{}) (map[string]string, error) {
+//					namespacedName := _args[0].(string)
+//					shortName := _args[1].(string)
+//					return map[string]string{
+//						namespacedName: shortName,
+//					}, nil
+//				}).(pulumi.StringMapOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 // ### Pubsub Subscription Ai Inference
 //
@@ -1020,6 +1021,13 @@ type Subscription struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrOutput `pulumi:"deadLetterPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
@@ -1176,6 +1184,13 @@ type subscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
@@ -1295,6 +1310,13 @@ type SubscriptionState struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
@@ -1418,6 +1440,13 @@ type subscriptionArgs struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy *SubscriptionDeadLetterPolicy `pulumi:"deadLetterPolicy"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
 	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -1533,6 +1562,13 @@ type SubscriptionArgs struct {
 	// permission to Acknowledge() messages on this subscription.
 	// Structure is documented below.
 	DeadLetterPolicy SubscriptionDeadLetterPolicyPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// If `true`, Pub/Sub provides the following guarantees for the delivery
 	// of a message with a given value of messageId on this Subscriptions':
 	// - The message sent to a subscriber is guaranteed not to be resent before the message's acknowledgement deadline expires.
@@ -1743,6 +1779,16 @@ func (o SubscriptionOutput) CloudStorageConfig() SubscriptionCloudStorageConfigP
 // Structure is documented below.
 func (o SubscriptionOutput) DeadLetterPolicy() SubscriptionDeadLetterPolicyPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionDeadLetterPolicyPtrOutput { return v.DeadLetterPolicy }).(SubscriptionDeadLetterPolicyPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SubscriptionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

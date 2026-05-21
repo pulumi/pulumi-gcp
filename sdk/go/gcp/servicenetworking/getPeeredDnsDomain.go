@@ -23,15 +23,17 @@ func LookupPeeredDnsDomain(ctx *pulumi.Context, args *LookupPeeredDnsDomainArgs,
 
 // A collection of arguments for invoking getPeeredDnsDomain.
 type LookupPeeredDnsDomainArgs struct {
-	Name    string `pulumi:"name"`
-	Network string `pulumi:"network"`
-	Project string `pulumi:"project"`
-	Service string `pulumi:"service"`
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	Name           string  `pulumi:"name"`
+	Network        string  `pulumi:"network"`
+	Project        string  `pulumi:"project"`
+	Service        string  `pulumi:"service"`
 }
 
 // A collection of values returned by getPeeredDnsDomain.
 type LookupPeeredDnsDomainResult struct {
-	DnsSuffix string `pulumi:"dnsSuffix"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	DnsSuffix      string `pulumi:"dnsSuffix"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string `pulumi:"id"`
 	Name    string `pulumi:"name"`
@@ -52,10 +54,11 @@ func LookupPeeredDnsDomainOutput(ctx *pulumi.Context, args LookupPeeredDnsDomain
 
 // A collection of arguments for invoking getPeeredDnsDomain.
 type LookupPeeredDnsDomainOutputArgs struct {
-	Name    pulumi.StringInput `pulumi:"name"`
-	Network pulumi.StringInput `pulumi:"network"`
-	Project pulumi.StringInput `pulumi:"project"`
-	Service pulumi.StringInput `pulumi:"service"`
+	DeletionPolicy pulumi.StringPtrInput `pulumi:"deletionPolicy"`
+	Name           pulumi.StringInput    `pulumi:"name"`
+	Network        pulumi.StringInput    `pulumi:"network"`
+	Project        pulumi.StringInput    `pulumi:"project"`
+	Service        pulumi.StringInput    `pulumi:"service"`
 }
 
 func (LookupPeeredDnsDomainOutputArgs) ElementType() reflect.Type {
@@ -75,6 +78,10 @@ func (o LookupPeeredDnsDomainResultOutput) ToLookupPeeredDnsDomainResultOutput()
 
 func (o LookupPeeredDnsDomainResultOutput) ToLookupPeeredDnsDomainResultOutputWithContext(ctx context.Context) LookupPeeredDnsDomainResultOutput {
 	return o
+}
+
+func (o LookupPeeredDnsDomainResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPeeredDnsDomainResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupPeeredDnsDomainResultOutput) DnsSuffix() pulumi.StringOutput {

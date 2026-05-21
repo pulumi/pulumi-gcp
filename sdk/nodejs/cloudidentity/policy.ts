@@ -90,6 +90,15 @@ export class Policy extends pulumi.CustomResource {
      */
     declare public readonly customer: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The resource name of the Policy. Format: `policies/{policy_id}`.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
@@ -118,6 +127,7 @@ export class Policy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["customer"] = state?.customer;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["policyQuery"] = state?.policyQuery;
             resourceInputs["setting"] = state?.setting;
@@ -133,6 +143,7 @@ export class Policy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'setting'");
             }
             resourceInputs["customer"] = args?.customer;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["policyQuery"] = args?.policyQuery;
             resourceInputs["setting"] = args?.setting;
             resourceInputs["name"] = undefined /*out*/;
@@ -150,6 +161,15 @@ export interface PolicyState {
      * The customer that the Policy belongs to. Format: `customers/{customer_id}`.
      */
     customer?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The resource name of the Policy. Format: `policies/{policy_id}`.
      */
@@ -174,6 +194,15 @@ export interface PolicyArgs {
      * The customer that the Policy belongs to. Format: `customers/{customer_id}`.
      */
     customer: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The PolicyQuery the Setting applies to.
      * Structure is documented below.

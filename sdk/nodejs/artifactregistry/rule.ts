@@ -130,6 +130,15 @@ export class Rule extends pulumi.CustomResource {
      */
     declare public readonly condition: pulumi.Output<outputs.artifactregistry.RuleCondition | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
      * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
@@ -183,6 +192,7 @@ export class Rule extends pulumi.CustomResource {
             const state = argsOrState as RuleState | undefined;
             resourceInputs["action"] = state?.action;
             resourceInputs["condition"] = state?.condition;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["operation"] = state?.operation;
@@ -200,6 +210,7 @@ export class Rule extends pulumi.CustomResource {
             }
             resourceInputs["action"] = args?.action;
             resourceInputs["condition"] = args?.condition;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["operation"] = args?.operation;
             resourceInputs["packageId"] = args?.packageId;
@@ -228,6 +239,15 @@ export interface RuleState {
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.artifactregistry.RuleCondition | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.
@@ -283,6 +303,15 @@ export interface RuleArgs {
      * Structure is documented below.
      */
     condition?: pulumi.Input<inputs.artifactregistry.RuleCondition | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the repository's location. In addition to specific regions,
      * special values for multi-region locations are `asia`, `europe`, and `us`.

@@ -41,7 +41,14 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
      * Service to be deleted even if a Schema or Connector is present. By default,
      * the Service deletion will only succeed when no Schema or Connectors are
      * present.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
     @Import(name="deletionPolicy")
@@ -52,7 +59,14 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
      * Service to be deleted even if a Schema or Connector is present. By default,
      * the Service deletion will only succeed when no Schema or Connectors are
      * present.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -202,7 +216,14 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
          * Service to be deleted even if a Schema or Connector is present. By default,
          * the Service deletion will only succeed when no Schema or Connectors are
          * present.
-         * Possible values: DEFAULT, FORCE
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+         * 
+         * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
          * 
          * @return builder
          * 
@@ -217,7 +238,14 @@ public final class DataConnectServiceArgs extends com.pulumi.resources.ResourceA
          * Service to be deleted even if a Schema or Connector is present. By default,
          * the Service deletion will only succeed when no Schema or Connectors are
          * present.
-         * Possible values: DEFAULT, FORCE
+         * 
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+         * 
+         * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
          * 
          * @return builder
          * 

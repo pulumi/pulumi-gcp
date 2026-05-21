@@ -95,6 +95,15 @@ export class Release extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      */
     declare public /*out*/ readonly disabled: pulumi.Output<boolean>;
@@ -133,6 +142,7 @@ export class Release extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ReleaseState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -143,6 +153,7 @@ export class Release extends pulumi.CustomResource {
             if (args?.rulesetName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rulesetName'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
             resourceInputs["rulesetName"] = args?.rulesetName;
@@ -163,6 +174,15 @@ export interface ReleaseState {
      * Output only. Time the release was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Disable the release to keep it from being served. The response code of NOT_FOUND will be given for executables generated from this Release.
      */
@@ -193,6 +213,15 @@ export interface ReleaseState {
  * The set of arguments for constructing a Release resource.
  */
 export interface ReleaseArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
      */

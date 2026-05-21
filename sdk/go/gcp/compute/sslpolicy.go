@@ -99,6 +99,13 @@ type SSLPolicy struct {
 	// *must* be present when using the `CUSTOM` profile. This argument
 	// *must not* be present when using any other profile.
 	CustomFeatures pulumi.StringArrayOutput `pulumi:"customFeatures"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The list of features enabled in the SSL policy.
@@ -180,6 +187,13 @@ type sslpolicyState struct {
 	// *must* be present when using the `CUSTOM` profile. This argument
 	// *must not* be present when using any other profile.
 	CustomFeatures []string `pulumi:"customFeatures"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The list of features enabled in the SSL policy.
@@ -232,6 +246,13 @@ type SSLPolicyState struct {
 	// *must* be present when using the `CUSTOM` profile. This argument
 	// *must not* be present when using any other profile.
 	CustomFeatures pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The list of features enabled in the SSL policy.
@@ -286,6 +307,13 @@ type sslpolicyArgs struct {
 	// *must* be present when using the `CUSTOM` profile. This argument
 	// *must not* be present when using any other profile.
 	CustomFeatures []string `pulumi:"customFeatures"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// The minimum version of SSL protocol that can be used by the clients
@@ -330,6 +358,13 @@ type SSLPolicyArgs struct {
 	// *must* be present when using the `CUSTOM` profile. This argument
 	// *must not* be present when using any other profile.
 	CustomFeatures pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// The minimum version of SSL protocol that can be used by the clients
@@ -465,6 +500,16 @@ func (o SSLPolicyOutput) CreationTimestamp() pulumi.StringOutput {
 // *must not* be present when using any other profile.
 func (o SSLPolicyOutput) CustomFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SSLPolicy) pulumi.StringArrayOutput { return v.CustomFeatures }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SSLPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SSLPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

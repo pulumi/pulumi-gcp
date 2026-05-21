@@ -141,6 +141,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -238,6 +240,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -331,6 +335,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -422,6 +428,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigRdbConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigPrimaryClusterArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -588,6 +596,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigRdbConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -690,6 +700,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
  * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigAofConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -1098,6 +1110,30 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.crossClusterReplicationConfig;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * Optional. Indicates if the cluster is deletion protected or not.
      * If the value if set to true, any delete cluster operation will fail.
      * Default value is true.
@@ -1310,7 +1346,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     @Export(name="nodeType", refs={String.class}, tree="[0]")
@@ -1319,7 +1355,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The nodeType for the Redis cluster.
      * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     public Output<String> nodeType() {

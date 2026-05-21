@@ -26,6 +26,7 @@ class AuthorityArgs:
                  key_spec: pulumi.Input['AuthorityKeySpecArgs'],
                  location: pulumi.Input[_builtins.str],
                  pool: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
@@ -51,6 +52,12 @@ class AuthorityArgs:
         :param pulumi.Input[_builtins.str] location: Location of the CertificateAuthority. A full list of valid locations can be found by
                running `gcloud privateca locations list`.
         :param pulumi.Input[_builtins.str] pool: The name of the CaPool this Certificate Authority belongs to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
                When the field is set to true or unset in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -97,6 +104,8 @@ class AuthorityArgs:
         pulumi.set(__self__, "key_spec", key_spec)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "pool", pool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if desired_state is not None:
@@ -186,6 +195,23 @@ class AuthorityArgs:
     @pool.setter
     def pool(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -367,6 +393,7 @@ class _AuthorityState:
                  certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional['AuthorityConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -399,6 +426,12 @@ class _AuthorityState:
         :param pulumi.Input[_builtins.str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
                When the field is set to true or unset in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -468,6 +501,8 @@ class _AuthorityState:
             pulumi.set(__self__, "config", config)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if desired_state is not None:
@@ -562,6 +597,23 @@ class _AuthorityState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -863,6 +915,7 @@ class Authority(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1204,6 +1257,12 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] certificate_authority_id: The user provided Resource ID for this Certificate Authority.
         :param pulumi.Input[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']] config: The config used to create a self-signed X.509 certificate or CSR.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
                When the field is set to true or unset in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -1595,6 +1654,7 @@ class Authority(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
                  config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  desired_state: pulumi.Input[Optional[_builtins.str]] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1625,6 +1685,7 @@ class Authority(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["desired_state"] = desired_state
             __props__.__dict__["gcs_bucket"] = gcs_bucket
@@ -1670,6 +1731,7 @@ class Authority(pulumi.CustomResource):
             certificate_authority_id: pulumi.Input[Optional[_builtins.str]] = None,
             config: pulumi.Input[Optional[Union['AuthorityConfigArgs', 'AuthorityConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             desired_state: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1706,6 +1768,12 @@ class Authority(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time at which this CertificateAuthority was created.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
                fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from destroying the CertificateAuthority.
                When the field is set to true or unset in Terraform state, a `pulumi up`
                or `terraform destroy` that would delete the CertificateAuthority will fail.
@@ -1775,6 +1843,7 @@ class Authority(pulumi.CustomResource):
         __props__.__dict__["certificate_authority_id"] = certificate_authority_id
         __props__.__dict__["config"] = config
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["desired_state"] = desired_state
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1833,6 +1902,19 @@ class Authority(pulumi.CustomResource):
         fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")

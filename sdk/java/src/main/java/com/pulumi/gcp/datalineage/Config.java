@@ -37,9 +37,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumiverse.time.Sleep;
+ * import com.pulumiverse.time.SleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.datalineage.Config;
  * import com.pulumi.gcp.datalineage.ConfigArgs;
  * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleIntegrationSelectorArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleLineageEnablementArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -53,8 +63,28 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var project = new Project("project", ProjectArgs.builder()
+ *             .projectId("tf-test_16511")
+ *             .name("tf-test_8493")
+ *             .orgId("123456789")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var waitForProject = new Sleep("waitForProject", SleepArgs.builder()
+ *             .createDuration("60s")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var datalineageApi = new Service("datalineageApi", ServiceArgs.builder()
+ *             .project(project.projectId())
+ *             .service("datalineage.googleapis.com")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(waitForProject)
+ *                 .build());
+ * 
  *         var default_ = new Config("default", ConfigArgs.builder()
- *             .parent("projects/my-project-name")
+ *             .parent(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
  *             .location("global")
  *             .ingestion(ConfigIngestionArgs.builder()
  *                 .rules(ConfigIngestionRuleArgs.builder()
@@ -66,7 +96,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(datalineageApi)
+ *                 .build());
  * 
  *     }
  * }
@@ -90,6 +122,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datalineage.Config;
  * import com.pulumi.gcp.datalineage.ConfigArgs;
  * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleIntegrationSelectorArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleLineageEnablementArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.ArrayList;
  * import java.util.Arrays;
@@ -155,6 +190,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datalineage.Config;
  * import com.pulumi.gcp.datalineage.ConfigArgs;
  * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleIntegrationSelectorArgs;
+ * import com.pulumi.gcp.datalineage.inputs.ConfigIngestionRuleLineageEnablementArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -203,6 +241,30 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:datalineage/config:Config")
 public class Config extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * Used for optimistic concurrency control when patching config.
      * 

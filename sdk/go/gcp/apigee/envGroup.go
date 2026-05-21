@@ -111,6 +111,13 @@ import (
 type EnvGroup struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Hostnames of the environment group.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// The resource ID of the environment group.
@@ -153,6 +160,13 @@ func GetEnvGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvGroup resources.
 type envGroupState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Hostnames of the environment group.
 	Hostnames []string `pulumi:"hostnames"`
 	// The resource ID of the environment group.
@@ -163,6 +177,13 @@ type envGroupState struct {
 }
 
 type EnvGroupState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Hostnames of the environment group.
 	Hostnames pulumi.StringArrayInput
 	// The resource ID of the environment group.
@@ -177,6 +198,13 @@ func (EnvGroupState) ElementType() reflect.Type {
 }
 
 type envGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Hostnames of the environment group.
 	Hostnames []string `pulumi:"hostnames"`
 	// The resource ID of the environment group.
@@ -188,6 +216,13 @@ type envGroupArgs struct {
 
 // The set of arguments for constructing a EnvGroup resource.
 type EnvGroupArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Hostnames of the environment group.
 	Hostnames pulumi.StringArrayInput
 	// The resource ID of the environment group.
@@ -282,6 +317,16 @@ func (o EnvGroupOutput) ToEnvGroupOutput() EnvGroupOutput {
 
 func (o EnvGroupOutput) ToEnvGroupOutputWithContext(ctx context.Context) EnvGroupOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnvGroupOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvGroup) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Hostnames of the environment group.

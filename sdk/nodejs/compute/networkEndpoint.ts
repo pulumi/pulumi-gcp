@@ -118,6 +118,15 @@ export class NetworkEndpoint extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name for a specific VM instance that the IP address belongs to.
      * This is required for network endpoints of type GCE_VM_IP_PORT.
      * The instance must be in the same zone of network endpoint group.
@@ -162,6 +171,7 @@ export class NetworkEndpoint extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkEndpointState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["ipAddress"] = state?.ipAddress;
             resourceInputs["networkEndpointGroup"] = state?.networkEndpointGroup;
@@ -176,6 +186,7 @@ export class NetworkEndpoint extends pulumi.CustomResource {
             if (args?.networkEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointGroup'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["ipAddress"] = args?.ipAddress;
             resourceInputs["networkEndpointGroup"] = args?.networkEndpointGroup;
@@ -192,6 +203,15 @@ export class NetworkEndpoint extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkEndpoint resources.
  */
 export interface NetworkEndpointState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name for a specific VM instance that the IP address belongs to.
      * This is required for network endpoints of type GCE_VM_IP_PORT.
@@ -229,6 +249,15 @@ export interface NetworkEndpointState {
  * The set of arguments for constructing a NetworkEndpoint resource.
  */
 export interface NetworkEndpointArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name for a specific VM instance that the IP address belongs to.
      * This is required for network endpoints of type GCE_VM_IP_PORT.

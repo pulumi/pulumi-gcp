@@ -87,6 +87,13 @@ type AiDeploymentResourcePool struct {
 	// The underlying dedicated resources that the deployment resource pool uses.
 	// Structure is documented below.
 	DedicatedResources AiDeploymentResourcePoolDedicatedResourcesPtrOutput `pulumi:"dedicatedResources"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -131,6 +138,13 @@ type aiDeploymentResourcePoolState struct {
 	// The underlying dedicated resources that the deployment resource pool uses.
 	// Structure is documented below.
 	DedicatedResources *AiDeploymentResourcePoolDedicatedResources `pulumi:"dedicatedResources"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -146,6 +160,13 @@ type AiDeploymentResourcePoolState struct {
 	// The underlying dedicated resources that the deployment resource pool uses.
 	// Structure is documented below.
 	DedicatedResources AiDeploymentResourcePoolDedicatedResourcesPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -163,6 +184,13 @@ type aiDeploymentResourcePoolArgs struct {
 	// The underlying dedicated resources that the deployment resource pool uses.
 	// Structure is documented below.
 	DedicatedResources *AiDeploymentResourcePoolDedicatedResources `pulumi:"dedicatedResources"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -177,6 +205,13 @@ type AiDeploymentResourcePoolArgs struct {
 	// The underlying dedicated resources that the deployment resource pool uses.
 	// Structure is documented below.
 	DedicatedResources AiDeploymentResourcePoolDedicatedResourcesPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -284,6 +319,16 @@ func (o AiDeploymentResourcePoolOutput) DedicatedResources() AiDeploymentResourc
 	return o.ApplyT(func(v *AiDeploymentResourcePool) AiDeploymentResourcePoolDedicatedResourcesPtrOutput {
 		return v.DedicatedResources
 	}).(AiDeploymentResourcePoolDedicatedResourcesPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiDeploymentResourcePoolOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiDeploymentResourcePool) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.

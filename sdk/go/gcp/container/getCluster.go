@@ -121,6 +121,7 @@ type LookupClusterResult struct {
 	DatapathProvider                     string                                    `pulumi:"datapathProvider"`
 	DefaultMaxPodsPerNode                int                                       `pulumi:"defaultMaxPodsPerNode"`
 	DefaultSnatStatuses                  []GetClusterDefaultSnatStatus             `pulumi:"defaultSnatStatuses"`
+	DeletionPolicy                       string                                    `pulumi:"deletionPolicy"`
 	DeletionProtection                   bool                                      `pulumi:"deletionProtection"`
 	Description                          string                                    `pulumi:"description"`
 	DisableL4LbFirewallReconciliation    bool                                      `pulumi:"disableL4LbFirewallReconciliation"`
@@ -315,6 +316,10 @@ func (o LookupClusterResultOutput) DefaultMaxPodsPerNode() pulumi.IntOutput {
 
 func (o LookupClusterResultOutput) DefaultSnatStatuses() GetClusterDefaultSnatStatusArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterDefaultSnatStatus { return v.DefaultSnatStatuses }).(GetClusterDefaultSnatStatusArrayOutput)
+}
+
+func (o LookupClusterResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupClusterResultOutput) DeletionProtection() pulumi.BoolOutput {

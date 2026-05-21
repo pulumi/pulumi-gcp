@@ -29,6 +29,7 @@ public final class GetInstanceResult {
     private String createTime;
     private String currentLocationId;
     private String customerManagedKey;
+    private String deletionPolicy;
     private Boolean deletionProtection;
     private String displayName;
     private Map<String,String> effectiveLabels;
@@ -89,6 +90,9 @@ public final class GetInstanceResult {
     }
     public String customerManagedKey() {
         return this.customerManagedKey;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean deletionProtection() {
         return this.deletionProtection;
@@ -205,6 +209,7 @@ public final class GetInstanceResult {
         private String createTime;
         private String currentLocationId;
         private String customerManagedKey;
+        private String deletionPolicy;
         private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
@@ -247,6 +252,7 @@ public final class GetInstanceResult {
     	      this.createTime = defaults.createTime;
     	      this.currentLocationId = defaults.currentLocationId;
     	      this.customerManagedKey = defaults.customerManagedKey;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
@@ -342,6 +348,14 @@ public final class GetInstanceResult {
               throw new MissingRequiredPropertyException("GetInstanceResult", "customerManagedKey");
             }
             this.customerManagedKey = customerManagedKey;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -613,6 +627,7 @@ public final class GetInstanceResult {
             _resultValue.createTime = createTime;
             _resultValue.currentLocationId = currentLocationId;
             _resultValue.customerManagedKey = customerManagedKey;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;

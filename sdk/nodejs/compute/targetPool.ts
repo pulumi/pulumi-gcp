@@ -85,6 +85,15 @@ export class TargetPool extends pulumi.CustomResource {
      */
     declare public readonly backupPool: pulumi.Output<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Textual description field.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -152,6 +161,7 @@ export class TargetPool extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TargetPoolState | undefined;
             resourceInputs["backupPool"] = state?.backupPool;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["failoverRatio"] = state?.failoverRatio;
             resourceInputs["healthChecks"] = state?.healthChecks;
@@ -165,6 +175,7 @@ export class TargetPool extends pulumi.CustomResource {
         } else {
             const args = argsOrState as TargetPoolArgs | undefined;
             resourceInputs["backupPool"] = args?.backupPool;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["failoverRatio"] = args?.failoverRatio;
             resourceInputs["healthChecks"] = args?.healthChecks;
@@ -190,6 +201,15 @@ export interface TargetPoolState {
      * failover_ratio.
      */
     backupPool?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Textual description field.
      */
@@ -254,6 +274,15 @@ export interface TargetPoolArgs {
      * failover_ratio.
      */
     backupPool?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Textual description field.
      */

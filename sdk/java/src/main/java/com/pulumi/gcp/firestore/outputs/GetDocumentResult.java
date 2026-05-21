@@ -15,6 +15,7 @@ public final class GetDocumentResult {
     private String collection;
     private String createTime;
     private String database;
+    private String deletionPolicy;
     private String documentId;
     private String fields;
     /**
@@ -36,6 +37,9 @@ public final class GetDocumentResult {
     }
     public String database() {
         return this.database;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String documentId() {
         return this.documentId;
@@ -75,6 +79,7 @@ public final class GetDocumentResult {
         private String collection;
         private String createTime;
         private String database;
+        private String deletionPolicy;
         private String documentId;
         private String fields;
         private String id;
@@ -88,6 +93,7 @@ public final class GetDocumentResult {
     	      this.collection = defaults.collection;
     	      this.createTime = defaults.createTime;
     	      this.database = defaults.database;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.documentId = defaults.documentId;
     	      this.fields = defaults.fields;
     	      this.id = defaults.id;
@@ -119,6 +125,14 @@ public final class GetDocumentResult {
               throw new MissingRequiredPropertyException("GetDocumentResult", "database");
             }
             this.database = database;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDocumentResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +194,7 @@ public final class GetDocumentResult {
             _resultValue.collection = collection;
             _resultValue.createTime = createTime;
             _resultValue.database = database;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.documentId = documentId;
             _resultValue.fields = fields;
             _resultValue.id = id;

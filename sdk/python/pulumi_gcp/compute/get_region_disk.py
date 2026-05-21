@@ -27,7 +27,7 @@ class GetRegionDiskResult:
     """
     A collection of values returned by getRegionDisk.
     """
-    def __init__(__self__, access_mode=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, erase_windows_vss_signature=None, guest_os_features=None, id=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
+    def __init__(__self__, access_mode=None, async_primary_disks=None, create_snapshot_before_destroy=None, create_snapshot_before_destroy_prefix=None, creation_timestamp=None, deletion_policy=None, description=None, disk_encryption_keys=None, disk_id=None, effective_labels=None, erase_windows_vss_signature=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, pulumi_labels=None, region=None, replica_zones=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None):
         if access_mode and not isinstance(access_mode, str):
             raise TypeError("Expected argument 'access_mode' to be a str")
         pulumi.set(__self__, "access_mode", access_mode)
@@ -43,6 +43,9 @@ class GetRegionDiskResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -64,6 +67,9 @@ class GetRegionDiskResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if image and not isinstance(image, str):
+            raise TypeError("Expected argument 'image' to be a str")
+        pulumi.set(__self__, "image", image)
         if interface and not isinstance(interface, str):
             raise TypeError("Expected argument 'interface' to be a str")
         pulumi.set(__self__, "interface", interface)
@@ -121,6 +127,12 @@ class GetRegionDiskResult:
         if source_disk_id and not isinstance(source_disk_id, str):
             raise TypeError("Expected argument 'source_disk_id' to be a str")
         pulumi.set(__self__, "source_disk_id", source_disk_id)
+        if source_image_encryption_keys and not isinstance(source_image_encryption_keys, list):
+            raise TypeError("Expected argument 'source_image_encryption_keys' to be a list")
+        pulumi.set(__self__, "source_image_encryption_keys", source_image_encryption_keys)
+        if source_image_id and not isinstance(source_image_id, str):
+            raise TypeError("Expected argument 'source_image_id' to be a str")
+        pulumi.set(__self__, "source_image_id", source_image_id)
         if source_snapshot_encryption_keys and not isinstance(source_snapshot_encryption_keys, list):
             raise TypeError("Expected argument 'source_snapshot_encryption_keys' to be a list")
         pulumi.set(__self__, "source_snapshot_encryption_keys", source_snapshot_encryption_keys)
@@ -160,6 +172,11 @@ class GetRegionDiskResult:
         return pulumi.get(self, "creation_timestamp")
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> _builtins.str:
         return pulumi.get(self, "description")
@@ -196,6 +213,11 @@ class GetRegionDiskResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def image(self) -> _builtins.str:
+        return pulumi.get(self, "image")
 
     @_builtins.property
     @pulumi.getter
@@ -293,6 +315,16 @@ class GetRegionDiskResult:
         return pulumi.get(self, "source_disk_id")
 
     @_builtins.property
+    @pulumi.getter(name="sourceImageEncryptionKeys")
+    def source_image_encryption_keys(self) -> Sequence['outputs.GetRegionDiskSourceImageEncryptionKeyResult']:
+        return pulumi.get(self, "source_image_encryption_keys")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceImageId")
+    def source_image_id(self) -> _builtins.str:
+        return pulumi.get(self, "source_image_id")
+
+    @_builtins.property
     @pulumi.getter(name="sourceSnapshotEncryptionKeys")
     def source_snapshot_encryption_keys(self) -> Sequence['outputs.GetRegionDiskSourceSnapshotEncryptionKeyResult']:
         return pulumi.get(self, "source_snapshot_encryption_keys")
@@ -324,6 +356,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             create_snapshot_before_destroy=self.create_snapshot_before_destroy,
             create_snapshot_before_destroy_prefix=self.create_snapshot_before_destroy_prefix,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
             disk_id=self.disk_id,
@@ -331,6 +364,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             erase_windows_vss_signature=self.erase_windows_vss_signature,
             guest_os_features=self.guest_os_features,
             id=self.id,
+            image=self.image,
             interface=self.interface,
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
@@ -350,6 +384,8 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             snapshot=self.snapshot,
             source_disk=self.source_disk,
             source_disk_id=self.source_disk_id,
+            source_image_encryption_keys=self.source_image_encryption_keys,
+            source_image_id=self.source_image_id,
             source_snapshot_encryption_keys=self.source_snapshot_encryption_keys,
             source_snapshot_id=self.source_snapshot_id,
             type=self.type,
@@ -388,6 +424,7 @@ def get_region_disk(name: Optional[_builtins.str] = None,
         create_snapshot_before_destroy=pulumi.get(__ret__, 'create_snapshot_before_destroy'),
         create_snapshot_before_destroy_prefix=pulumi.get(__ret__, 'create_snapshot_before_destroy_prefix'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
         disk_id=pulumi.get(__ret__, 'disk_id'),
@@ -395,6 +432,7 @@ def get_region_disk(name: Optional[_builtins.str] = None,
         erase_windows_vss_signature=pulumi.get(__ret__, 'erase_windows_vss_signature'),
         guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
         id=pulumi.get(__ret__, 'id'),
+        image=pulumi.get(__ret__, 'image'),
         interface=pulumi.get(__ret__, 'interface'),
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -414,6 +452,8 @@ def get_region_disk(name: Optional[_builtins.str] = None,
         snapshot=pulumi.get(__ret__, 'snapshot'),
         source_disk=pulumi.get(__ret__, 'source_disk'),
         source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
+        source_image_encryption_keys=pulumi.get(__ret__, 'source_image_encryption_keys'),
+        source_image_id=pulumi.get(__ret__, 'source_image_id'),
         source_snapshot_encryption_keys=pulumi.get(__ret__, 'source_snapshot_encryption_keys'),
         source_snapshot_id=pulumi.get(__ret__, 'source_snapshot_id'),
         type=pulumi.get(__ret__, 'type'),
@@ -449,6 +489,7 @@ def get_region_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         create_snapshot_before_destroy=pulumi.get(__response__, 'create_snapshot_before_destroy'),
         create_snapshot_before_destroy_prefix=pulumi.get(__response__, 'create_snapshot_before_destroy_prefix'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disk_encryption_keys=pulumi.get(__response__, 'disk_encryption_keys'),
         disk_id=pulumi.get(__response__, 'disk_id'),
@@ -456,6 +497,7 @@ def get_region_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         erase_windows_vss_signature=pulumi.get(__response__, 'erase_windows_vss_signature'),
         guest_os_features=pulumi.get(__response__, 'guest_os_features'),
         id=pulumi.get(__response__, 'id'),
+        image=pulumi.get(__response__, 'image'),
         interface=pulumi.get(__response__, 'interface'),
         label_fingerprint=pulumi.get(__response__, 'label_fingerprint'),
         labels=pulumi.get(__response__, 'labels'),
@@ -475,6 +517,8 @@ def get_region_disk_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         snapshot=pulumi.get(__response__, 'snapshot'),
         source_disk=pulumi.get(__response__, 'source_disk'),
         source_disk_id=pulumi.get(__response__, 'source_disk_id'),
+        source_image_encryption_keys=pulumi.get(__response__, 'source_image_encryption_keys'),
+        source_image_id=pulumi.get(__response__, 'source_image_id'),
         source_snapshot_encryption_keys=pulumi.get(__response__, 'source_snapshot_encryption_keys'),
         source_snapshot_id=pulumi.get(__response__, 'source_snapshot_id'),
         type=pulumi.get(__response__, 'type'),

@@ -23,6 +23,7 @@ class FlexTemplateJobArgs:
                  additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -54,6 +55,12 @@ class FlexTemplateJobArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
@@ -92,6 +99,8 @@ class FlexTemplateJobArgs:
             pulumi.set(__self__, "additional_pipeline_options", additional_pipeline_options)
         if autoscaling_algorithm is not None:
             pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable_streaming_engine is not None:
             pulumi.set(__self__, "enable_streaming_engine", enable_streaming_engine)
         if ip_configuration is not None:
@@ -185,6 +194,23 @@ class FlexTemplateJobArgs:
     @autoscaling_algorithm.setter
     def autoscaling_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "autoscaling_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStreamingEngine")
@@ -455,6 +481,7 @@ class _FlexTemplateJobState:
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -491,6 +518,12 @@ class _FlexTemplateJobState:
                Template.
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -535,6 +568,8 @@ class _FlexTemplateJobState:
             pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
         if container_spec_gcs_path is not None:
             pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_streaming_engine is not None:
@@ -638,6 +673,23 @@ class _FlexTemplateJobState:
     @container_spec_gcs_path.setter
     def container_spec_gcs_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_spec_gcs_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")
@@ -971,6 +1023,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1084,6 +1137,12 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[_builtins.str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
@@ -1222,6 +1281,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
                  kms_key_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1258,6 +1318,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             if container_spec_gcs_path is None and not opts.urn:
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
             __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enable_streaming_engine"] = enable_streaming_engine
             __props__.__dict__["ip_configuration"] = ip_configuration
             __props__.__dict__["kms_key_name"] = kms_key_name
@@ -1300,6 +1361,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
             ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1340,6 +1402,12 @@ class FlexTemplateJob(pulumi.CustomResource):
                Template.
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.bool] enable_streaming_engine: Immutable. Indicates if the job should use the streaming engine feature.
         :param pulumi.Input[_builtins.str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -1384,6 +1452,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__.__dict__["additional_pipeline_options"] = additional_pipeline_options
         __props__.__dict__["autoscaling_algorithm"] = autoscaling_algorithm
         __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_streaming_engine"] = enable_streaming_engine
         __props__.__dict__["ip_configuration"] = ip_configuration
@@ -1446,6 +1515,19 @@ class FlexTemplateJob(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "container_spec_gcs_path")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="effectiveLabels")

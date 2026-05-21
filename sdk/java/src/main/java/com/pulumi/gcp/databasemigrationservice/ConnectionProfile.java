@@ -512,11 +512,11 @@ import javax.annotation.Nullable;
  *             .displayName("my-profileid_display")
  *             .labels(Map.of("foo", "bar"))
  *             .alloydb(ConnectionProfileAlloydbArgs.builder()
- *                 .clusterId("tf-test-dbmsalloycluster_39249")
+ *                 .clusterId("tf-test-dbmsalloycluster_9106")
  *                 .settings(ConnectionProfileAlloydbSettingsArgs.builder()
  *                     .initialUser(ConnectionProfileAlloydbSettingsInitialUserArgs.builder()
- *                         .user("alloyuser_74391")
- *                         .password("alloypass_16511")
+ *                         .user("alloyuser_27169")
+ *                         .password("alloypass_75223")
  *                         .build())
  *                     .vpcNetwork(default_.id())
  *                     .labels(Map.of("alloyfoo", "alloybar"))
@@ -855,6 +855,30 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
         return this.dbprovider;
     }
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * The connection profile display name.
      * 
      */
@@ -1025,6 +1049,22 @@ public class ConnectionProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> pulumiLabels() {
         return this.pulumiLabels;
+    }
+    /**
+     * The connection profile role.
+     * Possible values are: `SOURCE`, `DESTINATION`.
+     * 
+     */
+    @Export(name="role", refs={String.class}, tree="[0]")
+    private Output<String> role;
+
+    /**
+     * @return The connection profile role.
+     * Possible values are: `SOURCE`, `DESTINATION`.
+     * 
+     */
+    public Output<String> role() {
+        return this.role;
     }
     /**
      * The current connection profile state.

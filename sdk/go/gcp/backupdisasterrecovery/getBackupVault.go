@@ -73,6 +73,7 @@ type LookupBackupVaultResult struct {
 	BackupVaultId                          string                           `pulumi:"backupVaultId"`
 	CreateTime                             string                           `pulumi:"createTime"`
 	Deletable                              bool                             `pulumi:"deletable"`
+	DeletionPolicy                         string                           `pulumi:"deletionPolicy"`
 	Description                            string                           `pulumi:"description"`
 	EffectiveAnnotations                   map[string]string                `pulumi:"effectiveAnnotations"`
 	EffectiveLabels                        map[string]string                `pulumi:"effectiveLabels"`
@@ -172,6 +173,10 @@ func (o LookupBackupVaultResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupBackupVaultResultOutput) Deletable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupVaultResult) bool { return v.Deletable }).(pulumi.BoolOutput)
+}
+
+func (o LookupBackupVaultResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupVaultResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupBackupVaultResultOutput) Description() pulumi.StringOutput {

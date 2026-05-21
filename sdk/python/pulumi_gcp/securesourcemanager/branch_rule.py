@@ -24,6 +24,7 @@ class BranchRuleArgs:
                  location: pulumi.Input[_builtins.str],
                  repository_id: pulumi.Input[_builtins.str],
                  allow_stale_reviews: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  minimum_approvals_count: pulumi.Input[Optional[_builtins.int]] = None,
                  minimum_reviews_count: pulumi.Input[Optional[_builtins.int]] = None,
@@ -39,6 +40,12 @@ class BranchRuleArgs:
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
         :param pulumi.Input[_builtins.str] repository_id: The ID for the Repository.
         :param pulumi.Input[_builtins.bool] allow_stale_reviews: Determines if allow stale reviews or approvals before merging to the branch.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the branch rule is disabled or not.
         :param pulumi.Input[_builtins.int] minimum_approvals_count: The minimum number of approvals required for the branch rule to be matched.
         :param pulumi.Input[_builtins.int] minimum_reviews_count: The minimum number of reviews required for the branch rule to be matched.
@@ -54,6 +61,8 @@ class BranchRuleArgs:
         pulumi.set(__self__, "repository_id", repository_id)
         if allow_stale_reviews is not None:
             pulumi.set(__self__, "allow_stale_reviews", allow_stale_reviews)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if minimum_approvals_count is not None:
@@ -128,6 +137,23 @@ class BranchRuleArgs:
     @allow_stale_reviews.setter
     def allow_stale_reviews(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_stale_reviews", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -221,6 +247,7 @@ class _BranchRuleState:
                  allow_stale_reviews: pulumi.Input[Optional[_builtins.bool]] = None,
                  branch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  include_pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -240,6 +267,12 @@ class _BranchRuleState:
         :param pulumi.Input[_builtins.bool] allow_stale_reviews: Determines if allow stale reviews or approvals before merging to the branch.
         :param pulumi.Input[_builtins.str] branch_rule_id: The ID for the BranchRule.
         :param pulumi.Input[_builtins.str] create_time: Time the BranchRule was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the branch rule is disabled or not.
         :param pulumi.Input[_builtins.str] include_pattern: The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
@@ -261,6 +294,8 @@ class _BranchRuleState:
             pulumi.set(__self__, "branch_rule_id", branch_rule_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if include_pattern is not None:
@@ -323,6 +358,23 @@ class _BranchRuleState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -490,6 +542,7 @@ class BranchRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_stale_reviews: pulumi.Input[Optional[_builtins.bool]] = None,
                  branch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  include_pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -585,6 +638,12 @@ class BranchRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] allow_stale_reviews: Determines if allow stale reviews or approvals before merging to the branch.
         :param pulumi.Input[_builtins.str] branch_rule_id: The ID for the BranchRule.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the branch rule is disabled or not.
         :param pulumi.Input[_builtins.str] include_pattern: The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
@@ -700,6 +759,7 @@ class BranchRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allow_stale_reviews: pulumi.Input[Optional[_builtins.bool]] = None,
                  branch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  include_pattern: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -723,6 +783,7 @@ class BranchRule(pulumi.CustomResource):
             if branch_rule_id is None and not opts.urn:
                 raise TypeError("Missing required property 'branch_rule_id'")
             __props__.__dict__["branch_rule_id"] = branch_rule_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disabled"] = disabled
             if include_pattern is None and not opts.urn:
                 raise TypeError("Missing required property 'include_pattern'")
@@ -756,6 +817,7 @@ class BranchRule(pulumi.CustomResource):
             allow_stale_reviews: pulumi.Input[Optional[_builtins.bool]] = None,
             branch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disabled: pulumi.Input[Optional[_builtins.bool]] = None,
             include_pattern: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
@@ -779,6 +841,12 @@ class BranchRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] allow_stale_reviews: Determines if allow stale reviews or approvals before merging to the branch.
         :param pulumi.Input[_builtins.str] branch_rule_id: The ID for the BranchRule.
         :param pulumi.Input[_builtins.str] create_time: Time the BranchRule was created in UTC.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disabled: Determines if the branch rule is disabled or not.
         :param pulumi.Input[_builtins.str] include_pattern: The BranchRule matches branches based on the specified regular expression. Use .* to match all branches.
         :param pulumi.Input[_builtins.str] location: The location for the Repository.
@@ -801,6 +869,7 @@ class BranchRule(pulumi.CustomResource):
         __props__.__dict__["allow_stale_reviews"] = allow_stale_reviews
         __props__.__dict__["branch_rule_id"] = branch_rule_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["include_pattern"] = include_pattern
         __props__.__dict__["location"] = location
@@ -839,6 +908,19 @@ class BranchRule(pulumi.CustomResource):
         Time the BranchRule was created in UTC.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

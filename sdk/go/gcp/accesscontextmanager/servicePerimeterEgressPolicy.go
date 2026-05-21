@@ -40,6 +40,13 @@ type ServicePerimeterEgressPolicy struct {
 
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterEgressPolicyEgressFromPtrOutput `pulumi:"egressFrom"`
@@ -90,6 +97,13 @@ func GetServicePerimeterEgressPolicy(ctx *pulumi.Context,
 type servicePerimeterEgressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId *string `pulumi:"accessPolicyId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimeterEgressPolicyEgressFrom `pulumi:"egressFrom"`
@@ -108,6 +122,13 @@ type servicePerimeterEgressPolicyState struct {
 type ServicePerimeterEgressPolicyState struct {
 	// The name of the Access Policy this resource belongs to.
 	AccessPolicyId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterEgressPolicyEgressFromPtrInput
@@ -128,6 +149,13 @@ func (ServicePerimeterEgressPolicyState) ElementType() reflect.Type {
 }
 
 type servicePerimeterEgressPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimeterEgressPolicyEgressFrom `pulumi:"egressFrom"`
@@ -143,6 +171,13 @@ type servicePerimeterEgressPolicyArgs struct {
 
 // The set of arguments for constructing a ServicePerimeterEgressPolicy resource.
 type ServicePerimeterEgressPolicyArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterEgressPolicyEgressFromPtrInput
@@ -246,6 +281,16 @@ func (o ServicePerimeterEgressPolicyOutput) ToServicePerimeterEgressPolicyOutput
 // The name of the Access Policy this resource belongs to.
 func (o ServicePerimeterEgressPolicyOutput) AccessPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterEgressPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ServicePerimeterEgressPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterEgressPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Defines conditions on the source of a request causing this `EgressPolicy` to apply.

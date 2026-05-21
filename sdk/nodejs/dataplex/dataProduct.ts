@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *         groupId: "analyst",
  *         displayName: "Data Analyst",
  *         principal: {
- *             googleGroup: "tf-test-analysts-_29439@example.com",
+ *             googleGroup: "tf-test-analysts-_79169@example.com",
  *         },
  *     }],
  * });
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *             displayName: "Data Analyst - Updated",
  *             description: "In-place update verified",
  *             principal: {
- *                 googleGroup: "tf-test-analysts-_87786@example.com",
+ *                 googleGroup: "tf-test-analysts-_56529@example.com",
  *             },
  *         },
  *         {
@@ -74,7 +74,7 @@ import * as utilities from "../utilities";
  *             groupId: "scientist",
  *             displayName: "Data Scientist",
  *             principal: {
- *                 googleGroup: "tf-test-scientists-_2067@example.com",
+ *                 googleGroup: "tf-test-scientists-_75413@example.com",
  *             },
  *         },
  *     ],
@@ -143,6 +143,15 @@ export class DataProduct extends pulumi.CustomResource {
      */
     declare public readonly dataProductId: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Description of the data product.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -208,6 +217,7 @@ export class DataProduct extends pulumi.CustomResource {
             resourceInputs["assetCount"] = state?.assetCount;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataProductId"] = state?.dataProductId;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -235,6 +245,7 @@ export class DataProduct extends pulumi.CustomResource {
             }
             resourceInputs["accessGroups"] = args?.accessGroups;
             resourceInputs["dataProductId"] = args?.dataProductId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
@@ -277,6 +288,15 @@ export interface DataProductState {
      * The ID of the data product.
      */
     dataProductId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the data product.
      */
@@ -340,6 +360,15 @@ export interface DataProductArgs {
      * The ID of the data product.
      */
     dataProductId: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Description of the data product.
      */

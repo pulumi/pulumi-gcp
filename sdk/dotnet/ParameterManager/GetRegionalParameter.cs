@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.ParameterManager
     public sealed class GetRegionalParameterResult
     {
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Format;
         /// <summary>
@@ -164,6 +165,8 @@ namespace Pulumi.Gcp.ParameterManager
         [OutputConstructor]
         private GetRegionalParameterResult(
             string createTime,
+
+            string deletionPolicy,
 
             ImmutableDictionary<string, string> effectiveLabels,
 
@@ -190,6 +193,7 @@ namespace Pulumi.Gcp.ParameterManager
             string updateTime)
         {
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             EffectiveLabels = effectiveLabels;
             Format = format;
             Id = id;

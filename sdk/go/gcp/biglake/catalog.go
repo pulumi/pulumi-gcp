@@ -75,6 +75,13 @@ type Catalog struct {
 	// is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Output only. The time when this catalog is considered expired. Only set
 	// after the catalog is deleted. Only set after the catalog is deleted.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -135,6 +142,13 @@ type catalogState struct {
 	// is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	DeleteTime *string `pulumi:"deleteTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Output only. The time when this catalog is considered expired. Only set
 	// after the catalog is deleted. Only set after the catalog is deleted.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -163,6 +177,13 @@ type CatalogState struct {
 	// is deleted. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	DeleteTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Output only. The time when this catalog is considered expired. Only set
 	// after the catalog is deleted. Only set after the catalog is deleted.
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
@@ -187,6 +208,13 @@ func (CatalogState) ElementType() reflect.Type {
 }
 
 type catalogArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The geographic location where the Catalog should reside.
 	Location string `pulumi:"location"`
 	// The name of the Catalog. Format:
@@ -199,6 +227,13 @@ type catalogArgs struct {
 
 // The set of arguments for constructing a Catalog resource.
 type CatalogArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The geographic location where the Catalog should reside.
 	Location pulumi.StringInput
 	// The name of the Catalog. Format:
@@ -308,6 +343,16 @@ func (o CatalogOutput) CreateTime() pulumi.StringOutput {
 // resolution and up to nine fractional digits.
 func (o CatalogOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CatalogOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Catalog) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Output only. The time when this catalog is considered expired. Only set

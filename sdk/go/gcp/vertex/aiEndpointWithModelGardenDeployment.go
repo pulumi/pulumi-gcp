@@ -390,6 +390,13 @@ import (
 type AiEndpointWithModelGardenDeployment struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The deploy config to use for the deployment.
 	// Structure is documented below.
 	DeployConfig AiEndpointWithModelGardenDeploymentDeployConfigPtrOutput `pulumi:"deployConfig"`
@@ -456,6 +463,13 @@ func GetAiEndpointWithModelGardenDeployment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AiEndpointWithModelGardenDeployment resources.
 type aiEndpointWithModelGardenDeploymentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The deploy config to use for the deployment.
 	// Structure is documented below.
 	DeployConfig *AiEndpointWithModelGardenDeploymentDeployConfig `pulumi:"deployConfig"`
@@ -490,6 +504,13 @@ type aiEndpointWithModelGardenDeploymentState struct {
 }
 
 type AiEndpointWithModelGardenDeploymentState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The deploy config to use for the deployment.
 	// Structure is documented below.
 	DeployConfig AiEndpointWithModelGardenDeploymentDeployConfigPtrInput
@@ -528,6 +549,13 @@ func (AiEndpointWithModelGardenDeploymentState) ElementType() reflect.Type {
 }
 
 type aiEndpointWithModelGardenDeploymentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The deploy config to use for the deployment.
 	// Structure is documented below.
 	DeployConfig *AiEndpointWithModelGardenDeploymentDeployConfig `pulumi:"deployConfig"`
@@ -554,6 +582,13 @@ type aiEndpointWithModelGardenDeploymentArgs struct {
 
 // The set of arguments for constructing a AiEndpointWithModelGardenDeployment resource.
 type AiEndpointWithModelGardenDeploymentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The deploy config to use for the deployment.
 	// Structure is documented below.
 	DeployConfig AiEndpointWithModelGardenDeploymentDeployConfigPtrInput
@@ -663,6 +698,16 @@ func (o AiEndpointWithModelGardenDeploymentOutput) ToAiEndpointWithModelGardenDe
 
 func (o AiEndpointWithModelGardenDeploymentOutput) ToAiEndpointWithModelGardenDeploymentOutputWithContext(ctx context.Context) AiEndpointWithModelGardenDeploymentOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AiEndpointWithModelGardenDeploymentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiEndpointWithModelGardenDeployment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The deploy config to use for the deployment.

@@ -24,6 +24,7 @@ class CustomConstraintArgs:
                  method_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  parent: pulumi.Input[_builtins.str],
                  resource_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
@@ -36,6 +37,12 @@ class CustomConstraintArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
         :param pulumi.Input[_builtins.str] parent: The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_types: Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the constraint.
         :param pulumi.Input[_builtins.str] name: Immutable. The name of the custom constraint. This is unique within the organization.
@@ -45,6 +52,8 @@ class CustomConstraintArgs:
         pulumi.set(__self__, "method_types", method_types)
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "resource_types", resource_types)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -114,6 +123,23 @@ class CustomConstraintArgs:
         pulumi.set(self, "resource_types", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -155,6 +181,7 @@ class _CustomConstraintState:
     def __init__(__self__, *,
                  action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  method_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -168,6 +195,12 @@ class _CustomConstraintState:
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the constraint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
@@ -180,6 +213,8 @@ class _CustomConstraintState:
             pulumi.set(__self__, "action_type", action_type)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -219,6 +254,23 @@ class _CustomConstraintState:
     @condition.setter
     def condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -313,6 +365,7 @@ class CustomConstraint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  method_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -395,6 +448,12 @@ class CustomConstraint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the constraint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
@@ -495,6 +554,7 @@ class CustomConstraint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  action_type: pulumi.Input[Optional[_builtins.str]] = None,
                  condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  method_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -516,6 +576,7 @@ class CustomConstraint(pulumi.CustomResource):
             if condition is None and not opts.urn:
                 raise TypeError("Missing required property 'condition'")
             __props__.__dict__["condition"] = condition
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             if method_types is None and not opts.urn:
@@ -541,6 +602,7 @@ class CustomConstraint(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             action_type: pulumi.Input[Optional[_builtins.str]] = None,
             condition: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             method_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -558,6 +620,12 @@ class CustomConstraint(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] action_type: The action to take if the condition is met.
                Possible values are: `ALLOW`, `DENY`.
         :param pulumi.Input[_builtins.str] condition: A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A human-friendly description of the constraint to display as an error message when the policy is violated.
         :param pulumi.Input[_builtins.str] display_name: A human-friendly name for the constraint.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] method_types: A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
@@ -572,6 +640,7 @@ class CustomConstraint(pulumi.CustomResource):
 
         __props__.__dict__["action_type"] = action_type
         __props__.__dict__["condition"] = condition
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["method_types"] = method_types
@@ -597,6 +666,19 @@ class CustomConstraint(pulumi.CustomResource):
         A CEL condition that refers to a supported service resource, for example `resource.management.autoUpgrade == false`. For details about CEL usage, see [Common Expression Language](https://docs.cloud.google.com/resource-manager/docs/organization-policy/creating-managing-custom-constraints#common_expression_language).
         """
         return pulumi.get(self, "condition")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

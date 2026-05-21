@@ -23,6 +23,7 @@ class ManagedZoneArgs:
     def __init__(__self__, *,
                  dns_name: pulumi.Input[_builtins.str],
                  cloud_logging_config: pulumi.Input[Optional['ManagedZoneCloudLoggingConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dnssec_config: pulumi.Input[Optional['ManagedZoneDnssecConfigArgs']] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -41,6 +42,12 @@ class ManagedZoneArgs:
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneCloudLoggingConfigArgs'] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
                Structure is documented below.
@@ -78,6 +85,8 @@ class ManagedZoneArgs:
         pulumi.set(__self__, "dns_name", dns_name)
         if cloud_logging_config is not None:
             pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
@@ -129,6 +138,23 @@ class ManagedZoneArgs:
     @cloud_logging_config.setter
     def cloud_logging_config(self, value: pulumi.Input[Optional['ManagedZoneCloudLoggingConfigArgs']]):
         pulumi.set(self, "cloud_logging_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -301,6 +327,7 @@ class _ManagedZoneState:
     def __init__(__self__, *,
                  cloud_logging_config: pulumi.Input[Optional['ManagedZoneCloudLoggingConfigArgs']] = None,
                  creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dnssec_config: pulumi.Input[Optional['ManagedZoneDnssecConfigArgs']] = None,
@@ -325,6 +352,12 @@ class _ManagedZoneState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input['ManagedZoneDnssecConfigArgs'] dnssec_config: DNSSEC configuration
@@ -370,6 +403,8 @@ class _ManagedZoneState:
             pulumi.set(__self__, "cloud_logging_config", cloud_logging_config)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is None:
             description = 'Managed by Pulumi'
         if description is not None:
@@ -432,6 +467,23 @@ class _ManagedZoneState:
     @creation_time.setter
     def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -668,6 +720,7 @@ class ManagedZone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_logging_config: pulumi.Input[Optional[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dnssec_config: pulumi.Input[Optional[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']]] = None,
@@ -980,6 +1033,12 @@ class ManagedZone(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']] cloud_logging_config: Cloud logging configuration
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
@@ -1331,6 +1390,7 @@ class ManagedZone(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_logging_config: pulumi.Input[Optional[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_name: pulumi.Input[Optional[_builtins.str]] = None,
                  dnssec_config: pulumi.Input[Optional[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']]] = None,
@@ -1354,6 +1414,7 @@ class ManagedZone(pulumi.CustomResource):
             __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
             __props__.__dict__["cloud_logging_config"] = cloud_logging_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if description is None:
                 description = 'Managed by Pulumi'
             __props__.__dict__["description"] = description
@@ -1390,6 +1451,7 @@ class ManagedZone(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_logging_config: pulumi.Input[Optional[Union['ManagedZoneCloudLoggingConfigArgs', 'ManagedZoneCloudLoggingConfigArgsDict']]] = None,
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             dns_name: pulumi.Input[Optional[_builtins.str]] = None,
             dnssec_config: pulumi.Input[Optional[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']]] = None,
@@ -1418,6 +1480,12 @@ class ManagedZone(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_time: The time that this resource was created on the server.
                This is in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A textual description field. Defaults to 'Managed by Pulumi'.
         :param pulumi.Input[_builtins.str] dns_name: The DNS name of this managed zone, for instance "example.com.".
         :param pulumi.Input[Union['ManagedZoneDnssecConfigArgs', 'ManagedZoneDnssecConfigArgsDict']] dnssec_config: DNSSEC configuration
@@ -1465,6 +1533,7 @@ class ManagedZone(pulumi.CustomResource):
 
         __props__.__dict__["cloud_logging_config"] = cloud_logging_config
         __props__.__dict__["creation_time"] = creation_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["dns_name"] = dns_name
         __props__.__dict__["dnssec_config"] = dnssec_config
@@ -1501,6 +1570,19 @@ class ManagedZone(pulumi.CustomResource):
         This is in RFC3339 text format.
         """
         return pulumi.get(self, "creation_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

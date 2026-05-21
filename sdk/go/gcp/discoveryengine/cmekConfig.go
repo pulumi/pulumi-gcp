@@ -85,6 +85,13 @@ type CmekConfig struct {
 
 	// The unique id of the cmek config.
 	CmekConfigId pulumi.StringOutput `pulumi:"cmekConfigId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The default CmekConfig for the Customer.
 	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// KMS key resource name which will be used to encrypt resources
@@ -159,6 +166,13 @@ func GetCmekConfig(ctx *pulumi.Context,
 type cmekConfigState struct {
 	// The unique id of the cmek config.
 	CmekConfigId *string `pulumi:"cmekConfigId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The default CmekConfig for the Customer.
 	IsDefault *bool `pulumi:"isDefault"`
 	// KMS key resource name which will be used to encrypt resources
@@ -195,6 +209,13 @@ type cmekConfigState struct {
 type CmekConfigState struct {
 	// The unique id of the cmek config.
 	CmekConfigId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The default CmekConfig for the Customer.
 	IsDefault pulumi.BoolPtrInput
 	// KMS key resource name which will be used to encrypt resources
@@ -235,6 +256,13 @@ func (CmekConfigState) ElementType() reflect.Type {
 type cmekConfigArgs struct {
 	// The unique id of the cmek config.
 	CmekConfigId string `pulumi:"cmekConfigId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// KMS key resource name which will be used to encrypt resources
 	// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
 	KmsKey string `pulumi:"kmsKey"`
@@ -256,6 +284,13 @@ type cmekConfigArgs struct {
 type CmekConfigArgs struct {
 	// The unique id of the cmek config.
 	CmekConfigId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// KMS key resource name which will be used to encrypt resources
 	// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{keyId}`.
 	KmsKey pulumi.StringInput
@@ -363,6 +398,16 @@ func (o CmekConfigOutput) ToCmekConfigOutputWithContext(ctx context.Context) Cme
 // The unique id of the cmek config.
 func (o CmekConfigOutput) CmekConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CmekConfig) pulumi.StringOutput { return v.CmekConfigId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CmekConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CmekConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The default CmekConfig for the Customer.

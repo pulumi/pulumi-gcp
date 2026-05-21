@@ -24,6 +24,7 @@ class PolicyArgs:
                  constraint: pulumi.Input[_builtins.str],
                  org_id: pulumi.Input[_builtins.str],
                  boolean_policy: pulumi.Input[Optional['PolicyBooleanPolicyArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  list_policy: pulumi.Input[Optional['PolicyListPolicyArgs']] = None,
                  restore_policy: pulumi.Input[Optional['PolicyRestorePolicyArgs']] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None):
@@ -36,19 +37,27 @@ class PolicyArgs:
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input['PolicyBooleanPolicyArgs'] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented
                below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input['PolicyListPolicyArgs'] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input['PolicyRestorePolicyArgs'] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[_builtins.int] version: Version of the Policy. Default version is 0.
         """
         pulumi.set(__self__, "constraint", constraint)
         pulumi.set(__self__, "org_id", org_id)
         if boolean_policy is not None:
             pulumi.set(__self__, "boolean_policy", boolean_policy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if list_policy is not None:
             pulumi.set(__self__, "list_policy", list_policy)
         if restore_policy is not None:
@@ -96,6 +105,25 @@ class PolicyArgs:
         pulumi.set(self, "boolean_policy", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="listPolicy")
     def list_policy(self) -> pulumi.Input[Optional['PolicyListPolicyArgs']]:
         """
@@ -115,8 +143,6 @@ class PolicyArgs:
 
         > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-
-        - - -
         """
         return pulumi.get(self, "restore_policy")
 
@@ -142,6 +168,7 @@ class _PolicyState:
     def __init__(__self__, *,
                  boolean_policy: pulumi.Input[Optional['PolicyBooleanPolicyArgs']] = None,
                  constraint: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  list_policy: pulumi.Input[Optional['PolicyListPolicyArgs']] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -156,6 +183,14 @@ class _PolicyState:
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         :param pulumi.Input['PolicyListPolicyArgs'] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization to set the policy for.
@@ -163,8 +198,6 @@ class _PolicyState:
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[_builtins.str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[_builtins.int] version: Version of the Policy. Default version is 0.
         """
@@ -172,6 +205,8 @@ class _PolicyState:
             pulumi.set(__self__, "boolean_policy", boolean_policy)
         if constraint is not None:
             pulumi.set(__self__, "constraint", constraint)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if list_policy is not None:
@@ -211,6 +246,25 @@ class _PolicyState:
     @constraint.setter
     def constraint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "constraint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -256,8 +310,6 @@ class _PolicyState:
 
         > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-
-        - - -
         """
         return pulumi.get(self, "restore_policy")
 
@@ -298,6 +350,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']]] = None,
                  constraint: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']]] = None,
@@ -399,14 +452,20 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization to set the policy for.
         :param pulumi.Input[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']] restore_policy: A restore policy is a constraint to restore the default policy. Structure is documented below.
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[_builtins.int] version: Version of the Policy. Default version is 0.
         """
         ...
@@ -521,6 +580,7 @@ class Policy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']]] = None,
                  constraint: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']]] = None,
                  org_id: pulumi.Input[Optional[_builtins.str]] = None,
                  restore_policy: pulumi.Input[Optional[Union['PolicyRestorePolicyArgs', 'PolicyRestorePolicyArgsDict']]] = None,
@@ -538,6 +598,7 @@ class Policy(pulumi.CustomResource):
             if constraint is None and not opts.urn:
                 raise TypeError("Missing required property 'constraint'")
             __props__.__dict__["constraint"] = constraint
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["list_policy"] = list_policy
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
@@ -558,6 +619,7 @@ class Policy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             boolean_policy: pulumi.Input[Optional[Union['PolicyBooleanPolicyArgs', 'PolicyBooleanPolicyArgsDict']]] = None,
             constraint: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             list_policy: pulumi.Input[Optional[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']]] = None,
             org_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -576,6 +638,14 @@ class Policy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] constraint: The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://docs.cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
                
                - - -
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               - - -
         :param pulumi.Input[_builtins.str] etag: (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
         :param pulumi.Input[Union['PolicyListPolicyArgs', 'PolicyListPolicyArgsDict']] list_policy: A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
         :param pulumi.Input[_builtins.str] org_id: The numeric ID of the organization to set the policy for.
@@ -583,8 +653,6 @@ class Policy(pulumi.CustomResource):
                
                > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
                effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-               
-               - - -
         :param pulumi.Input[_builtins.str] update_time: (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
         :param pulumi.Input[_builtins.int] version: Version of the Policy. Default version is 0.
         """
@@ -594,6 +662,7 @@ class Policy(pulumi.CustomResource):
 
         __props__.__dict__["boolean_policy"] = boolean_policy
         __props__.__dict__["constraint"] = constraint
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["etag"] = etag
         __props__.__dict__["list_policy"] = list_policy
         __props__.__dict__["org_id"] = org_id
@@ -620,6 +689,21 @@ class Policy(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "constraint")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        - - -
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -653,8 +737,6 @@ class Policy(pulumi.CustomResource):
 
         > **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
         effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
-
-        - - -
         """
         return pulumi.get(self, "restore_policy")
 

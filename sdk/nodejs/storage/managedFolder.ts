@@ -94,6 +94,15 @@ export class ManagedFolder extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Allows the deletion of a managed folder even if contains
      * objects. If a non-empty managed folder is deleted, any objects
      * within the folder will remain in a simulated folder with the
@@ -133,6 +142,7 @@ export class ManagedFolder extends pulumi.CustomResource {
             const state = argsOrState as ManagedFolderState | undefined;
             resourceInputs["bucket"] = state?.bucket;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["forceDestroy"] = state?.forceDestroy;
             resourceInputs["metageneration"] = state?.metageneration;
             resourceInputs["name"] = state?.name;
@@ -144,6 +154,7 @@ export class ManagedFolder extends pulumi.CustomResource {
                 throw new Error("Missing required property 'bucket'");
             }
             resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["forceDestroy"] = args?.forceDestroy;
             resourceInputs["name"] = args?.name;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -168,6 +179,15 @@ export interface ManagedFolderState {
      * The timestamp at which this managed folder was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Allows the deletion of a managed folder even if contains
      * objects. If a non-empty managed folder is deleted, any objects
@@ -202,6 +222,15 @@ export interface ManagedFolderArgs {
      * The name of the bucket that contains the managed folder.
      */
     bucket: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Allows the deletion of a managed folder even if contains
      * objects. If a non-empty managed folder is deleted, any objects

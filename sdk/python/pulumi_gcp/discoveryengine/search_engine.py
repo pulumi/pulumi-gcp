@@ -29,6 +29,7 @@ class SearchEngineArgs:
                  search_engine_config: pulumi.Input['SearchEngineSearchEngineConfigArgs'],
                  app_type: pulumi.Input[Optional[_builtins.str]] = None,
                  common_config: pulumi.Input[Optional['SearchEngineCommonConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
                  features: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  industry_vertical: pulumi.Input[Optional[_builtins.str]] = None,
@@ -49,6 +50,12 @@ class SearchEngineArgs:
                The supported values: 'APP_TYPE_UNSPECIFIED', 'APP_TYPE_INTRANET'.
         :param pulumi.Input['SearchEngineCommonConfigArgs'] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] features: A map of the feature config for the engine to opt in or opt out of features.
         :param pulumi.Input[_builtins.str] industry_vertical: The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore: If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
@@ -74,6 +81,8 @@ class SearchEngineArgs:
             pulumi.set(__self__, "app_type", app_type)
         if common_config is not None:
             pulumi.set(__self__, "common_config", common_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_analytics is not None:
             pulumi.set(__self__, "disable_analytics", disable_analytics)
         if features is not None:
@@ -187,6 +196,23 @@ class SearchEngineArgs:
         pulumi.set(self, "common_config", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="disableAnalytics")
     def disable_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -275,6 +301,7 @@ class _SearchEngineState:
                  common_config: pulumi.Input[Optional['SearchEngineCommonConfigArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -297,6 +324,12 @@ class _SearchEngineState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
@@ -332,6 +365,8 @@ class _SearchEngineState:
             pulumi.set(__self__, "create_time", create_time)
         if data_store_ids is not None:
             pulumi.set(__self__, "data_store_ids", data_store_ids)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_analytics is not None:
             pulumi.set(__self__, "disable_analytics", disable_analytics)
         if display_name is not None:
@@ -418,6 +453,23 @@ class _SearchEngineState:
     @data_store_ids.setter
     def data_store_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data_store_ids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableAnalytics")
@@ -586,6 +638,7 @@ class SearchEngine(pulumi.CustomResource):
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -689,6 +742,12 @@ class SearchEngine(pulumi.CustomResource):
         :param pulumi.Input[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']] common_config: Common config spec that specifies the metadata of the engine.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
@@ -818,6 +877,7 @@ class SearchEngine(pulumi.CustomResource):
                  collection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
                  data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  engine_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -845,6 +905,7 @@ class SearchEngine(pulumi.CustomResource):
             if data_store_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'data_store_ids'")
             __props__.__dict__["data_store_ids"] = data_store_ids
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disable_analytics"] = disable_analytics
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -881,6 +942,7 @@ class SearchEngine(pulumi.CustomResource):
             common_config: pulumi.Input[Optional[Union['SearchEngineCommonConfigArgs', 'SearchEngineCommonConfigArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_store_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             engine_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -907,6 +969,12 @@ class SearchEngine(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Timestamp the Engine was created at.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_store_ids: The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_analytics: Whether to disable analytics for searches performed on this engine.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024 characters.
         :param pulumi.Input[_builtins.str] engine_id: Unique ID to use for Search Engine App.
@@ -941,6 +1009,7 @@ class SearchEngine(pulumi.CustomResource):
         __props__.__dict__["common_config"] = common_config
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_store_ids"] = data_store_ids
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disable_analytics"] = disable_analytics
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["engine_id"] = engine_id
@@ -996,6 +1065,19 @@ class SearchEngine(pulumi.CustomResource):
         The data stores associated with this engine. For SOLUTION_TYPE_SEARCH type of engines, they can only associate with at most one data store.
         """
         return pulumi.get(self, "data_store_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="disableAnalytics")

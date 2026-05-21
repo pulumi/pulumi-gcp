@@ -69,6 +69,15 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Display Name (max 1000 Chars)
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -139,6 +148,7 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
             const state = argsOrState as PreventionDiscoveryConfigState | undefined;
             resourceInputs["actions"] = state?.actions;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["errors"] = state?.errors;
             resourceInputs["inspectTemplates"] = state?.inspectTemplates;
@@ -160,6 +170,7 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["actions"] = args?.actions;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["inspectTemplates"] = args?.inspectTemplates;
             resourceInputs["location"] = args?.location;
@@ -192,6 +203,15 @@ export interface PreventionDiscoveryConfigState {
      * Output only. The creation timestamp of a DiscoveryConfig.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Display Name (max 1000 Chars)
      */
@@ -258,6 +278,15 @@ export interface PreventionDiscoveryConfigArgs {
      * Structure is documented below.
      */
     actions?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigAction>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Display Name (max 1000 Chars)
      */

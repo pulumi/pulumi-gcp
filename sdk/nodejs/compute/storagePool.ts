@@ -128,6 +128,15 @@ export class StoragePool extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether Terraform will be prevented from destroying the StoragePool.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
      * or `terraform destroy` that would delete the StoragePool will fail.
@@ -240,6 +249,7 @@ export class StoragePool extends pulumi.CustomResource {
             const state = argsOrState as StoragePoolState | undefined;
             resourceInputs["capacityProvisioningType"] = state?.capacityProvisioningType;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -270,6 +280,7 @@ export class StoragePool extends pulumi.CustomResource {
                 throw new Error("Missing required property 'storagePoolType'");
             }
             resourceInputs["capacityProvisioningType"] = args?.capacityProvisioningType;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["description"] = args?.description;
             resourceInputs["labels"] = args?.labels;
@@ -310,6 +321,15 @@ export interface StoragePoolState {
      * Creation timestamp in RFC3339 text format.
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the StoragePool.
      * When the field is set to true or unset in Terraform state, a `pulumi up`
@@ -418,6 +438,15 @@ export interface StoragePoolArgs {
      * Possible values are: `STANDARD`, `ADVANCED`.
      */
     capacityProvisioningType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the StoragePool.
      * When the field is set to true or unset in Terraform state, a `pulumi up`

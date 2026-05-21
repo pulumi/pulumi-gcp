@@ -68,9 +68,10 @@ type LookupClientArgs struct {
 
 // A collection of values returned by getClient.
 type LookupClientResult struct {
-	Brand       string `pulumi:"brand"`
-	ClientId    string `pulumi:"clientId"`
-	DisplayName string `pulumi:"displayName"`
+	Brand          string `pulumi:"brand"`
+	ClientId       string `pulumi:"clientId"`
+	DeletionPolicy string `pulumi:"deletionPolicy"`
+	DisplayName    string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id     string `pulumi:"id"`
 	Secret string `pulumi:"secret"`
@@ -118,6 +119,10 @@ func (o LookupClientResultOutput) Brand() pulumi.StringOutput {
 
 func (o LookupClientResultOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClientResult) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+func (o LookupClientResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupClientResultOutput) DisplayName() pulumi.StringOutput {

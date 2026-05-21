@@ -26,6 +26,7 @@ class DiskArgs:
                  async_primary_disk: pulumi.Input[Optional['DiskAsyncPrimaryDiskArgs']] = None,
                  create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption_key: pulumi.Input[Optional['DiskDiskEncryptionKeyArgs']] = None,
                  enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -69,6 +70,12 @@ class DiskArgs:
                If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
                The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
         :param pulumi.Input[_builtins.str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -200,6 +207,8 @@ class DiskArgs:
             pulumi.set(__self__, "create_snapshot_before_destroy", create_snapshot_before_destroy)
         if create_snapshot_before_destroy_prefix is not None:
             pulumi.set(__self__, "create_snapshot_before_destroy_prefix", create_snapshot_before_destroy_prefix)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
@@ -325,6 +334,23 @@ class DiskArgs:
     @create_snapshot_before_destroy_prefix.setter
     def create_snapshot_before_destroy_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_snapshot_before_destroy_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -754,6 +780,7 @@ class _DiskState:
                  create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption_key: pulumi.Input[Optional['DiskDiskEncryptionKeyArgs']] = None,
                  disk_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -810,6 +837,12 @@ class _DiskState:
                The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
         :param pulumi.Input[_builtins.str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -973,6 +1006,8 @@ class _DiskState:
             pulumi.set(__self__, "create_snapshot_before_destroy_prefix", create_snapshot_before_destroy_prefix)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
@@ -1134,6 +1169,23 @@ class _DiskState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1727,6 +1779,7 @@ class Disk(pulumi.CustomResource):
                  async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1878,6 +1931,12 @@ class Disk(pulumi.CustomResource):
                If your disk is encrypted with customer managed encryption keys these will be reused for the snapshot creation.
                The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
         :param pulumi.Input[_builtins.str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -2133,6 +2192,7 @@ class Disk(pulumi.CustomResource):
                  async_primary_disk: pulumi.Input[Optional[Union['DiskAsyncPrimaryDiskArgs', 'DiskAsyncPrimaryDiskArgsDict']]] = None,
                  create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
                  enable_confidential_compute: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -2174,6 +2234,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["create_snapshot_before_destroy"] = create_snapshot_before_destroy
             __props__.__dict__["create_snapshot_before_destroy_prefix"] = create_snapshot_before_destroy_prefix
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
             __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
@@ -2232,6 +2293,7 @@ class Disk(pulumi.CustomResource):
             create_snapshot_before_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
             create_snapshot_before_destroy_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disk_encryption_key: pulumi.Input[Optional[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']]] = None,
             disk_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2292,6 +2354,12 @@ class Disk(pulumi.CustomResource):
                The name of the snapshot by default will be `{{disk-name}}-YYYYMMDD-HHmm`
         :param pulumi.Input[_builtins.str] create_snapshot_before_destroy_prefix: This will set a custom name prefix for the snapshot that's created when the disk is deleted.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Union['DiskDiskEncryptionKeyArgs', 'DiskDiskEncryptionKeyArgsDict']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -2453,6 +2521,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["create_snapshot_before_destroy"] = create_snapshot_before_destroy
         __props__.__dict__["create_snapshot_before_destroy_prefix"] = create_snapshot_before_destroy_prefix
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
         __props__.__dict__["disk_id"] = disk_id
@@ -2549,6 +2618,19 @@ class Disk(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

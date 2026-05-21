@@ -166,6 +166,7 @@ namespace Pulumi.Gcp.Iam
         public readonly string AttributeCondition;
         public readonly ImmutableDictionary<string, string> AttributeMapping;
         public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderAwResult> Aws;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly bool Disabled;
         public readonly string DisplayName;
@@ -189,6 +190,8 @@ namespace Pulumi.Gcp.Iam
             ImmutableDictionary<string, string> attributeMapping,
 
             ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderAwResult> aws,
+
+            string deletionPolicy,
 
             string description,
 
@@ -217,6 +220,7 @@ namespace Pulumi.Gcp.Iam
             AttributeCondition = attributeCondition;
             AttributeMapping = attributeMapping;
             Aws = aws;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Disabled = disabled;
             DisplayName = displayName;

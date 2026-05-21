@@ -71,6 +71,7 @@ type LookupMembershipBindingArgs struct {
 type LookupMembershipBindingResult struct {
 	CreateTime      string            `pulumi:"createTime"`
 	DeleteTime      string            `pulumi:"deleteTime"`
+	DeletionPolicy  string            `pulumi:"deletionPolicy"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string                      `pulumi:"id"`
@@ -135,6 +136,10 @@ func (o LookupMembershipBindingResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupMembershipBindingResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMembershipBindingResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+func (o LookupMembershipBindingResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMembershipBindingResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupMembershipBindingResultOutput) EffectiveLabels() pulumi.StringMapOutput {

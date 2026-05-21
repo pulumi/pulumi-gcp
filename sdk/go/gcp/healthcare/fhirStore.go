@@ -373,6 +373,13 @@ type FhirStore struct {
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
 	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
 	DefaultSearchHandlingStrict pulumi.BoolPtrOutput `pulumi:"defaultSearchHandlingStrict"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -507,6 +514,13 @@ type fhirStoreState struct {
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
 	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
 	DefaultSearchHandlingStrict *bool `pulumi:"defaultSearchHandlingStrict"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -604,6 +618,13 @@ type FhirStoreState struct {
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
 	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
 	DefaultSearchHandlingStrict pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -705,6 +726,13 @@ type fhirStoreArgs struct {
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
 	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
 	DefaultSearchHandlingStrict *bool `pulumi:"defaultSearchHandlingStrict"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -796,6 +824,13 @@ type FhirStoreArgs struct {
 	// If false, uses the FHIR specification default handling=lenient which ignores unrecognized search parameters.
 	// The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
 	DefaultSearchHandlingStrict pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
 	// requests that will result in inconsistent state in the FHIR store. When this field is set to true, the API
@@ -982,6 +1017,16 @@ func (o FhirStoreOutput) Dataset() pulumi.StringOutput {
 // The handling can always be changed from the default on an individual API call by setting the HTTP header Prefer: handling=strict or Prefer: handling=lenient.
 func (o FhirStoreOutput) DefaultSearchHandlingStrict() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.DefaultSearchHandlingStrict }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o FhirStoreOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store

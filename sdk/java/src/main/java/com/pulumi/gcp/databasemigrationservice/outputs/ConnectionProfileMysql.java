@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionProfileMysql {
     /**
-     * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * @return If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     private @Nullable String cloudSqlId;
@@ -56,7 +56,7 @@ public final class ConnectionProfileMysql {
 
     private ConnectionProfileMysql() {}
     /**
-     * @return If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+     * @return If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
      * 
      */
     public Optional<String> cloudSqlId() {

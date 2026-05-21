@@ -108,6 +108,13 @@ type ExternalAddress struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-provided description for this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The external IP address of a workload VM.
@@ -170,6 +177,13 @@ type externalAddressState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description for this resource.
 	Description *string `pulumi:"description"`
 	// The external IP address of a workload VM.
@@ -197,6 +211,13 @@ type ExternalAddressState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description for this resource.
 	Description pulumi.StringPtrInput
 	// The external IP address of a workload VM.
@@ -224,6 +245,13 @@ func (ExternalAddressState) ElementType() reflect.Type {
 }
 
 type externalAddressArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description for this resource.
 	Description *string `pulumi:"description"`
 	// The internal IP address of a workload VM.
@@ -238,6 +266,13 @@ type externalAddressArgs struct {
 
 // The set of arguments for constructing a ExternalAddress resource.
 type ExternalAddressArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description for this resource.
 	Description pulumi.StringPtrInput
 	// The internal IP address of a workload VM.
@@ -342,6 +377,16 @@ func (o ExternalAddressOutput) ToExternalAddressOutputWithContext(ctx context.Co
 // up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ExternalAddressOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalAddress) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ExternalAddressOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalAddress) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-provided description for this resource.

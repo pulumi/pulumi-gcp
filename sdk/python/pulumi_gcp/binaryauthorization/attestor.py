@@ -22,6 +22,7 @@ __all__ = ['AttestorArgs', 'Attestor']
 class AttestorArgs:
     def __init__(__self__, *,
                  attestation_authority_note: pulumi.Input['AttestorAttestationAuthorityNoteArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -30,6 +31,12 @@ class AttestorArgs:
 
         :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[_builtins.str] name: The resource name.
@@ -37,6 +44,8 @@ class AttestorArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "attestation_authority_note", attestation_authority_note)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -56,6 +65,23 @@ class AttestorArgs:
     @attestation_authority_note.setter
     def attestation_authority_note(self, value: pulumi.Input['AttestorAttestationAuthorityNoteArgs']):
         pulumi.set(self, "attestation_authority_note", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -100,6 +126,7 @@ class AttestorArgs:
 class _AttestorState:
     def __init__(__self__, *,
                  attestation_authority_note: pulumi.Input[Optional['AttestorAttestationAuthorityNoteArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
@@ -108,6 +135,12 @@ class _AttestorState:
 
         :param pulumi.Input['AttestorAttestationAuthorityNoteArgs'] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[_builtins.str] name: The resource name.
@@ -116,6 +149,8 @@ class _AttestorState:
         """
         if attestation_authority_note is not None:
             pulumi.set(__self__, "attestation_authority_note", attestation_authority_note)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -135,6 +170,23 @@ class _AttestorState:
     @attestation_authority_note.setter
     def attestation_authority_note(self, value: pulumi.Input[Optional['AttestorAttestationAuthorityNoteArgs']]):
         pulumi.set(self, "attestation_authority_note", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +234,7 @@ class Attestor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -293,6 +346,12 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[_builtins.str] name: The resource name.
@@ -424,6 +483,7 @@ class Attestor(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -439,6 +499,7 @@ class Attestor(pulumi.CustomResource):
             if attestation_authority_note is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority_note'")
             __props__.__dict__["attestation_authority_note"] = attestation_authority_note
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -453,6 +514,7 @@ class Attestor(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attestation_authority_note: pulumi.Input[Optional[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None) -> 'Attestor':
@@ -465,6 +527,12 @@ class Attestor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['AttestorAttestationAuthorityNoteArgs', 'AttestorAttestationAuthorityNoteArgsDict']] attestation_authority_note: A Container Analysis ATTESTATION_AUTHORITY Note, created by the user.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: A descriptive comment. This field may be updated. The field may be
                displayed in chooser dialogs.
         :param pulumi.Input[_builtins.str] name: The resource name.
@@ -476,6 +544,7 @@ class Attestor(pulumi.CustomResource):
         __props__ = _AttestorState.__new__(_AttestorState)
 
         __props__.__dict__["attestation_authority_note"] = attestation_authority_note
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -489,6 +558,19 @@ class Attestor(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "attestation_authority_note")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

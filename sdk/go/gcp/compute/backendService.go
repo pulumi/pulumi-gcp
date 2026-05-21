@@ -923,6 +923,13 @@ type BackendService struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// responses.
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// (Optional, Beta)
@@ -1190,6 +1197,13 @@ type backendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// (Optional, Beta)
@@ -1428,6 +1442,13 @@ type BackendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// responses.
 	CustomResponseHeaders pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// (Optional, Beta)
@@ -1668,6 +1689,13 @@ type backendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
 	// (Optional, Beta)
@@ -1898,6 +1926,13 @@ type BackendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// responses.
 	CustomResponseHeaders pulumi.StringArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
 	// (Optional, Beta)
@@ -2246,6 +2281,16 @@ func (o BackendServiceOutput) CustomRequestHeaders() pulumi.StringArrayOutput {
 // responses.
 func (o BackendServiceOutput) CustomResponseHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BackendService) pulumi.StringArrayOutput { return v.CustomResponseHeaders }).(pulumi.StringArrayOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackendServiceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional description of this resource.

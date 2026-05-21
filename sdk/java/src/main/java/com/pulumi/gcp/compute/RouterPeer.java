@@ -257,6 +257,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networkconnectivity.Spoke;
  * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
  * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs;
  * import com.pulumi.gcp.compute.Router;
  * import com.pulumi.gcp.compute.RouterArgs;
  * import com.pulumi.gcp.compute.inputs.RouterBgpArgs;
@@ -459,6 +460,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RouterRoutePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermArgs;
  * import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RouterRoutePolicyTermActionArgs;
  * import com.pulumi.gcp.compute.RouterPeer;
  * import com.pulumi.gcp.compute.RouterPeerArgs;
  * import com.pulumi.gcp.compute.inputs.RouterPeerMd5AuthenticationKeyArgs;
@@ -773,6 +775,30 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> customLearnedRoutePriority() {
         return Codegen.optional(this.customLearnedRoutePriority);
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * The status of the BGP peer connection. If set to false, any active session

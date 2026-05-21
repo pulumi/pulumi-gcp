@@ -80,6 +80,13 @@ type IAMCustomRole struct {
 
 	// (Optional) The current deleted state of the role.
 	Deleted pulumi.BoolOutput `pulumi:"deleted"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A human-readable description for the role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
@@ -137,6 +144,13 @@ func GetIAMCustomRole(ctx *pulumi.Context,
 type iamcustomRoleState struct {
 	// (Optional) The current deleted state of the role.
 	Deleted *bool `pulumi:"deleted"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
 	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
@@ -159,6 +173,13 @@ type iamcustomRoleState struct {
 type IAMCustomRoleState struct {
 	// (Optional) The current deleted state of the role.
 	Deleted pulumi.BoolPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
 	// The name of the role in the format `projects/{{project}}/roles/{{role_id}}`. Like `id`, this field can be used as a reference in other resources such as IAM role bindings.
@@ -183,6 +204,13 @@ func (IAMCustomRoleState) ElementType() reflect.Type {
 }
 
 type iamcustomRoleArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A human-readable description for the role.
 	Description *string `pulumi:"description"`
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
@@ -202,6 +230,13 @@ type iamcustomRoleArgs struct {
 
 // The set of arguments for constructing a IAMCustomRole resource.
 type IAMCustomRoleArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A human-readable description for the role.
 	Description pulumi.StringPtrInput
 	// The names of the permissions this role grants when bound in an IAM policy. At least one permission must be specified.
@@ -309,6 +344,16 @@ func (o IAMCustomRoleOutput) ToIAMCustomRoleOutputWithContext(ctx context.Contex
 // (Optional) The current deleted state of the role.
 func (o IAMCustomRoleOutput) Deleted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *IAMCustomRole) pulumi.BoolOutput { return v.Deleted }).(pulumi.BoolOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o IAMCustomRoleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *IAMCustomRole) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A human-readable description for the role.

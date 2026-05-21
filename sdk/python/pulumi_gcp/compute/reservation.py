@@ -25,6 +25,7 @@ class ReservationArgs:
                  zone: pulumi.Input[_builtins.str],
                  delete_after_duration: pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']] = None,
                  delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -42,6 +43,12 @@ class ReservationArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
                Indicates if this group of VMs have emergent maintenance enabled.
@@ -68,6 +75,8 @@ class ReservationArgs:
             pulumi.set(__self__, "delete_after_duration", delete_after_duration)
         if delete_at_time is not None:
             pulumi.set(__self__, "delete_at_time", delete_at_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_emergent_maintenance is not None:
@@ -133,6 +142,23 @@ class ReservationArgs:
     @delete_at_time.setter
     def delete_at_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_at_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -239,6 +265,7 @@ class _ReservationState:
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_after_duration: pulumi.Input[Optional['ReservationDeleteAfterDurationArgs']] = None,
                  delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -266,6 +293,12 @@ class _ReservationState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
                Indicates if this group of VMs have emergent maintenance enabled.
@@ -308,6 +341,8 @@ class _ReservationState:
             pulumi.set(__self__, "delete_after_duration", delete_after_duration)
         if delete_at_time is not None:
             pulumi.set(__self__, "delete_at_time", delete_at_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_emergent_maintenance is not None:
@@ -403,6 +438,23 @@ class _ReservationState:
     @delete_at_time.setter
     def delete_at_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_at_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -620,6 +672,7 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
                  delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -811,6 +864,12 @@ class Reservation(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
                Indicates if this group of VMs have emergent maintenance enabled.
@@ -1032,6 +1091,7 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
                  delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1052,6 +1112,7 @@ class Reservation(pulumi.CustomResource):
 
             __props__.__dict__["delete_after_duration"] = delete_after_duration
             __props__.__dict__["delete_at_time"] = delete_at_time
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_emergent_maintenance"] = enable_emergent_maintenance
             __props__.__dict__["name"] = name
@@ -1090,6 +1151,7 @@ class Reservation(pulumi.CustomResource):
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
             delete_after_duration: pulumi.Input[Optional[Union['ReservationDeleteAfterDurationArgs', 'ReservationDeleteAfterDurationArgsDict']]] = None,
             delete_at_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             enable_emergent_maintenance: pulumi.Input[Optional[_builtins.bool]] = None,
             kind: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1121,6 +1183,12 @@ class Reservation(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] delete_at_time: Absolute time in future when the reservation will be auto-deleted by Compute Engine. Timestamp is represented in RFC3339 text format.
                Cannot be used with delete_after_duration.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.bool] enable_emergent_maintenance: (Optional, Beta)
                Indicates if this group of VMs have emergent maintenance enabled.
@@ -1162,6 +1230,7 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["delete_after_duration"] = delete_after_duration
         __props__.__dict__["delete_at_time"] = delete_at_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["enable_emergent_maintenance"] = enable_emergent_maintenance
         __props__.__dict__["kind"] = kind
@@ -1222,6 +1291,19 @@ class Reservation(pulumi.CustomResource):
         Cannot be used with delete_after_duration.
         """
         return pulumi.get(self, "delete_at_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

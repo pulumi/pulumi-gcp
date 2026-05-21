@@ -27,6 +27,7 @@ class WorkstationConfigArgs:
                  allowed_ports: pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigAllowedPortArgs']]]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  container: pulumi.Input[Optional['WorkstationConfigContainerArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_tcp_connections: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_audit_agent: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -54,6 +55,12 @@ class WorkstationConfigArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input[_builtins.bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
@@ -92,6 +99,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "annotations", annotations)
         if container is not None:
             pulumi.set(__self__, "container", container)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_tcp_connections is not None:
             pulumi.set(__self__, "disable_tcp_connections", disable_tcp_connections)
         if display_name is not None:
@@ -196,6 +205,23 @@ class WorkstationConfigArgs:
     @container.setter
     def container(self, value: pulumi.Input[Optional['WorkstationConfigContainerArgs']]):
         pulumi.set(self, "container", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableTcpConnections")
@@ -389,6 +415,7 @@ class _WorkstationConfigState:
                  container: pulumi.Input[Optional['WorkstationConfigContainerArgs']] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  degraded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_tcp_connections: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -426,6 +453,12 @@ class _WorkstationConfigState:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time when this resource was created.
         :param pulumi.Input[_builtins.bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -478,6 +511,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "create_time", create_time)
         if degraded is not None:
             pulumi.set(__self__, "degraded", degraded)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if disable_tcp_connections is not None:
             pulumi.set(__self__, "disable_tcp_connections", disable_tcp_connections)
         if display_name is not None:
@@ -601,6 +636,23 @@ class _WorkstationConfigState:
     @degraded.setter
     def degraded(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "degraded", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="disableTcpConnections")
@@ -904,6 +956,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  allowed_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  container: pulumi.Input[Optional[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_tcp_connections: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_audit_agent: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1041,6 +1094,104 @@ class WorkstationConfig(pulumi.CustomResource):
                     "BABE": "bar",
                 },
             })
+        ```
+        ### Workstation Config Hyperdisk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "size_gb": 200,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
+        ```
+        ### Workstation Config Hyperdisk Source Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/0123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="valuename")
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        my_source_disk = gcp.compute.Disk("my_source_disk",
+            name="workstation-config-source-disk",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        my_source_snapshot = gcp.compute.Snapshot("my_source_snapshot",
+            name="workstation-config-source-snapshot",
+            source_disk=my_source_disk.name,
+            zone="us-central1-a")
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Id=tag_key1.id,
+                        tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                        resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                    })
+        ,
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "source_snapshot": my_source_snapshot.id,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
         ```
         ### Workstation Config Persistent Directories
 
@@ -1400,6 +1551,12 @@ class WorkstationConfig(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict']] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input[_builtins.bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
@@ -1557,6 +1714,104 @@ class WorkstationConfig(pulumi.CustomResource):
                     "BABE": "bar",
                 },
             })
+        ```
+        ### Workstation Config Hyperdisk
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "size_gb": 200,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
+        ```
+        ### Workstation Config Hyperdisk Source Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tag_key1 = gcp.tags.TagKey("tag_key1",
+            parent="organizations/0123456789",
+            short_name="keyname")
+        tag_value1 = gcp.tags.TagValue("tag_value1",
+            parent=tag_key1.id,
+            short_name="valuename")
+        default = gcp.compute.Network("default",
+            name="workstation-cluster",
+            auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("default",
+            name="workstation-cluster",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default.name)
+        my_source_disk = gcp.compute.Disk("my_source_disk",
+            name="workstation-config-source-disk",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        my_source_snapshot = gcp.compute.Snapshot("my_source_snapshot",
+            name="workstation-config-source-snapshot",
+            source_disk=my_source_disk.name,
+            zone="us-central1-a")
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("default",
+            workstation_cluster_id="workstation-cluster",
+            network=default.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1")
+        default_workstation_config = gcp.workstations.WorkstationConfig("default",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location="us-central1",
+            host={
+                "gce_instance": {
+                    "machine_type": "c3-standard-22",
+                    "boot_disk_size_gb": 35,
+                    "disable_public_ip_addresses": True,
+                    "vm_tags": pulumi.Output.all(
+                        tagKey1Id=tag_key1.id,
+                        tagValue1Id=tag_value1.id
+        ).apply(lambda resolved_outputs: {
+                        resolved_outputs['tagKey1Id']: resolved_outputs['tagValue1Id'],
+                    })
+        ,
+                },
+            },
+            persistent_directories=[{
+                "mount_path": "/home",
+                "gce_hd": {
+                    "source_snapshot": my_source_snapshot.id,
+                    "reclaim_policy": "DELETE",
+                    "archive_timeout": "3600s",
+                },
+            }])
         ```
         ### Workstation Config Persistent Directories
 
@@ -1925,6 +2180,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  allowed_ports: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkstationConfigAllowedPortArgs', 'WorkstationConfigAllowedPortArgsDict']]]]] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  container: pulumi.Input[Optional[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_tcp_connections: pulumi.Input[Optional[_builtins.bool]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_audit_agent: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1954,6 +2210,7 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["allowed_ports"] = allowed_ports
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["container"] = container
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["disable_tcp_connections"] = disable_tcp_connections
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_audit_agent"] = enable_audit_agent
@@ -2004,6 +2261,7 @@ class WorkstationConfig(pulumi.CustomResource):
             container: pulumi.Input[Optional[Union['WorkstationConfigContainerArgs', 'WorkstationConfigContainerArgsDict']]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             degraded: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             disable_tcp_connections: pulumi.Input[Optional[_builtins.bool]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2045,6 +2303,12 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] create_time: Time when this resource was created.
         :param pulumi.Input[_builtins.bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[_builtins.str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -2095,6 +2359,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["container"] = container
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["degraded"] = degraded
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["disable_tcp_connections"] = disable_tcp_connections
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -2172,6 +2437,19 @@ class WorkstationConfig(pulumi.CustomResource):
         Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         """
         return pulumi.get(self, "degraded")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="disableTcpConnections")

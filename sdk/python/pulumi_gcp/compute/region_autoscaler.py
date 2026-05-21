@@ -23,6 +23,7 @@ class RegionAutoscalerArgs:
     def __init__(__self__, *,
                  autoscaling_policy: pulumi.Input['RegionAutoscalerAutoscalingPolicyArgs'],
                  target: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -37,6 +38,12 @@ class RegionAutoscalerArgs:
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] target: URL of the managed instance group that this autoscaler will scale.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -49,6 +56,8 @@ class RegionAutoscalerArgs:
         """
         pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         pulumi.set(__self__, "target", target)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -86,6 +95,23 @@ class RegionAutoscalerArgs:
     @target.setter
     def target(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "target", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -146,6 +172,7 @@ class _RegionAutoscalerState:
     def __init__(__self__, *,
                  autoscaling_policy: pulumi.Input[Optional['RegionAutoscalerAutoscalingPolicyArgs']] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -162,6 +189,12 @@ class _RegionAutoscalerState:
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -178,6 +211,8 @@ class _RegionAutoscalerState:
             pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -219,6 +254,23 @@ class _RegionAutoscalerState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -305,6 +357,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_policy: pulumi.Input[Optional[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -374,6 +427,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                 "max_replicas": 5,
                 "min_replicas": 1,
                 "cooldown_period": 60,
+                "stabilization_period": 300,
                 "cpu_utilization": {
                     "target": 0.5,
                 },
@@ -409,6 +463,12 @@ class RegionAutoscaler(pulumi.CustomResource):
                If none of these are specified, the default will be to autoscale based
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -489,6 +549,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                 "max_replicas": 5,
                 "min_replicas": 1,
                 "cooldown_period": 60,
+                "stabilization_period": 300,
                 "cpu_utilization": {
                     "target": 0.5,
                 },
@@ -532,6 +593,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_policy: pulumi.Input[Optional[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -549,6 +611,7 @@ class RegionAutoscaler(pulumi.CustomResource):
             if autoscaling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling_policy'")
             __props__.__dict__["autoscaling_policy"] = autoscaling_policy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -570,6 +633,7 @@ class RegionAutoscaler(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling_policy: pulumi.Input[Optional[Union['RegionAutoscalerAutoscalingPolicyArgs', 'RegionAutoscalerAutoscalingPolicyArgsDict']]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -590,6 +654,12 @@ class RegionAutoscaler(pulumi.CustomResource):
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource. The name must be 1-63 characters long and match
                the regular expression `a-z?` which means the
@@ -608,6 +678,7 @@ class RegionAutoscaler(pulumi.CustomResource):
 
         __props__.__dict__["autoscaling_policy"] = autoscaling_policy
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -636,6 +707,19 @@ class RegionAutoscaler(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

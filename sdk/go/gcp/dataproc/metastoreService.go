@@ -555,6 +555,13 @@ type MetastoreService struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrOutput `pulumi:"databaseType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Indicates if the dataproc metastore should be protected against accidental deletions.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -676,6 +683,13 @@ type metastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Indicates if the dataproc metastore should be protected against accidental deletions.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -763,6 +777,13 @@ type MetastoreServiceState struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Indicates if the dataproc metastore should be protected against accidental deletions.
 	DeletionProtection pulumi.BoolPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -850,6 +871,13 @@ type metastoreServiceArgs struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType *string `pulumi:"databaseType"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Indicates if the dataproc metastore should be protected against accidental deletions.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Information used to configure the Dataproc Metastore service to encrypt
@@ -917,6 +945,13 @@ type MetastoreServiceArgs struct {
 	// Default value is `MYSQL`.
 	// Possible values are: `MYSQL`, `SPANNER`.
 	DatabaseType pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Indicates if the dataproc metastore should be protected against accidental deletions.
 	DeletionProtection pulumi.BoolPtrInput
 	// Information used to configure the Dataproc Metastore service to encrypt
@@ -1080,6 +1115,16 @@ func (o MetastoreServiceOutput) CreateTime() pulumi.StringOutput {
 // Possible values are: `MYSQL`, `SPANNER`.
 func (o MetastoreServiceOutput) DatabaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) pulumi.StringPtrOutput { return v.DatabaseType }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MetastoreServiceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetastoreService) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Indicates if the dataproc metastore should be protected against accidental deletions.

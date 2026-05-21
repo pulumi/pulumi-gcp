@@ -135,6 +135,7 @@ namespace Pulumi.Gcp.Apphub
         public readonly string ApplicationId;
         public readonly ImmutableArray<Outputs.GetApplicationAttributeResult> Attributes;
         public readonly string CreateTime;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly string DisplayName;
         /// <summary>
@@ -156,6 +157,8 @@ namespace Pulumi.Gcp.Apphub
             ImmutableArray<Outputs.GetApplicationAttributeResult> attributes,
 
             string createTime,
+
+            string deletionPolicy,
 
             string description,
 
@@ -180,6 +183,7 @@ namespace Pulumi.Gcp.Apphub
             ApplicationId = applicationId;
             Attributes = attributes;
             CreateTime = createTime;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             DisplayName = displayName;
             Id = id;

@@ -16,14 +16,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const categoryTestId = new gcp.dataplex.Glossary("category_test_id", {
- *     glossaryId: "tf-test-glossary_30827",
+ *     glossaryId: "tf-test-glossary_4866",
  *     location: "us-central1",
  * });
  * const categoryTestIdGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id", {
  *     parent: pulumi.interpolate`projects/${categoryTestId.project}/locations/us-central1/glossaries/${categoryTestId.glossaryId}`,
  *     glossaryId: categoryTestId.glossaryId,
  *     location: "us-central1",
- *     categoryId: "tf-test-category-basic_6529",
+ *     categoryId: "tf-test-category-basic_12618",
  * });
  * ```
  * ### Dataplex Glossary Category Full
@@ -33,14 +33,14 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const categoryTestIdFull = new gcp.dataplex.Glossary("category_test_id_full", {
- *     glossaryId: "tf-test-glossary_16178",
+ *     glossaryId: "tf-test-glossary_32270",
  *     location: "us-central1",
  * });
  * const categoryTestIdFullGlossaryCategory = new gcp.dataplex.GlossaryCategory("category_test_id_full", {
  *     parent: pulumi.interpolate`projects/${categoryTestIdFull.project}/locations/us-central1/glossaries/${categoryTestIdFull.glossaryId}`,
  *     glossaryId: categoryTestIdFull.glossaryId,
  *     location: "us-central1",
- *     categoryId: "tf-test-category-full_26317",
+ *     categoryId: "tf-test-category-full_44703",
  *     labels: {
  *         tag: "test-tf",
  *     },
@@ -101,6 +101,15 @@ export class GlossaryCategory extends pulumi.CustomResource {
      * The time at which the GlossaryCategory was created.
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * The user-mutable description of the GlossaryCategory.
      */
@@ -170,6 +179,7 @@ export class GlossaryCategory extends pulumi.CustomResource {
             const state = argsOrState as GlossaryCategoryState | undefined;
             resourceInputs["categoryId"] = state?.categoryId;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -191,6 +201,7 @@ export class GlossaryCategory extends pulumi.CustomResource {
                 throw new Error("Missing required property 'parent'");
             }
             resourceInputs["categoryId"] = args?.categoryId;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["glossaryId"] = args?.glossaryId;
@@ -224,6 +235,15 @@ export interface GlossaryCategoryState {
      * The time at which the GlossaryCategory was created.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-mutable description of the GlossaryCategory.
      */
@@ -287,6 +307,15 @@ export interface GlossaryCategoryArgs {
      * The category id for creation.
      */
     categoryId?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The user-mutable description of the GlossaryCategory.
      */

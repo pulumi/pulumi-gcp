@@ -214,6 +214,196 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Workstation Config Hyperdisk
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.workstations.WorkstationConfig;
+ * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryGceHdArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(default_.name())
+ *             .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
+ *             .workstationClusterId("workstation-cluster")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
+ *             .workstationConfigId("workstation-config")
+ *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
+ *             .location("us-central1")
+ *             .host(WorkstationConfigHostArgs.builder()
+ *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
+ *                     .machineType("c3-standard-22")
+ *                     .build())
+ *                 .build())
+ *             .persistentDirectories(WorkstationConfigPersistentDirectoryArgs.builder()
+ *                 .mountPath("/home")
+ *                 .gceHd(WorkstationConfigPersistentDirectoryGceHdArgs.builder()
+ *                     .sizeGb(200)
+ *                     .reclaimPolicy("DELETE")
+ *                     .archiveTimeout("3600s")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Workstation Config Hyperdisk Source Snapshot
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.tags.TagKey;
+ * import com.pulumi.gcp.tags.TagKeyArgs;
+ * import com.pulumi.gcp.tags.TagValue;
+ * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.Snapshot;
+ * import com.pulumi.gcp.compute.SnapshotArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.workstations.WorkstationConfig;
+ * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryGceHdArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var tagKey1 = new TagKey("tagKey1", TagKeyArgs.builder()
+ *             .parent("organizations/0123456789")
+ *             .shortName("keyname")
+ *             .build());
+ * 
+ *         var tagValue1 = new TagValue("tagValue1", TagValueArgs.builder()
+ *             .parent(tagKey1.id())
+ *             .shortName("valuename")
+ *             .build());
+ * 
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
+ *             .name("workstation-cluster")
+ *             .ipCidrRange("10.0.0.0/24")
+ *             .region("us-central1")
+ *             .network(default_.name())
+ *             .build());
+ * 
+ *         var mySourceDisk = new Disk("mySourceDisk", DiskArgs.builder()
+ *             .name("workstation-config-source-disk")
+ *             .size(10)
+ *             .type("pd-ssd")
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var mySourceSnapshot = new Snapshot("mySourceSnapshot", SnapshotArgs.builder()
+ *             .name("workstation-config-source-snapshot")
+ *             .sourceDisk(mySourceDisk.name())
+ *             .zone("us-central1-a")
+ *             .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster("defaultWorkstationCluster", WorkstationClusterArgs.builder()
+ *             .workstationClusterId("workstation-cluster")
+ *             .network(default_.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location("us-central1")
+ *             .build());
+ * 
+ *         var defaultWorkstationConfig = new WorkstationConfig("defaultWorkstationConfig", WorkstationConfigArgs.builder()
+ *             .workstationConfigId("workstation-config")
+ *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
+ *             .location("us-central1")
+ *             .host(WorkstationConfigHostArgs.builder()
+ *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
+ *                     .machineType("c3-standard-22")
+ *                     .bootDiskSizeGb(35)
+ *                     .disablePublicIpAddresses(true)
+ *                     .vmTags(Output.tuple(tagKey1.id(), tagValue1.id()).applyValue(values -> {
+ *                         var tagKey1Id = values.t1;
+ *                         var tagValue1Id = values.t2;
+ *                         return Map.of(tagKey1Id, tagValue1Id);
+ *                     }))
+ *                     .build())
+ *                 .build())
+ *             .persistentDirectories(WorkstationConfigPersistentDirectoryArgs.builder()
+ *                 .mountPath("/home")
+ *                 .gceHd(WorkstationConfigPersistentDirectoryGceHdArgs.builder()
+ *                     .sourceSnapshot(mySourceSnapshot.id())
+ *                     .reclaimPolicy("DELETE")
+ *                     .archiveTimeout("3600s")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Workstation Config Persistent Directories
  * 
  * <pre>
@@ -479,6 +669,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
  * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
  * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceAcceleratorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -553,6 +744,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
  * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostArgs;
  * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -918,6 +1111,30 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> degraded() {
         return this.degraded;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.

@@ -160,6 +160,7 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetInstanceGroupResult
     {
+        public readonly string DeletionPolicy;
         /// <summary>
         /// Textual description of the instance group.
         /// </summary>
@@ -194,6 +195,8 @@ namespace Pulumi.Gcp.Compute
 
         [OutputConstructor]
         private GetInstanceGroupResult(
+            string deletionPolicy,
+
             string description,
 
             string id,
@@ -214,6 +217,7 @@ namespace Pulumi.Gcp.Compute
 
             string zone)
         {
+            DeletionPolicy = deletionPolicy;
             Description = description;
             Id = id;
             Instances = instances;

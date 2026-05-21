@@ -175,6 +175,15 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     declare public readonly customResponseHeaders: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
      */
@@ -238,6 +247,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["compressionMode"] = state?.compressionMode;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["customResponseHeaders"] = state?.customResponseHeaders;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["edgeSecurityPolicy"] = state?.edgeSecurityPolicy;
             resourceInputs["enableCdn"] = state?.enableCdn;
@@ -255,6 +265,7 @@ export class BackendBucket extends pulumi.CustomResource {
             resourceInputs["cdnPolicy"] = args?.cdnPolicy;
             resourceInputs["compressionMode"] = args?.compressionMode;
             resourceInputs["customResponseHeaders"] = args?.customResponseHeaders;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["edgeSecurityPolicy"] = args?.edgeSecurityPolicy;
             resourceInputs["enableCdn"] = args?.enableCdn;
@@ -296,6 +307,15 @@ export interface BackendBucketState {
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */
     customResponseHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
@@ -365,6 +385,15 @@ export interface BackendBucketArgs {
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */
     customResponseHeaders?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.

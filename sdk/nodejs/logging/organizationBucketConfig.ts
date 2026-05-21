@@ -83,6 +83,15 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
      */
     declare public readonly cmekSettings: pulumi.Output<outputs.logging.OrganizationBucketConfigCmekSettings | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Describes this bucket.
      */
     declare public readonly description: pulumi.Output<string>;
@@ -126,6 +135,7 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
             const state = argsOrState as OrganizationBucketConfigState | undefined;
             resourceInputs["bucketId"] = state?.bucketId;
             resourceInputs["cmekSettings"] = state?.cmekSettings;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["indexConfigs"] = state?.indexConfigs;
             resourceInputs["lifecycleState"] = state?.lifecycleState;
@@ -146,6 +156,7 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
             }
             resourceInputs["bucketId"] = args?.bucketId;
             resourceInputs["cmekSettings"] = args?.cmekSettings;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["indexConfigs"] = args?.indexConfigs;
             resourceInputs["location"] = args?.location;
@@ -171,6 +182,15 @@ export interface OrganizationBucketConfigState {
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this bucket.
      */
@@ -213,6 +233,15 @@ export interface OrganizationBucketConfigArgs {
      * The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
      */
     cmekSettings?: pulumi.Input<inputs.logging.OrganizationBucketConfigCmekSettings | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Describes this bucket.
      */

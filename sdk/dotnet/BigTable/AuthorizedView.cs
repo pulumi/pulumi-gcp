@@ -135,6 +135,19 @@ namespace Pulumi.Gcp.BigTable
     public partial class AuthorizedView : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// -----
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
         /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         /// </summary>
@@ -162,8 +175,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-        /// 
-        /// -----
         /// </summary>
         [Output("subsetView")]
         public Output<Outputs.AuthorizedViewSubsetView?> SubsetView { get; private set; } = null!;
@@ -221,6 +232,19 @@ namespace Pulumi.Gcp.BigTable
     public sealed class AuthorizedViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// -----
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
         /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
         /// </summary>
@@ -248,8 +272,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-        /// 
-        /// -----
         /// </summary>
         [Input("subsetView")]
         public Input<Inputs.AuthorizedViewSubsetViewArgs>? SubsetView { get; set; }
@@ -268,6 +290,19 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class AuthorizedViewState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// -----
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited.
         /// If not provided, currently deletion protection will be set to UNPROTECTED as it is the API default value. Note this field configs the deletion protection provided by the API in the backend, and should not be confused with Terraform-side deletion protection.
@@ -296,8 +331,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
-        /// 
-        /// -----
         /// </summary>
         [Input("subsetView")]
         public Input<Inputs.AuthorizedViewSubsetViewGetArgs>? SubsetView { get; set; }

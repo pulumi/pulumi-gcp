@@ -32,6 +32,7 @@ public final class GetBucketResult {
     private List<GetBucketCor> cors;
     private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
     private Boolean defaultEventBasedHold;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     private Boolean enableObjectRetention;
     private List<GetBucketEncryption> encryptions;
@@ -77,6 +78,9 @@ public final class GetBucketResult {
     }
     public Boolean defaultEventBasedHold() {
         return this.defaultEventBasedHold;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -180,6 +184,7 @@ public final class GetBucketResult {
         private List<GetBucketCor> cors;
         private List<GetBucketCustomPlacementConfig> customPlacementConfigs;
         private Boolean defaultEventBasedHold;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private Boolean enableObjectRetention;
         private List<GetBucketEncryption> encryptions;
@@ -215,6 +220,7 @@ public final class GetBucketResult {
     	      this.cors = defaults.cors;
     	      this.customPlacementConfigs = defaults.customPlacementConfigs;
     	      this.defaultEventBasedHold = defaults.defaultEventBasedHold;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.enableObjectRetention = defaults.enableObjectRetention;
     	      this.encryptions = defaults.encryptions;
@@ -284,6 +290,14 @@ public final class GetBucketResult {
               throw new MissingRequiredPropertyException("GetBucketResult", "defaultEventBasedHold");
             }
             this.defaultEventBasedHold = defaultEventBasedHold;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -541,6 +555,7 @@ public final class GetBucketResult {
             _resultValue.cors = cors;
             _resultValue.customPlacementConfigs = customPlacementConfigs;
             _resultValue.defaultEventBasedHold = defaultEventBasedHold;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.enableObjectRetention = enableObjectRetention;
             _resultValue.encryptions = encryptions;

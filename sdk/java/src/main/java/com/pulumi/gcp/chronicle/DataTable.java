@@ -257,21 +257,35 @@ public class DataTable extends com.pulumi.resources.CustomResource {
      * The policy governing the deletion of the data table.
      * If set to `FORCE`, allows the deletion of the data table even if it contains rows.
      * If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
      * @return The policy governing the deletion of the data table.
      * If set to `FORCE`, allows the deletion of the data table even if it contains rows.
      * If set to `DEFAULT`,or if the field is omitted, the data table must be empty before it can be deleted.
-     * Possible values: DEFAULT, FORCE
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
+     * 
+     * Possible values: DEFAULT, FORCE, PREVENT, ABANDON, DELETE
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * A user-provided description of the data table.

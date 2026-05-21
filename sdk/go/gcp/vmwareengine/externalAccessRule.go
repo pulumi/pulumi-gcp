@@ -198,6 +198,13 @@ type ExternalAccessRule struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// User-provided description for the external access rule.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// If destination ranges are specified, the external access rule applies only to
@@ -293,6 +300,13 @@ type externalAccessRuleState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description for the external access rule.
 	Description *string `pulumi:"description"`
 	// If destination ranges are specified, the external access rule applies only to
@@ -335,6 +349,13 @@ type ExternalAccessRuleState struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and
 	// up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description for the external access rule.
 	Description pulumi.StringPtrInput
 	// If destination ranges are specified, the external access rule applies only to
@@ -377,6 +398,13 @@ type externalAccessRuleArgs struct {
 	// The action that the external access rule performs.
 	// Possible values are: `ALLOW`, `DENY`.
 	Action string `pulumi:"action"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// User-provided description for the external access rule.
 	Description *string `pulumi:"description"`
 	// If destination ranges are specified, the external access rule applies only to
@@ -408,6 +436,13 @@ type ExternalAccessRuleArgs struct {
 	// The action that the external access rule performs.
 	// Possible values are: `ALLOW`, `DENY`.
 	Action pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// User-provided description for the external access rule.
 	Description pulumi.StringPtrInput
 	// If destination ranges are specified, the external access rule applies only to
@@ -532,6 +567,16 @@ func (o ExternalAccessRuleOutput) Action() pulumi.StringOutput {
 // up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ExternalAccessRuleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ExternalAccessRule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ExternalAccessRuleOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalAccessRule) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // User-provided description for the external access rule.

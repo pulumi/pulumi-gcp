@@ -62,6 +62,15 @@ export class ApiDeployment extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The Apigee Environment associated with the Apigee API deployment.
      */
     declare public readonly environment: pulumi.Output<string>;
@@ -91,6 +100,7 @@ export class ApiDeployment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApiDeploymentState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["environment"] = state?.environment;
             resourceInputs["orgId"] = state?.orgId;
             resourceInputs["proxyId"] = state?.proxyId;
@@ -109,6 +119,7 @@ export class ApiDeployment extends pulumi.CustomResource {
             if (args?.revision === undefined && !opts.urn) {
                 throw new Error("Missing required property 'revision'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["environment"] = args?.environment;
             resourceInputs["orgId"] = args?.orgId;
             resourceInputs["proxyId"] = args?.proxyId;
@@ -123,6 +134,15 @@ export class ApiDeployment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApiDeployment resources.
  */
 export interface ApiDeploymentState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Environment associated with the Apigee API deployment.
      */
@@ -145,6 +165,15 @@ export interface ApiDeploymentState {
  * The set of arguments for constructing a ApiDeployment resource.
  */
 export interface ApiDeploymentArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The Apigee Environment associated with the Apigee API deployment.
      */

@@ -98,6 +98,7 @@ type LookupDataStoreResult struct {
 	CreateTime                string                                 `pulumi:"createTime"`
 	DataStoreId               *string                                `pulumi:"dataStoreId"`
 	DefaultSchemaId           string                                 `pulumi:"defaultSchemaId"`
+	DeletionPolicy            string                                 `pulumi:"deletionPolicy"`
 	DisplayName               *string                                `pulumi:"displayName"`
 	DocumentProcessingConfigs []GetDataStoreDocumentProcessingConfig `pulumi:"documentProcessingConfigs"`
 	// The provider-assigned unique ID for this managed resource.
@@ -175,6 +176,10 @@ func (o LookupDataStoreResultOutput) DataStoreId() pulumi.StringPtrOutput {
 
 func (o LookupDataStoreResultOutput) DefaultSchemaId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataStoreResult) string { return v.DefaultSchemaId }).(pulumi.StringOutput)
+}
+
+func (o LookupDataStoreResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataStoreResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupDataStoreResultOutput) DisplayName() pulumi.StringPtrOutput {

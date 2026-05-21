@@ -268,6 +268,13 @@ type DataAccessScope struct {
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
 	DataAccessScopeId pulumi.StringOutput `pulumi:"dataAccessScopeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
 	// E.g.: A customer with scope with denied labels A and B won't be able
@@ -360,6 +367,13 @@ type dataAccessScopeState struct {
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
 	DataAccessScopeId *string `pulumi:"dataAccessScopeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
 	// E.g.: A customer with scope with denied labels A and B won't be able
@@ -414,6 +428,13 @@ type DataAccessScopeState struct {
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
 	DataAccessScopeId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
 	// E.g.: A customer with scope with denied labels A and B won't be able
@@ -468,6 +489,13 @@ type dataAccessScopeArgs struct {
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
 	DataAccessScopeId string `pulumi:"dataAccessScopeId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
 	// E.g.: A customer with scope with denied labels A and B won't be able
@@ -509,6 +537,13 @@ type DataAccessScopeArgs struct {
 	// of the scope resource.
 	// Needs to be compliant with https://google.aip.dev/122
 	DataAccessScopeId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The denied labels for the scope.
 	// The logical operator for evaluation of the denied labels is AND.
 	// E.g.: A customer with scope with denied labels A and B won't be able
@@ -654,6 +689,16 @@ func (o DataAccessScopeOutput) CreateTime() pulumi.StringOutput {
 // Needs to be compliant with https://google.aip.dev/122
 func (o DataAccessScopeOutput) DataAccessScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataAccessScope) pulumi.StringOutput { return v.DataAccessScopeId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DataAccessScopeOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataAccessScope) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The denied labels for the scope.

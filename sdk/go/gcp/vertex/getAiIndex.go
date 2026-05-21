@@ -37,6 +37,7 @@ type LookupAiIndexArgs struct {
 // A collection of values returned by getAiIndex.
 type LookupAiIndexResult struct {
 	CreateTime      string                     `pulumi:"createTime"`
+	DeletionPolicy  string                     `pulumi:"deletionPolicy"`
 	DeployedIndexes []GetAiIndexDeployedIndex  `pulumi:"deployedIndexes"`
 	Description     string                     `pulumi:"description"`
 	DisplayName     string                     `pulumi:"displayName"`
@@ -99,6 +100,10 @@ func (o LookupAiIndexResultOutput) ToLookupAiIndexResultOutputWithContext(ctx co
 
 func (o LookupAiIndexResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiIndexResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupAiIndexResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAiIndexResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupAiIndexResultOutput) DeployedIndexes() GetAiIndexDeployedIndexArrayOutput {

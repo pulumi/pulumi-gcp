@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Autoscaler;
  * import com.pulumi.gcp.compute.AutoscalerArgs;
  * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyMetricArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -119,6 +120,7 @@ import javax.annotation.Nullable;
  *                 .maxReplicas(5)
  *                 .minReplicas(1)
  *                 .cooldownPeriod(60)
+ *                 .stabilizationPeriod(300)
  *                 .metrics(AutoscalerAutoscalingPolicyMetricArgs.builder()
  *                     .name("pubsub.googleapis.com/subscription/num_undelivered_messages")
  *                     .filter("resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription")
@@ -219,6 +221,7 @@ import javax.annotation.Nullable;
  *                 .maxReplicas(5)
  *                 .minReplicas(1)
  *                 .cooldownPeriod(60)
+ *                 .stabilizationPeriod(300)
  *                 .cpuUtilization(AutoscalerAutoscalingPolicyCpuUtilizationArgs.builder()
  *                     .target(0.5)
  *                     .build())
@@ -288,6 +291,30 @@ public class Autoscaler extends com.pulumi.resources.CustomResource {
      */
     public Output<String> creationTimestamp() {
         return this.creationTimestamp;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * An optional description of this resource.

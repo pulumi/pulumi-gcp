@@ -137,6 +137,13 @@ import (
 type EnvironmentKeyvaluemaps struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId pulumi.StringOutput `pulumi:"envId"`
@@ -177,6 +184,13 @@ func GetEnvironmentKeyvaluemaps(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvironmentKeyvaluemaps resources.
 type environmentKeyvaluemapsState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId *string `pulumi:"envId"`
@@ -185,6 +199,13 @@ type environmentKeyvaluemapsState struct {
 }
 
 type EnvironmentKeyvaluemapsState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId pulumi.StringPtrInput
@@ -197,6 +218,13 @@ func (EnvironmentKeyvaluemapsState) ElementType() reflect.Type {
 }
 
 type environmentKeyvaluemapsArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId string `pulumi:"envId"`
@@ -206,6 +234,13 @@ type environmentKeyvaluemapsArgs struct {
 
 // The set of arguments for constructing a EnvironmentKeyvaluemaps resource.
 type EnvironmentKeyvaluemapsArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The Apigee environment group associated with the Apigee environment,
 	// in the format `organizations/{{org_name}}/environments/{{env_name}}`.
 	EnvId pulumi.StringInput
@@ -298,6 +333,16 @@ func (o EnvironmentKeyvaluemapsOutput) ToEnvironmentKeyvaluemapsOutput() Environ
 
 func (o EnvironmentKeyvaluemapsOutput) ToEnvironmentKeyvaluemapsOutputWithContext(ctx context.Context) EnvironmentKeyvaluemapsOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EnvironmentKeyvaluemapsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentKeyvaluemaps) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The Apigee environment group associated with the Apigee environment,

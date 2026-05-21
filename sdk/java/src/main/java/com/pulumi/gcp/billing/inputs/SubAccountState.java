@@ -34,7 +34,13 @@ public final class SubAccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
      * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;&#34;.
+     * 
+     * Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
      * 
      */
     @Import(name="deletionPolicy")
@@ -43,7 +49,13 @@ public final class SubAccountState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
      * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-     * Default is &#34;&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;&#34;.
+     * 
+     * Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -165,7 +177,13 @@ public final class SubAccountState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionPolicy If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
          * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-         * Default is &#34;&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;&#34;.
+         * 
+         * Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
          * 
          * @return builder
          * 
@@ -178,7 +196,13 @@ public final class SubAccountState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionPolicy If set to &#34;RENAME_ON_DESTROY&#34; the billing account displayName
          * will be changed to &#34;Destroyed&#34; along with a timestamp.  If set to &#34;&#34; this will not occur.
-         * Default is &#34;&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;&#34;.
+         * 
+         * Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
          * 
          * @return builder
          * 

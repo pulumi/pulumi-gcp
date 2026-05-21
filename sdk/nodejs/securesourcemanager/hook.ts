@@ -66,6 +66,15 @@ export class Hook extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Determines if the hook disabled or not.
      * Set to true to stop sending traffic.
      */
@@ -134,6 +143,7 @@ export class Hook extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as HookState | undefined;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["disabled"] = state?.disabled;
             resourceInputs["events"] = state?.events;
             resourceInputs["hookId"] = state?.hookId;
@@ -160,6 +170,7 @@ export class Hook extends pulumi.CustomResource {
             if (args?.targetUri === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targetUri'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["disabled"] = args?.disabled;
             resourceInputs["events"] = args?.events;
             resourceInputs["hookId"] = args?.hookId;
@@ -189,6 +200,15 @@ export interface HookState {
      * Create timestamp.
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Determines if the hook disabled or not.
      * Set to true to stop sending traffic.
@@ -249,6 +269,15 @@ export interface HookState {
  * The set of arguments for constructing a Hook resource.
  */
 export interface HookArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Determines if the hook disabled or not.
      * Set to true to stop sending traffic.

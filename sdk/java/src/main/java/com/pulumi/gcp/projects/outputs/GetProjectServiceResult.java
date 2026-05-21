@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectServiceResult {
     private Boolean checkIfServiceHasUsageOnDestroy;
+    private String deletionPolicy;
     private Boolean disableDependentServices;
     private Boolean disableOnDestroy;
     /**
@@ -27,6 +28,9 @@ public final class GetProjectServiceResult {
     private GetProjectServiceResult() {}
     public Boolean checkIfServiceHasUsageOnDestroy() {
         return this.checkIfServiceHasUsageOnDestroy;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Boolean disableDependentServices() {
         return this.disableDependentServices;
@@ -58,6 +62,7 @@ public final class GetProjectServiceResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean checkIfServiceHasUsageOnDestroy;
+        private String deletionPolicy;
         private Boolean disableDependentServices;
         private Boolean disableOnDestroy;
         private String id;
@@ -67,6 +72,7 @@ public final class GetProjectServiceResult {
         public Builder(GetProjectServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.checkIfServiceHasUsageOnDestroy = defaults.checkIfServiceHasUsageOnDestroy;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.disableDependentServices = defaults.disableDependentServices;
     	      this.disableOnDestroy = defaults.disableOnDestroy;
     	      this.id = defaults.id;
@@ -80,6 +86,14 @@ public final class GetProjectServiceResult {
               throw new MissingRequiredPropertyException("GetProjectServiceResult", "checkIfServiceHasUsageOnDestroy");
             }
             this.checkIfServiceHasUsageOnDestroy = checkIfServiceHasUsageOnDestroy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -123,6 +137,7 @@ public final class GetProjectServiceResult {
         public GetProjectServiceResult build() {
             final var _resultValue = new GetProjectServiceResult();
             _resultValue.checkIfServiceHasUsageOnDestroy = checkIfServiceHasUsageOnDestroy;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.disableDependentServices = disableDependentServices;
             _resultValue.disableOnDestroy = disableOnDestroy;
             _resultValue.id = id;

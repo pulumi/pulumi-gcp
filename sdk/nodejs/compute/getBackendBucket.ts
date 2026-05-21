@@ -54,6 +54,7 @@ export interface GetBackendBucketResult {
     readonly compressionMode: string;
     readonly creationTimestamp: string;
     readonly customResponseHeaders: string[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly edgeSecurityPolicy: string;
     readonly enableCdn: boolean;

@@ -110,6 +110,13 @@ type AccessLevel struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom AccessLevelCustomPtrOutput `pulumi:"custom"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
@@ -166,6 +173,13 @@ type accessLevelState struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom *AccessLevelCustom `pulumi:"custom"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
@@ -187,6 +201,13 @@ type AccessLevelState struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom AccessLevelCustomPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
 	// Resource name for the Access Level. The shortName component must begin
@@ -212,6 +233,13 @@ type accessLevelArgs struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom *AccessLevelCustom `pulumi:"custom"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
 	// Resource name for the Access Level. The shortName component must begin
@@ -234,6 +262,13 @@ type AccessLevelArgs struct {
 	// See CEL spec at: https://github.com/google/cel-spec.
 	// Structure is documented below.
 	Custom AccessLevelCustomPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the AccessLevel and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
 	// Resource name for the Access Level. The shortName component must begin
@@ -345,6 +380,16 @@ func (o AccessLevelOutput) Basic() AccessLevelBasicPtrOutput {
 // Structure is documented below.
 func (o AccessLevelOutput) Custom() AccessLevelCustomPtrOutput {
 	return o.ApplyT(func(v *AccessLevel) AccessLevelCustomPtrOutput { return v.Custom }).(AccessLevelCustomPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AccessLevelOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevel) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the AccessLevel and its use. Does not affect behavior.

@@ -173,6 +173,13 @@ import (
 type AutokeyConfig struct {
 	pulumi.CustomResourceState
 
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The folder for which to retrieve config.
@@ -219,6 +226,13 @@ func GetAutokeyConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutokeyConfig resources.
 type autokeyConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag *string `pulumi:"etag"`
 	// The folder for which to retrieve config.
@@ -233,6 +247,13 @@ type autokeyConfigState struct {
 }
 
 type AutokeyConfigState struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The etag of the AutokeyConfig for optimistic concurrency control.
 	Etag pulumi.StringPtrInput
 	// The folder for which to retrieve config.
@@ -251,6 +272,13 @@ func (AutokeyConfigState) ElementType() reflect.Type {
 }
 
 type autokeyConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The folder for which to retrieve config.
 	Folder string `pulumi:"folder"`
 	// The target key project for a given folder where KMS Autokey will provision a
@@ -264,6 +292,13 @@ type autokeyConfigArgs struct {
 
 // The set of arguments for constructing a AutokeyConfig resource.
 type AutokeyConfigArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The folder for which to retrieve config.
 	Folder pulumi.StringInput
 	// The target key project for a given folder where KMS Autokey will provision a
@@ -360,6 +395,16 @@ func (o AutokeyConfigOutput) ToAutokeyConfigOutput() AutokeyConfigOutput {
 
 func (o AutokeyConfigOutput) ToAutokeyConfigOutputWithContext(ctx context.Context) AutokeyConfigOutput {
 	return o
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AutokeyConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutokeyConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The etag of the AutokeyConfig for optimistic concurrency control.

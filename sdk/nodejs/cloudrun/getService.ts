@@ -58,6 +58,7 @@ export interface GetServiceArgs {
  */
 export interface GetServiceResult {
     readonly autogenerateRevisionName: boolean;
+    readonly deletionPolicy: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

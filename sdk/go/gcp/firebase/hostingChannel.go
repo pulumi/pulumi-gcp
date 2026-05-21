@@ -117,6 +117,13 @@ type HostingChannel struct {
 
 	// Required. Immutable. A unique ID within the site that identifies the channel.
 	ChannelId pulumi.StringOutput `pulumi:"channelId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The time at which the channel will be automatically deleted. If null, the channel
@@ -187,6 +194,13 @@ func GetHostingChannel(ctx *pulumi.Context,
 type hostingChannelState struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
 	ChannelId *string `pulumi:"channelId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The time at which the channel will be automatically deleted. If null, the channel
@@ -217,6 +231,13 @@ type hostingChannelState struct {
 type HostingChannelState struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
 	ChannelId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The time at which the channel will be automatically deleted. If null, the channel
@@ -251,6 +272,13 @@ func (HostingChannelState) ElementType() reflect.Type {
 type hostingChannelArgs struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
 	ChannelId string `pulumi:"channelId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
 	// set directly or via the `ttl` field.
@@ -274,6 +302,13 @@ type hostingChannelArgs struct {
 type HostingChannelArgs struct {
 	// Required. Immutable. A unique ID within the site that identifies the channel.
 	ChannelId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The time at which the channel will be automatically deleted. If null, the channel
 	// will not be automatically deleted. This field is present in the output whether it's
 	// set directly or via the `ttl` field.
@@ -383,6 +418,16 @@ func (o HostingChannelOutput) ToHostingChannelOutputWithContext(ctx context.Cont
 // Required. Immutable. A unique ID within the site that identifies the channel.
 func (o HostingChannelOutput) ChannelId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.ChannelId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o HostingChannelOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *HostingChannel) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.

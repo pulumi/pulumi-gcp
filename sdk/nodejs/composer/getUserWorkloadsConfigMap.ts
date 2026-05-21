@@ -5,13 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+ * Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
  *
- * To get more information about Composer User Workloads Config Map, see:
+ * To get more information about Managed Airflow User Workloads Config Map, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
  *
  * ## Example Usage
  *
@@ -35,10 +35,10 @@ import * as utilities from "../utilities";
  *         api_host: "apihost:443",
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMapOutput({
- *     environment: name,
+ * const example = gcp.composer.getUserWorkloadsConfigMapOutput({
+ *     environment: exampleEnvironment.name,
  *     name: googleComposerUserWorkloadsConfigMap.example.name,
- * }));
+ * });
  * export const debug = example;
  * ```
  */
@@ -84,6 +84,7 @@ export interface GetUserWorkloadsConfigMapResult {
      * For details see: https://kubernetes.io/docs/concepts/configuration/configmap/
      */
     readonly data: {[key: string]: string};
+    readonly deletionPolicy: string;
     readonly environment: string;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -94,13 +95,13 @@ export interface GetUserWorkloadsConfigMapResult {
     readonly region?: string;
 }
 /**
- * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+ * Provides access to Kubernetes ConfigMap configuration for a given project, region and Managed Airflow Environment.
  *
- * To get more information about Composer User Workloads Config Map, see:
+ * To get more information about Managed Airflow User Workloads Config Map, see:
  *
  * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/composer/docs/concepts/overview)
+ *     * [Official Documentation](https://clouddocs.devsite.corp.google.com/composer/docs/composer-3/use-kubernetes-pod-operator#secret-config)
  *
  * ## Example Usage
  *
@@ -124,10 +125,10 @@ export interface GetUserWorkloadsConfigMapResult {
  *         api_host: "apihost:443",
  *     },
  * });
- * const example = exampleEnvironment.name.apply(name => gcp.composer.getUserWorkloadsConfigMapOutput({
- *     environment: name,
+ * const example = gcp.composer.getUserWorkloadsConfigMapOutput({
+ *     environment: exampleEnvironment.name,
  *     name: googleComposerUserWorkloadsConfigMap.example.name,
- * }));
+ * });
  * export const debug = example;
  * ```
  */

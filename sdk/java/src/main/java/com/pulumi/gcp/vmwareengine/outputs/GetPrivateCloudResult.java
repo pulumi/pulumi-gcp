@@ -23,6 +23,7 @@ public final class GetPrivateCloudResult {
     private String createTime;
     private String deleteTime;
     private Integer deletionDelayHours;
+    private String deletionPolicy;
     private String description;
     private String expireTime;
     private List<GetPrivateCloudHcx> hcxes;
@@ -53,6 +54,9 @@ public final class GetPrivateCloudResult {
     }
     public Integer deletionDelayHours() {
         return this.deletionDelayHours;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -119,6 +123,7 @@ public final class GetPrivateCloudResult {
         private String createTime;
         private String deleteTime;
         private Integer deletionDelayHours;
+        private String deletionPolicy;
         private String description;
         private String expireTime;
         private List<GetPrivateCloudHcx> hcxes;
@@ -141,6 +146,7 @@ public final class GetPrivateCloudResult {
     	      this.createTime = defaults.createTime;
     	      this.deleteTime = defaults.deleteTime;
     	      this.deletionDelayHours = defaults.deletionDelayHours;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.expireTime = defaults.expireTime;
     	      this.hcxes = defaults.hcxes;
@@ -181,6 +187,14 @@ public final class GetPrivateCloudResult {
               throw new MissingRequiredPropertyException("GetPrivateCloudResult", "deletionDelayHours");
             }
             this.deletionDelayHours = deletionDelayHours;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -329,6 +343,7 @@ public final class GetPrivateCloudResult {
             _resultValue.createTime = createTime;
             _resultValue.deleteTime = deleteTime;
             _resultValue.deletionDelayHours = deletionDelayHours;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.expireTime = expireTime;
             _resultValue.hcxes = hcxes;

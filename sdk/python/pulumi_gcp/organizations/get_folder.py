@@ -26,13 +26,16 @@ class GetFolderResult:
     """
     A collection of values returned by getFolder.
     """
-    def __init__(__self__, configured_capabilities=None, create_time=None, deletion_protection=None, display_name=None, folder=None, folder_id=None, id=None, lifecycle_state=None, lookup_organization=None, management_project=None, name=None, organization=None, parent=None):
+    def __init__(__self__, configured_capabilities=None, create_time=None, deletion_policy=None, deletion_protection=None, display_name=None, folder=None, folder_id=None, id=None, lifecycle_state=None, lookup_organization=None, management_project=None, name=None, organization=None, parent=None):
         if configured_capabilities and not isinstance(configured_capabilities, list):
             raise TypeError("Expected argument 'configured_capabilities' to be a list")
         pulumi.set(__self__, "configured_capabilities", configured_capabilities)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection and not isinstance(deletion_protection, bool):
             raise TypeError("Expected argument 'deletion_protection' to be a bool")
         pulumi.set(__self__, "deletion_protection", deletion_protection)
@@ -82,6 +85,11 @@ class GetFolderResult:
         Timestamp when the Organization was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -168,6 +176,7 @@ class AwaitableGetFolderResult(GetFolderResult):
         return GetFolderResult(
             configured_capabilities=self.configured_capabilities,
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deletion_protection=self.deletion_protection,
             display_name=self.display_name,
             folder=self.folder,
@@ -211,6 +220,7 @@ def get_folder(folder: Optional[_builtins.str] = None,
     return AwaitableGetFolderResult(
         configured_capabilities=pulumi.get(__ret__, 'configured_capabilities'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
         folder=pulumi.get(__ret__, 'folder'),
@@ -251,6 +261,7 @@ def get_folder_output(folder: pulumi.Input[Optional[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetFolderResult(
         configured_capabilities=pulumi.get(__response__, 'configured_capabilities'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),
         folder=pulumi.get(__response__, 'folder'),

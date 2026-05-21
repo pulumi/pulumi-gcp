@@ -60,6 +60,7 @@ export interface GetInsightsDatasetConfigResult {
     readonly createTime: string;
     readonly datasetConfigId: string;
     readonly datasetConfigState: string;
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly excludeCloudStorageBuckets: outputs.storage.GetInsightsDatasetConfigExcludeCloudStorageBucket[];
     readonly excludeCloudStorageLocations: outputs.storage.GetInsightsDatasetConfigExcludeCloudStorageLocation[];

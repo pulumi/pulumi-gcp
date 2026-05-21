@@ -27,13 +27,16 @@ class GetSnapshotResult:
     """
     A collection of values returned by getSnapshot.
     """
-    def __init__(__self__, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, guest_flush=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, snapshot_type=None, source_disk=None, source_disk_encryption_keys=None, source_instant_snapshot=None, storage_bytes=None, storage_locations=None, zone=None):
+    def __init__(__self__, chain_name=None, creation_timestamp=None, deletion_policy=None, description=None, disk_size_gb=None, effective_labels=None, filter=None, guest_flush=None, id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, pulumi_labels=None, self_link=None, snapshot_encryption_keys=None, snapshot_id=None, snapshot_type=None, source_disk=None, source_disk_encryption_keys=None, source_instant_snapshot=None, storage_bytes=None, storage_locations=None, zone=None):
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -113,6 +116,11 @@ class GetSnapshotResult:
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> _builtins.str:
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -241,6 +249,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
         return GetSnapshotResult(
             chain_name=self.chain_name,
             creation_timestamp=self.creation_timestamp,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             disk_size_gb=self.disk_size_gb,
             effective_labels=self.effective_labels,
@@ -314,6 +323,7 @@ def get_snapshot(filter: Optional[_builtins.str] = None,
     return AwaitableGetSnapshotResult(
         chain_name=pulumi.get(__ret__, 'chain_name'),
         creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         disk_size_gb=pulumi.get(__ret__, 'disk_size_gb'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
@@ -384,6 +394,7 @@ def get_snapshot_output(filter: pulumi.Input[Optional[Optional[_builtins.str]]] 
     return __ret__.apply(lambda __response__: GetSnapshotResult(
         chain_name=pulumi.get(__response__, 'chain_name'),
         creation_timestamp=pulumi.get(__response__, 'creation_timestamp'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         disk_size_gb=pulumi.get(__response__, 'disk_size_gb'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),

@@ -38,6 +38,7 @@ class ClusterArgs:
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -152,6 +153,14 @@ class ClusterArgs:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
                destroying the cluster.  Deleting this cluster via `terraform destroy` or
                `pulumi up` will only succeed if this field is `false` in the Terraform
@@ -306,8 +315,6 @@ class ClusterArgs:
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterRbacBindingConfigArgs'] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -331,7 +338,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: ) Configuration for the
+        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -382,6 +389,8 @@ class ClusterArgs:
             pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -751,6 +760,25 @@ class ClusterArgs:
     @default_snat_status.setter
     def default_snat_status(self, value: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']]):
         pulumi.set(self, "default_snat_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -1494,8 +1522,6 @@ class ClusterArgs:
     def rbac_binding_config(self) -> pulumi.Input[Optional['ClusterRbacBindingConfigArgs']]:
         """
         RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "rbac_binding_config")
 
@@ -1585,7 +1611,7 @@ class ClusterArgs:
     @pulumi.getter(name="secretSyncConfig")
     def secret_sync_config(self) -> pulumi.Input[Optional['ClusterSecretSyncConfigArgs']]:
         """
-        ) Configuration for the
+        Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         Structure is documented below.
         """
@@ -1717,6 +1743,7 @@ class _ClusterState:
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1840,6 +1867,14 @@ class _ClusterState:
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input['ClusterDefaultSnatStatusArgs'] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
                destroying the cluster.  Deleting this cluster via `terraform destroy` or
                `pulumi up` will only succeed if this field is `false` in the Terraform
@@ -2001,8 +2036,6 @@ class _ClusterState:
                Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['ClusterRbacBindingConfigArgs'] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -2026,7 +2059,7 @@ class _ClusterState:
         :param pulumi.Input['ClusterSecretManagerConfigArgs'] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: ) Configuration for the
+        :param pulumi.Input['ClusterSecretSyncConfigArgs'] secret_sync_config: Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -2085,6 +2118,8 @@ class _ClusterState:
             pulumi.set(__self__, "default_max_pods_per_node", default_max_pods_per_node)
         if default_snat_status is not None:
             pulumi.set(__self__, "default_snat_status", default_snat_status)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection is not None:
             pulumi.set(__self__, "deletion_protection", deletion_protection)
         if description is not None:
@@ -2472,6 +2507,25 @@ class _ClusterState:
     @default_snat_status.setter
     def default_snat_status(self, value: pulumi.Input[Optional['ClusterDefaultSnatStatusArgs']]):
         pulumi.set(self, "default_snat_status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -3286,8 +3340,6 @@ class _ClusterState:
     def rbac_binding_config(self) -> pulumi.Input[Optional['ClusterRbacBindingConfigArgs']]:
         """
         RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "rbac_binding_config")
 
@@ -3377,7 +3429,7 @@ class _ClusterState:
     @pulumi.getter(name="secretSyncConfig")
     def secret_sync_config(self) -> pulumi.Input[Optional['ClusterSecretSyncConfigArgs']]:
         """
-        ) Configuration for the
+        Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         Structure is documented below.
         """
@@ -3553,6 +3605,7 @@ class Cluster(pulumi.CustomResource):
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -3783,6 +3836,14 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
                destroying the cluster.  Deleting this cluster via `terraform destroy` or
                `pulumi up` will only succeed if this field is `false` in the Terraform
@@ -3937,8 +3998,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterProtectConfigArgs', 'ClusterProtectConfigArgsDict']] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3962,7 +4021,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: ) Configuration for the
+        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -4133,6 +4192,7 @@ class Cluster(pulumi.CustomResource):
                  datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
                  default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
                  default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -4227,6 +4287,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["datapath_provider"] = datapath_provider
             __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
             __props__.__dict__["default_snat_status"] = default_snat_status
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["description"] = description
             __props__.__dict__["disable_l4_lb_firewall_reconciliation"] = disable_l4_lb_firewall_reconciliation
@@ -4333,6 +4394,7 @@ class Cluster(pulumi.CustomResource):
             datapath_provider: pulumi.Input[Optional[_builtins.str]] = None,
             default_max_pods_per_node: pulumi.Input[Optional[_builtins.int]] = None,
             default_snat_status: pulumi.Input[Optional[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             disable_l4_lb_firewall_reconciliation: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -4460,6 +4522,14 @@ class Cluster(pulumi.CustomResource):
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
                for more information.
         :param pulumi.Input[Union['ClusterDefaultSnatStatusArgs', 'ClusterDefaultSnatStatusArgsDict']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[_builtins.bool] deletion_protection: Whether Terraform will be prevented from
                destroying the cluster.  Deleting this cluster via `terraform destroy` or
                `pulumi up` will only succeed if this field is `false` in the Terraform
@@ -4621,8 +4691,6 @@ class Cluster(pulumi.CustomResource):
                Enable/Disable Protect API features for the cluster. Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[Union['ClusterRbacBindingConfigArgs', 'ClusterRbacBindingConfigArgsDict']] rbac_binding_config: RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterReleaseChannelArgs', 'ClusterReleaseChannelArgsDict']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -4646,7 +4714,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterSecretManagerConfigArgs', 'ClusterSecretManagerConfigArgsDict']] secret_manager_config: Configuration for the
                [SecretManagerConfig](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component) feature.
                Structure is documented below.
-        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: ) Configuration for the
+        :param pulumi.Input[Union['ClusterSecretSyncConfigArgs', 'ClusterSecretSyncConfigArgsDict']] secret_sync_config: Configuration for the
                [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecurityPostureConfigArgs', 'ClusterSecurityPostureConfigArgsDict']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
@@ -4692,6 +4760,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["datapath_provider"] = datapath_provider
         __props__.__dict__["default_max_pods_per_node"] = default_max_pods_per_node
         __props__.__dict__["default_snat_status"] = default_snat_status
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["description"] = description
         __props__.__dict__["disable_l4_lb_firewall_reconciliation"] = disable_l4_lb_firewall_reconciliation
@@ -4932,6 +5001,21 @@ class Cluster(pulumi.CustomResource):
         [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig). Structure is documented below
         """
         return pulumi.get(self, "default_snat_status")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -5510,8 +5594,6 @@ class Cluster(pulumi.CustomResource):
     def rbac_binding_config(self) -> pulumi.Output['outputs.ClusterRbacBindingConfig']:
         """
         RBACBindingConfig allows user to restrict ClusterRoleBindings an RoleBindings that can be created. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "rbac_binding_config")
 
@@ -5577,7 +5659,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="secretSyncConfig")
     def secret_sync_config(self) -> pulumi.Output[Optional['outputs.ClusterSecretSyncConfig']]:
         """
-        ) Configuration for the
+        Configuration for the
         [SecretSyncConfig](https://cloud.google.com/secret-manager/docs/sync-k8-secrets) feature.
         Structure is documented below.
         """

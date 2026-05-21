@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.Compute
     {
         public readonly bool AllowPscGlobalAccess;
         public readonly string BaseForwardingRule;
+        public readonly string DeletionPolicy;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string ExternalManagedBackendBucketMigrationState;
@@ -173,6 +174,8 @@ namespace Pulumi.Gcp.Compute
             bool allowPscGlobalAccess,
 
             string baseForwardingRule,
+
+            string deletionPolicy,
 
             string description,
 
@@ -230,6 +233,7 @@ namespace Pulumi.Gcp.Compute
         {
             AllowPscGlobalAccess = allowPscGlobalAccess;
             BaseForwardingRule = baseForwardingRule;
+            DeletionPolicy = deletionPolicy;
             Description = description;
             EffectiveLabels = effectiveLabels;
             ExternalManagedBackendBucketMigrationState = externalManagedBackendBucketMigrationState;

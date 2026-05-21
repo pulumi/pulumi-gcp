@@ -22,6 +22,7 @@ __all__ = ['PerInstanceConfigArgs', 'PerInstanceConfig']
 class PerInstanceConfigArgs:
     def __init__(__self__, *,
                  instance_group_manager: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -34,6 +35,12 @@ class PerInstanceConfigArgs:
         The set of arguments for constructing a PerInstanceConfig resource.
 
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
                * REPLACE
@@ -59,6 +66,8 @@ class PerInstanceConfigArgs:
         :param pulumi.Input[_builtins.str] zone: Zone where the containing instance group manager is located
         """
         pulumi.set(__self__, "instance_group_manager", instance_group_manager)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if minimal_action is not None:
             pulumi.set(__self__, "minimal_action", minimal_action)
         if most_disruptive_allowed_action is not None:
@@ -87,6 +96,23 @@ class PerInstanceConfigArgs:
     @instance_group_manager.setter
     def instance_group_manager(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "instance_group_manager", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="minimalAction")
@@ -203,6 +229,7 @@ class PerInstanceConfigArgs:
 @pulumi.input_type
 class _PerInstanceConfigState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -215,6 +242,12 @@ class _PerInstanceConfigState:
         """
         Input properties used for looking up and filtering PerInstanceConfig resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
@@ -240,6 +273,8 @@ class _PerInstanceConfigState:
                State will be removed on the next instance recreation or update.
         :param pulumi.Input[_builtins.str] zone: Zone where the containing instance group manager is located
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if instance_group_manager is not None:
             pulumi.set(__self__, "instance_group_manager", instance_group_manager)
         if minimal_action is not None:
@@ -258,6 +293,23 @@ class _PerInstanceConfigState:
             pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupManager")
@@ -389,6 +441,7 @@ class PerInstanceConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -496,6 +549,12 @@ class PerInstanceConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
@@ -637,6 +696,7 @@ class PerInstanceConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
                  minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
                  most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -655,6 +715,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PerInstanceConfigArgs.__new__(PerInstanceConfigArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if instance_group_manager is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_group_manager'")
             __props__.__dict__["instance_group_manager"] = instance_group_manager
@@ -676,6 +737,7 @@ class PerInstanceConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             instance_group_manager: pulumi.Input[Optional[_builtins.str]] = None,
             minimal_action: pulumi.Input[Optional[_builtins.str]] = None,
             most_disruptive_allowed_action: pulumi.Input[Optional[_builtins.str]] = None,
@@ -692,6 +754,12 @@ class PerInstanceConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] instance_group_manager: The instance group manager this instance config is part of.
         :param pulumi.Input[_builtins.str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
@@ -721,6 +789,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
         __props__ = _PerInstanceConfigState.__new__(_PerInstanceConfigState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["instance_group_manager"] = instance_group_manager
         __props__.__dict__["minimal_action"] = minimal_action
         __props__.__dict__["most_disruptive_allowed_action"] = most_disruptive_allowed_action
@@ -731,6 +800,19 @@ class PerInstanceConfig(pulumi.CustomResource):
         __props__.__dict__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
         __props__.__dict__["zone"] = zone
         return PerInstanceConfig(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupManager")

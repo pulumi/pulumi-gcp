@@ -307,6 +307,13 @@ type VpcFlowLogsConfig struct {
 	AggregationInterval pulumi.StringOutput `pulumi:"aggregationInterval"`
 	// Output only. The time the config was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -414,6 +421,13 @@ type vpcFlowLogsConfigState struct {
 	AggregationInterval *string `pulumi:"aggregationInterval"`
 	// Output only. The time the config was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description *string `pulumi:"description"`
@@ -481,6 +495,13 @@ type VpcFlowLogsConfigState struct {
 	AggregationInterval pulumi.StringPtrInput
 	// Output only. The time the config was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description pulumi.StringPtrInput
@@ -550,6 +571,13 @@ type vpcFlowLogsConfigArgs struct {
 	// Optional. The aggregation interval for the logs. Default value is
 	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 	AggregationInterval *string `pulumi:"aggregationInterval"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description *string `pulumi:"description"`
@@ -600,6 +628,13 @@ type VpcFlowLogsConfigArgs struct {
 	// Optional. The aggregation interval for the logs. Default value is
 	// INTERVAL_5_SEC.   Possible values:  AGGREGATION_INTERVAL_UNSPECIFIED INTERVAL_5_SEC INTERVAL_30_SEC INTERVAL_1_MIN INTERVAL_5_MIN INTERVAL_10_MIN INTERVAL_15_MIN
 	AggregationInterval pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum
 	// of 512 characters.
 	Description pulumi.StringPtrInput
@@ -741,6 +776,16 @@ func (o VpcFlowLogsConfigOutput) AggregationInterval() pulumi.StringOutput {
 // Output only. The time the config was created.
 func (o VpcFlowLogsConfigOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o VpcFlowLogsConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcFlowLogsConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The user-supplied description of the VPC Flow Logs configuration. Maximum

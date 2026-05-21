@@ -242,6 +242,13 @@ type BackupPlanAssociation struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Resource name of data source which will be used as storage location for backups taken
 	DataSource pulumi.StringOutput `pulumi:"dataSource"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The location for the backupplan association
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of backup plan association resource created
@@ -318,6 +325,13 @@ type backupPlanAssociationState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Resource name of data source which will be used as storage location for backups taken
 	DataSource *string `pulumi:"dataSource"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location for the backupplan association
 	Location *string `pulumi:"location"`
 	// The name of backup plan association resource created
@@ -350,6 +364,13 @@ type BackupPlanAssociationState struct {
 	CreateTime pulumi.StringPtrInput
 	// Resource name of data source which will be used as storage location for backups taken
 	DataSource pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location for the backupplan association
 	Location pulumi.StringPtrInput
 	// The name of backup plan association resource created
@@ -382,6 +403,13 @@ type backupPlanAssociationArgs struct {
 	BackupPlan string `pulumi:"backupPlan"`
 	// The id of backupplan association
 	BackupPlanAssociationId string `pulumi:"backupPlanAssociationId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The location for the backupplan association
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
@@ -404,6 +432,13 @@ type BackupPlanAssociationArgs struct {
 	BackupPlan pulumi.StringInput
 	// The id of backupplan association
 	BackupPlanAssociationId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The location for the backupplan association
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
@@ -525,6 +560,16 @@ func (o BackupPlanAssociationOutput) CreateTime() pulumi.StringOutput {
 // Resource name of data source which will be used as storage location for backups taken
 func (o BackupPlanAssociationOutput) DataSource() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.DataSource }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o BackupPlanAssociationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlanAssociation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The location for the backupplan association

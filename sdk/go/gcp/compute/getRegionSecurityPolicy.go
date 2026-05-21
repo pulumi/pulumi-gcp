@@ -63,6 +63,7 @@ type LookupRegionSecurityPolicyArgs struct {
 type LookupRegionSecurityPolicyResult struct {
 	AdvancedOptionsConfigs []GetRegionSecurityPolicyAdvancedOptionsConfig `pulumi:"advancedOptionsConfigs"`
 	DdosProtectionConfigs  []GetRegionSecurityPolicyDdosProtectionConfig  `pulumi:"ddosProtectionConfigs"`
+	DeletionPolicy         string                                         `pulumi:"deletionPolicy"`
 	Description            string                                         `pulumi:"description"`
 	Fingerprint            string                                         `pulumi:"fingerprint"`
 	// The provider-assigned unique ID for this managed resource.
@@ -126,6 +127,10 @@ func (o LookupRegionSecurityPolicyResultOutput) DdosProtectionConfigs() GetRegio
 	return o.ApplyT(func(v LookupRegionSecurityPolicyResult) []GetRegionSecurityPolicyDdosProtectionConfig {
 		return v.DdosProtectionConfigs
 	}).(GetRegionSecurityPolicyDdosProtectionConfigArrayOutput)
+}
+
+func (o LookupRegionSecurityPolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionSecurityPolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionSecurityPolicyResultOutput) Description() pulumi.StringOutput {

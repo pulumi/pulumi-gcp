@@ -30,6 +30,7 @@ public final class GetTriggerResult {
     private List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs;
     private List<GetTriggerBuild> builds;
     private String createTime;
+    private String deletionPolicy;
     private String description;
     private List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs;
     private Boolean disabled;
@@ -70,6 +71,9 @@ public final class GetTriggerResult {
     }
     public String createTime() {
         return this.createTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -158,6 +162,7 @@ public final class GetTriggerResult {
         private List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs;
         private List<GetTriggerBuild> builds;
         private String createTime;
+        private String deletionPolicy;
         private String description;
         private List<GetTriggerDeveloperConnectEventConfig> developerConnectEventConfigs;
         private Boolean disabled;
@@ -188,6 +193,7 @@ public final class GetTriggerResult {
     	      this.bitbucketServerTriggerConfigs = defaults.bitbucketServerTriggerConfigs;
     	      this.builds = defaults.builds;
     	      this.createTime = defaults.createTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.developerConnectEventConfigs = defaults.developerConnectEventConfigs;
     	      this.disabled = defaults.disabled;
@@ -252,6 +258,14 @@ public final class GetTriggerResult {
               throw new MissingRequiredPropertyException("GetTriggerResult", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -475,6 +489,7 @@ public final class GetTriggerResult {
             _resultValue.bitbucketServerTriggerConfigs = bitbucketServerTriggerConfigs;
             _resultValue.builds = builds;
             _resultValue.createTime = createTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.developerConnectEventConfigs = developerConnectEventConfigs;
             _resultValue.disabled = disabled;

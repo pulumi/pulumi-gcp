@@ -25,6 +25,7 @@ class ClusterArgs:
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional['ClusterAutomatedBackupConfigArgs']] = None,
                  cross_cluster_replication_config: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gcs_source: pulumi.Input[Optional['ClusterGcsSourceArgs']] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -55,6 +56,12 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
@@ -74,7 +81,7 @@ class ClusterArgs:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -108,6 +115,8 @@ class ClusterArgs:
             pulumi.set(__self__, "automated_backup_config", automated_backup_config)
         if cross_cluster_replication_config is not None:
             pulumi.set(__self__, "cross_cluster_replication_config", cross_cluster_replication_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if gcs_source is not None:
@@ -198,6 +207,23 @@ class ClusterArgs:
     @cross_cluster_replication_config.setter
     def cross_cluster_replication_config(self, value: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']]):
         pulumi.set(self, "cross_cluster_replication_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -310,7 +336,7 @@ class ClusterArgs:
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 
@@ -463,6 +489,7 @@ class _ClusterState:
                  backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  cross_cluster_replication_config: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  discovery_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -512,6 +539,12 @@ class _ClusterState:
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
@@ -541,7 +574,7 @@ class _ClusterState:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
@@ -593,6 +626,8 @@ class _ClusterState:
             pulumi.set(__self__, "create_time", create_time)
         if cross_cluster_replication_config is not None:
             pulumi.set(__self__, "cross_cluster_replication_config", cross_cluster_replication_config)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if discovery_endpoints is not None:
@@ -738,6 +773,23 @@ class _ClusterState:
     @cross_cluster_replication_config.setter
     def cross_cluster_replication_config(self, value: pulumi.Input[Optional['ClusterCrossClusterReplicationConfigArgs']]):
         pulumi.set(self, "cross_cluster_replication_config", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -915,7 +967,7 @@ class _ClusterState:
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 
@@ -1180,6 +1232,7 @@ class Cluster(pulumi.CustomResource):
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: pulumi.Input[Optional[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gcs_source: pulumi.Input[Optional[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1827,6 +1880,12 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']] cross_cluster_replication_config: Cross cluster replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
@@ -1846,7 +1905,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -2515,6 +2574,7 @@ class Cluster(pulumi.CustomResource):
                  authorization_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  automated_backup_config: pulumi.Input[Optional[Union['ClusterAutomatedBackupConfigArgs', 'ClusterAutomatedBackupConfigArgsDict']]] = None,
                  cross_cluster_replication_config: pulumi.Input[Optional[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  gcs_source: pulumi.Input[Optional[Union['ClusterGcsSourceArgs', 'ClusterGcsSourceArgsDict']]] = None,
                  kms_key: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2547,6 +2607,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["authorization_mode"] = authorization_mode
             __props__.__dict__["automated_backup_config"] = automated_backup_config
             __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["gcs_source"] = gcs_source
             __props__.__dict__["kms_key"] = kms_key
@@ -2603,6 +2664,7 @@ class Cluster(pulumi.CustomResource):
             backup_collection: pulumi.Input[Optional[_builtins.str]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             cross_cluster_replication_config: pulumi.Input[Optional[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deletion_protection_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             discovery_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -2656,6 +2718,12 @@ class Cluster(pulumi.CustomResource):
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']] cross_cluster_replication_config: Cross cluster replication config
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
                If the value if set to true, any delete cluster operation will fail.
                Default value is true.
@@ -2685,7 +2753,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[_builtins.str] node_type: The nodeType for the Redis cluster.
                If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
                Structure is documented below.
         :param pulumi.Input[_builtins.float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
@@ -2735,6 +2803,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["backup_collection"] = backup_collection
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
         __props__.__dict__["effective_labels"] = effective_labels
@@ -2824,6 +2893,19 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "cross_cluster_replication_config")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -2949,7 +3031,7 @@ class Cluster(pulumi.CustomResource):
         """
         The nodeType for the Redis cluster.
         If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
-        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHCPU_MEDIUM`, `REDIS_STANDARD_LARGE`, `REDIS_HIGHMEM_XLARGE`, `REDIS_HIGHMEM_2XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 

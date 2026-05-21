@@ -23,6 +23,7 @@ class AppConnectionArgs:
     def __init__(__self__, *,
                  application_endpoint: pulumi.Input['AppConnectionApplicationEndpointArgs'],
                  connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway: pulumi.Input[Optional['AppConnectionGatewayArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -36,6 +37,12 @@ class AppConnectionArgs:
         :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
                Structure is documented below.
@@ -54,6 +61,8 @@ class AppConnectionArgs:
         pulumi.set(__self__, "application_endpoint", application_endpoint)
         if connectors is not None:
             pulumi.set(__self__, "connectors", connectors)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gateway is not None:
@@ -93,6 +102,23 @@ class AppConnectionArgs:
     @connectors.setter
     def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "connectors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -191,6 +217,7 @@ class _AppConnectionState:
     def __init__(__self__, *,
                  application_endpoint: pulumi.Input[Optional['AppConnectionApplicationEndpointArgs']] = None,
                  connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  gateway: pulumi.Input[Optional['AppConnectionGatewayArgs']] = None,
@@ -206,6 +233,12 @@ class _AppConnectionState:
         :param pulumi.Input['AppConnectionApplicationEndpointArgs'] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input['AppConnectionGatewayArgs'] gateway: Gateway used by the AppConnection.
@@ -228,6 +261,8 @@ class _AppConnectionState:
             pulumi.set(__self__, "application_endpoint", application_endpoint)
         if connectors is not None:
             pulumi.set(__self__, "connectors", connectors)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -271,6 +306,23 @@ class _AppConnectionState:
     @connectors.setter
     def connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "connectors", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -397,6 +449,7 @@ class AppConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
                  connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -505,6 +558,12 @@ class AppConnection(pulumi.CustomResource):
         :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
                Structure is documented below.
@@ -638,6 +697,7 @@ class AppConnection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
                  connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -658,6 +718,7 @@ class AppConnection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'application_endpoint'")
             __props__.__dict__["application_endpoint"] = application_endpoint
             __props__.__dict__["connectors"] = connectors
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["gateway"] = gateway
             __props__.__dict__["labels"] = labels
@@ -681,6 +742,7 @@ class AppConnection(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             application_endpoint: pulumi.Input[Optional[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']]] = None,
             connectors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             gateway: pulumi.Input[Optional[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']]] = None,
@@ -700,6 +762,12 @@ class AppConnection(pulumi.CustomResource):
         :param pulumi.Input[Union['AppConnectionApplicationEndpointArgs', 'AppConnectionApplicationEndpointArgsDict']] application_endpoint: Address of the remote application endpoint for the BeyondCorp AppConnection.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] connectors: List of AppConnectors that are authorised to be associated with this AppConnection
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: An arbitrary user-provided name for the AppConnection.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[Union['AppConnectionGatewayArgs', 'AppConnectionGatewayArgsDict']] gateway: Gateway used by the AppConnection.
@@ -724,6 +792,7 @@ class AppConnection(pulumi.CustomResource):
 
         __props__.__dict__["application_endpoint"] = application_endpoint
         __props__.__dict__["connectors"] = connectors
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gateway"] = gateway
@@ -751,6 +820,19 @@ class AppConnection(pulumi.CustomResource):
         List of AppConnectors that are authorised to be associated with this AppConnection
         """
         return pulumi.get(self, "connectors")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

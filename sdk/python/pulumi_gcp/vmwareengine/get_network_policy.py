@@ -27,10 +27,13 @@ class GetNetworkPolicyResult:
     """
     A collection of values returned by getNetworkPolicy.
     """
-    def __init__(__self__, create_time=None, description=None, edge_services_cidr=None, external_ips=None, id=None, internet_accesses=None, location=None, name=None, project=None, uid=None, update_time=None, vmware_engine_network=None, vmware_engine_network_canonical=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, description=None, edge_services_cidr=None, external_ips=None, id=None, internet_accesses=None, location=None, name=None, project=None, uid=None, update_time=None, vmware_engine_network=None, vmware_engine_network_canonical=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -72,6 +75,11 @@ class GetNetworkPolicyResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter
@@ -144,6 +152,7 @@ class AwaitableGetNetworkPolicyResult(GetNetworkPolicyResult):
             yield self
         return GetNetworkPolicyResult(
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             description=self.description,
             edge_services_cidr=self.edge_services_cidr,
             external_ips=self.external_ips,
@@ -191,6 +200,7 @@ def get_network_policy(location: Optional[_builtins.str] = None,
 
     return AwaitableGetNetworkPolicyResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         description=pulumi.get(__ret__, 'description'),
         edge_services_cidr=pulumi.get(__ret__, 'edge_services_cidr'),
         external_ips=pulumi.get(__ret__, 'external_ips'),
@@ -235,6 +245,7 @@ def get_network_policy_output(location: pulumi.Input[Optional[_builtins.str]] = 
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy', __args__, opts=opts, typ=GetNetworkPolicyResult)
     return __ret__.apply(lambda __response__: GetNetworkPolicyResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         description=pulumi.get(__response__, 'description'),
         edge_services_cidr=pulumi.get(__response__, 'edge_services_cidr'),
         external_ips=pulumi.get(__response__, 'external_ips'),

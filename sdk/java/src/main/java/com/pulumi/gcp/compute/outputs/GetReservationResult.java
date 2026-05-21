@@ -25,6 +25,7 @@ public final class GetReservationResult {
     private String creationTimestamp;
     private List<GetReservationDeleteAfterDuration> deleteAfterDurations;
     private String deleteAtTime;
+    private String deletionPolicy;
     private String description;
     private Boolean enableEmergentMaintenance;
     private String id;
@@ -58,6 +59,9 @@ public final class GetReservationResult {
     }
     public String deleteAtTime() {
         return this.deleteAtTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String description() {
         return this.description;
@@ -125,6 +129,7 @@ public final class GetReservationResult {
         private String creationTimestamp;
         private List<GetReservationDeleteAfterDuration> deleteAfterDurations;
         private String deleteAtTime;
+        private String deletionPolicy;
         private String description;
         private Boolean enableEmergentMaintenance;
         private String id;
@@ -150,6 +155,7 @@ public final class GetReservationResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.deleteAfterDurations = defaults.deleteAfterDurations;
     	      this.deleteAtTime = defaults.deleteAtTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.description = defaults.description;
     	      this.enableEmergentMaintenance = defaults.enableEmergentMaintenance;
     	      this.id = defaults.id;
@@ -213,6 +219,14 @@ public final class GetReservationResult {
               throw new MissingRequiredPropertyException("GetReservationResult", "deleteAtTime");
             }
             this.deleteAtTime = deleteAtTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetReservationResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -371,6 +385,7 @@ public final class GetReservationResult {
             _resultValue.creationTimestamp = creationTimestamp;
             _resultValue.deleteAfterDurations = deleteAfterDurations;
             _resultValue.deleteAtTime = deleteAtTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.description = description;
             _resultValue.enableEmergentMaintenance = enableEmergentMaintenance;
             _resultValue.id = id;

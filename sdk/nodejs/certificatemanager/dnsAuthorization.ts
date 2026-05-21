@@ -87,6 +87,15 @@ export class DnsAuthorization extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-readable description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -157,6 +166,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsAuthorizationState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["dnsResourceRecords"] = state?.dnsResourceRecords;
             resourceInputs["domain"] = state?.domain;
@@ -172,6 +182,7 @@ export class DnsAuthorization extends pulumi.CustomResource {
             if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["labels"] = args?.labels;
@@ -194,6 +205,15 @@ export class DnsAuthorization extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DnsAuthorization resources.
  */
 export interface DnsAuthorizationState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
@@ -257,6 +277,15 @@ export interface DnsAuthorizationState {
  * The set of arguments for constructing a DnsAuthorization resource.
  */
 export interface DnsAuthorizationArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */

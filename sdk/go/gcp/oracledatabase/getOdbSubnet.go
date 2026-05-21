@@ -74,6 +74,7 @@ type LookupOdbSubnetArgs struct {
 type LookupOdbSubnetResult struct {
 	CidrRange          string            `pulumi:"cidrRange"`
 	CreateTime         string            `pulumi:"createTime"`
+	DeletionPolicy     string            `pulumi:"deletionPolicy"`
 	DeletionProtection bool              `pulumi:"deletionProtection"`
 	EffectiveLabels    map[string]string `pulumi:"effectiveLabels"`
 	// The provider-assigned unique ID for this managed resource.
@@ -136,6 +137,10 @@ func (o LookupOdbSubnetResultOutput) CidrRange() pulumi.StringOutput {
 
 func (o LookupOdbSubnetResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOdbSubnetResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupOdbSubnetResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOdbSubnetResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupOdbSubnetResultOutput) DeletionProtection() pulumi.BoolOutput {

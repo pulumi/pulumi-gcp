@@ -423,7 +423,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_37559"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_13293"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -475,7 +475,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_91980"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_40289"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -483,9 +483,9 @@ import (
 //				return err
 //			}
 //			tfTestConnection, err := bigquery.NewConnection(ctx, "tf_test_connection", &bigquery.ConnectionArgs{
-//				ConnectionId:  pulumi.String("tf-test-connection-_37118"),
+//				ConnectionId:  pulumi.String("tf-test-connection-_33395"),
 //				Location:      pulumi.String("us-central1"),
-//				FriendlyName:  pulumi.String("tf-test-connection-_80332"),
+//				FriendlyName:  pulumi.String("tf-test-connection-_76044"),
 //				Description:   pulumi.String("a bigquery connection for tf test"),
 //				CloudResource: &bigquery.ConnectionCloudResourceArgs{},
 //			})
@@ -578,7 +578,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestBucket, err := storage.NewBucket(ctx, "tf_test_bucket", &storage.BucketArgs{
-//				Name:                     pulumi.String("tf-test-bucket-name-_13293"),
+//				Name:                     pulumi.String("tf-test-bucket-name-_69391"),
 //				Location:                 pulumi.String("us-west1"),
 //				UniformBucketLevelAccess: pulumi.Bool(true),
 //			})
@@ -631,7 +631,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__40289"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__8270"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -639,7 +639,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__33395"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__41150"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -741,7 +741,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfDataplexTestDataset, err := bigquery.NewDataset(ctx, "tf_dataplex_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__76044"),
+//				DatasetId:                pulumi.String("tf_dataplex_test_dataset_id__89313"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //			})
 //			if err != nil {
@@ -749,7 +749,7 @@ import (
 //			}
 //			tfDataplexTestTable, err := bigquery.NewTable(ctx, "tf_dataplex_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfDataplexTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_dataplex_test_table_id__69391"),
+//				TableId:            pulumi.String("tf_dataplex_test_table_id__60646"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Schema: pulumi.String(`    [
 //	    {
@@ -853,7 +853,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_ds__8270"),
+//				DatasetId:                pulumi.String("tf_test_ds__9394"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DeleteContentsOnDestroy:  pulumi.Bool(true),
 //				Project:                  pulumi.String("my-project-name"),
@@ -863,7 +863,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_tbl__41150"),
+//				TableId:            pulumi.String("tf_test_tbl__11380"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String("my-project-name"),
 //				Schema: pulumi.String(`    [
@@ -944,7 +944,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_89313"),
+//				AccountId:   pulumi.String("tf-test-sa-_35305"),
 //				DisplayName: pulumi.String("DataScan Service Account"),
 //				Project:     pulumi.String("my-project-name"),
 //			})
@@ -988,7 +988,7 @@ import (
 //				return err
 //			}
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_ds__60646"),
+//				DatasetId:                pulumi.String("tf_test_ds__62793"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DeleteContentsOnDestroy:  pulumi.Bool(true),
 //				Project:                  pulumi.String("my-project-name"),
@@ -1002,7 +1002,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_tbl__9394"),
+//				TableId:            pulumi.String("tf_test_tbl__55438"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String("my-project-name"),
 //				Schema: pulumi.String(`    [
@@ -1087,7 +1087,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_11380"),
+//				AccountId:   pulumi.String("tf-test-sa-_32706"),
 //				DisplayName: pulumi.String("DataScan Service Account"),
 //				Project:     pulumi.String("my-project-name"),
 //			})
@@ -1123,7 +1123,7 @@ import (
 //				return err
 //			}
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_dataset_id__35305"),
+//				DatasetId:                pulumi.String("tf_test_dataset_id__49082"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				DeleteContentsOnDestroy:  pulumi.Bool(true),
 //				Project:                  pulumi.String("my-project-name"),
@@ -1138,7 +1138,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_table_id__62793"),
+//				TableId:            pulumi.String("tf_test_table_id__60365"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String("my-project-name"),
 //				Schema: pulumi.String(`    [
@@ -1157,7 +1157,7 @@ import (
 //			}
 //			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("test-group-_55438"),
+//				EntryGroupId: pulumi.String("test-group-_80215"),
 //				Project:      pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
@@ -1186,7 +1186,7 @@ import (
 //			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: testGroup.EntryGroupId,
-//				EntryId:      pulumi.String("test-entry-_32706"),
+//				EntryId:      pulumi.String("test-entry-_59033"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
 //				Project:      pulumi.String(pulumi.String(project.Number)),
 //				Aspects: dataplex.EntryAspectArray{
@@ -1372,7 +1372,7 @@ import (
 //				return err
 //			}
 //			sa, err := serviceaccount.NewAccount(ctx, "sa", &serviceaccount.AccountArgs{
-//				AccountId:   pulumi.String("tf-test-sa-_49082"),
+//				AccountId:   pulumi.String("tf-test-sa-_32081"),
 //				DisplayName: pulumi.String("DataScan Service Account"),
 //				Project:     pulumi.String(pulumi.String(project.ProjectId)),
 //			})
@@ -1417,7 +1417,7 @@ import (
 //			}
 //			testGroup, err := dataplex.NewEntryGroup(ctx, "test_group", &dataplex.EntryGroupArgs{
 //				Location:     pulumi.String("us-central1"),
-//				EntryGroupId: pulumi.String("test-group-_60365"),
+//				EntryGroupId: pulumi.String("test-group-_10393"),
 //				Project:      pulumi.String(pulumi.String(project.ProjectId)),
 //			})
 //			if err != nil {
@@ -1438,7 +1438,7 @@ import (
 //			testEntry, err := dataplex.NewEntry(ctx, "test_entry", &dataplex.EntryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				EntryGroupId: testGroup.EntryGroupId,
-//				EntryId:      pulumi.String("test-entry-_80215"),
+//				EntryId:      pulumi.String("test-entry-_33052"),
 //				EntryType:    pulumi.String("projects/655216118709/locations/global/entryTypes/data-quality-rule-template"),
 //				Project:      pulumi.String(pulumi.String(project.Number)),
 //				Aspects: dataplex.EntryAspectArray{
@@ -1454,7 +1454,7 @@ import (
 //				return err
 //			}
 //			tfTestDataset, err := bigquery.NewDataset(ctx, "tf_test_dataset", &bigquery.DatasetArgs{
-//				DatasetId:                pulumi.String("tf_test_dataset_id__59033"),
+//				DatasetId:                pulumi.String("tf_test_dataset_id__3684"),
 //				DefaultTableExpirationMs: pulumi.Int(3600000),
 //				Location:                 pulumi.String("us-central1"),
 //				Project:                  pulumi.String(pulumi.String(project.ProjectId)),
@@ -1468,7 +1468,7 @@ import (
 //			}
 //			tfTestTable, err := bigquery.NewTable(ctx, "tf_test_table", &bigquery.TableArgs{
 //				DatasetId:          tfTestDataset.DatasetId,
-//				TableId:            pulumi.String("tf_test_table_id__32081"),
+//				TableId:            pulumi.String("tf_test_table_id__10719"),
 //				DeletionProtection: pulumi.Bool(false),
 //				Project:            pulumi.String(pulumi.String(project.ProjectId)),
 //				Schema: pulumi.String(`    [
@@ -1575,6 +1575,13 @@ type Datascan struct {
 	DataQualitySpec DatascanDataQualitySpecPtrOutput `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringOutput `pulumi:"dataScanId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Description of the scan.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User friendly display name.
@@ -1680,6 +1687,13 @@ type datascanState struct {
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId *string `pulumi:"dataScanId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the scan.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -1739,6 +1753,13 @@ type DatascanState struct {
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the scan.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -1800,6 +1821,13 @@ type datascanArgs struct {
 	DataQualitySpec *DatascanDataQualitySpec `pulumi:"dataQualitySpec"`
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId string `pulumi:"dataScanId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Description of the scan.
 	Description *string `pulumi:"description"`
 	// User friendly display name.
@@ -1840,6 +1868,13 @@ type DatascanArgs struct {
 	DataQualitySpec DatascanDataQualitySpecPtrInput
 	// DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 	DataScanId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Description of the scan.
 	Description pulumi.StringPtrInput
 	// User friendly display name.
@@ -1986,6 +2021,16 @@ func (o DatascanOutput) DataQualitySpec() DatascanDataQualitySpecPtrOutput {
 // DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter.
 func (o DatascanOutput) DataScanId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.DataScanId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DatascanOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Datascan) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Description of the scan.

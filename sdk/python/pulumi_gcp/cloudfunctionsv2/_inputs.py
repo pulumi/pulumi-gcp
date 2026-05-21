@@ -966,7 +966,7 @@ class FunctionIamMemberConditionArgs:
 class FunctionServiceConfigArgsDict(TypedDict):
     all_traffic_on_latest_revision: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
-    Whether 100% of traffic is routed to the latest revision. Defaults to true.
+    Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
     """
     available_cpu: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
@@ -1085,7 +1085,7 @@ class FunctionServiceConfigArgs:
                  vpc_connector: pulumi.Input[Optional[_builtins.str]] = None,
                  vpc_connector_egress_settings: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.bool] all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        :param pulumi.Input[_builtins.bool] all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
         :param pulumi.Input[_builtins.str] available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory.
         :param pulumi.Input[_builtins.str] available_memory: The amount of memory available for a function.
                Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
@@ -1167,7 +1167,7 @@ class FunctionServiceConfigArgs:
     @pulumi.getter(name="allTrafficOnLatestRevision")
     def all_traffic_on_latest_revision(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Whether 100% of traffic is routed to the latest revision. Defaults to true.
+        Whether 100% of traffic is routed to the latest revision. Defaults to true. When false, GCF honors the existing traffic configuration of the underlying Cloud Run service. If that configuration is set to route to LATEST (the default), the new deployment will become LATEST and intercept the traffic. To prevent traffic from shifting, you must manually pin the existing service to a specific revision name in Cloud Run before deploying.
         """
         return pulumi.get(self, "all_traffic_on_latest_revision")
 

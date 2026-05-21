@@ -128,6 +128,13 @@ type OrganizationsPolicyBinding struct {
 	Condition OrganizationsPolicyBindingConditionPtrOutput `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -236,6 +243,13 @@ type organizationsPolicyBindingState struct {
 	Condition *OrganizationsPolicyBindingCondition `pulumi:"condition"`
 	// Output only. The time when the policy binding was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -300,6 +314,13 @@ type OrganizationsPolicyBindingState struct {
 	Condition OrganizationsPolicyBindingConditionPtrInput
 	// Output only. The time when the policy binding was created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
@@ -366,6 +387,13 @@ type organizationsPolicyBindingArgs struct {
 	// additional information.
 	// Structure is documented below.
 	Condition *OrganizationsPolicyBindingCondition `pulumi:"condition"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The location of the Policy Binding
@@ -417,6 +445,13 @@ type OrganizationsPolicyBindingArgs struct {
 	// additional information.
 	// Structure is documented below.
 	Condition OrganizationsPolicyBindingConditionPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Optional. The description of the policy binding. Must be less than or equal to 63 characters.
 	DisplayName pulumi.StringPtrInput
 	// The location of the Policy Binding
@@ -562,6 +597,16 @@ func (o OrganizationsPolicyBindingOutput) Condition() OrganizationsPolicyBinding
 // Output only. The time when the policy binding was created.
 func (o OrganizationsPolicyBindingOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationsPolicyBinding) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OrganizationsPolicyBindingOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBinding) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Optional. The description of the policy binding. Must be less than or equal to 63 characters.

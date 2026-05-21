@@ -94,6 +94,13 @@ type MulticastDomainActivation struct {
 	// The timestamp when the multicast domain activation was
 	// created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast domain activation.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Option to allow disabling placement policy for multicast infrastructure.
@@ -201,6 +208,13 @@ type multicastDomainActivationState struct {
 	// The timestamp when the multicast domain activation was
 	// created.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast domain activation.
 	Description *string `pulumi:"description"`
 	// Option to allow disabling placement policy for multicast infrastructure.
@@ -265,6 +279,13 @@ type MulticastDomainActivationState struct {
 	// The timestamp when the multicast domain activation was
 	// created.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional text description of the multicast domain activation.
 	Description pulumi.StringPtrInput
 	// Option to allow disabling placement policy for multicast infrastructure.
@@ -328,6 +349,13 @@ func (MulticastDomainActivationState) ElementType() reflect.Type {
 }
 
 type multicastDomainActivationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// An optional text description of the multicast domain activation.
 	Description *string `pulumi:"description"`
 	// Option to allow disabling placement policy for multicast infrastructure.
@@ -360,6 +388,13 @@ type multicastDomainActivationArgs struct {
 
 // The set of arguments for constructing a MulticastDomainActivation resource.
 type MulticastDomainActivationArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// An optional text description of the multicast domain activation.
 	Description pulumi.StringPtrInput
 	// Option to allow disabling placement policy for multicast infrastructure.
@@ -486,6 +521,16 @@ func (o MulticastDomainActivationOutput) AdminNetwork() pulumi.StringOutput {
 // created.
 func (o MulticastDomainActivationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MulticastDomainActivation) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o MulticastDomainActivationOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *MulticastDomainActivation) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // An optional text description of the multicast domain activation.

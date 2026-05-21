@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppGatewayResult {
     private List<GetAppGatewayAllocatedConnection> allocatedConnections;
+    private String deletionPolicy;
     private String displayName;
     private Map<String,String> effectiveLabels;
     private String hostType;
@@ -36,6 +37,9 @@ public final class GetAppGatewayResult {
     private GetAppGatewayResult() {}
     public List<GetAppGatewayAllocatedConnection> allocatedConnections() {
         return this.allocatedConnections;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public String displayName() {
         return this.displayName;
@@ -88,6 +92,7 @@ public final class GetAppGatewayResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetAppGatewayAllocatedConnection> allocatedConnections;
+        private String deletionPolicy;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String hostType;
@@ -104,6 +109,7 @@ public final class GetAppGatewayResult {
         public Builder(GetAppGatewayResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allocatedConnections = defaults.allocatedConnections;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.hostType = defaults.hostType;
@@ -128,6 +134,14 @@ public final class GetAppGatewayResult {
         }
         public Builder allocatedConnections(GetAppGatewayAllocatedConnection... allocatedConnections) {
             return allocatedConnections(List.of(allocatedConnections));
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
@@ -224,6 +238,7 @@ public final class GetAppGatewayResult {
         public GetAppGatewayResult build() {
             final var _resultValue = new GetAppGatewayResult();
             _resultValue.allocatedConnections = allocatedConnections;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.hostType = hostType;

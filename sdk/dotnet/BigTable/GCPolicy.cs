@@ -195,13 +195,18 @@ namespace Pulumi.Gcp.BigTable
         public Output<string> ColumnFamily { get; private set; } = null!;
 
         /// <summary>
-        /// The deletion policy for the GC policy.
-        /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        /// The deletion policy for the GC policy. Setting ABANDON allows the resource
+        /// to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+        /// in a replicated instance.
         /// 
-        /// Possible values are: `ABANDON`.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "DELETE" or "", deleting the resource is allowed.
+        /// 
+        /// Possible values: PREVENT, ABANDON, DELETE.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Serialized JSON object to represent a more complex GC policy. Conflicts with `Mode`, `MaxAge` and `MaxVersion`. Conflicts with `Mode`, `MaxAge` and `MaxVersion`.
@@ -308,10 +313,15 @@ namespace Pulumi.Gcp.BigTable
         public Input<string> ColumnFamily { get; set; } = null!;
 
         /// <summary>
-        /// The deletion policy for the GC policy.
-        /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        /// The deletion policy for the GC policy. Setting ABANDON allows the resource
+        /// to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+        /// in a replicated instance.
         /// 
-        /// Possible values are: `ABANDON`.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "DELETE" or "", deleting the resource is allowed.
+        /// 
+        /// Possible values: PREVENT, ABANDON, DELETE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -389,10 +399,15 @@ namespace Pulumi.Gcp.BigTable
         public Input<string>? ColumnFamily { get; set; }
 
         /// <summary>
-        /// The deletion policy for the GC policy.
-        /// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+        /// The deletion policy for the GC policy. Setting ABANDON allows the resource
+        /// to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted
+        /// in a replicated instance.
         /// 
-        /// Possible values are: `ABANDON`.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "DELETE" or "", deleting the resource is allowed.
+        /// 
+        /// Possible values: PREVENT, ABANDON, DELETE.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

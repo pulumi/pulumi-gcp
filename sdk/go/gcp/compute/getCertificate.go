@@ -67,6 +67,7 @@ type GetCertificateResult struct {
 	Certificate       string `pulumi:"certificate"`
 	CertificateId     int    `pulumi:"certificateId"`
 	CreationTimestamp string `pulumi:"creationTimestamp"`
+	DeletionPolicy    string `pulumi:"deletionPolicy"`
 	Description       string `pulumi:"description"`
 	ExpireTime        string `pulumi:"expireTime"`
 	// The provider-assigned unique ID for this managed resource.
@@ -129,6 +130,10 @@ func (o GetCertificateResultOutput) CertificateId() pulumi.IntOutput {
 
 func (o GetCertificateResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCertificateResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o GetCertificateResultOutput) Description() pulumi.StringOutput {

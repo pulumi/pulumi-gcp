@@ -30,6 +30,7 @@ class CxAgentArgs:
                  avatar_uri: pulumi.Input[Optional[_builtins.str]] = None,
                  client_certificate_settings: pulumi.Input[Optional['CxAgentClientCertificateSettingsArgs']] = None,
                  delete_chat_engine_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_multi_language_training: pulumi.Input[Optional[_builtins.bool]] = None,
                  enable_spell_correction: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -78,6 +79,12 @@ class CxAgentArgs:
                or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
                or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
                The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
         :param pulumi.Input[_builtins.bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
@@ -116,6 +123,8 @@ class CxAgentArgs:
             pulumi.set(__self__, "client_certificate_settings", client_certificate_settings)
         if delete_chat_engine_on_destroy is not None:
             pulumi.set(__self__, "delete_chat_engine_on_destroy", delete_chat_engine_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_multi_language_training is not None:
@@ -277,6 +286,23 @@ class CxAgentArgs:
     @delete_chat_engine_on_destroy.setter
     def delete_chat_engine_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_chat_engine_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -466,6 +492,7 @@ class _CxAgentState:
                  client_certificate_settings: pulumi.Input[Optional['CxAgentClientCertificateSettingsArgs']] = None,
                  default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_chat_engine_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_multi_language_training: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -514,6 +541,12 @@ class _CxAgentState:
                or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
                or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
                The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
@@ -561,6 +594,8 @@ class _CxAgentState:
             pulumi.set(__self__, "default_language_code", default_language_code)
         if delete_chat_engine_on_destroy is not None:
             pulumi.set(__self__, "delete_chat_engine_on_destroy", delete_chat_engine_on_destroy)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -696,6 +731,23 @@ class _CxAgentState:
     @delete_chat_engine_on_destroy.setter
     def delete_chat_engine_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_chat_engine_on_destroy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -976,6 +1028,7 @@ class CxAgent(pulumi.CustomResource):
                  client_certificate_settings: pulumi.Input[Optional[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']]] = None,
                  default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_chat_engine_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_multi_language_training: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1162,6 +1215,12 @@ class CxAgent(pulumi.CustomResource):
                or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
                or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
                The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
@@ -1362,6 +1421,7 @@ class CxAgent(pulumi.CustomResource):
                  client_certificate_settings: pulumi.Input[Optional[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']]] = None,
                  default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_chat_engine_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_multi_language_training: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1396,6 +1456,7 @@ class CxAgent(pulumi.CustomResource):
                 raise TypeError("Missing required property 'default_language_code'")
             __props__.__dict__["default_language_code"] = default_language_code
             __props__.__dict__["delete_chat_engine_on_destroy"] = delete_chat_engine_on_destroy
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1439,6 +1500,7 @@ class CxAgent(pulumi.CustomResource):
             client_certificate_settings: pulumi.Input[Optional[Union['CxAgentClientCertificateSettingsArgs', 'CxAgentClientCertificateSettingsArgsDict']]] = None,
             default_language_code: pulumi.Input[Optional[_builtins.str]] = None,
             delete_chat_engine_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             enable_multi_language_training: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1491,6 +1553,12 @@ class CxAgent(pulumi.CustomResource):
                or a [page](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.flows.pages#resource:-page)
                or the `dataStoreSpec` field of a [tool](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents.tools#resource:-tool).
                The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[_builtins.str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[_builtins.bool] enable_multi_language_training: Enable training multi-lingual models for this agent. These models will be trained on all the languages supported by the agent.
@@ -1536,6 +1604,7 @@ class CxAgent(pulumi.CustomResource):
         __props__.__dict__["client_certificate_settings"] = client_certificate_settings
         __props__.__dict__["default_language_code"] = default_language_code
         __props__.__dict__["delete_chat_engine_on_destroy"] = delete_chat_engine_on_destroy
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["enable_multi_language_training"] = enable_multi_language_training
@@ -1624,6 +1693,19 @@ class CxAgent(pulumi.CustomResource):
         The ID of the implicitly created engine is stored in the `genAppBuilderSettings` field of the [agent](https://cloud.google.com/dialogflow/cx/docs/reference/rest/v3/projects.locations.agents#resource:-agent).
         """
         return pulumi.get(self, "delete_chat_engine_on_destroy")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

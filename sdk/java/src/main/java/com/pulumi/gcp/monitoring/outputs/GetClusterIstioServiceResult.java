@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterIstioServiceResult {
     private String clusterName;
+    private String deletionPolicy;
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
      * 
@@ -47,6 +48,9 @@ public final class GetClusterIstioServiceResult {
     private GetClusterIstioServiceResult() {}
     public String clusterName() {
         return this.clusterName;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return Name used for UI elements listing this (Monitoring) Service.
@@ -106,6 +110,7 @@ public final class GetClusterIstioServiceResult {
     @CustomType.Builder
     public static final class Builder {
         private String clusterName;
+        private String deletionPolicy;
         private String displayName;
         private String id;
         private String location;
@@ -120,6 +125,7 @@ public final class GetClusterIstioServiceResult {
         public Builder(GetClusterIstioServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clusterName = defaults.clusterName;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
@@ -138,6 +144,14 @@ public final class GetClusterIstioServiceResult {
               throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "clusterName");
             }
             this.clusterName = clusterName;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -224,6 +238,7 @@ public final class GetClusterIstioServiceResult {
         public GetClusterIstioServiceResult build() {
             final var _resultValue = new GetClusterIstioServiceResult();
             _resultValue.clusterName = clusterName;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.displayName = displayName;
             _resultValue.id = id;
             _resultValue.location = location;

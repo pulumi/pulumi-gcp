@@ -1301,6 +1301,7 @@ class GetCryptoKeyVersionsVersionPublicKeyResult(dict):
 class GetCryptoKeysKeyResult(dict):
     def __init__(__self__, *,
                  crypto_key_backend: _builtins.str,
+                 deletion_policy: _builtins.str,
                  destroy_scheduled_duration: _builtins.str,
                  effective_labels: Mapping[str, _builtins.str],
                  id: _builtins.str,
@@ -1318,6 +1319,12 @@ class GetCryptoKeysKeyResult(dict):
         """
         :param _builtins.str crypto_key_backend: The resource name of the backend environment associated with all CryptoKeyVersions within this CryptoKey.
                The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str destroy_scheduled_duration: The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED.
                If not specified at creation time, the default duration is 30 days.
         :param Mapping[str, _builtins.str] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other clients and services.
@@ -1356,6 +1363,7 @@ class GetCryptoKeysKeyResult(dict):
         :param _builtins.str name: The resource name for the CryptoKey.
         """
         pulumi.set(__self__, "crypto_key_backend", crypto_key_backend)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "id", id)
@@ -1381,6 +1389,19 @@ class GetCryptoKeysKeyResult(dict):
         The resource name is in the format "projects/*/locations/*/ekmConnections/*" and only applies to "EXTERNAL_VPC" keys.
         """
         return pulumi.get(self, "crypto_key_backend")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="destroyScheduledDuration")

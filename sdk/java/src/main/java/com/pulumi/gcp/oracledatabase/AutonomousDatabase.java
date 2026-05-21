@@ -98,6 +98,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.oracledatabase.AutonomousDatabase;
  * import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
  * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+ * import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesCustomerContactArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -123,8 +124,6 @@ import javax.annotation.Nullable;
  *             .displayName("autonomousDatabase displayname")
  *             .database("mydatabase")
  *             .adminPassword("123Abpassword")
- *             .odbNetwork("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork")
- *             .odbSubnet("projects/my-project/locations/us-east4/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet")
  *             .network(default_.id())
  *             .cidr("10.5.0.0/24")
  *             .labels(Map.of("label-one", "value-one"))
@@ -406,6 +405,30 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      */
     public Output<String> database() {
         return this.database;
+    }
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a terraform destroy or pulumi up that would delete the instance will fail.

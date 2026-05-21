@@ -119,6 +119,15 @@ export class CertificateMapEntry extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * A human-readable description of the resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -191,6 +200,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
             const state = argsOrState as CertificateMapEntryState | undefined;
             resourceInputs["certificates"] = state?.certificates;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["hostname"] = state?.hostname;
@@ -211,6 +221,7 @@ export class CertificateMapEntry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'map'");
             }
             resourceInputs["certificates"] = args?.certificates;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["hostname"] = args?.hostname;
             resourceInputs["labels"] = args?.labels;
@@ -247,6 +258,15 @@ export interface CertificateMapEntryState {
      * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */
@@ -316,6 +336,15 @@ export interface CertificateMapEntryArgs {
      * Each certificate must match pattern projects/*&#47;locations/*&#47;certificates/*.
      */
     certificates: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * A human-readable description of the resource.
      */

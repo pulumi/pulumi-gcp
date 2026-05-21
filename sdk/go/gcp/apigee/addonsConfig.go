@@ -188,6 +188,13 @@ type AddonsConfig struct {
 	// Addon configurations of the Apigee organization.
 	// Structure is documented below.
 	AddonsConfig AddonsConfigAddonsConfigPtrOutput `pulumi:"addonsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Name of the Apigee organization.
 	Org pulumi.StringOutput `pulumi:"org"`
 }
@@ -228,6 +235,13 @@ type addonsConfigState struct {
 	// Addon configurations of the Apigee organization.
 	// Structure is documented below.
 	AddonsConfig *AddonsConfigAddonsConfig `pulumi:"addonsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the Apigee organization.
 	Org *string `pulumi:"org"`
 }
@@ -236,6 +250,13 @@ type AddonsConfigState struct {
 	// Addon configurations of the Apigee organization.
 	// Structure is documented below.
 	AddonsConfig AddonsConfigAddonsConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the Apigee organization.
 	Org pulumi.StringPtrInput
 }
@@ -248,6 +269,13 @@ type addonsConfigArgs struct {
 	// Addon configurations of the Apigee organization.
 	// Structure is documented below.
 	AddonsConfig *AddonsConfigAddonsConfig `pulumi:"addonsConfig"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of the Apigee organization.
 	Org string `pulumi:"org"`
 }
@@ -257,6 +285,13 @@ type AddonsConfigArgs struct {
 	// Addon configurations of the Apigee organization.
 	// Structure is documented below.
 	AddonsConfig AddonsConfigAddonsConfigPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of the Apigee organization.
 	Org pulumi.StringInput
 }
@@ -352,6 +387,16 @@ func (o AddonsConfigOutput) ToAddonsConfigOutputWithContext(ctx context.Context)
 // Structure is documented below.
 func (o AddonsConfigOutput) AddonsConfig() AddonsConfigAddonsConfigPtrOutput {
 	return o.ApplyT(func(v *AddonsConfig) AddonsConfigAddonsConfigPtrOutput { return v.AddonsConfig }).(AddonsConfigAddonsConfigPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AddonsConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AddonsConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Name of the Apigee organization.

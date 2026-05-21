@@ -28,6 +28,7 @@ class AppArgs:
                  client_certificate_settings: pulumi.Input[Optional['AppClientCertificateSettingsArgs']] = None,
                  data_store_settings: pulumi.Input[Optional['AppDataStoreSettingsArgs']] = None,
                  default_channel_profile: pulumi.Input[Optional['AppDefaultChannelProfileArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional['AppEvaluationMetricsThresholdsArgs']] = None,
                  global_instruction: pulumi.Input[Optional[_builtins.str]] = None,
@@ -40,6 +41,7 @@ class AppArgs:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  root_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone_settings: pulumi.Input[Optional['AppTimeZoneSettingsArgs']] = None,
+                 tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
         """
         The set of arguments for constructing a App resource.
@@ -59,6 +61,12 @@ class AppArgs:
         :param pulumi.Input['AppDefaultChannelProfileArgs'] default_channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
                channel, such as web UI or telephony.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
         :param pulumi.Input['AppEvaluationMetricsThresholdsArgs'] evaluation_metrics_thresholds: Threshold settings for metrics in an Evaluation.
                Structure is documented below.
@@ -83,6 +91,8 @@ class AppArgs:
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input['AppTimeZoneSettingsArgs'] time_zone_settings: TimeZone settings of the app.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] tool_execution_mode: The tool execution mode for the app.
+               See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
         :param pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]] variable_declarations: The declarations of the variables.
                Structure is documented below.
         """
@@ -97,6 +107,8 @@ class AppArgs:
             pulumi.set(__self__, "data_store_settings", data_store_settings)
         if default_channel_profile is not None:
             pulumi.set(__self__, "default_channel_profile", default_channel_profile)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if evaluation_metrics_thresholds is not None:
@@ -121,6 +133,8 @@ class AppArgs:
             pulumi.set(__self__, "root_agent", root_agent)
         if time_zone_settings is not None:
             pulumi.set(__self__, "time_zone_settings", time_zone_settings)
+        if tool_execution_mode is not None:
+            pulumi.set(__self__, "tool_execution_mode", tool_execution_mode)
         if variable_declarations is not None:
             pulumi.set(__self__, "variable_declarations", variable_declarations)
 
@@ -215,6 +229,23 @@ class AppArgs:
     @default_channel_profile.setter
     def default_channel_profile(self, value: pulumi.Input[Optional['AppDefaultChannelProfileArgs']]):
         pulumi.set(self, "default_channel_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -373,6 +404,19 @@ class AppArgs:
         pulumi.set(self, "time_zone_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="toolExecutionMode")
+    def tool_execution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The tool execution mode for the app.
+        See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+        """
+        return pulumi.get(self, "tool_execution_mode")
+
+    @tool_execution_mode.setter
+    def tool_execution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tool_execution_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="variableDeclarations")
     def variable_declarations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]]:
         """
@@ -395,6 +439,7 @@ class _AppState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  data_store_settings: pulumi.Input[Optional['AppDataStoreSettingsArgs']] = None,
                  default_channel_profile: pulumi.Input[Optional['AppDefaultChannelProfileArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  deployment_count: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -412,6 +457,7 @@ class _AppState:
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  root_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone_settings: pulumi.Input[Optional['AppTimeZoneSettingsArgs']] = None,
+                 tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input['AppVariableDeclarationArgs']]]] = None):
         """
@@ -431,6 +477,12 @@ class _AppState:
         :param pulumi.Input['AppDefaultChannelProfileArgs'] default_channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
                channel, such as web UI or telephony.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.int] deployment_count: Number of deployments in the app.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
         :param pulumi.Input[_builtins.str] display_name: Display name of the app.
@@ -463,6 +515,8 @@ class _AppState:
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input['AppTimeZoneSettingsArgs'] time_zone_settings: TimeZone settings of the app.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] tool_execution_mode: The tool execution mode for the app.
+               See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the app was last updated.
         :param pulumi.Input[Sequence[pulumi.Input['AppVariableDeclarationArgs']]] variable_declarations: The declarations of the variables.
                Structure is documented below.
@@ -479,6 +533,8 @@ class _AppState:
             pulumi.set(__self__, "data_store_settings", data_store_settings)
         if default_channel_profile is not None:
             pulumi.set(__self__, "default_channel_profile", default_channel_profile)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployment_count is not None:
             pulumi.set(__self__, "deployment_count", deployment_count)
         if description is not None:
@@ -513,6 +569,8 @@ class _AppState:
             pulumi.set(__self__, "root_agent", root_agent)
         if time_zone_settings is not None:
             pulumi.set(__self__, "time_zone_settings", time_zone_settings)
+        if tool_execution_mode is not None:
+            pulumi.set(__self__, "tool_execution_mode", tool_execution_mode)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if variable_declarations is not None:
@@ -597,6 +655,23 @@ class _AppState:
     @default_channel_profile.setter
     def default_channel_profile(self, value: pulumi.Input[Optional['AppDefaultChannelProfileArgs']]):
         pulumi.set(self, "default_channel_profile", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentCount")
@@ -818,6 +893,19 @@ class _AppState:
         pulumi.set(self, "time_zone_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="toolExecutionMode")
+    def tool_execution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The tool execution mode for the app.
+        See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+        """
+        return pulumi.get(self, "tool_execution_mode")
+
+    @tool_execution_mode.setter
+    def tool_execution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "tool_execution_mode", value)
+
+    @_builtins.property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -854,6 +942,7 @@ class App(pulumi.CustomResource):
                  client_certificate_settings: pulumi.Input[Optional[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict']]] = None,
                  data_store_settings: pulumi.Input[Optional[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']]] = None,
                  default_channel_profile: pulumi.Input[Optional[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict']]] = None,
@@ -868,10 +957,15 @@ class App(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  root_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone_settings: pulumi.Input[Optional[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']]] = None,
+                 tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict']]]]] = None,
                  __props__=None):
         """
-        Description
+        Customer Engagement Suite App
+
+        To get more information about App, see:
+
+        * [API documentation](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rest/v1/projects.locations.apps)
 
         ## Example Usage
 
@@ -1223,6 +1317,12 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']] default_channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
                channel, such as web UI or telephony.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
         :param pulumi.Input[_builtins.str] display_name: Display name of the app.
         :param pulumi.Input[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict']] evaluation_metrics_thresholds: Threshold settings for metrics in an Evaluation.
@@ -1249,6 +1349,8 @@ class App(pulumi.CustomResource):
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']] time_zone_settings: TimeZone settings of the app.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] tool_execution_mode: The tool execution mode for the app.
+               See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict']]]] variable_declarations: The declarations of the variables.
                Structure is documented below.
         """
@@ -1259,7 +1361,11 @@ class App(pulumi.CustomResource):
                  args: AppArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Description
+        Customer Engagement Suite App
+
+        To get more information about App, see:
+
+        * [API documentation](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rest/v1/projects.locations.apps)
 
         ## Example Usage
 
@@ -1616,6 +1722,7 @@ class App(pulumi.CustomResource):
                  client_certificate_settings: pulumi.Input[Optional[Union['AppClientCertificateSettingsArgs', 'AppClientCertificateSettingsArgsDict']]] = None,
                  data_store_settings: pulumi.Input[Optional[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']]] = None,
                  default_channel_profile: pulumi.Input[Optional[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  evaluation_metrics_thresholds: pulumi.Input[Optional[Union['AppEvaluationMetricsThresholdsArgs', 'AppEvaluationMetricsThresholdsArgsDict']]] = None,
@@ -1630,6 +1737,7 @@ class App(pulumi.CustomResource):
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  root_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  time_zone_settings: pulumi.Input[Optional[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']]] = None,
+                 tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1647,6 +1755,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["client_certificate_settings"] = client_certificate_settings
             __props__.__dict__["data_store_settings"] = data_store_settings
             __props__.__dict__["default_channel_profile"] = default_channel_profile
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1665,6 +1774,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["root_agent"] = root_agent
             __props__.__dict__["time_zone_settings"] = time_zone_settings
+            __props__.__dict__["tool_execution_mode"] = tool_execution_mode
             __props__.__dict__["variable_declarations"] = variable_declarations
             __props__.__dict__["create_time"] = None
             __props__.__dict__["deployment_count"] = None
@@ -1687,6 +1797,7 @@ class App(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             data_store_settings: pulumi.Input[Optional[Union['AppDataStoreSettingsArgs', 'AppDataStoreSettingsArgsDict']]] = None,
             default_channel_profile: pulumi.Input[Optional[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             deployment_count: pulumi.Input[Optional[_builtins.int]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1704,6 +1815,7 @@ class App(pulumi.CustomResource):
             project: pulumi.Input[Optional[_builtins.str]] = None,
             root_agent: pulumi.Input[Optional[_builtins.str]] = None,
             time_zone_settings: pulumi.Input[Optional[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']]] = None,
+            tool_execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             variable_declarations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict']]]]] = None) -> 'App':
         """
@@ -1727,6 +1839,12 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[Union['AppDefaultChannelProfileArgs', 'AppDefaultChannelProfileArgsDict']] default_channel_profile: A ChannelProfile configures the agent's behavior for a specific communication
                channel, such as web UI or telephony.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.int] deployment_count: Number of deployments in the app.
         :param pulumi.Input[_builtins.str] description: Human-readable description of the app.
         :param pulumi.Input[_builtins.str] display_name: Display name of the app.
@@ -1759,6 +1877,8 @@ class App(pulumi.CustomResource):
                Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
         :param pulumi.Input[Union['AppTimeZoneSettingsArgs', 'AppTimeZoneSettingsArgsDict']] time_zone_settings: TimeZone settings of the app.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] tool_execution_mode: The tool execution mode for the app.
+               See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
         :param pulumi.Input[_builtins.str] update_time: Timestamp when the app was last updated.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppVariableDeclarationArgs', 'AppVariableDeclarationArgsDict']]]] variable_declarations: The declarations of the variables.
                Structure is documented below.
@@ -1773,6 +1893,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["data_store_settings"] = data_store_settings
         __props__.__dict__["default_channel_profile"] = default_channel_profile
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["deployment_count"] = deployment_count
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -1790,6 +1911,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["root_agent"] = root_agent
         __props__.__dict__["time_zone_settings"] = time_zone_settings
+        __props__.__dict__["tool_execution_mode"] = tool_execution_mode
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["variable_declarations"] = variable_declarations
         return App(resource_name, opts=opts, __props__=__props__)
@@ -1849,6 +1971,19 @@ class App(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "default_channel_profile")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deploymentCount")
@@ -2000,6 +2135,15 @@ class App(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "time_zone_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="toolExecutionMode")
+    def tool_execution_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The tool execution mode for the app.
+        See the [API reference](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/rpc/google.cloud.ces.v1#google.cloud.ces.v1.App.ToolExecutionMode) for more details.
+        """
+        return pulumi.get(self, "tool_execution_mode")
 
     @_builtins.property
     @pulumi.getter(name="updateTime")

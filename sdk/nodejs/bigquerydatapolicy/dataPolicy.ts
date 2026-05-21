@@ -145,6 +145,15 @@ export class DataPolicy extends pulumi.CustomResource {
      */
     declare public readonly dataPolicyType: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of the location of the data policy.
      */
     declare public readonly location: pulumi.Output<string>;
@@ -178,6 +187,7 @@ export class DataPolicy extends pulumi.CustomResource {
             resourceInputs["dataMaskingPolicy"] = state?.dataMaskingPolicy;
             resourceInputs["dataPolicyId"] = state?.dataPolicyId;
             resourceInputs["dataPolicyType"] = state?.dataPolicyType;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
             resourceInputs["policyTag"] = state?.policyTag;
@@ -199,6 +209,7 @@ export class DataPolicy extends pulumi.CustomResource {
             resourceInputs["dataMaskingPolicy"] = args?.dataMaskingPolicy;
             resourceInputs["dataPolicyId"] = args?.dataPolicyId;
             resourceInputs["dataPolicyType"] = args?.dataPolicyType;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["location"] = args?.location;
             resourceInputs["policyTag"] = args?.policyTag;
             resourceInputs["project"] = args?.project;
@@ -227,6 +238,15 @@ export interface DataPolicyState {
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      */
     dataPolicyType?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the location of the data policy.
      */
@@ -264,6 +284,15 @@ export interface DataPolicyArgs {
      * Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
      */
     dataPolicyType: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the location of the data policy.
      */

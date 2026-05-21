@@ -95,6 +95,13 @@ type RowAccessPolicy struct {
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// The ID of the dataset containing this row access policy.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// A SQL boolean expression that represents the rows defined by this row
 	// access policy, similar to the boolean expression in a WHERE clause of a
 	// SELECT query on a table.
@@ -188,6 +195,13 @@ type rowAccessPolicyState struct {
 	CreationTime *string `pulumi:"creationTime"`
 	// The ID of the dataset containing this row access policy.
 	DatasetId *string `pulumi:"datasetId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A SQL boolean expression that represents the rows defined by this row
 	// access policy, similar to the boolean expression in a WHERE clause of a
 	// SELECT query on a table.
@@ -240,6 +254,13 @@ type RowAccessPolicyState struct {
 	CreationTime pulumi.StringPtrInput
 	// The ID of the dataset containing this row access policy.
 	DatasetId pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A SQL boolean expression that represents the rows defined by this row
 	// access policy, similar to the boolean expression in a WHERE clause of a
 	// SELECT query on a table.
@@ -293,6 +314,13 @@ func (RowAccessPolicyState) ElementType() reflect.Type {
 type rowAccessPolicyArgs struct {
 	// The ID of the dataset containing this row access policy.
 	DatasetId string `pulumi:"datasetId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// A SQL boolean expression that represents the rows defined by this row
 	// access policy, similar to the boolean expression in a WHERE clause of a
 	// SELECT query on a table.
@@ -340,6 +368,13 @@ type rowAccessPolicyArgs struct {
 type RowAccessPolicyArgs struct {
 	// The ID of the dataset containing this row access policy.
 	DatasetId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// A SQL boolean expression that represents the rows defined by this row
 	// access policy, similar to the boolean expression in a WHERE clause of a
 	// SELECT query on a table.
@@ -479,6 +514,16 @@ func (o RowAccessPolicyOutput) CreationTime() pulumi.StringOutput {
 // The ID of the dataset containing this row access policy.
 func (o RowAccessPolicyOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RowAccessPolicy) pulumi.StringOutput { return v.DatasetId }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RowAccessPolicyOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RowAccessPolicy) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // A SQL boolean expression that represents the rows defined by this row

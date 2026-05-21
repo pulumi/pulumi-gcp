@@ -23,6 +23,7 @@ class GeneratorArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[_builtins.str],
                  summarization_context: pulumi.Input['GeneratorSummarizationContextArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional['GeneratorInferenceParameterArgs']] = None,
@@ -35,6 +36,12 @@ class GeneratorArgs:
         :param pulumi.Input[_builtins.str] location: desc
         :param pulumi.Input['GeneratorSummarizationContextArgs'] summarization_context: Input of prebuilt Summarization feature.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input['GeneratorInferenceParameterArgs'] inference_parameter: Optional. Inference parameters for this generator.
@@ -47,6 +54,8 @@ class GeneratorArgs:
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "summarization_context", summarization_context)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if generator_id is not None:
@@ -84,6 +93,23 @@ class GeneratorArgs:
     @summarization_context.setter
     def summarization_context(self, value: pulumi.Input['GeneratorSummarizationContextArgs']):
         pulumi.set(self, "summarization_context", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -164,6 +190,7 @@ class GeneratorArgs:
 @pulumi.input_type
 class _GeneratorState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional['GeneratorInferenceParameterArgs']] = None,
@@ -176,6 +203,12 @@ class _GeneratorState:
         """
         Input properties used for looking up and filtering Generator resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input['GeneratorInferenceParameterArgs'] inference_parameter: Optional. Inference parameters for this generator.
@@ -190,6 +223,8 @@ class _GeneratorState:
         :param pulumi.Input[_builtins.str] trigger_event: Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
                Possible values are: `END_OF_UTTERANCE`, `MANUAL_CALL`, `CUSTOMER_MESSAGE`, `AGENT_MESSAGE`.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if generator_id is not None:
@@ -208,6 +243,23 @@ class _GeneratorState:
             pulumi.set(__self__, "summarization_context", summarization_context)
         if trigger_event is not None:
             pulumi.set(__self__, "trigger_event", trigger_event)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -328,6 +380,7 @@ class Generator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
@@ -389,6 +442,12 @@ class Generator(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']] inference_parameter: Optional. Inference parameters for this generator.
@@ -473,6 +532,7 @@ class Generator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  generator_id: pulumi.Input[Optional[_builtins.str]] = None,
                  inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
@@ -490,6 +550,7 @@ class Generator(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GeneratorArgs.__new__(GeneratorArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["generator_id"] = generator_id
             __props__.__dict__["inference_parameter"] = inference_parameter
@@ -513,6 +574,7 @@ class Generator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             generator_id: pulumi.Input[Optional[_builtins.str]] = None,
             inference_parameter: pulumi.Input[Optional[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']]] = None,
@@ -529,6 +591,12 @@ class Generator(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Optional. Human readable description of the generator.
         :param pulumi.Input[_builtins.str] generator_id: Optional. The ID to use for the generator, which will become the final component of the generator's resource name.
         :param pulumi.Input[Union['GeneratorInferenceParameterArgs', 'GeneratorInferenceParameterArgsDict']] inference_parameter: Optional. Inference parameters for this generator.
@@ -547,6 +615,7 @@ class Generator(pulumi.CustomResource):
 
         __props__ = _GeneratorState.__new__(_GeneratorState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["generator_id"] = generator_id
         __props__.__dict__["inference_parameter"] = inference_parameter
@@ -557,6 +626,19 @@ class Generator(pulumi.CustomResource):
         __props__.__dict__["summarization_context"] = summarization_context
         __props__.__dict__["trigger_event"] = trigger_event
         return Generator(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

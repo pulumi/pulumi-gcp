@@ -24,6 +24,8 @@ class BatchOperationsJobArgs:
                  bucket_list: pulumi.Input[Optional['BatchOperationsJobBucketListArgs']] = None,
                  delete_object: pulumi.Input[Optional['BatchOperationsJobDeleteObjectArgs']] = None,
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional['BatchOperationsJobPutMetadataArgs']] = None,
@@ -37,6 +39,13 @@ class BatchOperationsJobArgs:
         :param pulumi.Input['BatchOperationsJobDeleteObjectArgs'] delete_object: allows batch operations to delete objects in bucket
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_protection: If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -53,6 +62,10 @@ class BatchOperationsJobArgs:
             pulumi.set(__self__, "delete_object", delete_object)
         if delete_protection is not None:
             pulumi.set(__self__, "delete_protection", delete_protection)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
         if project is not None:
@@ -101,6 +114,35 @@ class BatchOperationsJobArgs:
     @delete_protection.setter
     def delete_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
@@ -175,6 +217,8 @@ class _BatchOperationsJobState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_object: pulumi.Input[Optional['BatchOperationsJobDeleteObjectArgs']] = None,
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional['BatchOperationsJobPutMetadataArgs']] = None,
@@ -193,6 +237,13 @@ class _BatchOperationsJobState:
         :param pulumi.Input['BatchOperationsJobDeleteObjectArgs'] delete_object: allows batch operations to delete objects in bucket
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_protection: If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -216,6 +267,10 @@ class _BatchOperationsJobState:
             pulumi.set(__self__, "delete_object", delete_object)
         if delete_protection is not None:
             pulumi.set(__self__, "delete_protection", delete_protection)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if job_id is not None:
             pulumi.set(__self__, "job_id", job_id)
         if project is not None:
@@ -294,6 +349,35 @@ class _BatchOperationsJobState:
     @delete_protection.setter
     def delete_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
@@ -405,6 +489,8 @@ class BatchOperationsJob(pulumi.CustomResource):
                  bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']]] = None,
                  delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']]] = None,
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']]] = None,
@@ -445,6 +531,34 @@ class BatchOperationsJob(pulumi.CustomResource):
             },
             delete_protection=False)
         ```
+        ### Storage Batch Operations Description
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="tf-sample-bucket",
+            location="us-central1",
+            force_destroy=True)
+        tf_job = gcp.storage.BatchOperationsJob("tf-job",
+            job_id="tf-job",
+            description="A sample job description",
+            bucket_list={
+                "buckets": {
+                    "bucket": bucket.name,
+                    "prefix_list": {
+                        "included_object_prefixes": ["bkt"],
+                    },
+                },
+            },
+            put_metadata={
+                "custom_metadata": {
+                    "key": "value",
+                },
+            },
+            delete_protection=False)
+        ```
 
         ## Import
 
@@ -470,6 +584,13 @@ class BatchOperationsJob(pulumi.CustomResource):
         :param pulumi.Input[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']] delete_object: allows batch operations to delete objects in bucket
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_protection: If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -505,6 +626,34 @@ class BatchOperationsJob(pulumi.CustomResource):
             force_destroy=True)
         tf_job = gcp.storage.BatchOperationsJob("tf-job",
             job_id="tf-job",
+            bucket_list={
+                "buckets": {
+                    "bucket": bucket.name,
+                    "prefix_list": {
+                        "included_object_prefixes": ["bkt"],
+                    },
+                },
+            },
+            put_metadata={
+                "custom_metadata": {
+                    "key": "value",
+                },
+            },
+            delete_protection=False)
+        ```
+        ### Storage Batch Operations Description
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket",
+            name="tf-sample-bucket",
+            location="us-central1",
+            force_destroy=True)
+        tf_job = gcp.storage.BatchOperationsJob("tf-job",
+            job_id="tf-job",
+            description="A sample job description",
             bucket_list={
                 "buckets": {
                     "bucket": bucket.name,
@@ -556,6 +705,8 @@ class BatchOperationsJob(pulumi.CustomResource):
                  bucket_list: pulumi.Input[Optional[Union['BatchOperationsJobBucketListArgs', 'BatchOperationsJobBucketListArgsDict']]] = None,
                  delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']]] = None,
                  delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  job_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']]] = None,
@@ -573,6 +724,8 @@ class BatchOperationsJob(pulumi.CustomResource):
             __props__.__dict__["bucket_list"] = bucket_list
             __props__.__dict__["delete_object"] = delete_object
             __props__.__dict__["delete_protection"] = delete_protection
+            __props__.__dict__["deletion_policy"] = deletion_policy
+            __props__.__dict__["description"] = description
             __props__.__dict__["job_id"] = job_id
             __props__.__dict__["project"] = project
             __props__.__dict__["put_metadata"] = put_metadata
@@ -598,6 +751,8 @@ class BatchOperationsJob(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             delete_object: pulumi.Input[Optional[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']]] = None,
             delete_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
             job_id: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             put_metadata: pulumi.Input[Optional[Union['BatchOperationsJobPutMetadataArgs', 'BatchOperationsJobPutMetadataArgsDict']]] = None,
@@ -620,6 +775,13 @@ class BatchOperationsJob(pulumi.CustomResource):
         :param pulumi.Input[Union['BatchOperationsJobDeleteObjectArgs', 'BatchOperationsJobDeleteObjectArgsDict']] delete_object: allows batch operations to delete objects in bucket
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] delete_protection: If set to `true`, the storage batch operation job will not be deleted and new job will be created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
+        :param pulumi.Input[_builtins.str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         :param pulumi.Input[_builtins.str] job_id: The ID of the job.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -642,6 +804,8 @@ class BatchOperationsJob(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_object"] = delete_object
         __props__.__dict__["delete_protection"] = delete_protection
+        __props__.__dict__["deletion_policy"] = deletion_policy
+        __props__.__dict__["description"] = description
         __props__.__dict__["job_id"] = job_id
         __props__.__dict__["project"] = project
         __props__.__dict__["put_metadata"] = put_metadata
@@ -693,6 +857,27 @@ class BatchOperationsJob(pulumi.CustomResource):
         If set to `true`, the storage batch operation job will not be deleted and new job will be created.
         """
         return pulumi.get(self, "delete_protection")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        """
+        return pulumi.get(self, "description")
 
     @_builtins.property
     @pulumi.getter(name="jobId")

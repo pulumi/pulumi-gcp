@@ -20,6 +20,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRouterNatResult {
     private String autoNetworkTier;
+    private String deletionPolicy;
     private List<String> drainNatIps;
     private Boolean enableDynamicPortAllocation;
     private Boolean enableEndpointIndependentMapping;
@@ -54,6 +55,9 @@ public final class GetRouterNatResult {
     private GetRouterNatResult() {}
     public String autoNetworkTier() {
         return this.autoNetworkTier;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public List<String> drainNatIps() {
         return this.drainNatIps;
@@ -148,6 +152,7 @@ public final class GetRouterNatResult {
     @CustomType.Builder
     public static final class Builder {
         private String autoNetworkTier;
+        private String deletionPolicy;
         private List<String> drainNatIps;
         private Boolean enableDynamicPortAllocation;
         private Boolean enableEndpointIndependentMapping;
@@ -178,6 +183,7 @@ public final class GetRouterNatResult {
         public Builder(GetRouterNatResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoNetworkTier = defaults.autoNetworkTier;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.drainNatIps = defaults.drainNatIps;
     	      this.enableDynamicPortAllocation = defaults.enableDynamicPortAllocation;
     	      this.enableEndpointIndependentMapping = defaults.enableEndpointIndependentMapping;
@@ -212,6 +218,14 @@ public final class GetRouterNatResult {
               throw new MissingRequiredPropertyException("GetRouterNatResult", "autoNetworkTier");
             }
             this.autoNetworkTier = autoNetworkTier;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -445,6 +459,7 @@ public final class GetRouterNatResult {
         public GetRouterNatResult build() {
             final var _resultValue = new GetRouterNatResult();
             _resultValue.autoNetworkTier = autoNetworkTier;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.drainNatIps = drainNatIps;
             _resultValue.enableDynamicPortAllocation = enableDynamicPortAllocation;
             _resultValue.enableEndpointIndependentMapping = enableEndpointIndependentMapping;

@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "dci-tf-_3686",
+ *     projectId: "dci-tf-_44339",
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
@@ -119,7 +119,7 @@ import * as utilities from "../utilities";
  * });
  * const myApphubApplication = new gcp.apphub.Application("my_apphub_application", {
  *     location: "us-central1",
- *     applicationId: "tf-test-example-application_54136",
+ *     applicationId: "tf-test-example-application_34599",
  *     scope: {
  *         type: "REGIONAL",
  *     },
@@ -129,7 +129,7 @@ import * as utilities from "../utilities";
  * });
  * const insightsConfig = new gcp.developerconnect.InsightsConfig("insights_config", {
  *     location: "us-central1",
- *     insightsConfigId: "tf-test-ic-apphub-_11171",
+ *     insightsConfigId: "tf-test-ic-apphub-_79513",
  *     project: project.projectId,
  *     annotations: {},
  *     labels: {},
@@ -163,7 +163,7 @@ import * as utilities from "../utilities";
  * import * as time from "@pulumiverse/time";
  *
  * const project = new gcp.organizations.Project("project", {
- *     projectId: "dci-tf-_40472",
+ *     projectId: "dci-tf-_55500",
  *     name: "Service Project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
@@ -262,7 +262,7 @@ import * as utilities from "../utilities";
  * });
  * const insightsConfigProjects = new gcp.developerconnect.InsightsConfig("insights_config_projects", {
  *     location: "us-central1",
- *     insightsConfigId: "tf-test-ic-projects-_44339",
+ *     insightsConfigId: "tf-test-ic-projects-_12223",
  *     project: project.projectId,
  *     annotations: {},
  *     labels: {},
@@ -350,6 +350,15 @@ export class InsightsConfig extends pulumi.CustomResource {
      * [Output only] Create timestamp
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
@@ -445,6 +454,7 @@ export class InsightsConfig extends pulumi.CustomResource {
             resourceInputs["appHubApplication"] = state?.appHubApplication;
             resourceInputs["artifactConfigs"] = state?.artifactConfigs;
             resourceInputs["createTime"] = state?.createTime;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["errors"] = state?.errors;
@@ -470,6 +480,7 @@ export class InsightsConfig extends pulumi.CustomResource {
             resourceInputs["annotations"] = args?.annotations;
             resourceInputs["appHubApplication"] = args?.appHubApplication;
             resourceInputs["artifactConfigs"] = args?.artifactConfigs;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["insightsConfigId"] = args?.insightsConfigId;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["location"] = args?.location;
@@ -519,6 +530,15 @@ export interface InsightsConfigState {
      * [Output only] Create timestamp
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through Terraform, other clients and services.
      */
@@ -620,6 +640,15 @@ export interface InsightsConfigArgs {
      * Structure is documented below.
      */
     artifactConfigs?: pulumi.Input<pulumi.Input<inputs.developerconnect.InsightsConfigArtifactConfig>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * ID of the requesting InsightsConfig.
      */

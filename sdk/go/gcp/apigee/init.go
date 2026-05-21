@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppGroup{}
 	case "gcp:apigee/controlPlaneAccess:ControlPlaneAccess":
 		r = &ControlPlaneAccess{}
+	case "gcp:apigee/dataCollector:DataCollector":
+		r = &DataCollector{}
 	case "gcp:apigee/developer:Developer":
 		r = &Developer{}
 	case "gcp:apigee/developerApp:DeveloperApp":
@@ -140,6 +142,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/controlPlaneAccess",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/dataCollector",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

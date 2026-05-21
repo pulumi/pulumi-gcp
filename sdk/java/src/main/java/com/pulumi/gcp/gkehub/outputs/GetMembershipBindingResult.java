@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class GetMembershipBindingResult {
     private String createTime;
     private String deleteTime;
+    private String deletionPolicy;
     private Map<String,String> effectiveLabels;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -41,6 +42,9 @@ public final class GetMembershipBindingResult {
     }
     public String deleteTime() {
         return this.deleteTime;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
@@ -97,6 +101,7 @@ public final class GetMembershipBindingResult {
     public static final class Builder {
         private String createTime;
         private String deleteTime;
+        private String deletionPolicy;
         private Map<String,String> effectiveLabels;
         private String id;
         private Map<String,String> labels;
@@ -115,6 +120,7 @@ public final class GetMembershipBindingResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.deleteTime = defaults.deleteTime;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.id = defaults.id;
     	      this.labels = defaults.labels;
@@ -144,6 +150,14 @@ public final class GetMembershipBindingResult {
               throw new MissingRequiredPropertyException("GetMembershipBindingResult", "deleteTime");
             }
             this.deleteTime = deleteTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetMembershipBindingResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -255,6 +269,7 @@ public final class GetMembershipBindingResult {
             final var _resultValue = new GetMembershipBindingResult();
             _resultValue.createTime = createTime;
             _resultValue.deleteTime = deleteTime;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.id = id;
             _resultValue.labels = labels;

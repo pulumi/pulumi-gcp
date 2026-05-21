@@ -139,12 +139,15 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> AppId { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-        /// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-        /// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Output("deletionPolicy")]
-        public Output<string?> DeletionPolicy { get; private set; } = null!;
+        public Output<string> DeletionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The user-assigned display name of the AndroidApp.
@@ -247,9 +250,12 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? ApiKeyId { get; set; }
 
         /// <summary>
-        /// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-        /// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-        /// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -322,9 +328,12 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? AppId { get; set; }
 
         /// <summary>
-        /// (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-        /// rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-        /// serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+        /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

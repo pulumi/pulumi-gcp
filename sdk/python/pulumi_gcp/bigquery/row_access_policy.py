@@ -23,6 +23,7 @@ class RowAccessPolicyArgs:
                  filter_predicate: pulumi.Input[_builtins.str],
                  policy_id: pulumi.Input[_builtins.str],
                  table_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -42,6 +43,12 @@ class RowAccessPolicyArgs:
                letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum
                length is 256 characters.
         :param pulumi.Input[_builtins.str] table_id: The ID of the table containing this row access policy.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] grantees: Input only. The optional list of iam_member users or groups that specifies the initial
                members that the row-level access policy should be created with.
                grantees types:
@@ -70,6 +77,8 @@ class RowAccessPolicyArgs:
         pulumi.set(__self__, "filter_predicate", filter_predicate)
         pulumi.set(__self__, "policy_id", policy_id)
         pulumi.set(__self__, "table_id", table_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if grantees is not None:
             pulumi.set(__self__, "grantees", grantees)
         if project is not None:
@@ -134,6 +143,23 @@ class RowAccessPolicyArgs:
         pulumi.set(self, "table_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def grantees(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -184,6 +210,7 @@ class _RowAccessPolicyState:
     def __init__(__self__, *,
                  creation_time: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -196,6 +223,12 @@ class _RowAccessPolicyState:
         :param pulumi.Input[_builtins.str] creation_time: The time when this row access policy was created, in milliseconds since
                the epoch.
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this row access policy.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] filter_predicate: A SQL boolean expression that represents the rows defined by this row
                access policy, similar to the boolean expression in a WHERE clause of a
                SELECT query on a table.
@@ -239,6 +272,8 @@ class _RowAccessPolicyState:
             pulumi.set(__self__, "creation_time", creation_time)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if filter_predicate is not None:
             pulumi.set(__self__, "filter_predicate", filter_predicate)
         if grantees is not None:
@@ -276,6 +311,23 @@ class _RowAccessPolicyState:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataset_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="filterPredicate")
@@ -389,6 +441,7 @@ class RowAccessPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -448,6 +501,12 @@ class RowAccessPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this row access policy.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] filter_predicate: A SQL boolean expression that represents the rows defined by this row
                access policy, similar to the boolean expression in a WHERE clause of a
                SELECT query on a table.
@@ -557,6 +616,7 @@ class RowAccessPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
                  grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -574,6 +634,7 @@ class RowAccessPolicy(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if filter_predicate is None and not opts.urn:
                 raise TypeError("Missing required property 'filter_predicate'")
             __props__.__dict__["filter_predicate"] = filter_predicate
@@ -599,6 +660,7 @@ class RowAccessPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             filter_predicate: pulumi.Input[Optional[_builtins.str]] = None,
             grantees: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
@@ -615,6 +677,12 @@ class RowAccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_time: The time when this row access policy was created, in milliseconds since
                the epoch.
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this row access policy.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] filter_predicate: A SQL boolean expression that represents the rows defined by this row
                access policy, similar to the boolean expression in a WHERE clause of a
                SELECT query on a table.
@@ -660,6 +728,7 @@ class RowAccessPolicy(pulumi.CustomResource):
 
         __props__.__dict__["creation_time"] = creation_time
         __props__.__dict__["dataset_id"] = dataset_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["filter_predicate"] = filter_predicate
         __props__.__dict__["grantees"] = grantees
         __props__.__dict__["last_modified_time"] = last_modified_time
@@ -684,6 +753,19 @@ class RowAccessPolicy(pulumi.CustomResource):
         The ID of the dataset containing this row access policy.
         """
         return pulumi.get(self, "dataset_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="filterPredicate")

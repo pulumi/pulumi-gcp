@@ -21,6 +21,7 @@ class GatewayArgs:
     def __init__(__self__, *,
                  api_config: pulumi.Input[_builtins.str],
                  gateway_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
@@ -32,6 +33,12 @@ class GatewayArgs:
                When changing api configs please ensure the new config is a new resource and the
                lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[_builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user-provided metadata.
                
@@ -43,6 +50,8 @@ class GatewayArgs:
         """
         pulumi.set(__self__, "api_config", api_config)
         pulumi.set(__self__, "gateway_id", gateway_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -77,6 +86,23 @@ class GatewayArgs:
     @gateway_id.setter
     def gateway_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "gateway_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -136,6 +162,7 @@ class _GatewayState:
     def __init__(__self__, *,
                  api_config: pulumi.Input[Optional[_builtins.str]] = None,
                  default_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -151,6 +178,12 @@ class _GatewayState:
                When changing api configs please ensure the new config is a new resource and the
                lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[_builtins.str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
@@ -169,6 +202,8 @@ class _GatewayState:
             pulumi.set(__self__, "api_config", api_config)
         if default_hostname is not None:
             pulumi.set(__self__, "default_hostname", default_hostname)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -211,6 +246,23 @@ class _GatewayState:
     @default_hostname.setter
     def default_hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_hostname", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -321,6 +373,7 @@ class Gateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -365,6 +418,12 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
                When changing api configs please ensure the new config is a new resource and the
                lifecycle rule `create_before_destroy` is set.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[_builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Resource labels to represent user-provided metadata.
@@ -430,6 +489,7 @@ class Gateway(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -447,6 +507,7 @@ class Gateway(pulumi.CustomResource):
             if api_config is None and not opts.urn:
                 raise TypeError("Missing required property 'api_config'")
             __props__.__dict__["api_config"] = api_config
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             if gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gateway_id'")
@@ -472,6 +533,7 @@ class Gateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_config: pulumi.Input[Optional[_builtins.str]] = None,
             default_hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -491,6 +553,12 @@ class Gateway(pulumi.CustomResource):
                When changing api configs please ensure the new config is a new resource and the
                lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[_builtins.str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[_builtins.str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
@@ -511,6 +579,7 @@ class Gateway(pulumi.CustomResource):
 
         __props__.__dict__["api_config"] = api_config
         __props__.__dict__["default_hostname"] = default_hostname
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["gateway_id"] = gateway_id
@@ -538,6 +607,19 @@ class Gateway(pulumi.CustomResource):
         The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
         """
         return pulumi.get(self, "default_hostname")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

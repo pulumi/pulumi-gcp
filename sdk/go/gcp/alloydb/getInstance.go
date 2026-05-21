@@ -73,6 +73,7 @@ type LookupInstanceResult struct {
 	ConnectionPoolConfigs   []GetInstanceConnectionPoolConfig   `pulumi:"connectionPoolConfigs"`
 	CreateTime              string                              `pulumi:"createTime"`
 	DatabaseFlags           map[string]string                   `pulumi:"databaseFlags"`
+	DeletionPolicy          string                              `pulumi:"deletionPolicy"`
 	DisplayName             string                              `pulumi:"displayName"`
 	EffectiveAnnotations    map[string]string                   `pulumi:"effectiveAnnotations"`
 	EffectiveLabels         map[string]string                   `pulumi:"effectiveLabels"`
@@ -179,6 +180,10 @@ func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) DatabaseFlags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.DatabaseFlags }).(pulumi.StringMapOutput)
+}
+
+func (o LookupInstanceResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {

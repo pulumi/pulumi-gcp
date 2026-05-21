@@ -38,6 +38,21 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique numeric identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="addressId")
+    private @Nullable Output<String> addressId;
+
+    /**
+     * @return The unique numeric identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<String>> addressId() {
+        return Optional.ofNullable(this.addressId);
+    }
+
+    /**
      * The type of address to reserve.
      * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
      * Default value is `EXTERNAL`.
@@ -71,6 +86,31 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> creationTimestamp() {
         return Optional.ofNullable(this.creationTimestamp);
+    }
+
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
     }
 
     /**
@@ -433,8 +473,10 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
 
     private AddressState(AddressState $) {
         this.address = $.address;
+        this.addressId = $.addressId;
         this.addressType = $.addressType;
         this.creationTimestamp = $.creationTimestamp;
+        this.deletionPolicy = $.deletionPolicy;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.ipCollection = $.ipCollection;
@@ -499,6 +541,27 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param addressId The unique numeric identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressId(@Nullable Output<String> addressId) {
+            $.addressId = addressId;
+            return this;
+        }
+
+        /**
+         * @param addressId The unique numeric identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addressId(String addressId) {
+            return addressId(Output.of(addressId));
+        }
+
+        /**
          * @param addressType The type of address to reserve.
          * Note: if you set this argument&#39;s value as `INTERNAL` you need to leave the `networkTier` argument unset in that resource block.
          * Default value is `EXTERNAL`.
@@ -544,6 +607,37 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder creationTimestamp(String creationTimestamp) {
             return creationTimestamp(Output.of(creationTimestamp));
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

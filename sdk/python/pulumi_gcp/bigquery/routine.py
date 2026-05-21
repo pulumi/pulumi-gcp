@@ -27,6 +27,7 @@ class RoutineArgs:
                  routine_type: pulumi.Input[_builtins.str],
                  arguments: pulumi.Input[Optional[Sequence[pulumi.Input['RoutineArgumentArgs']]]] = None,
                  data_governance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  determinism_level: pulumi.Input[Optional[_builtins.str]] = None,
                  external_runtime_options: pulumi.Input[Optional['RoutineExternalRuntimeOptionsArgs']] = None,
@@ -52,6 +53,12 @@ class RoutineArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] data_governance_type: If set to DATA_MASKING, the function is validated and made available as a masking function. For more information, see https://cloud.google.com/bigquery/docs/user-defined-functions#custom-mask
                Possible values are: `DATA_MASKING`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -96,6 +103,8 @@ class RoutineArgs:
             pulumi.set(__self__, "arguments", arguments)
         if data_governance_type is not None:
             pulumi.set(__self__, "data_governance_type", data_governance_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if determinism_level is not None:
@@ -196,6 +205,23 @@ class RoutineArgs:
     @data_governance_type.setter
     def data_governance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_governance_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -373,6 +399,7 @@ class _RoutineState:
                  data_governance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  definition_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  determinism_level: pulumi.Input[Optional[_builtins.str]] = None,
                  external_runtime_options: pulumi.Input[Optional['RoutineExternalRuntimeOptionsArgs']] = None,
@@ -400,6 +427,12 @@ class _RoutineState:
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[_builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -451,6 +484,8 @@ class _RoutineState:
             pulumi.set(__self__, "dataset_id", dataset_id)
         if definition_body is not None:
             pulumi.set(__self__, "definition_body", definition_body)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if determinism_level is not None:
@@ -545,6 +580,23 @@ class _RoutineState:
     @definition_body.setter
     def definition_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "definition_body", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -762,6 +814,7 @@ class Routine(pulumi.CustomResource):
                  data_governance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  definition_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  determinism_level: pulumi.Input[Optional[_builtins.str]] = None,
                  external_runtime_options: pulumi.Input[Optional[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']]] = None,
@@ -1062,6 +1115,12 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[_builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -1402,6 +1461,7 @@ class Routine(pulumi.CustomResource):
                  data_governance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
                  definition_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  determinism_level: pulumi.Input[Optional[_builtins.str]] = None,
                  external_runtime_options: pulumi.Input[Optional[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']]] = None,
@@ -1433,6 +1493,7 @@ class Routine(pulumi.CustomResource):
             if definition_body is None and not opts.urn:
                 raise TypeError("Missing required property 'definition_body'")
             __props__.__dict__["definition_body"] = definition_body
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["determinism_level"] = determinism_level
             __props__.__dict__["external_runtime_options"] = external_runtime_options
@@ -1468,6 +1529,7 @@ class Routine(pulumi.CustomResource):
             data_governance_type: pulumi.Input[Optional[_builtins.str]] = None,
             dataset_id: pulumi.Input[Optional[_builtins.str]] = None,
             definition_body: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             determinism_level: pulumi.Input[Optional[_builtins.str]] = None,
             external_runtime_options: pulumi.Input[Optional[Union['RoutineExternalRuntimeOptionsArgs', 'RoutineExternalRuntimeOptionsArgsDict']]] = None,
@@ -1499,6 +1561,12 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dataset_id: The ID of the dataset containing this routine
         :param pulumi.Input[_builtins.str] definition_body: The body of the routine. For functions, this is the expression in the AS clause.
                If language=SQL, it is the substring inside (but excluding) the parentheses.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the routine if defined.
         :param pulumi.Input[_builtins.str] determinism_level: The determinism level of the JavaScript UDF if defined.
                Possible values are: `DETERMINISM_LEVEL_UNSPECIFIED`, `DETERMINISTIC`, `NOT_DETERMINISTIC`.
@@ -1549,6 +1617,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["data_governance_type"] = data_governance_type
         __props__.__dict__["dataset_id"] = dataset_id
         __props__.__dict__["definition_body"] = definition_body
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["determinism_level"] = determinism_level
         __props__.__dict__["external_runtime_options"] = external_runtime_options
@@ -1609,6 +1678,19 @@ class Routine(pulumi.CustomResource):
         If language=SQL, it is the substring inside (but excluding) the parentheses.
         """
         return pulumi.get(self, "definition_body")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

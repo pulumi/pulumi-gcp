@@ -27,6 +27,7 @@ class FunctionArgs:
                  build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  build_worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -66,6 +67,12 @@ class FunctionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[_builtins.str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the function.
         :param pulumi.Input[_builtins.str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         :param pulumi.Input[_builtins.str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
@@ -113,6 +120,8 @@ class FunctionArgs:
             pulumi.set(__self__, "build_service_account", build_service_account)
         if build_worker_pool is not None:
             pulumi.set(__self__, "build_worker_pool", build_worker_pool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if docker_registry is not None:
@@ -242,6 +251,23 @@ class FunctionArgs:
     @build_worker_pool.setter
     def build_worker_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build_worker_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -584,6 +610,7 @@ class _FunctionState:
                  build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  build_worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -624,6 +651,12 @@ class _FunctionState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[_builtins.str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the function.
         :param pulumi.Input[_builtins.str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         :param pulumi.Input[_builtins.str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
@@ -678,6 +711,8 @@ class _FunctionState:
             pulumi.set(__self__, "build_service_account", build_service_account)
         if build_worker_pool is not None:
             pulumi.set(__self__, "build_worker_pool", build_worker_pool)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if docker_registry is not None:
@@ -802,6 +837,23 @@ class _FunctionState:
     @build_worker_pool.setter
     def build_worker_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build_worker_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1210,6 +1262,7 @@ class Function(pulumi.CustomResource):
                  build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  build_worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1346,6 +1399,12 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[_builtins.str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the function.
         :param pulumi.Input[_builtins.str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         :param pulumi.Input[_builtins.str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
@@ -1512,6 +1571,7 @@ class Function(pulumi.CustomResource):
                  build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
                  build_worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_registry: pulumi.Input[Optional[_builtins.str]] = None,
                  docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1554,6 +1614,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["build_environment_variables"] = build_environment_variables
             __props__.__dict__["build_service_account"] = build_service_account
             __props__.__dict__["build_worker_pool"] = build_worker_pool
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             __props__.__dict__["docker_registry"] = docker_registry
             __props__.__dict__["docker_repository"] = docker_repository
@@ -1605,6 +1666,7 @@ class Function(pulumi.CustomResource):
             build_environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             build_service_account: pulumi.Input[Optional[_builtins.str]] = None,
             build_worker_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             docker_registry: pulumi.Input[Optional[_builtins.str]] = None,
             docker_repository: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1649,6 +1711,12 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] build_environment_variables: A set of key/value environment variable pairs available during build time.
         :param pulumi.Input[_builtins.str] build_service_account: If provided, the self-provided service account to use to build the function. The format of this field is `projects/{project}/serviceAccounts/{serviceAccountEmail}`
         :param pulumi.Input[_builtins.str] build_worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the function.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: Description of the function.
         :param pulumi.Input[_builtins.str] docker_registry: Docker Registry to use for storing the function's Docker images. Allowed values are ARTIFACT_REGISTRY (default) and CONTAINER_REGISTRY.
         :param pulumi.Input[_builtins.str] docker_repository: User-managed repository created in Artifact Registry to which the function's Docker image will be pushed after it is built by Cloud Build. May optionally be encrypted with a customer-managed encryption key (CMEK). If unspecified and `docker_registry` is not explicitly set to `CONTAINER_REGISTRY`, GCF will create and use a default Artifact Registry repository named 'gcf-artifacts' in the region.
@@ -1702,6 +1770,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["build_environment_variables"] = build_environment_variables
         __props__.__dict__["build_service_account"] = build_service_account
         __props__.__dict__["build_worker_pool"] = build_worker_pool
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["docker_registry"] = docker_registry
         __props__.__dict__["docker_repository"] = docker_repository
@@ -1775,6 +1844,19 @@ class Function(pulumi.CustomResource):
         Name of the Cloud Build Custom Worker Pool that should be used to build the function.
         """
         return pulumi.get(self, "build_worker_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -12,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVariableResult {
+    private String deletionPolicy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -25,6 +26,9 @@ public final class GetVariableResult {
     private String value;
 
     private GetVariableResult() {}
+    public String deletionPolicy() {
+        return this.deletionPolicy;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -60,6 +64,7 @@ public final class GetVariableResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String deletionPolicy;
         private String id;
         private String name;
         private String parent;
@@ -70,6 +75,7 @@ public final class GetVariableResult {
         public Builder() {}
         public Builder(GetVariableResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.parent = defaults.parent;
@@ -79,6 +85,14 @@ public final class GetVariableResult {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetVariableResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
+            return this;
+        }
         @CustomType.Setter
         public Builder id(String id) {
             if (id == null) {
@@ -135,6 +149,7 @@ public final class GetVariableResult {
         }
         public GetVariableResult build() {
             final var _resultValue = new GetVariableResult();
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.parent = parent;

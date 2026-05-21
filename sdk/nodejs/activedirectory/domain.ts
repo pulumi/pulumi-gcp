@@ -84,6 +84,15 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly authorizedNetworks: pulumi.Output<string[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Whether Terraform will be prevented from destroying the domain. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the domain,
      * the command will fail if this field is not set to false in Terraform state.
@@ -152,6 +161,7 @@ export class Domain extends pulumi.CustomResource {
             const state = argsOrState as DomainState | undefined;
             resourceInputs["admin"] = state?.admin;
             resourceInputs["authorizedNetworks"] = state?.authorizedNetworks;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["domainName"] = state?.domainName;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -175,6 +185,7 @@ export class Domain extends pulumi.CustomResource {
             }
             resourceInputs["admin"] = args?.admin;
             resourceInputs["authorizedNetworks"] = args?.authorizedNetworks;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["domainName"] = args?.domainName;
             resourceInputs["labels"] = args?.labels;
@@ -207,6 +218,15 @@ export interface DomainState {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the domain. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the domain,
@@ -276,6 +296,15 @@ export interface DomainArgs {
      * If CIDR subnets overlap between networks, domain creation will fail.
      */
     authorizedNetworks?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the domain. Defaults to true.
      * When a`terraform destroy` or `pulumi up` would delete the domain,

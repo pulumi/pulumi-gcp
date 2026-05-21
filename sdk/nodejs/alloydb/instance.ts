@@ -227,6 +227,15 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly databaseFlags: pulumi.Output<{[key: string]: string}>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * User-settable and human-readable display name for the Instance.
      */
     declare public readonly displayName: pulumi.Output<string | undefined>;
@@ -357,6 +366,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["connectionPoolConfig"] = state?.connectionPoolConfig;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["databaseFlags"] = state?.databaseFlags;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["effectiveAnnotations"] = state?.effectiveAnnotations;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -397,6 +407,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["cluster"] = args?.cluster;
             resourceInputs["connectionPoolConfig"] = args?.connectionPoolConfig;
             resourceInputs["databaseFlags"] = args?.databaseFlags;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["gceZone"] = args?.gceZone;
             resourceInputs["instanceId"] = args?.instanceId;
@@ -483,6 +494,15 @@ export interface InstanceState {
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      */
     databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-settable and human-readable display name for the Instance.
      */
@@ -645,6 +665,15 @@ export interface InstanceArgs {
      * Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
      */
     databaseFlags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * User-settable and human-readable display name for the Instance.
      */

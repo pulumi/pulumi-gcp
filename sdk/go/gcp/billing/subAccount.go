@@ -59,8 +59,14 @@ type SubAccount struct {
 	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
 	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "".
+	//
+	// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the master billing account that the subaccount
@@ -112,7 +118,13 @@ type subAccountState struct {
 	BillingAccountId *string `pulumi:"billingAccountId"`
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
 	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "".
+	//
+	// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
 	DisplayName *string `pulumi:"displayName"`
@@ -130,7 +142,13 @@ type SubAccountState struct {
 	BillingAccountId pulumi.StringPtrInput
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
 	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "".
+	//
+	// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
 	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the billing account.
 	DisplayName pulumi.StringPtrInput
@@ -150,7 +168,13 @@ func (SubAccountState) ElementType() reflect.Type {
 type subAccountArgs struct {
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
 	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "".
+	//
+	// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The display name of the billing account.
 	DisplayName string `pulumi:"displayName"`
@@ -163,7 +187,13 @@ type subAccountArgs struct {
 type SubAccountArgs struct {
 	// If set to "RENAME_ON_DESTROY" the billing account displayName
 	// will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-	// Default is "".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", the command will behave as if set to "".
+	//
+	// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
 	DeletionPolicy pulumi.StringPtrInput
 	// The display name of the billing account.
 	DisplayName pulumi.StringInput
@@ -266,9 +296,15 @@ func (o SubAccountOutput) BillingAccountId() pulumi.StringOutput {
 
 // If set to "RENAME_ON_DESTROY" the billing account displayName
 // will be changed to "Destroyed" along with a timestamp.  If set to "" this will not occur.
-// Default is "".
-func (o SubAccountOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SubAccount) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", the command will behave as if set to "".
+//
+// Possible values: RENAME_ON_DESTROY, PREVENT, ABANDON, DELETE.
+func (o SubAccountOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubAccount) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The display name of the billing account.

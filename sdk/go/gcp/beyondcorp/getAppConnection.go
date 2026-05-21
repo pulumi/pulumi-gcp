@@ -66,6 +66,7 @@ type LookupAppConnectionArgs struct {
 type LookupAppConnectionResult struct {
 	ApplicationEndpoints []GetAppConnectionApplicationEndpoint `pulumi:"applicationEndpoints"`
 	Connectors           []string                              `pulumi:"connectors"`
+	DeletionPolicy       string                                `pulumi:"deletionPolicy"`
 	DisplayName          string                                `pulumi:"displayName"`
 	EffectiveLabels      map[string]string                     `pulumi:"effectiveLabels"`
 	Gateways             []GetAppConnectionGateway             `pulumi:"gateways"`
@@ -127,6 +128,10 @@ func (o LookupAppConnectionResultOutput) ApplicationEndpoints() GetAppConnection
 
 func (o LookupAppConnectionResultOutput) Connectors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAppConnectionResult) []string { return v.Connectors }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupAppConnectionResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAppConnectionResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupAppConnectionResultOutput) DisplayName() pulumi.StringOutput {

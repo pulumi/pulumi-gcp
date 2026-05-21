@@ -180,6 +180,13 @@ type DatabaseInstance struct {
 	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
 	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl pulumi.StringOutput `pulumi:"databaseUrl"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState pulumi.StringPtrOutput `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
@@ -246,6 +253,13 @@ type databaseInstanceState struct {
 	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
 	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState *string `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
@@ -277,6 +291,13 @@ type DatabaseInstanceState struct {
 	// The database URL in the form of https://{instance-id}.firebaseio.com for us-central1 instances
 	// or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 	DatabaseUrl pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState pulumi.StringPtrInput
 	// The globally unique identifier of the Firebase Realtime Database instance.
@@ -309,6 +330,13 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState *string `pulumi:"desiredState"`
 	// The globally unique identifier of the Firebase Realtime Database instance.
@@ -331,6 +359,13 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The intended database state. Possible values: ACTIVE, DISABLED.
 	DesiredState pulumi.StringPtrInput
 	// The globally unique identifier of the Firebase Realtime Database instance.
@@ -442,6 +477,16 @@ func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.
 // or https://{instance-id}.{region}.firebasedatabase.app in other regions.
 func (o DatabaseInstanceOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DatabaseUrl }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DatabaseInstanceOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseInstance) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The intended database state. Possible values: ACTIVE, DISABLED.

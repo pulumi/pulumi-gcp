@@ -139,20 +139,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> DatasetId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
-        /// in state, a `=destroy` or `=update` that would delete the instance will fail.
-        /// </summary>
-        [Output("deletionProtection")]
-        public Output<bool?> DeletionProtection { get; private set; } = null!;
-
-        /// <summary>
-        /// The field description.
-        /// </summary>
-        [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
-
-        /// <summary>
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
         /// 
         /// * &lt;a name="schema"&gt;&lt;/a&gt;`Schema` - (Optional) A JSON schema for the table.
         /// 
@@ -169,6 +161,25 @@ namespace Pulumi.Gcp.BigQuery
         /// `external_data_configuration.connection_id`, schemas must be specified
         /// with `external_data_configuration.schema`. Otherwise, schemas must be
         /// specified with this top-level field.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        /// in state, a `=destroy` or `=update` that would delete the instance will fail.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
+
+        /// <summary>
+        /// The field description.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
@@ -481,6 +492,33 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// * &lt;a name="schema"&gt;&lt;/a&gt;`Schema` - (Optional) A JSON schema for the table.
+        /// 
+        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+        /// string will create a diff, even if the JSON itself hasn't changed.
+        /// If the API returns a different value for the same schema, e.g. it
+        /// switched the order of values or replaced a field data type (`STRUCT` with
+        /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+        /// the recurring diff this causes. As a workaround, we recommend using the
+        /// schema as returned by the API.
+        /// 
+        /// ~&gt;**NOTE:**  If you use `ExternalDataConfiguration`
+        /// documented below and do **not** set
+        /// `external_data_configuration.connection_id`, schemas must be specified
+        /// with `external_data_configuration.schema`. Otherwise, schemas must be
+        /// specified with this top-level field.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         /// in state, a `=destroy` or `=update` that would delete the instance will fail.
         /// </summary>
@@ -722,6 +760,33 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? DatasetId { get; set; }
 
         /// <summary>
+        /// (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        /// the command will fail if this field is set to "PREVENT" in Terraform state.
+        /// When set to "ABANDON", the command will remove the resource from Terraform
+        /// management without updating or deleting the resource in the API.
+        /// When set to "DELETE", deleting the resource is allowed.
+        /// 
+        /// * &lt;a name="schema"&gt;&lt;/a&gt;`Schema` - (Optional) A JSON schema for the table.
+        /// 
+        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+        /// string will create a diff, even if the JSON itself hasn't changed.
+        /// If the API returns a different value for the same schema, e.g. it
+        /// switched the order of values or replaced a field data type (`STRUCT` with
+        /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+        /// the recurring diff this causes. As a workaround, we recommend using the
+        /// schema as returned by the API.
+        /// 
+        /// ~&gt;**NOTE:**  If you use `ExternalDataConfiguration`
+        /// documented below and do **not** set
+        /// `external_data_configuration.connection_id`, schemas must be specified
+        /// with `external_data_configuration.schema`. Otherwise, schemas must be
+        /// specified with this top-level field.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
         /// in state, a `=destroy` or `=update` that would delete the instance will fail.
         /// </summary>
@@ -739,22 +804,6 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        /// 
-        /// * &lt;a name="schema"&gt;&lt;/a&gt;`Schema` - (Optional) A JSON schema for the table.
-        /// 
-        /// ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
-        /// string will create a diff, even if the JSON itself hasn't changed.
-        /// If the API returns a different value for the same schema, e.g. it
-        /// switched the order of values or replaced a field data type (`STRUCT` with
-        /// `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
-        /// the recurring diff this causes. As a workaround, we recommend using the
-        /// schema as returned by the API.
-        /// 
-        /// ~&gt;**NOTE:**  If you use `ExternalDataConfiguration`
-        /// documented below and do **not** set
-        /// `external_data_configuration.connection_id`, schemas must be specified
-        /// with `external_data_configuration.schema`. Otherwise, schemas must be
-        /// specified with this top-level field.
         /// </summary>
         public InputMap<string> EffectiveLabels
         {

@@ -21,6 +21,7 @@ class NetworkPeeringArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[_builtins.str],
                  peer_network: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
                  export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -34,6 +35,12 @@ class NetworkPeeringArgs:
         :param pulumi.Input[_builtins.str] network: The primary network of the peering.
         :param pulumi.Input[_builtins.str] peer_network: The peer network in the peering. The peer network
                may belong to a different project.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[_builtins.bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
@@ -44,6 +51,8 @@ class NetworkPeeringArgs:
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "peer_network", peer_network)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if export_custom_routes is not None:
             pulumi.set(__self__, "export_custom_routes", export_custom_routes)
         if export_subnet_routes_with_public_ip is not None:
@@ -83,6 +92,23 @@ class NetworkPeeringArgs:
     @peer_network.setter
     def peer_network(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "peer_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="exportCustomRoutes")
@@ -172,6 +198,7 @@ class NetworkPeeringArgs:
 @pulumi.input_type
 class _NetworkPeeringState:
     def __init__(__self__, *,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
                  export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -186,6 +213,12 @@ class _NetworkPeeringState:
         """
         Input properties used for looking up and filtering NetworkPeering resources.
 
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[_builtins.bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
@@ -200,6 +233,8 @@ class _NetworkPeeringState:
         :param pulumi.Input[_builtins.str] state_details: Details about the current state of the peering.
         :param pulumi.Input[_builtins.str] update_strategy: The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if export_custom_routes is not None:
             pulumi.set(__self__, "export_custom_routes", export_custom_routes)
         if export_subnet_routes_with_public_ip is not None:
@@ -222,6 +257,23 @@ class _NetworkPeeringState:
             pulumi.set(__self__, "state_details", state_details)
         if update_strategy is not None:
             pulumi.set(__self__, "update_strategy", update_strategy)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="exportCustomRoutes")
@@ -364,6 +416,7 @@ class NetworkPeering(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
                  export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -422,6 +475,12 @@ class NetworkPeering(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[_builtins.bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
@@ -500,6 +559,7 @@ class NetworkPeering(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
                  export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
                  import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -518,6 +578,7 @@ class NetworkPeering(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NetworkPeeringArgs.__new__(NetworkPeeringArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["export_custom_routes"] = export_custom_routes
             __props__.__dict__["export_subnet_routes_with_public_ip"] = export_subnet_routes_with_public_ip
             __props__.__dict__["import_custom_routes"] = import_custom_routes
@@ -543,6 +604,7 @@ class NetworkPeering(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             export_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
             export_subnet_routes_with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
             import_custom_routes: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -561,6 +623,12 @@ class NetworkPeering(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.bool] export_custom_routes: Whether to export the custom routes to the peer network. Defaults to `false`.
         :param pulumi.Input[_builtins.bool] export_subnet_routes_with_public_ip: Whether subnet routes with public IP range are exported. The default value is true, all subnet routes are exported. The IPv4 special-use ranges (https://en.wikipedia.org/wiki/IPv4#Special_addresses) are always exported to peers and are not controlled by this field.
         :param pulumi.Input[_builtins.bool] import_custom_routes: Whether to import the custom routes from the peer network. Defaults to `false`.
@@ -579,6 +647,7 @@ class NetworkPeering(pulumi.CustomResource):
 
         __props__ = _NetworkPeeringState.__new__(_NetworkPeeringState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["export_custom_routes"] = export_custom_routes
         __props__.__dict__["export_subnet_routes_with_public_ip"] = export_subnet_routes_with_public_ip
         __props__.__dict__["import_custom_routes"] = import_custom_routes
@@ -591,6 +660,19 @@ class NetworkPeering(pulumi.CustomResource):
         __props__.__dict__["state_details"] = state_details
         __props__.__dict__["update_strategy"] = update_strategy
         return NetworkPeering(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="exportCustomRoutes")

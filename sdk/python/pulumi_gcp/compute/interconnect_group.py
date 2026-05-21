@@ -22,6 +22,7 @@ __all__ = ['InterconnectGroupArgs', 'InterconnectGroup']
 class InterconnectGroupArgs:
     def __init__(__self__, *,
                  intent: pulumi.Input['InterconnectGroupIntentArgs'],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  interconnects: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -32,6 +33,12 @@ class InterconnectGroupArgs:
         :param pulumi.Input['InterconnectGroupIntentArgs'] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]] interconnects: Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
                strings. Users are encouraged, but not required, to use their preferred
@@ -48,6 +55,8 @@ class InterconnectGroupArgs:
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "intent", intent)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if interconnects is not None:
@@ -70,6 +79,23 @@ class InterconnectGroupArgs:
     @intent.setter
     def intent(self, value: pulumi.Input['InterconnectGroupIntentArgs']):
         pulumi.set(self, "intent", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -135,6 +161,7 @@ class _InterconnectGroupState:
     def __init__(__self__, *,
                  configureds: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupConfiguredArgs']]]] = None,
                  creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  intent: pulumi.Input[Optional['InterconnectGroupIntentArgs']] = None,
                  interconnects: pulumi.Input[Optional[Sequence[pulumi.Input['InterconnectGroupInterconnectArgs']]]] = None,
@@ -150,6 +177,12 @@ class _InterconnectGroupState:
                resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['InterconnectGroupIntentArgs'] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
@@ -175,6 +208,8 @@ class _InterconnectGroupState:
             pulumi.set(__self__, "configureds", configureds)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if intent is not None:
@@ -215,6 +250,23 @@ class _InterconnectGroupState:
     @creation_timestamp.setter
     def creation_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_timestamp", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -309,6 +361,7 @@ class InterconnectGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
                  interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
@@ -359,6 +412,12 @@ class InterconnectGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
@@ -440,6 +499,7 @@ class InterconnectGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
                  interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
@@ -454,6 +514,7 @@ class InterconnectGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InterconnectGroupArgs.__new__(InterconnectGroupArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if intent is None and not opts.urn:
                 raise TypeError("Missing required property 'intent'")
@@ -476,6 +537,7 @@ class InterconnectGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             configureds: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupConfiguredArgs', 'InterconnectGroupConfiguredArgsDict']]]]] = None,
             creation_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             intent: pulumi.Input[Optional[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']]] = None,
             interconnects: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InterconnectGroupInterconnectArgs', 'InterconnectGroupInterconnectArgsDict']]]]] = None,
@@ -495,6 +557,12 @@ class InterconnectGroup(pulumi.CustomResource):
                resource.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Union['InterconnectGroupIntentArgs', 'InterconnectGroupIntentArgsDict']] intent: The user's intent for this group. This is the only required field besides
                the name that must be specified on group creation.
@@ -522,6 +590,7 @@ class InterconnectGroup(pulumi.CustomResource):
 
         __props__.__dict__["configureds"] = configureds
         __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["intent"] = intent
         __props__.__dict__["interconnects"] = interconnects
@@ -549,6 +618,19 @@ class InterconnectGroup(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

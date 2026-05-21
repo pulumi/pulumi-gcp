@@ -234,6 +234,15 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly customerRouterIpv6Address: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -437,6 +446,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
             resourceInputs["customerRouterIpAddress"] = state?.customerRouterIpAddress;
             resourceInputs["customerRouterIpv6Address"] = state?.customerRouterIpv6Address;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["edgeAvailabilityDomain"] = state?.edgeAvailabilityDomain;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
@@ -472,6 +482,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             resourceInputs["candidateCustomerRouterIpAddress"] = args?.candidateCustomerRouterIpAddress;
             resourceInputs["candidateCustomerRouterIpv6Address"] = args?.candidateCustomerRouterIpv6Address;
             resourceInputs["candidateSubnets"] = args?.candidateSubnets;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["edgeAvailabilityDomain"] = args?.edgeAvailabilityDomain;
             resourceInputs["encryption"] = args?.encryption;
@@ -588,6 +599,15 @@ export interface InterconnectAttachmentState {
      * router subinterface for this interconnect attachment.
      */
     customerRouterIpv6Address?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */
@@ -815,6 +835,15 @@ export interface InterconnectAttachmentArgs {
      * Google will randomly select an unused /29 from all of link-local space.
      */
     candidateSubnets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource.
      */

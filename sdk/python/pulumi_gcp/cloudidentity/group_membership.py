@@ -24,6 +24,7 @@ class GroupMembershipArgs:
                  group: pulumi.Input[_builtins.str],
                  roles: pulumi.Input[Sequence[pulumi.Input['GroupMembershipRoleArgs']]],
                  create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  member_key: pulumi.Input[Optional['GroupMembershipMemberKeyArgs']] = None,
                  preferred_member_key: pulumi.Input[Optional['GroupMembershipPreferredMemberKeyArgs']] = None):
         """
@@ -34,6 +35,12 @@ class GroupMembershipArgs:
                Must not contain duplicate MembershipRoles with the same name.
                Structure is documented below.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: (Optional, Beta)
                EntityKey of the member.
                Structure is documented below.
@@ -44,6 +51,8 @@ class GroupMembershipArgs:
         pulumi.set(__self__, "roles", roles)
         if create_ignore_already_exists is not None:
             pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if member_key is not None:
             pulumi.set(__self__, "member_key", member_key)
         if preferred_member_key is not None:
@@ -88,6 +97,23 @@ class GroupMembershipArgs:
         pulumi.set(self, "create_ignore_already_exists", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="memberKey")
     def member_key(self) -> pulumi.Input[Optional['GroupMembershipMemberKeyArgs']]:
         """
@@ -120,6 +146,7 @@ class _GroupMembershipState:
     def __init__(__self__, *,
                  create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  member_key: pulumi.Input[Optional['GroupMembershipMemberKeyArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -132,6 +159,12 @@ class _GroupMembershipState:
 
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[_builtins.str] create_time: The time when the Membership was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
         :param pulumi.Input['GroupMembershipMemberKeyArgs'] member_key: (Optional, Beta)
                EntityKey of the member.
@@ -149,6 +182,8 @@ class _GroupMembershipState:
             pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if member_key is not None:
@@ -187,6 +222,23 @@ class _GroupMembershipState:
     @create_time.setter
     def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -285,6 +337,7 @@ class GroupMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
                  preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
@@ -386,6 +439,12 @@ class GroupMembership(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
         :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: (Optional, Beta)
                EntityKey of the member.
@@ -511,6 +570,7 @@ class GroupMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
                  preferred_member_key: pulumi.Input[Optional[Union['GroupMembershipPreferredMemberKeyArgs', 'GroupMembershipPreferredMemberKeyArgsDict']]] = None,
@@ -525,6 +585,7 @@ class GroupMembership(pulumi.CustomResource):
             __props__ = GroupMembershipArgs.__new__(GroupMembershipArgs)
 
             __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if group is None and not opts.urn:
                 raise TypeError("Missing required property 'group'")
             __props__.__dict__["group"] = group
@@ -549,6 +610,7 @@ class GroupMembership(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             group: pulumi.Input[Optional[_builtins.str]] = None,
             member_key: pulumi.Input[Optional[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -565,6 +627,12 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If set to true, skip group member creation if a membership with the same name already exists. Defaults to false.
         :param pulumi.Input[_builtins.str] create_time: The time when the Membership was created.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] group: The name of the Group to create this membership in.
         :param pulumi.Input[Union['GroupMembershipMemberKeyArgs', 'GroupMembershipMemberKeyArgsDict']] member_key: (Optional, Beta)
                EntityKey of the member.
@@ -584,6 +652,7 @@ class GroupMembership(pulumi.CustomResource):
 
         __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["group"] = group
         __props__.__dict__["member_key"] = member_key
         __props__.__dict__["name"] = name
@@ -608,6 +677,19 @@ class GroupMembership(pulumi.CustomResource):
         The time when the Membership was created.
         """
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

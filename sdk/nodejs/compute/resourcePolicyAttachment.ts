@@ -101,6 +101,15 @@ export class ResourcePolicyAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The name of the instance in which the resource policies are attached to.
      */
     declare public readonly instance: pulumi.Output<string>;
@@ -132,6 +141,7 @@ export class ResourcePolicyAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ResourcePolicyAttachmentState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["instance"] = state?.instance;
             resourceInputs["name"] = state?.name;
             resourceInputs["project"] = state?.project;
@@ -141,6 +151,7 @@ export class ResourcePolicyAttachment extends pulumi.CustomResource {
             if (args?.instance === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["instance"] = args?.instance;
             resourceInputs["name"] = args?.name;
             resourceInputs["project"] = args?.project;
@@ -155,6 +166,15 @@ export class ResourcePolicyAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ResourcePolicyAttachment resources.
  */
 export interface ResourcePolicyAttachmentState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance in which the resource policies are attached to.
      */
@@ -179,6 +199,15 @@ export interface ResourcePolicyAttachmentState {
  * The set of arguments for constructing a ResourcePolicyAttachment resource.
  */
 export interface ResourcePolicyAttachmentArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance in which the resource policies are attached to.
      */

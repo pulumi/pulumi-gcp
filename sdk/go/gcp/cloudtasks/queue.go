@@ -244,6 +244,13 @@ type Queue struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrOutput `pulumi:"appEngineRoutingOverride"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The desired state of the queue. Use this to pause and resume the queue.
 	//
 	// * RUNNING: The queue is running. Tasks can be dispatched.
@@ -315,6 +322,13 @@ type queueState struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The desired state of the queue. Use this to pause and resume the queue.
 	//
 	// * RUNNING: The queue is running. Tasks can be dispatched.
@@ -354,6 +368,13 @@ type QueueState struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The desired state of the queue. Use this to pause and resume the queue.
 	//
 	// * RUNNING: The queue is running. Tasks can be dispatched.
@@ -397,6 +418,13 @@ type queueArgs struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The desired state of the queue. Use this to pause and resume the queue.
 	//
 	// * RUNNING: The queue is running. Tasks can be dispatched.
@@ -435,6 +463,13 @@ type QueueArgs struct {
 	// to App Engine tasks in this queue
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The desired state of the queue. Use this to pause and resume the queue.
 	//
 	// * RUNNING: The queue is running. Tasks can be dispatched.
@@ -559,6 +594,16 @@ func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
 // Structure is documented below.
 func (o QueueOutput) AppEngineRoutingOverride() QueueAppEngineRoutingOverridePtrOutput {
 	return o.ApplyT(func(v *Queue) QueueAppEngineRoutingOverridePtrOutput { return v.AppEngineRoutingOverride }).(QueueAppEngineRoutingOverridePtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o QueueOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The desired state of the queue. Use this to pause and resume the queue.

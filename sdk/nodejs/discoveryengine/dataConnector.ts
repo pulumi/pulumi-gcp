@@ -271,6 +271,15 @@ export class DataConnector extends pulumi.CustomResource {
      */
     declare public readonly dataSourceVersion: pulumi.Output<number>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Destination connector configurations for the data connector,
      * used to configure where data is served.
      * Structure is documented below.
@@ -412,6 +421,7 @@ export class DataConnector extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["dataSource"] = state?.dataSource;
             resourceInputs["dataSourceVersion"] = state?.dataSourceVersion;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["destinationConfigs"] = state?.destinationConfigs;
             resourceInputs["entities"] = state?.entities;
             resourceInputs["errors"] = state?.errors;
@@ -458,6 +468,7 @@ export class DataConnector extends pulumi.CustomResource {
             resourceInputs["connectorModes"] = args?.connectorModes;
             resourceInputs["dataSource"] = args?.dataSource;
             resourceInputs["dataSourceVersion"] = args?.dataSourceVersion;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["destinationConfigs"] = args?.destinationConfigs;
             resourceInputs["entities"] = args?.entities;
             resourceInputs["incrementalRefreshInterval"] = args?.incrementalRefreshInterval;
@@ -569,6 +580,15 @@ export interface DataConnectorState {
      * The version of the data source. For example, `3` for Jira v3.
      */
     dataSourceVersion?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Destination connector configurations for the data connector,
      * used to configure where data is served.
@@ -742,6 +762,15 @@ export interface DataConnectorArgs {
      * The version of the data source. For example, `3` for Jira v3.
      */
     dataSourceVersion?: pulumi.Input<number | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Destination connector configurations for the data connector,
      * used to configure where data is served.

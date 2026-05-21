@@ -96,6 +96,13 @@ type OauthClientCredential struct {
 	// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Whether the OauthClientCredential is disabled. You cannot use a
 	// disabled OauthClientCredential.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
@@ -170,6 +177,13 @@ type oauthClientCredentialState struct {
 	// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientSecret *string `pulumi:"clientSecret"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether the OauthClientCredential is disabled. You cannot use a
 	// disabled OauthClientCredential.
 	Disabled *bool `pulumi:"disabled"`
@@ -202,6 +216,13 @@ type OauthClientCredentialState struct {
 	// mitigations](https://cloud.google.com/iam/docs/workforce-oauth-app#security)
 	// **Note**: This property is sensitive and will not be displayed in the plan.
 	ClientSecret pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether the OauthClientCredential is disabled. You cannot use a
 	// disabled OauthClientCredential.
 	Disabled pulumi.BoolPtrInput
@@ -231,6 +252,13 @@ func (OauthClientCredentialState) ElementType() reflect.Type {
 }
 
 type oauthClientCredentialArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Whether the OauthClientCredential is disabled. You cannot use a
 	// disabled OauthClientCredential.
 	Disabled *bool `pulumi:"disabled"`
@@ -253,6 +281,13 @@ type oauthClientCredentialArgs struct {
 
 // The set of arguments for constructing a OauthClientCredential resource.
 type OauthClientCredentialArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Whether the OauthClientCredential is disabled. You cannot use a
 	// disabled OauthClientCredential.
 	Disabled pulumi.BoolPtrInput
@@ -368,6 +403,16 @@ func (o OauthClientCredentialOutput) ToOauthClientCredentialOutputWithContext(ct
 // **Note**: This property is sensitive and will not be displayed in the plan.
 func (o OauthClientCredentialOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *OauthClientCredential) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o OauthClientCredentialOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *OauthClientCredential) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Whether the OauthClientCredential is disabled. You cannot use a

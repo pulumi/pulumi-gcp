@@ -62,6 +62,7 @@ export interface GetSecurityPolicyArgs {
 export interface GetSecurityPolicyResult {
     readonly adaptiveProtectionConfigs: outputs.compute.GetSecurityPolicyAdaptiveProtectionConfig[];
     readonly advancedOptionsConfigs: outputs.compute.GetSecurityPolicyAdvancedOptionsConfig[];
+    readonly deletionPolicy: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly fingerprint: string;

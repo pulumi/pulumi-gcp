@@ -142,6 +142,13 @@ type UserCreds struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The Firestore database ID.
 	Database pulumi.StringOutput `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The ID to use for the user creds, which will become the final component
 	// of the user cred's resource name.
 	// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -204,6 +211,13 @@ type userCredsState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The Firestore database ID.
 	Database *string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID to use for the user creds, which will become the final component
 	// of the user cred's resource name.
 	// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -230,6 +244,13 @@ type UserCredsState struct {
 	CreateTime pulumi.StringPtrInput
 	// The Firestore database ID.
 	Database pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID to use for the user creds, which will become the final component
 	// of the user cred's resource name.
 	// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -258,6 +279,13 @@ func (UserCredsState) ElementType() reflect.Type {
 type userCredsArgs struct {
 	// The Firestore database ID.
 	Database string `pulumi:"database"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The ID to use for the user creds, which will become the final component
 	// of the user cred's resource name.
 	// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -273,6 +301,13 @@ type userCredsArgs struct {
 type UserCredsArgs struct {
 	// The Firestore database ID.
 	Database pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The ID to use for the user creds, which will become the final component
 	// of the user cred's resource name.
 	// This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/
@@ -379,6 +414,16 @@ func (o UserCredsOutput) CreateTime() pulumi.StringOutput {
 // The Firestore database ID.
 func (o UserCredsOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserCreds) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o UserCredsOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *UserCreds) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The ID to use for the user creds, which will become the final component

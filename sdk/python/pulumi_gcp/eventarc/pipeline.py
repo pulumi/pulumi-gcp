@@ -26,6 +26,7 @@ class PipelineArgs:
                  pipeline_id: pulumi.Input[_builtins.str],
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  input_payload_format: pulumi.Input[Optional['PipelineInputPayloadFormatArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -49,6 +50,12 @@ class PipelineArgs:
                encrypt/decrypt the event data. If not set, an internal Google-owned key
                will be used to encrypt messages. It must match the pattern
                "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: Display name of resource.
         :param pulumi.Input['PipelineInputPayloadFormatArgs'] input_payload_format: Represents the format of message data.
                Structure is documented below.
@@ -82,6 +89,8 @@ class PipelineArgs:
             pulumi.set(__self__, "annotations", annotations)
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if input_payload_format is not None:
@@ -164,6 +173,23 @@ class PipelineArgs:
     @crypto_key_name.setter
     def crypto_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -274,6 +300,7 @@ class _PipelineState:
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input['PipelineDestinationArgs']]]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -305,6 +332,12 @@ class _PipelineState:
                encrypt/decrypt the event data. If not set, an internal Google-owned key
                will be used to encrypt messages. It must match the pattern
                "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input['PipelineDestinationArgs']]] destinations: List of destinations to which messages will be forwarded. Currently,
                exactly one destination is supported per Pipeline.
                Structure is documented below.
@@ -360,6 +393,8 @@ class _PipelineState:
             pulumi.set(__self__, "create_time", create_time)
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if destinations is not None:
             pulumi.set(__self__, "destinations", destinations)
         if display_name is not None:
@@ -438,6 +473,23 @@ class _PipelineState:
     @crypto_key_name.setter
     def crypto_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crypto_key_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -683,6 +735,7 @@ class Pipeline(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict']]] = None,
@@ -974,6 +1027,12 @@ class Pipeline(pulumi.CustomResource):
                encrypt/decrypt the event data. If not set, an internal Google-owned key
                will be used to encrypt messages. It must match the pattern
                "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]] destinations: List of destinations to which messages will be forwarded. Currently,
                exactly one destination is supported per Pipeline.
                Structure is documented below.
@@ -1300,6 +1359,7 @@ class Pipeline(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  input_payload_format: pulumi.Input[Optional[Union['PipelineInputPayloadFormatArgs', 'PipelineInputPayloadFormatArgsDict']]] = None,
@@ -1321,6 +1381,7 @@ class Pipeline(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["crypto_key_name"] = crypto_key_name
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if destinations is None and not opts.urn:
                 raise TypeError("Missing required property 'destinations'")
             __props__.__dict__["destinations"] = destinations
@@ -1360,6 +1421,7 @@ class Pipeline(pulumi.CustomResource):
             annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             crypto_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1395,6 +1457,12 @@ class Pipeline(pulumi.CustomResource):
                encrypt/decrypt the event data. If not set, an internal Google-owned key
                will be used to encrypt messages. It must match the pattern
                "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['PipelineDestinationArgs', 'PipelineDestinationArgsDict']]]] destinations: List of destinations to which messages will be forwarded. Currently,
                exactly one destination is supported per Pipeline.
                Structure is documented below.
@@ -1451,6 +1519,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["crypto_key_name"] = crypto_key_name
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["destinations"] = destinations
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_annotations"] = effective_annotations
@@ -1501,6 +1570,19 @@ class Pipeline(pulumi.CustomResource):
         "projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}".
         """
         return pulumi.get(self, "crypto_key_name")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

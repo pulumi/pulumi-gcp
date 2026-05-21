@@ -18,6 +18,7 @@ public final class GetBackupPlanAssociationResult {
     private String backupPlanAssociationId;
     private String createTime;
     private String dataSource;
+    private String deletionPolicy;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -43,6 +44,9 @@ public final class GetBackupPlanAssociationResult {
     }
     public String dataSource() {
         return this.dataSource;
+    }
+    public String deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -86,6 +90,7 @@ public final class GetBackupPlanAssociationResult {
         private String backupPlanAssociationId;
         private String createTime;
         private String dataSource;
+        private String deletionPolicy;
         private String id;
         private String location;
         private String name;
@@ -101,6 +106,7 @@ public final class GetBackupPlanAssociationResult {
     	      this.backupPlanAssociationId = defaults.backupPlanAssociationId;
     	      this.createTime = defaults.createTime;
     	      this.dataSource = defaults.dataSource;
+    	      this.deletionPolicy = defaults.deletionPolicy;
     	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
@@ -141,6 +147,14 @@ public final class GetBackupPlanAssociationResult {
               throw new MissingRequiredPropertyException("GetBackupPlanAssociationResult", "dataSource");
             }
             this.dataSource = dataSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionPolicy(String deletionPolicy) {
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackupPlanAssociationResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
@@ -214,6 +228,7 @@ public final class GetBackupPlanAssociationResult {
             _resultValue.backupPlanAssociationId = backupPlanAssociationId;
             _resultValue.createTime = createTime;
             _resultValue.dataSource = dataSource;
+            _resultValue.deletionPolicy = deletionPolicy;
             _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.name = name;

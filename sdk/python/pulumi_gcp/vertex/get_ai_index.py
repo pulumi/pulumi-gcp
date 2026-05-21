@@ -27,10 +27,13 @@ class GetAiIndexResult:
     """
     A collection of values returned by getAiIndex.
     """
-    def __init__(__self__, create_time=None, deployed_indexes=None, description=None, display_name=None, effective_labels=None, encryption_specs=None, etag=None, id=None, index_stats=None, index_update_method=None, labels=None, metadata_schema_uri=None, metadatas=None, name=None, project=None, pulumi_labels=None, region=None, update_time=None):
+    def __init__(__self__, create_time=None, deletion_policy=None, deployed_indexes=None, description=None, display_name=None, effective_labels=None, encryption_specs=None, etag=None, id=None, index_stats=None, index_update_method=None, labels=None, metadata_schema_uri=None, metadatas=None, name=None, project=None, pulumi_labels=None, region=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_policy and not isinstance(deletion_policy, str):
+            raise TypeError("Expected argument 'deletion_policy' to be a str")
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         if deployed_indexes and not isinstance(deployed_indexes, list):
             raise TypeError("Expected argument 'deployed_indexes' to be a list")
         pulumi.set(__self__, "deployed_indexes", deployed_indexes)
@@ -87,6 +90,11 @@ class GetAiIndexResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> _builtins.str:
         return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deployedIndexes")
@@ -184,6 +192,7 @@ class AwaitableGetAiIndexResult(GetAiIndexResult):
             yield self
         return GetAiIndexResult(
             create_time=self.create_time,
+            deletion_policy=self.deletion_policy,
             deployed_indexes=self.deployed_indexes,
             description=self.description,
             display_name=self.display_name,
@@ -226,6 +235,7 @@ def get_ai_index(name: Optional[_builtins.str] = None,
 
     return AwaitableGetAiIndexResult(
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
         deployed_indexes=pulumi.get(__ret__, 'deployed_indexes'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -265,6 +275,7 @@ def get_ai_index_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiIndex:getAiIndex', __args__, opts=opts, typ=GetAiIndexResult)
     return __ret__.apply(lambda __response__: GetAiIndexResult(
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_policy=pulumi.get(__response__, 'deletion_policy'),
         deployed_indexes=pulumi.get(__response__, 'deployed_indexes'),
         description=pulumi.get(__response__, 'description'),
         display_name=pulumi.get(__response__, 'display_name'),

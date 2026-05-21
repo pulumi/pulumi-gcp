@@ -208,6 +208,13 @@ type RepositoryReleaseConfig struct {
 	CodeCompilationConfig RepositoryReleaseConfigCodeCompilationConfigPtrOutput `pulumi:"codeCompilationConfig"`
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrOutput `pulumi:"cronSchedule"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Disables automatic creation of compilation results.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -266,6 +273,13 @@ type repositoryReleaseConfigState struct {
 	CodeCompilationConfig *RepositoryReleaseConfigCodeCompilationConfig `pulumi:"codeCompilationConfig"`
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Disables automatic creation of compilation results.
 	Disabled *bool `pulumi:"disabled"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -292,6 +306,13 @@ type RepositoryReleaseConfigState struct {
 	CodeCompilationConfig RepositoryReleaseConfigCodeCompilationConfigPtrInput
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Disables automatic creation of compilation results.
 	Disabled pulumi.BoolPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -322,6 +343,13 @@ type repositoryReleaseConfigArgs struct {
 	CodeCompilationConfig *RepositoryReleaseConfigCodeCompilationConfig `pulumi:"codeCompilationConfig"`
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule *string `pulumi:"cronSchedule"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Disables automatic creation of compilation results.
 	Disabled *bool `pulumi:"disabled"`
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -346,6 +374,13 @@ type RepositoryReleaseConfigArgs struct {
 	CodeCompilationConfig RepositoryReleaseConfigCodeCompilationConfigPtrInput
 	// Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 	CronSchedule pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Disables automatic creation of compilation results.
 	Disabled pulumi.BoolPtrInput
 	// Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository.
@@ -461,6 +496,16 @@ func (o RepositoryReleaseConfigOutput) CodeCompilationConfig() RepositoryRelease
 // Optional. Optional schedule (in cron format) for automatic creation of compilation results.
 func (o RepositoryReleaseConfigOutput) CronSchedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.StringPtrOutput { return v.CronSchedule }).(pulumi.StringPtrOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o RepositoryReleaseConfigOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *RepositoryReleaseConfig) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Disables automatic creation of compilation results.

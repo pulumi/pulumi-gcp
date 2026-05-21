@@ -145,6 +145,15 @@ export class NetworkEndpointList extends pulumi.CustomResource {
     }
 
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * The network endpoint group these endpoints are part of.
      */
     declare public readonly networkEndpointGroup: pulumi.Output<string>;
@@ -178,6 +187,7 @@ export class NetworkEndpointList extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkEndpointListState | undefined;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["networkEndpointGroup"] = state?.networkEndpointGroup;
             resourceInputs["networkEndpoints"] = state?.networkEndpoints;
             resourceInputs["project"] = state?.project;
@@ -187,6 +197,7 @@ export class NetworkEndpointList extends pulumi.CustomResource {
             if (args?.networkEndpointGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointGroup'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["networkEndpointGroup"] = args?.networkEndpointGroup;
             resourceInputs["networkEndpoints"] = args?.networkEndpoints;
             resourceInputs["project"] = args?.project;
@@ -201,6 +212,15 @@ export class NetworkEndpointList extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkEndpointList resources.
  */
 export interface NetworkEndpointListState {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The network endpoint group these endpoints are part of.
      */
@@ -227,6 +247,15 @@ export interface NetworkEndpointListState {
  * The set of arguments for constructing a NetworkEndpointList resource.
  */
 export interface NetworkEndpointListArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * The network endpoint group these endpoints are part of.
      */

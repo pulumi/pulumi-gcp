@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Dataproc
         public readonly string ArtifactGcsUri;
         public readonly string CreateTime;
         public readonly string DatabaseType;
+        public readonly string DeletionPolicy;
         public readonly bool DeletionProtection;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly ImmutableArray<Outputs.GetMetastoreServiceEncryptionConfigResult> EncryptionConfigs;
@@ -191,6 +192,8 @@ namespace Pulumi.Gcp.Dataproc
             string createTime,
 
             string databaseType,
+
+            string deletionPolicy,
 
             bool deletionProtection,
 
@@ -249,6 +252,7 @@ namespace Pulumi.Gcp.Dataproc
             ArtifactGcsUri = artifactGcsUri;
             CreateTime = createTime;
             DatabaseType = databaseType;
+            DeletionPolicy = deletionPolicy;
             DeletionProtection = deletionProtection;
             EffectiveLabels = effectiveLabels;
             EncryptionConfigs = encryptionConfigs;

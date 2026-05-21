@@ -91,6 +91,15 @@ type AnywhereCache struct {
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite pulumi.BoolPtrOutput `pulumi:"ingestOnWrite"`
 	// True if the cache instance has an active Update long-running operation.
 	PendingUpdate pulumi.BoolOutput `pulumi:"pendingUpdate"`
 	// The current state of the cache instance.
@@ -149,6 +158,15 @@ type anywhereCacheState struct {
 	Bucket *string `pulumi:"bucket"`
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite *bool `pulumi:"ingestOnWrite"`
 	// True if the cache instance has an active Update long-running operation.
 	PendingUpdate *bool `pulumi:"pendingUpdate"`
 	// The current state of the cache instance.
@@ -172,6 +190,15 @@ type AnywhereCacheState struct {
 	Bucket pulumi.StringPtrInput
 	// The creation time of the cache instance in RFC 3339 format.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite pulumi.BoolPtrInput
 	// True if the cache instance has an active Update long-running operation.
 	PendingUpdate pulumi.BoolPtrInput
 	// The current state of the cache instance.
@@ -195,6 +222,15 @@ type anywhereCacheArgs struct {
 	AdmissionPolicy *string `pulumi:"admissionPolicy"`
 	// A reference to Bucket resource
 	Bucket string `pulumi:"bucket"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite *bool `pulumi:"ingestOnWrite"`
 	// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
 	Ttl *string `pulumi:"ttl"`
 	// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
@@ -209,6 +245,15 @@ type AnywhereCacheArgs struct {
 	AdmissionPolicy pulumi.StringPtrInput
 	// A reference to Bucket resource
 	Bucket pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
+	// Whether or not the cache ingests data as the data is written to the bucket.
+	IngestOnWrite pulumi.BoolPtrInput
 	// The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
 	Ttl pulumi.StringPtrInput
 	// The zone in which the cache instance needs to be created. For example, `us-central1-a.`
@@ -322,6 +367,21 @@ func (o AnywhereCacheOutput) Bucket() pulumi.StringOutput {
 // The creation time of the cache instance in RFC 3339 format.
 func (o AnywhereCacheOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnywhereCache) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o AnywhereCacheOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnywhereCache) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
+// Whether or not the cache ingests data as the data is written to the bucket.
+func (o AnywhereCacheOutput) IngestOnWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AnywhereCache) pulumi.BoolPtrOutput { return v.IngestOnWrite }).(pulumi.BoolPtrOutput)
 }
 
 // True if the cache instance has an active Update long-running operation.

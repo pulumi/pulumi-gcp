@@ -220,6 +220,13 @@ type Developer struct {
 	Attributes DeveloperAttributeArrayOutput `pulumi:"attributes"`
 	// Time at which the developer was created in milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
 	Email pulumi.StringOutput `pulumi:"email"`
 	// First name of the developer.
@@ -289,6 +296,13 @@ type developerState struct {
 	Attributes []DeveloperAttribute `pulumi:"attributes"`
 	// Time at which the developer was created in milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
 	Email *string `pulumi:"email"`
 	// First name of the developer.
@@ -314,6 +328,13 @@ type DeveloperState struct {
 	Attributes DeveloperAttributeArrayInput
 	// Time at which the developer was created in milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
 	Email pulumi.StringPtrInput
 	// First name of the developer.
@@ -341,6 +362,13 @@ type developerArgs struct {
 	// Developer attributes (name/value pairs). The custom attribute limit is 18.
 	// Structure is documented below.
 	Attributes []DeveloperAttribute `pulumi:"attributes"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
 	Email string `pulumi:"email"`
 	// First name of the developer.
@@ -359,6 +387,13 @@ type DeveloperArgs struct {
 	// Developer attributes (name/value pairs). The custom attribute limit is 18.
 	// Structure is documented below.
 	Attributes DeveloperAttributeArrayInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..
 	Email pulumi.StringInput
 	// First name of the developer.
@@ -468,6 +503,16 @@ func (o DeveloperOutput) Attributes() DeveloperAttributeArrayOutput {
 // Time at which the developer was created in milliseconds since epoch.
 func (o DeveloperOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Developer) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o DeveloperOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *Developer) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only..

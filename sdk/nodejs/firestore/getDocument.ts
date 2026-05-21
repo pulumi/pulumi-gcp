@@ -65,6 +65,7 @@ export interface GetDocumentResult {
     readonly collection: string;
     readonly createTime: string;
     readonly database: string;
+    readonly deletionPolicy: string;
     readonly documentId: string;
     readonly fields: string;
     /**

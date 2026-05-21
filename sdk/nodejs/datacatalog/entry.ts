@@ -161,6 +161,15 @@ export class Entry extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly bigqueryTableSpecs: pulumi.Output<outputs.datacatalog.EntryBigqueryTableSpec[]>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -244,6 +253,7 @@ export class Entry extends pulumi.CustomResource {
             const state = argsOrState as EntryState | undefined;
             resourceInputs["bigqueryDateShardedSpecs"] = state?.bigqueryDateShardedSpecs;
             resourceInputs["bigqueryTableSpecs"] = state?.bigqueryTableSpecs;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["entryGroup"] = state?.entryGroup;
@@ -264,6 +274,7 @@ export class Entry extends pulumi.CustomResource {
             if (args?.entryId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["entryGroup"] = args?.entryGroup;
@@ -299,6 +310,15 @@ export interface EntryState {
      * Structure is documented below.
      */
     bigqueryTableSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryBigqueryTableSpec>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      */
@@ -373,6 +393,15 @@ export interface EntryState {
  * The set of arguments for constructing a Entry resource.
  */
 export interface EntryArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents.
      */

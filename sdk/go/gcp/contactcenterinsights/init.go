@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AssessmentRule{}
 	case "gcp:contactcenterinsights/autoLabelingRule:AutoLabelingRule":
 		r = &AutoLabelingRule{}
+	case "gcp:contactcenterinsights/encryptionSpec:EncryptionSpec":
+		r = &EncryptionSpec{}
 	case "gcp:contactcenterinsights/qaQuestion:QaQuestion":
 		r = &QaQuestion{}
 	case "gcp:contactcenterinsights/qaScorecard:QaScorecard":
@@ -61,6 +63,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"contactcenterinsights/autoLabelingRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"contactcenterinsights/encryptionSpec",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

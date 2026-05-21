@@ -102,11 +102,11 @@ import * as utilities from "../utilities";
  *     },
  *     username: "test",
  *     apiKey: "<api-key>",
- *     peeredNetwork: pulumi.all([vpcNetwork.id, project, project]).apply(([id, project, project1]) => std.replaceOutput({
- *         text: id,
- *         search: project.name,
- *         replace: project1.number,
- *     })).apply(invoke => invoke.result),
+ *     peeredNetwork: std.replaceOutput({
+ *         text: vpcNetwork.id,
+ *         search: project.then(project => project.name),
+ *         replace: project.then(project => project.number),
+ *     }).apply(invoke => invoke.result),
  *     sslCa: `-----BEGIN CERTIFICATE-----
  * -----END CERTIFICATE-----
  * -----BEGIN CERTIFICATE-----
@@ -176,6 +176,15 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
      */
     declare public readonly connectedRepositories: pulumi.Output<outputs.cloudbuild.BitbucketServerConfigConnectedRepository[] | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
      * If you need to change it, please create another BitbucketServerConfig.
      */
@@ -234,6 +243,7 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
             resourceInputs["apiKey"] = state?.apiKey;
             resourceInputs["configId"] = state?.configId;
             resourceInputs["connectedRepositories"] = state?.connectedRepositories;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["hostUri"] = state?.hostUri;
             resourceInputs["location"] = state?.location;
             resourceInputs["name"] = state?.name;
@@ -266,6 +276,7 @@ export class BitbucketServerConfig extends pulumi.CustomResource {
             resourceInputs["apiKey"] = args?.apiKey;
             resourceInputs["configId"] = args?.configId;
             resourceInputs["connectedRepositories"] = args?.connectedRepositories;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["hostUri"] = args?.hostUri;
             resourceInputs["location"] = args?.location;
             resourceInputs["peeredNetwork"] = args?.peeredNetwork;
@@ -299,6 +310,15 @@ export interface BitbucketServerConfigState {
      * Structure is documented below.
      */
     connectedRepositories?: pulumi.Input<pulumi.Input<inputs.cloudbuild.BitbucketServerConfigConnectedRepository>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
      * If you need to change it, please create another BitbucketServerConfig.
@@ -361,6 +381,15 @@ export interface BitbucketServerConfigArgs {
      * Structure is documented below.
      */
     connectedRepositories?: pulumi.Input<pulumi.Input<inputs.cloudbuild.BitbucketServerConfigConnectedRepository>[] | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Immutable. The URI of the Bitbucket Server host. Once this field has been set, it cannot be changed.
      * If you need to change it, please create another BitbucketServerConfig.

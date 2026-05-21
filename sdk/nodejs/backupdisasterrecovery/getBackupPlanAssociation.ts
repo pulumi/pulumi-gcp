@@ -55,6 +55,7 @@ export interface GetBackupPlanAssociationResult {
     readonly backupPlanAssociationId: string;
     readonly createTime: string;
     readonly dataSource: string;
+    readonly deletionPolicy: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

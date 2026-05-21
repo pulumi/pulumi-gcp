@@ -25,6 +25,7 @@ class FeatureMembershipArgs:
                  location: pulumi.Input[_builtins.str],
                  membership: pulumi.Input[_builtins.str],
                  configmanagement: pulumi.Input[Optional['FeatureMembershipConfigmanagementArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  membership_location: pulumi.Input[Optional[_builtins.str]] = None,
                  mesh: pulumi.Input[Optional['FeatureMembershipMeshArgs']] = None,
                  policycontroller: pulumi.Input[Optional['FeatureMembershipPolicycontrollerArgs']] = None,
@@ -36,6 +37,12 @@ class FeatureMembershipArgs:
         :param pulumi.Input[_builtins.str] location: The location of the feature
         :param pulumi.Input[_builtins.str] membership: The name of the membership
         :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input['FeatureMembershipPolicycontrollerArgs'] policycontroller: Policy Controller-specific spec. Structure is documented below.
@@ -46,6 +53,8 @@ class FeatureMembershipArgs:
         pulumi.set(__self__, "membership", membership)
         if configmanagement is not None:
             pulumi.set(__self__, "configmanagement", configmanagement)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if membership_location is not None:
             pulumi.set(__self__, "membership_location", membership_location)
         if mesh is not None:
@@ -104,6 +113,23 @@ class FeatureMembershipArgs:
         pulumi.set(self, "configmanagement", value)
 
     @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -156,6 +182,7 @@ class FeatureMembershipArgs:
 class _FeatureMembershipState:
     def __init__(__self__, *,
                  configmanagement: pulumi.Input[Optional['FeatureMembershipConfigmanagementArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feature: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  membership: pulumi.Input[Optional[_builtins.str]] = None,
@@ -167,6 +194,12 @@ class _FeatureMembershipState:
         Input properties used for looking up and filtering FeatureMembership resources.
 
         :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feature: The name of the feature
         :param pulumi.Input[_builtins.str] location: The location of the feature
         :param pulumi.Input[_builtins.str] membership: The name of the membership
@@ -177,6 +210,8 @@ class _FeatureMembershipState:
         """
         if configmanagement is not None:
             pulumi.set(__self__, "configmanagement", configmanagement)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if feature is not None:
             pulumi.set(__self__, "feature", feature)
         if location is not None:
@@ -203,6 +238,23 @@ class _FeatureMembershipState:
     @configmanagement.setter
     def configmanagement(self, value: pulumi.Input[Optional['FeatureMembershipConfigmanagementArgs']]):
         pulumi.set(self, "configmanagement", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -296,6 +348,7 @@ class FeatureMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feature: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  membership: pulumi.Input[Optional[_builtins.str]] = None,
@@ -611,6 +664,12 @@ class FeatureMembership(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feature: The name of the feature
         :param pulumi.Input[_builtins.str] location: The location of the feature
         :param pulumi.Input[_builtins.str] membership: The name of the membership
@@ -945,6 +1004,7 @@ class FeatureMembership(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  feature: pulumi.Input[Optional[_builtins.str]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  membership: pulumi.Input[Optional[_builtins.str]] = None,
@@ -962,6 +1022,7 @@ class FeatureMembership(pulumi.CustomResource):
             __props__ = FeatureMembershipArgs.__new__(FeatureMembershipArgs)
 
             __props__.__dict__["configmanagement"] = configmanagement
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if feature is None and not opts.urn:
                 raise TypeError("Missing required property 'feature'")
             __props__.__dict__["feature"] = feature
@@ -986,6 +1047,7 @@ class FeatureMembership(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             configmanagement: pulumi.Input[Optional[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             feature: pulumi.Input[Optional[_builtins.str]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             membership: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1001,6 +1063,12 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['FeatureMembershipConfigmanagementArgs', 'FeatureMembershipConfigmanagementArgsDict']] configmanagement: Config Management-specific spec. Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] feature: The name of the feature
         :param pulumi.Input[_builtins.str] location: The location of the feature
         :param pulumi.Input[_builtins.str] membership: The name of the membership
@@ -1014,6 +1082,7 @@ class FeatureMembership(pulumi.CustomResource):
         __props__ = _FeatureMembershipState.__new__(_FeatureMembershipState)
 
         __props__.__dict__["configmanagement"] = configmanagement
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["feature"] = feature
         __props__.__dict__["location"] = location
         __props__.__dict__["membership"] = membership
@@ -1030,6 +1099,19 @@ class FeatureMembership(pulumi.CustomResource):
         Config Management-specific spec. Structure is documented below.
         """
         return pulumi.get(self, "configmanagement")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

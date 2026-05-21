@@ -78,6 +78,13 @@ type SslCert struct {
 	// The time when the certificate was created in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The time when the certificate expires in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	ExpirationTime pulumi.StringOutput `pulumi:"expirationTime"`
@@ -147,6 +154,13 @@ type sslCertState struct {
 	// The time when the certificate was created in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	CreateTime *string `pulumi:"createTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The time when the certificate expires in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	ExpirationTime *string `pulumi:"expirationTime"`
@@ -175,6 +189,13 @@ type SslCertState struct {
 	// The time when the certificate was created in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	CreateTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The time when the certificate expires in RFC 3339 format,
 	// for example 2012-11-15T16:19:00.094Z.
 	ExpirationTime pulumi.StringPtrInput
@@ -200,6 +221,13 @@ type sslCertArgs struct {
 	// The common name to be used in the certificate to identify the
 	// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
 	CommonName string `pulumi:"commonName"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
 	Instance string `pulumi:"instance"`
@@ -213,6 +241,13 @@ type SslCertArgs struct {
 	// The common name to be used in the certificate to identify the
 	// client. Constrained to [a-zA-Z.-_ ]+. Changing this forces a new resource to be created.
 	CommonName pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The name of the Cloud SQL instance. Changing this
 	// forces a new resource to be created.
 	Instance pulumi.StringInput
@@ -328,6 +363,16 @@ func (o SslCertOutput) CommonName() pulumi.StringOutput {
 // for example 2012-11-15T16:19:00.094Z.
 func (o SslCertOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o SslCertOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SslCert) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The time when the certificate expires in RFC 3339 format,

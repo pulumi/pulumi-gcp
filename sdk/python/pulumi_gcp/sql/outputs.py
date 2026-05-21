@@ -5168,6 +5168,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  clones: Sequence['outputs.GetDatabaseInstancesInstanceCloneResult'],
                  connection_name: _builtins.str,
                  database_version: _builtins.str,
+                 deletion_policy: _builtins.str,
                  deletion_protection: _builtins.bool,
                  dns_name: _builtins.str,
                  dns_names: Sequence['outputs.GetDatabaseInstancesInstanceDnsNameResult'],
@@ -5203,6 +5204,12 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param Sequence['GetDatabaseInstancesInstanceCloneArgs'] clones: Configuration for creating a new instance as a clone of another instance.
         :param _builtins.str connection_name: The connection name of the instance to be used in connection strings. For example, when connecting with Cloud SQL Proxy.
         :param _builtins.str database_version: To filter out the Cloud SQL instances which are of the specified database version.
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.bool deletion_protection: Used to block Terraform from deleting a SQL Instance. Defaults to true.
         :param _builtins.str dns_name: The instance-level dns name of the instance for PSC instances or public IP CAS instances.
         :param Sequence['GetDatabaseInstancesInstanceDnsNameArgs'] dns_names: The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
@@ -5235,6 +5242,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "clones", clones)
         pulumi.set(__self__, "connection_name", connection_name)
         pulumi.set(__self__, "database_version", database_version)
+        pulumi.set(__self__, "deletion_policy", deletion_policy)
         pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "dns_names", dns_names)
@@ -5304,6 +5312,19 @@ class GetDatabaseInstancesInstanceResult(dict):
         To filter out the Cloud SQL instances which are of the specified database version.
         """
         return pulumi.get(self, "database_version")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> _builtins.str:
+        """
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
@@ -7457,10 +7478,12 @@ class GetDatabasesDatabaseResult(dict):
                and Postgres' [Collation Support](https://www.postgresql.org/docs/9.6/static/collation.html)
                for more details and supported values. Postgres databases only support
                a value of 'en_US.UTF8' at creation time.
-        :param _builtins.str deletion_policy: The deletion policy for the database. Setting ABANDON allows the resource
-               to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-               deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-               values are: "ABANDON", "DELETE". Defaults to "DELETE".
+        :param _builtins.str deletion_policy: Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+               When a 'terraform destroy' or 'terraform apply' would delete the instance,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param _builtins.str instance: The name of the Cloud SQL database instance in which the database belongs.
         :param _builtins.str name: The name of the database in the Cloud SQL instance.
                This does not include the project ID or instance name.
@@ -7504,10 +7527,12 @@ class GetDatabasesDatabaseResult(dict):
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> _builtins.str:
         """
-        The deletion policy for the database. Setting ABANDON allows the resource
-        to be abandoned rather than deleted. This is useful for Postgres, where databases cannot be
-        deleted from the API if there are users other than cloudsqlsuperuser with access. Possible
-        values are: "ABANDON", "DELETE". Defaults to "DELETE".
+        Whether Terraform will be prevented from destroying the instance. Defaults to "DELETE".
+        When a 'terraform destroy' or 'terraform apply' would delete the instance,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
         """
         return pulumi.get(self, "deletion_policy")
 

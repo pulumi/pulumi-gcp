@@ -364,6 +364,15 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     declare public readonly cloudRun: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupCloudRun | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -443,6 +452,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["appEngine"] = state?.appEngine;
             resourceInputs["cloudFunction"] = state?.cloudFunction;
             resourceInputs["cloudRun"] = state?.cloudRun;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["network"] = state?.network;
@@ -462,6 +472,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["appEngine"] = args?.appEngine;
             resourceInputs["cloudFunction"] = args?.cloudFunction;
             resourceInputs["cloudRun"] = args?.cloudRun;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["network"] = args?.network;
@@ -501,6 +512,15 @@ export interface RegionNetworkEndpointGroupState {
      * Structure is documented below.
      */
     cloudRun?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupCloudRun | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
@@ -588,6 +608,15 @@ export interface RegionNetworkEndpointGroupArgs {
      * Structure is documented below.
      */
     cloudRun?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupCloudRun | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * An optional description of this resource. Provide this property when
      * you create the resource.

@@ -24,6 +24,7 @@ class HostingCustomDomainArgs:
                  custom_domain: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
                  cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
                  wait_dns_verification: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -36,6 +37,12 @@ class HostingCustomDomainArgs:
                for your domain name. Spark plan `CustomDomain`s only have access to the
                `GROUPED` cert type, while Blaze plan can select any option.
                Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] redirect_target: A domain name that this CustomDomain should direct traffic towards. If
@@ -50,6 +57,8 @@ class HostingCustomDomainArgs:
         pulumi.set(__self__, "site_id", site_id)
         if cert_preference is not None:
             pulumi.set(__self__, "cert_preference", cert_preference)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if redirect_target is not None:
@@ -95,6 +104,23 @@ class HostingCustomDomainArgs:
     @cert_preference.setter
     def cert_preference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_preference", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -147,6 +173,7 @@ class _HostingCustomDomainState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  etag: pulumi.Input[Optional[_builtins.str]] = None,
                  expire_time: pulumi.Input[Optional[_builtins.str]] = None,
                  host_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -177,6 +204,12 @@ class _HostingCustomDomainState:
         :param pulumi.Input[_builtins.str] delete_time: The time the `CustomDomain` was deleted; null for `CustomDomains` that
                haven't been deleted. Deleted `CustomDomains` persist for approximately 30
                days, after which time Hosting removes them completely.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: A string that represents the current state of the `CustomDomain` and
                allows you to confirm its initial state in requests that would modify it.
         :param pulumi.Input[_builtins.str] expire_time: The minimum time before a soft-deleted `CustomDomain` is completely removed
@@ -267,6 +300,8 @@ class _HostingCustomDomainState:
             pulumi.set(__self__, "custom_domain", custom_domain)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if expire_time is not None:
@@ -362,6 +397,23 @@ class _HostingCustomDomainState:
     @delete_time.setter
     def delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_time", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -594,6 +646,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -711,6 +764,12 @@ class HostingCustomDomain(pulumi.CustomResource):
                `GROUPED` cert type, while Blaze plan can select any option.
                Possible values are: `GROUPED`, `PROJECT_GROUPED`, `DEDICATED`.
         :param pulumi.Input[_builtins.str] custom_domain: The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] redirect_target: A domain name that this CustomDomain should direct traffic towards. If
@@ -850,6 +909,7 @@ class HostingCustomDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cert_preference: pulumi.Input[Optional[_builtins.str]] = None,
                  custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  redirect_target: pulumi.Input[Optional[_builtins.str]] = None,
                  site_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -867,6 +927,7 @@ class HostingCustomDomain(pulumi.CustomResource):
             if custom_domain is None and not opts.urn:
                 raise TypeError("Missing required property 'custom_domain'")
             __props__.__dict__["custom_domain"] = custom_domain
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["project"] = project
             __props__.__dict__["redirect_target"] = redirect_target
             if site_id is None and not opts.urn:
@@ -900,6 +961,7 @@ class HostingCustomDomain(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
             delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             etag: pulumi.Input[Optional[_builtins.str]] = None,
             expire_time: pulumi.Input[Optional[_builtins.str]] = None,
             host_state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -934,6 +996,12 @@ class HostingCustomDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] delete_time: The time the `CustomDomain` was deleted; null for `CustomDomains` that
                haven't been deleted. Deleted `CustomDomains` persist for approximately 30
                days, after which time Hosting removes them completely.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] etag: A string that represents the current state of the `CustomDomain` and
                allows you to confirm its initial state in requests that would modify it.
         :param pulumi.Input[_builtins.str] expire_time: The minimum time before a soft-deleted `CustomDomain` is completely removed
@@ -1023,6 +1091,7 @@ class HostingCustomDomain(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_domain"] = custom_domain
         __props__.__dict__["delete_time"] = delete_time
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["etag"] = etag
         __props__.__dict__["expire_time"] = expire_time
         __props__.__dict__["host_state"] = host_state
@@ -1086,6 +1155,19 @@ class HostingCustomDomain(pulumi.CustomResource):
         days, after which time Hosting removes them completely.
         """
         return pulumi.get(self, "delete_time")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

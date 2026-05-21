@@ -25,6 +25,7 @@ class InstanceArgs:
                  display_name: pulumi.Input[_builtins.str],
                  autoscaling_config: pulumi.Input[Optional['InstanceAutoscalingConfigArgs']] = None,
                  default_backup_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  instance_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -55,6 +56,12 @@ class InstanceArgs:
                Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
                if unset or NONE, no default backup schedule will be created for new databases within the instance.
                Possible values are: `NONE`, `AUTOMATIC`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
                Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[_builtins.bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
@@ -85,6 +92,8 @@ class InstanceArgs:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if default_backup_schedule_type is not None:
             pulumi.set(__self__, "default_backup_schedule_type", default_backup_schedule_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
         if force_destroy is not None:
@@ -164,6 +173,23 @@ class InstanceArgs:
     @default_backup_schedule_type.setter
     def default_backup_schedule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_backup_schedule_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -283,6 +309,7 @@ class _InstanceState:
                  autoscaling_config: pulumi.Input[Optional['InstanceAutoscalingConfigArgs']] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  default_backup_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -315,6 +342,12 @@ class _InstanceState:
                Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
                if unset or NONE, no default backup schedule will be created for new databases within the instance.
                Possible values are: `NONE`, `AUTOMATIC`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[_builtins.str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
@@ -351,6 +384,8 @@ class _InstanceState:
             pulumi.set(__self__, "config", config)
         if default_backup_schedule_type is not None:
             pulumi.set(__self__, "default_backup_schedule_type", default_backup_schedule_type)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if edition is not None:
@@ -425,6 +460,23 @@ class _InstanceState:
     @default_backup_schedule_type.setter
     def default_backup_schedule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_backup_schedule_type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -597,6 +649,7 @@ class Instance(pulumi.CustomResource):
                  autoscaling_config: pulumi.Input[Optional[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  default_backup_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -700,6 +753,12 @@ class Instance(pulumi.CustomResource):
                Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
                if unset or NONE, no default backup schedule will be created for new databases within the instance.
                Possible values are: `NONE`, `AUTOMATIC`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[_builtins.str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
@@ -824,6 +883,7 @@ class Instance(pulumi.CustomResource):
                  autoscaling_config: pulumi.Input[Optional[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: pulumi.Input[Optional[_builtins.str]] = None,
                  default_backup_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -847,6 +907,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             __props__.__dict__["default_backup_schedule_type"] = default_backup_schedule_type
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -876,6 +937,7 @@ class Instance(pulumi.CustomResource):
             autoscaling_config: pulumi.Input[Optional[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
             config: pulumi.Input[Optional[_builtins.str]] = None,
             default_backup_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -912,6 +974,12 @@ class Instance(pulumi.CustomResource):
                Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
                if unset or NONE, no default backup schedule will be created for new databases within the instance.
                Possible values are: `NONE`, `AUTOMATIC`.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[_builtins.str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
@@ -949,6 +1017,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["autoscaling_config"] = autoscaling_config
         __props__.__dict__["config"] = config
         __props__.__dict__["default_backup_schedule_type"] = default_backup_schedule_type
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["edition"] = edition
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1000,6 +1069,19 @@ class Instance(pulumi.CustomResource):
         Possible values are: `NONE`, `AUTOMATIC`.
         """
         return pulumi.get(self, "default_backup_schedule_type")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

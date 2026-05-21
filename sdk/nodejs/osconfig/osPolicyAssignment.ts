@@ -167,6 +167,15 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly deleted: pulumi.Output<boolean>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -249,6 +258,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             const state = argsOrState as OsPolicyAssignmentState | undefined;
             resourceInputs["baseline"] = state?.baseline;
             resourceInputs["deleted"] = state?.deleted;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["etag"] = state?.etag;
             resourceInputs["instanceFilter"] = state?.instanceFilter;
@@ -277,6 +287,7 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
             if (args?.rollout === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rollout'");
             }
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceFilter"] = args?.instanceFilter;
             resourceInputs["location"] = args?.location;
@@ -315,6 +326,15 @@ export interface OsPolicyAssignmentState {
      * assignment.
      */
     deleted?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */
@@ -388,6 +408,15 @@ export interface OsPolicyAssignmentState {
  * The set of arguments for constructing a OsPolicyAssignment resource.
  */
 export interface OsPolicyAssignmentArgs {
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * OS policy assignment description. Length of the description is limited to 1024 characters.
      */

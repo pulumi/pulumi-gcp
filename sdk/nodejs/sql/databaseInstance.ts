@@ -273,7 +273,7 @@ import * as utilities from "../utilities";
  * ```
  *
  * ### Cloud SQL Instance created using pointInTimeRestore
- * > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`.
+ * > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ`. The `targetInstance` is required field and must match the name of the resource.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -291,14 +291,14 @@ import * as utilities from "../utilities";
  *     },
  *     pointInTimeRestoreContext: {
  *         datasource: "backupdr_datasource",
- *         targetInstance: "target_instance_name",
+ *         targetInstance: "main-instance",
  *         pointInTime: "time_stamp",
  *     },
  * });
  * ```
  *
  * ### Cloud SQL Instance created using pointInTimeRestore using multiregion datasource
- * > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region.
+ * > **NOTE:** Replace `backupdrDatasource` with the full datasource path, `timeStamp` should be in the format of `YYYY-MM-DDTHH:MM:SSZ` and `region` with the target instance region. The `targetInstance` is required field and must match the name of the resource.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -316,7 +316,7 @@ import * as utilities from "../utilities";
  *     },
  *     pointInTimeRestoreContext: {
  *         datasource: "backupdr_datasource",
- *         targetInstance: "target_instance_name",
+ *         targetInstance: "main-instance",
  *         pointInTime: "time_stamp",
  *         region: "region",
  *     },
@@ -443,6 +443,15 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * includes an up-to-date reference of supported versions.
      */
     declare public readonly databaseVersion: pulumi.Output<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
@@ -603,6 +612,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["clone"] = state?.clone;
             resourceInputs["connectionName"] = state?.connectionName;
             resourceInputs["databaseVersion"] = state?.databaseVersion;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["deletionProtection"] = state?.deletionProtection;
             resourceInputs["dnsName"] = state?.dnsName;
             resourceInputs["dnsNames"] = state?.dnsNames;
@@ -640,6 +650,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["backupdrBackup"] = args?.backupdrBackup;
             resourceInputs["clone"] = args?.clone;
             resourceInputs["databaseVersion"] = args?.databaseVersion;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["deletionProtection"] = args?.deletionProtection;
             resourceInputs["encryptionKeyName"] = args?.encryptionKeyName;
             resourceInputs["finalBackupDescription"] = args?.finalBackupDescription;
@@ -717,6 +728,15 @@ export interface DatabaseInstanceState {
      * includes an up-to-date reference of supported versions.
      */
     databaseVersion?: pulumi.Input<string | undefined>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.
@@ -889,6 +909,15 @@ export interface DatabaseInstanceArgs {
      * includes an up-to-date reference of supported versions.
      */
     databaseVersion: pulumi.Input<string>;
+    /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `destroy` or `update` command that deletes the instance will fail. Defaults to `true`.

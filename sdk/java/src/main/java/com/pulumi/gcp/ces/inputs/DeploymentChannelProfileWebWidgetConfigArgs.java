@@ -5,6 +5,7 @@ package com.pulumi.gcp.ces.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,10 +19,11 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
     /**
      * The modality of the web widget.
      * Possible values:
-     * UNKNOWN_MODALITY
+     * MODALITY_UNSPECIFIED
      * CHAT_AND_VOICE
      * VOICE_ONLY
      * CHAT_ONLY
+     * CHAT_VOICE_AND_VIDEO
      * 
      */
     @Import(name="modality")
@@ -30,10 +32,11 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
     /**
      * @return The modality of the web widget.
      * Possible values:
-     * UNKNOWN_MODALITY
+     * MODALITY_UNSPECIFIED
      * CHAT_AND_VOICE
      * VOICE_ONLY
      * CHAT_ONLY
+     * CHAT_VOICE_AND_VIDEO
      * 
      */
     public Optional<Output<String>> modality() {
@@ -41,9 +44,26 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
     }
 
     /**
+     * The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="securitySettings")
+    private @Nullable Output<DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs> securitySettings;
+
+    /**
+     * @return The security settings of the web widget.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs>> securitySettings() {
+        return Optional.ofNullable(this.securitySettings);
+    }
+
+    /**
      * The theme of the web widget.
      * Possible values:
-     * UNKNOWN_THEME
+     * THEME_UNSPECIFIED
      * LIGHT
      * DARK
      * 
@@ -54,7 +74,7 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
     /**
      * @return The theme of the web widget.
      * Possible values:
-     * UNKNOWN_THEME
+     * THEME_UNSPECIFIED
      * LIGHT
      * DARK
      * 
@@ -82,6 +102,7 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
 
     private DeploymentChannelProfileWebWidgetConfigArgs(DeploymentChannelProfileWebWidgetConfigArgs $) {
         this.modality = $.modality;
+        this.securitySettings = $.securitySettings;
         this.theme = $.theme;
         this.webWidgetTitle = $.webWidgetTitle;
     }
@@ -107,10 +128,11 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
         /**
          * @param modality The modality of the web widget.
          * Possible values:
-         * UNKNOWN_MODALITY
+         * MODALITY_UNSPECIFIED
          * CHAT_AND_VOICE
          * VOICE_ONLY
          * CHAT_ONLY
+         * CHAT_VOICE_AND_VIDEO
          * 
          * @return builder
          * 
@@ -123,10 +145,11 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
         /**
          * @param modality The modality of the web widget.
          * Possible values:
-         * UNKNOWN_MODALITY
+         * MODALITY_UNSPECIFIED
          * CHAT_AND_VOICE
          * VOICE_ONLY
          * CHAT_ONLY
+         * CHAT_VOICE_AND_VIDEO
          * 
          * @return builder
          * 
@@ -136,9 +159,32 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
         }
 
         /**
+         * @param securitySettings The security settings of the web widget.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securitySettings(@Nullable Output<DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs> securitySettings) {
+            $.securitySettings = securitySettings;
+            return this;
+        }
+
+        /**
+         * @param securitySettings The security settings of the web widget.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securitySettings(DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs securitySettings) {
+            return securitySettings(Output.of(securitySettings));
+        }
+
+        /**
          * @param theme The theme of the web widget.
          * Possible values:
-         * UNKNOWN_THEME
+         * THEME_UNSPECIFIED
          * LIGHT
          * DARK
          * 
@@ -153,7 +199,7 @@ public final class DeploymentChannelProfileWebWidgetConfigArgs extends com.pulum
         /**
          * @param theme The theme of the web widget.
          * Possible values:
-         * UNKNOWN_THEME
+         * THEME_UNSPECIFIED
          * LIGHT
          * DARK
          * 

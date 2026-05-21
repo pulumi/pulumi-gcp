@@ -83,6 +83,63 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+     * 
+     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn&#39;t changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     * 
+     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+     * 
+     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn&#39;t changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced a field data type (`STRUCT` with
+     * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+     * the recurring diff this causes. As a workaround, we recommend using the
+     * schema as returned by the API.
+     * 
+     * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+     * documented below and do **not** set
+     * `external_data_configuration.connection_id`, schemas must be specified
+     * with `external_data_configuration.schema`. Otherwise, schemas must be
+     * specified with this top-level field.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
+
+    /**
      * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
      * in state, a `=destroy` or `=update` that would delete the instance will fail.
      * 
@@ -524,6 +581,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         this.biglakeConfiguration = $.biglakeConfiguration;
         this.clusterings = $.clusterings;
         this.datasetId = $.datasetId;
+        this.deletionPolicy = $.deletionPolicy;
         this.deletionProtection = $.deletionProtection;
         this.description = $.description;
         this.encryptionConfiguration = $.encryptionConfiguration;
@@ -647,6 +705,69 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder datasetId(String datasetId) {
             return datasetId(Output.of(datasetId));
+        }
+
+        /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+         * 
+         * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+         * string will create a diff, even if the JSON itself hasn&#39;t changed.
+         * If the API returns a different value for the same schema, e.g. it
+         * switched the order of values or replaced a field data type (`STRUCT` with
+         * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+         * the recurring diff this causes. As a workaround, we recommend using the
+         * schema as returned by the API.
+         * 
+         * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+         * documented below and do **not** set
+         * `external_data_configuration.connection_id`, schemas must be specified
+         * with `external_data_configuration.schema`. Otherwise, schemas must be
+         * specified with this top-level field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy (Optional) Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+         * 
+         * * &lt;a name=&#34;schema&#34;&gt;&lt;/a&gt;`schema` - (Optional) A JSON schema for the table.
+         * 
+         * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+         * string will create a diff, even if the JSON itself hasn&#39;t changed.
+         * If the API returns a different value for the same schema, e.g. it
+         * switched the order of values or replaced a field data type (`STRUCT` with
+         * `RECORD`, `DECIMAL` with `NUMERIC`, etc.), we currently cannot suppress
+         * the recurring diff this causes. As a workaround, we recommend using the
+         * schema as returned by the API.
+         * 
+         * ~&gt;**NOTE:**  If you use `externalDataConfiguration`
+         * documented below and do **not** set
+         * `external_data_configuration.connection_id`, schemas must be specified
+         * with `external_data_configuration.schema`. Otherwise, schemas must be
+         * specified with this top-level field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

@@ -24,6 +24,7 @@ class RuntimeTemplateArgs:
                  display_name: pulumi.Input[_builtins.str],
                  location: pulumi.Input[_builtins.str],
                  data_persistent_disk_spec: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional['RuntimeTemplateEncryptionSpecArgs']] = None,
                  euc_config: pulumi.Input[Optional['RuntimeTemplateEucConfigArgs']] = None,
@@ -43,6 +44,12 @@ class RuntimeTemplateArgs:
         :param pulumi.Input[_builtins.str] location: The location for the resource: https://cloud.google.com/colab/docs/locations
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Runtime Template.
         :param pulumi.Input['RuntimeTemplateEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for the notebook runtime.
                Structure is documented below.
@@ -70,6 +77,8 @@ class RuntimeTemplateArgs:
         pulumi.set(__self__, "location", location)
         if data_persistent_disk_spec is not None:
             pulumi.set(__self__, "data_persistent_disk_spec", data_persistent_disk_spec)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encryption_spec is not None:
@@ -131,6 +140,23 @@ class RuntimeTemplateArgs:
     @data_persistent_disk_spec.setter
     def data_persistent_disk_spec(self, value: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']]):
         pulumi.set(self, "data_persistent_disk_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -291,6 +317,7 @@ class RuntimeTemplateArgs:
 class _RuntimeTemplateState:
     def __init__(__self__, *,
                  data_persistent_disk_spec: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -312,6 +339,12 @@ class _RuntimeTemplateState:
 
         :param pulumi.Input['RuntimeTemplateDataPersistentDiskSpecArgs'] data_persistent_disk_spec: The configuration for the data disk of the runtime.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Runtime Template.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Runtime Template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -342,6 +375,8 @@ class _RuntimeTemplateState:
         """
         if data_persistent_disk_spec is not None:
             pulumi.set(__self__, "data_persistent_disk_spec", data_persistent_disk_spec)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -387,6 +422,23 @@ class _RuntimeTemplateState:
     @data_persistent_disk_spec.setter
     def data_persistent_disk_spec(self, value: pulumi.Input[Optional['RuntimeTemplateDataPersistentDiskSpecArgs']]):
         pulumi.set(self, "data_persistent_disk_spec", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -599,6 +651,7 @@ class RuntimeTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_persistent_disk_spec: pulumi.Input[Optional[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
@@ -750,6 +803,12 @@ class RuntimeTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']] data_persistent_disk_spec: The configuration for the data disk of the runtime.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Runtime Template.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Runtime Template.
         :param pulumi.Input[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for the notebook runtime.
@@ -929,6 +988,7 @@ class RuntimeTemplate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_persistent_disk_spec: pulumi.Input[Optional[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  encryption_spec: pulumi.Input[Optional[Union['RuntimeTemplateEncryptionSpecArgs', 'RuntimeTemplateEncryptionSpecArgsDict']]] = None,
@@ -953,6 +1013,7 @@ class RuntimeTemplate(pulumi.CustomResource):
             __props__ = RuntimeTemplateArgs.__new__(RuntimeTemplateArgs)
 
             __props__.__dict__["data_persistent_disk_spec"] = data_persistent_disk_spec
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -986,6 +1047,7 @@ class RuntimeTemplate(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             data_persistent_disk_spec: pulumi.Input[Optional[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1011,6 +1073,12 @@ class RuntimeTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RuntimeTemplateDataPersistentDiskSpecArgs', 'RuntimeTemplateDataPersistentDiskSpecArgsDict']] data_persistent_disk_spec: The configuration for the data disk of the runtime.
                Structure is documented below.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] description: The description of the Runtime Template.
         :param pulumi.Input[_builtins.str] display_name: Required. The display name of the Runtime Template.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1044,6 +1112,7 @@ class RuntimeTemplate(pulumi.CustomResource):
         __props__ = _RuntimeTemplateState.__new__(_RuntimeTemplateState)
 
         __props__.__dict__["data_persistent_disk_spec"] = data_persistent_disk_spec
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1070,6 +1139,19 @@ class RuntimeTemplate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "data_persistent_disk_spec")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.Workstations.Inputs
     public sealed class WorkstationConfigPersistentDirectoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gceHd")]
+        public Input<Inputs.WorkstationConfigPersistentDirectoryGceHdArgs>? GceHd { get; set; }
+
+        /// <summary>
         /// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
         /// Structure is documented below.
         /// </summary>

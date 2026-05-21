@@ -70,6 +70,7 @@ type LookupRegionInstanceGroupManagerResult struct {
 	AutoHealingPolicies           []GetRegionInstanceGroupManagerAutoHealingPolicy  `pulumi:"autoHealingPolicies"`
 	BaseInstanceName              string                                            `pulumi:"baseInstanceName"`
 	CreationTimestamp             string                                            `pulumi:"creationTimestamp"`
+	DeletionPolicy                string                                            `pulumi:"deletionPolicy"`
 	Description                   string                                            `pulumi:"description"`
 	DistributionPolicyTargetShape string                                            `pulumi:"distributionPolicyTargetShape"`
 	DistributionPolicyZones       []string                                          `pulumi:"distributionPolicyZones"`
@@ -163,6 +164,10 @@ func (o LookupRegionInstanceGroupManagerResultOutput) BaseInstanceName() pulumi.
 
 func (o LookupRegionInstanceGroupManagerResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionInstanceGroupManagerResultOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionInstanceGroupManagerResultOutput) Description() pulumi.StringOutput {

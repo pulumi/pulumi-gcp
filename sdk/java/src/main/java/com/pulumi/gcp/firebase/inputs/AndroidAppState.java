@@ -53,18 +53,24 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-     * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-     * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-     * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-     * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -266,9 +272,12 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-         * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-         * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
          * @return builder
          * 
@@ -279,9 +288,12 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionPolicy (Optional) Set to `ABANDON` to allow the AndroidApp to be untracked from terraform state
-         * rather than deleted upon `terraform destroy`. This is useful because the AndroidApp may be
-         * serving traffic. Set to `DELETE` to delete the AndroidApp. Defaults to `DELETE`.
+         * @param deletionPolicy Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+         * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+         * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+         * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+         * management without updating or deleting the resource in the API.
+         * When set to &#34;DELETE&#34;, deleting the resource is allowed.
          * 
          * @return builder
          * 

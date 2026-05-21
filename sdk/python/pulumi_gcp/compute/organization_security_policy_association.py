@@ -21,6 +21,7 @@ class OrganizationSecurityPolicyAssociationArgs:
     def __init__(__self__, *,
                  attachment_id: pulumi.Input[_builtins.str],
                  policy_id: pulumi.Input[_builtins.str],
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  excluded_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  excluded_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None):
@@ -29,12 +30,20 @@ class OrganizationSecurityPolicyAssociationArgs:
 
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
         :param pulumi.Input[_builtins.str] policy_id: The security policy ID of the association.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
         :param pulumi.Input[_builtins.str] name: The name for an association.
         """
         pulumi.set(__self__, "attachment_id", attachment_id)
         pulumi.set(__self__, "policy_id", policy_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if excluded_folders is not None:
             pulumi.set(__self__, "excluded_folders", excluded_folders)
         if excluded_projects is not None:
@@ -65,6 +74,23 @@ class OrganizationSecurityPolicyAssociationArgs:
     @policy_id.setter
     def policy_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="excludedFolders")
@@ -107,6 +133,7 @@ class OrganizationSecurityPolicyAssociationArgs:
 class _OrganizationSecurityPolicyAssociationState:
     def __init__(__self__, *,
                  attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  excluded_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  excluded_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -116,6 +143,12 @@ class _OrganizationSecurityPolicyAssociationState:
         Input properties used for looking up and filtering OrganizationSecurityPolicyAssociation resources.
 
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the security policy of the association.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
@@ -124,6 +157,8 @@ class _OrganizationSecurityPolicyAssociationState:
         """
         if attachment_id is not None:
             pulumi.set(__self__, "attachment_id", attachment_id)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if excluded_folders is not None:
@@ -146,6 +181,23 @@ class _OrganizationSecurityPolicyAssociationState:
     @attachment_id.setter
     def attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "attachment_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -215,6 +267,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  excluded_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  excluded_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -250,6 +303,33 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             attachment_id=policy.parent,
             policy_id=policy.id)
         ```
+        ### Organization Security Policy Association Excluded
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        security_policy_target = gcp.organizations.Folder("security_policy_target",
+            display_name="tf-test-secpol-_72490",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_89605",
+            parent=security_policy_target.name,
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
+            name="tf-test",
+            attachment_id="organizations/123456789",
+            policy_id=policy.id,
+            excluded_projects=[
+                "projects/2000000002",
+                "projects/3000000003",
+            ],
+            excluded_folders=[
+                "folders/4000000004",
+                "folders/5000000005",
+            ])
+        ```
 
         ## Import
 
@@ -267,6 +347,12 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
         :param pulumi.Input[_builtins.str] name: The name for an association.
@@ -308,6 +394,33 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             attachment_id=policy.parent,
             policy_id=policy.id)
         ```
+        ### Organization Security Policy Association Excluded
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        security_policy_target = gcp.organizations.Folder("security_policy_target",
+            display_name="tf-test-secpol-_72490",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        policy = gcp.compute.OrganizationSecurityPolicy("policy",
+            short_name="tf-test_89605",
+            parent=security_policy_target.name,
+            type="CLOUD_ARMOR")
+        policy_organization_security_policy_association = gcp.compute.OrganizationSecurityPolicyAssociation("policy",
+            name="tf-test",
+            attachment_id="organizations/123456789",
+            policy_id=policy.id,
+            excluded_projects=[
+                "projects/2000000002",
+                "projects/3000000003",
+            ],
+            excluded_folders=[
+                "folders/4000000004",
+                "folders/5000000005",
+            ])
+        ```
 
         ## Import
 
@@ -338,6 +451,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  excluded_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  excluded_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -354,6 +468,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             if attachment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attachment_id'")
             __props__.__dict__["attachment_id"] = attachment_id
+            __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["excluded_folders"] = excluded_folders
             __props__.__dict__["excluded_projects"] = excluded_projects
             __props__.__dict__["name"] = name
@@ -372,6 +487,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             excluded_folders: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             excluded_projects: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -385,6 +501,12 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] attachment_id: The resource that the security policy is attached to.
+        :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+               When a 'terraform destroy' or 'pulumi up' would delete the resource,
+               the command will fail if this field is set to "PREVENT" in Terraform state.
+               When set to "ABANDON", the command will remove the resource from Terraform
+               management without updating or deleting the resource in the API.
+               When set to "DELETE", deleting the resource is allowed.
         :param pulumi.Input[_builtins.str] display_name: The display name of the security policy of the association.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_folders: A list of folders to exclude from the security policy.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] excluded_projects: A list of projects to exclude from the security policy.
@@ -396,6 +518,7 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         __props__ = _OrganizationSecurityPolicyAssociationState.__new__(_OrganizationSecurityPolicyAssociationState)
 
         __props__.__dict__["attachment_id"] = attachment_id
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["excluded_folders"] = excluded_folders
         __props__.__dict__["excluded_projects"] = excluded_projects
@@ -410,6 +533,19 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
         The resource that the security policy is attached to.
         """
         return pulumi.get(self, "attachment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+        When a 'terraform destroy' or 'pulumi up' would delete the resource,
+        the command will fail if this field is set to "PREVENT" in Terraform state.
+        When set to "ABANDON", the command will remove the resource from Terraform
+        management without updating or deleting the resource in the API.
+        When set to "DELETE", deleting the resource is allowed.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @_builtins.property
     @pulumi.getter(name="displayName")

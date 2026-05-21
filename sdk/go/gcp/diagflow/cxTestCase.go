@@ -240,6 +240,13 @@ type CxTestCase struct {
 
 	// When the test was created. A timestamp in RFC3339 text format.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The latest test result.
@@ -299,6 +306,13 @@ func GetCxTestCase(ctx *pulumi.Context,
 type cxTestCaseState struct {
 	// When the test was created. A timestamp in RFC3339 text format.
 	CreationTime *string `pulumi:"creationTime"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The latest test result.
@@ -326,6 +340,13 @@ type cxTestCaseState struct {
 type CxTestCaseState struct {
 	// When the test was created. A timestamp in RFC3339 text format.
 	CreationTime pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringPtrInput
 	// The latest test result.
@@ -355,6 +376,13 @@ func (CxTestCaseState) ElementType() reflect.Type {
 }
 
 type cxTestCaseArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName string `pulumi:"displayName"`
 	// Additional freeform notes about the test case. Limit of 400 characters.
@@ -375,6 +403,13 @@ type cxTestCaseArgs struct {
 
 // The set of arguments for constructing a CxTestCase resource.
 type CxTestCaseArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringInput
 	// Additional freeform notes about the test case. Limit of 400 characters.
@@ -483,6 +518,16 @@ func (o CxTestCaseOutput) ToCxTestCaseOutputWithContext(ctx context.Context) CxT
 // When the test was created. A timestamp in RFC3339 text format.
 func (o CxTestCaseOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxTestCase) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o CxTestCaseOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *CxTestCase) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The human-readable name of the test case, unique within the agent. Limit of 200 characters.

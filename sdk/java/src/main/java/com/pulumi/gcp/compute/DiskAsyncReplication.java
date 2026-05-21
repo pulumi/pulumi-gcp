@@ -80,6 +80,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/diskAsyncReplication:DiskAsyncReplication")
 public class DiskAsyncReplication extends com.pulumi.resources.CustomResource {
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * The `secondaryDisk` block includes:
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output<String> deletionPolicy;
+
+    /**
+     * @return Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, deleting the resource is allowed.
+     * 
+     * The `secondaryDisk` block includes:
+     * 
+     */
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
+    }
+    /**
      * The primary disk (source of replication).
      * 
      */
@@ -96,16 +124,12 @@ public class DiskAsyncReplication extends com.pulumi.resources.CustomResource {
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
      * 
-     * The `secondaryDisk` block includes:
-     * 
      */
     @Export(name="secondaryDisk", refs={DiskAsyncReplicationSecondaryDisk.class}, tree="[0]")
     private Output<DiskAsyncReplicationSecondaryDisk> secondaryDisk;
 
     /**
      * @return The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-     * 
-     * The `secondaryDisk` block includes:
      * 
      */
     public Output<DiskAsyncReplicationSecondaryDisk> secondaryDisk() {

@@ -462,11 +462,11 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Alloydb: &databasemigrationservice.ConnectionProfileAlloydbArgs{
-//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_39249"),
+//					ClusterId: pulumi.String("tf-test-dbmsalloycluster_9106"),
 //					Settings: &databasemigrationservice.ConnectionProfileAlloydbSettingsArgs{
 //						InitialUser: &databasemigrationservice.ConnectionProfileAlloydbSettingsInitialUserArgs{
-//							User:     pulumi.String("alloyuser_74391"),
-//							Password: pulumi.String("alloypass_16511"),
+//							User:     pulumi.String("alloyuser_27169"),
+//							Password: pulumi.String("alloypass_75223"),
 //						},
 //						VpcNetwork: _default.ID(),
 //						Labels: pulumi.StringMap{
@@ -728,6 +728,13 @@ type ConnectionProfile struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The database provider.
 	Dbprovider pulumi.StringOutput `pulumi:"dbprovider"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -759,6 +766,9 @@ type ConnectionProfile struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// The connection profile role.
+	// Possible values are: `SOURCE`, `DESTINATION`.
+	Role pulumi.StringOutput `pulumi:"role"`
 	// The current connection profile state.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -813,6 +823,13 @@ type connectionProfileState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The database provider.
 	Dbprovider *string `pulumi:"dbprovider"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -844,6 +861,9 @@ type connectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The connection profile role.
+	// Possible values are: `SOURCE`, `DESTINATION`.
+	Role *string `pulumi:"role"`
 	// The current connection profile state.
 	State *string `pulumi:"state"`
 }
@@ -861,6 +881,13 @@ type ConnectionProfileState struct {
 	CreateTime pulumi.StringPtrInput
 	// The database provider.
 	Dbprovider pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -892,6 +919,9 @@ type ConnectionProfileState struct {
 	// The combination of labels configured directly on the resource
 	//  and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// The connection profile role.
+	// Possible values are: `SOURCE`, `DESTINATION`.
+	Role pulumi.StringPtrInput
 	// The current connection profile state.
 	State pulumi.StringPtrInput
 }
@@ -909,6 +939,13 @@ type connectionProfileArgs struct {
 	Cloudsql *ConnectionProfileCloudsql `pulumi:"cloudsql"`
 	// The ID of the connection profile.
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
@@ -930,6 +967,9 @@ type connectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The connection profile role.
+	// Possible values are: `SOURCE`, `DESTINATION`.
+	Role *string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -942,6 +982,13 @@ type ConnectionProfileArgs struct {
 	Cloudsql ConnectionProfileCloudsqlPtrInput
 	// The ID of the connection profile.
 	ConnectionProfileId pulumi.StringInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
 	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs.
@@ -963,6 +1010,9 @@ type ConnectionProfileArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The connection profile role.
+	// Possible values are: `SOURCE`, `DESTINATION`.
+	Role pulumi.StringPtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {
@@ -1079,6 +1129,16 @@ func (o ConnectionProfileOutput) Dbprovider() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Dbprovider }).(pulumi.StringOutput)
 }
 
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o ConnectionProfileOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
+}
+
 // The connection profile display name.
 func (o ConnectionProfileOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
@@ -1142,6 +1202,12 @@ func (o ConnectionProfileOutput) Project() pulumi.StringOutput {
 //	and default labels configured on the provider.
 func (o ConnectionProfileOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The connection profile role.
+// Possible values are: `SOURCE`, `DESTINATION`.
+func (o ConnectionProfileOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
 // The current connection profile state.

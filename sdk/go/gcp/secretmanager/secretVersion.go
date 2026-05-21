@@ -310,11 +310,17 @@ type SecretVersion struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
-	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
+	// * PREVENT
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 	DestroyTime pulumi.StringOutput `pulumi:"destroyTime"`
 	// The current state of the SecretVersion.
@@ -393,10 +399,16 @@ type secretVersionState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 	DestroyTime *string `pulumi:"destroyTime"`
@@ -433,10 +445,16 @@ type SecretVersionState struct {
 	CreateTime pulumi.StringPtrInput
 	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy pulumi.StringPtrInput
 	// The time at which the Secret was destroyed. Only present if state is DESTROYED.
 	DestroyTime pulumi.StringPtrInput
@@ -475,10 +493,16 @@ func (SecretVersionState) ElementType() reflect.Type {
 type secretVersionArgs struct {
 	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The current state of the SecretVersion.
 	Enabled *bool `pulumi:"enabled"`
@@ -507,10 +531,16 @@ type secretVersionArgs struct {
 type SecretVersionArgs struct {
 	// The deletion policy for the secret version. Setting `ABANDON` allows the resource
 	// to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-	// disabled rather than deleted. Default is `DELETE`. Possible values are:
+	// disabled rather than deleted.
+	//
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	//
+	// Default is `DELETE`. Possible values are:
 	// * DELETE
 	// * DISABLE
 	// * ABANDON
+	// * PREVENT
 	DeletionPolicy pulumi.StringPtrInput
 	// The current state of the SecretVersion.
 	Enabled pulumi.BoolPtrInput
@@ -629,12 +659,18 @@ func (o SecretVersionOutput) CreateTime() pulumi.StringOutput {
 
 // The deletion policy for the secret version. Setting `ABANDON` allows the resource
 // to be abandoned rather than deleted. Setting `DISABLE` allows the resource to be
-// disabled rather than deleted. Default is `DELETE`. Possible values are:
+// disabled rather than deleted.
+//
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+//
+// Default is `DELETE`. Possible values are:
 // * DELETE
 // * DISABLE
 // * ABANDON
-func (o SecretVersionOutput) DeletionPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SecretVersion) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
+// * PREVENT
+func (o SecretVersionOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretVersion) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // The time at which the Secret was destroyed. Only present if state is DESTROYED.

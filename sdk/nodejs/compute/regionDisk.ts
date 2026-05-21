@@ -213,6 +213,15 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTimestamp: pulumi.Output<string>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    declare public readonly deletionPolicy: pulumi.Output<string>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -249,6 +258,18 @@ export class RegionDisk extends pulumi.CustomResource {
      * Structure is documented below.
      */
     declare public readonly guestOsFeatures: pulumi.Output<outputs.compute.RegionDiskGuestOsFeature[]>;
+    /**
+     * The image from which to initialize this disk. This can be
+     * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don't, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     */
+    declare public readonly image: pulumi.Output<string | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -370,6 +391,20 @@ export class RegionDisk extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly sourceDiskId: pulumi.Output<string>;
     /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    declare public readonly sourceImageEncryptionKey: pulumi.Output<outputs.compute.RegionDiskSourceImageEncryptionKey | undefined>;
+    /**
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     */
+    declare public /*out*/ readonly sourceImageId: pulumi.Output<string>;
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -414,12 +449,14 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["createSnapshotBeforeDestroy"] = state?.createSnapshotBeforeDestroy;
             resourceInputs["createSnapshotBeforeDestroyPrefix"] = state?.createSnapshotBeforeDestroyPrefix;
             resourceInputs["creationTimestamp"] = state?.creationTimestamp;
+            resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["description"] = state?.description;
             resourceInputs["diskEncryptionKey"] = state?.diskEncryptionKey;
             resourceInputs["diskId"] = state?.diskId;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["eraseWindowsVssSignature"] = state?.eraseWindowsVssSignature;
             resourceInputs["guestOsFeatures"] = state?.guestOsFeatures;
+            resourceInputs["image"] = state?.image;
             resourceInputs["interface"] = state?.interface;
             resourceInputs["labelFingerprint"] = state?.labelFingerprint;
             resourceInputs["labels"] = state?.labels;
@@ -439,6 +476,8 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["snapshot"] = state?.snapshot;
             resourceInputs["sourceDisk"] = state?.sourceDisk;
             resourceInputs["sourceDiskId"] = state?.sourceDiskId;
+            resourceInputs["sourceImageEncryptionKey"] = state?.sourceImageEncryptionKey;
+            resourceInputs["sourceImageId"] = state?.sourceImageId;
             resourceInputs["sourceSnapshotEncryptionKey"] = state?.sourceSnapshotEncryptionKey;
             resourceInputs["sourceSnapshotId"] = state?.sourceSnapshotId;
             resourceInputs["type"] = state?.type;
@@ -452,10 +491,12 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["asyncPrimaryDisk"] = args?.asyncPrimaryDisk;
             resourceInputs["createSnapshotBeforeDestroy"] = args?.createSnapshotBeforeDestroy;
             resourceInputs["createSnapshotBeforeDestroyPrefix"] = args?.createSnapshotBeforeDestroyPrefix;
+            resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["description"] = args?.description;
             resourceInputs["diskEncryptionKey"] = args?.diskEncryptionKey;
             resourceInputs["eraseWindowsVssSignature"] = args?.eraseWindowsVssSignature;
             resourceInputs["guestOsFeatures"] = args?.guestOsFeatures;
+            resourceInputs["image"] = args?.image;
             resourceInputs["interface"] = args?.interface;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["licenses"] = args?.licenses;
@@ -469,6 +510,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["size"] = args?.size;
             resourceInputs["snapshot"] = args?.snapshot;
             resourceInputs["sourceDisk"] = args?.sourceDisk;
+            resourceInputs["sourceImageEncryptionKey"] = args?.sourceImageEncryptionKey;
             resourceInputs["sourceSnapshotEncryptionKey"] = args?.sourceSnapshotEncryptionKey;
             resourceInputs["type"] = args?.type;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
@@ -480,6 +522,7 @@ export class RegionDisk extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
+            resourceInputs["sourceImageId"] = undefined /*out*/;
             resourceInputs["sourceSnapshotId"] = undefined /*out*/;
             resourceInputs["users"] = undefined /*out*/;
         }
@@ -523,6 +566,15 @@ export interface RegionDiskState {
      */
     creationTimestamp?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -559,6 +611,18 @@ export interface RegionDiskState {
      * Structure is documented below.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.RegionDiskGuestOsFeature>[] | undefined>;
+    /**
+     * The image from which to initialize this disk. This can be
+     * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don't, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     */
+    image?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -680,6 +744,20 @@ export interface RegionDiskState {
      */
     sourceDiskId?: pulumi.Input<string | undefined>;
     /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskSourceImageEncryptionKey | undefined>;
+    /**
+     * The ID value of the image used to create this disk. This value
+     * identifies the exact image that was used to create this persistent
+     * disk. For example, if you created the persistent disk from an image
+     * that was later deleted and recreated under the same name, the source
+     * image ID would identify the exact version of the image that was used.
+     */
+    sourceImageId?: pulumi.Input<string | undefined>;
+    /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption
      * key.
@@ -736,6 +814,15 @@ export interface RegionDiskArgs {
      */
     createSnapshotBeforeDestroyPrefix?: pulumi.Input<string | undefined>;
     /**
+     * Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+     * When a 'terraform destroy' or 'pulumi up' would delete the resource,
+     * the command will fail if this field is set to "PREVENT" in Terraform state.
+     * When set to "ABANDON", the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to "DELETE", deleting the resource is allowed.
+     */
+    deletionPolicy?: pulumi.Input<string | undefined>;
+    /**
      * An optional description of this resource. Provide this property when
      * you create the resource.
      */
@@ -764,6 +851,18 @@ export interface RegionDiskArgs {
      * Structure is documented below.
      */
     guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.RegionDiskGuestOsFeature>[] | undefined>;
+    /**
+     * The image from which to initialize this disk. This can be
+     * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
+     * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+     * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+     * `{project}/{image}`, `{family}`, or `{image}`. If referred by family, the
+     * images names must include the family name. If they don't, use the
+     * [gcp.compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
+     * For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
+     * These images can be referred by family name here.
+     */
+    image?: pulumi.Input<string | undefined>;
     /**
      * (Optional, Beta, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
@@ -856,6 +955,12 @@ export interface RegionDiskArgs {
      * * regions/{region}/disks/{disk}
      */
     sourceDisk?: pulumi.Input<string | undefined>;
+    /**
+     * The customer-supplied encryption key of the source image. Required if
+     * the source image is protected by a customer-supplied encryption key.
+     * Structure is documented below.
+     */
+    sourceImageEncryptionKey?: pulumi.Input<inputs.compute.RegionDiskSourceImageEncryptionKey | undefined>;
     /**
      * The customer-supplied encryption key of the source snapshot. Required
      * if the source snapshot is protected by a customer-supplied encryption

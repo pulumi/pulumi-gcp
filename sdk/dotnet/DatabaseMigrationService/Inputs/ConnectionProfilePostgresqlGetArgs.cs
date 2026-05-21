@@ -13,16 +13,22 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
     public sealed class ConnectionProfilePostgresqlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If the connected database is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
+        /// If the connection profile is an AlloyDB instance, use this field to provide the AlloyDB cluster ID.
         /// </summary>
         [Input("alloydbClusterId")]
         public Input<string>? AlloydbClusterId { get; set; }
 
         /// <summary>
-        /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        /// If the connection profile is a Cloud SQL database, use this field to provide the Cloud SQL instance ID.
         /// </summary>
         [Input("cloudSqlId")]
         public Input<string>? CloudSqlId { get; set; }
+
+        /// <summary>
+        /// The name of the specific database within the host.
+        /// </summary>
+        [Input("database")]
+        public Input<string>? Database { get; set; }
 
         /// <summary>
         /// The IP or hostname of the source MySQL database.
@@ -67,6 +73,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService.Inputs
         /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
+
+        /// <summary>
+        /// Private connectivity.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateConnectivity")]
+        public Input<Inputs.ConnectionProfilePostgresqlPrivateConnectivityGetArgs>? PrivateConnectivity { get; set; }
 
         /// <summary>
         /// SSL configuration for the destination to connect to the source database.

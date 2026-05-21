@@ -227,21 +227,31 @@ public class PrivateConnection extends com.pulumi.resources.CustomResource {
      * The deletion policy for the private connection. Setting `FORCE` will also delete any child
      * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
      * child routes exist. Defaults to `FORCE` for backwards compatibility.
-     * Possible values: `DEFAULT`, `FORCE`.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
      * 
      */
     @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> deletionPolicy;
+    private Output<String> deletionPolicy;
 
     /**
      * @return The deletion policy for the private connection. Setting `FORCE` will also delete any child
      * routes that belong to this private connection. Setting `DEFAULT` will fail the delete if
      * child routes exist. Defaults to `FORCE` for backwards compatibility.
-     * Possible values: `DEFAULT`, `FORCE`.
+     * 
+     * When a &#39;terraform destroy&#39; or &#39;pulumi up&#39; would delete the resource,
+     * the command will fail if this field is set to &#34;PREVENT&#34; in Terraform state.
+     * When set to &#34;ABANDON&#34;, the command will remove the resource from Terraform
+     * management without updating or deleting the resource in the API.
+     * When set to &#34;DELETE&#34;, the command will behave as if set to &#34;DEFAULT&#34;.
      * 
      */
-    public Output<Optional<String>> deletionPolicy() {
-        return Codegen.optional(this.deletionPolicy);
+    public Output<String> deletionPolicy() {
+        return this.deletionPolicy;
     }
     /**
      * Display name.

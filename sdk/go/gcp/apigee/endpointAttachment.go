@@ -38,6 +38,13 @@ type EndpointAttachment struct {
 
 	// State of the endpoint attachment connection to the service attachment.
 	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// ID of the endpoint attachment.
 	EndpointAttachmentId pulumi.StringOutput `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
@@ -98,6 +105,13 @@ func GetEndpointAttachment(ctx *pulumi.Context,
 type endpointAttachmentState struct {
 	// State of the endpoint attachment connection to the service attachment.
 	ConnectionState *string `pulumi:"connectionState"`
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ID of the endpoint attachment.
 	EndpointAttachmentId *string `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
@@ -117,6 +131,13 @@ type endpointAttachmentState struct {
 type EndpointAttachmentState struct {
 	// State of the endpoint attachment connection to the service attachment.
 	ConnectionState pulumi.StringPtrInput
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// ID of the endpoint attachment.
 	EndpointAttachmentId pulumi.StringPtrInput
 	// Host that can be used in either HTTP Target Endpoint directly, or as the host in Target Server.
@@ -138,6 +159,13 @@ func (EndpointAttachmentState) ElementType() reflect.Type {
 }
 
 type endpointAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// ID of the endpoint attachment.
 	EndpointAttachmentId string `pulumi:"endpointAttachmentId"`
 	// Location of the endpoint attachment.
@@ -151,6 +179,13 @@ type endpointAttachmentArgs struct {
 
 // The set of arguments for constructing a EndpointAttachment resource.
 type EndpointAttachmentArgs struct {
+	// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+	// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+	// the command will fail if this field is set to "PREVENT" in Terraform state.
+	// When set to "ABANDON", the command will remove the resource from Terraform
+	// management without updating or deleting the resource in the API.
+	// When set to "DELETE", deleting the resource is allowed.
+	DeletionPolicy pulumi.StringPtrInput
 	// ID of the endpoint attachment.
 	EndpointAttachmentId pulumi.StringInput
 	// Location of the endpoint attachment.
@@ -252,6 +287,16 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx cont
 // State of the endpoint attachment connection to the service attachment.
 func (o EndpointAttachmentOutput) ConnectionState() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
+}
+
+// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
+// When a 'terraform destroy' or 'pulumi up' would delete the resource,
+// the command will fail if this field is set to "PREVENT" in Terraform state.
+// When set to "ABANDON", the command will remove the resource from Terraform
+// management without updating or deleting the resource in the API.
+// When set to "DELETE", deleting the resource is allowed.
+func (o EndpointAttachmentOutput) DeletionPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
 // ID of the endpoint attachment.
