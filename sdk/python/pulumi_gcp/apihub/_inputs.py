@@ -455,13 +455,13 @@ class PluginActionsConfigArgs:
 
 
 class PluginConfigTemplateArgsDict(TypedDict):
-    additional_config_templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgs']]]]]
+    additional_config_templates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateArgsDict']]]]]
     """
     The list of additional configuration variables for the plugin's
     configuration.
     Structure is documented below.
     """
-    auth_config_template: NotRequired[pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateArgs']]]
+    auth_config_template: NotRequired[pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateArgsDict']]]
     """
     AuthConfigTemplate represents the authentication template for a plugin.
     Structure is documented below.
@@ -535,12 +535,12 @@ class PluginConfigTemplateAdditionalConfigTemplateArgsDict(TypedDict):
     """
     Description.
     """
-    enum_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgs']]]]]
+    enum_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateEnumOptionArgsDict']]]]]
     """
     Enum options. To be populated if `ValueType` is `ENUM`.
     Structure is documented below.
     """
-    multi_select_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgs']]]]]
+    multi_select_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginConfigTemplateAdditionalConfigTemplateMultiSelectOptionArgsDict']]]]]
     """
     Multi select options. To be populated if `ValueType` is `MULTI_SELECT`.
     Structure is documented below.
@@ -840,7 +840,7 @@ class PluginConfigTemplateAuthConfigTemplateArgsDict(TypedDict):
     """
     The list of authentication types supported by the plugin.
     """
-    service_account: NotRequired[pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateServiceAccountArgs']]]
+    service_account: NotRequired[pulumi.Input[Optional['PluginConfigTemplateAuthConfigTemplateServiceAccountArgsDict']]]
     """
     Config for Google service account authentication.
     Structure is documented below.
@@ -990,12 +990,12 @@ class PluginInstanceActionArgsDict(TypedDict):
     This should map to one of the action id specified
     in actions_config in the plugin.
     """
-    curation_config: NotRequired[pulumi.Input[Optional['PluginInstanceActionCurationConfigArgs']]]
+    curation_config: NotRequired[pulumi.Input[Optional['PluginInstanceActionCurationConfigArgsDict']]]
     """
     The curation information for this plugin instance.
     Structure is documented below.
     """
-    hub_instance_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgs']]]]]
+    hub_instance_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionArgsDict']]]]]
     """
     (Output)
     The execution status for the plugin instance.
@@ -1171,7 +1171,7 @@ class PluginInstanceActionCurationConfigArgsDict(TypedDict):
     DEFAULT_CURATION_FOR_API_METADATA
     CUSTOM_CURATION_FOR_API_METADATA
     """
-    custom_curation: NotRequired[pulumi.Input[Optional['PluginInstanceActionCurationConfigCustomCurationArgs']]]
+    custom_curation: NotRequired[pulumi.Input[Optional['PluginInstanceActionCurationConfigCustomCurationArgsDict']]]
     """
     Custom curation information for this plugin instance.
     Structure is documented below.
@@ -1267,7 +1267,7 @@ class PluginInstanceActionHubInstanceActionArgsDict(TypedDict):
     RUNNING
     NOT_RUNNING
     """
-    last_executions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgs']]]]]
+    last_executions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PluginInstanceActionHubInstanceActionLastExecutionArgsDict']]]]]
     """
     The result of the last execution of the plugin instance.
     """
@@ -1437,23 +1437,23 @@ class PluginInstanceAuthConfigArgsDict(TypedDict):
     API_KEY
     OAUTH2_CLIENT_CREDENTIALS
     """
-    api_key_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigApiKeyConfigArgs']]]
+    api_key_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigApiKeyConfigArgsDict']]]
     """
     Config for authentication with API key.
     Structure is documented below.
     """
-    google_service_account_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigGoogleServiceAccountConfigArgs']]]
+    google_service_account_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigGoogleServiceAccountConfigArgsDict']]]
     """
     Config for Google service account authentication.
     Structure is documented below.
     """
-    oauth2_client_credentials_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgs']]]
+    oauth2_client_credentials_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigOauth2ClientCredentialsConfigArgsDict']]]
     """
     Parameters to support Oauth 2.0 client credentials grant authentication.
     See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
     Structure is documented below.
     """
-    user_password_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigUserPasswordConfigArgs']]]
+    user_password_config: NotRequired[pulumi.Input[Optional['PluginInstanceAuthConfigUserPasswordConfigArgsDict']]]
     """
     Parameters to support Username and Password Authentication.
     Structure is documented below.

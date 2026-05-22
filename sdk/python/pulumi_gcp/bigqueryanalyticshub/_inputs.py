@@ -158,11 +158,11 @@ class DataExchangeIamMemberConditionArgs:
 
 
 class DataExchangeSharingEnvironmentConfigArgsDict(TypedDict):
-    dcr_exchange_config: NotRequired[pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgs']]]
+    dcr_exchange_config: NotRequired[pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDcrExchangeConfigArgsDict']]]
     """
     Data Clean Room (DCR), used for privacy-safe and secured data sharing.
     """
-    default_exchange_config: NotRequired[pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgs']]]
+    default_exchange_config: NotRequired[pulumi.Input[Optional['DataExchangeSharingEnvironmentConfigDefaultExchangeConfigArgsDict']]]
     """
     Default Analytics Hub data exchange, used for secured data sharing.
     """
@@ -544,7 +544,7 @@ class ListingBigqueryDatasetArgsDict(TypedDict):
     """
     Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
     """
-    effective_replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgs']]]]]
+    effective_replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetEffectiveReplicaArgsDict']]]]]
     """
     (Output)
     Server owned effective state of replicas. Contains both primary and secondary replicas.
@@ -555,7 +555,7 @@ class ListingBigqueryDatasetArgsDict(TypedDict):
     """
     A list of regions where the publisher has created shared dataset replicas.
     """
-    selected_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgs']]]]]
+    selected_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingBigqueryDatasetSelectedResourceArgsDict']]]]]
     """
     Resource in this dataset that is selectively shared. This field is required for data clean room exchanges.
     Structure is documented below.
@@ -770,7 +770,7 @@ class ListingBigqueryDatasetSelectedResourceArgs:
 
 
 class ListingCommercialInfoArgsDict(TypedDict):
-    cloud_marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgs']]]]]
+    cloud_marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingCommercialInfoCloudMarketplaceArgsDict']]]]]
     """
     (Output)
     Details of the Marketplace Data Product associated with the Listing.
@@ -1170,7 +1170,7 @@ class ListingRestrictedExportConfigArgs:
 
 
 class ListingSubscriptionCommercialInfoArgsDict(TypedDict):
-    cloud_marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgs']]]]]
+    cloud_marketplaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ListingSubscriptionCommercialInfoCloudMarketplaceArgsDict']]]]]
     """
     (Output)
     Cloud Marketplace commercial metadata for this subscription.

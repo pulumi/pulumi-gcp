@@ -116,7 +116,7 @@ __all__ = [
 ]
 
 class AccessBoundaryPolicyRuleArgsDict(TypedDict):
-    access_boundary_rule: NotRequired[pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleArgs']]]
+    access_boundary_rule: NotRequired[pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict']]]
     """
     An access boundary rule in an IAM policy.
     Structure is documented below.
@@ -168,7 +168,7 @@ class AccessBoundaryPolicyRuleArgs:
 
 
 class AccessBoundaryPolicyRuleAccessBoundaryRuleArgsDict(TypedDict):
-    availability_condition: NotRequired[pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs']]]
+    availability_condition: NotRequired[pulumi.Input[Optional['AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgsDict']]]
     """
     The availability condition further constrains the access allowed by the access boundary rule.
     Structure is documented below.
@@ -337,7 +337,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
 
 
 class DenyPolicyRuleArgsDict(TypedDict):
-    deny_rule: NotRequired[pulumi.Input[Optional['DenyPolicyRuleDenyRuleArgs']]]
+    deny_rule: NotRequired[pulumi.Input[Optional['DenyPolicyRuleDenyRuleArgsDict']]]
     """
     A deny rule in an IAM deny policy.
     Structure is documented below.
@@ -389,7 +389,7 @@ class DenyPolicyRuleArgs:
 
 
 class DenyPolicyRuleDenyRuleArgsDict(TypedDict):
-    denial_condition: NotRequired[pulumi.Input[Optional['DenyPolicyRuleDenyRuleDenialConditionArgs']]]
+    denial_condition: NotRequired[pulumi.Input[Optional['DenyPolicyRuleDenyRuleDenialConditionArgsDict']]]
     """
     User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
     Structure is documented below.
@@ -1157,7 +1157,7 @@ class ProjectsPolicyBindingTargetArgs:
 
 
 class WorkforcePoolAccessRestrictionsArgsDict(TypedDict):
-    allowed_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgs']]]]]
+    allowed_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkforcePoolAccessRestrictionsAllowedServiceArgsDict']]]]]
     """
     Services allowed for web sign-in with the workforce pool.
     If not set by default there are no restrictions.
@@ -1359,7 +1359,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientArgsDict(TypedDict):
     """
     The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
     """
-    query_parameters: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgs']]]
+    query_parameters: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientQueryParametersArgsDict']]]
     """
     Represents the parameters to control which claims are fetched from an IdP.
     """
@@ -1464,7 +1464,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientArgs:
 
 
 class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretArgsDict(TypedDict):
-    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValueArgsDict']]]
     """
     The value of the client secret.
     Structure is documented below.
@@ -1618,7 +1618,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientArgsDict(TypedDict):
     """
     The OIDC identity provider's issuer URI. Must be a valid URI using the 'https' scheme. Required to get the OIDC discovery document.
     """
-    query_parameters: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgs']]]
+    query_parameters: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientQueryParametersArgsDict']]]
     """
     Represents the parameters to control which claims are fetched from an IdP.
     """
@@ -1747,7 +1747,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientArgs:
 
 
 class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretArgsDict(TypedDict):
-    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderExtraAttributesOauth2ClientClientSecretValueArgsDict']]]
     """
     The value of the client secret.
     Structure is documented below.
@@ -2020,7 +2020,7 @@ class WorkforcePoolProviderOidcArgsDict(TypedDict):
     """
     The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
     """
-    client_secret: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretArgs']]]
+    client_secret: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretArgsDict']]]
     """
     The optional client secret. Required to enable Authorization Code flow for web sign-in.
     Structure is documented below.
@@ -2051,7 +2051,7 @@ class WorkforcePoolProviderOidcArgsDict(TypedDict):
     }
     ```
     """
-    web_sso_config: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcWebSsoConfigArgs']]]
+    web_sso_config: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcWebSsoConfigArgsDict']]]
     """
     Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
     Structure is documented below.
@@ -2191,7 +2191,7 @@ class WorkforcePoolProviderOidcArgs:
 
 
 class WorkforcePoolProviderOidcClientSecretArgsDict(TypedDict):
-    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['WorkforcePoolProviderOidcClientSecretValueArgsDict']]]
     """
     The value of the client secret.
     Structure is documented below.
@@ -2808,7 +2808,7 @@ class WorkloadIdentityPoolInlineCertificateIssuanceConfigArgs:
 
 
 class WorkloadIdentityPoolInlineTrustConfigArgsDict(TypedDict):
-    additional_trust_bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgs']]]]]
+    additional_trust_bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleArgsDict']]]]]
     """
     Maps specific trust domains (e.g., "example.com") to their corresponding `TrustStore`
     objects, which contain the trusted root certificates for that domain. There can be a
@@ -3316,7 +3316,7 @@ class WorkloadIdentityPoolProviderX509TrustStoreArgsDict(TypedDict):
     must be chained up to one of the trust anchors here.
     Structure is documented below.
     """
-    intermediate_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgs']]]]]
+    intermediate_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadIdentityPoolProviderX509TrustStoreIntermediateCaArgsDict']]]]]
     """
     Set of intermediate CA certificates used for building the trust chain to
     trust anchor.

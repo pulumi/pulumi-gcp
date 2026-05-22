@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 class V2QueuedResourceTpuArgsDict(TypedDict):
-    node_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]]
+    node_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgsDict']]]]]
     """
     The TPU node(s) being requested.
     Structure is documented below.
@@ -158,7 +158,7 @@ class V2QueuedResourceTpuNodeSpecNodeArgsDict(TypedDict):
     """
     Text description of the TPU.
     """
-    network_config: NotRequired[pulumi.Input[Optional['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgs']]]
+    network_config: NotRequired[pulumi.Input[Optional['V2QueuedResourceTpuNodeSpecNodeNetworkConfigArgsDict']]]
     """
     Network configurations for the TPU node.
     Structure is documented below.
@@ -586,7 +586,7 @@ class V2VmNetworkConfigArgs:
 
 
 class V2VmNetworkEndpointArgsDict(TypedDict):
-    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgs']]]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2VmNetworkEndpointAccessConfigArgsDict']]]]]
     """
     (Output)
     The access config for the TPU worker.

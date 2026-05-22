@@ -41,7 +41,7 @@ class CodeToolsSettingEnabledToolArgsDict(TypedDict):
     Link to the Dev Connect Account Connector that holds the user credentials.
     projects/{project}/locations/{location}/accountConnectors/{account_connector_id}
     """
-    configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgs']]]]]
+    configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CodeToolsSettingEnabledToolConfigArgsDict']]]]]
     """
     Configuration parameters for the tool.
     Structure is documented below.

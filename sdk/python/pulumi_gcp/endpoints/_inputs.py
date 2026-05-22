@@ -120,7 +120,7 @@ class ConsumersIamMemberConditionArgs:
 
 
 class ServiceApiArgsDict(TypedDict):
-    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceApiMethodArgs']]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceApiMethodArgsDict']]]]]
     """
     A list of Method objects; structure is documented below.
     """

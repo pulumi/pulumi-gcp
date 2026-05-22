@@ -62,7 +62,7 @@ class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
     run_phrase_matcher_annotator is set to true. Format:
     projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
     """
-    qa_config: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigArgs']]]
+    qa_config: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigArgsDict']]]
     """
     Configuration for the QA feature.
     Structure is documented below.
@@ -104,7 +104,7 @@ class AnalysisRuleAnnotatorSelectorArgsDict(TypedDict):
     """
     Whether to run the summarization annotator.
     """
-    summarization_config: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorSummarizationConfigArgs']]]
+    summarization_config: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorSummarizationConfigArgsDict']]]
     """
     Configuration for summarization.
     Structure is documented below.
@@ -348,7 +348,7 @@ class AnalysisRuleAnnotatorSelectorArgs:
 
 
 class AnalysisRuleAnnotatorSelectorQaConfigArgsDict(TypedDict):
-    scorecard_list: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgs']]]
+    scorecard_list: NotRequired[pulumi.Input[Optional['AnalysisRuleAnnotatorSelectorQaConfigScorecardListArgsDict']]]
     """
     Container for a list of scorecards.
     Structure is documented below.
@@ -983,7 +983,7 @@ class QaQuestionPredefinedQuestionConfigArgs:
 
 
 class QaQuestionQaQuestionDataOptionsArgsDict(TypedDict):
-    conversation_data_options: NotRequired[pulumi.Input[Optional['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgs']]]
+    conversation_data_options: NotRequired[pulumi.Input[Optional['QaQuestionQaQuestionDataOptionsConversationDataOptionsArgsDict']]]
     """
     Options for configuring what metadata is included in the conversation data
     used in QAI and Discovery Engine.

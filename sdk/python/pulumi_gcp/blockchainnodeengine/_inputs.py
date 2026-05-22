@@ -30,7 +30,7 @@ __all__ = [
 ]
 
 class BlockchainNodesConnectionInfoArgsDict(TypedDict):
-    endpoint_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgs']]]]]
+    endpoint_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesConnectionInfoEndpointInfoArgsDict']]]]]
     """
     (Output)
     The endpoint information through which to interact with a blockchain node.
@@ -143,7 +143,7 @@ class BlockchainNodesConnectionInfoEndpointInfoArgs:
 
 
 class BlockchainNodesEthereumDetailsArgsDict(TypedDict):
-    additional_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgs']]]]]
+    additional_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BlockchainNodesEthereumDetailsAdditionalEndpointArgsDict']]]]]
     """
     (Output)
     User-provided key-value pairs
@@ -167,7 +167,7 @@ class BlockchainNodesEthereumDetailsArgsDict(TypedDict):
     The execution client
     Possible values are: `EXECUTION_CLIENT_UNSPECIFIED`, `GETH`, `ERIGON`.
     """
-    geth_details: NotRequired[pulumi.Input[Optional['BlockchainNodesEthereumDetailsGethDetailsArgs']]]
+    geth_details: NotRequired[pulumi.Input[Optional['BlockchainNodesEthereumDetailsGethDetailsArgsDict']]]
     """
     User-provided key-value pairs
     Structure is documented below.
@@ -182,7 +182,7 @@ class BlockchainNodesEthereumDetailsArgsDict(TypedDict):
     The type of Ethereum node.
     Possible values are: `LIGHT`, `FULL`, `ARCHIVE`.
     """
-    validator_config: NotRequired[pulumi.Input[Optional['BlockchainNodesEthereumDetailsValidatorConfigArgs']]]
+    validator_config: NotRequired[pulumi.Input[Optional['BlockchainNodesEthereumDetailsValidatorConfigArgsDict']]]
     """
     Configuration for validator-related parameters on the beacon client, and for any managed validator client.
     Structure is documented below.

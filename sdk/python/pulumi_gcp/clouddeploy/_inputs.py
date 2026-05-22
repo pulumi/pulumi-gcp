@@ -232,22 +232,22 @@ __all__ = [
 ]
 
 class AutomationRuleArgsDict(TypedDict):
-    advance_rollout_rule: NotRequired[pulumi.Input[Optional['AutomationRuleAdvanceRolloutRuleArgs']]]
+    advance_rollout_rule: NotRequired[pulumi.Input[Optional['AutomationRuleAdvanceRolloutRuleArgsDict']]]
     """
     Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
     Structure is documented below.
     """
-    promote_release_rule: NotRequired[pulumi.Input[Optional['AutomationRulePromoteReleaseRuleArgs']]]
+    promote_release_rule: NotRequired[pulumi.Input[Optional['AutomationRulePromoteReleaseRuleArgsDict']]]
     """
     Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
     Structure is documented below.
     """
-    repair_rollout_rule: NotRequired[pulumi.Input[Optional['AutomationRuleRepairRolloutRuleArgs']]]
+    repair_rollout_rule: NotRequired[pulumi.Input[Optional['AutomationRuleRepairRolloutRuleArgsDict']]]
     """
     Optional. The RepairRolloutRule will automatically repair a failed rollout.
     Structure is documented below.
     """
-    timed_promote_release_rule: NotRequired[pulumi.Input[Optional['AutomationRuleTimedPromoteReleaseRuleArgs']]]
+    timed_promote_release_rule: NotRequired[pulumi.Input[Optional['AutomationRuleTimedPromoteReleaseRuleArgsDict']]]
     """
     Optional. The `TimedPromoteReleaseRule` will automatically promote a release from the current target(s) to the specified target(s) on a configured schedule.
     Structure is documented below.
@@ -501,7 +501,7 @@ class AutomationRuleRepairRolloutRuleArgsDict(TypedDict):
     """
     Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after phase name matched any one in the list, or for all phases if unspecified. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: ^a-z?$.
     """
-    repair_phases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseArgs']]]]]
+    repair_phases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutomationRuleRepairRolloutRuleRepairPhaseArgsDict']]]]]
     """
     Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
     Structure is documented below.
@@ -580,12 +580,12 @@ class AutomationRuleRepairRolloutRuleArgs:
 
 
 class AutomationRuleRepairRolloutRuleRepairPhaseArgsDict(TypedDict):
-    retry: NotRequired[pulumi.Input[Optional['AutomationRuleRepairRolloutRuleRepairPhaseRetryArgs']]]
+    retry: NotRequired[pulumi.Input[Optional['AutomationRuleRepairRolloutRuleRepairPhaseRetryArgsDict']]]
     """
     Optional. Retries a failed job.
     Structure is documented below.
     """
-    rollback: NotRequired[pulumi.Input[Optional['AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgs']]]
+    rollback: NotRequired[pulumi.Input[Optional['AutomationRuleRepairRolloutRuleRepairPhaseRollbackArgsDict']]]
     """
     Optional. Rolls back a Rollout.
     Structure is documented below.
@@ -951,7 +951,7 @@ class CustomTargetTypeCustomActionsArgsDict(TypedDict):
     """
     The Skaffold custom action responsible for deploy operations.
     """
-    include_skaffold_modules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgs']]]]]
+    include_skaffold_modules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgsDict']]]]]
     """
     List of Skaffold modules Cloud Deploy will include in the Skaffold Config as required before performing diagnose.
     Structure is documented below.
@@ -1022,17 +1022,17 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleArgsDict(TypedDict):
     """
     The Skaffold Config modules to use from the specified source.
     """
-    git: NotRequired[pulumi.Input[Optional['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGitArgsDict']]]
     """
     Remote git repository containing the Skaffold Config modules.
     Structure is documented below.
     """
-    google_cloud_build_repo: NotRequired[pulumi.Input[Optional['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgs']]]
+    google_cloud_build_repo: NotRequired[pulumi.Input[Optional['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudBuildRepoArgsDict']]]
     """
     Cloud Build 2nd gen repository containing the Skaffold Config modules.
     Structure is documented below.
     """
-    google_cloud_storage: NotRequired[pulumi.Input[Optional['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgs']]]
+    google_cloud_storage: NotRequired[pulumi.Input[Optional['CustomTargetTypeCustomActionsIncludeSkaffoldModuleGoogleCloudStorageArgsDict']]]
     """
     Cloud Storage bucket containing Skaffold Config modules.
     Structure is documented below.
@@ -1393,7 +1393,7 @@ class CustomTargetTypeTasksArgsDict(TypedDict):
     The task responsible for deploy operations.
     Structure is documented below.
     """
-    render: NotRequired[pulumi.Input[Optional['CustomTargetTypeTasksRenderArgs']]]
+    render: NotRequired[pulumi.Input[Optional['CustomTargetTypeTasksRenderArgsDict']]]
     """
     The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation.
     Structure is documented below.
@@ -1442,7 +1442,7 @@ class CustomTargetTypeTasksArgs:
 
 
 class CustomTargetTypeTasksDeployArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['CustomTargetTypeTasksDeployContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['CustomTargetTypeTasksDeployContainerArgsDict']]]
     """
     This task is represented by a container that is executed in the Cloud Build execution environment.
     Structure is documented below.
@@ -1562,7 +1562,7 @@ class CustomTargetTypeTasksDeployContainerArgs:
 
 
 class CustomTargetTypeTasksRenderArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['CustomTargetTypeTasksRenderContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['CustomTargetTypeTasksRenderContainerArgsDict']]]
     """
     This task is represented by a container that is executed in the Cloud Build execution environment.
     Structure is documented below.
@@ -1682,15 +1682,15 @@ class CustomTargetTypeTasksRenderContainerArgs:
 
 
 class DeliveryPipelineConditionArgsDict(TypedDict):
-    pipeline_ready_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgs']]]]]
+    pipeline_ready_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineConditionPipelineReadyConditionArgsDict']]]]]
     """
     Details around the Pipeline's overall status.
     """
-    targets_present_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgs']]]]]
+    targets_present_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsPresentConditionArgsDict']]]]]
     """
     Details around targets enumerated in the pipeline.
     """
-    targets_type_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgs']]]]]
+    targets_type_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineConditionTargetsTypeConditionArgsDict']]]]]
     """
     Details on the whether the targets enumerated in the pipeline are of the same type.
     """
@@ -2006,7 +2006,7 @@ class DeliveryPipelineIamMemberConditionArgs:
 
 
 class DeliveryPipelineSerialPipelineArgsDict(TypedDict):
-    stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgs']]]]]
+    stages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageArgsDict']]]]]
     """
     Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
     """
@@ -2035,7 +2035,7 @@ class DeliveryPipelineSerialPipelineArgs:
 
 
 class DeliveryPipelineSerialPipelineStageArgsDict(TypedDict):
-    deploy_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]]]]
+    deploy_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgsDict']]]]]
     """
     Optional. The deploy parameters to use for the target in this stage.
     """
@@ -2043,7 +2043,7 @@ class DeliveryPipelineSerialPipelineStageArgsDict(TypedDict):
     """
     Skaffold profiles to use when rendering the manifest for this stage's `Target`.
     """
-    strategy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyArgs']]]
+    strategy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyArgsDict']]]
     """
     Optional. The strategy to use for a `Rollout` to this stage.
     """
@@ -2172,11 +2172,11 @@ class DeliveryPipelineSerialPipelineStageDeployParameterArgs:
 
 
 class DeliveryPipelineSerialPipelineStageStrategyArgsDict(TypedDict):
-    canary: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs']]]
+    canary: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict']]]
     """
     Canary deployment strategy provides progressive percentage based deployments to a Target.
     """
-    standard: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']]]
+    standard: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict']]]
     """
     Standard deployment strategy executes a single deploy and allows verifying the deployment.
     """
@@ -2221,15 +2221,15 @@ class DeliveryPipelineSerialPipelineStageStrategyArgs:
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryArgsDict(TypedDict):
-    canary_deployment: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs']]]
+    canary_deployment: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict']]]
     """
     Configures the progressive based deployment for a Target.
     """
-    custom_canary_deployment: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs']]]
+    custom_canary_deployment: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgsDict']]]
     """
     Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
     """
-    runtime_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgs']]]
+    runtime_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict']]]
     """
     Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
     """
@@ -2294,15 +2294,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict(
     """
     Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
     """
-    analysis: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgs']]]
+    analysis: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisArgsDict']]]
     """
     Optional. Configuration for the analysis job.
     """
-    postdeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgs']]]
+    postdeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeployArgsDict']]]
     """
     Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
     """
-    predeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgs']]]
+    predeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeployArgsDict']]]
     """
     Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
     """
@@ -2310,7 +2310,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgsDict(
     """
     Whether to run verify tests after each percentage deployment.
     """
-    verify_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgs']]]
+    verify_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgsDict']]]
     """
     Optional. Configuration for the verify job.
     """
@@ -2422,11 +2422,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisA
     """
     Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
     """
-    custom_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgs']]]]]
+    custom_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckArgsDict']]]]]
     """
     Optional. Custom analysis checks from 3P metric providers.
     """
-    google_cloud: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgs']]]
+    google_cloud: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgsDict']]]
     """
     Optional. Google Cloud - based analysis checks.
     """
@@ -2494,7 +2494,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisC
     """
     Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
     """
-    task: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgs']]]
+    task: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgsDict']]]
     """
     Required. The Task to be run for this custom check.
     """
@@ -2554,7 +2554,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisC
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisCustomCheckTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -2671,7 +2671,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisC
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudArgsDict(TypedDict):
-    alert_policy_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgs']]]]]
+    alert_policy_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentAnalysisGoogleCloudAlertPolicyCheckArgsDict']]]]]
     """
     Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
     """
@@ -2825,7 +2825,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigArgsDict(TypedDict):
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgsDict']]]]]
     """
     Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
     """
@@ -2854,7 +2854,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyCon
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentVerifyConfigTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -3007,15 +3007,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     """
     Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
     """
-    analysis: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgs']]]
+    analysis: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisArgsDict']]]
     """
     Optional. Configuration for the analysis job.
     """
-    postdeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs']]]
+    postdeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgsDict']]]
     """
     Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will not be present for this phase.
     """
-    predeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs']]]
+    predeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgsDict']]]
     """
     Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
     """
@@ -3027,7 +3027,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     """
     Whether to run verify tests after the deployment.
     """
-    verify_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgs']]]
+    verify_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgsDict']]]
     """
     Optional. Configuration for the verify job.
     """
@@ -3170,11 +3170,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     """
     Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
     """
-    custom_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgs']]]]]
+    custom_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckArgsDict']]]]]
     """
     Optional. Custom analysis checks from 3P metric providers.
     """
-    google_cloud: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgs']]]
+    google_cloud: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgsDict']]]
     """
     Optional. Google Cloud - based analysis checks.
     """
@@ -3242,7 +3242,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
     """
     Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
     """
-    task: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgs']]]
+    task: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgsDict']]]
     """
     Required. The Task to be run for this custom check.
     """
@@ -3302,7 +3302,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisCustomCheckTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -3419,7 +3419,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudArgsDict(TypedDict):
-    alert_policy_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgs']]]]]
+    alert_policy_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigAnalysisGoogleCloudAlertPolicyCheckArgsDict']]]]]
     """
     Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
     """
@@ -3573,7 +3573,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigArgsDict(TypedDict):
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgsDict']]]]]
     """
     Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
     """
@@ -3602,7 +3602,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigVerifyConfigTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -3719,11 +3719,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigArgsDict(TypedDict):
-    cloud_run: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs']]]
+    cloud_run: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgsDict']]]
     """
     Cloud Run runtime configuration.
     """
-    kubernetes: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs']]]
+    kubernetes: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict']]]
     """
     Kubernetes runtime configuration.
     """
@@ -3857,11 +3857,11 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRunArgs
 
 
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict(TypedDict):
-    gateway_service_mesh: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs']]]
+    gateway_service_mesh: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgsDict']]]
     """
     Kubernetes Gateway API service mesh configuration.
     """
-    service_networking: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs']]]
+    service_networking: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict']]]
     """
     Kubernetes Service networking configuration.
     """
@@ -3922,7 +3922,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
     """
     Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
     """
-    route_destinations: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs']]]
+    route_destinations: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict']]]
     """
     Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
     """
@@ -4187,15 +4187,15 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict(TypedDict):
-    analysis: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgs']]]
+    analysis: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgsDict']]]
     """
     Optional. Configuration for the analysis job.
     """
-    postdeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs']]]
+    postdeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict']]]
     """
     Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
     """
-    predeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs']]]
+    predeploy: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict']]]
     """
     Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
     """
@@ -4203,7 +4203,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardArgsDict(TypedDict):
     """
     Whether to verify a deployment.
     """
-    verify_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs']]]
+    verify_config: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgsDict']]]
     """
     Optional. Configuration for the verify job.
     """
@@ -4300,11 +4300,11 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisArgsDict(TypedD
     """
     Required. The amount of time in minutes the analysis on the target will last. If all analysis checks have successfully completed before the specified duration, the analysis is successful. If a check is still running while the specified duration passes, it will wait for that check to complete to determine if the analysis is successful. The maximum duration is 48 hours.
     """
-    custom_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs']]]]]
+    custom_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgsDict']]]]]
     """
     Optional. Custom analysis checks from 3P metric providers.
     """
-    google_cloud: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgs']]]
+    google_cloud: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgsDict']]]
     """
     Optional. Google Cloud - based analysis checks.
     """
@@ -4372,7 +4372,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs
     """
     Optional. The frequency at which the custom check will be run, with a minimum and default of 5 minutes.
     """
-    task: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgs']]]
+    task: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgsDict']]]
     """
     Required. The Task to be run for this custom check.
     """
@@ -4432,7 +4432,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckArgs
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -4549,7 +4549,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisCustomCheckTask
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudArgsDict(TypedDict):
-    alert_policy_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgs']]]]]
+    alert_policy_checks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardAnalysisGoogleCloudAlertPolicyCheckArgsDict']]]]]
     """
     Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis.
     """
@@ -4649,7 +4649,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgsDict(Type
     """
     Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
     """
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgsDict']]]]]
     """
     Optional. The tasks that will run as a part of the postdeploy job. Only one of `actions` or `tasks` can be specified.
     """
@@ -4694,7 +4694,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployArgs:
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPostdeployTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -4815,7 +4815,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict(Typed
     """
     Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
     """
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgsDict']]]]]
     """
     Optional. The tasks that will run as a part of the predeploy job. Only one of `actions` or `tasks` can be specified.
     """
@@ -4860,7 +4860,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs:
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -4977,7 +4977,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeployTaskContainerA
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgsDict(TypedDict):
-    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgs']]]]]
+    tasks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgsDict']]]]]
     """
     Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified.
     """
@@ -5006,7 +5006,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigArgs:
 
 
 class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskArgsDict(TypedDict):
-    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContainerArgsDict']]]
     """
     Optional. This task is represented by a container that is executed in the Cloud Build execution environment.
     """
@@ -5123,7 +5123,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardVerifyConfigTaskContain
 
 
 class DeployPolicyRuleArgsDict(TypedDict):
-    rollout_restriction: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionArgs']]]
+    rollout_restriction: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionArgsDict']]]
     """
     Rollout restrictions.
     Structure is documented below.
@@ -5169,7 +5169,7 @@ class DeployPolicyRuleRolloutRestrictionArgsDict(TypedDict):
     What invoked the action. If left empty, all invoker types will be restricted.
     Each value may be one of: `USER`, `DEPLOY_AUTOMATION`.
     """
-    time_windows: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionTimeWindowsArgs']]]
+    time_windows: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionTimeWindowsArgsDict']]]
     """
     Time window within which actions are restricted.
     Structure is documented below.
@@ -5256,12 +5256,12 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsArgsDict(TypedDict):
     """
     The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
     """
-    one_time_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgs']]]]]
+    one_time_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsOneTimeWindowArgsDict']]]]]
     """
     One-time windows within which actions are restricted.
     Structure is documented below.
     """
-    weekly_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgs']]]]]
+    weekly_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgsDict']]]]]
     """
     Recurring weekly windows within which actions are restricted.
     Structure is documented below.
@@ -5744,12 +5744,12 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowArgsDict(TypedDic
     Days of week. If left empty, all days of the week will be included.
     Each value may be one of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
     """
-    end_time: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgs']]]
+    end_time: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTimeArgsDict']]]
     """
     End time (exclusive). Use 24:00 to indicate midnight. If you specify endTime you must also specify startTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
     Structure is documented below.
     """
-    start_time: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs']]]
+    start_time: NotRequired[pulumi.Input[Optional['DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgsDict']]]
     """
     Start time (inclusive). Use 00:00 for the beginning of the day. If you specify startTime you must also specify endTime. If left empty, this will block for the entire day for the days specified in daysOfWeek.
     Structure is documented below.
@@ -5995,12 +5995,12 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowStartTimeArgs:
 
 
 class DeployPolicySelectorArgsDict(TypedDict):
-    delivery_pipeline: NotRequired[pulumi.Input[Optional['DeployPolicySelectorDeliveryPipelineArgs']]]
+    delivery_pipeline: NotRequired[pulumi.Input[Optional['DeployPolicySelectorDeliveryPipelineArgsDict']]]
     """
     Contains attributes about a delivery pipeline.
     Structure is documented below.
     """
-    target: NotRequired[pulumi.Input[Optional['DeployPolicySelectorTargetArgs']]]
+    target: NotRequired[pulumi.Input[Optional['DeployPolicySelectorTargetArgsDict']]]
     """
     Contains attributes about a target.
     Structure is documented below.
@@ -6187,11 +6187,11 @@ class TargetAssociatedEntityArgsDict(TypedDict):
     """
     The name for the key in the map for which this object is mapped to in the API
     """
-    anthos_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgs']]]]]
+    anthos_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgsDict']]]]]
     """
     Optional. Information specifying Anthos clusters as associated entities.
     """
-    gke_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgs']]]]]
+    gke_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgsDict']]]]]
     """
     Optional. Information specifying GKE clusters as associated entities.
     """
@@ -6385,7 +6385,7 @@ class TargetExecutionConfigArgsDict(TypedDict):
     """
     Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
     """
-    default_pool: NotRequired[pulumi.Input[Optional['TargetExecutionConfigDefaultPoolArgs']]]
+    default_pool: NotRequired[pulumi.Input[Optional['TargetExecutionConfigDefaultPoolArgsDict']]]
     """
     Optional. Use default Cloud Build pool.
     """
@@ -6393,7 +6393,7 @@ class TargetExecutionConfigArgsDict(TypedDict):
     """
     Optional. Execution timeout for a Cloud Build Execution. This must be between 10m and 24h in seconds format. If unspecified, a default timeout of 1h is used.
     """
-    private_pool: NotRequired[pulumi.Input[Optional['TargetExecutionConfigPrivatePoolArgs']]]
+    private_pool: NotRequired[pulumi.Input[Optional['TargetExecutionConfigPrivatePoolArgsDict']]]
     """
     Optional. Use private Cloud Build pool.
     """

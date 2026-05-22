@@ -56,12 +56,12 @@ __all__ = [
 ]
 
 class SettingsEmailNotificationSettingsArgsDict(TypedDict):
-    custom_notification_behavior: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgs']]]
+    custom_notification_behavior: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict']]]
     """
     CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
     Structure is documented below.
     """
-    disable_all_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsDisableAllNotificationsArgs']]]
+    disable_all_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsDisableAllNotificationsArgsDict']]]
     """
     This option indicates that all email notifications are disabled.
     """
@@ -108,17 +108,17 @@ class SettingsEmailNotificationSettingsArgs:
 
 
 class SettingsEmailNotificationSettingsCustomNotificationBehaviorArgsDict(TypedDict):
-    admin_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgs']]]
+    admin_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorAdminNotificationsArgsDict']]]
     """
     Email notifications specific to Requesters.
     Structure is documented below.
     """
-    approver_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgs']]]
+    approver_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorApproverNotificationsArgsDict']]]
     """
     Email notifications specific to Approvers.
     Structure is documented below.
     """
-    requester_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgs']]]
+    requester_notifications: NotRequired[pulumi.Input[Optional['SettingsEmailNotificationSettingsCustomNotificationBehaviorRequesterNotificationsArgsDict']]]
     """
     Email notifications specific to Requesters.
     Structure is documented below.
@@ -1032,11 +1032,11 @@ class EntitlementPrivilegedAccessGcpIamAccessRoleBindingArgs:
 
 
 class EntitlementRequesterJustificationConfigArgsDict(TypedDict):
-    not_mandatory: NotRequired[pulumi.Input[Optional['EntitlementRequesterJustificationConfigNotMandatoryArgs']]]
+    not_mandatory: NotRequired[pulumi.Input[Optional['EntitlementRequesterJustificationConfigNotMandatoryArgsDict']]]
     """
     The justification is not mandatory but can be provided in any of the supported formats.
     """
-    unstructured: NotRequired[pulumi.Input[Optional['EntitlementRequesterJustificationConfigUnstructuredArgs']]]
+    unstructured: NotRequired[pulumi.Input[Optional['EntitlementRequesterJustificationConfigUnstructuredArgsDict']]]
     """
     The requester has to provide a justification in the form of free flowing text.
     """

@@ -117,7 +117,7 @@ class AutonomousDatabasePropertiesArgsDict(TypedDict):
     The amount of storage currently allocated for the database tables and
     billed for, rounded up in terabytes.
     """
-    apex_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesApexDetailArgs']]]]]
+    apex_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesApexDetailArgsDict']]]]]
     """
     (Output)
     Oracle APEX Application Development.
@@ -161,14 +161,14 @@ class AutonomousDatabasePropertiesArgsDict(TypedDict):
     """
     The number of compute servers for the Autonomous Database.
     """
-    connection_strings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionStringArgs']]]]]
+    connection_strings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionStringArgsDict']]]]]
     """
     (Output)
     The connection string used to connect to the Autonomous Database.
     https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/AutonomousDatabaseConnectionStrings
     Structure is documented below.
     """
-    connection_urls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionUrlArgs']]]]]
+    connection_urls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionUrlArgsDict']]]]]
     """
     (Output)
     The URLs for accessing Oracle Application Express (APEX) and SQL Developer
@@ -180,7 +180,7 @@ class AutonomousDatabasePropertiesArgsDict(TypedDict):
     """
     The number of CPU cores to be made available to the database.
     """
-    customer_contacts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesCustomerContactArgs']]]]]
+    customer_contacts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesCustomerContactArgsDict']]]]]
     """
     The list of customer contacts.
     Structure is documented below.
@@ -274,7 +274,7 @@ class AutonomousDatabasePropertiesArgsDict(TypedDict):
     ADG
     BACKUP_BASED
     """
-    local_standby_dbs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesLocalStandbyDbArgs']]]]]
+    local_standby_dbs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesLocalStandbyDbArgsDict']]]]]
     """
     (Output)
     Autonomous Data Guard standby database details.
@@ -412,7 +412,7 @@ class AutonomousDatabasePropertiesArgsDict(TypedDict):
     BACKUP_COPY
     SNAPSHOT_STANDBY
     """
-    scheduled_operation_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesScheduledOperationDetailArgs']]]]]
+    scheduled_operation_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesScheduledOperationDetailArgsDict']]]]]
     """
     (Output)
     The list and details of the scheduled operations of the Autonomous
@@ -1764,7 +1764,7 @@ class AutonomousDatabasePropertiesApexDetailArgs:
 
 
 class AutonomousDatabasePropertiesConnectionStringArgsDict(TypedDict):
-    all_connection_strings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionStringAllConnectionStringArgs']]]]]
+    all_connection_strings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionStringAllConnectionStringArgsDict']]]]]
     """
     A list of all connection strings that can be used to connect to the
     Autonomous Database.
@@ -1789,7 +1789,7 @@ class AutonomousDatabasePropertiesConnectionStringArgsDict(TypedDict):
     The database service provides a lower level of resources to each SQL
     statement.
     """
-    profiles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionStringProfileArgs']]]]]
+    profiles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesConnectionStringProfileArgsDict']]]]]
     """
     A list of connection string profiles to allow clients to group, filter, and
     select values based on the structured metadata.
@@ -2679,13 +2679,13 @@ class AutonomousDatabasePropertiesScheduledOperationDetailArgsDict(TypedDict):
     SATURDAY
     SUNDAY
     """
-    start_times: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesScheduledOperationDetailStartTimeArgs']]]]]
+    start_times: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesScheduledOperationDetailStartTimeArgsDict']]]]]
     """
     Represents a time of day. The date and time zone are either not significant
     or are specified elsewhere. An API may choose to allow leap seconds. Related
     types are google.type.Date and 'google.protobuf.Timestamp'.
     """
-    stop_times: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArgs']]]]]
+    stop_times: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AutonomousDatabasePropertiesScheduledOperationDetailStopTimeArgsDict']]]]]
     """
     Represents a time of day. The date and time zone are either not significant
     or are specified elsewhere. An API may choose to allow leap seconds. Related
@@ -3043,7 +3043,7 @@ class CloudExadataInfrastructurePropertiesArgsDict(TypedDict):
     (Output)
     The number of enabled CPU cores.
     """
-    customer_contacts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudExadataInfrastructurePropertiesCustomerContactArgs']]]]]
+    customer_contacts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudExadataInfrastructurePropertiesCustomerContactArgsDict']]]]]
     """
     The list of customer contacts.
     Structure is documented below.
@@ -3064,7 +3064,7 @@ class CloudExadataInfrastructurePropertiesArgsDict(TypedDict):
     The software version of the database servers (dom0) in the Exadata
     Infrastructure.
     """
-    maintenance_window: NotRequired[pulumi.Input[Optional['CloudExadataInfrastructurePropertiesMaintenanceWindowArgs']]]
+    maintenance_window: NotRequired[pulumi.Input[Optional['CloudExadataInfrastructurePropertiesMaintenanceWindowArgsDict']]]
     """
     Maintenance window as defined by Oracle.
     https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/MaintenanceWindow
@@ -4007,7 +4007,7 @@ class CloudVmClusterPropertiesArgsDict(TypedDict):
     """
     OCID of database servers.
     """
-    diagnostics_data_collection_options: NotRequired[pulumi.Input[Optional['CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsArgs']]]
+    diagnostics_data_collection_options: NotRequired[pulumi.Input[Optional['CloudVmClusterPropertiesDiagnosticsDataCollectionOptionsArgsDict']]]
     """
     Data collection options for diagnostics.
     Structure is documented below.
@@ -4135,7 +4135,7 @@ class CloudVmClusterPropertiesArgsDict(TypedDict):
     (Output)
     Operating system version of the image.
     """
-    time_zone: NotRequired[pulumi.Input[Optional['CloudVmClusterPropertiesTimeZoneArgs']]]
+    time_zone: NotRequired[pulumi.Input[Optional['CloudVmClusterPropertiesTimeZoneArgsDict']]]
     """
     Represents a time zone from the
     [IANA Time Zone Database](https://www.iana.org/time-zones).
@@ -4897,7 +4897,7 @@ class DbSystemPropertiesArgsDict(TypedDict):
     ECPU
     OCPU
     """
-    data_collection_options: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDataCollectionOptionsArgs']]]
+    data_collection_options: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDataCollectionOptionsArgsDict']]]
     """
     Data collection options for DbSystem.
     Structure is documented below.
@@ -4906,12 +4906,12 @@ class DbSystemPropertiesArgsDict(TypedDict):
     """
     The data storage size in GB that is currently available to DbSystems.
     """
-    db_home: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeArgs']]]
+    db_home: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeArgsDict']]]
     """
     Details of the Database Home resource.
     Structure is documented below.
     """
-    db_system_options: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbSystemOptionsArgs']]]
+    db_system_options: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbSystemOptionsArgsDict']]]
     """
     Details of the DbSystem Options.
     Structure is documented below.
@@ -4966,7 +4966,7 @@ class DbSystemPropertiesArgsDict(TypedDict):
     """
     The reco/redo storage size in GB.
     """
-    time_zone: NotRequired[pulumi.Input[Optional['DbSystemPropertiesTimeZoneArgs']]]
+    time_zone: NotRequired[pulumi.Input[Optional['DbSystemPropertiesTimeZoneArgsDict']]]
     """
     Represents a time zone from the
     [IANA Time Zone Database](https://www.iana.org/time-zones).
@@ -5587,7 +5587,7 @@ class DbSystemPropertiesDbHomeDatabaseArgsDict(TypedDict):
     """
     The pluggable dataabse associated with the Database. The name must begin with an alphabetic character and can contain a maximum of thirty alphanumeric characters.
     """
-    properties: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeDatabasePropertiesArgs']]]
+    properties: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeDatabasePropertiesArgsDict']]]
     """
     The properties of a Database.
     Structure is documented below.
@@ -5893,12 +5893,12 @@ class DbSystemPropertiesDbHomeDatabasePropertiesArgsDict(TypedDict):
     """
     The Oracle Database version.
     """
-    database_management_config: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgs']]]
+    database_management_config: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfigArgsDict']]]
     """
     The configuration of the Database Management service.
     Structure is documented below.
     """
-    db_backup_config: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgs']]]
+    db_backup_config: NotRequired[pulumi.Input[Optional['DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgsDict']]]
     """
     Backup Options for the Database.
     Structure is documented below.
@@ -6169,7 +6169,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigArgsDict(TypedDict
     DELETE_IMMEDIATELY
     DELETE_AFTER_RETENTION_PERIOD
     """
-    backup_destination_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgs']]]]]
+    backup_destination_details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetailArgsDict']]]]]
     """
     Details of the database backup destinations.
     Structure is documented below.
@@ -6556,7 +6556,7 @@ class ExadbVmClusterPropertiesArgsDict(TypedDict):
     sensitive.
     OCI Cluster name.
     """
-    data_collection_options: NotRequired[pulumi.Input[Optional['ExadbVmClusterPropertiesDataCollectionOptionsArgs']]]
+    data_collection_options: NotRequired[pulumi.Input[Optional['ExadbVmClusterPropertiesDataCollectionOptionsArgsDict']]]
     """
     Data collection options for diagnostics.
     https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DataCollectionOptions
@@ -6607,7 +6607,7 @@ class ExadbVmClusterPropertiesArgsDict(TypedDict):
     """
     SCAN listener port - TCP
     """
-    time_zone: NotRequired[pulumi.Input[Optional['ExadbVmClusterPropertiesTimeZoneArgs']]]
+    time_zone: NotRequired[pulumi.Input[Optional['ExadbVmClusterPropertiesTimeZoneArgsDict']]]
     """
     Represents a time zone from the
     [IANA Time Zone Database](https://www.iana.org/time-zones).
@@ -7190,7 +7190,7 @@ class ExascaleDbStorageVaultPropertiesArgsDict(TypedDict):
     TERMINATED
     FAILED
     """
-    time_zone: NotRequired[pulumi.Input[Optional['ExascaleDbStorageVaultPropertiesTimeZoneArgs']]]
+    time_zone: NotRequired[pulumi.Input[Optional['ExascaleDbStorageVaultPropertiesTimeZoneArgsDict']]]
     """
     Represents a time zone from the
     [IANA Time Zone Database](https://www.iana.org/time-zones).

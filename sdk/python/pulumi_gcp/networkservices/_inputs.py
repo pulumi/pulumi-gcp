@@ -664,13 +664,13 @@ class EdgeCacheOriginFlexShieldingArgs:
 
 
 class EdgeCacheOriginOriginOverrideActionArgsDict(TypedDict):
-    header_action: NotRequired[pulumi.Input[Optional['EdgeCacheOriginOriginOverrideActionHeaderActionArgs']]]
+    header_action: NotRequired[pulumi.Input[Optional['EdgeCacheOriginOriginOverrideActionHeaderActionArgsDict']]]
     """
     The header actions, including adding and removing
     headers, for request handled by this origin.
     Structure is documented below.
     """
-    url_rewrite: NotRequired[pulumi.Input[Optional['EdgeCacheOriginOriginOverrideActionUrlRewriteArgs']]]
+    url_rewrite: NotRequired[pulumi.Input[Optional['EdgeCacheOriginOriginOverrideActionUrlRewriteArgsDict']]]
     """
     The URL rewrite configuration for request that are
     handled by this origin.
@@ -725,7 +725,7 @@ class EdgeCacheOriginOriginOverrideActionArgs:
 
 
 class EdgeCacheOriginOriginOverrideActionHeaderActionArgsDict(TypedDict):
-    request_headers_to_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgs']]]]]
+    request_headers_to_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheOriginOriginOverrideActionHeaderActionRequestHeadersToAddArgsDict']]]]]
     """
     Describes a header to add.
     You may add a maximum of 25 request headers.
@@ -1335,7 +1335,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgsDict(TypedDict):
     """
     A human-readable description of the routeRule.
     """
-    header_action: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgs']]]
+    header_action: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgsDict']]]
     """
     The header actions, including adding & removing headers, for requests that match this route.
     Structure is documented below.
@@ -1345,18 +1345,18 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgsDict(TypedDict):
     The Origin resource that requests to this route should fetch from when a matching response is not in cache. Origins can be defined as short names ("my-origin") or fully-qualified resource URLs - e.g. "networkservices.googleapis.com/projects/my-project/global/edgecacheorigins/my-origin"
     Only one of origin or urlRedirect can be set.
     """
-    route_action: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs']]]
+    route_action: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict']]]
     """
     In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
     Structure is documented below.
     """
-    route_methods: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgs']]]
+    route_methods: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteMethodsArgsDict']]]
     """
     Allow overriding the set of methods that are allowed for this route.
     When not set, Media CDN allows only "GET", "HEAD", and "OPTIONS".
     Structure is documented below.
     """
-    url_redirect: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs']]]
+    url_redirect: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgsDict']]]
     """
     The URL redirect configuration for requests that match this route.
     Structure is documented below.
@@ -1518,23 +1518,23 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleArgs:
 
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionArgsDict(TypedDict):
-    request_header_to_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgs']]]]]
+    request_header_to_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAddArgsDict']]]]]
     """
     Describes a header to add.
     Structure is documented below.
     """
-    request_header_to_removes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgs']]]]]
+    request_header_to_removes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemoveArgsDict']]]]]
     """
     A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
     Structure is documented below.
     """
-    response_header_to_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgs']]]]]
+    response_header_to_adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAddArgsDict']]]]]
     """
     Headers to add to the response prior to sending it back to the client.
     Response headers are only sent to the client, and do not have an effect on the cache serving the response.
     Structure is documented below.
     """
-    response_header_to_removes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgs']]]]]
+    response_header_to_removes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemoveArgsDict']]]]]
     """
     A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
     Structure is documented below.
@@ -1819,7 +1819,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgsDict(TypedDict):
     """
     For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL.
     """
-    header_matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]]]
+    header_matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatchArgsDict']]]]]
     """
     Specifies a list of header match criteria, all of which must match corresponding headers in the request.
     Structure is documented below.
@@ -1843,7 +1843,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleArgsDict(TypedDict):
     """
     For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
     """
-    query_parameter_matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]]]
+    query_parameter_matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArgsDict']]]]]
     """
     Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
     Structure is documented below.
@@ -2170,7 +2170,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatchArg
 
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
-    cdn_policy: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgs']]]
+    cdn_policy: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict']]]
     """
     The policy to use for defining caching and signed request behaviour for requests that match this route.
     Structure is documented below.
@@ -2181,12 +2181,12 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgsDict(TypedDict):
     When dynamic compression is enabled, it is recommended to also set a cache policy to maximize efficiency.
     Possible values are: `DISABLED`, `AUTOMATIC`.
     """
-    cors_policy: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgs']]]
+    cors_policy: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicyArgsDict']]]
     """
     CORSPolicy defines Cross-Origin-Resource-Sharing configuration, including which CORS response headers will be set.
     Structure is documented below.
     """
-    url_rewrite: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgs']]]
+    url_rewrite: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewriteArgsDict']]]
     """
     The URL rewrite configuration for requests that match this route.
     Structure is documented below.
@@ -2274,13 +2274,13 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionArgs:
 
 
 class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict(TypedDict):
-    add_signatures: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgs']]]
+    add_signatures: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignaturesArgsDict']]]
     """
     Enable signature generation or propagation on this route.
     This field may only be specified when signedRequestMode is set to REQUIRE_TOKENS.
     Structure is documented below.
     """
-    cache_key_policy: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgs']]]
+    cache_key_policy: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicyArgsDict']]]
     """
     Defines the request parameters that contribute to the cache key.
     Structure is documented below.
@@ -2361,7 +2361,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyArgsDict(Ty
     When set to REQUIRE_SIGNATURES, all matching requests will have their signature validated. Requests that were not signed with the corresponding private key, or that are otherwise invalid (expired, do not match the signature, IP address, or header) will be rejected with a HTTP 403 and (if enabled) logged.
     Possible values are: `DISABLED`, `REQUIRE_SIGNATURES`, `REQUIRE_TOKENS`.
     """
-    signed_token_options: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgs']]]
+    signed_token_options: NotRequired[pulumi.Input[Optional['EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptionsArgsDict']]]
     """
     Additional options for signed tokens.
     signedTokenOptions may only be specified when signedRequestMode is REQUIRE_TOKENS.
@@ -3570,7 +3570,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgsDict(TypedDict):
     Specifies how matching should be done.
     Possible values are: `MATCH_ANY`, `MATCH_ALL`.
     """
-    metadata_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs']]]]]
+    metadata_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgsDict']]]]]
     """
     The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
     Structure is documented below.
@@ -3694,12 +3694,12 @@ class EndpointPolicyTrafficPortSelectorArgs:
 
 
 class GrpcRouteRuleArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionArgs']]]
+    action: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionArgsDict']]]
     """
     Required. A detailed rule defining how to route traffic.
     Structure is documented below.
     """
-    matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrpcRouteRuleMatchArgs']]]]]
+    matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrpcRouteRuleMatchArgsDict']]]]]
     """
     Matches define conditions used for matching the rule against incoming gRPC requests.
     Structure is documented below.
@@ -3749,17 +3749,17 @@ class GrpcRouteRuleArgs:
 
 
 class GrpcRouteRuleActionArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrpcRouteRuleActionDestinationArgsDict']]]]]
     """
     The destination to which traffic should be forwarded.
     Structure is documented below.
     """
-    fault_injection_policy: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyArgs']]]
+    fault_injection_policy: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyArgsDict']]]
     """
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
     Structure is documented below.
     """
-    retry_policy: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionRetryPolicyArgs']]]
+    retry_policy: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionRetryPolicyArgsDict']]]
     """
     Specifies the retry policy associated with this route.
     Structure is documented below.
@@ -3896,12 +3896,12 @@ class GrpcRouteRuleActionDestinationArgs:
 
 
 class GrpcRouteRuleActionFaultInjectionPolicyArgsDict(TypedDict):
-    abort: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyAbortArgs']]]
+    abort: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyAbortArgsDict']]]
     """
     Specification of how client requests are aborted as part of fault injection before being sent to a destination.
     Structure is documented below.
     """
-    delay: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyDelayArgs']]]
+    delay: NotRequired[pulumi.Input[Optional['GrpcRouteRuleActionFaultInjectionPolicyDelayArgsDict']]]
     """
     Specification of how client requests are delayed as part of fault injection before being sent to a destination.
     Structure is documented below.
@@ -4101,12 +4101,12 @@ class GrpcRouteRuleActionRetryPolicyArgs:
 
 
 class GrpcRouteRuleMatchArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GrpcRouteRuleMatchHeaderArgsDict']]]]]
     """
     Specifies a list of HTTP request headers to match against.
     Structure is documented below.
     """
-    method: NotRequired[pulumi.Input[Optional['GrpcRouteRuleMatchMethodArgs']]]
+    method: NotRequired[pulumi.Input[Optional['GrpcRouteRuleMatchMethodArgsDict']]]
     """
     A gRPC method to match against. If this field is empty or omitted, will match all methods.
     Structure is documented below.
@@ -4296,12 +4296,12 @@ class GrpcRouteRuleMatchMethodArgs:
 
 
 class HttpRouteRuleArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionArgs']]]
+    action: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionArgsDict']]]
     """
     The detailed rule defining how to route matched traffic.
     Structure is documented below.
     """
-    matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleMatchArgs']]]]]
+    matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleMatchArgsDict']]]]]
     """
     A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
     If no matches field is specified, this rule will unconditionally match traffic.
@@ -4357,42 +4357,42 @@ class HttpRouteRuleArgs:
 
 
 class HttpRouteRuleActionArgsDict(TypedDict):
-    cors_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionCorsPolicyArgs']]]
+    cors_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionCorsPolicyArgsDict']]]
     """
     The specification for allowing client side cross-origin requests.
     Structure is documented below.
     """
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleActionDestinationArgsDict']]]]]
     """
     The destination to which traffic should be forwarded.
     Structure is documented below.
     """
-    fault_injection_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyArgs']]]
+    fault_injection_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyArgsDict']]]
     """
     The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
     Structure is documented below.
     """
-    redirect: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRedirectArgs']]]
+    redirect: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRedirectArgsDict']]]
     """
     If set, the request is directed as configured by this field.
     Structure is documented below.
     """
-    request_header_modifier: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRequestHeaderModifierArgs']]]
+    request_header_modifier: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRequestHeaderModifierArgsDict']]]
     """
     The specification for modifying the headers of a matching request prior to delivery of the request to the destination.
     Structure is documented below.
     """
-    request_mirror_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyArgs']]]
+    request_mirror_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyArgsDict']]]
     """
     Specifies the policy on how requests intended for the routes destination are shadowed to a separate mirrored destination.
     Structure is documented below.
     """
-    response_header_modifier: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionResponseHeaderModifierArgs']]]
+    response_header_modifier: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionResponseHeaderModifierArgsDict']]]
     """
     The specification for modifying the headers of a response prior to sending the response back to the client.
     Structure is documented below.
     """
-    retry_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRetryPolicyArgs']]]
+    retry_policy: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRetryPolicyArgsDict']]]
     """
     Specifies the retry policy associated with this route.
     Structure is documented below.
@@ -4401,7 +4401,7 @@ class HttpRouteRuleActionArgsDict(TypedDict):
     """
     Specifies the timeout for selected route.
     """
-    url_rewrite: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionUrlRewriteArgs']]]
+    url_rewrite: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionUrlRewriteArgsDict']]]
     """
     The specification for rewrite URL before forwarding requests to the destination.
     Structure is documented below.
@@ -4820,12 +4820,12 @@ class HttpRouteRuleActionDestinationArgs:
 
 
 class HttpRouteRuleActionFaultInjectionPolicyArgsDict(TypedDict):
-    abort: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyAbortArgs']]]
+    abort: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyAbortArgsDict']]]
     """
     Specification of how client requests are aborted as part of fault injection before being sent to a destination.
     Structure is documented below.
     """
-    delay: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyDelayArgs']]]
+    delay: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionFaultInjectionPolicyDelayArgsDict']]]
     """
     Specification of how client requests are delayed as part of fault injection before being sent to a destination.
     Structure is documented below.
@@ -5191,7 +5191,7 @@ class HttpRouteRuleActionRequestHeaderModifierArgs:
 
 
 class HttpRouteRuleActionRequestMirrorPolicyArgsDict(TypedDict):
-    destination: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyDestinationArgs']]]
+    destination: NotRequired[pulumi.Input[Optional['HttpRouteRuleActionRequestMirrorPolicyDestinationArgsDict']]]
     """
     The destination the requests will be mirrored to.
     Structure is documented below.
@@ -5472,7 +5472,7 @@ class HttpRouteRuleMatchArgsDict(TypedDict):
     """
     The HTTP request path value should exactly match this value.
     """
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleMatchHeaderArgsDict']]]]]
     """
     Specifies a list of HTTP request headers to match against.
     Structure is documented below.
@@ -5485,7 +5485,7 @@ class HttpRouteRuleMatchArgsDict(TypedDict):
     """
     The HTTP request path value must begin with specified prefixMatch. prefixMatch must begin with a /.
     """
-    query_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgs']]]]]
+    query_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HttpRouteRuleMatchQueryParameterArgsDict']]]]]
     """
     Specifies a list of query parameters to match against.
     Structure is documented below.
@@ -5623,7 +5623,7 @@ class HttpRouteRuleMatchHeaderArgsDict(TypedDict):
     """
     A header with headerName must exist. The match takes place whether or not the header has a value.
     """
-    range_match: NotRequired[pulumi.Input[Optional['HttpRouteRuleMatchHeaderRangeMatchArgs']]]
+    range_match: NotRequired[pulumi.Input[Optional['HttpRouteRuleMatchHeaderRangeMatchArgsDict']]]
     """
     If specified, the rule will match if the request header value is within the range.
     Structure is documented below.
@@ -7847,7 +7847,7 @@ class TcpRouteRuleArgsDict(TypedDict):
     A detailed rule defining how to route traffic.
     Structure is documented below.
     """
-    matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TcpRouteRuleMatchArgs']]]]]
+    matches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TcpRouteRuleMatchArgsDict']]]]]
     """
     RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation.
     If no routeMatch field is specified, this rule will unconditionally match traffic.
@@ -7899,7 +7899,7 @@ class TcpRouteRuleArgs:
 
 
 class TcpRouteRuleActionArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TcpRouteRuleActionDestinationArgsDict']]]]]
     """
     The destination services to which traffic should be forwarded. At least one destination service is required.
     Structure is documented below.
@@ -8135,7 +8135,7 @@ class TlsRouteRuleArgs:
 
 
 class TlsRouteRuleActionArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TlsRouteRuleActionDestinationArgsDict']]]]]
     """
     The destination to which traffic should be forwarded.
     Structure is documented below.

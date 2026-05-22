@@ -276,7 +276,7 @@ class ManagedZoneCloudLoggingConfigArgs:
 
 
 class ManagedZoneDnssecConfigArgsDict(TypedDict):
-    default_key_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgs']]]]]
+    default_key_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZoneDnssecConfigDefaultKeySpecArgsDict']]]]]
     """
     Specifies parameters that will be used for generating initial DnsKeys
     for this ManagedZone. If you provide a spec for keySigning or zoneSigning,
@@ -708,12 +708,12 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 
 
 class ManagedZonePrivateVisibilityConfigArgsDict(TypedDict):
-    gke_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgs']]]]]
+    gke_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGkeClusterArgsDict']]]]]
     """
     The list of Google Kubernetes Engine clusters that can see this zone.
     Structure is documented below.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgsDict']]]]]
     """
     The list of VPC networks that can see this zone. Until the provider updates to use the Terraform 0.12 SDK in a future release, you
     may experience issues with this resource while updating. If you've defined a `networks` block and
@@ -1109,7 +1109,7 @@ class RecordSetRoutingPolicyArgsDict(TypedDict):
     """
     Specifies whether to enable fencing for geo queries.
     """
-    geos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]]]
+    geos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgsDict']]]]]
     """
     The configuration for Geolocation based routing policy.
     Structure is documented below.
@@ -1118,12 +1118,12 @@ class RecordSetRoutingPolicyArgsDict(TypedDict):
     """
     Specifies the health check (used with external endpoints).
     """
-    primary_backup: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyPrimaryBackupArgs']]]
+    primary_backup: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyPrimaryBackupArgsDict']]]
     """
     The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
     Structure is documented below.
     """
-    wrrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]]]
+    wrrs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgsDict']]]]]
     """
     The configuration for Weighted Round Robin based routing policy.
     Structure is documented below.
@@ -1227,7 +1227,7 @@ class RecordSetRoutingPolicyGeoArgsDict(TypedDict):
     """
     The location name defined in Google Cloud.
     """
-    health_checked_targets: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs']]]
+    health_checked_targets: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict']]]
     """
     For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
     Structure is documented below.
@@ -1298,7 +1298,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict(TypedDict):
     """
     The list of external endpoint addresses to health check.
     """
-    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]]]
+    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]]
     """
     The list of internal load balancers to health check.
     Structure is documented below.
@@ -1587,7 +1587,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgsDict(TypedDict):
     """
     The location name defined in Google Cloud.
     """
-    health_checked_targets: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs']]]
+    health_checked_targets: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict']]]
     """
     For A and AAAA types only. The list of targets to be health checked. These can be specified along with `rrdatas` within this item.
     """
@@ -1658,7 +1658,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict(T
     """
     The list of external endpoint addresses to health check.
     """
-    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]]]
+    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]]
     """
     The list of internal load balancers to health check.
     Structure is documented below.
@@ -1854,7 +1854,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryArgsDict(TypedDict):
     """
     The Internet IP addresses to be health checked.
     """
-    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]]]
+    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict']]]]]
     """
     The list of internal load balancers to health check.
     """
@@ -2047,7 +2047,7 @@ class RecordSetRoutingPolicyWrrArgsDict(TypedDict):
     """
     The ratio of traffic routed to the target.
     """
-    health_checked_targets: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs']]]
+    health_checked_targets: NotRequired[pulumi.Input[Optional['RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict']]]
     """
     The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
     Structure is documented below.
@@ -2118,7 +2118,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict(TypedDict):
     """
     The list of external endpoint addresses to health check.
     """
-    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]]]
+    internal_load_balancers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]]
     """
     The list of internal load balancers to health check.
     Structure is documented below.

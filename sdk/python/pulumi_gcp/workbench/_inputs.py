@@ -50,29 +50,29 @@ __all__ = [
 ]
 
 class InstanceGceSetupArgsDict(TypedDict):
-    accelerator_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupAcceleratorConfigArgs']]]]]
+    accelerator_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupAcceleratorConfigArgsDict']]]]]
     """
     The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has
     [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
     Currently supports only one accelerator configuration.
     Structure is documented below.
     """
-    boot_disk: NotRequired[pulumi.Input[Optional['InstanceGceSetupBootDiskArgs']]]
+    boot_disk: NotRequired[pulumi.Input[Optional['InstanceGceSetupBootDiskArgsDict']]]
     """
     The definition of a boot disk.
     Structure is documented below.
     """
-    confidential_instance_config: NotRequired[pulumi.Input[Optional['InstanceGceSetupConfidentialInstanceConfigArgs']]]
+    confidential_instance_config: NotRequired[pulumi.Input[Optional['InstanceGceSetupConfidentialInstanceConfigArgsDict']]]
     """
     Confidential instance configuration.
     Structure is documented below.
     """
-    container_image: NotRequired[pulumi.Input[Optional['InstanceGceSetupContainerImageArgs']]]
+    container_image: NotRequired[pulumi.Input[Optional['InstanceGceSetupContainerImageArgsDict']]]
     """
     Use a container image to start the workbench instance.
     Structure is documented below.
     """
-    data_disks: NotRequired[pulumi.Input[Optional['InstanceGceSetupDataDisksArgs']]]
+    data_disks: NotRequired[pulumi.Input[Optional['InstanceGceSetupDataDisksArgsDict']]]
     """
     Data disks attached to the VM instance. Currently supports only one data disk.
     Structure is documented below.
@@ -94,22 +94,22 @@ class InstanceGceSetupArgsDict(TypedDict):
     """
     Optional. Custom metadata to apply to this instance.
     """
-    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgs']]]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceArgsDict']]]]]
     """
     The network interfaces for the VM. Supports only one interface.
     Structure is documented below.
     """
-    reservation_affinity: NotRequired[pulumi.Input[Optional['InstanceGceSetupReservationAffinityArgs']]]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['InstanceGceSetupReservationAffinityArgsDict']]]
     """
     Reservations that this instance can consume from.
     Structure is documented below.
     """
-    service_accounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgs']]]]]
+    service_accounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupServiceAccountArgsDict']]]]]
     """
     The service account that serves as an identity for the VM instance. Currently supports only one service account.
     Structure is documented below.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['InstanceGceSetupShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['InstanceGceSetupShieldedInstanceConfigArgsDict']]]
     """
     A set of Shielded Instance options. See [Images using supported Shielded
     VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
@@ -121,7 +121,7 @@ class InstanceGceSetupArgsDict(TypedDict):
     Optional. The Compute Engine tags to add to instance (see [Tagging
     instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
     """
-    vm_image: NotRequired[pulumi.Input[Optional['InstanceGceSetupVmImageArgs']]]
+    vm_image: NotRequired[pulumi.Input[Optional['InstanceGceSetupVmImageArgsDict']]]
     """
     Definition of a custom Compute Engine virtual machine image for starting
     a workbench instance with the environment installed directly on the VM.
@@ -765,7 +765,7 @@ class InstanceGceSetupDataDisksArgs:
 
 
 class InstanceGceSetupNetworkInterfaceArgsDict(TypedDict):
-    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceAccessConfigArgs']]]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceGceSetupNetworkInterfaceAccessConfigArgsDict']]]]]
     """
     Optional. An array of configurations for this interface. Currently, only one access
     config, ONE_TO_ONE_NAT, is supported. If no accessConfigs specified, the

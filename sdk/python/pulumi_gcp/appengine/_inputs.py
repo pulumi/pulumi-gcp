@@ -715,7 +715,7 @@ class FlexibleAppVersionAutomaticScalingArgsDict(TypedDict):
     This prevents the autoscaler from collecting information when the instance is initializing,
     during which the collected usage would not be reliable. Default: 120s
     """
-    disk_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingDiskUtilizationArgs']]]
+    disk_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingDiskUtilizationArgsDict']]]
     """
     Target scaling by disk usage.
     Structure is documented below.
@@ -749,12 +749,12 @@ class FlexibleAppVersionAutomaticScalingArgsDict(TypedDict):
     """
     Minimum number of running instances that should be maintained for this version. Default: 2
     """
-    network_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs']]]
+    network_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingNetworkUtilizationArgsDict']]]
     """
     Target scaling by network usage.
     Structure is documented below.
     """
-    request_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingRequestUtilizationArgs']]]
+    request_utilization: NotRequired[pulumi.Input[Optional['FlexibleAppVersionAutomaticScalingRequestUtilizationArgsDict']]]
     """
     Target scaling by request utilization.
     Structure is documented below.
@@ -1248,23 +1248,23 @@ class FlexibleAppVersionAutomaticScalingRequestUtilizationArgs:
 
 
 class FlexibleAppVersionDeploymentArgsDict(TypedDict):
-    cloud_build_options: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentCloudBuildOptionsArgs']]]
+    cloud_build_options: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentCloudBuildOptionsArgsDict']]]
     """
     Options for the build operations performed as a part of the version deployment. Only applicable when creating a version using source code directly.
     Structure is documented below.
     """
-    container: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentContainerArgsDict']]]
     """
     The Docker image for the container that runs the version.
     Structure is documented below.
     """
-    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgs']]]]]
+    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionDeploymentFileArgsDict']]]]]
     """
     Manifest of the files stored in Google Cloud Storage that are included as part of this version.
     All files must be readable using the credentials supplied with this call.
     Structure is documented below.
     """
-    zip: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentZipArgs']]]
+    zip: NotRequired[pulumi.Input[Optional['FlexibleAppVersionDeploymentZipArgsDict']]]
     """
     Zip File
     Structure is documented below.
@@ -1753,7 +1753,7 @@ class FlexibleAppVersionHandlerArgsDict(TypedDict):
     30x code to use when performing redirects for the secure field.
     Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
     """
-    script: NotRequired[pulumi.Input[Optional['FlexibleAppVersionHandlerScriptArgs']]]
+    script: NotRequired[pulumi.Input[Optional['FlexibleAppVersionHandlerScriptArgsDict']]]
     """
     Executes a script to handle the requests that match this URL pattern.
     Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
@@ -1764,7 +1764,7 @@ class FlexibleAppVersionHandlerArgsDict(TypedDict):
     Security (HTTPS) enforcement for this URL.
     Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
     """
-    static_files: NotRequired[pulumi.Input[Optional['FlexibleAppVersionHandlerStaticFilesArgs']]]
+    static_files: NotRequired[pulumi.Input[Optional['FlexibleAppVersionHandlerStaticFilesArgsDict']]]
     """
     Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files.
     Static file handlers describe which files in the application directory are static files, and which URLs serve them.
@@ -2603,7 +2603,7 @@ class FlexibleAppVersionResourcesArgsDict(TypedDict):
     """
     Memory (GB) needed.
     """
-    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgs']]]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FlexibleAppVersionResourcesVolumeArgsDict']]]]]
     """
     List of ports, or port pairs, to forward from the virtual machine to the application container.
     Structure is documented below.
@@ -2835,7 +2835,7 @@ class StandardAppVersionAutomaticScalingArgsDict(TypedDict):
     Minimum amount of time a request should wait in the pending queue before starting a new instance to handle it.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    standard_scheduler_settings: NotRequired[pulumi.Input[Optional['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs']]]
+    standard_scheduler_settings: NotRequired[pulumi.Input[Optional['StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgsDict']]]
     """
     Scheduler settings for standard environment.
     Structure is documented below.
@@ -3096,13 +3096,13 @@ class StandardAppVersionBasicScalingArgs:
 
 
 class StandardAppVersionDeploymentArgsDict(TypedDict):
-    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgs']]]]]
+    files: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StandardAppVersionDeploymentFileArgsDict']]]]]
     """
     Manifest of the files stored in Google Cloud Storage that are included as part of this version.
     All files must be readable using the credentials supplied with this call.
     Structure is documented below.
     """
-    zip: NotRequired[pulumi.Input[Optional['StandardAppVersionDeploymentZipArgs']]]
+    zip: NotRequired[pulumi.Input[Optional['StandardAppVersionDeploymentZipArgsDict']]]
     """
     Zip File
     Structure is documented below.
@@ -3312,7 +3312,7 @@ class StandardAppVersionHandlerArgsDict(TypedDict):
     30x code to use when performing redirects for the secure field.
     Possible values are: `REDIRECT_HTTP_RESPONSE_CODE_301`, `REDIRECT_HTTP_RESPONSE_CODE_302`, `REDIRECT_HTTP_RESPONSE_CODE_303`, `REDIRECT_HTTP_RESPONSE_CODE_307`.
     """
-    script: NotRequired[pulumi.Input[Optional['StandardAppVersionHandlerScriptArgs']]]
+    script: NotRequired[pulumi.Input[Optional['StandardAppVersionHandlerScriptArgsDict']]]
     """
     Executes a script to handle the requests that match this URL pattern.
     Only the auto value is supported for Node.js in the App Engine standard environment, for example "script:" "auto".
@@ -3323,7 +3323,7 @@ class StandardAppVersionHandlerArgsDict(TypedDict):
     Security (HTTPS) enforcement for this URL.
     Possible values are: `SECURE_DEFAULT`, `SECURE_NEVER`, `SECURE_OPTIONAL`, `SECURE_ALWAYS`.
     """
-    static_files: NotRequired[pulumi.Input[Optional['StandardAppVersionHandlerStaticFilesArgs']]]
+    static_files: NotRequired[pulumi.Input[Optional['StandardAppVersionHandlerStaticFilesArgsDict']]]
     """
     Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
     Structure is documented below.

@@ -134,27 +134,27 @@ __all__ = [
 ]
 
 class AddonsConfigAddonsConfigArgsDict(TypedDict):
-    advanced_api_ops_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgs']]]
+    advanced_api_ops_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigAdvancedApiOpsConfigArgsDict']]]
     """
     Configuration for the Advanced API Ops add-on.
     Structure is documented below.
     """
-    api_security_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigApiSecurityConfigArgs']]]
+    api_security_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigApiSecurityConfigArgsDict']]]
     """
     Configuration for the API Security add-on.
     Structure is documented below.
     """
-    connectors_platform_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigConnectorsPlatformConfigArgs']]]
+    connectors_platform_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigConnectorsPlatformConfigArgsDict']]]
     """
     Configuration for the Monetization add-on.
     Structure is documented below.
     """
-    integration_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigIntegrationConfigArgs']]]
+    integration_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigIntegrationConfigArgsDict']]]
     """
     Configuration for the Integration add-on.
     Structure is documented below.
     """
-    monetization_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigMonetizationConfigArgs']]]
+    monetization_config: NotRequired[pulumi.Input[Optional['AddonsConfigAddonsConfigMonetizationConfigArgsDict']]]
     """
     Configuration for the Monetization add-on.
     Structure is documented below.
@@ -572,7 +572,7 @@ class ApiProductGraphqlOperationGroupArgsDict(TypedDict):
     Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
     Possible values are: `proxy`, `remoteservice`.
     """
-    operation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgs']]]]]
+    operation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigArgsDict']]]]]
     """
     List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
     Structure is documented below.
@@ -626,18 +626,18 @@ class ApiProductGraphqlOperationGroupOperationConfigArgsDict(TypedDict):
     """
     Required. Name of the API proxy with which the gRPC operation and quota are associated.
     """
-    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgs']]]]]
+    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigAttributeArgsDict']]]]]
     """
     Custom attributes associated with the operation.
     Structure is documented below.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGraphqlOperationGroupOperationConfigOperationArgsDict']]]]]
     """
     Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
     Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
     Structure is documented below.
     """
-    quota: NotRequired[pulumi.Input[Optional['ApiProductGraphqlOperationGroupOperationConfigQuotaArgs']]]
+    quota: NotRequired[pulumi.Input[Optional['ApiProductGraphqlOperationGroupOperationConfigQuotaArgsDict']]]
     """
     Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
     Structure is documented below.
@@ -893,7 +893,7 @@ class ApiProductGraphqlOperationGroupOperationConfigQuotaArgs:
 
 
 class ApiProductGrpcOperationGroupArgsDict(TypedDict):
-    operation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgs']]]]]
+    operation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigArgsDict']]]]]
     """
     Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
     Structure is documented below.
@@ -929,7 +929,7 @@ class ApiProductGrpcOperationGroupOperationConfigArgsDict(TypedDict):
     """
     Required. Name of the API proxy with which the gRPC operation and quota are associated.
     """
-    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgs']]]]]
+    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductGrpcOperationGroupOperationConfigAttributeArgsDict']]]]]
     """
     Custom attributes associated with the operation.
     Structure is documented below.
@@ -940,7 +940,7 @@ class ApiProductGrpcOperationGroupOperationConfigArgsDict(TypedDict):
     Example: Given a proxy that is configured to serve com.petstore.PetService, the methods com.petstore.PetService.ListPets and com.petstore.PetService.GetPet would be specified here as simply ["ListPets", "GetPet"].
     Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
     """
-    quota: NotRequired[pulumi.Input[Optional['ApiProductGrpcOperationGroupOperationConfigQuotaArgs']]]
+    quota: NotRequired[pulumi.Input[Optional['ApiProductGrpcOperationGroupOperationConfigQuotaArgsDict']]]
     """
     Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
     Structure is documented below.
@@ -1169,7 +1169,7 @@ class ApiProductOperationGroupArgsDict(TypedDict):
     Flag that specifes whether the configuration is for Apigee API proxy or a remote service. Valid values include proxy or remoteservice. Defaults to proxy. Set to proxy when Apigee API proxies are associated with the API product. Set to remoteservice when non-Apigee proxies like Istio-Envoy are associated with the API product.
     Possible values are: `proxy`, `remoteservice`.
     """
-    operation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgs']]]]]
+    operation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigArgsDict']]]]]
     """
     Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
     Structure is documented below.
@@ -1223,18 +1223,18 @@ class ApiProductOperationGroupOperationConfigArgsDict(TypedDict):
     """
     Required. Name of the API proxy with which the gRPC operation and quota are associated.
     """
-    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgs']]]]]
+    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigAttributeArgsDict']]]]]
     """
     Custom attributes associated with the operation.
     Structure is documented below.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiProductOperationGroupOperationConfigOperationArgsDict']]]]]
     """
     Required. List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name.
     Note: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
     Structure is documented below.
     """
-    quota: NotRequired[pulumi.Input[Optional['ApiProductOperationGroupOperationConfigQuotaArgs']]]
+    quota: NotRequired[pulumi.Input[Optional['ApiProductOperationGroupOperationConfigQuotaArgsDict']]]
     """
     Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
     Structure is documented below.
@@ -1585,11 +1585,11 @@ class DeveloperAppAttributeArgs:
 
 
 class DeveloperAppCredentialArgsDict(TypedDict):
-    api_products: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgs']]]]]
+    api_products: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppCredentialApiProductArgsDict']]]]]
     """
     List of API products associated with the developer app.
     """
-    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgs']]]]]
+    attributes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeveloperAppCredentialAttributeArgsDict']]]]]
     """
     Developer attributes (name/value pairs). The custom attribute limit is 18.
     Structure is documented below.
@@ -1975,7 +1975,7 @@ class DnsZonePeeringConfigArgs:
 
 
 class EnvironmentClientIpResolutionConfigArgsDict(TypedDict):
-    header_index_algorithm: NotRequired[pulumi.Input[Optional['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgs']]]
+    header_index_algorithm: NotRequired[pulumi.Input[Optional['EnvironmentClientIpResolutionConfigHeaderIndexAlgorithmArgsDict']]]
     """
     Resolves the client ip based on a custom header.
     Structure is documented below.
@@ -2229,7 +2229,7 @@ class EnvironmentNodeConfigArgs:
 
 
 class EnvironmentPropertiesArgsDict(TypedDict):
-    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgs']]]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgsDict']]]]]
     """
     List of all properties in the object.
     Structure is documented below.
@@ -2710,7 +2710,7 @@ class KeystoresAliasesKeyCertFileTimeoutsArgs:
 
 
 class KeystoresAliasesPkcs12CertsInfoArgsDict(TypedDict):
-    cert_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgs']]]]]
+    cert_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesPkcs12CertsInfoCertInfoArgsDict']]]]]
     """
     (Output)
     List of all properties in the object.
@@ -3010,7 +3010,7 @@ class KeystoresAliasesPkcs12CertsInfoCertInfoArgs:
 
 
 class KeystoresAliasesSelfSignedCertCertsInfoArgsDict(TypedDict):
-    cert_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgs']]]]]
+    cert_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['KeystoresAliasesSelfSignedCertCertsInfoCertInfoArgsDict']]]]]
     """
     (Output)
     List of all properties in the object.
@@ -3488,7 +3488,7 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs:
 
 
 class OrganizationPropertiesArgsDict(TypedDict):
-    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgs']]]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OrganizationPropertiesPropertyArgsDict']]]]]
     """
     List of all properties in the object.
     Structure is documented below.
@@ -3848,7 +3848,7 @@ class SecurityActionDenyArgs:
 
 
 class SecurityActionFlagArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityActionFlagHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityActionFlagHeaderArgsDict']]]]]
     """
     A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
     Limit 5 headers per SecurityAction.
@@ -4125,7 +4125,7 @@ class TargetServerSSlInfoArgsDict(TypedDict):
     """
     Enables two-way TLS.
     """
-    common_name: NotRequired[pulumi.Input[Optional['TargetServerSSlInfoCommonNameArgs']]]
+    common_name: NotRequired[pulumi.Input[Optional['TargetServerSSlInfoCommonNameArgsDict']]]
     """
     The TLS Common Name of the certificate.
     Structure is documented below.

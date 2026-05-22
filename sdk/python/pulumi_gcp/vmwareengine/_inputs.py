@@ -225,17 +225,17 @@ class ClusterAutoscalingSettingsAutoscalingPolicyArgsDict(TypedDict):
     Number of nodes to add to a cluster during a scale-out operation.
     Must be divisible by 2 for stretched clusters.
     """
-    consumed_memory_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]]
+    consumed_memory_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]]
     """
     Utilization thresholds pertaining to amount of consumed memory.
     Structure is documented below.
     """
-    cpu_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]]
+    cpu_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]]
     """
     Utilization thresholds pertaining to CPU utilization.
     Structure is documented below.
     """
-    storage_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]]
+    storage_thresholds: NotRequired[pulumi.Input[Optional['ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]]
     """
     Utilization thresholds pertaining to amount of consumed storage.
     Structure is documented below.
@@ -904,12 +904,12 @@ class ClusterNodeTypeConfigArgs:
 
 
 class DatastoreNfsDatastoreArgsDict(TypedDict):
-    google_file_service: NotRequired[pulumi.Input[Optional['DatastoreNfsDatastoreGoogleFileServiceArgs']]]
+    google_file_service: NotRequired[pulumi.Input[Optional['DatastoreNfsDatastoreGoogleFileServiceArgsDict']]]
     """
     Google service file service configuration
     Structure is documented below.
     """
-    third_party_file_service: NotRequired[pulumi.Input[Optional['DatastoreNfsDatastoreThirdPartyFileServiceArgs']]]
+    third_party_file_service: NotRequired[pulumi.Input[Optional['DatastoreNfsDatastoreThirdPartyFileServiceArgsDict']]]
     """
     Third party file service configuration
     Structure is documented below.
@@ -1459,19 +1459,19 @@ class PrivateCloudManagementClusterArgsDict(TypedDict):
     * Not formatted as a UUID
     * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
     """
-    autoscaling_settings: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsArgs']]]
+    autoscaling_settings: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsArgsDict']]]
     """
     Configuration of the autoscaling applied to this cluster
     Private cloud must have a minimum of 3 nodes to add autoscale settings
     Structure is documented below.
     """
-    node_type_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgs']]]]]
+    node_type_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PrivateCloudManagementClusterNodeTypeConfigArgsDict']]]]]
     """
     The map of cluster node types in this cluster,
     where the key is canonical identifier of the node type (corresponds to the NodeType).
     Structure is documented below.
     """
-    stretched_cluster_config: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterStretchedClusterConfigArgs']]]
+    stretched_cluster_config: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterStretchedClusterConfigArgsDict']]]
     """
     The stretched cluster configuration for the private cloud.
     Structure is documented below.
@@ -1717,17 +1717,17 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyArgsDict(
     Number of nodes to add to a cluster during a scale-out operation.
     Must be divisible by 2 for stretched clusters.
     """
-    consumed_memory_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgs']]]
+    consumed_memory_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyConsumedMemoryThresholdsArgsDict']]]
     """
     Utilization thresholds pertaining to amount of consumed memory.
     Structure is documented below.
     """
-    cpu_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgs']]]
+    cpu_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholdsArgsDict']]]
     """
     Utilization thresholds pertaining to CPU utilization.
     Structure is documented below.
     """
-    storage_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgs']]]
+    storage_thresholds: NotRequired[pulumi.Input[Optional['PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholdsArgsDict']]]
     """
     Utilization thresholds pertaining to amount of consumed storage.
     Structure is documented below.

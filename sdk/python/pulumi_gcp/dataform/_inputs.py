@@ -54,7 +54,7 @@ class RepositoryGitRemoteSettingsArgsDict(TypedDict):
     """
     The name of the Secret Manager secret version to use as an authentication token for Git operations. This secret is for assigning with HTTPS only(for SSH use `ssh_authentication_config`). Must be in the format projects/*/secrets/*/versions/*.
     """
-    ssh_authentication_config: NotRequired[pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgs']]]
+    ssh_authentication_config: NotRequired[pulumi.Input[Optional['RepositoryGitRemoteSettingsSshAuthenticationConfigArgsDict']]]
     """
     Authentication fields for remote uris using SSH protocol.
     Structure is documented below.
@@ -473,7 +473,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordArgsDict(TypedDict):
     (Output)
     The name of the created compilation result, if one was successfully created. Must be in the format projects/*/locations/*/repositories/*/compilationResults/*.
     """
-    error_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgs']]]]]
+    error_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatusArgsDict']]]]]
     """
     (Output)
     The error status encountered upon this attempt to create the compilation result, if the attempt was unsuccessful.
@@ -612,7 +612,7 @@ class RepositoryWorkflowConfigInvocationConfigArgsDict(TypedDict):
     """
     Optional. The set of tags to include.
     """
-    included_targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs']]]]]
+    included_targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigInvocationConfigIncludedTargetArgsDict']]]]]
     """
     Optional. The set of action identifiers to include.
     Structure is documented below.
@@ -805,7 +805,7 @@ class RepositoryWorkflowConfigInvocationConfigIncludedTargetArgs:
 
 
 class RepositoryWorkflowConfigRecentScheduledExecutionRecordArgsDict(TypedDict):
-    error_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgs']]]]]
+    error_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatusArgsDict']]]]]
     """
     (Output)
     The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful.

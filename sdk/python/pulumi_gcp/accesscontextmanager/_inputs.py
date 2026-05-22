@@ -303,7 +303,7 @@ class AccessLevelBasicArgs:
 
 
 class AccessLevelBasicConditionArgsDict(TypedDict):
-    device_policy: NotRequired[pulumi.Input[Optional['AccessLevelBasicConditionDevicePolicyArgs']]]
+    device_policy: NotRequired[pulumi.Input[Optional['AccessLevelBasicConditionDevicePolicyArgsDict']]]
     """
     Device specific restrictions, all restrictions must hold for
     the Condition to be true. If not specified, all devices are
@@ -353,7 +353,7 @@ class AccessLevelBasicConditionArgsDict(TypedDict):
     granted for the Condition to be true.
     Format: accessPolicies/{policy_id}/accessLevels/{short_name}
     """
-    vpc_network_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArgs']]]]]
+    vpc_network_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelBasicConditionVpcNetworkSourceArgsDict']]]]]
     """
     The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
     Structure is documented below.
@@ -545,7 +545,7 @@ class AccessLevelBasicConditionDevicePolicyArgsDict(TypedDict):
     An empty list allows all statuses.
     Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
     """
-    os_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]]
+    os_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelBasicConditionDevicePolicyOsConstraintArgsDict']]]]]
     """
     A list of allowed OS versions.
     An empty list allows all types and all versions.
@@ -760,7 +760,7 @@ class AccessLevelBasicConditionDevicePolicyOsConstraintArgs:
 
 
 class AccessLevelBasicConditionVpcNetworkSourceArgsDict(TypedDict):
-    vpc_subnetwork: NotRequired[pulumi.Input[Optional['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']]]
+    vpc_subnetwork: NotRequired[pulumi.Input[Optional['AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgsDict']]]
     """
     Sub networks within a VPC network.
     Structure is documented below.
@@ -852,7 +852,7 @@ class AccessLevelConditionDevicePolicyArgsDict(TypedDict):
     An empty list allows all statuses.
     Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
     """
-    os_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgs']]]]]
+    os_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelConditionDevicePolicyOsConstraintArgsDict']]]]]
     """
     A list of allowed OS versions.
     An empty list allows all types and all versions.
@@ -1047,7 +1047,7 @@ class AccessLevelConditionDevicePolicyOsConstraintArgs:
 
 
 class AccessLevelConditionVpcNetworkSourceArgsDict(TypedDict):
-    vpc_subnetwork: NotRequired[pulumi.Input[Optional['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgs']]]
+    vpc_subnetwork: NotRequired[pulumi.Input[Optional['AccessLevelConditionVpcNetworkSourceVpcSubnetworkArgsDict']]]
     """
     Sub networks within a VPC network.
     Structure is documented below.
@@ -1262,12 +1262,12 @@ class AccessLevelsAccessLevelArgsDict(TypedDict):
     """
     Human readable title. Must be unique within the Policy.
     """
-    basic: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelBasicArgs']]]
+    basic: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelBasicArgsDict']]]
     """
     A set of predefined conditions for the access level and a combining function.
     Structure is documented below.
     """
-    custom: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelCustomArgs']]]
+    custom: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelCustomArgsDict']]]
     """
     Custom access level conditions are set using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request.
     See CEL spec at: https://github.com/google/cel-spec.
@@ -1443,7 +1443,7 @@ class AccessLevelsAccessLevelBasicArgs:
 
 
 class AccessLevelsAccessLevelBasicConditionArgsDict(TypedDict):
-    device_policy: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelBasicConditionDevicePolicyArgs']]]
+    device_policy: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelBasicConditionDevicePolicyArgsDict']]]
     """
     Device specific restrictions, all restrictions must hold for
     the Condition to be true. If not specified, all devices are
@@ -1493,7 +1493,7 @@ class AccessLevelsAccessLevelBasicConditionArgsDict(TypedDict):
     granted for the Condition to be true.
     Format: accessPolicies/{policy_id}/accessLevels/{short_name}
     """
-    vpc_network_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgs']]]]]
+    vpc_network_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgsDict']]]]]
     """
     The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field together with `ip_subnetworks`.
     Structure is documented below.
@@ -1685,7 +1685,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyArgsDict(TypedDict):
     An empty list allows all statuses.
     Each value may be one of: `ENCRYPTION_UNSPECIFIED`, `ENCRYPTION_UNSUPPORTED`, `UNENCRYPTED`, `ENCRYPTED`.
     """
-    os_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs']]]]]
+    os_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgsDict']]]]]
     """
     A list of allowed OS versions.
     An empty list allows all types and all versions.
@@ -1880,7 +1880,7 @@ class AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs:
 
 
 class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceArgsDict(TypedDict):
-    vpc_subnetwork: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs']]]
+    vpc_subnetwork: NotRequired[pulumi.Input[Optional['AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgsDict']]]
     """
     Sub networks within a VPC network.
     Structure is documented below.
@@ -2173,17 +2173,17 @@ class AccessPolicyIamMemberConditionArgs:
 
 
 class GcpUserAccessBindingScopedAccessSettingArgsDict(TypedDict):
-    active_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingActiveSettingsArgs']]]
+    active_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingActiveSettingsArgsDict']]]
     """
     Optional. Access settings for this scoped access settings. This field may be empty if dryRunSettings is set.
     Structure is documented below.
     """
-    dry_run_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs']]]
+    dry_run_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgsDict']]]
     """
     Optional. Dry-run access settings for this scoped access settings. This field may be empty if activeSettings is set. Cannot contain session settings.
     Structure is documented below.
     """
-    scope: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeArgs']]]
+    scope: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeArgsDict']]]
     """
     Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty.
     Structure is documented below.
@@ -2255,7 +2255,7 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettingsArgsDict(TypedDict):
     """
     Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
     """
-    session_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgs']]]
+    session_settings: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettingsArgsDict']]]
     """
     Optional. Session settings applied to user access on a given AccessScope.
     Structure is documented below.
@@ -2444,7 +2444,7 @@ class GcpUserAccessBindingScopedAccessSettingDryRunSettingsArgs:
 
 
 class GcpUserAccessBindingScopedAccessSettingScopeArgsDict(TypedDict):
-    client_scope: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgs']]]
+    client_scope: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgsDict']]]
     """
     Optional. Client scope for this access scope.
     Structure is documented below.
@@ -2476,7 +2476,7 @@ class GcpUserAccessBindingScopedAccessSettingScopeArgs:
 
 
 class GcpUserAccessBindingScopedAccessSettingScopeClientScopeArgsDict(TypedDict):
-    restricted_client_application: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgs']]]
+    restricted_client_application: NotRequired[pulumi.Input[Optional['GcpUserAccessBindingScopedAccessSettingScopeClientScopeRestrictedClientApplicationArgsDict']]]
     """
     Optional. The application that is subject to this binding's scope. Only one of clientId or name should be specified.
     Structure is documented below.
@@ -2689,7 +2689,7 @@ class ServicePerimeterDryRunEgressPolicyEgressFromArgsDict(TypedDict):
     Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
     Possible values are: `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromSourceArgsDict']]]]]
     """
     Sources that this EgressPolicy authorizes access from.
     Structure is documented below.
@@ -2855,7 +2855,7 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgsDict(TypedDict):
     matches if it contains an external resource in this list (Example:
     s3://bucket/path). Currently '*' is not allowed.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` that this egress rule applies to. A request matches
     if it contains an operation/service in this list.
@@ -2968,7 +2968,7 @@ class ServicePerimeterDryRunEgressPolicyEgressToArgs:
 
 
 class ServicePerimeterDryRunEgressPolicyEgressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -3108,7 +3108,7 @@ class ServicePerimeterDryRunIngressPolicyIngressFromArgsDict(TypedDict):
     allowed access.
     Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressFromSourceArgsDict']]]]]
     """
     Sources that this `IngressPolicy` authorizes access from.
     Structure is documented below.
@@ -3271,7 +3271,7 @@ class ServicePerimeterDryRunIngressPolicyIngressFromSourceArgs:
 
 
 class ServicePerimeterDryRunIngressPolicyIngressToArgsDict(TypedDict):
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
     are allowed to perform in this `ServicePerimeter`.
@@ -3373,7 +3373,7 @@ class ServicePerimeterDryRunIngressPolicyIngressToArgs:
 
 
 class ServicePerimeterDryRunIngressPolicyIngressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong to
     the service specified by serviceName field. A single `MethodSelector` entry
@@ -3518,7 +3518,7 @@ class ServicePerimeterEgressPolicyEgressFromArgsDict(TypedDict):
     Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
     Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressFromSourceArgsDict']]]]]
     """
     Sources that this EgressPolicy authorizes access from.
     Structure is documented below.
@@ -3684,7 +3684,7 @@ class ServicePerimeterEgressPolicyEgressToArgsDict(TypedDict):
     matches if it contains an external resource in this list (Example:
     s3://bucket/path). Currently '*' is not allowed.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` that this egress rule applies to. A request matches
     if it contains an operation/service in this list.
@@ -3797,7 +3797,7 @@ class ServicePerimeterEgressPolicyEgressToArgs:
 
 
 class ServicePerimeterEgressPolicyEgressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -3937,7 +3937,7 @@ class ServicePerimeterIngressPolicyIngressFromArgsDict(TypedDict):
     allowed access.
     Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgsDict']]]]]
     """
     Sources that this `IngressPolicy` authorizes access from.
     Structure is documented below.
@@ -4109,7 +4109,7 @@ class ServicePerimeterIngressPolicyIngressFromSourceArgs:
 
 
 class ServicePerimeterIngressPolicyIngressToArgsDict(TypedDict):
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
     are allowed to perform in this `ServicePerimeter`.
@@ -4211,7 +4211,7 @@ class ServicePerimeterIngressPolicyIngressToArgs:
 
 
 class ServicePerimeterIngressPolicyIngressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong to
     the service specified by serviceName field. A single `MethodSelector` entry
@@ -4348,7 +4348,7 @@ class ServicePerimeterSpecArgsDict(TypedDict):
     be empty.
     Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
     """
-    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArgs']]]]]
+    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyArgsDict']]]]]
     """
     List of EgressPolicies to apply to the perimeter. A perimeter may
     have multiple EgressPolicies, each of which is evaluated separately.
@@ -4356,7 +4356,7 @@ class ServicePerimeterSpecArgsDict(TypedDict):
     a perimeter bridge.
     Structure is documented below.
     """
-    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArgs']]]]]
+    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyArgsDict']]]]]
     """
     List of `IngressPolicies` to apply to the perimeter. A perimeter may
     have multiple `IngressPolicies`, each of which is evaluated
@@ -4378,7 +4378,7 @@ class ServicePerimeterSpecArgsDict(TypedDict):
     buckets inside the perimeter must meet the perimeter's access
     restrictions.
     """
-    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecVpcAccessibleServicesArgs']]]
+    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecVpcAccessibleServicesArgsDict']]]
     """
     Specifies how APIs are allowed to communicate within the Service
     Perimeter.
@@ -4537,12 +4537,12 @@ class ServicePerimeterSpecArgs:
 
 
 class ServicePerimeterSpecEgressPolicyArgsDict(TypedDict):
-    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressFromArgs']]]
+    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressFromArgsDict']]]
     """
     Defines conditions on the source of a request causing this `EgressPolicy` to apply.
     Structure is documented below.
     """
-    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressToArgs']]]
+    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecEgressPolicyEgressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and destination resources that
     cause this `EgressPolicy` to apply.
@@ -4633,7 +4633,7 @@ class ServicePerimeterSpecEgressPolicyEgressFromArgsDict(TypedDict):
     Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
     Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict']]]]]
     """
     Sources that this EgressPolicy authorizes access from.
     Structure is documented below.
@@ -4795,7 +4795,7 @@ class ServicePerimeterSpecEgressPolicyEgressToArgsDict(TypedDict):
     matches if it contains an external resource in this list (Example:
     s3://bucket/path). Currently '*' is not allowed.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` that this egress rule applies to. A request matches
     if it contains an operation/service in this list.
@@ -4908,7 +4908,7 @@ class ServicePerimeterSpecEgressPolicyEgressToArgs:
 
 
 class ServicePerimeterSpecEgressPolicyEgressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -5033,13 +5033,13 @@ class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs:
 
 
 class ServicePerimeterSpecIngressPolicyArgsDict(TypedDict):
-    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressFromArgs']]]
+    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressFromArgsDict']]]
     """
     Defines the conditions on the source of a request causing this `IngressPolicy`
     to apply.
     Structure is documented below.
     """
-    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressToArgs']]]
+    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterSpecIngressPolicyIngressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and request destination that cause
     this `IngressPolicy` to apply.
@@ -5127,7 +5127,7 @@ class ServicePerimeterSpecIngressPolicyIngressFromArgsDict(TypedDict):
     allowed access.
     Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressFromSourceArgsDict']]]]]
     """
     Sources that this `IngressPolicy` authorizes access from.
     Structure is documented below.
@@ -5265,7 +5265,7 @@ class ServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
 
 
 class ServicePerimeterSpecIngressPolicyIngressToArgsDict(TypedDict):
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
     are allowed to perform in this `ServicePerimeter`.
@@ -5367,7 +5367,7 @@ class ServicePerimeterSpecIngressPolicyIngressToArgs:
 
 
 class ServicePerimeterSpecIngressPolicyIngressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -5559,7 +5559,7 @@ class ServicePerimeterStatusArgsDict(TypedDict):
     be empty.
     Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
     """
-    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArgs']]]]]
+    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyArgsDict']]]]]
     """
     List of EgressPolicies to apply to the perimeter. A perimeter may
     have multiple EgressPolicies, each of which is evaluated separately.
@@ -5567,7 +5567,7 @@ class ServicePerimeterStatusArgsDict(TypedDict):
     a perimeter bridge.
     Structure is documented below.
     """
-    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArgs']]]]]
+    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyArgsDict']]]]]
     """
     List of `IngressPolicies` to apply to the perimeter. A perimeter may
     have multiple `IngressPolicies`, each of which is evaluated
@@ -5589,7 +5589,7 @@ class ServicePerimeterStatusArgsDict(TypedDict):
     buckets inside the perimeter must meet the perimeter's access
     restrictions.
     """
-    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusVpcAccessibleServicesArgs']]]
+    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusVpcAccessibleServicesArgsDict']]]
     """
     Specifies how APIs are allowed to communicate within the Service
     Perimeter.
@@ -5748,12 +5748,12 @@ class ServicePerimeterStatusArgs:
 
 
 class ServicePerimeterStatusEgressPolicyArgsDict(TypedDict):
-    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressFromArgs']]]
+    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressFromArgsDict']]]
     """
     Defines conditions on the source of a request causing this `EgressPolicy` to apply.
     Structure is documented below.
     """
-    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressToArgs']]]
+    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusEgressPolicyEgressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and destination resources that
     cause this `EgressPolicy` to apply.
@@ -5844,7 +5844,7 @@ class ServicePerimeterStatusEgressPolicyEgressFromArgsDict(TypedDict):
     Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
     Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressFromSourceArgsDict']]]]]
     """
     Sources that this EgressPolicy authorizes access from.
     Structure is documented below.
@@ -6006,7 +6006,7 @@ class ServicePerimeterStatusEgressPolicyEgressToArgsDict(TypedDict):
     matches if it contains an external resource in this list (Example:
     s3://bucket/path). Currently '*' is not allowed.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` that this egress rule applies to. A request matches
     if it contains an operation/service in this list.
@@ -6119,7 +6119,7 @@ class ServicePerimeterStatusEgressPolicyEgressToArgs:
 
 
 class ServicePerimeterStatusEgressPolicyEgressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -6244,13 +6244,13 @@ class ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs:
 
 
 class ServicePerimeterStatusIngressPolicyArgsDict(TypedDict):
-    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressFromArgs']]]
+    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressFromArgsDict']]]
     """
     Defines the conditions on the source of a request causing this `IngressPolicy`
     to apply.
     Structure is documented below.
     """
-    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressToArgs']]]
+    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimeterStatusIngressPolicyIngressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and request destination that cause
     this `IngressPolicy` to apply.
@@ -6338,7 +6338,7 @@ class ServicePerimeterStatusIngressPolicyIngressFromArgsDict(TypedDict):
     allowed access.
     Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressFromSourceArgsDict']]]]]
     """
     Sources that this `IngressPolicy` authorizes access from.
     Structure is documented below.
@@ -6476,7 +6476,7 @@ class ServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
 
 
 class ServicePerimeterStatusIngressPolicyIngressToArgsDict(TypedDict):
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
     are allowed to perform in this `ServicePerimeter`.
@@ -6578,7 +6578,7 @@ class ServicePerimeterStatusIngressPolicyIngressToArgs:
 
 
 class ServicePerimeterStatusIngressPolicyIngressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -6797,7 +6797,7 @@ class ServicePerimetersServicePerimeterArgsDict(TypedDict):
     Default value is `PERIMETER_TYPE_REGULAR`.
     Possible values are: `PERIMETER_TYPE_REGULAR`, `PERIMETER_TYPE_BRIDGE`.
     """
-    spec: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecArgs']]]
+    spec: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecArgsDict']]]
     """
     Proposed (or dry run) ServicePerimeter configuration.
     This configuration allows to specify and test ServicePerimeter configuration
@@ -6805,7 +6805,7 @@ class ServicePerimetersServicePerimeterArgsDict(TypedDict):
     the `useExplicitDryRunSpec` flag is set.
     Structure is documented below.
     """
-    status: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusArgs']]]
+    status: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusArgsDict']]]
     """
     ServicePerimeter configuration. Specifies sets of resources,
     restricted services and access levels that determine
@@ -7062,7 +7062,7 @@ class ServicePerimetersServicePerimeterSpecArgsDict(TypedDict):
     be empty.
     Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
     """
-    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArgs']]]]]
+    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyArgsDict']]]]]
     """
     List of EgressPolicies to apply to the perimeter. A perimeter may
     have multiple EgressPolicies, each of which is evaluated separately.
@@ -7070,7 +7070,7 @@ class ServicePerimetersServicePerimeterSpecArgsDict(TypedDict):
     a perimeter bridge.
     Structure is documented below.
     """
-    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArgs']]]]]
+    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyArgsDict']]]]]
     """
     List of `IngressPolicies` to apply to the perimeter. A perimeter may
     have multiple `IngressPolicies`, each of which is evaluated
@@ -7092,7 +7092,7 @@ class ServicePerimetersServicePerimeterSpecArgsDict(TypedDict):
     buckets inside the perimeter must meet the perimeter's access
     restrictions.
     """
-    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgs']]]
+    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecVpcAccessibleServicesArgsDict']]]
     """
     Specifies how APIs are allowed to communicate within the Service
     Perimeter.
@@ -7251,12 +7251,12 @@ class ServicePerimetersServicePerimeterSpecArgs:
 
 
 class ServicePerimetersServicePerimeterSpecEgressPolicyArgsDict(TypedDict):
-    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs']]]
+    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgsDict']]]
     """
     Defines conditions on the source of a request causing this `EgressPolicy` to apply.
     Structure is documented below.
     """
-    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs']]]
+    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and destination resources that
     cause this `EgressPolicy` to apply.
@@ -7349,7 +7349,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgsDict(TypedD
     Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
     Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSourceArgsDict']]]]]
     """
     Sources that this EgressPolicy authorizes access from.
     Structure is documented below.
@@ -7515,7 +7515,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgsDict(TypedDic
     matches if it contains an external resource in this list (Example:
     s3://bucket/path). Currently '*' is not allowed.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` that this egress rule applies to. A request matches
     if it contains an operation/service in this list.
@@ -7628,7 +7628,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs:
 
 
 class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -7753,13 +7753,13 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSe
 
 
 class ServicePerimetersServicePerimeterSpecIngressPolicyArgsDict(TypedDict):
-    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs']]]
+    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgsDict']]]
     """
     Defines the conditions on the source of a request causing this `IngressPolicy`
     to apply.
     Structure is documented below.
     """
-    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs']]]
+    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and request destination that cause
     this `IngressPolicy` to apply.
@@ -7847,7 +7847,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgsDict(Type
     allowed access.
     Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgsDict']]]]]
     """
     Sources that this `IngressPolicy` authorizes access from.
     Structure is documented below.
@@ -7985,7 +7985,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs:
 
 
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgsDict(TypedDict):
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
     are allowed to perform in this `ServicePerimeter`.
@@ -8087,7 +8087,7 @@ class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs:
 
 
 class ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -8279,7 +8279,7 @@ class ServicePerimetersServicePerimeterStatusArgsDict(TypedDict):
     be empty.
     Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
     """
-    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArgs']]]]]
+    egress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyArgsDict']]]]]
     """
     List of EgressPolicies to apply to the perimeter. A perimeter may
     have multiple EgressPolicies, each of which is evaluated separately.
@@ -8287,7 +8287,7 @@ class ServicePerimetersServicePerimeterStatusArgsDict(TypedDict):
     a perimeter bridge.
     Structure is documented below.
     """
-    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArgs']]]]]
+    ingress_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyArgsDict']]]]]
     """
     List of `IngressPolicies` to apply to the perimeter. A perimeter may
     have multiple `IngressPolicies`, each of which is evaluated
@@ -8309,7 +8309,7 @@ class ServicePerimetersServicePerimeterStatusArgsDict(TypedDict):
     buckets inside the perimeter must meet the perimeter's access
     restrictions.
     """
-    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs']]]
+    vpc_accessible_services: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgsDict']]]
     """
     Specifies how APIs are allowed to communicate within the Service
     Perimeter.
@@ -8468,12 +8468,12 @@ class ServicePerimetersServicePerimeterStatusArgs:
 
 
 class ServicePerimetersServicePerimeterStatusEgressPolicyArgsDict(TypedDict):
-    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs']]]
+    egress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgsDict']]]
     """
     Defines conditions on the source of a request causing this `EgressPolicy` to apply.
     Structure is documented below.
     """
-    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs']]]
+    egress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and destination resources that
     cause this `EgressPolicy` to apply.
@@ -8566,7 +8566,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgsDict(Type
     Whether to enforce traffic restrictions based on `sources` field. If the `sources` field is non-empty, then this field must be set to `SOURCE_RESTRICTION_ENABLED`.
     Possible values are: `SOURCE_RESTRICTION_UNSPECIFIED`, `SOURCE_RESTRICTION_ENABLED`, `SOURCE_RESTRICTION_DISABLED`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSourceArgsDict']]]]]
     """
     Sources that this EgressPolicy authorizes access from.
     Structure is documented below.
@@ -8732,7 +8732,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgsDict(TypedD
     matches if it contains an external resource in this list (Example:
     s3://bucket/path). Currently '*' is not allowed.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` that this egress rule applies to. A request matches
     if it contains an operation/service in this list.
@@ -8845,7 +8845,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs:
 
 
 class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector
@@ -8970,13 +8970,13 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethod
 
 
 class ServicePerimetersServicePerimeterStatusIngressPolicyArgsDict(TypedDict):
-    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs']]]
+    ingress_from: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgsDict']]]
     """
     Defines the conditions on the source of a request causing this `IngressPolicy`
     to apply.
     Structure is documented below.
     """
-    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs']]]
+    ingress_to: NotRequired[pulumi.Input[Optional['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgsDict']]]
     """
     Defines the conditions on the `ApiOperation` and request destination that cause
     this `IngressPolicy` to apply.
@@ -9064,7 +9064,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgsDict(Ty
     allowed access.
     Possible values are: `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgsDict']]]]]
     """
     Sources that this `IngressPolicy` authorizes access from.
     Structure is documented below.
@@ -9202,7 +9202,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs:
 
 
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgsDict(TypedDict):
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgsDict']]]]]
     """
     A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
     are allowed to perform in this `ServicePerimeter`.
@@ -9304,7 +9304,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs:
 
 
 class ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgsDict(TypedDict):
-    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs']]]]]
+    method_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgsDict']]]]]
     """
     API methods or permissions to allow. Method or permission must belong
     to the service specified by `serviceName` field. A single MethodSelector

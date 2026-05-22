@@ -83,11 +83,11 @@ class EnvironmentConfigArgsDict(TypedDict):
     object name prefixes. DAG objects for this environment
     reside in a simulated directory with this prefix.
     """
-    data_retention_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigDataRetentionConfigArgs']]]
+    data_retention_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigDataRetentionConfigArgsDict']]]
     """
     The configuration setting for Airflow data retention mechanism. This field is supported for Cloud Composer environments in versions composer-2.0.32-airflow-2.1.4. or newer
     """
-    database_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigDatabaseConfigArgs']]]
+    database_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigDatabaseConfigArgsDict']]]
     """
     The configuration of Cloud SQL instance that is used by the Apache Airflow software. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
     """
@@ -99,7 +99,7 @@ class EnvironmentConfigArgsDict(TypedDict):
     """
     Optional. If true, a private Composer environment will be created.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigEncryptionConfigArgsDict']]]
     """
     The encryption options for the Composer environment and its dependencies.
     """
@@ -111,15 +111,15 @@ class EnvironmentConfigArgsDict(TypedDict):
     """
     The Kubernetes Engine cluster used to run this environment.
     """
-    maintenance_window: NotRequired[pulumi.Input[Optional['EnvironmentConfigMaintenanceWindowArgs']]]
+    maintenance_window: NotRequired[pulumi.Input[Optional['EnvironmentConfigMaintenanceWindowArgsDict']]]
     """
     The configuration for Cloud Composer maintenance window.
     """
-    master_authorized_networks_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigMasterAuthorizedNetworksConfigArgs']]]
+    master_authorized_networks_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigMasterAuthorizedNetworksConfigArgsDict']]]
     """
     Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
     """
-    node_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigNodeConfigArgs']]]
+    node_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigNodeConfigArgsDict']]]
     """
     The configuration used for the Kubernetes Engine cluster.
     """
@@ -127,11 +127,11 @@ class EnvironmentConfigArgsDict(TypedDict):
     """
     The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
     """
-    private_environment_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigPrivateEnvironmentConfigArgs']]]
+    private_environment_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigPrivateEnvironmentConfigArgsDict']]]
     """
     The configuration used for the Private IP Cloud Composer environment.
     """
-    recovery_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigRecoveryConfigArgs']]]
+    recovery_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigRecoveryConfigArgsDict']]]
     """
     The recovery configuration settings for the Cloud Composer environment
     """
@@ -139,19 +139,19 @@ class EnvironmentConfigArgsDict(TypedDict):
     """
     Whether high resilience is enabled or not. This field is supported for Cloud Composer environments in versions composer-2.1.15-airflow-*.*.* and newer.
     """
-    software_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigSoftwareConfigArgs']]]
+    software_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigSoftwareConfigArgsDict']]]
     """
     The configuration settings for software inside the environment.
     """
-    web_server_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigWebServerConfigArgs']]]
+    web_server_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigWebServerConfigArgsDict']]]
     """
     The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
     """
-    web_server_network_access_control: NotRequired[pulumi.Input[Optional['EnvironmentConfigWebServerNetworkAccessControlArgs']]]
+    web_server_network_access_control: NotRequired[pulumi.Input[Optional['EnvironmentConfigWebServerNetworkAccessControlArgsDict']]]
     """
     Network-level access control policy for the Airflow web server.
     """
-    workloads_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigArgs']]]
+    workloads_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigArgsDict']]]
     """
     The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
     """
@@ -494,11 +494,11 @@ class EnvironmentConfigArgs:
 
 
 class EnvironmentConfigDataRetentionConfigArgsDict(TypedDict):
-    airflow_metadata_retention_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs']]]]]
+    airflow_metadata_retention_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgsDict']]]]]
     """
     Optional. The policy for airflow metadata database retention.
     """
-    task_logs_retention_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs']]]]]
+    task_logs_retention_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgsDict']]]]]
     """
     Optional. The configuration setting for Task Logs.
     """
@@ -768,7 +768,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigArgsDict(TypedDict):
     """
     Whether or not master authorized networks is enabled.
     """
-    cidr_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs']]]]]
+    cidr_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgsDict']]]]]
     """
     cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
     """
@@ -876,7 +876,7 @@ class EnvironmentConfigNodeConfigArgsDict(TypedDict):
     """
     Deploys 'ip-masq-agent' daemon set in the GKE cluster and defines nonMasqueradeCIDRs equals to pod IP range so IP masquerading is used for all destination addresses, except between pods traffic. See: https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent
     """
-    ip_allocation_policy: NotRequired[pulumi.Input[Optional['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']]]
+    ip_allocation_policy: NotRequired[pulumi.Input[Optional['EnvironmentConfigNodeConfigIpAllocationPolicyArgsDict']]]
     """
     Configuration for controlling how IPs are allocated in the GKE cluster. Cannot be updated.
     """
@@ -1407,7 +1407,7 @@ class EnvironmentConfigPrivateEnvironmentConfigArgs:
 
 
 class EnvironmentConfigRecoveryConfigArgsDict(TypedDict):
-    scheduled_snapshots_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgs']]]
+    scheduled_snapshots_config: NotRequired[pulumi.Input[Optional['EnvironmentConfigRecoveryConfigScheduledSnapshotsConfigArgsDict']]]
     """
     The configuration settings for scheduled snapshots.
     """
@@ -1528,7 +1528,7 @@ class EnvironmentConfigSoftwareConfigArgsDict(TypedDict):
     """
     Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and cannot contain "=" or ";". Section and property names cannot contain characters: "." Apache Airflow configuration property names must be written in snake_case. Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are blacklisted, and cannot be overridden.
     """
-    cloud_data_lineage_integration: NotRequired[pulumi.Input[Optional['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgs']]]
+    cloud_data_lineage_integration: NotRequired[pulumi.Input[Optional['EnvironmentConfigSoftwareConfigCloudDataLineageIntegrationArgsDict']]]
     """
     The configuration for Cloud Data Lineage integration. Supported for Cloud Composer environments in versions composer-2.1.2-airflow-*.*.* and newer
     """
@@ -1749,7 +1749,7 @@ class EnvironmentConfigWebServerConfigArgs:
 
 
 class EnvironmentConfigWebServerNetworkAccessControlArgsDict(TypedDict):
-    allowed_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs']]]]]
+    allowed_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgsDict']]]]]
     """
     A collection of allowed IP ranges with descriptions.
     """
@@ -1826,23 +1826,23 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs:
 
 
 class EnvironmentConfigWorkloadsConfigArgsDict(TypedDict):
-    dag_processor: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigDagProcessorArgs']]]
+    dag_processor: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigDagProcessorArgsDict']]]
     """
     Configuration for resources used by DAG processor.
     """
-    scheduler: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigSchedulerArgs']]]
+    scheduler: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigSchedulerArgsDict']]]
     """
     Configuration for resources used by Airflow schedulers.
     """
-    triggerer: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigTriggererArgs']]]
+    triggerer: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigTriggererArgsDict']]]
     """
     Configuration for resources used by Airflow triggerers.
     """
-    web_server: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigWebServerArgs']]]
+    web_server: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigWebServerArgsDict']]]
     """
     Configuration for resources used by Airflow web server.
     """
-    worker: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigWorkerArgs']]]
+    worker: NotRequired[pulumi.Input[Optional['EnvironmentConfigWorkloadsConfigWorkerArgsDict']]]
     """
     Configuration for resources used by Airflow workers.
     """

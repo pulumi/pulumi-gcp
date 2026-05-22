@@ -275,7 +275,7 @@ class InstancePrivateConfigArgsDict(TypedDict):
     """
     CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
     """
-    custom_host_config: NotRequired[pulumi.Input[Optional['InstancePrivateConfigCustomHostConfigArgs']]]
+    custom_host_config: NotRequired[pulumi.Input[Optional['InstancePrivateConfigCustomHostConfigArgsDict']]]
     """
     Custom host configuration for the instance.
     Structure is documented below.

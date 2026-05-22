@@ -116,7 +116,7 @@ __all__ = [
 ]
 
 class BackupPlanAssociationRulesConfigInfoArgsDict(TypedDict):
-    last_backup_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs']]]]]
+    last_backup_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgsDict']]]]]
     """
     (Output)
     google.rpc.Status object to store the last backup error
@@ -353,7 +353,7 @@ class BackupPlanBackupRuleStandardScheduleArgsDict(TypedDict):
     """
     The time zone to be used when interpreting the schedule.
     """
-    backup_window: NotRequired[pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleBackupWindowArgs']]]
+    backup_window: NotRequired[pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleBackupWindowArgsDict']]]
     """
     A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
     `NOT_RUN` if they do not start by the end of the window.
@@ -378,7 +378,7 @@ class BackupPlanBackupRuleStandardScheduleArgsDict(TypedDict):
     Specifies values of months
     Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
     """
-    week_day_of_month: NotRequired[pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs']]]
+    week_day_of_month: NotRequired[pulumi.Input[Optional['BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgsDict']]]
     """
     Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
     Structure is documented below.
@@ -849,12 +849,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Required. Name of the compute instance.
     """
-    advanced_machine_features: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgs']]]
+    advanced_machine_features: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeaturesArgsDict']]]
     """
     Optional. Controls for advanced machine-related behavior features.
     Structure is documented below.
     """
-    allocation_affinity: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgs']]]
+    allocation_affinity: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesAllocationAffinityArgsDict']]]
     """
     Optional. Specifies the reservations that this instance can consume from.
     Structure is documented below.
@@ -863,7 +863,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Optional. Allows this instance to send and receive packets with non-matching destination or source IPs.
     """
-    confidential_instance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgs']]]
+    confidential_instance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfigArgsDict']]]
     """
     Optional. Controls Confidential compute options on the instance.
     Structure is documented below.
@@ -876,17 +876,17 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Optional. An optional description of this resource.
     """
-    disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgs']]]]]
+    disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskArgsDict']]]]]
     """
     Optional. Array of disks associated with this instance.
     Structure is documented below.
     """
-    display_device: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgs']]]
+    display_device: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDisplayDeviceArgsDict']]]
     """
     Optional. Enables display device for the instance.
     Structure is documented below.
     """
-    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgs']]]]]
+    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesGuestAcceleratorArgsDict']]]]]
     """
     Optional. A list of the type and count of accelerator cards attached to the instance.
     Structure is documented below.
@@ -895,7 +895,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Optional. Specifies the hostname of the instance.
     """
-    instance_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgs']]]
+    instance_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKeyArgsDict']]]
     """
     Optional. Encrypts suspended data for an instance with a customer-managed encryption key.
     Structure is documented below.
@@ -905,7 +905,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     Optional. KeyRevocationActionType of the instance.
     Possible values are: `KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED`, `NONE`, `STOP`.
     """
-    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs']]]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesLabelArgsDict']]]]]
     """
     Optional. Labels to apply to this instance.
     Structure is documented below.
@@ -914,7 +914,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Optional. Full or partial URL of the machine type resource to use for this instance.
     """
-    metadata: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgs']]]
+    metadata: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgsDict']]]
     """
     Optional. This includes custom metadata and predefined keys.
     Structure is documented below.
@@ -923,17 +923,17 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Optional. Minimum CPU platform to use for this instance.
     """
-    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgs']]]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgsDict']]]]]
     """
     Optional. An array of network configurations for this instance.
     Structure is documented below.
     """
-    network_performance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgs']]]
+    network_performance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArgsDict']]]
     """
     Optional. Configure network performance such as egress bandwidth tier.
     Structure is documented below.
     """
-    params: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgs']]]
+    params: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesParamsArgsDict']]]
     """
     Input only. Additional params passed with the request.
     Structure is documented below.
@@ -947,22 +947,22 @@ class RestoreWorkloadComputeInstanceRestorePropertiesArgsDict(TypedDict):
     """
     Optional. Resource policies applied to this instance.
     """
-    scheduling: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgs']]]
+    scheduling: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgsDict']]]
     """
     Optional. Sets the scheduling options for this instance.
     Structure is documented below.
     """
-    service_accounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgs']]]]]
+    service_accounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesServiceAccountArgsDict']]]]]
     """
     Optional. A list of service accounts, with their specified scopes, authorized for this instance.
     Structure is documented below.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfigArgsDict']]]
     """
     Optional. Controls Shielded compute options on the instance.
     Structure is documented below.
     """
-    tags: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgs']]]
+    tags: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesTagsArgsDict']]]
     """
     Optional. Tags to apply to this instance.
     Structure is documented below.
@@ -1626,7 +1626,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgsDict(TypedDict):
     """
     Optional. This is used as an identifier for the disks.
     """
-    disk_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgs']]]
+    disk_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryptionKeyArgsDict']]]
     """
     Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.
     Structure is documented below.
@@ -1644,7 +1644,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgsDict(TypedDict):
     """
     Output only. The URI of the disk type resource.
     """
-    guest_os_features: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgs']]]]]
+    guest_os_features: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesDiskGuestOsFeatureArgsDict']]]]]
     """
     Optional. A list of features to enable on the guest operating system.
     Structure is documented below.
@@ -1653,7 +1653,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskArgsDict(TypedDict):
     """
     Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.
     """
-    initialize_params: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgs']]]
+    initialize_params: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParamsArgsDict']]]
     """
     Optional. Specifies the parameters to initialize this disk.
     Structure is documented below.
@@ -2346,7 +2346,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesLabelArgs:
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesMetadataArgsDict(TypedDict):
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -2424,11 +2424,11 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadataItemArgs:
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgsDict(TypedDict):
-    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgs']]]]]
+    access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAccessConfigArgsDict']]]]]
     """
     Structure is documented below.
     """
-    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgs']]]]]
+    alias_ip_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceAliasIpRangeArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -2440,7 +2440,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceArgsDict(Ty
     """
     Optional. An IPv4 internal IP address to assign to the instance.
     """
-    ipv6_access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgs']]]]]
+    ipv6_access_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterfaceIpv6AccessConfigArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -3121,7 +3121,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkPerformanceConfigArg
 
 
 class RestoreWorkloadComputeInstanceRestorePropertiesParamsArgsDict(TypedDict):
-    resource_manager_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgs']]]]]
+    resource_manager_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesParamsResourceManagerTagArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -3206,12 +3206,12 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgsDict(TypedDic
     """
     Possible values are: `INSTANCE_TERMINATION_ACTION_UNSPECIFIED`, `DELETE`, `STOP`.
     """
-    local_ssd_recovery_timeout: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgs']]]
+    local_ssd_recovery_timeout: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingLocalSsdRecoveryTimeoutArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    max_run_duration: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgs']]]
+    max_run_duration: NotRequired[pulumi.Input[Optional['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingMaxRunDurationArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -3220,7 +3220,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesSchedulingArgsDict(TypedDic
     """
     (Optional)
     """
-    node_affinities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgs']]]]]
+    node_affinities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadComputeInstanceRestorePropertiesSchedulingNodeAffinityArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -3800,7 +3800,7 @@ class RestoreWorkloadDiskRestorePropertiesArgsDict(TypedDict):
     """
     Optional. An optional description of this resource.
     """
-    disk_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs']]]
+    disk_encryption_key: NotRequired[pulumi.Input[Optional['RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgsDict']]]
     """
     Optional. Encrypts the disk using a customer-supplied encryption key.
     Structure is documented below.
@@ -3809,12 +3809,12 @@ class RestoreWorkloadDiskRestorePropertiesArgsDict(TypedDict):
     """
     Optional. Indicates whether this disk is using confidential compute mode.
     """
-    guest_os_features: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgs']]]]]
+    guest_os_features: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesGuestOsFeatureArgsDict']]]]]
     """
     Optional. A list of features to enable in the guest operating system.
     Structure is documented below.
     """
-    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgs']]]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesLabelArgsDict']]]]]
     """
     Optional. Labels to apply to this disk.
     Structure is documented below.
@@ -3835,7 +3835,7 @@ class RestoreWorkloadDiskRestorePropertiesArgsDict(TypedDict):
     """
     Optional. Indicates how much throughput to provision for the disk.
     """
-    resource_manager_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgs']]]]]
+    resource_manager_tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestoreWorkloadDiskRestorePropertiesResourceManagerTagArgsDict']]]]]
     """
     Optional. Resource manager tags to be bound to the disk.
     Structure is documented below.
@@ -4465,7 +4465,7 @@ class RestoreWorkloadRegionDiskTargetEnvironmentArgs:
 
 
 class RestoreWorkloadTargetResourceArgsDict(TypedDict):
-    gcp_resource: NotRequired[pulumi.Input[Optional['RestoreWorkloadTargetResourceGcpResourceArgs']]]
+    gcp_resource: NotRequired[pulumi.Input[Optional['RestoreWorkloadTargetResourceGcpResourceArgsDict']]]
     """
     Output only. Details of the native Google Cloud resource created as part of restore.
     Structure is documented below.

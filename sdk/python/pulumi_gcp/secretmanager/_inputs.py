@@ -524,12 +524,12 @@ class SecretIamMemberConditionArgs:
 
 
 class SecretReplicationArgsDict(TypedDict):
-    auto: NotRequired[pulumi.Input[Optional['SecretReplicationAutoArgs']]]
+    auto: NotRequired[pulumi.Input[Optional['SecretReplicationAutoArgsDict']]]
     """
     The Secret will automatically be replicated without any restrictions.
     Structure is documented below.
     """
-    user_managed: NotRequired[pulumi.Input[Optional['SecretReplicationUserManagedArgs']]]
+    user_managed: NotRequired[pulumi.Input[Optional['SecretReplicationUserManagedArgsDict']]]
     """
     The Secret will be replicated to the regions specified by the user.
     Structure is documented below.
@@ -579,7 +579,7 @@ class SecretReplicationArgs:
 
 
 class SecretReplicationAutoArgsDict(TypedDict):
-    customer_managed_encryption: NotRequired[pulumi.Input[Optional['SecretReplicationAutoCustomerManagedEncryptionArgs']]]
+    customer_managed_encryption: NotRequired[pulumi.Input[Optional['SecretReplicationAutoCustomerManagedEncryptionArgsDict']]]
     """
     The customer-managed encryption configuration of the Secret.
     If no configuration is provided, Google-managed default
@@ -680,7 +680,7 @@ class SecretReplicationUserManagedReplicaArgsDict(TypedDict):
     """
     The canonical IDs of the location to replicate data. For example: "us-east1".
     """
-    customer_managed_encryption: NotRequired[pulumi.Input[Optional['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs']]]
+    customer_managed_encryption: NotRequired[pulumi.Input[Optional['SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgsDict']]]
     """
     Customer Managed Encryption for the secret.
     Structure is documented below.

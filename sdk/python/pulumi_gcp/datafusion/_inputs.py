@@ -174,7 +174,7 @@ class InstanceNetworkConfigArgsDict(TypedDict):
     will be peered for executing pipelines. In case of shared VPC where the network resides in another host
     project the network should specified in the form of projects/{host-project-id}/global/networks/{network}
     """
-    private_service_connect_config: NotRequired[pulumi.Input[Optional['InstanceNetworkConfigPrivateServiceConnectConfigArgs']]]
+    private_service_connect_config: NotRequired[pulumi.Input[Optional['InstanceNetworkConfigPrivateServiceConnectConfigArgsDict']]]
     """
     Optional. Configuration for Private Service Connect.
     This is required only when using connection type PRIVATE_SERVICE_CONNECT_INTERFACES.

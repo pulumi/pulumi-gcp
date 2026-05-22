@@ -152,7 +152,7 @@ class AlertPolicyAlertStrategyArgsDict(TypedDict):
     """
     If an alert policy that was active has no data for this long, any open incidents will close.
     """
-    notification_channel_strategies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgs']]]]]
+    notification_channel_strategies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyAlertStrategyNotificationChannelStrategyArgsDict']]]]]
     """
     Control over how the notification channels in `notification_channels`
     are notified when this alert fires, on a per-channel basis.
@@ -163,7 +163,7 @@ class AlertPolicyAlertStrategyArgsDict(TypedDict):
     Control when notifications will be sent out.
     Each value may be one of: `NOTIFICATION_PROMPT_UNSPECIFIED`, `OPENED`, `CLOSED`.
     """
-    notification_rate_limit: NotRequired[pulumi.Input[Optional['AlertPolicyAlertStrategyNotificationRateLimitArgs']]]
+    notification_rate_limit: NotRequired[pulumi.Input[Optional['AlertPolicyAlertStrategyNotificationRateLimitArgsDict']]]
     """
     Required for alert policies with a LogMatch condition.
     This limit is not implemented for alert policies that are not log-based.
@@ -350,24 +350,24 @@ class AlertPolicyConditionArgsDict(TypedDict):
     display name for multiple conditions in the same
     policy.
     """
-    condition_absent: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionAbsentArgs']]]
+    condition_absent: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionAbsentArgsDict']]]
     """
     A condition that checks that a time series
     continues to receive new data points.
     Structure is documented below.
     """
-    condition_matched_log: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMatchedLogArgs']]]
+    condition_matched_log: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMatchedLogArgsDict']]]
     """
     A condition that checks for log messages matching given constraints.
     If set, no other conditions can be present.
     Structure is documented below.
     """
-    condition_monitoring_query_language: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageArgs']]]
+    condition_monitoring_query_language: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict']]]
     """
     A Monitoring Query Language query that outputs a boolean stream
     Structure is documented below.
     """
-    condition_prometheus_query_language: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionPrometheusQueryLanguageArgs']]]
+    condition_prometheus_query_language: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionPrometheusQueryLanguageArgsDict']]]
     """
     A condition type that allows alert policies to be defined using
     Prometheus Query Language (PromQL).
@@ -375,14 +375,14 @@ class AlertPolicyConditionArgsDict(TypedDict):
     from a Prometheus alerting rule and its associated rule group.
     Structure is documented below.
     """
-    condition_sql: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlArgs']]]
+    condition_sql: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlArgsDict']]]
     """
     A condition that allows alerting policies to be defined using GoogleSQL.
     SQL conditions examine a sliding window of logs using GoogleSQL.
     Alert policies with SQL conditions may incur additional billing.
     Structure is documented below.
     """
-    condition_threshold: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdArgs']]]
+    condition_threshold: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdArgsDict']]]
     """
     A condition that compares a time series against a
     threshold.
@@ -590,7 +590,7 @@ class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
     multiple of a minute--e.g. 60s, 120s, or 300s
     --are supported.
     """
-    aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgs']]]]]
+    aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionAbsentAggregationArgsDict']]]]]
     """
     Specifies the alignment of data points in
     individual time series as well as how to
@@ -618,7 +618,7 @@ class AlertPolicyConditionConditionAbsentArgsDict(TypedDict):
     field may not exceed 2048 Unicode characters
     in length.
     """
-    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionAbsentTriggerArgs']]]
+    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionAbsentTriggerArgsDict']]]
     """
     The number/percent of time series for which
     the comparison must hold in order for the
@@ -1218,7 +1218,7 @@ class AlertPolicyConditionConditionMonitoringQueryLanguageArgsDict(TypedDict):
     data stops arriving.
     Possible values are: `EVALUATION_MISSING_DATA_INACTIVE`, `EVALUATION_MISSING_DATA_ACTIVE`, `EVALUATION_MISSING_DATA_NO_OP`.
     """
-    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs']]]
+    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgsDict']]]
     """
     The number/percent of time series for which
     the comparison must hold in order for the
@@ -1670,27 +1670,27 @@ class AlertPolicyConditionConditionSqlArgsDict(TypedDict):
     to filter the input so that the query receives all rows received
     since the last time the query was run.
     """
-    boolean_test: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlBooleanTestArgs']]]
+    boolean_test: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlBooleanTestArgsDict']]]
     """
     A test that uses an alerting result in a boolean column produced by the SQL query.
     Structure is documented below.
     """
-    daily: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyArgs']]]
+    daily: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyArgsDict']]]
     """
     Used to schedule the query to run every so many days.
     Structure is documented below.
     """
-    hourly: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlHourlyArgs']]]
+    hourly: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlHourlyArgsDict']]]
     """
     Used to schedule the query to run every so many hours.
     Structure is documented below.
     """
-    minutes: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlMinutesArgs']]]
+    minutes: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlMinutesArgsDict']]]
     """
     Used to schedule the query to run every so many minutes.
     Structure is documented below.
     """
-    row_count_test: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlRowCountTestArgs']]]
+    row_count_test: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlRowCountTestArgsDict']]]
     """
     A test that checks if the number of rows in the result set violates some threshold.
     Structure is documented below.
@@ -1853,7 +1853,7 @@ class AlertPolicyConditionConditionSqlDailyArgsDict(TypedDict):
     The number of days between runs. Must be greater than or equal
     to 1 day and less than or equal to 30 days.
     """
-    execution_time: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyExecutionTimeArgs']]]
+    execution_time: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionSqlDailyExecutionTimeArgsDict']]]
     """
     The time of day (in UTC) at which the query should run. If left
     unspecified, the server picks an arbitrary time of day and runs
@@ -2207,7 +2207,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     that unhealthy states are detected and
     alerted on quickly.
     """
-    aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgs']]]]]
+    aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdAggregationArgsDict']]]]]
     """
     Specifies the alignment of data points in
     individual time series as well as how to
@@ -2224,7 +2224,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     field.
     Structure is documented below.
     """
-    denominator_aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgs']]]]]
+    denominator_aggregations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyConditionConditionThresholdDenominatorAggregationArgsDict']]]]]
     """
     Specifies the alignment of data points in
     individual time series selected by
@@ -2284,7 +2284,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     field may not exceed 2048 Unicode characters
     in length.
     """
-    forecast_options: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdForecastOptionsArgs']]]
+    forecast_options: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdForecastOptionsArgsDict']]]
     """
     When this field is present, the `MetricThreshold`
     condition forecasts whether the time series is
@@ -2299,7 +2299,7 @@ class AlertPolicyConditionConditionThresholdArgsDict(TypedDict):
     A value against which to compare the time
     series.
     """
-    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdTriggerArgs']]]
+    trigger: NotRequired[pulumi.Input[Optional['AlertPolicyConditionConditionThresholdTriggerArgsDict']]]
     """
     The number/percent of time series for which
     the comparison must hold in order for the
@@ -3436,7 +3436,7 @@ class AlertPolicyDocumentationArgsDict(TypedDict):
     exceed more than 10,240 bytes when encoded in UTF-8 format,
     whichever is smaller.
     """
-    links: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgs']]]]]
+    links: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlertPolicyDocumentationLinkArgsDict']]]]]
     """
     Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
     Structure is documented below.
@@ -4082,12 +4082,12 @@ class NotificationChannelSensitiveLabelsArgs:
 
 
 class SloBasicSliArgsDict(TypedDict):
-    availability: NotRequired[pulumi.Input[Optional['SloBasicSliAvailabilityArgs']]]
+    availability: NotRequired[pulumi.Input[Optional['SloBasicSliAvailabilityArgsDict']]]
     """
     Availability based SLI, dervied from count of requests made to this service that return successfully.
     Structure is documented below.
     """
-    latency: NotRequired[pulumi.Input[Optional['SloBasicSliLatencyArgs']]]
+    latency: NotRequired[pulumi.Input[Optional['SloBasicSliLatencyArgsDict']]]
     """
     Parameters for a latency threshold SLI.
     Structure is documented below.
@@ -4305,7 +4305,7 @@ class SloBasicSliLatencyArgs:
 
 
 class SloRequestBasedSliArgsDict(TypedDict):
-    distribution_cut: NotRequired[pulumi.Input[Optional['SloRequestBasedSliDistributionCutArgs']]]
+    distribution_cut: NotRequired[pulumi.Input[Optional['SloRequestBasedSliDistributionCutArgsDict']]]
     """
     Used when good_service is defined by a count of values aggregated in a
     Distribution that fall into a good range. The total_service is the
@@ -4315,7 +4315,7 @@ class SloRequestBasedSliArgsDict(TypedDict):
     Exactly one of `distribution_cut` or `good_total_ratio` can be set.
     Structure is documented below.
     """
-    good_total_ratio: NotRequired[pulumi.Input[Optional['SloRequestBasedSliGoodTotalRatioArgs']]]
+    good_total_ratio: NotRequired[pulumi.Input[Optional['SloRequestBasedSliGoodTotalRatioArgsDict']]]
     """
     A means to compute a ratio of `good_service` to `total_service`.
     Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -4650,7 +4650,7 @@ class SloWindowsBasedSliArgsDict(TypedDict):
     `good_total_ratio_threshold`, `metric_mean_in_range`,
     `metric_sum_in_range` must be set for `windows_based_sli`.
     """
-    good_total_ratio_threshold: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdArgs']]]
+    good_total_ratio_threshold: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdArgsDict']]]
     """
     Criterion that describes a window as good if its performance is
     high enough. One of `good_bad_metric_filter`,
@@ -4658,7 +4658,7 @@ class SloWindowsBasedSliArgsDict(TypedDict):
     `metric_sum_in_range` must be set for `windows_based_sli`.
     Structure is documented below.
     """
-    metric_mean_in_range: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliMetricMeanInRangeArgs']]]
+    metric_mean_in_range: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliMetricMeanInRangeArgsDict']]]
     """
     Criterion that describes a window as good if the metric's value
     is in a good range, *averaged* across returned streams.
@@ -4669,7 +4669,7 @@ class SloWindowsBasedSliArgsDict(TypedDict):
     `range.min <= X <= range.max` for a good window.
     Structure is documented below.
     """
-    metric_sum_in_range: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliMetricSumInRangeArgs']]]
+    metric_sum_in_range: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliMetricSumInRangeArgsDict']]]
     """
     Criterion that describes a window as good if the metric's value
     is in a good range, *summed* across returned streams.
@@ -4823,12 +4823,12 @@ class SloWindowsBasedSliArgs:
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdArgsDict(TypedDict):
-    basic_sli_performance: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs']]]
+    basic_sli_performance: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict']]]
     """
     Basic SLI to evaluate to judge window quality.
     Structure is documented below.
     """
-    performance: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgs']]]
+    performance: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict']]]
     """
     Request-based SLI to evaluate to judge window quality.
     Structure is documented below.
@@ -4901,12 +4901,12 @@ class SloWindowsBasedSliGoodTotalRatioThresholdArgs:
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgsDict(TypedDict):
-    availability: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs']]]
+    availability: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgsDict']]]
     """
     Availability based SLI, dervied from count of requests made to this service that return successfully.
     Structure is documented below.
     """
-    latency: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs']]]
+    latency: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgsDict']]]
     """
     Parameters for a latency threshold SLI.
     Structure is documented below.
@@ -5124,7 +5124,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs:
 
 
 class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict(TypedDict):
-    distribution_cut: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgs']]]
+    distribution_cut: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutArgsDict']]]
     """
     Used when good_service is defined by a count of values aggregated in a
     Distribution that fall into a good range. The total_service is the
@@ -5133,7 +5133,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceArgsDict(TypedDict):
     measuring good service and total service.
     Structure is documented below.
     """
-    good_total_ratio: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgs']]]
+    good_total_ratio: NotRequired[pulumi.Input[Optional['SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatioArgsDict']]]
     """
     A means to compute a ratio of `good_service` to `total_service`.
     Defines computing this ratio with two TimeSeries [monitoring filters](https://cloud.google.com/monitoring/api/v3/filters)
@@ -5747,7 +5747,7 @@ class UptimeCheckConfigContentMatcherArgsDict(TypedDict):
     """
     String or regex content to match (max 1024 bytes)
     """
-    json_path_matcher: NotRequired[pulumi.Input[Optional['UptimeCheckConfigContentMatcherJsonPathMatcherArgs']]]
+    json_path_matcher: NotRequired[pulumi.Input[Optional['UptimeCheckConfigContentMatcherJsonPathMatcherArgsDict']]]
     """
     Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
     Structure is documented below.
@@ -5874,12 +5874,12 @@ class UptimeCheckConfigContentMatcherJsonPathMatcherArgs:
 
 
 class UptimeCheckConfigHttpCheckArgsDict(TypedDict):
-    accepted_response_status_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgs']]]]]
+    accepted_response_status_codes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UptimeCheckConfigHttpCheckAcceptedResponseStatusCodeArgsDict']]]]]
     """
     If present, the check will only pass if the HTTP response status code is in this set of status codes. If empty, the HTTP status code will only pass if the HTTP status code is 200-299.
     Structure is documented below.
     """
-    auth_info: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckAuthInfoArgs']]]
+    auth_info: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckAuthInfoArgsDict']]]
     """
     The authentication information using username and password. Optional when creating an HTTP check; defaults to empty. Do not use with other authentication fields.
     Structure is documented below.
@@ -5909,7 +5909,7 @@ class UptimeCheckConfigHttpCheckArgsDict(TypedDict):
     """
     The path to the page to run the check against. Will be combined with the host (specified within the MonitoredResource) and port to construct the full URL. If the provided path does not begin with `/`, a `/` will be prepended automatically. Optional (defaults to `/`).
     """
-    ping_config: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckPingConfigArgs']]]
+    ping_config: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckPingConfigArgsDict']]]
     """
     Contains information needed to add pings to an HTTP check.
     Structure is documented below.
@@ -5924,7 +5924,7 @@ class UptimeCheckConfigHttpCheckArgsDict(TypedDict):
     Default value is `GET`.
     Possible values are: `METHOD_UNSPECIFIED`, `GET`, `POST`.
     """
-    service_agent_authentication: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgs']]]
+    service_agent_authentication: NotRequired[pulumi.Input[Optional['UptimeCheckConfigHttpCheckServiceAgentAuthenticationArgsDict']]]
     """
     The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
     Structure is documented below.
@@ -6573,7 +6573,7 @@ class UptimeCheckConfigTcpCheckArgsDict(TypedDict):
     """
     The port to the page to run the check against. Will be combined with host (specified within the `monitored_resource`) to construct the full URL.
     """
-    ping_config: NotRequired[pulumi.Input[Optional['UptimeCheckConfigTcpCheckPingConfigArgs']]]
+    ping_config: NotRequired[pulumi.Input[Optional['UptimeCheckConfigTcpCheckPingConfigArgsDict']]]
     """
     Contains information needed to add pings to a TCP check.
     Structure is documented below.

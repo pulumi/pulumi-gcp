@@ -135,7 +135,7 @@ class LiteTopicPartitionConfigArgsDict(TypedDict):
     """
     The number of partitions in the topic. Must be at least 1.
     """
-    capacity: NotRequired[pulumi.Input[Optional['LiteTopicPartitionConfigCapacityArgs']]]
+    capacity: NotRequired[pulumi.Input[Optional['LiteTopicPartitionConfigCapacityArgsDict']]]
     """
     The capacity configuration.
     Structure is documented below.
@@ -562,7 +562,7 @@ class SubscriptionCloudStorageConfigArgsDict(TypedDict):
     """
     User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The bucket name must be without any prefix like "gs://".
     """
-    avro_config: NotRequired[pulumi.Input[Optional['SubscriptionCloudStorageConfigAvroConfigArgs']]]
+    avro_config: NotRequired[pulumi.Input[Optional['SubscriptionCloudStorageConfigAvroConfigArgsDict']]]
     """
     If set, message data will be written to Cloud Storage in Avro format.
     Structure is documented below.
@@ -605,7 +605,7 @@ class SubscriptionCloudStorageConfigArgsDict(TypedDict):
     (Output)
     An output-only field that indicates whether or not the subscription can receive messages.
     """
-    text_config: NotRequired[pulumi.Input[Optional['SubscriptionCloudStorageConfigTextConfigArgs']]]
+    text_config: NotRequired[pulumi.Input[Optional['SubscriptionCloudStorageConfigTextConfigArgsDict']]]
     """
     If set, message data will be written to Cloud Storage in text format.
     Structure is documented below.
@@ -1113,7 +1113,7 @@ class SubscriptionIAMMemberConditionArgs:
 
 
 class SubscriptionMessageTransformArgsDict(TypedDict):
-    ai_inference: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgs']]]
+    ai_inference: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceArgsDict']]]
     """
     AI Inference. Specifies the Vertex AI endpoint that inference
     requests built from the Pub/Sub message data and provided parameters will
@@ -1125,7 +1125,7 @@ class SubscriptionMessageTransformArgsDict(TypedDict):
     Controls whether or not to use this transform. If not set or `false`,
     the transform will be applied to messages. Default: `true`.
     """
-    javascript_udf: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformJavascriptUdfArgs']]]
+    javascript_udf: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformJavascriptUdfArgsDict']]]
     """
     Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
     each one must have a unique `function_name`.
@@ -1212,7 +1212,7 @@ class SubscriptionMessageTransformAiInferenceArgsDict(TypedDict):
     The service account to use to make prediction requests against
     endpoints.
     """
-    unstructured_inference: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgs']]]
+    unstructured_inference: NotRequired[pulumi.Input[Optional['SubscriptionMessageTransformAiInferenceUnstructuredInferenceArgsDict']]]
     """
     Configuration for making inferences using arbitrary JSON payloads.
     Structure is documented below.
@@ -1473,13 +1473,13 @@ class SubscriptionPushConfigArgsDict(TypedDict):
     - v1beta1: uses the push format defined in the v1beta1 Pub/Sub API.
     - v1 or v1beta2: uses the push format defined in the v1 Pub/Sub API.
     """
-    no_wrapper: NotRequired[pulumi.Input[Optional['SubscriptionPushConfigNoWrapperArgs']]]
+    no_wrapper: NotRequired[pulumi.Input[Optional['SubscriptionPushConfigNoWrapperArgsDict']]]
     """
     When set, the payload to the push endpoint is not wrapped.Sets the
     `data` field as the HTTP body for delivery.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input[Optional['SubscriptionPushConfigOidcTokenArgs']]]
+    oidc_token: NotRequired[pulumi.Input[Optional['SubscriptionPushConfigOidcTokenArgsDict']]]
     """
     If specified, Pub/Sub will generate and attach an OIDC JWT token as
     an Authorization header in the HTTP request for every pushed message.
@@ -1852,32 +1852,32 @@ class TopicIAMMemberConditionArgs:
 
 
 class TopicIngestionDataSourceSettingsArgsDict(TypedDict):
-    aws_kinesis: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsKinesisArgs']]]
+    aws_kinesis: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsKinesisArgsDict']]]
     """
     Settings for ingestion from Amazon Kinesis Data Streams.
     Structure is documented below.
     """
-    aws_msk: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsMskArgs']]]
+    aws_msk: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAwsMskArgsDict']]]
     """
     Settings for ingestion from Amazon Managed Streaming for Apache Kafka.
     Structure is documented below.
     """
-    azure_event_hubs: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]]
+    azure_event_hubs: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsAzureEventHubsArgsDict']]]
     """
     Settings for ingestion from Azure Event Hubs.
     Structure is documented below.
     """
-    cloud_storage: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageArgs']]]
+    cloud_storage: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageArgsDict']]]
     """
     Settings for ingestion from Cloud Storage.
     Structure is documented below.
     """
-    confluent_cloud: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsConfluentCloudArgs']]]
+    confluent_cloud: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsConfluentCloudArgsDict']]]
     """
     Settings for ingestion from Confluent Cloud.
     Structure is documented below.
     """
-    platform_logs_settings: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']]]
+    platform_logs_settings: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgsDict']]]
     """
     Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
     no Platform Logs will be generated.'
@@ -2369,7 +2369,7 @@ class TopicIngestionDataSourceSettingsCloudStorageArgsDict(TypedDict):
     prefix like "gs://". See the bucket naming requirements:
     https://cloud.google.com/storage/docs/buckets#naming.
     """
-    avro_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs']]]
+    avro_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgsDict']]]
     """
     Configuration for reading Cloud Storage data in Avro binary format. The
     bytes of each object will be set to the `data` field of a Pub/Sub message.
@@ -2386,14 +2386,14 @@ class TopicIngestionDataSourceSettingsCloudStorageArgsDict(TypedDict):
     larger or equal timestamp will be ingested. Unset by default, meaning
     all objects will be ingested.
     """
-    pubsub_avro_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgs']]]
+    pubsub_avro_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStoragePubsubAvroFormatArgsDict']]]
     """
     Configuration for reading Cloud Storage data written via Cloud Storage
     subscriptions(See https://cloud.google.com/pubsub/docs/cloudstorage). The
     data and attributes fields of the originally exported Pub/Sub message
     will be restored when publishing.
     """
-    text_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgs']]]
+    text_format: NotRequired[pulumi.Input[Optional['TopicIngestionDataSourceSettingsCloudStorageTextFormatArgsDict']]]
     """
     Configuration for reading Cloud Storage data in text format. Each line of
     text as specified by the delimiter will be set to the `data` field of a
@@ -2801,7 +2801,7 @@ class TopicMessageStoragePolicyArgs:
 
 
 class TopicMessageTransformArgsDict(TypedDict):
-    ai_inference: NotRequired[pulumi.Input[Optional['TopicMessageTransformAiInferenceArgs']]]
+    ai_inference: NotRequired[pulumi.Input[Optional['TopicMessageTransformAiInferenceArgsDict']]]
     """
     AI Inference. Specifies the Vertex AI endpoint that inference
     requests built from the Pub/Sub message data and provided parameters will
@@ -2813,7 +2813,7 @@ class TopicMessageTransformArgsDict(TypedDict):
     Controls whether or not to use this transform. If not set or `false`,
     the transform will be applied to messages. Default: `true`.
     """
-    javascript_udf: NotRequired[pulumi.Input[Optional['TopicMessageTransformJavascriptUdfArgs']]]
+    javascript_udf: NotRequired[pulumi.Input[Optional['TopicMessageTransformJavascriptUdfArgsDict']]]
     """
     Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
     each one must have a unique `function_name`.
@@ -2900,7 +2900,7 @@ class TopicMessageTransformAiInferenceArgsDict(TypedDict):
     The service account to use to make prediction requests against
     endpoints.
     """
-    unstructured_inference: NotRequired[pulumi.Input[Optional['TopicMessageTransformAiInferenceUnstructuredInferenceArgs']]]
+    unstructured_inference: NotRequired[pulumi.Input[Optional['TopicMessageTransformAiInferenceUnstructuredInferenceArgsDict']]]
     """
     Configuration for making inferences using arbitrary JSON payloads.
     Structure is documented below.

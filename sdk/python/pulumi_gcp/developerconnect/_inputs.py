@@ -136,7 +136,7 @@ class AccountConnectorCustomOauthConfigArgsDict(TypedDict):
     (Output)
     SCM server version installed at the host URI.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['AccountConnectorCustomOauthConfigServiceDirectoryConfigArgsDict']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
@@ -732,7 +732,7 @@ class ConnectionBitbucketDataCenterConfigArgsDict(TypedDict):
     (Output)
     Output only. Version of the Bitbucket Data Center server running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
@@ -1075,7 +1075,7 @@ class ConnectionGithubConfigArgsDict(TypedDict):
     """
     Optional. GitHub App installation id.
     """
-    authorizer_credential: NotRequired[pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]]
+    authorizer_credential: NotRequired[pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgsDict']]]
     """
     Represents an OAuth token of the account that authorized the Connection,
     and associated metadata.
@@ -1264,7 +1264,7 @@ class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
     (Output)
     Output only. GitHub Enterprise version installed at the host_uri.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
@@ -1722,7 +1722,7 @@ class ConnectionGitlabEnterpriseConfigArgsDict(TypedDict):
     (Output)
     Output only. Version of the GitLab Enterprise server running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
@@ -2022,17 +2022,17 @@ class ConnectionHttpConfigArgsDict(TypedDict):
     """
     The service provider's https endpoint.
     """
-    basic_authentication: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigBasicAuthenticationArgs']]]
+    basic_authentication: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigBasicAuthenticationArgsDict']]]
     """
     Basic authentication with username and password.
     Structure is documented below.
     """
-    bearer_token_authentication: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigBearerTokenAuthenticationArgs']]]
+    bearer_token_authentication: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigBearerTokenAuthenticationArgsDict']]]
     """
     Bearer token authentication with a token.
     Structure is documented below.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionHttpConfigServiceDirectoryConfigArgsDict']]]
     """
     ServiceDirectoryConfig represents Service Directory configuration for a
     connection.
@@ -2345,12 +2345,12 @@ class ConnectionInstallationStateArgs:
 
 
 class InsightsConfigArtifactConfigArgsDict(TypedDict):
-    google_artifact_analysis: NotRequired[pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgs']]]
+    google_artifact_analysis: NotRequired[pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactAnalysisArgsDict']]]
     """
     Google Artifact Analysis configurations.
     Structure is documented below.
     """
-    google_artifact_registry: NotRequired[pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactRegistryArgs']]]
+    google_artifact_registry: NotRequired[pulumi.Input[Optional['InsightsConfigArtifactConfigGoogleArtifactRegistryArgsDict']]]
     """
     Google Artifact Registry configurations.
     Structure is documented below.
@@ -2509,7 +2509,7 @@ class InsightsConfigErrorArgsDict(TypedDict):
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorDetailArgs']]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InsightsConfigErrorDetailArgsDict']]]]]
     """
     (Output)
     A list of messages that carry the error details.  There is a common set of
@@ -2632,12 +2632,12 @@ class InsightsConfigRuntimeConfigArgsDict(TypedDict):
     For GKE, this is the cluster name.
     For Cloud Run, this is the service name.
     """
-    app_hub_workload: NotRequired[pulumi.Input[Optional['InsightsConfigRuntimeConfigAppHubWorkloadArgs']]]
+    app_hub_workload: NotRequired[pulumi.Input[Optional['InsightsConfigRuntimeConfigAppHubWorkloadArgsDict']]]
     """
     AppHubWorkload represents the App Hub Workload.
     Structure is documented below.
     """
-    gke_workload: NotRequired[pulumi.Input[Optional['InsightsConfigRuntimeConfigGkeWorkloadArgs']]]
+    gke_workload: NotRequired[pulumi.Input[Optional['InsightsConfigRuntimeConfigGkeWorkloadArgsDict']]]
     """
     GKEWorkload represents the Google Kubernetes Engine runtime.
     Structure is documented below.

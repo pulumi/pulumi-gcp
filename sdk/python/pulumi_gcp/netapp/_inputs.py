@@ -473,7 +473,7 @@ class VolumeBlockDeviceArgs:
 
 
 class VolumeCacheParametersArgsDict(TypedDict):
-    cache_config: NotRequired[pulumi.Input[Optional['VolumeCacheParametersCacheConfigArgs']]]
+    cache_config: NotRequired[pulumi.Input[Optional['VolumeCacheParametersCacheConfigArgsDict']]]
     """
     Optional. Configuration of the cache volume.
     Structure is documented below.
@@ -1482,7 +1482,7 @@ class VolumeReplicationDestinationVolumeParametersArgsDict(TypedDict):
     """
     Share name for destination volume. If not specified, name of source volume's share name will be used.
     """
-    tiering_policy: NotRequired[pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersTieringPolicyArgs']]]
+    tiering_policy: NotRequired[pulumi.Input[Optional['VolumeReplicationDestinationVolumeParametersTieringPolicyArgsDict']]]
     """
     Tiering policy for the volume.
     Structure is documented below.
@@ -2104,7 +2104,7 @@ class VolumeRestoreParametersArgs:
 
 
 class VolumeSnapshotPolicyArgsDict(TypedDict):
-    daily_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyDailyScheduleArgs']]]
+    daily_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyDailyScheduleArgsDict']]]
     """
     Daily schedule policy.
     Structure is documented below.
@@ -2114,17 +2114,17 @@ class VolumeSnapshotPolicyArgsDict(TypedDict):
     Enables automated snapshot creation according to defined schedule. Default is false.
     To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
     """
-    hourly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyHourlyScheduleArgs']]]
+    hourly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyHourlyScheduleArgsDict']]]
     """
     Hourly schedule policy.
     Structure is documented below.
     """
-    monthly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyMonthlyScheduleArgs']]]
+    monthly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyMonthlyScheduleArgsDict']]]
     """
     Monthly schedule policy.
     Structure is documented below.
     """
-    weekly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyWeeklyScheduleArgs']]]
+    weekly_schedule: NotRequired[pulumi.Input[Optional['VolumeSnapshotPolicyWeeklyScheduleArgsDict']]]
     """
     Weekly schedule policy.
     Structure is documented below.

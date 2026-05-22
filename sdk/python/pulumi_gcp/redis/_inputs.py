@@ -224,18 +224,18 @@ class ClusterCrossClusterReplicationConfigArgsDict(TypedDict):
     1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
     Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
     """
-    memberships: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgs']]]]]
+    memberships: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipArgsDict']]]]]
     """
     (Output)
     An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
     Structure is documented below.
     """
-    primary_cluster: NotRequired[pulumi.Input[Optional['ClusterCrossClusterReplicationConfigPrimaryClusterArgs']]]
+    primary_cluster: NotRequired[pulumi.Input[Optional['ClusterCrossClusterReplicationConfigPrimaryClusterArgsDict']]]
     """
     Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
     Structure is documented below.
     """
-    secondary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgs']]]]]
+    secondary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigSecondaryClusterArgsDict']]]]]
     """
     List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
     Structure is documented below.
@@ -354,11 +354,11 @@ class ClusterCrossClusterReplicationConfigArgs:
 
 
 class ClusterCrossClusterReplicationConfigMembershipArgsDict(TypedDict):
-    primary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs']]]]]
+    primary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgsDict']]]]]
     """
     Details of the primary cluster that is used as the replication source for all the secondary clusters.
     """
-    secondary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs']]]]]
+    secondary_clusters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgsDict']]]]]
     """
     List of secondary clusters that are replicating from the primary cluster.
     """
@@ -625,7 +625,7 @@ class ClusterDiscoveryEndpointArgsDict(TypedDict):
     """
     Output only. The port number of the exposed Redis endpoint.
     """
-    psc_config: NotRequired[pulumi.Input[Optional['ClusterDiscoveryEndpointPscConfigArgs']]]
+    psc_config: NotRequired[pulumi.Input[Optional['ClusterDiscoveryEndpointPscConfigArgsDict']]]
     """
     Output only. Customer configuration for where the endpoint
     is created and accessed from.
@@ -763,7 +763,7 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]]
+    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]]
     """
     Optional. Maintenance window that is applied to resources covered by this policy.
     Minimum 1. For the current version, the maximum number
@@ -1176,7 +1176,7 @@ class ClusterManagedBackupSourceArgs:
 
 
 class ClusterManagedServerCaArgsDict(TypedDict):
-    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgs']]]]]
+    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterManagedServerCaCaCertArgsDict']]]]]
     """
     (Output)
     The PEM encoded CA certificate chains for redis managed server authentication
@@ -1243,7 +1243,7 @@ class ClusterManagedServerCaCaCertArgs:
 
 
 class ClusterPersistenceConfigArgsDict(TypedDict):
-    aof_config: NotRequired[pulumi.Input[Optional['ClusterPersistenceConfigAofConfigArgs']]]
+    aof_config: NotRequired[pulumi.Input[Optional['ClusterPersistenceConfigAofConfigArgsDict']]]
     """
     AOF configuration. This field will be ignored if mode is not AOF.
     Structure is documented below.
@@ -1256,7 +1256,7 @@ class ClusterPersistenceConfigArgsDict(TypedDict):
     - AOF: AOF based Persistence is enabled.
     Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
     """
-    rdb_config: NotRequired[pulumi.Input[Optional['ClusterPersistenceConfigRdbConfigArgs']]]
+    rdb_config: NotRequired[pulumi.Input[Optional['ClusterPersistenceConfigRdbConfigArgsDict']]]
     """
     RDB configuration. This field will be ignored if mode is not RDB.
     Structure is documented below.
@@ -1639,7 +1639,7 @@ class ClusterPscServiceAttachmentArgs:
 
 
 class ClusterStateInfoArgsDict(TypedDict):
-    update_info: NotRequired[pulumi.Input[Optional['ClusterStateInfoUpdateInfoArgs']]]
+    update_info: NotRequired[pulumi.Input[Optional['ClusterStateInfoUpdateInfoArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1720,7 +1720,7 @@ class ClusterStateInfoUpdateInfoArgs:
 
 
 class ClusterUserCreatedConnectionsClusterEndpointArgsDict(TypedDict):
-    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]]
+    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -1749,7 +1749,7 @@ class ClusterUserCreatedConnectionsClusterEndpointArgs:
 
 
 class ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict(TypedDict):
-    psc_connection: NotRequired[pulumi.Input[Optional['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]]
+    psc_connection: NotRequired[pulumi.Input[Optional['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDict']]]
     """
     Detailed information of a PSC connection that is created by the customer
     who owns the cluster.
@@ -2062,7 +2062,7 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]]
+    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]]
     """
     Optional. Maintenance window that is applied to resources covered by this policy.
     Minimum 1. For the current version, the maximum number

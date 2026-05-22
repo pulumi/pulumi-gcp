@@ -949,7 +949,7 @@ class AttachedClusterFleetArgs:
 
 
 class AttachedClusterLoggingConfigArgsDict(TypedDict):
-    component_config: NotRequired[pulumi.Input[Optional['AttachedClusterLoggingConfigComponentConfigArgs']]]
+    component_config: NotRequired[pulumi.Input[Optional['AttachedClusterLoggingConfigComponentConfigArgsDict']]]
     """
     The configuration of the logging components
     Structure is documented below.
@@ -1013,7 +1013,7 @@ class AttachedClusterLoggingConfigComponentConfigArgs:
 
 
 class AttachedClusterMonitoringConfigArgsDict(TypedDict):
-    managed_prometheus_config: NotRequired[pulumi.Input[Optional['AttachedClusterMonitoringConfigManagedPrometheusConfigArgs']]]
+    managed_prometheus_config: NotRequired[pulumi.Input[Optional['AttachedClusterMonitoringConfigManagedPrometheusConfigArgsDict']]]
     """
     Enable Google Cloud Managed Service for Prometheus in the cluster.
     Structure is documented below.
@@ -1122,7 +1122,7 @@ class AttachedClusterOidcConfigArgs:
 
 
 class AttachedClusterProxyConfigArgsDict(TypedDict):
-    kubernetes_secret: NotRequired[pulumi.Input[Optional['AttachedClusterProxyConfigKubernetesSecretArgs']]]
+    kubernetes_secret: NotRequired[pulumi.Input[Optional['AttachedClusterProxyConfigKubernetesSecretArgsDict']]]
     """
     The Kubernetes Secret resource that contains the HTTP(S) proxy configuration.
     Structure is documented below.
@@ -1308,7 +1308,7 @@ class AwsClusterAuthorizationArgsDict(TypedDict):
     """
     Users to perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
     """
-    admin_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgs']]]]]
+    admin_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AwsClusterAuthorizationAdminGroupArgsDict']]]]]
     """
     Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
     """
@@ -1461,7 +1461,7 @@ class AwsClusterControlPlaneArgsDict(TypedDict):
     """
     The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
     """
-    instance_placement: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneInstancePlacementArgs']]]
+    instance_placement: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneInstancePlacementArgsDict']]]
     """
     Details of placement information for an instance.
     """
@@ -1469,15 +1469,15 @@ class AwsClusterControlPlaneArgsDict(TypedDict):
     """
     Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
     """
-    main_volume: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneMainVolumeArgs']]]
+    main_volume: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneMainVolumeArgsDict']]]
     """
     Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
     """
-    proxy_config: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneProxyConfigArgs']]]
+    proxy_config: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneProxyConfigArgsDict']]]
     """
     Proxy configuration for outbound HTTP(S) traffic.
     """
-    root_volume: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneRootVolumeArgs']]]
+    root_volume: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneRootVolumeArgsDict']]]
     """
     Optional. Configuration related to the root volume provisioned for each control plane replica. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
     """
@@ -1485,7 +1485,7 @@ class AwsClusterControlPlaneArgsDict(TypedDict):
     """
     Optional. The IDs of additional security groups to add to control plane replicas. The Anthos Multi-Cloud API will automatically create and manage security groups with the minimum rules needed for a functioning cluster.
     """
-    ssh_config: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneSshConfigArgs']]]
+    ssh_config: NotRequired[pulumi.Input[Optional['AwsClusterControlPlaneSshConfigArgsDict']]]
     """
     Optional. SSH configuration for how to access the underlying control plane machines.
     """
@@ -2195,7 +2195,7 @@ class AwsClusterFleetArgs:
 
 
 class AwsClusterLoggingConfigArgsDict(TypedDict):
-    component_config: NotRequired[pulumi.Input[Optional['AwsClusterLoggingConfigComponentConfigArgs']]]
+    component_config: NotRequired[pulumi.Input[Optional['AwsClusterLoggingConfigComponentConfigArgsDict']]]
     """
     Configuration of the logging components.
     """
@@ -2469,7 +2469,7 @@ class AwsNodePoolConfigArgsDict(TypedDict):
     """
     The name of the AWS IAM role assigned to nodes in the pool.
     """
-    autoscaling_metrics_collection: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigAutoscalingMetricsCollectionArgs']]]
+    autoscaling_metrics_collection: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigAutoscalingMetricsCollectionArgsDict']]]
     """
     Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
     """
@@ -2477,7 +2477,7 @@ class AwsNodePoolConfigArgsDict(TypedDict):
     """
     The OS image type to use on node pool instances.
     """
-    instance_placement: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigInstancePlacementArgs']]]
+    instance_placement: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigInstancePlacementArgsDict']]]
     """
     Details of placement information for an instance.
     """
@@ -2489,11 +2489,11 @@ class AwsNodePoolConfigArgsDict(TypedDict):
     """
     Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    proxy_config: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigProxyConfigArgs']]]
+    proxy_config: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigProxyConfigArgsDict']]]
     """
     Proxy configuration for outbound HTTP(S) traffic.
     """
-    root_volume: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigRootVolumeArgs']]]
+    root_volume: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigRootVolumeArgsDict']]]
     """
     Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
     """
@@ -2501,11 +2501,11 @@ class AwsNodePoolConfigArgsDict(TypedDict):
     """
     Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
     """
-    spot_config: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigSpotConfigArgs']]]
+    spot_config: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigSpotConfigArgsDict']]]
     """
     Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
     """
-    ssh_config: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigSshConfigArgs']]]
+    ssh_config: NotRequired[pulumi.Input[Optional['AwsNodePoolConfigSshConfigArgsDict']]]
     """
     Optional. The SSH configuration.
     """
@@ -2513,7 +2513,7 @@ class AwsNodePoolConfigArgsDict(TypedDict):
     """
     Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AwsNodePoolConfigTaintArgsDict']]]]]
     """
     Optional. The initial taints assigned to nodes of this node pool.
     """
@@ -3283,7 +3283,7 @@ class AwsNodePoolMaxPodsConstraintArgs:
 
 
 class AwsNodePoolUpdateSettingsArgsDict(TypedDict):
-    surge_settings: NotRequired[pulumi.Input[Optional['AwsNodePoolUpdateSettingsSurgeSettingsArgs']]]
+    surge_settings: NotRequired[pulumi.Input[Optional['AwsNodePoolUpdateSettingsSurgeSettingsArgsDict']]]
     """
     Optional. Settings for surge update.
     """
@@ -3365,7 +3365,7 @@ class AzureClusterAuthorizationArgsDict(TypedDict):
     """
     Users that can perform operations as a cluster admin. A new ClusterRoleBinding will be created to grant the cluster-admin ClusterRole to the users. Up to ten admin users can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
     """
-    admin_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgs']]]]]
+    admin_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AzureClusterAuthorizationAdminGroupArgsDict']]]]]
     """
     Groups of users that can perform operations as a cluster admin. A managed ClusterRoleBinding will be created to grant the `cluster-admin` ClusterRole to the groups. Up to ten admin groups can be provided. For more info on RBAC, see https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles
     """
@@ -3524,23 +3524,23 @@ class AzureClusterControlPlaneArgsDict(TypedDict):
     """
     The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAzureServerConfig.
     """
-    database_encryption: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneDatabaseEncryptionArgs']]]
+    database_encryption: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneDatabaseEncryptionArgsDict']]]
     """
     Optional. Configuration related to application-layer secrets encryption.
     """
-    main_volume: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneMainVolumeArgs']]]
+    main_volume: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneMainVolumeArgsDict']]]
     """
     Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. When unspecified, it defaults to a 8-GiB Azure Disk.
     """
-    proxy_config: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneProxyConfigArgs']]]
+    proxy_config: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneProxyConfigArgsDict']]]
     """
     Proxy configuration for outbound HTTP(S) traffic.
     """
-    replica_placements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgs']]]]]
+    replica_placements: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AzureClusterControlPlaneReplicaPlacementArgsDict']]]]]
     """
     Configuration for where to place the control plane replicas. Up to three replica placement instances can be specified. If replica_placements is set, the replica placement instances will be applied to the three control plane replicas as evenly as possible.
     """
-    root_volume: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneRootVolumeArgs']]]
+    root_volume: NotRequired[pulumi.Input[Optional['AzureClusterControlPlaneRootVolumeArgsDict']]]
     """
     Optional. Configuration related to the root volume provisioned for each control plane replica. When unspecified, it defaults to 32-GiB Azure Disk.
     """
@@ -3975,7 +3975,7 @@ class AzureClusterFleetArgs:
 
 
 class AzureClusterLoggingConfigArgsDict(TypedDict):
-    component_config: NotRequired[pulumi.Input[Optional['AzureClusterLoggingConfigComponentConfigArgs']]]
+    component_config: NotRequired[pulumi.Input[Optional['AzureClusterLoggingConfigComponentConfigArgsDict']]]
     """
     Configuration of the logging components.
     """
@@ -4233,11 +4233,11 @@ class AzureNodePoolConfigArgsDict(TypedDict):
     """
     Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    proxy_config: NotRequired[pulumi.Input[Optional['AzureNodePoolConfigProxyConfigArgs']]]
+    proxy_config: NotRequired[pulumi.Input[Optional['AzureNodePoolConfigProxyConfigArgsDict']]]
     """
     Proxy configuration for outbound HTTP(S) traffic.
     """
-    root_volume: NotRequired[pulumi.Input[Optional['AzureNodePoolConfigRootVolumeArgs']]]
+    root_volume: NotRequired[pulumi.Input[Optional['AzureNodePoolConfigRootVolumeArgsDict']]]
     """
     Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
     """
@@ -4536,16 +4536,16 @@ class AzureNodePoolMaxPodsConstraintArgs:
 
 
 class ClusterAddonsConfigArgsDict(TypedDict):
-    cloudrun_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigCloudrunConfigArgs']]]
+    cloudrun_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigCloudrunConfigArgsDict']]]
     """
     . Structure is documented below.
     """
-    config_connector_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigConfigConnectorConfigArgs']]]
+    config_connector_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigConfigConnectorConfigArgsDict']]]
     """
     .
     The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
     """
-    dns_cache_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigDnsCacheConfigArgs']]]
+    dns_cache_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigDnsCacheConfigArgsDict']]]
     """
     .
     The status of the NodeLocal DNSCache addon. It is disabled by default.
@@ -4554,20 +4554,20 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
     All cluster nodes running GKE 1.15 and higher are recreated.**
     """
-    gce_persistent_disk_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs']]]
+    gce_persistent_disk_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgsDict']]]
     """
     .
     Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Set `enabled = true` to enable.
 
     **Note:** The Compute Engine persistent disk CSI Driver is enabled by default on newly created clusters for the following versions: Linux clusters: GKE version 1.18.10-gke.2100 or later, or 1.19.3-gke.2100 or later.
     """
-    gcp_filestore_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs']]]
+    gcp_filestore_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgsDict']]]
     """
     The status of the Filestore CSI driver addon,
     which allows the usage of filestore instance as volumes.
     It is disabled by default; set `enabled = true` to enable.
     """
-    gcs_fuse_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGcsFuseCsiDriverConfigArgs']]]
+    gcs_fuse_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGcsFuseCsiDriverConfigArgsDict']]]
     """
     The status of the GCSFuse CSI driver addon,
     which allows the usage of a gcs bucket as volumes.
@@ -4575,12 +4575,12 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     It is enabled by default for Autopilot clusters with version 1.24 or later; set `enabled = true` to enable it explicitly.
     See [Enable the Cloud Storage FUSE CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/cloud-storage-fuse-csi-driver#enable) for more information.
     """
-    gke_backup_agent_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGkeBackupAgentConfigArgs']]]
+    gke_backup_agent_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigGkeBackupAgentConfigArgsDict']]]
     """
     .
     The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
     """
-    horizontal_pod_autoscaling: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigHorizontalPodAutoscalingArgs']]]
+    horizontal_pod_autoscaling: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigHorizontalPodAutoscalingArgsDict']]]
     """
     The status of the Horizontal Pod Autoscaling
     addon, which increases or decreases the number of replica pods a replication controller
@@ -4588,23 +4588,23 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     It is enabled by default;
     set `disabled = true` to disable.
     """
-    http_load_balancing: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigHttpLoadBalancingArgs']]]
+    http_load_balancing: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigHttpLoadBalancingArgsDict']]]
     """
     The status of the HTTP (L7) load balancing
     controller addon, which makes it easy to set up HTTP load balancers for services in a
     cluster. It is enabled by default; set `disabled = true` to disable.
     """
-    istio_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigIstioConfigArgs']]]
+    istio_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigIstioConfigArgsDict']]]
     """
     ).
     Structure is documented below.
     """
-    kalm_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigKalmConfigArgs']]]
+    kalm_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigKalmConfigArgsDict']]]
     """
     ).
     Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
     """
-    lustre_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigLustreCsiDriverConfigArgs']]]
+    lustre_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigLustreCsiDriverConfigArgsDict']]]
     """
     The status of the Lustre CSI driver addon,
     which allows the usage of a Lustre instances as volumes.
@@ -4613,7 +4613,7 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     See [Enable Lustre CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/lustre-csi-driver-new-volume) for more information.
     Lustre CSI Driver Config has optional subfields:
     """
-    network_policy_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigNetworkPolicyConfigArgs']]]
+    network_policy_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigNetworkPolicyConfigArgsDict']]]
     """
     Whether we should enable the network policy addon
     for the master.  This must be enabled in order to enable network policy for the nodes.
@@ -4622,7 +4622,7 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     It can only be disabled if the nodes already do not have network policies enabled.
     Defaults to disabled; set `disabled = false` to enable.
     """
-    parallelstore_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigParallelstoreCsiDriverConfigArgs']]]
+    parallelstore_csi_driver_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigParallelstoreCsiDriverConfigArgsDict']]]
     """
     The status of the Parallelstore CSI driver addon,
     which allows the usage of a Parallelstore instances as volumes.
@@ -4630,13 +4630,13 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
     See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
     """
-    pod_snapshot_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigPodSnapshotConfigArgs']]]
+    pod_snapshot_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigPodSnapshotConfigArgsDict']]]
     """
     The status of the Pod Snapshot addon. It is disabled by default. Set `enabled = true` to enable.
 
     This example `addons_config` disables two addons:
     """
-    ray_operator_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgs']]]]]
+    ray_operator_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAddonsConfigRayOperatorConfigArgsDict']]]]]
     """
     . The status of the [Ray Operator
     addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
@@ -4651,13 +4651,13 @@ class ClusterAddonsConfigArgsDict(TypedDict):
     GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
     for more information.
     """
-    slice_controller_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigSliceControllerConfigArgs']]]
+    slice_controller_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigSliceControllerConfigArgsDict']]]
     """
     . 
     The status of the slice controller addon.
     It is disabled by default. Set `enabled = true` to enable.
     """
-    stateful_ha_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigStatefulHaConfigArgs']]]
+    stateful_ha_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigStatefulHaConfigArgsDict']]]
     """
     .
     The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -5526,11 +5526,11 @@ class ClusterAddonsConfigPodSnapshotConfigArgs:
 
 class ClusterAddonsConfigRayOperatorConfigArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
-    ray_cluster_logging_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs']]]
+    ray_cluster_logging_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgsDict']]]
     """
     The status of Ray Logging, which scrapes Ray cluster logs to Cloud Logging. Defaults to disabled; set enabled = true to enable.
     """
-    ray_cluster_monitoring_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgs']]]
+    ray_cluster_monitoring_config: NotRequired[pulumi.Input[Optional['ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfigArgsDict']]]
     """
     The status of Ray Cluster monitoring, which shows Ray cluster metrics in Cloud Console. Defaults to disabled; set enabled = true to enable.
     """
@@ -5860,7 +5860,7 @@ class ClusterBinaryAuthorizationArgs:
 
 
 class ClusterClusterAutoscalingArgsDict(TypedDict):
-    auto_provisioning_defaults: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsArgs']]]
+    auto_provisioning_defaults: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsArgsDict']]]
     """
     Contains defaults for a node pool created by NAP. A subset of fields also apply to
     GKE Autopilot clusters.
@@ -5888,7 +5888,7 @@ class ClusterClusterAutoscalingArgsDict(TypedDict):
     Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
     for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
     """
-    resource_limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgs']]]]]
+    resource_limits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAutoscalingResourceLimitArgsDict']]]]]
     """
     Global constraints for machine resources in the
     cluster. Configuring the `cpu` and `memory` types is required if node
@@ -6038,7 +6038,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgsDict(TypedDict):
     """
     The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
     """
-    management: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs']]]
+    management: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgsDict']]]
     """
     NodeManagement configuration for this NodePool. Structure is documented below.
     """
@@ -6059,11 +6059,11 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgsDict(TypedDict):
     """
     The `email` of the Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgsDict']]]
     """
     Shielded Instance options. Structure is documented below.
     """
-    upgrade_settings: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgs']]]
+    upgrade_settings: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgsDict']]]
     """
     Specifies the upgrade settings for NAP created node pools
     """
@@ -6256,7 +6256,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgsDict(TypedD
     """
     Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
     """
-    upgrade_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgs']]]]]
+    upgrade_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOptionArgsDict']]]]]
     """
     Specifies the [Auto Upgrade knobs](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/NodeManagement#AutoUpgradeOptions) for the node pool.
     """
@@ -6431,7 +6431,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArg
 
 
 class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsArgsDict(TypedDict):
-    blue_green_settings: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgs']]]
+    blue_green_settings: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsArgsDict']]]
     """
     Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
     """
@@ -6524,7 +6524,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenS
     """
     Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    standard_rollout_policy: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]]
+    standard_rollout_policy: NotRequired[pulumi.Input[Optional['ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict']]]
     """
     Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
     """
@@ -6796,11 +6796,11 @@ class ClusterConfidentialNodesArgs:
 
 
 class ClusterControlPlaneEndpointsConfigArgsDict(TypedDict):
-    dns_endpoint_config: NotRequired[pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs']]]
+    dns_endpoint_config: NotRequired[pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgsDict']]]
     """
     DNS endpoint configuration.
     """
-    ip_endpoints_config: NotRequired[pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgs']]]
+    ip_endpoints_config: NotRequired[pulumi.Input[Optional['ClusterControlPlaneEndpointsConfigIpEndpointsConfigArgsDict']]]
     """
     IP endpoint configuration.
     """
@@ -7473,18 +7473,18 @@ class ClusterIdentityServiceConfigArgs:
 
 
 class ClusterIpAllocationPolicyArgsDict(TypedDict):
-    additional_ip_ranges_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterIpAllocationPolicyAdditionalIpRangesConfigArgs']]]]]
+    additional_ip_ranges_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterIpAllocationPolicyAdditionalIpRangesConfigArgsDict']]]]]
     """
     The configuration for individual additional subnetworks attached to the cluster.
     Structure is documented below.
     """
-    additional_pod_ranges_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgs']]]
+    additional_pod_ranges_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyAdditionalPodRangesConfigArgsDict']]]
     """
     The configuration for additional pod secondary ranges at
     the cluster level. Used for Autopilot clusters and Standard clusters with which control of the
     secondary Pod IP address assignment to node pools isn't needed. Structure is documented below.
     """
-    auto_ipam_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyAutoIpamConfigArgs']]]
+    auto_ipam_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyAutoIpamConfigArgsDict']]]
     """
     All the information related to Auto IPAM. Structure is documented below
     """
@@ -7502,13 +7502,13 @@ class ClusterIpAllocationPolicyArgsDict(TypedDict):
     range in the cluster's subnetwork to use for pod IP addresses. Alternatively,
     `cluster_ipv4_cidr_block` can be used to automatically create a GKE-managed one.
     """
-    network_tier_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyNetworkTierConfigArgs']]]
+    network_tier_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyNetworkTierConfigArgsDict']]]
     """
     Contains network tier information. Structure is documented below
 
     <a name="nested_auto_ipam_config"></a>The auto ipam config supports:
     """
-    pod_cidr_overprovision_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs']]]
+    pod_cidr_overprovision_config: NotRequired[pulumi.Input[Optional['ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgsDict']]]
     """
     Configuration for cluster level pod cidr overprovision. Default is disabled=false.
     """
@@ -7980,7 +7980,7 @@ class ClusterLoggingConfigArgs:
 
 
 class ClusterMaintenancePolicyArgsDict(TypedDict):
-    daily_maintenance_window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyDailyMaintenanceWindowArgs']]]
+    daily_maintenance_window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyDailyMaintenanceWindowArgsDict']]]
     """
     Time window specified for daily maintenance operations.
     Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
@@ -7988,17 +7988,17 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
 
     Examples:
     """
-    disruption_budget: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyDisruptionBudgetArgs']]]
+    disruption_budget: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyDisruptionBudgetArgsDict']]]
     """
     structure documented below
 
     In beta, one or the other of `recurring_window` and `daily_maintenance_window` is required if a `maintenance_policy` block is supplied.
     """
-    maintenance_exclusions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]]
+    maintenance_exclusions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgsDict']]]]]
     """
     Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
     """
-    recurring_window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyRecurringWindowArgs']]]
+    recurring_window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyRecurringWindowArgsDict']]]
     """
     Time window for recurring maintenance operations.
 
@@ -8310,7 +8310,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgsDict(TypedDict):
     exclusion_name: pulumi.Input[_builtins.str]
     start_time: pulumi.Input[_builtins.str]
     end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-    exclusion_options: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs']]]
+    exclusion_options: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgsDict']]]
     """
     MaintenanceExclusionOptions provides maintenance exclusion related options.
     """
@@ -8746,7 +8746,7 @@ class ClusterMasterAuthClientCertificateConfigArgs:
 
 
 class ClusterMasterAuthorizedNetworksConfigArgsDict(TypedDict):
-    cidr_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgs']]]]]
+    cidr_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMasterAuthorizedNetworksConfigCidrBlockArgsDict']]]]]
     """
     External networks that can access the
     Kubernetes cluster master through HTTPS.
@@ -8900,7 +8900,7 @@ class ClusterMeshCertificatesArgs:
 
 
 class ClusterMonitoringConfigArgsDict(TypedDict):
-    advanced_datapath_observability_config: NotRequired[pulumi.Input[Optional['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs']]]
+    advanced_datapath_observability_config: NotRequired[pulumi.Input[Optional['ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgsDict']]]
     """
     Configuration for Advanced Datapath Monitoring. Structure is documented below.
     """
@@ -8908,7 +8908,7 @@ class ClusterMonitoringConfigArgsDict(TypedDict):
     """
     The GKE components exposing metrics. Supported values include: `SYSTEM_COMPONENTS`, `APISERVER`, `SCHEDULER`, `CONTROLLER_MANAGER`, `STORAGE`, `HPA`, `POD`, `DAEMONSET`, `DEPLOYMENT`, `STATEFULSET`, `KUBELET`, `CADVISOR`, `DCGM` and `JOBSET`. In beta provider, `WORKLOADS` is supported on top of those 12 values. (`WORKLOADS` is deprecated and removed in GKE 1.24.) `KUBELET` and `CADVISOR` are only supported in GKE 1.29.3-gke.1093000 and above. `JOBSET` is only supported in GKE 1.32.1-gke.1357001 and above.
     """
-    managed_prometheus: NotRequired[pulumi.Input[Optional['ClusterMonitoringConfigManagedPrometheusArgs']]]
+    managed_prometheus: NotRequired[pulumi.Input[Optional['ClusterMonitoringConfigManagedPrometheusArgsDict']]]
     """
     Configuration for Managed Service for Prometheus. Structure is documented below.
     """
@@ -9020,7 +9020,7 @@ class ClusterMonitoringConfigManagedPrometheusArgsDict(TypedDict):
     """
     Whether or not the managed collection is enabled.
     """
-    auto_monitoring_config: NotRequired[pulumi.Input[Optional['ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgs']]]
+    auto_monitoring_config: NotRequired[pulumi.Input[Optional['ClusterMonitoringConfigManagedPrometheusAutoMonitoringConfigArgsDict']]]
     """
     Configuration options for GKE Auto-Monitoring.
     """
@@ -9168,12 +9168,12 @@ class ClusterNetworkPolicyArgs:
 
 
 class ClusterNodeConfigArgsDict(TypedDict):
-    advanced_machine_features: NotRequired[pulumi.Input[Optional['ClusterNodeConfigAdvancedMachineFeaturesArgs']]]
+    advanced_machine_features: NotRequired[pulumi.Input[Optional['ClusterNodeConfigAdvancedMachineFeaturesArgsDict']]]
     """
     Specifies options for controlling
     advanced machine features. Structure is documented below.
     """
-    boot_disk: NotRequired[pulumi.Input[Optional['ClusterNodeConfigBootDiskArgs']]]
+    boot_disk: NotRequired[pulumi.Input[Optional['ClusterNodeConfigBootDiskArgsDict']]]
     """
     Configuration of the node pool boot disk. Structure is documented below
     """
@@ -9181,11 +9181,11 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
     """
-    confidential_nodes: NotRequired[pulumi.Input[Optional['ClusterNodeConfigConfidentialNodesArgs']]]
+    confidential_nodes: NotRequired[pulumi.Input[Optional['ClusterNodeConfigConfidentialNodesArgsDict']]]
     """
     Configuration for Confidential Nodes feature. Structure is documented below.
     """
-    containerd_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigArgs']]]
+    containerd_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigArgsDict']]]
     """
     Parameters to customize containerd runtime. Structure is documented below.
     """
@@ -9200,7 +9200,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     Type of the disk attached to each node
     (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
     """
-    effective_taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgs']]]]]
+    effective_taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigEffectiveTaintArgsDict']]]]]
     """
     List of kubernetes taints applied to each node. Structure is documented above.
     """
@@ -9208,15 +9208,15 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
     """
-    ephemeral_storage_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigEphemeralStorageConfigArgs']]]
+    ephemeral_storage_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigEphemeralStorageConfigArgsDict']]]
     """
     ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
     """
-    ephemeral_storage_local_ssd_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs']]]
+    ephemeral_storage_local_ssd_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigEphemeralStorageLocalSsdConfigArgsDict']]]
     """
     Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
     """
-    fast_socket: NotRequired[pulumi.Input[Optional['ClusterNodeConfigFastSocketArgs']]]
+    fast_socket: NotRequired[pulumi.Input[Optional['ClusterNodeConfigFastSocketArgsDict']]]
     """
     Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
     Node Pool must enable gvnic.
@@ -9227,7 +9227,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     Enables Flex Start provisioning model for the node pool.
     """
-    gcfs_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGcfsConfigArgs']]]
+    gcfs_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGcfsConfigArgsDict']]]
     """
     Parameters for the Google Container Filesystem (GCFS).
     If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
@@ -9236,12 +9236,12 @@ class ClusterNodeConfigArgsDict(TypedDict):
     GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
     Structure is documented below.
     """
-    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]]]
+    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgsDict']]]]]
     """
     List of the type and count of accelerator cards attached to the instance.
     Structure documented below.
     """
-    gvnic: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGvnicArgs']]]
+    gvnic: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGvnicArgsDict']]]
     """
     Google Virtual NIC (gVNIC) is a virtual network interface.
     Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -9249,7 +9249,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     GKE node version 1.15.11-gke.15 or later
     Structure is documented below.
     """
-    host_maintenance_policy: NotRequired[pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyArgs']]]
+    host_maintenance_policy: NotRequired[pulumi.Input[Optional['ClusterNodeConfigHostMaintenancePolicyArgsDict']]]
     """
     The maintenance policy for the hosts on which the GKE VMs run on.
     """
@@ -9258,7 +9258,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     The image type to use for this node. Note that changing the image type
     will delete and recreate all nodes in the node pool.
     """
-    kubelet_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigArgs']]]
+    kubelet_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigArgsDict']]]
     """
     Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
     Structure is documented below.
@@ -9277,11 +9277,11 @@ class ClusterNodeConfigArgsDict(TypedDict):
     The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
     reserved by Kubernetes Core components and cannot be specified.
     """
-    linux_node_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigArgs']]]
+    linux_node_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigArgsDict']]]
     """
     Parameters that can be configured on Linux nodes. Structure is documented below.
     """
-    local_nvme_ssd_block_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLocalNvmeSsdBlockConfigArgs']]]
+    local_nvme_ssd_block_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLocalNvmeSsdBlockConfigArgsDict']]]
     """
     Parameters for the local NVMe SSDs. Structure is documented below.
     """
@@ -9345,7 +9345,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
     for more information. Defaults to false.
     """
-    reservation_affinity: NotRequired[pulumi.Input[Optional['ClusterNodeConfigReservationAffinityArgs']]]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['ClusterNodeConfigReservationAffinityArgsDict']]]
     """
     The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
     """
@@ -9358,12 +9358,12 @@ class ClusterNodeConfigArgsDict(TypedDict):
     """
     A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
     """
-    sandbox_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigSandboxConfigArgs']]]
+    sandbox_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigSandboxConfigArgsDict']]]
     """
     [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
     Structure is documented below.
     """
-    secondary_boot_disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigSecondaryBootDiskArgs']]]]]
+    secondary_boot_disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigSecondaryBootDiskArgsDict']]]]]
     """
     Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
     """
@@ -9372,11 +9372,11 @@ class ClusterNodeConfigArgsDict(TypedDict):
     The service account to be used by the Node VMs.
     If not specified, the "default" service account is used.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigShieldedInstanceConfigArgsDict']]]
     """
     Shielded Instance options. Structure is documented below.
     """
-    sole_tenant_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigSoleTenantConfigArgs']]]
+    sole_tenant_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigSoleTenantConfigArgsDict']]]
     """
     Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
     """
@@ -9395,7 +9395,7 @@ class ClusterNodeConfigArgsDict(TypedDict):
     The list of instance tags applied to all nodes. Tags are used to identify
     valid sources or targets for network firewalls.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigTaintArgsDict']]]]]
     """
     A list of
     [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
@@ -9405,11 +9405,11 @@ class ClusterNodeConfigArgsDict(TypedDict):
     will not record any taints as being Pulumi-managed, and will cause drift with
     any configured taints. Structure is documented below.
     """
-    windows_node_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigWindowsNodeConfigArgs']]]
+    windows_node_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigWindowsNodeConfigArgsDict']]]
     """
     Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
     """
-    workload_metadata_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigWorkloadMetadataConfigArgs']]]
+    workload_metadata_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigWorkloadMetadataConfigArgsDict']]]
     """
     Metadata configuration to expose to workloads on the node pool.
     Structure is documented below.
@@ -10500,15 +10500,15 @@ class ClusterNodeConfigConfidentialNodesArgs:
 
 
 class ClusterNodeConfigContainerdConfigArgsDict(TypedDict):
-    private_registry_access_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']]]
+    private_registry_access_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDict']]]
     """
     Configuration for private container registries. There are two fields in this config:
     """
-    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostArgs']]]]]
+    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostArgsDict']]]]]
     """
     Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
     """
-    writable_cgroups: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigWritableCgroupsArgs']]]
+    writable_cgroups: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigWritableCgroupsArgsDict']]]
     """
     Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
     """
@@ -10573,7 +10573,7 @@ class ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDict(Typed
     """
     Enables private registry config. If set to false, all other fields in this object must not be set.
     """
-    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]]]
+    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict']]]]]
     """
     List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
     """
@@ -10696,7 +10696,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostArgsDict(TypedDict):
     """
     Defines the host name of the registry server.
     """
-    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostArgs']]]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostArgsDict']]]]]
     """
     Configures a list of host-specific configurations for the server.
     """
@@ -10748,11 +10748,11 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostArgsDict(TypedDict):
     """
     Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
     """
-    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostCaArgs']]]]]
+    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostCaArgsDict']]]]]
     """
     Configures the registry host certificate.
     """
-    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostClientArgs']]]]]
+    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostClientArgsDict']]]]]
     """
     Configures the registry host client certificate and key.
     """
@@ -10760,7 +10760,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostArgsDict(TypedDict):
     """
     Specifies the maximum duration allowed for a connection attempt to complete.
     """
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeConfigContainerdConfigRegistryHostHostHeaderArgsDict']]]]]
     """
     Configures the registry host headers.
     """
@@ -10921,7 +10921,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostClientArgsDict(TypedDict)
     """
     Configures the client certificate.
     """
-    key: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArgs']]]
+    key: NotRequired[pulumi.Input[Optional['ClusterNodeConfigContainerdConfigRegistryHostHostClientKeyArgsDict']]]
     """
     Configures the client private key.
     """
@@ -11307,7 +11307,7 @@ class ClusterNodeConfigGuestAcceleratorArgsDict(TypedDict):
     """
     The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
     """
-    gpu_driver_installation_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]]
+    gpu_driver_installation_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgsDict']]]
     """
     Configuration for auto installation of GPU driver. Structure is documented below.
     """
@@ -11315,7 +11315,7 @@ class ClusterNodeConfigGuestAcceleratorArgsDict(TypedDict):
     """
     Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
     """
-    gpu_sharing_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs']]]
+    gpu_sharing_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgsDict']]]
     """
     Configuration for GPU sharing. Structure is documented below.
     """
@@ -11601,15 +11601,15 @@ class ClusterNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
     """
-    eviction_minimum_reclaim: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgs']]]
+    eviction_minimum_reclaim: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict']]]
     """
     Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
     """
-    eviction_soft: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionSoftArgs']]]
+    eviction_soft: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionSoftArgsDict']]]
     """
     Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
     """
-    eviction_soft_grace_period: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgs']]]
+    eviction_soft_grace_period: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigEvictionSoftGracePeriodArgsDict']]]
     """
     Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
     """
@@ -11637,7 +11637,7 @@ class ClusterNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
     """
-    memory_manager: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigMemoryManagerArgs']]]
+    memory_manager: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigMemoryManagerArgsDict']]]
     """
     Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
     The memory manager optimizes memory and hugepages allocation for pods, especially
@@ -11651,7 +11651,7 @@ class ClusterNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
     """
-    topology_manager: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigTopologyManagerArgs']]]
+    topology_manager: NotRequired[pulumi.Input[Optional['ClusterNodeConfigKubeletConfigTopologyManagerArgsDict']]]
     """
     These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
     """
@@ -12489,7 +12489,7 @@ class ClusterNodeConfigKubeletConfigTopologyManagerArgs:
 
 
 class ClusterNodeConfigLinuxNodeConfigArgsDict(TypedDict):
-    accurate_time_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]]
+    accurate_time_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict']]]
     """
     Accurate time configuration for the node. Structure is documented below.
     """
@@ -12501,15 +12501,15 @@ class ClusterNodeConfigLinuxNodeConfigArgsDict(TypedDict):
     * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
     * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
     """
-    hugepages_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgs']]]
+    hugepages_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigHugepagesConfigArgsDict']]]
     """
     Amounts for 2M and 1G hugepages. Structure is documented below.
     """
-    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]]
+    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]]
     """
     Settings for kernel module loading. Structure is documented below.
     """
-    swap_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigArgs']]]
+    swap_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigArgsDict']]]
     """
     Swap configuration for the node. Structure is documented below.
     """
@@ -12798,11 +12798,11 @@ class ClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
 
 
 class ClusterNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
-    boot_disk_profile: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]]
+    boot_disk_profile: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict']]]
     """
     Swap on the node's boot disk. Structure is documented below.
     """
-    dedicated_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]]
+    dedicated_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict']]]
     """
     Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
     """
@@ -12810,11 +12810,11 @@ class ClusterNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
     """
     Enables or disables swap for the node pool.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict']]]
     """
     If omitted, swap space is encrypted by default. Structure is documented below.
     """
-    ephemeral_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]]
+    ephemeral_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict']]]
     """
     Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
     """
@@ -13609,7 +13609,7 @@ class ClusterNodeConfigWorkloadMetadataConfigArgs:
 
 
 class ClusterNodePoolArgsDict(TypedDict):
-    autoscaling: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoscalingArgs']]]
+    autoscaling: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoscalingArgsDict']]]
     """
     Configuration required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
     """
@@ -13630,7 +13630,7 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     List of instance group URLs which have been assigned to this node pool.
     """
-    management: NotRequired[pulumi.Input[Optional['ClusterNodePoolManagementArgs']]]
+    management: NotRequired[pulumi.Input[Optional['ClusterNodePoolManagementArgsDict']]]
     """
     Node management configuration, wherein auto-repair and auto-upgrade is configured.
     """
@@ -13649,12 +13649,12 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
     """
-    network_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigArgs']]]
+    network_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigArgsDict']]]
     """
     Configuration for
     [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
     """
-    node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigArgs']]]
+    node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigArgsDict']]]
     """
     Parameters used in creating the default node pool.
     Generally, this field should not be used at the same time as a
@@ -13666,7 +13666,7 @@ class ClusterNodePoolArgsDict(TypedDict):
     """
     The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
     """
-    node_drain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeDrainConfigArgs']]]]]
+    node_drain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeDrainConfigArgsDict']]]]]
     """
     Node drain configuration for this NodePool.
     """
@@ -13684,15 +13684,15 @@ class ClusterNodePoolArgsDict(TypedDict):
     in multiple zones in the region. For that reason, regional clusters should be
     preferred.
     """
-    placement_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolPlacementPolicyArgs']]]
+    placement_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolPlacementPolicyArgsDict']]]
     """
     Specifies the node placement policy
     """
-    queued_provisioning: NotRequired[pulumi.Input[Optional['ClusterNodePoolQueuedProvisioningArgs']]]
+    queued_provisioning: NotRequired[pulumi.Input[Optional['ClusterNodePoolQueuedProvisioningArgsDict']]]
     """
     Specifies the configuration of queued provisioning
     """
-    upgrade_settings: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsArgs']]]
+    upgrade_settings: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsArgsDict']]]
     """
     Specify node upgrade settings to change how many nodes GKE attempts to upgrade at once. The number of nodes upgraded simultaneously is the sum of max_surge and max_unavailable. The maximum number of nodes upgraded simultaneously is limited to 20.
     """
@@ -14027,15 +14027,15 @@ class ClusterNodePoolArgs:
 
 
 class ClusterNodePoolAutoConfigArgsDict(TypedDict):
-    linux_node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigLinuxNodeConfigArgs']]]
+    linux_node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigLinuxNodeConfigArgsDict']]]
     """
     Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` and `node_kernel_module_loading` fields are supported in `node_pool_auto_config`. Structure is documented below.
     """
-    network_tags: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigNetworkTagsArgs']]]
+    network_tags: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigNetworkTagsArgsDict']]]
     """
     The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
     """
-    node_kubelet_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigNodeKubeletConfigArgs']]]
+    node_kubelet_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigNodeKubeletConfigArgsDict']]]
     """
     Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
     Structure is documented below.
@@ -14127,7 +14127,7 @@ class ClusterNodePoolAutoConfigLinuxNodeConfigArgsDict(TypedDict):
     * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
     * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
     """
-    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]]
+    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['ClusterNodePoolAutoConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]]
     """
     Settings for kernel module loading. Structure is documented below.
     """
@@ -14388,7 +14388,7 @@ class ClusterNodePoolAutoscalingArgs:
 
 
 class ClusterNodePoolDefaultsArgsDict(TypedDict):
-    node_config_defaults: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsArgs']]]
+    node_config_defaults: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsArgsDict']]]
     """
     Subset of NodeConfig message that has defaults.
     """
@@ -14417,11 +14417,11 @@ class ClusterNodePoolDefaultsArgs:
 
 
 class ClusterNodePoolDefaultsNodeConfigDefaultsArgsDict(TypedDict):
-    containerd_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgs']]]
+    containerd_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgsDict']]]
     """
     Parameters for containerd configuration.
     """
-    gcfs_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']]]
+    gcfs_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgsDict']]]
     """
     The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
     """
@@ -14506,15 +14506,15 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
 
 
 class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigArgsDict(TypedDict):
-    private_registry_access_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgs']]]
+    private_registry_access_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigArgsDict']]]
     """
     Configuration for private container registries. There are two fields in this config:
     """
-    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgs']]]]]
+    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgsDict']]]]]
     """
     Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
     """
-    writable_cgroups: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgs']]]
+    writable_cgroups: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroupsArgsDict']]]
     """
     Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
     """
@@ -14579,7 +14579,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAc
     """
     Enables private registry config. If set to false, all other fields in this object must not be set.
     """
-    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]]]
+    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict']]]]]
     """
     List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
     """
@@ -14702,7 +14702,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostArgsD
     """
     Defines the host name of the registry server.
     """
-    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArgs']]]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostArgsDict']]]]]
     """
     Configures a list of host-specific configurations for the server.
     """
@@ -14754,11 +14754,11 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostA
     """
     Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
     """
-    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArgs']]]]]
+    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostCaArgsDict']]]]]
     """
     Configures the registry host certificate.
     """
-    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArgs']]]]]
+    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientArgsDict']]]]]
     """
     Configures the registry host client certificate and key.
     """
@@ -14766,7 +14766,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostA
     """
     Specifies the maximum duration allowed for a connection attempt to complete.
     """
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostHeaderArgsDict']]]]]
     """
     Configures the registry host headers.
     """
@@ -14927,7 +14927,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostC
     """
     Configures the client certificate.
     """
-    key: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKeyArgs']]]
+    key: NotRequired[pulumi.Input[Optional['ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigRegistryHostHostClientKeyArgsDict']]]
     """
     Configures the client private key.
     """
@@ -15191,11 +15191,11 @@ class ClusterNodePoolNetworkConfigArgsDict(TypedDict):
     """
     The accelerator network profile to use for this node pool.
     """
-    additional_node_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]]
+    additional_node_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgsDict']]]]]
     """
     We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface
     """
-    additional_pod_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]]
+    additional_pod_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgsDict']]]]]
     """
     We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node
     """
@@ -15207,11 +15207,11 @@ class ClusterNodePoolNetworkConfigArgsDict(TypedDict):
     """
     Whether nodes have internal IP addresses only.
     """
-    network_performance_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs']]]
+    network_performance_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgsDict']]]
     """
     Network bandwidth tier configuration.
     """
-    pod_cidr_overprovision_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs']]]
+    pod_cidr_overprovision_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgsDict']]]
     """
     Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited
     """
@@ -15591,12 +15591,12 @@ class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
 
 
 class ClusterNodePoolNodeConfigArgsDict(TypedDict):
-    advanced_machine_features: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgs']]]
+    advanced_machine_features: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigAdvancedMachineFeaturesArgsDict']]]
     """
     Specifies options for controlling
     advanced machine features. Structure is documented below.
     """
-    boot_disk: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigBootDiskArgs']]]
+    boot_disk: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigBootDiskArgsDict']]]
     """
     Configuration of the node pool boot disk. Structure is documented below
     """
@@ -15604,11 +15604,11 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
     """
-    confidential_nodes: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigConfidentialNodesArgs']]]
+    confidential_nodes: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigConfidentialNodesArgsDict']]]
     """
     Configuration for Confidential Nodes feature. Structure is documented below.
     """
-    containerd_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigArgs']]]
+    containerd_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigArgsDict']]]
     """
     Parameters to customize containerd runtime. Structure is documented below.
     """
@@ -15623,7 +15623,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     Type of the disk attached to each node
     (e.g. 'pd-standard', 'pd-balanced', 'pd-ssd', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`. This is being migrated to `boot_disk.disk_type`, and must match if specified in both places. Prefer configuring `boot_disk`.
     """
-    effective_taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgs']]]]]
+    effective_taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigEffectiveTaintArgsDict']]]]]
     """
     List of kubernetes taints applied to each node. Structure is documented above.
     """
@@ -15631,15 +15631,15 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
     """
-    ephemeral_storage_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']]]
+    ephemeral_storage_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigEphemeralStorageConfigArgsDict']]]
     """
     ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
     """
-    ephemeral_storage_local_ssd_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']]]
+    ephemeral_storage_local_ssd_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgsDict']]]
     """
     Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
     """
-    fast_socket: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigFastSocketArgs']]]
+    fast_socket: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigFastSocketArgsDict']]]
     """
     Parameters for the NCCL Fast Socket feature. If unspecified, NCCL Fast Socket will not be enabled on the node pool.
     Node Pool must enable gvnic.
@@ -15650,7 +15650,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     Enables Flex Start provisioning model for the node pool.
     """
-    gcfs_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGcfsConfigArgs']]]
+    gcfs_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGcfsConfigArgsDict']]]
     """
     Parameters for the Google Container Filesystem (GCFS).
     If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version` from GKE versions 1.19 or later to use it.
@@ -15659,12 +15659,12 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
     Structure is documented below.
     """
-    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]]]
+    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgsDict']]]]]
     """
     List of the type and count of accelerator cards attached to the instance.
     Structure documented below.
     """
-    gvnic: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGvnicArgs']]]
+    gvnic: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGvnicArgsDict']]]
     """
     Google Virtual NIC (gVNIC) is a virtual network interface.
     Installing the gVNIC driver allows for more efficient traffic transmission across the Google network infrastructure.
@@ -15672,7 +15672,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     GKE node version 1.15.11-gke.15 or later
     Structure is documented below.
     """
-    host_maintenance_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyArgs']]]
+    host_maintenance_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigHostMaintenancePolicyArgsDict']]]
     """
     The maintenance policy for the hosts on which the GKE VMs run on.
     """
@@ -15681,7 +15681,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     The image type to use for this node. Note that changing the image type
     will delete and recreate all nodes in the node pool.
     """
-    kubelet_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigArgs']]]
+    kubelet_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigArgsDict']]]
     """
     Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
     Structure is documented below.
@@ -15700,11 +15700,11 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
     reserved by Kubernetes Core components and cannot be specified.
     """
-    linux_node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigArgs']]]
+    linux_node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict']]]
     """
     Parameters that can be configured on Linux nodes. Structure is documented below.
     """
-    local_nvme_ssd_block_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']]]
+    local_nvme_ssd_block_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict']]]
     """
     Parameters for the local NVMe SSDs. Structure is documented below.
     """
@@ -15768,7 +15768,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
     for more information. Defaults to false.
     """
-    reservation_affinity: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigReservationAffinityArgs']]]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigReservationAffinityArgsDict']]]
     """
     The configuration of the desired reservation which instances could take capacity from. Structure is documented below.
     """
@@ -15781,12 +15781,12 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     """
     A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
     """
-    sandbox_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigSandboxConfigArgs']]]
+    sandbox_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigSandboxConfigArgsDict']]]
     """
     [GKE Sandbox](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods) configuration. When enabling this feature you must specify `image_type = "COS_CONTAINERD"` and `node_version = "1.12.7-gke.17"` or later to use it.
     Structure is documented below.
     """
-    secondary_boot_disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSecondaryBootDiskArgs']]]]]
+    secondary_boot_disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSecondaryBootDiskArgsDict']]]]]
     """
     Parameters for secondary boot disks to preload container images and data on new nodes. Structure is documented below. `gcfs_config` must be `enabled=true` for this feature to work. `min_master_version` must also be set to use GKE 1.28.3-gke.106700 or later versions.
     """
@@ -15795,11 +15795,11 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     The service account to be used by the Node VMs.
     If not specified, the "default" service account is used.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigShieldedInstanceConfigArgsDict']]]
     """
     Shielded Instance options. Structure is documented below.
     """
-    sole_tenant_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigSoleTenantConfigArgs']]]
+    sole_tenant_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigSoleTenantConfigArgsDict']]]
     """
     Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). Structure is documented below.
     """
@@ -15818,7 +15818,7 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     The list of instance tags applied to all nodes. Tags are used to identify
     valid sources or targets for network firewalls.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgsDict']]]]]
     """
     A list of
     [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
@@ -15828,11 +15828,11 @@ class ClusterNodePoolNodeConfigArgsDict(TypedDict):
     will not record any taints as being Pulumi-managed, and will cause drift with
     any configured taints. Structure is documented below.
     """
-    windows_node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigWindowsNodeConfigArgs']]]
+    windows_node_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigWindowsNodeConfigArgsDict']]]
     """
     Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
     """
-    workload_metadata_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']]]
+    workload_metadata_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgsDict']]]
     """
     Metadata configuration to expose to workloads on the node pool.
     Structure is documented below.
@@ -16923,15 +16923,15 @@ class ClusterNodePoolNodeConfigConfidentialNodesArgs:
 
 
 class ClusterNodePoolNodeConfigContainerdConfigArgsDict(TypedDict):
-    private_registry_access_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']]]
+    private_registry_access_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDict']]]
     """
     Configuration for private container registries. There are two fields in this config:
     """
-    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgs']]]]]
+    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgsDict']]]]]
     """
     Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
     """
-    writable_cgroups: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgs']]]
+    writable_cgroups: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict']]]
     """
     Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
     """
@@ -16996,7 +16996,7 @@ class ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDi
     """
     Enables private registry config. If set to false, all other fields in this object must not be set.
     """
-    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]]]
+    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict']]]]]
     """
     List of configuration objects for CA and domains. Each object identifies a certificate and its assigned domains. See [how to configure for private container registries](https://cloud.google.com/kubernetes-engine/docs/how-to/access-private-registries-private-certificates) for more detail. Example:
     """
@@ -17119,7 +17119,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostArgsDict(TypedDict):
     """
     Defines the host name of the registry server.
     """
-    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgs']]]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgsDict']]]]]
     """
     Configures a list of host-specific configurations for the server.
     """
@@ -17171,11 +17171,11 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgsDict(TypedDic
     """
     Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
     """
-    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs']]]]]
+    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostCaArgsDict']]]]]
     """
     Configures the registry host certificate.
     """
-    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs']]]]]
+    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgsDict']]]]]
     """
     Configures the registry host client certificate and key.
     """
@@ -17183,7 +17183,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostArgsDict(TypedDic
     """
     Specifies the maximum duration allowed for a connection attempt to complete.
     """
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgsDict']]]]]
     """
     Configures the registry host headers.
     """
@@ -17344,7 +17344,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientArgsDict(Ty
     """
     Configures the client certificate.
     """
-    key: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyArgs']]]
+    key: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyArgsDict']]]
     """
     Configures the client private key.
     """
@@ -17730,7 +17730,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgsDict(TypedDict):
     """
     The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
     """
-    gpu_driver_installation_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]]
+    gpu_driver_installation_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgsDict']]]
     """
     Configuration for auto installation of GPU driver. Structure is documented below.
     """
@@ -17738,7 +17738,7 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgsDict(TypedDict):
     """
     Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
     """
-    gpu_sharing_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]]
+    gpu_sharing_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgsDict']]]
     """
     Configuration for GPU sharing. Structure is documented below.
     """
@@ -18024,15 +18024,15 @@ class ClusterNodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met. The integer must be positive and not exceed 300.
     """
-    eviction_minimum_reclaim: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs']]]
+    eviction_minimum_reclaim: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict']]]
     """
     Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction. Structure is documented below.
     """
-    eviction_soft: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgs']]]
+    eviction_soft: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionSoftArgsDict']]]
     """
     Defines a map of signal names to quantities or percentage that defines soft eviction thresholds. Structure is documented below.
     """
-    eviction_soft_grace_period: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs']]]
+    eviction_soft_grace_period: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgsDict']]]
     """
     Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period. Structure is documented below.
     """
@@ -18060,7 +18060,7 @@ class ClusterNodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Set the maximum number of image pulls in parallel. The integer must be between 2 and 5, inclusive.
     """
-    memory_manager: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgs']]]
+    memory_manager: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigMemoryManagerArgsDict']]]
     """
     Configuration for the [memory manager](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/) on the node.
     The memory manager optimizes memory and hugepages allocation for pods, especially
@@ -18074,7 +18074,7 @@ class ClusterNodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
     """
-    topology_manager: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs']]]
+    topology_manager: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgsDict']]]
     """
     These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
     """
@@ -18912,7 +18912,7 @@ class ClusterNodePoolNodeConfigKubeletConfigTopologyManagerArgs:
 
 
 class ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
-    accurate_time_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]]
+    accurate_time_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict']]]
     """
     Accurate time configuration for the node. Structure is documented below.
     """
@@ -18924,15 +18924,15 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
     * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
     * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
     """
-    hugepages_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]]
+    hugepages_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict']]]
     """
     Amounts for 2M and 1G hugepages. Structure is documented below.
     """
-    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]]
+    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]]
     """
     Settings for kernel module loading. Structure is documented below.
     """
-    swap_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']]]
+    swap_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict']]]
     """
     Swap configuration for the node. Structure is documented below.
     """
@@ -19221,11 +19221,11 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
 
 
 class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
-    boot_disk_profile: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]]
+    boot_disk_profile: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict']]]
     """
     Swap on the node's boot disk. Structure is documented below.
     """
-    dedicated_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]]
+    dedicated_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict']]]
     """
     Provisions a new, separate local NVMe SSD exclusively for swap. Structure is documented below.
     """
@@ -19233,11 +19233,11 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
     """
     Enables or disables swap for the node pool.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict']]]
     """
     If omitted, swap space is encrypted by default. Structure is documented below.
     """
-    ephemeral_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]]
+    ephemeral_local_ssd_profile: NotRequired[pulumi.Input[Optional['ClusterNodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict']]]
     """
     Swap on the local SSD shared with pod ephemeral storage. Structure is documented below.
     """
@@ -20160,7 +20160,7 @@ class ClusterNodePoolQueuedProvisioningArgs:
 
 
 class ClusterNodePoolUpgradeSettingsArgsDict(TypedDict):
-    blue_green_settings: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs']]]
+    blue_green_settings: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgsDict']]]
     """
     Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
     """
@@ -20249,7 +20249,7 @@ class ClusterNodePoolUpgradeSettingsArgs:
 
 
 class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgsDict(TypedDict):
-    autoscaled_rollout_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']]]
+    autoscaled_rollout_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict']]]
     """
     Autoscaled rollout policy for blue-green upgrade.
     """
@@ -20257,7 +20257,7 @@ class ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgsDict(TypedDict):
     """
     Time needed after draining entire blue pool. After this period, blue pool will be cleaned up. A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    standard_rollout_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]]
+    standard_rollout_policy: NotRequired[pulumi.Input[Optional['ClusterNodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict']]]
     """
     Standard policy for the blue-green upgrade. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
     """
@@ -20448,7 +20448,7 @@ class ClusterNotificationConfigPubsubArgsDict(TypedDict):
     """
     Whether or not the notification config is enabled
     """
-    filter: NotRequired[pulumi.Input[Optional['ClusterNotificationConfigPubsubFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['ClusterNotificationConfigPubsubFilterArgsDict']]]
     """
     Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
     """
@@ -20625,7 +20625,7 @@ class ClusterPrivateClusterConfigArgsDict(TypedDict):
     have RFC 1918 private addresses and communicate with the master's private
     endpoint via private networking.
     """
-    master_global_access_config: NotRequired[pulumi.Input[Optional['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs']]]
+    master_global_access_config: NotRequired[pulumi.Input[Optional['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgsDict']]]
     """
     Controls cluster master global
     access settings. If unset, the provider will no longer manage this field and will
@@ -20865,7 +20865,7 @@ class ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs:
 
 
 class ClusterProtectConfigArgsDict(TypedDict):
-    workload_config: NotRequired[pulumi.Input[Optional['ClusterProtectConfigWorkloadConfigArgs']]]
+    workload_config: NotRequired[pulumi.Input[Optional['ClusterProtectConfigWorkloadConfigArgsDict']]]
     """
     ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
     """
@@ -21158,7 +21158,7 @@ class ClusterSecretManagerConfigArgsDict(TypedDict):
     """
     Enable the Secret Manager add-on for this cluster.
     """
-    rotation_config: NotRequired[pulumi.Input[Optional['ClusterSecretManagerConfigRotationConfigArgs']]]
+    rotation_config: NotRequired[pulumi.Input[Optional['ClusterSecretManagerConfigRotationConfigArgsDict']]]
     """
     config for secret manager auto rotation. Structure is documented below
     """
@@ -21254,7 +21254,7 @@ class ClusterSecretSyncConfigArgsDict(TypedDict):
     """
     Enable the Sync as K8s secret feature for this cluster.
     """
-    rotation_config: NotRequired[pulumi.Input[Optional['ClusterSecretSyncConfigRotationConfigArgs']]]
+    rotation_config: NotRequired[pulumi.Input[Optional['ClusterSecretSyncConfigRotationConfigArgsDict']]]
     """
     config for secret sync auto rotation. Structure is docuemented below
     """
@@ -21957,12 +21957,12 @@ class NodePoolNetworkConfigArgsDict(TypedDict):
     """
     ) - Specifies the accelerator network profile for nodes in this node pool. Setting to `"auto"` enables GKE to automatically configure high-performance networking settings for nodes with accelerators (like GPUs). GKE manages the underlying resources (like VPCs and subnets) for this configuration.
     """
-    additional_node_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs']]]]]
+    additional_node_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalNodeNetworkConfigArgsDict']]]]]
     """
     We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
     Structure is documented below
     """
-    additional_pod_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgs']]]]]
+    additional_pod_network_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNetworkConfigAdditionalPodNetworkConfigArgsDict']]]]]
     """
     We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
     Structure is documented below
@@ -21975,11 +21975,11 @@ class NodePoolNetworkConfigArgsDict(TypedDict):
     """
     Whether nodes have internal IP addresses only.
     """
-    network_performance_config: NotRequired[pulumi.Input[Optional['NodePoolNetworkConfigNetworkPerformanceConfigArgs']]]
+    network_performance_config: NotRequired[pulumi.Input[Optional['NodePoolNetworkConfigNetworkPerformanceConfigArgsDict']]]
     """
     Network bandwidth tier configuration. Structure is documented below.
     """
-    pod_cidr_overprovision_config: NotRequired[pulumi.Input[Optional['NodePoolNetworkConfigPodCidrOverprovisionConfigArgs']]]
+    pod_cidr_overprovision_config: NotRequired[pulumi.Input[Optional['NodePoolNetworkConfigPodCidrOverprovisionConfigArgsDict']]]
     """
     Configuration for node-pool level pod cidr overprovision. If not set, the cluster level setting will be inherited. Structure is documented below.
     """
@@ -22342,11 +22342,11 @@ class NodePoolNetworkConfigPodCidrOverprovisionConfigArgs:
 
 
 class NodePoolNodeConfigArgsDict(TypedDict):
-    advanced_machine_features: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigAdvancedMachineFeaturesArgs']]]
+    advanced_machine_features: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigAdvancedMachineFeaturesArgsDict']]]
     """
     Specifies options for controlling advanced machine features.
     """
-    boot_disk: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigBootDiskArgs']]]
+    boot_disk: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigBootDiskArgsDict']]]
     """
     Boot disk configuration for node pools nodes.
     """
@@ -22354,11 +22354,11 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool.
     """
-    confidential_nodes: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigConfidentialNodesArgs']]]
+    confidential_nodes: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigConfidentialNodesArgsDict']]]
     """
     Configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
     """
-    containerd_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigArgs']]]
+    containerd_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigArgsDict']]]
     """
     Parameters for containerd configuration.
     """
@@ -22370,7 +22370,7 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     Type of the disk attached to each node. Such as pd-standard, pd-balanced or pd-ssd
     """
-    effective_taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgs']]]]]
+    effective_taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigEffectiveTaintArgsDict']]]]]
     """
     List of kubernetes taints applied to each node.
     """
@@ -22378,15 +22378,15 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     If enabled boot disks are configured with confidential mode.
     """
-    ephemeral_storage_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigEphemeralStorageConfigArgs']]]
+    ephemeral_storage_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigEphemeralStorageConfigArgsDict']]]
     """
     Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
     """
-    ephemeral_storage_local_ssd_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs']]]
+    ephemeral_storage_local_ssd_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgsDict']]]
     """
     Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
     """
-    fast_socket: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigFastSocketArgs']]]
+    fast_socket: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigFastSocketArgsDict']]]
     """
     Enable or disable NCCL Fast Socket in the node pool.
     """
@@ -22394,19 +22394,19 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     Enables Flex Start provisioning model for the node pool
     """
-    gcfs_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGcfsConfigArgs']]]
+    gcfs_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGcfsConfigArgsDict']]]
     """
     GCFS configuration for this node.
     """
-    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]]]
+    guest_accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgsDict']]]]]
     """
     List of the type and count of accelerator cards attached to the instance.
     """
-    gvnic: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGvnicArgs']]]
+    gvnic: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGvnicArgsDict']]]
     """
     Enable or disable gvnic in the node pool.
     """
-    host_maintenance_policy: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigHostMaintenancePolicyArgs']]]
+    host_maintenance_policy: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigHostMaintenancePolicyArgsDict']]]
     """
     The maintenance policy for the hosts on which the GKE VMs run on.
     """
@@ -22414,7 +22414,7 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     The image type to use for this node. Note that for a given image type, the latest version of it will be used.
     """
-    kubelet_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigArgs']]]
+    kubelet_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigArgsDict']]]
     """
     Node kubelet configs.
     """
@@ -22422,11 +22422,11 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
     """
-    linux_node_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigArgs']]]
+    linux_node_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigArgsDict']]]
     """
     Parameters that can be configured on Linux nodes.
     """
-    local_nvme_ssd_block_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs']]]
+    local_nvme_ssd_block_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLocalNvmeSsdBlockConfigArgsDict']]]
     """
     Parameters for raw-block local NVMe SSDs.
     """
@@ -22470,7 +22470,7 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     Whether the nodes are created as preemptible VM instances.
     """
-    reservation_affinity: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigReservationAffinityArgs']]]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigReservationAffinityArgsDict']]]
     """
     The reservation affinity configuration for the node pool.
     """
@@ -22482,11 +22482,11 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
     """
-    sandbox_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigSandboxConfigArgs']]]
+    sandbox_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigSandboxConfigArgsDict']]]
     """
     Sandbox configuration for this node.
     """
-    secondary_boot_disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigSecondaryBootDiskArgs']]]]]
+    secondary_boot_disks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigSecondaryBootDiskArgsDict']]]]]
     """
     Secondary boot disks for preloading data or container images.
     """
@@ -22494,11 +22494,11 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     The Google Cloud Platform Service Account to be used by the node VMs.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigShieldedInstanceConfigArgsDict']]]
     """
     Shielded Instance options.
     """
-    sole_tenant_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigSoleTenantConfigArgs']]]
+    sole_tenant_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigSoleTenantConfigArgsDict']]]
     """
     Node affinity options for sole tenant node pools.
     """
@@ -22514,15 +22514,15 @@ class NodePoolNodeConfigArgsDict(TypedDict):
     """
     The list of instance tags applied to all nodes.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgsDict']]]]]
     """
     List of Kubernetes taints to be applied to each node.
     """
-    windows_node_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigWindowsNodeConfigArgs']]]
+    windows_node_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigWindowsNodeConfigArgsDict']]]
     """
     Parameters that can be configured on Windows nodes.
     """
-    workload_metadata_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigWorkloadMetadataConfigArgs']]]
+    workload_metadata_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigWorkloadMetadataConfigArgsDict']]]
     """
     The workload metadata configuration for this node.
     """
@@ -23476,15 +23476,15 @@ class NodePoolNodeConfigConfidentialNodesArgs:
 
 
 class NodePoolNodeConfigContainerdConfigArgsDict(TypedDict):
-    private_registry_access_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgs']]]
+    private_registry_access_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDict']]]
     """
     Parameters for private container registries configuration.
     """
-    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostArgs']]]]]
+    registry_hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostArgsDict']]]]]
     """
     Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
     """
-    writable_cgroups: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigWritableCgroupsArgs']]]
+    writable_cgroups: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigWritableCgroupsArgsDict']]]
     """
     Parameters for writable cgroups configuration.
     """
@@ -23549,7 +23549,7 @@ class NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigArgsDict(Type
     """
     Whether or not private registries are configured.
     """
-    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgs']]]]]
+    certificate_authority_domain_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfigCertificateAuthorityDomainConfigArgsDict']]]]]
     """
     Parameters for configuring CA certificate and domains.
     """
@@ -23672,7 +23672,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostArgsDict(TypedDict):
     """
     Defines the host name of the registry server.
     """
-    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostArgs']]]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostArgsDict']]]]]
     """
     Configures a list of host-specific configurations for the server.
     """
@@ -23724,11 +23724,11 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostArgsDict(TypedDict):
     """
     Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
     """
-    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostCaArgs']]]]]
+    cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostCaArgsDict']]]]]
     """
     Configures the registry host certificate.
     """
-    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostClientArgs']]]]]
+    clients: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostClientArgsDict']]]]]
     """
     Configures the registry host client certificate and key.
     """
@@ -23736,7 +23736,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostArgsDict(TypedDict):
     """
     Specifies the maximum duration allowed for a connection attempt to complete.
     """
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodePoolNodeConfigContainerdConfigRegistryHostHostHeaderArgsDict']]]]]
     """
     Configures the registry host headers.
     """
@@ -23897,7 +23897,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHostClientArgsDict(TypedDict
     """
     Configures the client certificate.
     """
-    key: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyArgs']]]
+    key: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigContainerdConfigRegistryHostHostClientKeyArgsDict']]]
     """
     Configures the client private key.
     """
@@ -24283,7 +24283,7 @@ class NodePoolNodeConfigGuestAcceleratorArgsDict(TypedDict):
     """
     The accelerator type resource name.
     """
-    gpu_driver_installation_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]]
+    gpu_driver_installation_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgsDict']]]
     """
     Configuration for auto installation of GPU driver.
     """
@@ -24291,7 +24291,7 @@ class NodePoolNodeConfigGuestAcceleratorArgsDict(TypedDict):
     """
     Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning)
     """
-    gpu_sharing_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]]
+    gpu_sharing_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgsDict']]]
     """
     Configuration for GPU sharing.
     """
@@ -24541,15 +24541,15 @@ class NodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
     """
-    eviction_minimum_reclaim: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgs']]]
+    eviction_minimum_reclaim: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionMinimumReclaimArgsDict']]]
     """
     Defines a map of signal names to percentage that defines minimum reclaims. It describes the minimum amount of a given resource the kubelet will reclaim when performing a pod eviction.
     """
-    eviction_soft: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionSoftArgs']]]
+    eviction_soft: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionSoftArgsDict']]]
     """
     Defines a map of signal names to quantities or percentage that defines soft eviction thresholds.
     """
-    eviction_soft_grace_period: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgs']]]
+    eviction_soft_grace_period: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriodArgsDict']]]
     """
     Defines a map of signal names to durations that defines grace periods for soft eviction thresholds. Each soft eviction threshold must have a corresponding grace period.
     """
@@ -24577,7 +24577,7 @@ class NodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Set the maximum number of image pulls in parallel.
     """
-    memory_manager: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigMemoryManagerArgs']]]
+    memory_manager: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigMemoryManagerArgsDict']]]
     """
     Configuration for the Memory Manager on the node. The memory manager optimizes memory and hugepages allocation for pods, especially those in the Guaranteed QoS class, by influencing NUMA affinity.
     """
@@ -24589,7 +24589,7 @@ class NodePoolNodeConfigKubeletConfigArgsDict(TypedDict):
     """
     Defines whether to enable single process OOM killer.
     """
-    topology_manager: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigTopologyManagerArgs']]]
+    topology_manager: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigKubeletConfigTopologyManagerArgsDict']]]
     """
     Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
     """
@@ -25387,7 +25387,7 @@ class NodePoolNodeConfigKubeletConfigTopologyManagerArgs:
 
 
 class NodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
-    accurate_time_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgs']]]
+    accurate_time_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigAccurateTimeConfigArgsDict']]]
     """
     The settings for the accurate time configuration.
     """
@@ -25395,15 +25395,15 @@ class NodePoolNodeConfigLinuxNodeConfigArgsDict(TypedDict):
     """
     cgroupMode specifies the cgroup mode to be used on the node.
     """
-    hugepages_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgs']]]
+    hugepages_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigHugepagesConfigArgsDict']]]
     """
     Amounts for 2M and 1G hugepages.
     """
-    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs']]]
+    node_kernel_module_loading: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgsDict']]]
     """
     The settings for kernel module loading.
     """
-    swap_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigArgs']]]
+    swap_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict']]]
     """
     Swap configuration for the node.
     """
@@ -25663,11 +25663,11 @@ class NodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoadingArgs:
 
 
 class NodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
-    boot_disk_profile: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgs']]]
+    boot_disk_profile: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigBootDiskProfileArgsDict']]]
     """
     Swap on the node's boot disk.
     """
-    dedicated_local_ssd_profile: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgs']]]
+    dedicated_local_ssd_profile: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigDedicatedLocalSsdProfileArgsDict']]]
     """
     Provisions a new, separate local NVMe SSD exclusively for swap.
     """
@@ -25675,11 +25675,11 @@ class NodePoolNodeConfigLinuxNodeConfigSwapConfigArgsDict(TypedDict):
     """
     Enables or disables swap for the node pool.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigEncryptionConfigArgsDict']]]
     """
     If omitted, swap space is encrypted by default.
     """
-    ephemeral_local_ssd_profile: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgs']]]
+    ephemeral_local_ssd_profile: NotRequired[pulumi.Input[Optional['NodePoolNodeConfigLinuxNodeConfigSwapConfigEphemeralLocalSsdProfileArgsDict']]]
     """
     Swap on the local SSD shared with pod ephemeral storage.
     """
@@ -26566,7 +26566,7 @@ class NodePoolQueuedProvisioningArgs:
 
 
 class NodePoolUpgradeSettingsArgsDict(TypedDict):
-    blue_green_settings: NotRequired[pulumi.Input[Optional['NodePoolUpgradeSettingsBlueGreenSettingsArgs']]]
+    blue_green_settings: NotRequired[pulumi.Input[Optional['NodePoolUpgradeSettingsBlueGreenSettingsArgsDict']]]
     """
     The settings to adjust [blue green upgrades](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pool-upgrade-strategies#blue-green-upgrade-strategy).
     Structure is documented below
@@ -26676,7 +26676,7 @@ class NodePoolUpgradeSettingsArgs:
 
 
 class NodePoolUpgradeSettingsBlueGreenSettingsArgsDict(TypedDict):
-    autoscaled_rollout_policy: NotRequired[pulumi.Input[Optional['NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgs']]]
+    autoscaled_rollout_policy: NotRequired[pulumi.Input[Optional['NodePoolUpgradeSettingsBlueGreenSettingsAutoscaledRolloutPolicyArgsDict']]]
     """
     ) Autoscaled rollout policy for blue-green upgrade.
     """
@@ -26685,7 +26685,7 @@ class NodePoolUpgradeSettingsBlueGreenSettingsArgsDict(TypedDict):
     Time needed after draining the entire blue pool.
     After this period, the blue pool will be cleaned up.
     """
-    standard_rollout_policy: NotRequired[pulumi.Input[Optional['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs']]]
+    standard_rollout_policy: NotRequired[pulumi.Input[Optional['NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgsDict']]]
     """
     Specifies the standard policy settings for blue-green upgrades.
     """

@@ -167,7 +167,7 @@ class DestinationEndpointArgs:
 
 
 class DestinationStateTimelineArgsDict(TypedDict):
-    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DestinationStateTimelineStateArgs']]]]]
+    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DestinationStateTimelineStateArgsDict']]]]]
     """
     (Output)
     The state and activation time details of the resource state.
@@ -539,7 +539,7 @@ class MulticloudDataTransferConfigServiceArgsDict(TypedDict):
     The name of the service, like "big-query" or "cloud-storage".
     This corresponds to the map key in the API.
     """
-    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgs']]]]]
+    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MulticloudDataTransferConfigServiceStateArgsDict']]]]]
     """
     (Output)
     The state and activation time details for the service.
@@ -1004,12 +1004,12 @@ class ServiceConnectionPolicyPscConnectionArgsDict(TypedDict):
     """
     The project where the PSC connection is created.
     """
-    error: NotRequired[pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorArgs']]]
+    error: NotRequired[pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorArgsDict']]]
     """
     The most recent error during operating this connection.
     Structure is documented below.
     """
-    error_info: NotRequired[pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorInfoArgs']]]
+    error_info: NotRequired[pulumi.Input[Optional['ServiceConnectionPolicyPscConnectionErrorInfoArgsDict']]]
     """
     The error info for the latest error during operating this connection.
     Structure is documented below.

@@ -131,12 +131,12 @@ class ClusterAuthorizationAdminUsersArgs:
 
 
 class ClusterControlPlaneArgsDict(TypedDict):
-    local: NotRequired[pulumi.Input[Optional['ClusterControlPlaneLocalArgs']]]
+    local: NotRequired[pulumi.Input[Optional['ClusterControlPlaneLocalArgsDict']]]
     """
     Local control plane configuration.
     Structure is documented below.
     """
-    remote: NotRequired[pulumi.Input[Optional['ClusterControlPlaneRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['ClusterControlPlaneRemoteArgsDict']]]
     """
     Remote control plane configuration.
     Structure is documented below.
@@ -207,7 +207,7 @@ class ClusterControlPlaneEncryptionArgsDict(TypedDict):
     caused by a lack of permissions to use the key, or if the key is disabled
     or deleted.
     """
-    kms_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgs']]]]]
+    kms_statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterControlPlaneEncryptionKmsStatusArgsDict']]]]]
     """
     (Output)
     Error status returned by Cloud KMS when using this key. This field may be
@@ -827,7 +827,7 @@ class ClusterMaintenancePolicyArgsDict(TypedDict):
     Specifies the maintenance window in which maintenance may be performed.
     Structure is documented below.
     """
-    maintenance_exclusions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgs']]]]]
+    maintenance_exclusions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenancePolicyMaintenanceExclusionArgsDict']]]]]
     """
     Exclusions to automatic maintenance. Non-emergency maintenance should not occur
     in these windows. Each exclusion has a unique name and may be active or expired.
@@ -886,7 +886,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionArgsDict(TypedDict):
     """
     A unique (per cluster) id for the window.
     """
-    window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionWindowArgs']]]
+    window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyMaintenanceExclusionWindowArgsDict']]]
     """
     Represents an arbitrary window of time.
     Structure is documented below.
@@ -1023,7 +1023,7 @@ class ClusterMaintenancePolicyWindowRecurringWindowArgsDict(TypedDict):
     this window recurs. They go on for the span of time between the start and
     end time.
     """
-    window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyWindowRecurringWindowWindowArgs']]]
+    window: NotRequired[pulumi.Input[Optional['ClusterMaintenancePolicyWindowRecurringWindowWindowArgsDict']]]
     """
     Represents an arbitrary window of time.
     Structure is documented below.
@@ -1267,7 +1267,7 @@ class ClusterNetworkingArgs:
 
 
 class ClusterSystemAddonsConfigArgsDict(TypedDict):
-    ingress: NotRequired[pulumi.Input[Optional['ClusterSystemAddonsConfigIngressArgs']]]
+    ingress: NotRequired[pulumi.Input[Optional['ClusterSystemAddonsConfigIngressArgsDict']]]
     """
     Config for the Ingress add-on which allows customers to create an Ingress
     object to manage external access to the servers in a cluster. The add-on
@@ -1464,13 +1464,13 @@ class NodePoolNodeConfigArgs:
 
 
 class VpnConnectionDetailArgsDict(TypedDict):
-    cloud_routers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgs']]]]]
+    cloud_routers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudRouterArgsDict']]]]]
     """
     (Output)
     The Cloud Router info.
     Structure is documented below.
     """
-    cloud_vpns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgs']]]]]
+    cloud_vpns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VpnConnectionDetailCloudVpnArgsDict']]]]]
     """
     (Output)
     Each connection has multiple Cloud VPN gateways.

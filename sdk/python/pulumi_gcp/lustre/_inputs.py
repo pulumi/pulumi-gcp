@@ -47,7 +47,7 @@ class InstanceAccessRulesOptionsArgsDict(TypedDict):
     NO_SQUASH
     ROOT_SQUASH
     """
-    access_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgs']]]]]
+    access_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAccessRulesOptionsAccessRuleArgsDict']]]]]
     """
     The access rules for the instance.
     Structure is documented below.
@@ -288,7 +288,7 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
     window.
     Structure is documented below.
     """
-    maintenance_exclusion_window: NotRequired[pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceExclusionWindowArgs']]]
+    maintenance_exclusion_window: NotRequired[pulumi.Input[Optional['InstanceMaintenancePolicyMaintenanceExclusionWindowArgsDict']]]
     """
     The exclusion windows for the instance. Currently limited to 1 window.
     Structure is documented below.

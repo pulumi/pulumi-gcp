@@ -58,7 +58,7 @@ class FunctionEventTriggerArgsDict(TypedDict):
     Required. The name or partial URI of the resource from
     which to observe events. For example, `"myBucket"` or `"projects/my-project/topics/my-topic"`
     """
-    failure_policy: NotRequired[pulumi.Input[Optional['FunctionEventTriggerFailurePolicyArgs']]]
+    failure_policy: NotRequired[pulumi.Input[Optional['FunctionEventTriggerFailurePolicyArgsDict']]]
     """
     Specifies policy for failed executions. Structure is documented below.
     """
@@ -366,7 +366,7 @@ class FunctionSecretVolumeArgsDict(TypedDict):
     """
     Project identifier (due to a known limitation, only project number is supported by this field) of the project that contains the secret. If not set, it will be populated with the function's project, assuming that the secret exists in the same project as of the function.
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionSecretVolumeVersionArgsDict']]]]]
     """
     List of secret versions to mount for this secret. If empty, the "latest" version of the secret will be made available in a file named after the secret under the mount point. Structure is documented below.
     """

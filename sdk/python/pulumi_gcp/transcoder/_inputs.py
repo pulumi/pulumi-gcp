@@ -138,52 +138,52 @@ __all__ = [
 ]
 
 class JobConfigArgsDict(TypedDict):
-    ad_breaks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigAdBreakArgs']]]]]
+    ad_breaks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigAdBreakArgsDict']]]]]
     """
     Ad break.
     Structure is documented below.
     """
-    edit_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEditListArgs']]]]]
+    edit_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEditListArgsDict']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigElementaryStreamArgs']]]]]
+    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigElementaryStreamArgsDict']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    encryptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEncryptionArgs']]]]]
+    encryptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigEncryptionArgsDict']]]]]
     """
     List of encryption configurations for the content.
     Structure is documented below.
     """
-    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigInputArgs']]]]]
+    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigInputArgsDict']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    manifests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigManifestArgs']]]]]
+    manifests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigManifestArgsDict']]]]]
     """
     Manifest configuration.
     Structure is documented below.
     """
-    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigMuxStreamArgs']]]]]
+    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigMuxStreamArgsDict']]]]]
     """
     Multiplexing settings for output stream.
     Structure is documented below.
     """
-    output: NotRequired[pulumi.Input[Optional['JobConfigOutputArgs']]]
+    output: NotRequired[pulumi.Input[Optional['JobConfigOutputArgsDict']]]
     """
     Location of output file(s) in a Cloud Storage bucket.
     Structure is documented below.
     """
-    overlays: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayArgs']]]]]
+    overlays: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayArgsDict']]]]]
     """
     List of overlays on the output video, in descending Z-order.
     Structure is documented below.
     """
-    pubsub_destination: NotRequired[pulumi.Input[Optional['JobConfigPubsubDestinationArgs']]]
+    pubsub_destination: NotRequired[pulumi.Input[Optional['JobConfigPubsubDestinationArgsDict']]]
     """
     Pub/Sub destination.
     Structure is documented below.
@@ -475,7 +475,7 @@ class JobConfigEditListArgs:
 
 
 class JobConfigElementaryStreamArgsDict(TypedDict):
-    audio_stream: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamAudioStreamArgs']]]
+    audio_stream: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamAudioStreamArgsDict']]]
     """
     Encoding of an audio stream.
     Structure is documented below.
@@ -484,7 +484,7 @@ class JobConfigElementaryStreamArgsDict(TypedDict):
     """
     A unique key for this atom.
     """
-    video_stream: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamArgs']]]
+    video_stream: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamArgsDict']]]
     """
     Encoding of a video stream.
     Structure is documented below.
@@ -658,7 +658,7 @@ class JobConfigElementaryStreamAudioStreamArgs:
 
 
 class JobConfigElementaryStreamVideoStreamArgsDict(TypedDict):
-    h264: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264Args']]]
+    h264: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264ArgsDict']]]
     """
     H264 codec settings
     Structure is documented below.
@@ -723,7 +723,7 @@ class JobConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
     """
     The height of the video in pixels.
     """
-    hlg: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264HlgArgs']]]
+    hlg: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264HlgArgsDict']]]
     """
     HLG color format setting for H264.
     """
@@ -743,7 +743,7 @@ class JobConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
     """
     Specify the mode. The default is 'vbr'.
     """
-    sdr: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264SdrArgs']]]
+    sdr: NotRequired[pulumi.Input[Optional['JobConfigElementaryStreamVideoStreamH264SdrArgsDict']]]
     """
     SDR color format setting for H264.
     """
@@ -1028,25 +1028,25 @@ class JobConfigEncryptionArgsDict(TypedDict):
     """
     Identifier for this set of encryption options.
     """
-    aes128: NotRequired[pulumi.Input[Optional['JobConfigEncryptionAes128Args']]]
+    aes128: NotRequired[pulumi.Input[Optional['JobConfigEncryptionAes128ArgsDict']]]
     """
     Configuration for AES-128 encryption.
     """
-    drm_systems: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsArgs']]]
+    drm_systems: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsArgsDict']]]
     """
     DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
     Structure is documented below.
     """
-    mpeg_cenc: NotRequired[pulumi.Input[Optional['JobConfigEncryptionMpegCencArgs']]]
+    mpeg_cenc: NotRequired[pulumi.Input[Optional['JobConfigEncryptionMpegCencArgsDict']]]
     """
     Configuration for MPEG Common Encryption (MPEG-CENC).
     Structure is documented below.
     """
-    sample_aes: NotRequired[pulumi.Input[Optional['JobConfigEncryptionSampleAesArgs']]]
+    sample_aes: NotRequired[pulumi.Input[Optional['JobConfigEncryptionSampleAesArgsDict']]]
     """
     Configuration for SAMPLE-AES encryption.
     """
-    secret_manager_key_source: NotRequired[pulumi.Input[Optional['JobConfigEncryptionSecretManagerKeySourceArgs']]]
+    secret_manager_key_source: NotRequired[pulumi.Input[Optional['JobConfigEncryptionSecretManagerKeySourceArgsDict']]]
     """
     Configuration for secrets stored in Google Secret Manager.
     Structure is documented below.
@@ -1170,19 +1170,19 @@ class JobConfigEncryptionAes128Args:
 
 
 class JobConfigEncryptionDrmSystemsArgsDict(TypedDict):
-    clearkey: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsClearkeyArgs']]]
+    clearkey: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsClearkeyArgsDict']]]
     """
     Clearkey configuration.
     """
-    fairplay: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsFairplayArgs']]]
+    fairplay: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsFairplayArgsDict']]]
     """
     Fairplay configuration.
     """
-    playready: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsPlayreadyArgs']]]
+    playready: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsPlayreadyArgsDict']]]
     """
     Playready configuration.
     """
-    widevine: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsWidevineArgs']]]
+    widevine: NotRequired[pulumi.Input[Optional['JobConfigEncryptionDrmSystemsWidevineArgsDict']]]
     """
     Widevine configuration.
     """
@@ -1504,7 +1504,7 @@ class JobConfigMuxStreamArgsDict(TypedDict):
     """
     A unique key for this multiplexed stream.
     """
-    segment_settings: NotRequired[pulumi.Input[Optional['JobConfigMuxStreamSegmentSettingsArgs']]]
+    segment_settings: NotRequired[pulumi.Input[Optional['JobConfigMuxStreamSegmentSettingsArgsDict']]]
     """
     Segment settings for ts, fmp4 and vtt.
     Structure is documented below.
@@ -1674,12 +1674,12 @@ class JobConfigOutputArgs:
 
 
 class JobConfigOverlayArgsDict(TypedDict):
-    animations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayAnimationArgs']]]]]
+    animations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobConfigOverlayAnimationArgsDict']]]]]
     """
     List of animations. The list should be chronological, without any time overlap.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input[Optional['JobConfigOverlayImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['JobConfigOverlayImageArgsDict']]]
     """
     Image overlay.
     Structure is documented below.
@@ -1729,7 +1729,7 @@ class JobConfigOverlayArgs:
 
 
 class JobConfigOverlayAnimationArgsDict(TypedDict):
-    animation_fade: NotRequired[pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeArgs']]]
+    animation_fade: NotRequired[pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeArgsDict']]]
     """
     Display overlay object with fade animation.
     Structure is documented below.
@@ -1778,7 +1778,7 @@ class JobConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
     """
     The time to start the fade animation, in seconds.
     """
-    xy: NotRequired[pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeXyArgs']]]
+    xy: NotRequired[pulumi.Input[Optional['JobConfigOverlayAnimationAnimationFadeXyArgsDict']]]
     """
     Normalized coordinates based on output video resolution.
     Structure is documented below.
@@ -1973,52 +1973,52 @@ class JobConfigPubsubDestinationArgs:
 
 
 class JobTemplateConfigArgsDict(TypedDict):
-    ad_breaks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgs']]]]]
+    ad_breaks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigAdBreakArgsDict']]]]]
     """
     Ad break.
     Structure is documented below.
     """
-    edit_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEditListArgs']]]]]
+    edit_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEditListArgsDict']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgs']]]]]
+    elementary_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigElementaryStreamArgsDict']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    encryptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgs']]]]]
+    encryptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigEncryptionArgsDict']]]]]
     """
     List of encryption configurations for the content.
     Structure is documented below.
     """
-    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigInputArgs']]]]]
+    inputs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigInputArgsDict']]]]]
     """
     List of input assets stored in Cloud Storage.
     Structure is documented below.
     """
-    manifests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigManifestArgs']]]]]
+    manifests: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigManifestArgsDict']]]]]
     """
     Manifest configuration.
     Structure is documented below.
     """
-    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgs']]]]]
+    mux_streams: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigMuxStreamArgsDict']]]]]
     """
     Multiplexing settings for output stream.
     Structure is documented below.
     """
-    output: NotRequired[pulumi.Input[Optional['JobTemplateConfigOutputArgs']]]
+    output: NotRequired[pulumi.Input[Optional['JobTemplateConfigOutputArgsDict']]]
     """
     Location of output file(s) in a Cloud Storage bucket.
     Structure is documented below.
     """
-    overlays: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayArgs']]]]]
+    overlays: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayArgsDict']]]]]
     """
     List of overlays on the output video, in descending Z-order.
     Structure is documented below.
     """
-    pubsub_destination: NotRequired[pulumi.Input[Optional['JobTemplateConfigPubsubDestinationArgs']]]
+    pubsub_destination: NotRequired[pulumi.Input[Optional['JobTemplateConfigPubsubDestinationArgsDict']]]
     """
     Pub/Sub destination.
     Structure is documented below.
@@ -2310,7 +2310,7 @@ class JobTemplateConfigEditListArgs:
 
 
 class JobTemplateConfigElementaryStreamArgsDict(TypedDict):
-    audio_stream: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamAudioStreamArgs']]]
+    audio_stream: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamAudioStreamArgsDict']]]
     """
     Encoding of an audio stream.
     Structure is documented below.
@@ -2319,7 +2319,7 @@ class JobTemplateConfigElementaryStreamArgsDict(TypedDict):
     """
     A unique key for this atom.
     """
-    video_stream: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamArgs']]]
+    video_stream: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamArgsDict']]]
     """
     Encoding of a video stream.
     Structure is documented below.
@@ -2493,7 +2493,7 @@ class JobTemplateConfigElementaryStreamAudioStreamArgs:
 
 
 class JobTemplateConfigElementaryStreamVideoStreamArgsDict(TypedDict):
-    h264: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264Args']]]
+    h264: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict']]]
     """
     H264 codec settings
     Structure is documented below.
@@ -2558,7 +2558,7 @@ class JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
     """
     The height of the video in pixels.
     """
-    hlg: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgs']]]
+    hlg: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264HlgArgsDict']]]
     """
     HLG color format setting for H264.
     """
@@ -2578,7 +2578,7 @@ class JobTemplateConfigElementaryStreamVideoStreamH264ArgsDict(TypedDict):
     """
     Specify the mode. The default is 'vbr'.
     """
-    sdr: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgs']]]
+    sdr: NotRequired[pulumi.Input[Optional['JobTemplateConfigElementaryStreamVideoStreamH264SdrArgsDict']]]
     """
     SDR color format setting for H264.
     """
@@ -2863,25 +2863,25 @@ class JobTemplateConfigEncryptionArgsDict(TypedDict):
     """
     Identifier for this set of encryption options.
     """
-    aes128: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionAes128Args']]]
+    aes128: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionAes128ArgsDict']]]
     """
     Configuration for AES-128 encryption.
     """
-    drm_systems: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsArgs']]]
+    drm_systems: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsArgsDict']]]
     """
     DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered disabled.
     Structure is documented below.
     """
-    mpeg_cenc: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionMpegCencArgs']]]
+    mpeg_cenc: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionMpegCencArgsDict']]]
     """
     Configuration for MPEG Common Encryption (MPEG-CENC).
     Structure is documented below.
     """
-    sample_aes: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionSampleAesArgs']]]
+    sample_aes: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionSampleAesArgsDict']]]
     """
     Configuration for SAMPLE-AES encryption.
     """
-    secret_manager_key_source: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionSecretManagerKeySourceArgs']]]
+    secret_manager_key_source: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionSecretManagerKeySourceArgsDict']]]
     """
     Configuration for secrets stored in Google Secret Manager.
     Structure is documented below.
@@ -3005,19 +3005,19 @@ class JobTemplateConfigEncryptionAes128Args:
 
 
 class JobTemplateConfigEncryptionDrmSystemsArgsDict(TypedDict):
-    clearkey: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsClearkeyArgs']]]
+    clearkey: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsClearkeyArgsDict']]]
     """
     Clearkey configuration.
     """
-    fairplay: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsFairplayArgs']]]
+    fairplay: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsFairplayArgsDict']]]
     """
     Fairplay configuration.
     """
-    playready: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgs']]]
+    playready: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsPlayreadyArgsDict']]]
     """
     Playready configuration.
     """
-    widevine: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsWidevineArgs']]]
+    widevine: NotRequired[pulumi.Input[Optional['JobTemplateConfigEncryptionDrmSystemsWidevineArgsDict']]]
     """
     Widevine configuration.
     """
@@ -3339,7 +3339,7 @@ class JobTemplateConfigMuxStreamArgsDict(TypedDict):
     """
     A unique key for this multiplexed stream.
     """
-    segment_settings: NotRequired[pulumi.Input[Optional['JobTemplateConfigMuxStreamSegmentSettingsArgs']]]
+    segment_settings: NotRequired[pulumi.Input[Optional['JobTemplateConfigMuxStreamSegmentSettingsArgsDict']]]
     """
     Segment settings for ts, fmp4 and vtt.
     Structure is documented below.
@@ -3509,12 +3509,12 @@ class JobTemplateConfigOutputArgs:
 
 
 class JobTemplateConfigOverlayArgsDict(TypedDict):
-    animations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgs']]]]]
+    animations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateConfigOverlayAnimationArgsDict']]]]]
     """
     List of animations. The list should be chronological, without any time overlap.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayImageArgsDict']]]
     """
     Image overlay.
     Structure is documented below.
@@ -3564,7 +3564,7 @@ class JobTemplateConfigOverlayArgs:
 
 
 class JobTemplateConfigOverlayAnimationArgsDict(TypedDict):
-    animation_fade: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeArgs']]]
+    animation_fade: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeArgsDict']]]
     """
     Display overlay object with fade animation.
     Structure is documented below.
@@ -3613,7 +3613,7 @@ class JobTemplateConfigOverlayAnimationAnimationFadeArgsDict(TypedDict):
     """
     The time to start the fade animation, in seconds.
     """
-    xy: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeXyArgs']]]
+    xy: NotRequired[pulumi.Input[Optional['JobTemplateConfigOverlayAnimationAnimationFadeXyArgsDict']]]
     """
     Normalized coordinates based on output video resolution.
     Structure is documented below.

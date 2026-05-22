@@ -109,13 +109,13 @@ class PipelineScheduleInfoArgs:
 
 
 class PipelineWorkloadArgsDict(TypedDict):
-    dataflow_flex_template_request: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowFlexTemplateRequestArgs']]]
+    dataflow_flex_template_request: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowFlexTemplateRequestArgsDict']]]
     """
     Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
     https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchflextemplaterequest
     Structure is documented below.
     """
-    dataflow_launch_template_request: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowLaunchTemplateRequestArgs']]]
+    dataflow_launch_template_request: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowLaunchTemplateRequestArgsDict']]]
     """
     Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
     https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplaterequest
@@ -270,7 +270,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgsDict(TypedDi
     """
     Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
     """
-    environment: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgs']]]
+    environment: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironmentArgsDict']]]
     """
     The runtime environment for the Flex Template job.
     https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#FlexTemplateRuntimeEnvironment
@@ -780,7 +780,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestArgsDict(TypedDict):
     """
     A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
     """
-    launch_parameters: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgs']]]
+    launch_parameters: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgsDict']]]
     """
     The parameters of the template to launch. This should be part of the body of the POST request.
     https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#launchtemplateparameters
@@ -890,7 +890,7 @@ class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersArgsDict(Type
     """
     The job name to use for the created job.
     """
-    environment: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgs']]]
+    environment: NotRequired[pulumi.Input[Optional['PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironmentArgsDict']]]
     """
     The runtime environment for the job.
     https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#RuntimeEnvironment

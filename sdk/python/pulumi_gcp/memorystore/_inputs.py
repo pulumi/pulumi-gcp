@@ -218,18 +218,18 @@ class InstanceCrossInstanceReplicationConfigArgsDict(TypedDict):
     4. `SECONDARY`: This instance replicates data from the primary instance. It allows only reads.
     Possible values are: `INSTANCE_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
     """
-    memberships: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgs']]]]]
+    memberships: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipArgsDict']]]]]
     """
     (Output)
     An output only view of all the member instance participating in cross instance replication. This field is populated for all the member clusters irrespective of their cluster role.
     Structure is documented below.
     """
-    primary_instance: NotRequired[pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgs']]]
+    primary_instance: NotRequired[pulumi.Input[Optional['InstanceCrossInstanceReplicationConfigPrimaryInstanceArgsDict']]]
     """
     This field is only set for a secondary instance. Details of the primary instance that is used as the replication source for this secondary instance. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
     Structure is documented below.
     """
-    secondary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgs']]]]]
+    secondary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigSecondaryInstanceArgsDict']]]]]
     """
     List of secondary instances that are replicating from this primary cluster. This is allowed to be set only for instances whose cluster role is of type `PRIMARY`.
     Structure is documented below.
@@ -348,11 +348,11 @@ class InstanceCrossInstanceReplicationConfigArgs:
 
 
 class InstanceCrossInstanceReplicationConfigMembershipArgsDict(TypedDict):
-    primary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgs']]]]]
+    primary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipPrimaryInstanceArgsDict']]]]]
     """
     Details of the primary instance that is used as the replication source for all the secondary instances.
     """
-    secondary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgs']]]]]
+    secondary_instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceCrossInstanceReplicationConfigMembershipSecondaryInstanceArgsDict']]]]]
     """
     List of secondary instances that are replicating from the primary instance.
     """
@@ -717,7 +717,7 @@ class InstanceDesiredPscAutoConnectionArgs:
 
 
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgsDict(TypedDict):
-    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgs']]]]]
+    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -746,7 +746,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointArgs:
 
 
 class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionArgsDict(TypedDict):
-    psc_connection: NotRequired[pulumi.Input[Optional['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgs']]]
+    psc_connection: NotRequired[pulumi.Input[Optional['InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnectionArgsDict']]]
     """
     Detailed information of a PSC connection that is created by the customer
     who owns the cluster.
@@ -1065,7 +1065,7 @@ class InstanceDiscoveryEndpointArgs:
 
 
 class InstanceEndpointArgsDict(TypedDict):
-    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointConnectionArgs']]]]]
+    connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointConnectionArgsDict']]]]]
     """
     A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
     Structure is documented below.
@@ -1097,7 +1097,7 @@ class InstanceEndpointArgs:
 
 
 class InstanceEndpointConnectionArgsDict(TypedDict):
-    psc_auto_connection: NotRequired[pulumi.Input[Optional['InstanceEndpointConnectionPscAutoConnectionArgs']]]
+    psc_auto_connection: NotRequired[pulumi.Input[Optional['InstanceEndpointConnectionPscAutoConnectionArgsDict']]]
     """
     Detailed information of a PSC connection that is created through service connectivity automation.
     Structure is documented below.
@@ -1391,7 +1391,7 @@ class InstanceMaintenancePolicyArgsDict(TypedDict):
     A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
     resolution and up to nine fractional digits.
     """
-    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs']]]]]
+    weekly_maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenancePolicyWeeklyMaintenanceWindowArgsDict']]]]]
     """
     Optional. Maintenance window that is applied to resources covered by this policy.
     Minimum 1. For the current version, the maximum number
@@ -1804,7 +1804,7 @@ class InstanceManagedBackupSourceArgs:
 
 
 class InstanceManagedServerCaArgsDict(TypedDict):
-    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgs']]]]]
+    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceManagedServerCaCaCertArgsDict']]]]]
     """
     (Output)
     The PEM encoded CA certificate chains for managed server authentication
@@ -1903,7 +1903,7 @@ class InstanceNodeConfigArgs:
 
 
 class InstancePersistenceConfigArgsDict(TypedDict):
-    aof_config: NotRequired[pulumi.Input[Optional['InstancePersistenceConfigAofConfigArgs']]]
+    aof_config: NotRequired[pulumi.Input[Optional['InstancePersistenceConfigAofConfigArgsDict']]]
     """
     Configuration for AOF based persistence.
     Structure is documented below.
@@ -1917,7 +1917,7 @@ class InstancePersistenceConfigArgsDict(TypedDict):
     AOF
     Possible values are: `DISABLED`, `RDB`, `AOF`.
     """
-    rdb_config: NotRequired[pulumi.Input[Optional['InstancePersistenceConfigRdbConfigArgs']]]
+    rdb_config: NotRequired[pulumi.Input[Optional['InstancePersistenceConfigRdbConfigArgsDict']]]
     """
     Configuration for RDB based persistence.
     Structure is documented below.
@@ -2420,7 +2420,7 @@ class InstancePscAutoConnectionArgs:
 
 
 class InstanceStateInfoArgsDict(TypedDict):
-    update_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgs']]]]]
+    update_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceStateInfoUpdateInfoArgsDict']]]]]
     """
     (Output)
     Represents information about instance with state UPDATING.

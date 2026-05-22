@@ -115,7 +115,7 @@ class ApiConfigGrpcServiceArgsDict(TypedDict):
     $ protoc --include_imports --include_source_info test.proto -o out.pb
     Structure is documented below.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiConfigGrpcServiceSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiConfigGrpcServiceSourceArgsDict']]]]]
     """
     Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate fileDescriptorSet.
     Structure is documented below.

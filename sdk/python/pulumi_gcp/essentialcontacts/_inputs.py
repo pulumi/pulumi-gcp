@@ -60,7 +60,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict(TypedDict):
     """
     The name of the metadata property.
     """
-    date_time_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs']]]
+    date_time_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgsDict']]]
     """
     Date time property. Not supported by CMEK compliant deployment.
     """
@@ -68,16 +68,16 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict(TypedDict):
     """
     The display-name for the property, used for front-end.
     """
-    enum_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs']]]
+    enum_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgsDict']]]
     """
     Enum/categorical property.
     Structure is documented below.
     """
-    float_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs']]]
+    float_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgsDict']]]
     """
     Float property.
     """
-    integer_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgs']]]
+    integer_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionIntegerTypeOptionsArgsDict']]]
     """
     Integer property.
     """
@@ -101,11 +101,11 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict(TypedDict):
     """
     Indicates that the property should be included in a global search.
     """
-    map_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgs']]]
+    map_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionMapTypeOptionsArgsDict']]]
     """
     Map property.
     """
-    property_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgs']]]
+    property_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsArgsDict']]]
     """
     Nested structured data property.
     Structure is documented below.
@@ -115,16 +115,16 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgsDict(TypedDict):
     Stores the retrieval importance.
     Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
     """
-    schema_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgs']]]]]
+    schema_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSourceArgsDict']]]]]
     """
     The schema source information.
     Structure is documented below.
     """
-    text_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgs']]]
+    text_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTextTypeOptionsArgsDict']]]
     """
     Text property.
     """
-    timestamp_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgs']]]
+    timestamp_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionTimestampTypeOptionsArgsDict']]]
     """
     Timestamp property. Not supported by CMEK compliant deployment.
     """
@@ -535,7 +535,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     """
     The name of the metadata property.
     """
-    date_time_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgs']]]
+    date_time_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptionsArgsDict']]]
     """
     Date time property. Not supported by CMEK compliant deployment.
     """
@@ -543,16 +543,16 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     """
     The display-name for the property, used for front-end.
     """
-    enum_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgs']]]
+    enum_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptionsArgsDict']]]
     """
     Enum/categorical property.
     Structure is documented below.
     """
-    float_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgs']]]
+    float_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptionsArgsDict']]]
     """
     Float property.
     """
-    integer_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgs']]]
+    integer_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptionsArgsDict']]]
     """
     Integer property.
     """
@@ -576,7 +576,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     """
     Indicates that the property should be included in a global search.
     """
-    map_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgs']]]
+    map_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptionsArgsDict']]]
     """
     Map property.
     """
@@ -585,16 +585,16 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
     Stores the retrieval importance.
     Possible values are: `HIGHEST`, `HIGHER`, `HIGH`, `MEDIUM`, `LOW`, `LOWEST`.
     """
-    schema_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgs']]]]]
+    schema_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSourceArgsDict']]]]]
     """
     The schema source information.
     Structure is documented below.
     """
-    text_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgs']]]
+    text_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptionsArgsDict']]]
     """
     Text property.
     """
-    timestamp_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgs']]]
+    timestamp_type_options: NotRequired[pulumi.Input[Optional['DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptionsArgsDict']]]
     """
     Timestamp property. Not supported by CMEK compliant deployment.
     """

@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 class CertificateIssuanceConfigCertificateAuthorityConfigArgsDict(TypedDict):
-    certificate_authority_service_config: NotRequired[pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]]
+    certificate_authority_service_config: NotRequired[pulumi.Input[Optional['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgsDict']]]
     """
     Defines a CertificateAuthorityServiceConfig.
     Structure is documented below.
@@ -110,7 +110,7 @@ class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthoritySer
 
 
 class CertificateManagedArgsDict(TypedDict):
-    authorization_attempt_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]]]
+    authorization_attempt_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgsDict']]]]]
     """
     (Output)
     Detailed state of the latest authorization attempt for each domain
@@ -135,7 +135,7 @@ class CertificateManagedArgsDict(TypedDict):
     If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
     Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
     """
-    provisioning_issues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]]]
+    provisioning_issues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgsDict']]]]]
     """
     (Output)
     Information about issues with provisioning this Managed Certificate.
@@ -425,7 +425,7 @@ class CertificateManagedProvisioningIssueArgs:
 
 
 class CertificateMapGclbTargetArgsDict(TypedDict):
-    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgs']]]]]
+    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateMapGclbTargetIpConfigArgsDict']]]]]
     """
     An IP configuration where this Certificate Map is serving
     Structure is documented below.
@@ -815,13 +815,13 @@ class TrustConfigAllowlistedCertificateArgs:
 
 
 class TrustConfigTrustStoreArgsDict(TypedDict):
-    intermediate_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgs']]]]]
+    intermediate_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreIntermediateCaArgsDict']]]]]
     """
     Set of intermediate CA certificates used for the path building phase of chain validation.
     The field is currently not supported if trust config is used for the workload certificate feature.
     Structure is documented below.
     """
-    trust_anchors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgs']]]]]
+    trust_anchors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TrustConfigTrustStoreTrustAnchorArgsDict']]]]]
     """
     List of Trust Anchors to be used while performing validation against a given TrustStore.
     Structure is documented below.

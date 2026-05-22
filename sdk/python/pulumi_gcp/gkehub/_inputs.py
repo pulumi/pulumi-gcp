@@ -178,17 +178,17 @@ __all__ = [
 ]
 
 class FeatureFleetDefaultMemberConfigArgsDict(TypedDict):
-    configmanagement: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementArgs']]]
+    configmanagement: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementArgsDict']]]
     """
     Config Management spec
     Structure is documented below.
     """
-    mesh: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigMeshArgs']]]
+    mesh: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigMeshArgsDict']]]
     """
     Service Mesh spec
     Structure is documented below.
     """
-    policycontroller: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerArgs']]]
+    policycontroller: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerArgsDict']]]
     """
     Policy Controller spec
     Structure is documented below.
@@ -256,7 +256,7 @@ class FeatureFleetDefaultMemberConfigArgs:
 
 
 class FeatureFleetDefaultMemberConfigConfigmanagementArgsDict(TypedDict):
-    config_sync: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs']]]
+    config_sync: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict']]]
     """
     ConfigSync configuration for the cluster
     Structure is documented below.
@@ -335,7 +335,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict(TypedDic
     """
     Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
     """
-    git: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgsDict']]]
     """
     Git repo configuration for the cluster
     Structure is documented below.
@@ -344,7 +344,7 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgsDict(TypedDic
     """
     The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
     """
-    oci: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs']]]
+    oci: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgsDict']]]
     """
     OCI repo configuration for the cluster
     Structure is documented below.
@@ -870,7 +870,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
     """
     The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
     """
-    deployment_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]]
+    deployment_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict']]]]]
     """
     Map of deployment configs to deployments ("admission", "audit", "mutation").
     Structure is documented below.
@@ -883,7 +883,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
     """
     Logs all denies and dry run failures.
     """
-    monitoring: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]]
+    monitoring: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict']]]
     """
     Monitoring specifies the configuration of monitoring Policy Controller.
     Structure is documented below.
@@ -892,7 +892,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigAr
     """
     Enables the ability to mutate resources using Policy Controller.
     """
-    policy_content: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]]
+    policy_content: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict']]]
     """
     Specifies the desired policy content on the cluster.
     Structure is documented below.
@@ -1081,7 +1081,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
     """
     The identifier for this object. Format specified above.
     """
-    container_resources: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]]
+    container_resources: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict']]]
     """
     Container resource requirements.
     Structure is documented below.
@@ -1091,7 +1091,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
     Pod affinity configuration.
     Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
     """
-    pod_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]]
+    pod_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict']]]]]
     """
     Pod tolerations of node taints.
     Structure is documented below.
@@ -1194,12 +1194,12 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]]
+    limits: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict']]]
     """
     Limits describes the maximum amount of compute resources allowed for use by the running container.
     Structure is documented below.
     """
-    requests: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]]
+    requests: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict']]]
     """
     Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
     Structure is documented below.
@@ -1468,12 +1468,12 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMo
 
 
 class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict(TypedDict):
-    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]]
+    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict']]]]]
     """
     Configures which bundles to install and their corresponding install specs.
     Structure is documented below.
     """
-    template_library: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]]
+    template_library: NotRequired[pulumi.Input[Optional['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict']]]
     """
     Configures the installation of the Template Library.
     Structure is documented below.
@@ -1691,11 +1691,11 @@ class FeatureIamMemberConditionArgs:
 
 
 class FeatureMembershipConfigmanagementArgsDict(TypedDict):
-    config_sync: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncArgs']]]
+    config_sync: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncArgsDict']]]
     """
     Config Sync configuration for the cluster. Structure is documented below.
     """
-    hierarchy_controller: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementHierarchyControllerArgs']]]
+    hierarchy_controller: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementHierarchyControllerArgsDict']]]
     """
     Hierarchy Controller configuration for the cluster. Structure is documented below.
     Configuring Hierarchy Controller through the configmanagement feature is no longer recommended.
@@ -1709,7 +1709,7 @@ class FeatureMembershipConfigmanagementArgsDict(TypedDict):
     and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
     This field was introduced in Terraform version 5.41.0.
     """
-    policy_controller: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerArgs']]]
+    policy_controller: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerArgsDict']]]
     """
     Policy Controller configuration for the cluster. Structure is documented below.
     Configuring Policy Controller through the configmanagement feature is no longer recommended.
@@ -1824,7 +1824,7 @@ class FeatureMembershipConfigmanagementArgs:
 
 
 class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
-    deployment_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgs']]]]]
+    deployment_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict']]]]]
     """
     The override configurations for the Config Sync Deployments. Structure is documented below. The field is only available on Config Sync version 1.20.1 or later.
     """
@@ -1834,7 +1834,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
     5.41.0, and
     needs to be set to `true` explicitly to install Config Sync.
     """
-    git: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncGitArgs']]]
+    git: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncGitArgsDict']]]
     """
     (Optional) Structure is documented below.
     """
@@ -1842,7 +1842,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgsDict(TypedDict):
     """
     Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
     """
-    oci: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncOciArgs']]]
+    oci: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementConfigSyncOciArgsDict']]]
     """
     (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 
@@ -2005,7 +2005,7 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
 
 
 class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideArgsDict(TypedDict):
-    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgs']]]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainerArgsDict']]]]]
     """
     The override configurations for the containers in the Deployment. Structure is documented below.
     """
@@ -2546,7 +2546,7 @@ class FeatureMembershipConfigmanagementPolicyControllerArgsDict(TypedDict):
     """
     Logs all denies and dry run failures.
     """
-    monitoring: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs']]]
+    monitoring: NotRequired[pulumi.Input[Optional['FeatureMembershipConfigmanagementPolicyControllerMonitoringArgsDict']]]
     """
     Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
     """
@@ -2837,7 +2837,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict(TypedDi
     """
     The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
     """
-    deployment_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs']]]]]
+    deployment_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgsDict']]]]]
     """
     Map of deployment configs to deployments ("admission", "audit", "mutation").
     """
@@ -2853,7 +2853,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict(TypedDi
     """
     Logs all denies and dry run failures.
     """
-    monitoring: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs']]]
+    monitoring: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgsDict']]]
     """
     Specifies the backends Policy Controller should export metrics to. Structure is documented below.
     """
@@ -2861,7 +2861,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgsDict(TypedDi
     """
     Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
     """
-    policy_content: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs']]]
+    policy_content: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict']]]
     """
     Specifies the desired policy content on the cluster. Structure is documented below.
     """
@@ -3042,7 +3042,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     """
     The name of the component. One of `admission` `audit` or `mutation`
     """
-    container_resources: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs']]]
+    container_resources: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict']]]
     """
     Container resource requirements.
     """
@@ -3050,7 +3050,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
     """
     Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
     """
-    pod_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs']]]]]
+    pod_tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgsDict']]]]]
     """
     Pod tolerations of node taints.
     """
@@ -3146,11 +3146,11 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgsDict(TypedDict):
-    limits: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs']]]
+    limits: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgsDict']]]
     """
     Limits describes the maximum amount of compute resources allowed for use by the running container.
     """
-    requests: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs']]]
+    requests: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgsDict']]]
     """
     Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
     """
@@ -3411,11 +3411,11 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs:
 
 
 class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgsDict(TypedDict):
-    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs']]]]]
+    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgsDict']]]]]
     """
     map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
     """
-    template_library: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs']]]
+    template_library: NotRequired[pulumi.Input[Optional['FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgsDict']]]
     """
     Configures the installation of the Template Library. Structure is documented below.
     """
@@ -3595,27 +3595,27 @@ class FeatureResourceStateArgs:
 
 
 class FeatureSpecArgsDict(TypedDict):
-    clusterupgrade: NotRequired[pulumi.Input[Optional['FeatureSpecClusterupgradeArgs']]]
+    clusterupgrade: NotRequired[pulumi.Input[Optional['FeatureSpecClusterupgradeArgsDict']]]
     """
     Clusterupgrade feature spec.
     Structure is documented below.
     """
-    fleetobservability: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityArgs']]]
+    fleetobservability: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityArgsDict']]]
     """
     Fleet Observability feature spec.
     Structure is documented below.
     """
-    multiclusteringress: NotRequired[pulumi.Input[Optional['FeatureSpecMulticlusteringressArgs']]]
+    multiclusteringress: NotRequired[pulumi.Input[Optional['FeatureSpecMulticlusteringressArgsDict']]]
     """
     Multicluster Ingress-specific spec.
     Structure is documented below.
     """
-    rbacrolebindingactuation: NotRequired[pulumi.Input[Optional['FeatureSpecRbacrolebindingactuationArgs']]]
+    rbacrolebindingactuation: NotRequired[pulumi.Input[Optional['FeatureSpecRbacrolebindingactuationArgsDict']]]
     """
     RBACRolebinding Actuation feature spec.
     Structure is documented below.
     """
-    workloadidentity: NotRequired[pulumi.Input[Optional['FeatureSpecWorkloadidentityArgs']]]
+    workloadidentity: NotRequired[pulumi.Input[Optional['FeatureSpecWorkloadidentityArgsDict']]]
     """
     Workload Identity feature spec.
     Structure is documented below.
@@ -3723,12 +3723,12 @@ class FeatureSpecClusterupgradeArgsDict(TypedDict):
     """
     Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
     """
-    gke_upgrade_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs']]]]]
+    gke_upgrade_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureSpecClusterupgradeGkeUpgradeOverrideArgsDict']]]]]
     """
     Configuration overrides for individual upgrades.
     Structure is documented below.
     """
-    post_conditions: NotRequired[pulumi.Input[Optional['FeatureSpecClusterupgradePostConditionsArgs']]]
+    post_conditions: NotRequired[pulumi.Input[Optional['FeatureSpecClusterupgradePostConditionsArgsDict']]]
     """
     Post conditions to override for the specified upgrade.
     Structure is documented below.
@@ -3949,7 +3949,7 @@ class FeatureSpecClusterupgradePostConditionsArgs:
 
 
 class FeatureSpecFleetobservabilityArgsDict(TypedDict):
-    logging_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigArgsDict']]]
     """
     Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
     Structure is documented below.
@@ -3981,12 +3981,12 @@ class FeatureSpecFleetobservabilityArgs:
 
 
 class FeatureSpecFleetobservabilityLoggingConfigArgsDict(TypedDict):
-    default_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]]
+    default_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgsDict']]]
     """
     Specified if applying the default routing config to logs not specified in other configs.
     Structure is documented below.
     """
-    fleet_scope_logs_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]]
+    fleet_scope_logs_config: NotRequired[pulumi.Input[Optional['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgsDict']]]
     """
     Specified if applying the routing config to all logs for all fleet scopes.
     Structure is documented below.
@@ -4185,7 +4185,7 @@ class FeatureSpecWorkloadidentityArgs:
 
 
 class FeatureStateArgsDict(TypedDict):
-    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateStateArgs']]]]]
+    states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeatureStateStateArgsDict']]]]]
     """
     (Output)
     Output only. The "running state" of the Feature in this Hub.
@@ -4298,12 +4298,12 @@ class FeatureStateStateArgs:
 
 
 class FleetDefaultClusterConfigArgsDict(TypedDict):
-    binary_authorization_config: NotRequired[pulumi.Input[Optional['FleetDefaultClusterConfigBinaryAuthorizationConfigArgs']]]
+    binary_authorization_config: NotRequired[pulumi.Input[Optional['FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict']]]
     """
     Enable/Disable binary authorization features for the cluster.
     Structure is documented below.
     """
-    security_posture_config: NotRequired[pulumi.Input[Optional['FleetDefaultClusterConfigSecurityPostureConfigArgs']]]
+    security_posture_config: NotRequired[pulumi.Input[Optional['FleetDefaultClusterConfigSecurityPostureConfigArgsDict']]]
     """
     Enable/Disable Security Posture features for the cluster.
     Structure is documented below.
@@ -4358,7 +4358,7 @@ class FleetDefaultClusterConfigBinaryAuthorizationConfigArgsDict(TypedDict):
     Mode of operation for binauthz policy evaluation.
     Possible values are: `DISABLED`, `POLICY_BINDINGS`.
     """
-    policy_bindings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs']]]]]
+    policy_bindings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgsDict']]]]]
     """
     Binauthz policies that apply to this cluster.
     Structure is documented below.
@@ -4593,7 +4593,7 @@ class MembershipBindingStateArgs:
 
 
 class MembershipEndpointArgsDict(TypedDict):
-    gke_cluster: NotRequired[pulumi.Input[Optional['MembershipEndpointGkeClusterArgs']]]
+    gke_cluster: NotRequired[pulumi.Input[Optional['MembershipEndpointGkeClusterArgsDict']]]
     """
     If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
     Structure is documented below.
@@ -4848,7 +4848,7 @@ class NamespaceStateArgs:
 
 
 class RolloutSequenceAutoUpgradeConfigArgsDict(TypedDict):
-    rollout_creation_scope: NotRequired[pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgs']]]
+    rollout_creation_scope: NotRequired[pulumi.Input[Optional['RolloutSequenceAutoUpgradeConfigRolloutCreationScopeArgsDict']]]
     """
     Specifies the scope of automation for the creation of rollouts.
     Represents the types of rollouts (version upgrades) the sequence should
@@ -4972,7 +4972,7 @@ class RolloutSequenceStageArgsDict(TypedDict):
     List of Fleet projects to select the clusters from.
     Expected format: projects/{project}
     """
-    cluster_selector: NotRequired[pulumi.Input[Optional['RolloutSequenceStageClusterSelectorArgs']]]
+    cluster_selector: NotRequired[pulumi.Input[Optional['RolloutSequenceStageClusterSelectorArgsDict']]]
     """
     Filter to select a subset of clusters from the specified Fleet projects.
     If not specified, all clusters in the fleet projects are selected.

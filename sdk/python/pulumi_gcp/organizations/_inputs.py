@@ -377,11 +377,11 @@ class PolicyBooleanPolicyArgs:
 
 
 class PolicyListPolicyArgsDict(TypedDict):
-    allow: NotRequired[pulumi.Input[Optional['PolicyListPolicyAllowArgs']]]
+    allow: NotRequired[pulumi.Input[Optional['PolicyListPolicyAllowArgsDict']]]
     """
     or `deny` - (Optional) One or the other must be set.
     """
-    deny: NotRequired[pulumi.Input[Optional['PolicyListPolicyDenyArgs']]]
+    deny: NotRequired[pulumi.Input[Optional['PolicyListPolicyDenyArgsDict']]]
     """
     One or the other must be set.
     """

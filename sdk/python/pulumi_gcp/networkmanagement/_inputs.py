@@ -293,17 +293,17 @@ class ConnectivityTestDestinationArgs:
 
 
 class ConnectivityTestSourceArgsDict(TypedDict):
-    app_engine_version: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceAppEngineVersionArgs']]]
+    app_engine_version: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceAppEngineVersionArgsDict']]]
     """
     An App Engine service version.
     Structure is documented below.
     """
-    cloud_function: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceCloudFunctionArgs']]]
+    cloud_function: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceCloudFunctionArgsDict']]]
     """
     A Cloud Function.
     Structure is documented below.
     """
-    cloud_run_revision: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceCloudRunRevisionArgs']]]
+    cloud_run_revision: NotRequired[pulumi.Input[Optional['ConnectivityTestSourceCloudRunRevisionArgsDict']]]
     """
     A Cloud Run revision.
     Structure is documented below.

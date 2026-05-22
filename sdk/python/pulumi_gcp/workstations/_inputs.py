@@ -587,7 +587,7 @@ class WorkstationConfigEncryptionKeyArgs:
 
 
 class WorkstationConfigEphemeralDirectoryArgsDict(TypedDict):
-    gce_pd: NotRequired[pulumi.Input[Optional['WorkstationConfigEphemeralDirectoryGcePdArgs']]]
+    gce_pd: NotRequired[pulumi.Input[Optional['WorkstationConfigEphemeralDirectoryGcePdArgsDict']]]
     """
     An EphemeralDirectory backed by a Compute Engine persistent disk.
     Structure is documented below.
@@ -743,7 +743,7 @@ class WorkstationConfigEphemeralDirectoryGcePdArgs:
 
 
 class WorkstationConfigHostArgsDict(TypedDict):
-    gce_instance: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceArgs']]]
+    gce_instance: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceArgsDict']]]
     """
     A runtime using a Compute Engine instance.
     Structure is documented below.
@@ -775,12 +775,12 @@ class WorkstationConfigHostArgs:
 
 
 class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceAcceleratorArgsDict']]]]]
     """
     An accelerator card attached to the instance.
     Structure is documented below.
     """
-    boost_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgs']]]]]
+    boost_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigArgsDict']]]]]
     """
     A list of the boost configurations that workstations created using this workstation configuration are allowed to use.
     Structure is documented below.
@@ -789,7 +789,7 @@ class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
     """
     Size of the boot disk in GB.
     """
-    confidential_instance_config: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgs']]]
+    confidential_instance_config: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceConfidentialInstanceConfigArgsDict']]]
     """
     A set of Compute Engine Confidential VM instance options.
     Structure is documented below.
@@ -823,7 +823,7 @@ class WorkstationConfigHostGceInstanceArgsDict(TypedDict):
     """
     Scopes to grant to the service_account. Various scopes are automatically added based on feature usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs` on the service account.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['WorkstationConfigHostGceInstanceShieldedInstanceConfigArgsDict']]]
     """
     A set of Compute Engine Shielded instance options.
     Structure is documented below.
@@ -1142,7 +1142,7 @@ class WorkstationConfigHostGceInstanceBoostConfigArgsDict(TypedDict):
     """
     The id to be used for the boost config.
     """
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkstationConfigHostGceInstanceBoostConfigAcceleratorArgsDict']]]]]
     """
     An accelerator card attached to the boost instance.
     Structure is documented below.
@@ -1505,12 +1505,12 @@ class WorkstationConfigIamMemberConditionArgs:
 
 
 class WorkstationConfigPersistentDirectoryArgsDict(TypedDict):
-    gce_hd: NotRequired[pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGceHdArgs']]]
+    gce_hd: NotRequired[pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGceHdArgsDict']]]
     """
     A directory to persist across workstation sessions, backed by a Compute Engine Hyperdisk Balanced High Availability disk.
     Structure is documented below.
     """
-    gce_pd: NotRequired[pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGcePdArgs']]]
+    gce_pd: NotRequired[pulumi.Input[Optional['WorkstationConfigPersistentDirectoryGcePdArgsDict']]]
     """
     A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
     Structure is documented below.

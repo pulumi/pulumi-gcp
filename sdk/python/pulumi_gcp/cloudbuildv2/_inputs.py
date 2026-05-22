@@ -270,7 +270,7 @@ class ConnectionBitbucketDataCenterConfigArgsDict(TypedDict):
     (Output)
     Output only. Version of the Bitbucket Data Center running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionBitbucketDataCenterConfigServiceDirectoryConfigArgsDict']]]
     """
     Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
     Structure is documented below.
@@ -538,7 +538,7 @@ class ConnectionGithubConfigArgsDict(TypedDict):
     """
     GitHub App installation id.
     """
-    authorizer_credential: NotRequired[pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgs']]]
+    authorizer_credential: NotRequired[pulumi.Input[Optional['ConnectionGithubConfigAuthorizerCredentialArgsDict']]]
     """
     OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
     Structure is documented below.
@@ -658,7 +658,7 @@ class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
     """
     SecretManager resource containing the private key of the GitHub App, formatted as `projects/*/secrets/*/versions/*`.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict']]]
     """
     Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
     Structure is documented below.
@@ -860,7 +860,7 @@ class ConnectionGitlabConfigArgsDict(TypedDict):
     (Output)
     Output only. Version of the GitLab Enterprise server running on the `host_uri`.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGitlabConfigServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ConnectionGitlabConfigServiceDirectoryConfigArgsDict']]]
     """
     Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
     Structure is documented below.

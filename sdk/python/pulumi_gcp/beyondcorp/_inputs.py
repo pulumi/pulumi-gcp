@@ -540,22 +540,22 @@ class SecurityGatewayApplicationIamMemberConditionArgs:
 
 
 class SecurityGatewayApplicationUpstreamArgsDict(TypedDict):
-    egress_policy: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamEgressPolicyArgs']]]
+    egress_policy: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamEgressPolicyArgsDict']]]
     """
     Optional. Routing policy information.
     Structure is documented below.
     """
-    external: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamExternalArgs']]]
+    external: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamExternalArgsDict']]]
     """
     List of the external endpoints to forward traffic to.
     Structure is documented below.
     """
-    network: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamNetworkArgs']]]
+    network: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamNetworkArgsDict']]]
     """
     Network to forward traffic to.
     Structure is documented below.
     """
-    proxy_protocol: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolArgs']]]
+    proxy_protocol: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolArgsDict']]]
     """
     Shared proxy configuration for all apps.
     Structure is documented below.
@@ -786,7 +786,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolArgsDict(TypedDict):
     """
     Client IP configuration. The client IP address is included if true.
     """
-    contextual_headers: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgs']]]
+    contextual_headers: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict']]]
     """
     Configuration for the contextual headers.
     Structure is documented below.
@@ -905,12 +905,12 @@ class SecurityGatewayApplicationUpstreamProxyProtocolArgs:
 
 
 class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict(TypedDict):
-    device_info: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgs']]]
+    device_info: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersDeviceInfoArgsDict']]]
     """
     Device info configuration.
     Structure is documented below.
     """
-    group_info: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgs']]]
+    group_info: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersGroupInfoArgsDict']]]
     """
     Group info configuration.
     Structure is documented below.
@@ -920,7 +920,7 @@ class SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersArgsDict(T
     Default output type for all enabled headers.
     Possible values are: `PROTOBUF`, `JSON`, `NONE`.
     """
-    user_info: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgs']]]
+    user_info: NotRequired[pulumi.Input[Optional['SecurityGatewayApplicationUpstreamProxyProtocolContextualHeadersUserInfoArgsDict']]]
     """
     User info configuration.
     Structure is documented below.
@@ -1106,7 +1106,7 @@ class SecurityGatewayHubArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    internet_gateway: NotRequired[pulumi.Input[Optional['SecurityGatewayHubInternetGatewayArgs']]]
+    internet_gateway: NotRequired[pulumi.Input[Optional['SecurityGatewayHubInternetGatewayArgsDict']]]
     """
     Internet Gateway configuration.
     Structure is documented below.
@@ -1360,7 +1360,7 @@ class SecurityGatewayProxyProtocolConfigArgsDict(TypedDict):
     """
     Client IP configuration. The client IP address is included if true.
     """
-    contextual_headers: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersArgs']]]
+    contextual_headers: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict']]]
     """
     Configuration for the contextual headers.
     Structure is documented below.
@@ -1479,12 +1479,12 @@ class SecurityGatewayProxyProtocolConfigArgs:
 
 
 class SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict(TypedDict):
-    device_info: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgs']]]
+    device_info: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersDeviceInfoArgsDict']]]
     """
     Device info configuration.
     Structure is documented below.
     """
-    group_info: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgs']]]
+    group_info: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfoArgsDict']]]
     """
     Group info configuration.
     Structure is documented below.
@@ -1494,7 +1494,7 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersArgsDict(TypedDict):
     Default output type for all enabled headers.
     Possible values are: `PROTOBUF`, `JSON`, `NONE`.
     """
-    user_info: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs']]]
+    user_info: NotRequired[pulumi.Input[Optional['SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgsDict']]]
     """
     User info configuration.
     Structure is documented below.
@@ -1676,7 +1676,7 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersUserInfoArgs:
 
 
 class SecurityGatewayServiceDiscoveryArgsDict(TypedDict):
-    api_gateway: NotRequired[pulumi.Input[Optional['SecurityGatewayServiceDiscoveryApiGatewayArgs']]]
+    api_gateway: NotRequired[pulumi.Input[Optional['SecurityGatewayServiceDiscoveryApiGatewayArgsDict']]]
     """
     External API configuration.
     Structure is documented below.
@@ -1708,7 +1708,7 @@ class SecurityGatewayServiceDiscoveryArgs:
 
 
 class SecurityGatewayServiceDiscoveryApiGatewayArgsDict(TypedDict):
-    resource_override: NotRequired[pulumi.Input[Optional['SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgs']]]
+    resource_override: NotRequired[pulumi.Input[Optional['SecurityGatewayServiceDiscoveryApiGatewayResourceOverrideArgsDict']]]
     """
     Enables fetching resource model updates to alter service behavior per Chrome profile.
     Structure is documented below.

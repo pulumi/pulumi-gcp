@@ -152,7 +152,7 @@ __all__ = [
 ]
 
 class AclConfigIdpConfigArgsDict(TypedDict):
-    external_idp_config: NotRequired[pulumi.Input[Optional['AclConfigIdpConfigExternalIdpConfigArgs']]]
+    external_idp_config: NotRequired[pulumi.Input[Optional['AclConfigIdpConfigExternalIdpConfigArgsDict']]]
     """
     External third party identity provider config.
     Structure is documented below.
@@ -236,12 +236,12 @@ class AclConfigIdpConfigExternalIdpConfigArgs:
 
 
 class AssistantCustomerPolicyArgsDict(TypedDict):
-    banned_phrases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssistantCustomerPolicyBannedPhraseArgs']]]]]
+    banned_phrases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssistantCustomerPolicyBannedPhraseArgsDict']]]]]
     """
     List of banned phrases.
     Structure is documented below.
     """
-    model_armor_config: NotRequired[pulumi.Input[Optional['AssistantCustomerPolicyModelArmorConfigArgs']]]
+    model_armor_config: NotRequired[pulumi.Input[Optional['AssistantCustomerPolicyModelArmorConfigArgsDict']]]
     """
     Model Armor configuration to be used for sanitizing user prompts and assistant responses.
     Structure is documented below.
@@ -462,7 +462,7 @@ class AssistantGenerationConfigArgsDict(TypedDict):
     Use an ISO 639-1 language code such as `en`.
     If not specified, the language will be automatically detected.
     """
-    system_instruction: NotRequired[pulumi.Input[Optional['AssistantGenerationConfigSystemInstructionArgs']]]
+    system_instruction: NotRequired[pulumi.Input[Optional['AssistantGenerationConfigSystemInstructionArgsDict']]]
     """
     System instruction, also known as the prompt preamble for LLM calls.
     See also https://cloud.google.com/vertex-ai/generative-ai/docs/learn/prompts/system-instructions
@@ -546,7 +546,7 @@ class AssistantGenerationConfigSystemInstructionArgs:
 
 
 class ChatEngineChatEngineConfigArgsDict(TypedDict):
-    agent_creation_config: NotRequired[pulumi.Input[Optional['ChatEngineChatEngineConfigAgentCreationConfigArgs']]]
+    agent_creation_config: NotRequired[pulumi.Input[Optional['ChatEngineChatEngineConfigAgentCreationConfigArgsDict']]]
     """
     The configuration to generate the Dialogflow agent that is associated to this Engine.
     Exactly one of `agent_creation_config` or `dialogflow_agent_to_link` must be set.
@@ -836,7 +836,7 @@ class ControlBoostActionArgsDict(TypedDict):
     """
     The fixed boost value to apply to the search results. Positive values will increase the relevance of the results, while negative values will decrease the relevance. The value must be between -100 and 100.
     """
-    interpolation_boost_spec: NotRequired[pulumi.Input[Optional['ControlBoostActionInterpolationBoostSpecArgs']]]
+    interpolation_boost_spec: NotRequired[pulumi.Input[Optional['ControlBoostActionInterpolationBoostSpecArgsDict']]]
     """
     The interpolation boost specification to apply to the search results.
     Structure is documented below.
@@ -919,7 +919,7 @@ class ControlBoostActionInterpolationBoostSpecArgsDict(TypedDict):
     The attribute type to be used to determine the boost amount.
     Possible values are: `NUMERICAL`, `FRESHNESS`.
     """
-    control_point: NotRequired[pulumi.Input[Optional['ControlBoostActionInterpolationBoostSpecControlPointArgs']]]
+    control_point: NotRequired[pulumi.Input[Optional['ControlBoostActionInterpolationBoostSpecControlPointArgsDict']]]
     """
     The control points used to define the curve.
     Structure is documented below.
@@ -1064,7 +1064,7 @@ class ControlBoostActionInterpolationBoostSpecControlPointArgs:
 
 
 class ControlConditionArgsDict(TypedDict):
-    active_time_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgs']]]]]
+    active_time_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ControlConditionActiveTimeRangeArgsDict']]]]]
     """
     The time range when the condition is active.
     Structure is documented below.
@@ -1073,7 +1073,7 @@ class ControlConditionArgsDict(TypedDict):
     """
     The regular expression that the query must match for this condition to be met.
     """
-    query_terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ControlConditionQueryTermArgs']]]]]
+    query_terms: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ControlConditionQueryTermArgsDict']]]]]
     """
     The query terms that must be present in the search request for this condition to be met.
     Structure is documented below.
@@ -1664,7 +1664,7 @@ class DataConnectorBapConfigArgs:
 
 
 class DataConnectorDestinationConfigArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataConnectorDestinationConfigDestinationArgsDict']]]]]
     """
     The list of destinations for this configuration.
     Structure is documented below.
@@ -2014,12 +2014,12 @@ class DataStoreAdvancedSiteSearchConfigArgs:
 
 
 class DataStoreDocumentProcessingConfigArgsDict(TypedDict):
-    chunking_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigChunkingConfigArgs']]]
+    chunking_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigChunkingConfigArgsDict']]]
     """
     Whether chunking mode is enabled.
     Structure is documented below.
     """
-    default_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigArgs']]]
+    default_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict']]]
     """
     Configurations for default Document parser. If not specified, this resource
     will be configured to use a default DigitalParsingConfig, and the default parsing
@@ -2032,7 +2032,7 @@ class DataStoreDocumentProcessingConfigArgsDict(TypedDict):
     The full resource name of the Document Processing Config. Format:
     `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/documentProcessingConfig`.
     """
-    parsing_config_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgs']]]]]
+    parsing_config_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict']]]]]
     """
     Map from file type to override the default parsing configuration based on the file type. Supported keys:
     """
@@ -2121,7 +2121,7 @@ class DataStoreDocumentProcessingConfigArgs:
 
 
 class DataStoreDocumentProcessingConfigChunkingConfigArgsDict(TypedDict):
-    layout_based_chunking_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgs']]]
+    layout_based_chunking_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigArgsDict']]]
     """
     Configuration for the layout based chunking.
     Structure is documented below.
@@ -2208,16 +2208,16 @@ class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfigAr
 
 
 class DataStoreDocumentProcessingConfigDefaultParsingConfigArgsDict(TypedDict):
-    digital_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgs']]]
+    digital_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigDigitalParsingConfigArgsDict']]]
     """
     Configurations applied to digital parser.
     """
-    layout_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgs']]]
+    layout_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigLayoutParsingConfigArgsDict']]]
     """
     Configurations applied to layout parser.
     Structure is documented below.
     """
-    ocr_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgs']]]
+    ocr_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigDefaultParsingConfigOcrParsingConfigArgsDict']]]
     """
     Configurations applied to OCR parser. Currently it only applies to PDFs.
     Structure is documented below.
@@ -2454,16 +2454,16 @@ class DataStoreDocumentProcessingConfigParsingConfigOverrideArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    digital_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgs']]]
+    digital_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigParsingConfigOverrideDigitalParsingConfigArgsDict']]]
     """
     Configurations applied to digital parser.
     """
-    layout_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgs']]]
+    layout_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigParsingConfigOverrideLayoutParsingConfigArgsDict']]]
     """
     Configurations applied to layout parser.
     Structure is documented below.
     """
-    ocr_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgs']]]
+    ocr_parsing_config: NotRequired[pulumi.Input[Optional['DataStoreDocumentProcessingConfigParsingConfigOverrideOcrParsingConfigArgsDict']]]
     """
     Configurations applied to OCR parser. Currently it only applies to PDFs.
     Structure is documented below.
@@ -2878,7 +2878,7 @@ class RecommendationEngineCommonConfigArgs:
 
 
 class RecommendationEngineMediaRecommendationEngineConfigArgsDict(TypedDict):
-    engine_features_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgs']]]
+    engine_features_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgsDict']]]
     """
     More feature configs of the selected engine type.
     Structure is documented below.
@@ -2893,7 +2893,7 @@ class RecommendationEngineMediaRecommendationEngineConfigArgsDict(TypedDict):
     `recommended-for-you` => `ctr`
     `others-you-may-like` => `ctr`
     """
-    optimization_objective_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgs']]]
+    optimization_objective_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigOptimizationObjectiveConfigArgsDict']]]
     """
     Name and value of the custom threshold for cvr optimization_objective.
     For target_field `watch-time`, target_field_value must be an integer
@@ -3056,12 +3056,12 @@ class RecommendationEngineMediaRecommendationEngineConfigArgs:
 
 
 class RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigArgsDict(TypedDict):
-    most_popular_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgs']]]
+    most_popular_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigMostPopularConfigArgsDict']]]
     """
     Feature configurations that are required for creating a Most Popular engine.
     Structure is documented below.
     """
-    recommended_for_you_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgs']]]
+    recommended_for_you_config: NotRequired[pulumi.Input[Optional['RecommendationEngineMediaRecommendationEngineConfigEngineFeaturesConfigRecommendedForYouConfigArgsDict']]]
     """
     Additional feature configurations for creating a `recommended-for-you` engine.
     Structure is documented below.
@@ -3286,7 +3286,7 @@ class SearchEngineKnowledgeGraphConfigArgsDict(TypedDict):
     """
     Whether to enable the Private Knowledge Graph for the engine.
     """
-    feature_config: NotRequired[pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigFeatureConfigArgs']]]
+    feature_config: NotRequired[pulumi.Input[Optional['SearchEngineKnowledgeGraphConfigFeatureConfigArgsDict']]]
     """
     Feature config for the Knowledge Graph.
     Structure is documented below.
@@ -3539,7 +3539,7 @@ class SearchEngineSearchEngineConfigArgs:
 
 
 class TargetSiteFailureReasonArgsDict(TypedDict):
-    quota_failure: NotRequired[pulumi.Input[Optional['TargetSiteFailureReasonQuotaFailureArgs']]]
+    quota_failure: NotRequired[pulumi.Input[Optional['TargetSiteFailureReasonQuotaFailureArgsDict']]]
     """
     Site verification state indicating the ownership and validity.
     Structure is documented below.
@@ -3770,7 +3770,7 @@ class WidgetConfigAccessSettingsArgs:
 
 
 class WidgetConfigHomepageSettingArgsDict(TypedDict):
-    shortcuts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgs']]]]]
+    shortcuts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigHomepageSettingShortcutArgsDict']]]]]
     """
     The shortcuts to display on the homepage.
     Structure is documented below.
@@ -3806,7 +3806,7 @@ class WidgetConfigHomepageSettingShortcutArgsDict(TypedDict):
     """
     Destination URL of shortcut.
     """
-    icon: NotRequired[pulumi.Input[Optional['WidgetConfigHomepageSettingShortcutIconArgs']]]
+    icon: NotRequired[pulumi.Input[Optional['WidgetConfigHomepageSettingShortcutIconArgsDict']]]
     """
     Icon URL of shortcut.
     Structure is documented below.
@@ -3903,7 +3903,7 @@ class WidgetConfigHomepageSettingShortcutIconArgs:
 
 
 class WidgetConfigUiBrandingArgsDict(TypedDict):
-    logo: NotRequired[pulumi.Input[Optional['WidgetConfigUiBrandingLogoArgs']]]
+    logo: NotRequired[pulumi.Input[Optional['WidgetConfigUiBrandingLogoArgsDict']]]
     """
     Logo image.
     Structure is documented below.
@@ -3964,7 +3964,7 @@ class WidgetConfigUiBrandingLogoArgs:
 
 
 class WidgetConfigUiSettingsArgsDict(TypedDict):
-    data_store_ui_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgs']]]]]
+    data_store_ui_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigArgsDict']]]]]
     """
     Per data store configuration.
     Structure is documented below.
@@ -4007,7 +4007,7 @@ class WidgetConfigUiSettingsArgsDict(TypedDict):
     If set to true, the widget will enable visual content summary on applicable
     search requests. Only used by healthcare search.
     """
-    generative_answer_config: NotRequired[pulumi.Input[Optional['WidgetConfigUiSettingsGenerativeAnswerConfigArgs']]]
+    generative_answer_config: NotRequired[pulumi.Input[Optional['WidgetConfigUiSettingsGenerativeAnswerConfigArgsDict']]]
     """
     Describes generative answer configuration.
     Structure is documented below.
@@ -4254,11 +4254,11 @@ class WidgetConfigUiSettingsArgs:
 
 
 class WidgetConfigUiSettingsDataStoreUiConfigArgsDict(TypedDict):
-    facet_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgs']]]]]
+    facet_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFacetFieldArgsDict']]]]]
     """
     Structure is documented below.
     """
-    fields_ui_components_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgs']]]]]
+    fields_ui_components_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WidgetConfigUiSettingsDataStoreUiConfigFieldsUiComponentsMapArgsDict']]]]]
     """
     'The key is the UI component. Currently supported `title`, `thumbnail`,
     `url`, `custom1`, `custom2`, `custom3`. The value is the name of

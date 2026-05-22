@@ -134,23 +134,23 @@ class AccessApprovalSettingsEnrolledServiceArgs:
 
 
 class ApiKeyRestrictionsArgsDict(TypedDict):
-    android_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsAndroidKeyRestrictionsArgs']]]
+    android_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsAndroidKeyRestrictionsArgsDict']]]
     """
     The Android apps that are allowed to use the key.
     """
-    api_targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgs']]]]]
+    api_targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApiKeyRestrictionsApiTargetArgsDict']]]]]
     """
     A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
     """
-    browser_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsBrowserKeyRestrictionsArgs']]]
+    browser_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsBrowserKeyRestrictionsArgsDict']]]
     """
     The HTTP referrers (websites) that are allowed to use the key.
     """
-    ios_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsIosKeyRestrictionsArgs']]]
+    ios_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsIosKeyRestrictionsArgsDict']]]
     """
     The iOS apps that are allowed to use the key.
     """
-    server_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsServerKeyRestrictionsArgs']]]
+    server_key_restrictions: NotRequired[pulumi.Input[Optional['ApiKeyRestrictionsServerKeyRestrictionsArgsDict']]]
     """
     The IP addresses of callers that are allowed to use the key.
     """
@@ -699,11 +699,11 @@ class OrganizationPolicyBooleanPolicyArgs:
 
 
 class OrganizationPolicyListPolicyArgsDict(TypedDict):
-    allow: NotRequired[pulumi.Input[Optional['OrganizationPolicyListPolicyAllowArgs']]]
+    allow: NotRequired[pulumi.Input[Optional['OrganizationPolicyListPolicyAllowArgsDict']]]
     """
     or `deny` - (Optional) One or the other must be set.
     """
-    deny: NotRequired[pulumi.Input[Optional['OrganizationPolicyListPolicyDenyArgs']]]
+    deny: NotRequired[pulumi.Input[Optional['OrganizationPolicyListPolicyDenyArgsDict']]]
     """
     One or the other must be set.
     """

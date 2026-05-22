@@ -923,12 +923,12 @@ class AutoscalingPolicyWorkerConfigArgs:
 
 
 class BatchEnvironmentConfigArgsDict(TypedDict):
-    execution_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigExecutionConfigArgs']]]
+    execution_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigExecutionConfigArgsDict']]]
     """
     Execution configuration for a workload.
     Structure is documented below.
     """
-    peripherals_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigPeripheralsConfigArgs']]]
+    peripherals_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigPeripheralsConfigArgsDict']]]
     """
     Peripherals configuration that workload has access to.
     Structure is documented below.
@@ -978,7 +978,7 @@ class BatchEnvironmentConfigArgs:
 
 
 class BatchEnvironmentConfigExecutionConfigArgsDict(TypedDict):
-    authentication_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgs']]]
+    authentication_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]]
     """
     Authentication configuration for a workload is used to set the default identity for the workload execution.
     Structure is documented below.
@@ -1219,7 +1219,7 @@ class BatchEnvironmentConfigPeripheralsConfigArgsDict(TypedDict):
     """
     Resource name of an existing Dataproc Metastore service.
     """
-    spark_history_server_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs']]]
+    spark_history_server_config: NotRequired[pulumi.Input[Optional['BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict']]]
     """
     The Spark History Server configuration for the workload.
     Structure is documented below.
@@ -1434,7 +1434,7 @@ class BatchPysparkBatchArgs:
 
 
 class BatchRuntimeConfigArgsDict(TypedDict):
-    autotuning_config: NotRequired[pulumi.Input[Optional['BatchRuntimeConfigAutotuningConfigArgs']]]
+    autotuning_config: NotRequired[pulumi.Input[Optional['BatchRuntimeConfigAutotuningConfigArgsDict']]]
     """
     Optional. Autotuning configuration of the workload.
     Structure is documented below.
@@ -1601,13 +1601,13 @@ class BatchRuntimeConfigAutotuningConfigArgs:
 
 
 class BatchRuntimeInfoArgsDict(TypedDict):
-    approximate_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BatchRuntimeInfoApproximateUsageArgs']]]]]
+    approximate_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BatchRuntimeInfoApproximateUsageArgsDict']]]]]
     """
     (Output)
     Approximate workload resource usage, calculated when the workload completes(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
     Structure is documented below.
     """
-    current_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BatchRuntimeInfoCurrentUsageArgs']]]]]
+    current_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BatchRuntimeInfoCurrentUsageArgsDict']]]]]
     """
     (Output)
     Snapshot of current workload resource usage(see [Dataproc Serverless pricing](https://cloud.google.com/dataproc-serverless/pricing))
@@ -2382,14 +2382,14 @@ class BatchStateHistoryArgs:
 
 
 class ClusterClusterConfigArgsDict(TypedDict):
-    autoscaling_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigAutoscalingConfigArgs']]]
+    autoscaling_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigAutoscalingConfigArgsDict']]]
     """
     The autoscaling policy config associated with the cluster.
     Note that once set, if `autoscaling_config` is the only field set in `cluster_config`, it can
     only be removed by setting `policy_uri = ""`, rather than removing the whole block.
     Structure defined below.
     """
-    auxiliary_node_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupArgs']]]]]
+    auxiliary_node_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupArgsDict']]]]]
     """
     A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
     Structure defined below.
@@ -2408,17 +2408,17 @@ class ClusterClusterConfigArgsDict(TypedDict):
     """
     The type of the cluster.
     """
-    dataproc_metric_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigDataprocMetricConfigArgs']]]
+    dataproc_metric_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigDataprocMetricConfigArgsDict']]]
     """
     The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
     Structure defined below.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigEncryptionConfigArgsDict']]]
     """
     The Customer managed encryption keys settings for the cluster.
     Structure defined below.
     """
-    endpoint_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigEndpointConfigArgs']]]
+    endpoint_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigEndpointConfigArgsDict']]]
     """
     The config settings for port access on the cluster.
     Structure defined below.
@@ -2427,33 +2427,33 @@ class ClusterClusterConfigArgsDict(TypedDict):
     """
     The cluster engine.
     """
-    gce_cluster_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigArgs']]]
+    gce_cluster_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigArgsDict']]]
     """
     Common config settings for resources of Google Compute Engine cluster
     instances, applicable to all instances in the cluster. Structure defined below.
     """
-    initialization_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgs']]]]]
+    initialization_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigInitializationActionArgsDict']]]]]
     """
     Commands to execute on each node after config is completed.
     You can specify multiple versions of these. Structure defined below.
     """
-    lifecycle_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigLifecycleConfigArgs']]]
+    lifecycle_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigLifecycleConfigArgsDict']]]
     """
     The settings for auto deletion cluster schedule.
     Structure defined below.
     """
-    master_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterConfigArgs']]]
+    master_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterConfigArgsDict']]]
     """
     The Google Compute Engine config settings for the master instances
     in a cluster. Structure defined below.
     """
-    metastore_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMetastoreConfigArgs']]]
+    metastore_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMetastoreConfigArgsDict']]]
     """
     The config setting for metastore service with the cluster.
     Structure defined below.
     - - -
     """
-    preemptible_worker_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigArgs']]]
+    preemptible_worker_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigArgsDict']]]
     """
     The Google Compute Engine config settings for the additional
     instances in a cluster. Structure defined below.
@@ -2461,11 +2461,11 @@ class ClusterClusterConfigArgsDict(TypedDict):
     an alias for the api's [secondaryWorkerConfig](https://cloud.google.com/dataproc/docs/reference/rest/v1/ClusterConfig#InstanceGroupConfig). The name doesn't necessarily mean it is preemptible and is named as
     such for legacy/compatibility reasons.
     """
-    security_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecurityConfigArgs']]]
+    security_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecurityConfigArgsDict']]]
     """
     Security related configuration. Structure defined below.
     """
-    software_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSoftwareConfigArgs']]]
+    software_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSoftwareConfigArgsDict']]]
     """
     The config settings for software inside the cluster.
     Structure defined below.
@@ -2486,7 +2486,7 @@ class ClusterClusterConfigArgsDict(TypedDict):
     and jobs data, such as Spark and MapReduce history files.
     Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
     """
-    worker_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerConfigArgs']]]
+    worker_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerConfigArgsDict']]]
     """
     The Google Compute Engine config settings for the worker instances
     in a cluster. Structure defined below.
@@ -2987,7 +2987,7 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgsDict(TypedDict):
     """
     The Node group resource name.
     """
-    node_group_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs']]]
+    node_group_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgsDict']]]
     """
     The node group instance group configuration.
     """
@@ -3049,12 +3049,12 @@ class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs:
 
 
 class ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgsDict']]]]]
     """
     The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
     multiple times.
     """
-    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs']]]
+    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgsDict']]]
     """
     Disk Config
     """
@@ -3575,7 +3575,7 @@ class ClusterClusterConfigEndpointConfigArgs:
 
 
 class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
-    confidential_instance_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs']]]
+    confidential_instance_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict']]]
     """
     Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
     """
@@ -3598,11 +3598,11 @@ class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
     network to the cluster will be part of. Conflicts with `subnetwork`.
     If neither is specified, this defaults to the "default" network.
     """
-    node_group_affinity: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs']]]
+    node_group_affinity: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict']]]
     """
     Node Group Affinity for sole-tenant clusters.
     """
-    reservation_affinity: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigReservationAffinityArgs']]]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigReservationAffinityArgsDict']]]
     """
     Reservation Affinity for consuming zonal reservation.
     """
@@ -3625,7 +3625,7 @@ class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
     short names are supported. To allow full access to all Cloud APIs, use the
     `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict']]]
     """
     Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
 
@@ -4316,11 +4316,11 @@ class ClusterClusterConfigLifecycleConfigArgs:
 
 
 class ClusterClusterConfigMasterConfigArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigAcceleratorArgsDict']]]]]
     """
     The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
     """
-    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterConfigDiskConfigArgs']]]
+    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterConfigDiskConfigArgsDict']]]
     """
     Disk Config
     """
@@ -4329,7 +4329,7 @@ class ClusterClusterConfigMasterConfigArgsDict(TypedDict):
     The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
     for more information.
     """
-    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgs']]]
+    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict']]]
     """
     Instance flexibility Policy allowing a mixture of VM shapes.
     """
@@ -4730,11 +4730,11 @@ class ClusterClusterConfigMasterConfigDiskConfigArgs:
 
 
 class ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
-    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]]
+    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]]
     """
     List of instance selection options that the group will use when creating new VMs.
     """
-    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]]
+    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigMasterConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]]
     """
     A list of instance selection results in the group.
     """
@@ -4917,11 +4917,11 @@ class ClusterClusterConfigMetastoreConfigArgs:
 
 
 class ClusterClusterConfigPreemptibleWorkerConfigArgsDict(TypedDict):
-    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs']]]
+    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgsDict']]]
     """
     Disk Config
     """
-    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs']]]
+    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict']]]
     """
     Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
     """
@@ -5188,15 +5188,15 @@ class ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs:
 
 
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
-    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]]
+    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]]
     """
     List of instance selection options that the group will use when creating new VMs.
     """
-    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]]
+    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]]
     """
     A list of instance selection results in the group.
     """
-    provisioning_model_mix: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']]]
+    provisioning_model_mix: NotRequired[pulumi.Input[Optional['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict']]]
     """
     Defines how the Group selects the provisioning model to ensure required reliability.
     """
@@ -5407,12 +5407,12 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvis
 
 
 class ClusterClusterConfigSecurityConfigArgsDict(TypedDict):
-    identity_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecurityConfigIdentityConfigArgs']]]
+    identity_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecurityConfigIdentityConfigArgsDict']]]
     """
     Identity Configuration. At least one of `identity_config`
     or `kerberos_config` is required.
     """
-    kerberos_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecurityConfigKerberosConfigArgs']]]
+    kerberos_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigSecurityConfigKerberosConfigArgsDict']]]
     """
     Kerberos Configuration. At least one of `identity_config`
     or `kerberos_config` is required.
@@ -5973,11 +5973,11 @@ class ClusterClusterConfigSoftwareConfigArgs:
 
 
 class ClusterClusterConfigWorkerConfigArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigAcceleratorArgsDict']]]]]
     """
     The Compute Engine accelerator configuration for these instances. Can be specified multiple times.
     """
-    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerConfigDiskConfigArgs']]]
+    disk_config: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerConfigDiskConfigArgsDict']]]
     """
     Disk Config
     """
@@ -5986,7 +5986,7 @@ class ClusterClusterConfigWorkerConfigArgsDict(TypedDict):
     The URI for the image to use for this worker.  See [the guide](https://cloud.google.com/dataproc/docs/guides/dataproc-images)
     for more information.
     """
-    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgs']]]
+    instance_flexibility_policy: NotRequired[pulumi.Input[Optional['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict']]]
     """
     Instance flexibility Policy allowing a mixture of VM shapes.
     """
@@ -6410,11 +6410,11 @@ class ClusterClusterConfigWorkerConfigDiskConfigArgs:
 
 
 class ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyArgsDict(TypedDict):
-    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]]]
+    instance_selection_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict']]]]]
     """
     List of instance selection options that the group will use when creating new VMs.
     """
-    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]]
+    instance_selection_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterClusterConfigWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict']]]]]
     """
     A list of instance selection results in the group.
     """
@@ -6645,12 +6645,12 @@ class ClusterIAMMemberConditionArgs:
 
 
 class ClusterVirtualClusterConfigArgsDict(TypedDict):
-    auxiliary_services_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgs']]]
+    auxiliary_services_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigAuxiliaryServicesConfigArgsDict']]]
     """
     Configuration of auxiliary services used by this cluster. 
     Structure defined below.
     """
-    kubernetes_cluster_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigArgs']]]
+    kubernetes_cluster_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigArgsDict']]]
     """
     The configuration for running the Dataproc cluster on Kubernetes.
     Structure defined below.
@@ -6741,11 +6741,11 @@ class ClusterVirtualClusterConfigArgs:
 
 
 class ClusterVirtualClusterConfigAuxiliaryServicesConfigArgsDict(TypedDict):
-    metastore_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgs']]]
+    metastore_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfigArgsDict']]]
     """
     The Hive Metastore configuration for this workload.
     """
-    spark_history_server_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgs']]]
+    spark_history_server_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfigArgsDict']]]
     """
     The Spark History Server configuration for the workload.
     """
@@ -6932,7 +6932,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgsDict
     A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster 
     (the GKE cluster can be zonal or regional)
     """
-    node_pool_targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgs']]]]]
+    node_pool_targets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetArgsDict']]]]]
     """
     GKE node pools where workloads will be scheduled. At least one node pool must be assigned the `DEFAULT` 
     GkeNodePoolTarget.Role. If a GkeNodePoolTarget is not specified, Dataproc constructs a `DEFAULT` GkeNodePoolTarget.
@@ -6994,7 +6994,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     The roles associated with the GKE node pool. 
     One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
     """
-    node_pool_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgs']]]
+    node_pool_config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigArgsDict']]]
     """
     The configuration for the GKE node pool. 
     If specified, Dataproc attempts to create a node pool with the specified shape.
@@ -7070,12 +7070,12 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
     with a Dataproc on GKE virtual cluster will be located.
     - - -
     """
-    autoscaling: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgs']]]
+    autoscaling: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscalingArgsDict']]]
     """
     The autoscaler configuration for this node pool. 
     The autoscaler is enabled only when a valid configuration is present.
     """
-    config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgsDict']]]
     """
     The node pool configuration.
     """
@@ -7810,7 +7810,7 @@ class GdcSparkApplicationSparkSqlApplicationConfigArgsDict(TypedDict):
     """
     The HCFS URI of the script that contains SQL queries.
     """
-    query_list: NotRequired[pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs']]]
+    query_list: NotRequired[pulumi.Input[Optional['GdcSparkApplicationSparkSqlApplicationConfigQueryListArgsDict']]]
     """
     Represents a list of queries.
     Structure is documented below.
@@ -7938,7 +7938,7 @@ class JobHadoopConfigArgsDict(TypedDict):
     """
     HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['JobHadoopConfigLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['JobHadoopConfigLoggingConfigArgsDict']]]
     """
     The runtime logging config of the job
     """
@@ -8358,7 +8358,7 @@ class JobPigConfigArgsDict(TypedDict):
 
     * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
     """
-    logging_config: NotRequired[pulumi.Input[Optional['JobPigConfigLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['JobPigConfigLoggingConfigArgsDict']]]
     """
     The runtime logging config of the job
     """
@@ -8593,7 +8593,7 @@ class JobPrestoConfigArgsDict(TypedDict):
     """
     Whether to continue executing queries if a query fails. Setting to true can be useful when executing independent parallel queries. Defaults to false.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['JobPrestoConfigLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['JobPrestoConfigLoggingConfigArgsDict']]]
     """
     The runtime logging config of the job
     """
@@ -8794,7 +8794,7 @@ class JobPysparkConfigArgsDict(TypedDict):
     """
     HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['JobPysparkConfigLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['JobPysparkConfigLoggingConfigArgsDict']]]
     """
     The runtime logging config of the job
     """
@@ -9068,7 +9068,7 @@ class JobSparkConfigArgsDict(TypedDict):
     """
     HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['JobSparkConfigLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['JobSparkConfigLoggingConfigArgsDict']]]
     """
     The runtime logging config of the job
     """
@@ -9267,7 +9267,7 @@ class JobSparksqlConfigArgsDict(TypedDict):
 
     * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
     """
-    logging_config: NotRequired[pulumi.Input[Optional['JobSparksqlConfigLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['JobSparksqlConfigLoggingConfigArgsDict']]]
     """
     The runtime logging config of the job
     """
@@ -9799,7 +9799,7 @@ class MetastoreServiceHiveMetastoreConfigArgsDict(TypedDict):
     """
     The Hive metastore schema version.
     """
-    auxiliary_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs']]]]]
+    auxiliary_versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgsDict']]]]]
     """
     A mapping of Hive metastore version to the auxiliary version configuration.
     When specified, a secondary Hive metastore service is created along with the primary service.
@@ -9819,7 +9819,7 @@ class MetastoreServiceHiveMetastoreConfigArgsDict(TypedDict):
     Default value is `THRIFT`.
     Possible values are: `THRIFT`, `GRPC`.
     """
-    kerberos_config: NotRequired[pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs']]]
+    kerberos_config: NotRequired[pulumi.Input[Optional['MetastoreServiceHiveMetastoreConfigKerberosConfigArgsDict']]]
     """
     Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
     Structure is documented below.
@@ -10411,7 +10411,7 @@ class MetastoreServiceNetworkConfigConsumerArgs:
 
 
 class MetastoreServiceScalingConfigArgsDict(TypedDict):
-    autoscaling_config: NotRequired[pulumi.Input[Optional['MetastoreServiceScalingConfigAutoscalingConfigArgs']]]
+    autoscaling_config: NotRequired[pulumi.Input[Optional['MetastoreServiceScalingConfigAutoscalingConfigArgsDict']]]
     """
     Represents the autoscaling configuration of a metastore service.
     Structure is documented below.
@@ -10495,7 +10495,7 @@ class MetastoreServiceScalingConfigAutoscalingConfigArgsDict(TypedDict):
     (Output)
     Output only. The scaling factor of a service with autoscaling enabled.
     """
-    limit_config: NotRequired[pulumi.Input[Optional['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgs']]]
+    limit_config: NotRequired[pulumi.Input[Optional['MetastoreServiceScalingConfigAutoscalingConfigLimitConfigArgsDict']]]
     """
     Represents the limit configuration of a metastore service.
     Structure is documented below.
@@ -10821,12 +10821,12 @@ class MetastoreTableIamMemberConditionArgs:
 
 
 class SessionTemplateEnvironmentConfigArgsDict(TypedDict):
-    execution_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigExecutionConfigArgs']]]
+    execution_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigExecutionConfigArgsDict']]]
     """
     Execution configuration for a workload.
     Structure is documented below.
     """
-    peripherals_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigPeripheralsConfigArgs']]]
+    peripherals_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict']]]
     """
     Peripherals configuration that workload has access to.
     Structure is documented below.
@@ -10876,7 +10876,7 @@ class SessionTemplateEnvironmentConfigArgs:
 
 
 class SessionTemplateEnvironmentConfigExecutionConfigArgsDict(TypedDict):
-    authentication_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgs']]]
+    authentication_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfigArgsDict']]]
     """
     Authentication configuration for a workload is used to set the default identity for the workload execution.
     Structure is documented below.
@@ -11129,7 +11129,7 @@ class SessionTemplateEnvironmentConfigPeripheralsConfigArgsDict(TypedDict):
     """
     Resource name of an existing Dataproc Metastore service.
     """
-    spark_history_server_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgs']]]
+    spark_history_server_config: NotRequired[pulumi.Input[Optional['SessionTemplateEnvironmentConfigPeripheralsConfigSparkHistoryServerConfigArgsDict']]]
     """
     The Spark History Server configuration for the workload.
     Structure is documented below.
@@ -11428,11 +11428,11 @@ class WorkflowTemplateJobArgsDict(TypedDict):
     """
     Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
     """
-    hadoop_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHadoopJobArgs']]]
+    hadoop_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHadoopJobArgsDict']]]
     """
     Job is a Hadoop job.
     """
-    hive_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHiveJobArgs']]]
+    hive_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHiveJobArgsDict']]]
     """
     Job is a Hive job.
     """
@@ -11440,7 +11440,7 @@ class WorkflowTemplateJobArgsDict(TypedDict):
     """
     The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
     """
-    pig_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPigJobArgs']]]
+    pig_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPigJobArgsDict']]]
     """
     Job is a Pig job.
     """
@@ -11448,27 +11448,27 @@ class WorkflowTemplateJobArgsDict(TypedDict):
     """
     The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
     """
-    presto_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPrestoJobArgs']]]
+    presto_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPrestoJobArgsDict']]]
     """
     Job is a Presto job.
     """
-    pyspark_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPysparkJobArgs']]]
+    pyspark_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPysparkJobArgsDict']]]
     """
     Job is a PySpark job.
     """
-    scheduling: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSchedulingArgs']]]
+    scheduling: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSchedulingArgsDict']]]
     """
     Job scheduling configuration.
     """
-    spark_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkJobArgs']]]
+    spark_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkJobArgsDict']]]
     """
     Job is a Spark job.
     """
-    spark_r_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkRJobArgs']]]
+    spark_r_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkRJobArgsDict']]]
     """
     Job is a SparkR job.
     """
-    spark_sql_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkSqlJobArgs']]]
+    spark_sql_job: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkSqlJobArgsDict']]]
     """
     Job is a SparkSql job.
     """
@@ -11688,7 +11688,7 @@ class WorkflowTemplateJobHadoopJobArgsDict(TypedDict):
     """
     Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHadoopJobLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHadoopJobLoggingConfigArgsDict']]]
     """
     The runtime log config for job execution.
     """
@@ -11886,7 +11886,7 @@ class WorkflowTemplateJobHiveJobArgsDict(TypedDict):
     """
     The HCFS URI of the script that contains Hive queries.
     """
-    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHiveJobQueryListArgs']]]
+    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobHiveJobQueryListArgsDict']]]
     """
     A list of queries.
     """
@@ -12035,7 +12035,7 @@ class WorkflowTemplateJobPigJobArgsDict(TypedDict):
     """
     HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPigJobLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPigJobLoggingConfigArgsDict']]]
     """
     The runtime log config for job execution.
     """
@@ -12047,7 +12047,7 @@ class WorkflowTemplateJobPigJobArgsDict(TypedDict):
     """
     The HCFS URI of the script that contains the Pig queries.
     """
-    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPigJobQueryListArgs']]]
+    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPigJobQueryListArgsDict']]]
     """
     A list of queries.
     """
@@ -12241,7 +12241,7 @@ class WorkflowTemplateJobPrestoJobArgsDict(TypedDict):
     """
     Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPrestoJobLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPrestoJobLoggingConfigArgsDict']]]
     """
     The runtime log config for job execution.
     """
@@ -12257,7 +12257,7 @@ class WorkflowTemplateJobPrestoJobArgsDict(TypedDict):
     """
     The HCFS URI of the script that contains SQL queries.
     """
-    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPrestoJobQueryListArgs']]]
+    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPrestoJobQueryListArgsDict']]]
     """
     A list of queries.
     """
@@ -12459,7 +12459,7 @@ class WorkflowTemplateJobPysparkJobArgsDict(TypedDict):
     """
     HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPysparkJobLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobPysparkJobLoggingConfigArgsDict']]]
     """
     The runtime log config for job execution.
     """
@@ -12701,7 +12701,7 @@ class WorkflowTemplateJobSparkJobArgsDict(TypedDict):
     """
     HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkJobLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkJobLoggingConfigArgsDict']]]
     """
     The runtime log config for job execution.
     """
@@ -12899,7 +12899,7 @@ class WorkflowTemplateJobSparkRJobArgsDict(TypedDict):
     """
     HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkRJobLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkRJobLoggingConfigArgsDict']]]
     """
     The runtime log config for job execution.
     """
@@ -13044,7 +13044,7 @@ class WorkflowTemplateJobSparkSqlJobArgsDict(TypedDict):
     """
     HCFS URIs of jar files to be added to the Spark CLASSPATH.
     """
-    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkSqlJobLoggingConfigArgs']]]
+    logging_config: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkSqlJobLoggingConfigArgsDict']]]
     """
     The runtime log config for job execution.
     """
@@ -13056,7 +13056,7 @@ class WorkflowTemplateJobSparkSqlJobArgsDict(TypedDict):
     """
     The HCFS URI of the script that contains SQL queries.
     """
-    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkSqlJobQueryListArgs']]]
+    query_list: NotRequired[pulumi.Input[Optional['WorkflowTemplateJobSparkSqlJobQueryListArgsDict']]]
     """
     A list of queries.
     """
@@ -13238,7 +13238,7 @@ class WorkflowTemplateParameterArgsDict(TypedDict):
     """
     Brief description of the parameter. Must not exceed 1024 characters.
     """
-    validation: NotRequired[pulumi.Input[Optional['WorkflowTemplateParameterValidationArgs']]]
+    validation: NotRequired[pulumi.Input[Optional['WorkflowTemplateParameterValidationArgsDict']]]
     """
     Validation rules to be applied to this parameter's value.
     """
@@ -13313,11 +13313,11 @@ class WorkflowTemplateParameterArgs:
 
 
 class WorkflowTemplateParameterValidationArgsDict(TypedDict):
-    regex: NotRequired[pulumi.Input[Optional['WorkflowTemplateParameterValidationRegexArgs']]]
+    regex: NotRequired[pulumi.Input[Optional['WorkflowTemplateParameterValidationRegexArgsDict']]]
     """
     Validation based on regular expressions.
     """
-    values: NotRequired[pulumi.Input[Optional['WorkflowTemplateParameterValidationValuesArgs']]]
+    values: NotRequired[pulumi.Input[Optional['WorkflowTemplateParameterValidationValuesArgsDict']]]
     """
     Validation based on a list of allowed values.
     """
@@ -13418,11 +13418,11 @@ class WorkflowTemplateParameterValidationValuesArgs:
 
 
 class WorkflowTemplatePlacementArgsDict(TypedDict):
-    cluster_selector: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementClusterSelectorArgs']]]
+    cluster_selector: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementClusterSelectorArgsDict']]]
     """
     A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
     """
-    managed_cluster: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterArgs']]]
+    managed_cluster: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterArgsDict']]]
     """
     A cluster that is managed by the workflow.
     """
@@ -13582,51 +13582,51 @@ class WorkflowTemplatePlacementManagedClusterArgs:
 
 
 class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
-    autoscaling_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs']]]
+    autoscaling_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgsDict']]]
     """
     Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgsDict']]]
     """
     Encryption settings for the cluster.
     """
-    endpoint_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs']]]
+    endpoint_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgsDict']]]
     """
     Port/endpoint configuration for this cluster
     """
-    gce_cluster_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs']]]
+    gce_cluster_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict']]]
     """
     The shared Compute Engine config settings for all instances in a cluster.
     """
-    gke_cluster_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs']]]
+    gke_cluster_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict']]]
     """
     The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
     """
-    initialization_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs']]]]]
+    initialization_actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgsDict']]]]]
     """
     Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
     """
-    lifecycle_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs']]]
+    lifecycle_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgsDict']]]
     """
     Lifecycle setting for the cluster.
     """
-    master_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs']]]
+    master_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict']]]
     """
     The Compute Engine config settings for additional worker instances in a cluster.
     """
-    metastore_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs']]]
+    metastore_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgsDict']]]
     """
     Metastore configuration.
     """
-    secondary_worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs']]]
+    secondary_worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict']]]
     """
     The Compute Engine config settings for additional worker instances in a cluster.
     """
-    security_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs']]]
+    security_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict']]]
     """
     Security settings for the cluster.
     """
-    software_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs']]]
+    software_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgsDict']]]
     """
     The config settings for software inside the cluster.
     """
@@ -13638,7 +13638,7 @@ class WorkflowTemplatePlacementManagedClusterConfigArgsDict(TypedDict):
     """
     A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
     """
-    worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs']]]
+    worker_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict']]]
     """
     The Compute Engine config settings for additional worker instances in a cluster.
 
@@ -14016,7 +14016,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict(Type
     """
     The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
     """
-    node_group_affinity: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs']]]
+    node_group_affinity: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgsDict']]]
     """
     Node Group Affinity for sole-tenant clusters.
     """
@@ -14024,7 +14024,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict(Type
     """
     The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
     """
-    reservation_affinity: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs']]]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgsDict']]]
     """
     Reservation Affinity for consuming Zonal reservation.
     """
@@ -14036,7 +14036,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgsDict(Type
     """
     The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/docs.cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgsDict']]]
     """
     Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://docs.cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
     """
@@ -14419,7 +14419,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
 
 
 class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgsDict(TypedDict):
-    namespaced_gke_deployment_target: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs']]]
+    namespaced_gke_deployment_target: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgsDict']]]
     """
     A target for the deployment.
     """
@@ -14635,11 +14635,11 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs:
 
 
 class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgsDict']]]]]
     """
     The Compute Engine accelerator configuration for these instances.
     """
-    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs']]]
+    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgsDict']]]
     """
     Disk option config settings.
     """
@@ -14659,7 +14659,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgsDict(TypedDic
     """
     The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://docs.cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
     """
-    managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs']]]]]
+    managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgsDict']]]]]
     """
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
     """
@@ -15039,11 +15039,11 @@ class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs:
 
 
 class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgsDict']]]]]
     """
     Optional. The Compute Engine accelerator configuration for these instances.
     """
-    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs']]]
+    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgsDict']]]
     """
     Optional. Disk option config settings.
     """
@@ -15063,7 +15063,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgsDict
     """
     Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
     """
-    managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs']]]]]
+    managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgsDict']]]]]
     """
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
     """
@@ -15415,7 +15415,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
 
 
 class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgsDict(TypedDict):
-    kerberos_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs']]]
+    kerberos_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgsDict']]]
     """
     Kerberos related configuration.
     """
@@ -15867,11 +15867,11 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs:
 
 
 class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict(TypedDict):
-    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs']]]]]
+    accelerators: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgsDict']]]]]
     """
     Optional. The Compute Engine accelerator configuration for these instances.
     """
-    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs']]]
+    disk_config: NotRequired[pulumi.Input[Optional['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgsDict']]]
     """
     Optional. Disk option config settings.
     """
@@ -15891,7 +15891,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgsDict(TypedDic
     """
     Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2` * `n1-standard-2` **Auto Zone Exception**: If you are using the Dataproc [Auto Zone Placement](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
     """
-    managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs']]]]]
+    managed_group_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgsDict']]]]]
     """
     Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
     """

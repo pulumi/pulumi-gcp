@@ -140,27 +140,27 @@ class ClusterComputeResourceArgs:
 
 
 class ClusterComputeResourceConfigArgsDict(TypedDict):
-    new_flex_start_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewFlexStartInstancesArgs']]]
+    new_flex_start_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewFlexStartInstancesArgsDict']]]
     """
     When set in a ComputeResourceConfig, indicates that VM instances should
     be created using [Flex
     Start](https://cloud.google.com/compute/docs/instances/provisioning-models).
     Structure is documented below.
     """
-    new_on_demand_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewOnDemandInstancesArgs']]]
+    new_on_demand_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewOnDemandInstancesArgsDict']]]
     """
     When set in a ComputeResourceConfig, indicates that on-demand (i.e.,
     using the standard provisioning model) VM instances should be created.
     Structure is documented below.
     """
-    new_reserved_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewReservedInstancesArgs']]]
+    new_reserved_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewReservedInstancesArgsDict']]]
     """
     When set in a ComputeResourceConfig, indicates that VM instances should
     be created from a
     [reservation](https://cloud.google.com/compute/docs/instances/reservations-overview).
     Structure is documented below.
     """
-    new_spot_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewSpotInstancesArgs']]]
+    new_spot_instances: NotRequired[pulumi.Input[Optional['ClusterComputeResourceConfigNewSpotInstancesArgsDict']]]
     """
     When set in a ComputeResourceConfig, indicates that [spot
     VM](https://cloud.google.com/compute/docs/instances/spot) instances should be
@@ -526,14 +526,14 @@ class ClusterNetworkResourceArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    config: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigArgs']]]
+    config: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigArgsDict']]]
     """
     Describes how a network resource should be initialized. Each network resource
     can either be imported from an existing Google Cloud resource or initialized
     when the cluster is created.
     Structure is documented below.
     """
-    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgs']]]]]
+    networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworkResourceNetworkArgsDict']]]]]
     """
     (Output)
     A reference to a [VPC network](https://cloud.google.com/vpc/docs/vpc) in
@@ -608,13 +608,13 @@ class ClusterNetworkResourceArgs:
 
 
 class ClusterNetworkResourceConfigArgsDict(TypedDict):
-    existing_network: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigExistingNetworkArgs']]]
+    existing_network: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigExistingNetworkArgsDict']]]
     """
     When set in a NetworkResourceConfig, indicates that an existing network
     should be imported.
     Structure is documented below.
     """
-    new_network: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigNewNetworkArgs']]]
+    new_network: NotRequired[pulumi.Input[Optional['ClusterNetworkResourceConfigNewNetworkArgsDict']]]
     """
     When set in a NetworkResourceConfig, indicates that a new network should
     be created.
@@ -831,7 +831,7 @@ class ClusterNetworkResourceNetworkArgs:
 
 
 class ClusterOrchestratorArgsDict(TypedDict):
-    slurm: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmArgs']]]
+    slurm: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmArgsDict']]]
     """
     When set in Orchestrator, indicates that the cluster should use
     [Slurm](https://slurm.schedmd.com/) as the orchestrator.
@@ -1053,7 +1053,7 @@ class ClusterOrchestratorSlurmLoginNodesArgsDict(TypedDict):
     Must be in the same region as the cluster, and must match the zone of any
     other resources specified in the cluster.
     """
-    boot_disk: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmLoginNodesBootDiskArgs']]]
+    boot_disk: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmLoginNodesBootDiskArgsDict']]]
     """
     A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
     boot disk for a Compute Engine VM instance.
@@ -1069,7 +1069,7 @@ class ClusterOrchestratorSlurmLoginNodesArgsDict(TypedDict):
     Whether login node instances should be assigned [external IP
     addresses](https://cloud.google.com/compute/docs/ip-addresses#externaladdresses).
     """
-    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgs']]]]]
+    instances: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesInstanceArgsDict']]]]]
     """
     (Output)
     Information about the login node instances that were created in Compute
@@ -1090,7 +1090,7 @@ class ClusterOrchestratorSlurmLoginNodesArgsDict(TypedDict):
     minutes. For tasks that require more time, consider running them in the
     background using methods such as `&` or `nohup`.
     """
-    storage_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgs']]]]]
+    storage_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmLoginNodesStorageConfigArgsDict']]]]]
     """
     How storage resources should be mounted on each login
     node.
@@ -1450,7 +1450,7 @@ class ClusterOrchestratorSlurmNodeSetArgsDict(TypedDict):
     ID of the compute resource on which this nodeset will run. Must match a key
     in the cluster's compute_resources.
     """
-    compute_instance: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceArgs']]]
+    compute_instance: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceArgsDict']]]
     """
     When set in a SlurmNodeSet, indicates that the nodeset should be backed
     by Compute Engine VM instances.
@@ -1469,7 +1469,7 @@ class ClusterOrchestratorSlurmNodeSetArgsDict(TypedDict):
     Number of nodes to be statically created for this nodeset. The cluster will
     attempt to ensure that at least this many nodes exist at all times.
     """
-    storage_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgs']]]]]
+    storage_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterOrchestratorSlurmNodeSetStorageConfigArgsDict']]]]]
     """
     How storage resources should be mounted on each compute
     node.
@@ -1605,7 +1605,7 @@ class ClusterOrchestratorSlurmNodeSetArgs:
 
 
 class ClusterOrchestratorSlurmNodeSetComputeInstanceArgsDict(TypedDict):
-    boot_disk: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgs']]]
+    boot_disk: NotRequired[pulumi.Input[Optional['ClusterOrchestratorSlurmNodeSetComputeInstanceBootDiskArgsDict']]]
     """
     A [Persistent disk](https://cloud.google.com/compute/docs/disks) used as the
     boot disk for a Compute Engine VM instance.
@@ -1862,18 +1862,18 @@ class ClusterStorageResourceArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceBucketArgs']]]]]
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceBucketArgsDict']]]]]
     """
     (Output)
     Name of the bucket.
     """
-    filestores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgs']]]]]
+    filestores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceFilestoreArgsDict']]]]]
     """
     (Output)
     A reference to a [Filestore](https://cloud.google.com/filestore) instance.
     Structure is documented below.
     """
-    lustres: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceLustreArgs']]]]]
+    lustres: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterStorageResourceLustreArgsDict']]]]]
     """
     (Output)
     A reference to a [Managed
@@ -2023,40 +2023,40 @@ class ClusterStorageResourceBucketArgs:
 
 
 class ClusterStorageResourceConfigArgsDict(TypedDict):
-    existing_bucket: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingBucketArgs']]]
+    existing_bucket: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingBucketArgsDict']]]
     """
     When set in a StorageResourceConfig, indicates that an existing
     [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
     imported.
     Structure is documented below.
     """
-    existing_filestore: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingFilestoreArgs']]]
+    existing_filestore: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingFilestoreArgsDict']]]
     """
     When set in a StorageResourceConfig, indicates that an existing
     [Filestore](https://cloud.google.com/filestore) instance should be imported.
     Structure is documented below.
     """
-    existing_lustre: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgs']]]
+    existing_lustre: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigExistingLustreArgsDict']]]
     """
     When set in a StorageResourceConfig, indicates that an existing
     [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
     should be imported.
     Structure is documented below.
     """
-    new_bucket: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgs']]]
+    new_bucket: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketArgsDict']]]
     """
     When set in a StorageResourceConfig, indicates that a new
     [Google Cloud Storage](https://cloud.google.com/storage) bucket should be
     created.
     Structure is documented below.
     """
-    new_filestore: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewFilestoreArgs']]]
+    new_filestore: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewFilestoreArgsDict']]]
     """
     When set in a StorageResourceConfig, indicates that a new
     [Filestore](https://cloud.google.com/filestore) instance should be created.
     Structure is documented below.
     """
-    new_lustre: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewLustreArgs']]]
+    new_lustre: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewLustreArgsDict']]]
     """
     When set in a StorageResourceConfig, indicates that a new
     [Managed Lustre](https://cloud.google.com/products/managed-lustre) instance
@@ -2294,12 +2294,12 @@ class ClusterStorageResourceConfigNewBucketArgsDict(TypedDict):
     """
     Name of the Cloud Storage bucket to create.
     """
-    autoclass: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketAutoclassArgs']]]
+    autoclass: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketAutoclassArgsDict']]]
     """
     Message describing Google Cloud Storage autoclass configuration
     Structure is documented below.
     """
-    hierarchical_namespace: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgs']]]
+    hierarchical_namespace: NotRequired[pulumi.Input[Optional['ClusterStorageResourceConfigNewBucketHierarchicalNamespaceArgsDict']]]
     """
     Message describing Google Cloud Storage hierarchical namespace configuration
     Structure is documented below.

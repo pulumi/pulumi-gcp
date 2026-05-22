@@ -145,13 +145,13 @@ class EntryBigqueryTableSpecArgsDict(TypedDict):
     (Output)
     The table source type.
     """
-    table_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgs']]]]]
+    table_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecTableSpecArgsDict']]]]]
     """
     (Output)
     Spec of a BigQuery table. This field should only be populated if tableSourceType is BIGQUERY_TABLE.
     Structure is documented below.
     """
-    view_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgs']]]]]
+    view_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryBigqueryTableSpecViewSpecArgsDict']]]]]
     """
     (Output)
     Table view specification. This field should only be populated if tableSourceType is BIGQUERY_VIEW.
@@ -311,7 +311,7 @@ class EntryGcsFilesetSpecArgsDict(TypedDict):
     * gs://bucket_name/a/*/b: matches all files in bucket_name that match a/*/b pattern, such as a/c/b, a/d/b
     * gs://another_bucket/a.txt: matches gs://another_bucket/a.txt
     """
-    sample_gcs_file_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgs']]]]]
+    sample_gcs_file_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryGcsFilesetSpecSampleGcsFileSpecArgsDict']]]]]
     """
     (Output)
     Sample files contained in this fileset, not all files contained in this fileset are represented here.
@@ -954,7 +954,7 @@ class TagTemplateFieldArgs:
 
 
 class TagTemplateFieldTypeArgsDict(TypedDict):
-    enum_type: NotRequired[pulumi.Input[Optional['TagTemplateFieldTypeEnumTypeArgs']]]
+    enum_type: NotRequired[pulumi.Input[Optional['TagTemplateFieldTypeEnumTypeArgsDict']]]
     """
     Represents an enum type.
     Exactly one of `primitive_type` or `enum_type` must be set
