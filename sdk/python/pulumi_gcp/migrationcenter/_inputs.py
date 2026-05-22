@@ -38,12 +38,12 @@ class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
     """
     Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you are unsure which value to set, a 3 year commitment plan is often a good value to start with. Possible values: `COMMITMENT_PLAN_UNSPECIFIED`, `COMMITMENT_PLAN_NONE`, `COMMITMENT_PLAN_ONE_YEAR`, `COMMITMENT_PLAN_THREE_YEARS`
     """
-    compute_engine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs']]]
+    compute_engine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict']]]
     """
     The user preferences relating to Compute Engine target platform.
     Structure is documented below.
     """
-    region_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgs']]]
+    region_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesRegionPreferencesArgsDict']]]
     """
     The user preferences relating to target regions.
     Structure is documented below.
@@ -52,7 +52,7 @@ class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
     """
     Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to calculate insights and recommendations for a virtual machine. If you are unsure which value to set, a moderate sizing optimization strategy is often a good value to start with. Possible values: `SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED`, `SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE`, `SIZING_OPTIMIZATION_STRATEGY_MODERATE`, `SIZING_OPTIMIZATION_STRATEGY_AGGRESSIVE`
     """
-    sole_tenancy_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgs']]]
+    sole_tenancy_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict']]]
     """
     Preferences concerning Sole Tenancy nodes and VMs.
     Structure is documented below.
@@ -61,7 +61,7 @@ class PreferenceSetVirtualMachinePreferencesArgsDict(TypedDict):
     """
     Target product for assets using this preference set. Specify either target product or business goal, but not both. Possible values: `COMPUTE_MIGRATION_TARGET_PRODUCT_UNSPECIFIED`, `COMPUTE_MIGRATION_TARGET_PRODUCT_COMPUTE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_VMWARE_ENGINE`, `COMPUTE_MIGRATION_TARGET_PRODUCT_SOLE_TENANCY`
     """
-    vmware_engine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgs']]]
+    vmware_engine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesVmwareEnginePreferencesArgsDict']]]
     """
     The user preferences relating to Google Cloud VMware Engine target platform.
     Structure is documented below.
@@ -199,7 +199,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgsDict(Typ
     """
     License type to consider when calculating costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the default licensing plan. Possible values: `LICENSE_TYPE_UNSPECIFIED`, `LICENSE_TYPE_DEFAULT`, `LICENSE_TYPE_BRING_YOUR_OWN_LICENSE`
     """
-    machine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgs']]]
+    machine_preferences: NotRequired[pulumi.Input[Optional['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict']]]
     """
     The type of machines to consider when calculating virtual machine migration insights and recommendations. Not all machine types are available in all zones and regions.
     Structure is documented below.
@@ -270,7 +270,7 @@ class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesArgs:
 
 
 class PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesArgsDict(TypedDict):
-    allowed_machine_series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgs']]]]]
+    allowed_machine_series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesComputeEnginePreferencesMachinePreferencesAllowedMachineSeriesArgsDict']]]]]
     """
     Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
     Structure is documented below.
@@ -372,7 +372,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesArgsDict(Typed
     """
     Sole Tenancy nodes maintenance policy. Possible values: `HOST_MAINTENANCE_POLICY_UNSPECIFIED`, `HOST_MAINTENANCE_POLICY_DEFAULT`, `HOST_MAINTENANCE_POLICY_RESTART_IN_PLACE`, `HOST_MAINTENANCE_POLICY_MIGRATE_WITHIN_NODE_GROUP`
     """
-    node_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgs']]]]]
+    node_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeTypeArgsDict']]]]]
     """
     A list of sole tenant node types. An empty list means that all possible node types will be considered.
     Structure is documented below.

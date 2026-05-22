@@ -48,7 +48,7 @@ __all__ = [
 ]
 
 class FunctionBuildConfigArgsDict(TypedDict):
-    automatic_update_policy: NotRequired[pulumi.Input[Optional['FunctionBuildConfigAutomaticUpdatePolicyArgs']]]
+    automatic_update_policy: NotRequired[pulumi.Input[Optional['FunctionBuildConfigAutomaticUpdatePolicyArgsDict']]]
     """
     Security patches are applied automatically to the runtime without requiring
     the function to be redeployed.
@@ -75,7 +75,7 @@ class FunctionBuildConfigArgsDict(TypedDict):
     """
     User-provided build-time environment variables for the function.
     """
-    on_deploy_update_policy: NotRequired[pulumi.Input[Optional['FunctionBuildConfigOnDeployUpdatePolicyArgs']]]
+    on_deploy_update_policy: NotRequired[pulumi.Input[Optional['FunctionBuildConfigOnDeployUpdatePolicyArgsDict']]]
     """
     Security patches are only applied when a function is redeployed.
     Structure is documented below.
@@ -89,7 +89,7 @@ class FunctionBuildConfigArgsDict(TypedDict):
     """
     The fully-qualified name of the service account to be used for building the container.
     """
-    source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceArgs']]]
+    source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceArgsDict']]]
     """
     The location of the function source code.
     Structure is documented below.
@@ -328,12 +328,12 @@ class FunctionBuildConfigOnDeployUpdatePolicyArgs:
 
 
 class FunctionBuildConfigSourceArgsDict(TypedDict):
-    repo_source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceRepoSourceArgs']]]
+    repo_source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceRepoSourceArgsDict']]]
     """
     If provided, get the source from this location in a Cloud Source Repository.
     Structure is documented below.
     """
-    storage_source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceStorageSourceArgs']]]
+    storage_source: NotRequired[pulumi.Input[Optional['FunctionBuildConfigSourceStorageSourceArgsDict']]]
     """
     If provided, get the source from this location in Google Cloud Storage.
     Structure is documented below.
@@ -614,7 +614,7 @@ class FunctionEventTriggerArgsDict(TypedDict):
     """
     Required. The type of event to observe.
     """
-    event_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgs']]]]]
+    event_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionEventTriggerEventFilterArgsDict']]]]]
     """
     Criteria used to filter events.
     Structure is documented below.
@@ -987,7 +987,7 @@ class FunctionServiceConfigArgsDict(TypedDict):
     Egress settings for direct VPC. If not provided, it defaults to VPC_EGRESS_PRIVATE_RANGES_ONLY.
     Possible values are: `VPC_EGRESS_ALL_TRAFFIC`, `VPC_EGRESS_PRIVATE_RANGES_ONLY`.
     """
-    direct_vpc_network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgs']]]]]
+    direct_vpc_network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigDirectVpcNetworkInterfaceArgsDict']]]]]
     """
     The Direct VPC network interface for the Cloud Function. Currently only a single Direct VPC is supported.
     Structure is documented below.
@@ -1021,12 +1021,12 @@ class FunctionServiceConfigArgsDict(TypedDict):
     The limit on the minimum number of function instances that may coexist at a
     given time.
     """
-    secret_environment_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgs']]]]]
+    secret_environment_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretEnvironmentVariableArgsDict']]]]]
     """
     Secret environment variables configuration.
     Structure is documented below.
     """
-    secret_volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgs']]]]]
+    secret_volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeArgsDict']]]]]
     """
     Secret volumes configuration.
     Structure is documented below.
@@ -1587,7 +1587,7 @@ class FunctionServiceConfigSecretVolumeArgsDict(TypedDict):
     """
     Name of the secret in secret manager (not the full resource name).
     """
-    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgs']]]]]
+    versions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FunctionServiceConfigSecretVolumeVersionArgsDict']]]]]
     """
     List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
     Structure is documented below.

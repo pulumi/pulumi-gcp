@@ -57,7 +57,7 @@ class AttestorAttestationAuthorityNoteArgsDict(TypedDict):
     account email; future versions may use an email based on a
     different naming pattern.
     """
-    public_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgs']]]]]
+    public_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AttestorAttestationAuthorityNotePublicKeyArgsDict']]]]]
     """
     Public keys that verify attestations signed by this attestor. This
     field may be updated.
@@ -193,7 +193,7 @@ class AttestorAttestationAuthorityNotePublicKeyArgsDict(TypedDict):
     be imposed based on which public key type is encapsulated.
     See the documentation on publicKey cases below for details.
     """
-    pkix_public_key: NotRequired[pulumi.Input[Optional['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgs']]]
+    pkix_public_key: NotRequired[pulumi.Input[Optional['AttestorAttestationAuthorityNotePublicKeyPkixPublicKeyArgsDict']]]
     """
     A raw PKIX SubjectPublicKeyInfo format public key.
     NOTE: id may be explicitly provided by the caller when using this

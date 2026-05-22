@@ -124,37 +124,37 @@ class AuthConfigDecryptedCredentialArgsDict(TypedDict):
     """
     Credential type associated with auth configs.
     """
-    auth_token: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialAuthTokenArgs']]]
+    auth_token: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialAuthTokenArgsDict']]]
     """
     Auth token credential.
     Structure is documented below.
     """
-    jwt: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialJwtArgs']]]
+    jwt: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialJwtArgsDict']]]
     """
     JWT credential.
     Structure is documented below.
     """
-    oauth2_authorization_code: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgs']]]
+    oauth2_authorization_code: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2AuthorizationCodeArgsDict']]]
     """
     OAuth2 authorization code credential.
     Structure is documented below.
     """
-    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs']]]
+    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict']]]
     """
     OAuth2 client credentials.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOidcTokenArgs']]]
+    oidc_token: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOidcTokenArgsDict']]]
     """
     Google OIDC ID Token.
     Structure is documented below.
     """
-    service_account_credentials: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialServiceAccountCredentialsArgs']]]
+    service_account_credentials: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialServiceAccountCredentialsArgsDict']]]
     """
     Service account credential.
     Structure is documented below.
     """
-    username_and_password: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialUsernameAndPasswordArgs']]]
+    username_and_password: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialUsernameAndPasswordArgsDict']]]
     """
     Username and password credential.
     Structure is documented below.
@@ -579,7 +579,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgsDict(TypedDict):
     """
     The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
     """
-    token_params: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs']]]
+    token_params: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict']]]
     """
     Token parameters for the auth request.
     """
@@ -688,7 +688,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsArgs:
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgsDict(TypedDict):
-    entries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs']]]]]
+    entries: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict']]]]]
     """
     A list of parameter map entries.
     Structure is documented below.
@@ -720,12 +720,12 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsArgs:
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgs']]]
+    key: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict']]]
     """
     Key of the map entry.
     Structure is documented below.
     """
-    value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict']]]
     """
     Value of the map entry.
     Structure is documented below.
@@ -775,7 +775,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryArgs:
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyArgsDict(TypedDict):
-    literal_value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgs']]]
+    literal_value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLiteralValueArgsDict']]]
     """
     Passing a literal value
     Structure is documented below.
@@ -836,7 +836,7 @@ class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryKeyLit
 
 
 class AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueArgsDict(TypedDict):
-    literal_value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgs']]]
+    literal_value: NotRequired[pulumi.Input[Optional['AuthConfigDecryptedCredentialOauth2ClientCredentialsTokenParamsEntryValueLiteralValueArgsDict']]]
     """
     Passing a literal value
     Structure is documented below.

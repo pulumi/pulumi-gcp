@@ -180,7 +180,7 @@ class DatabaseCmekConfigArgs:
 
 
 class FieldIndexConfigArgsDict(TypedDict):
-    indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FieldIndexConfigIndexArgs']]]]]
+    indexes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FieldIndexConfigIndexArgsDict']]]]]
     """
     The indexes to configure on the field. Order or array contains must be specified.
     Structure is documented below.
@@ -353,13 +353,13 @@ class IndexFieldArgsDict(TypedDict):
     Only one of `order`, `arrayConfig`, `searchConfig` and `vectorConfig` can be specified.
     Possible values are: `ASCENDING`, `DESCENDING`.
     """
-    search_config: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigArgs']]]
+    search_config: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigArgsDict']]]
     """
     Indicates that this field supports text or geo-search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
     `vectorConfig` can be specified.
     Structure is documented below.
     """
-    vector_config: NotRequired[pulumi.Input[Optional['IndexFieldVectorConfigArgs']]]
+    vector_config: NotRequired[pulumi.Input[Optional['IndexFieldVectorConfigArgsDict']]]
     """
     Indicates that this field supports vector search operations. Only one of `order`, `arrayConfig`, `searchConfig` and
     `vectorConfig` can be specified. Vector Fields should come after the field path `__name__`.
@@ -470,12 +470,12 @@ class IndexFieldArgs:
 
 
 class IndexFieldSearchConfigArgsDict(TypedDict):
-    geo_spec: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigGeoSpecArgs']]]
+    geo_spec: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigGeoSpecArgsDict']]]
     """
     The specification for building a geo search index for a field.
     Structure is documented below.
     """
-    text_spec: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigTextSpecArgs']]]
+    text_spec: NotRequired[pulumi.Input[Optional['IndexFieldSearchConfigTextSpecArgsDict']]]
     """
     The specification for building a text search index for a field.
     Structure is documented below.
@@ -641,7 +641,7 @@ class IndexFieldVectorConfigArgsDict(TypedDict):
     The resulting index will only include vectors of this dimension, and can be used for vector search
     with the same dimension.
     """
-    flat: NotRequired[pulumi.Input[Optional['IndexFieldVectorConfigFlatArgs']]]
+    flat: NotRequired[pulumi.Input[Optional['IndexFieldVectorConfigFlatArgsDict']]]
     """
     Indicates the vector index is a flat index.
     """

@@ -409,7 +409,7 @@ class AppHostingBackendCodebaseArgs:
 
 
 class AppHostingBackendManagedResourceArgsDict(TypedDict):
-    run_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgs']]]]]
+    run_services: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBackendManagedResourceRunServiceArgsDict']]]]]
     """
     (Output)
     A managed Cloud Run
@@ -575,13 +575,13 @@ class AppHostingBuildErrorArgs:
 
 
 class AppHostingBuildSourceArgsDict(TypedDict):
-    codebase: NotRequired[pulumi.Input[Optional['AppHostingBuildSourceCodebaseArgs']]]
+    codebase: NotRequired[pulumi.Input[Optional['AppHostingBuildSourceCodebaseArgsDict']]]
     """
     A codebase source, representing the state of the codebase
     that the build will be created at.
     Structure is documented below.
     """
-    container: NotRequired[pulumi.Input[Optional['AppHostingBuildSourceContainerArgs']]]
+    container: NotRequired[pulumi.Input[Optional['AppHostingBuildSourceContainerArgsDict']]]
     """
     The URI of an Artifact Registry
     [container
@@ -642,7 +642,7 @@ class AppHostingBuildSourceArgs:
 
 
 class AppHostingBuildSourceCodebaseArgsDict(TypedDict):
-    authors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgs']]]]]
+    authors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingBuildSourceCodebaseAuthorArgsDict']]]]]
     """
     (Output)
     Version control metadata for a user associated with a resolved codebase.
@@ -972,7 +972,7 @@ class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
     HOST_WRONG_SHARD
     HOST_ACTIVE
     """
-    issues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgs']]]]]
+    issues: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusIssueArgsDict']]]]]
     """
     (Output)
     A list of issues with domain configuration. Allows users to self-correct
@@ -990,7 +990,7 @@ class AppHostingDomainCustomDomainStatusArgsDict(TypedDict):
     OWNERSHIP_PENDING
     OWNERSHIP_ACTIVE
     """
-    required_dns_updates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs']]]]]
+    required_dns_updates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict']]]]]
     """
     (Output)
     Lists the records that must added or removed to a custom domain's DNS
@@ -1238,14 +1238,14 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgsDict(TypedDict):
     (Output)
     The last time App Hosting checked your custom domain's DNS records.
     """
-    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgs']]]]]
+    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict']]]]]
     """
     (Output)
     The set of DNS records App Hosting needs in order to be able to serve
     secure content on the domain.
     Structure is documented below.
     """
-    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgs']]]]]
+    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict']]]]]
     """
     (Output)
     The set of DNS records App Hosting discovered when inspecting a domain.
@@ -1343,7 +1343,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateArgs:
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict(TypedDict):
-    check_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgs']]]]]
+    check_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckErrorArgsDict']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -1359,7 +1359,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredArgsDict(TypedDi
     (Output)
     The domain the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs']]]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgsDict']]]]]
     """
     (Output)
     Records on the domain.
@@ -1707,7 +1707,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredRecordArgs:
 
 
 class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict(TypedDict):
-    check_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgs']]]]]
+    check_errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredCheckErrorArgsDict']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -1723,7 +1723,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredArgsDict(Type
     (Output)
     The domain the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs']]]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgsDict']]]]]
     """
     (Output)
     Records on the domain.
@@ -2071,7 +2071,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscoveredRecordArgs:
 
 
 class AppHostingDomainServeArgsDict(TypedDict):
-    redirect: NotRequired[pulumi.Input[Optional['AppHostingDomainServeRedirectArgs']]]
+    redirect: NotRequired[pulumi.Input[Optional['AppHostingDomainServeRedirectArgsDict']]]
     """
     Specifies redirect behavior for a domain.
     Structure is documented below.
@@ -2160,7 +2160,7 @@ class AppHostingDomainServeRedirectArgs:
 
 
 class AppHostingTrafficCurrentArgsDict(TypedDict):
-    splits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgs']]]]]
+    splits: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppHostingTrafficCurrentSplitArgsDict']]]]]
     """
     (Output)
     A list of traffic splits that together represent where traffic is being routed.
@@ -2686,12 +2686,12 @@ class ExtensionsInstanceErrorStatusArgs:
 
 
 class ExtensionsInstanceRuntimeDataArgsDict(TypedDict):
-    fatal_error: NotRequired[pulumi.Input[Optional['ExtensionsInstanceRuntimeDataFatalErrorArgs']]]
+    fatal_error: NotRequired[pulumi.Input[Optional['ExtensionsInstanceRuntimeDataFatalErrorArgsDict']]]
     """
     The fatal error state for the extension instance
     Structure is documented below.
     """
-    processing_state: NotRequired[pulumi.Input[Optional['ExtensionsInstanceRuntimeDataProcessingStateArgs']]]
+    processing_state: NotRequired[pulumi.Input[Optional['ExtensionsInstanceRuntimeDataProcessingStateArgsDict']]]
     """
     The processing state for the extension instance
     Structure is documented below.
@@ -2866,7 +2866,7 @@ class HostingCustomDomainCertArgsDict(TypedDict):
     """
     The record's type, which determines what data the record contains.
     """
-    verification: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationArgs']]]
+    verification: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationArgsDict']]]
     """
     A set of ACME challenges you can add to your DNS records or existing,
     non-Hosting hosting provider to allow Hosting to create an SSL certificate
@@ -2950,13 +2950,13 @@ class HostingCustomDomainCertArgs:
 
 
 class HostingCustomDomainCertVerificationArgsDict(TypedDict):
-    dns: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationDnsArgs']]]
+    dns: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationDnsArgsDict']]]
     """
     A `TXT` record to add to your DNS records that confirms your intent to
     let Hosting create an SSL cert for your domain name.
     Structure is documented below.
     """
-    http: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationHttpArgs']]]
+    http: NotRequired[pulumi.Input[Optional['HostingCustomDomainCertVerificationHttpArgsDict']]]
     """
     A file to add to your existing, non-Hosting hosting service that confirms
     your intent to let Hosting create an SSL cert for your domain name.
@@ -3016,11 +3016,11 @@ class HostingCustomDomainCertVerificationDnsArgsDict(TypedDict):
     (Output)
     The last time Hosting checked your CustomDomain's DNS records.
     """
-    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgs']]]]]
+    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredArgsDict']]]]]
     """
     A text string to serve at the path.
     """
-    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgs']]]]]
+    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredArgsDict']]]]]
     """
     Whether Hosting was able to find the required file contents on the
     specified path during its last check.
@@ -3090,7 +3090,7 @@ class HostingCustomDomainCertVerificationDnsDesiredArgsDict(TypedDict):
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgs']]]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDesiredRecordArgsDict']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3249,7 +3249,7 @@ class HostingCustomDomainCertVerificationDnsDiscoveredArgsDict(TypedDict):
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgs']]]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainCertVerificationDnsDiscoveredRecordArgsDict']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3573,11 +3573,11 @@ class HostingCustomDomainRequiredDnsUpdateArgsDict(TypedDict):
     (Output)
     The last time Hosting checked your CustomDomain's DNS records.
     """
-    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgs']]]]]
+    desireds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredArgsDict']]]]]
     """
     A text string to serve at the path.
     """
-    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgs']]]]]
+    discovereds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict']]]]]
     """
     Whether Hosting was able to find the required file contents on the
     specified path during its last check.
@@ -3647,7 +3647,7 @@ class HostingCustomDomainRequiredDnsUpdateDesiredArgsDict(TypedDict):
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgs']]]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDesiredRecordArgsDict']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3806,7 +3806,7 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredArgsDict(TypedDict):
     """
     The domain name the record pertains to, e.g. `foo.bar.com.`.
     """
-    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs']]]]]
+    records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict']]]]]
     """
     Records on the domain
     Structure is documented below.
@@ -3961,19 +3961,19 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
 
 
 class HostingVersionConfigArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigHeaderArgsDict']]]]]
     """
     An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
     triggers Hosting to apply the specified custom response headers.
     Structure is documented below.
     """
-    redirects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]]]
+    redirects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRedirectArgsDict']]]]]
     """
     An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
     triggers Hosting to respond with a redirect to the specified destination path.
     Structure is documented below.
     """
-    rewrites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]]
+    rewrites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HostingVersionConfigRewriteArgsDict']]]]]
     """
     An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the
     request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
@@ -4225,7 +4225,7 @@ class HostingVersionConfigRewriteArgsDict(TypedDict):
     """
     The user-supplied RE2 regular expression to match against the request URL path.
     """
-    run: NotRequired[pulumi.Input[Optional['HostingVersionConfigRewriteRunArgs']]]
+    run: NotRequired[pulumi.Input[Optional['HostingVersionConfigRewriteRunArgsDict']]]
     """
     The request will be forwarded to Cloud Run.
     Structure is documented below.
@@ -4458,7 +4458,7 @@ class RemoteConfigRemoteConfigParameterArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    conditional_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgs']]]]]
+    conditional_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterConditionalValueArgsDict']]]]]
     """
     The condition_name of the highest priority
     (the one listed first in the RemoteConfig's conditions list) determines
@@ -4466,7 +4466,7 @@ class RemoteConfigRemoteConfigParameterArgsDict(TypedDict):
     Only one of use_in_app_default or value may be specified.
     Structure is documented below.
     """
-    default_value: NotRequired[pulumi.Input[Optional['RemoteConfigRemoteConfigParameterDefaultValueArgs']]]
+    default_value: NotRequired[pulumi.Input[Optional['RemoteConfigRemoteConfigParameterDefaultValueArgsDict']]]
     """
     Value to set the parameter to, when none of the named conditions evaluate to true.
     Only one of use_in_app_default or value may be specified.
@@ -4724,7 +4724,7 @@ class RemoteConfigRemoteConfigParameterGroupArgsDict(TypedDict):
     A description for the group. Its length must be less than or equal to 256
     characters. A description may contain any Unicode characters.
     """
-    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgs']]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterArgsDict']]]]]
     """
     Map of parameter keys to their optional default values and optional
     conditional values for parameters that belong to this group.
@@ -4805,7 +4805,7 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    conditional_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgs']]]]]
+    conditional_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigParameterGroupParameterConditionalValueArgsDict']]]]]
     """
     The condition_name of the highest priority
     (the one listed first in the RemoteConfig's conditions list) determines
@@ -4813,7 +4813,7 @@ class RemoteConfigRemoteConfigParameterGroupParameterArgsDict(TypedDict):
     Only one of use_in_app_default or value may be specified.
     Structure is documented below.
     """
-    default_value: NotRequired[pulumi.Input[Optional['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgs']]]
+    default_value: NotRequired[pulumi.Input[Optional['RemoteConfigRemoteConfigParameterGroupParameterDefaultValueArgsDict']]]
     """
     Value to set the parameter to, when none of the named conditions evaluate to true.
     Only one of use_in_app_default or value may be specified.
@@ -5093,7 +5093,7 @@ class RemoteConfigRemoteConfigVersionArgsDict(TypedDict):
     What type of update was made.
     For possible values, see the [API docs](https://firebase.google.com/docs/reference/remote-config/rest/v1/Version#remoteconfigupdatetype).
     """
-    update_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgs']]]]]
+    update_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RemoteConfigRemoteConfigVersionUpdateUserArgsDict']]]]]
     """
     (Output)
     All the fields associated with the person/service account that wrote a

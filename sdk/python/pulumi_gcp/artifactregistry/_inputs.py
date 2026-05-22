@@ -81,12 +81,12 @@ class RepositoryCleanupPolicyArgsDict(TypedDict):
     Policy action.
     Possible values are: `DELETE`, `KEEP`.
     """
-    condition: NotRequired[pulumi.Input[Optional['RepositoryCleanupPolicyConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['RepositoryCleanupPolicyConditionArgsDict']]]
     """
     Policy condition for matching versions.
     Structure is documented below.
     """
-    most_recent_versions: NotRequired[pulumi.Input[Optional['RepositoryCleanupPolicyMostRecentVersionsArgs']]]
+    most_recent_versions: NotRequired[pulumi.Input[Optional['RepositoryCleanupPolicyMostRecentVersionsArgsDict']]]
     """
     Policy condition for retaining a minimum number of versions. May only be
     specified with a Keep action.
@@ -531,12 +531,12 @@ class RepositoryMavenConfigArgs:
 
 
 class RepositoryRemoteRepositoryConfigArgsDict(TypedDict):
-    apt_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]]
+    apt_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryArgsDict']]]
     """
     Specific settings for an Apt remote repository.
     Structure is documented below.
     """
-    common_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]]
+    common_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict']]]
     """
     Specific settings for an Artifact Registory remote repository.
     Structure is documented below.
@@ -550,32 +550,32 @@ class RepositoryRemoteRepositoryConfigArgsDict(TypedDict):
     If true, the remote repository upstream and upstream credentials will
     not be validated.
     """
-    docker_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']]]
+    docker_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict']]]
     """
     Specific settings for a Docker remote repository.
     Structure is documented below.
     """
-    maven_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']]]
+    maven_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict']]]
     """
     Specific settings for a Maven remote repository.
     Structure is documented below.
     """
-    npm_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']]]
+    npm_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict']]]
     """
     Specific settings for an Npm remote repository.
     Structure is documented below.
     """
-    python_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]]
+    python_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict']]]
     """
     Specific settings for a Python remote repository.
     Structure is documented below.
     """
-    upstream_credentials: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]]
+    upstream_credentials: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict']]]
     """
     The credentials used to access the remote repository.
     Structure is documented below.
     """
-    yum_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryArgs']]]
+    yum_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryArgsDict']]]
     """
     Specific settings for an Yum remote repository.
     Structure is documented below.
@@ -767,7 +767,7 @@ class RepositoryRemoteRepositoryConfigArgs:
 
 
 class RepositoryRemoteRepositoryConfigAptRepositoryArgsDict(TypedDict):
-    public_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs']]]
+    public_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgsDict']]]
     """
     One of the publicly available Apt repositories supported by Artifact Registry.
     Structure is documented below.
@@ -886,7 +886,7 @@ class RepositoryRemoteRepositoryConfigCommonRepositoryArgs:
 
 
 class RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
@@ -970,7 +970,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs:
 
 
 class RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
@@ -1054,7 +1054,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs:
 
 
 class RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
@@ -1138,7 +1138,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs:
 
 
 class RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict(TypedDict):
-    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]]
+    custom_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict']]]
     """
     [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
     Structure is documented below.
@@ -1222,7 +1222,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs:
 
 
 class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgsDict(TypedDict):
-    username_password_credentials: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]]
+    username_password_credentials: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgsDict']]]
     """
     Use username and password to access the remote repository.
     Structure is documented below.
@@ -1309,7 +1309,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredent
 
 
 class RepositoryRemoteRepositoryConfigYumRepositoryArgsDict(TypedDict):
-    public_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs']]]
+    public_repository: NotRequired[pulumi.Input[Optional['RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgsDict']]]
     """
     One of the publicly available Yum repositories supported by Artifact Registry.
     Structure is documented below.
@@ -1391,7 +1391,7 @@ class RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs:
 
 
 class RepositoryVirtualRepositoryConfigArgsDict(TypedDict):
-    upstream_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgs']]]]]
+    upstream_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict']]]]]
     """
     Policies that configure the upstream artifacts distributed by the Virtual
     Repository. Upstream policies cannot be set on a standard repository.

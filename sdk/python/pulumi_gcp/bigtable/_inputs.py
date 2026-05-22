@@ -163,7 +163,7 @@ class AppProfileStandardIsolationArgs:
 
 
 class AuthorizedViewSubsetViewArgsDict(TypedDict):
-    family_subsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgs']]]]]
+    family_subsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizedViewSubsetViewFamilySubsetArgsDict']]]]]
     """
     A group of column family subsets to be included in the authorized view. This can be specified multiple times. Structure is documented below.
 
@@ -389,7 +389,7 @@ class InstanceClusterArgsDict(TypedDict):
     """
     The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
     """
-    autoscaling_config: NotRequired[pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgs']]]
+    autoscaling_config: NotRequired[pulumi.Input[Optional['InstanceClusterAutoscalingConfigArgsDict']]]
     """
     [Autoscaling](https://cloud.google.com/bigtable/docs/autoscaling#parameters) config for the cluster, contains the following arguments:
     """

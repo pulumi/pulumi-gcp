@@ -360,7 +360,7 @@ class GroupMembershipRoleArgsDict(TypedDict):
     The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
     Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
     """
-    expiry_detail: NotRequired[pulumi.Input[Optional['GroupMembershipRoleExpiryDetailArgs']]]
+    expiry_detail: NotRequired[pulumi.Input[Optional['GroupMembershipRoleExpiryDetailArgsDict']]]
     """
     The MembershipRole expiry details, only supported for MEMBER role.
     Other roles cannot be accompanied with MEMBER role having expiry.

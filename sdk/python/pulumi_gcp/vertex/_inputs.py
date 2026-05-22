@@ -321,7 +321,7 @@ class AiDeploymentResourcePoolDedicatedResourcesArgsDict(TypedDict):
     """
     The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1. If traffic against the DeployedModel increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
     """
-    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgs']]]]]
+    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiDeploymentResourcePoolDedicatedResourcesAutoscalingMetricSpecArgsDict']]]]]
     """
     A list of the metric specifications that overrides a resource utilization metric.
     Structure is documented below.
@@ -522,7 +522,7 @@ class AiDeploymentResourcePoolDedicatedResourcesMachineSpecArgs:
 
 
 class AiEndpointDeployedModelArgsDict(TypedDict):
-    automatic_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgs']]]]]
+    automatic_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelAutomaticResourceArgsDict']]]]]
     """
     (Output)
     A description of resources that to large degree are decided by Vertex AI, and require only a modest additional configuration.
@@ -533,7 +533,7 @@ class AiEndpointDeployedModelArgsDict(TypedDict):
     (Output)
     Output only. Timestamp when the DeployedModel was created.
     """
-    dedicated_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgs']]]]]
+    dedicated_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceArgsDict']]]]]
     """
     (Output)
     A description of resources that are dedicated to the DeployedModel, and that need a higher degree of manual configuration.
@@ -568,7 +568,7 @@ class AiEndpointDeployedModelArgsDict(TypedDict):
     (Output)
     Output only. The version ID of the model that is deployed.
     """
-    private_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgs']]]]]
+    private_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelPrivateEndpointArgsDict']]]]]
     """
     (Output)
     Output only. Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
@@ -868,13 +868,13 @@ class AiEndpointDeployedModelAutomaticResourceArgs:
 
 
 class AiEndpointDeployedModelDedicatedResourceArgsDict(TypedDict):
-    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgs']]]]]
+    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpecArgsDict']]]]]
     """
     (Output)
     The metric specifications that overrides a resource utilization metric (CPU utilization, accelerator's duty cycle, and so on) target value (default to 60 if not set). At most one entry is allowed per metric. If machine_spec.accelerator_count is above 0, the autoscaling will be based on both CPU utilization and accelerator's duty cycle metrics and scale up when either metrics exceeds its target value while scale down if both metrics are under their target value. The default target value is 60 for both metrics. If machine_spec.accelerator_count is 0, the autoscaling will be based on CPU utilization metric only with default target value 60 if not explicitly set. For example, in the case of Online Prediction, if you want to override target CPU utilization to 80, you should set autoscaling_metric_specs.metric_name to `aiplatform.googleapis.com/prediction/online/cpu/utilization` and autoscaling_metric_specs.target to `80`.
     Structure is documented below.
     """
-    machine_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgs']]]]]
+    machine_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointDeployedModelDedicatedResourceMachineSpecArgsDict']]]]]
     """
     (Output)
     The specification of a single machine used by the prediction.
@@ -1325,7 +1325,7 @@ class AiEndpointIamMemberConditionArgs:
 
 
 class AiEndpointPredictRequestResponseLoggingConfigArgsDict(TypedDict):
-    bigquery_destination: NotRequired[pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs']]]
+    bigquery_destination: NotRequired[pulumi.Input[Optional['AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgsDict']]]
     """
     BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `request_response_logging`
     Structure is documented below.
@@ -1439,7 +1439,7 @@ class AiEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
     """
     A list of Projects from which the forwarding rule will target the service attachment.
     """
-    psc_automation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]]
+    psc_automation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict']]]]]
     """
     List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
     Structure is documented below.
@@ -1659,7 +1659,7 @@ class AiEndpointPrivateServiceConnectConfigPscAutomationConfigArgs:
 
 
 class AiEndpointWithModelGardenDeploymentDeployConfigArgsDict(TypedDict):
-    dedicated_resources: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgs']]]
+    dedicated_resources: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict']]]
     """
     A description of resources that are dedicated to a DeployedModel or
     DeployedIndex, and that need a higher degree of manual configuration.
@@ -1749,7 +1749,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesArgsDict(
     If traffic increases, it may dynamically be deployed onto more replicas,
     and as traffic decreases, some of these extra replicas may be freed.
     """
-    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgs']]]]]
+    autoscaling_metric_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesAutoscalingMetricSpecArgsDict']]]]]
     """
     The metric specifications that overrides a resource
     utilization metric (CPU utilization, accelerator's duty cycle, and so on)
@@ -2084,7 +2084,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
     """
     The number of nodes per replica for multihost GPU deployments.
     """
-    reservation_affinity: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgs']]]
+    reservation_affinity: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinityArgsDict']]]
     """
     A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a
     DeployedModel) to draw its Compute Engine resources from a Shared
@@ -2363,7 +2363,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigArgsDict(TypedDict):
     The user-specified display name of the endpoint. If not set, a
     default name will be used.
     """
-    private_service_connect_config: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgs']]]
+    private_service_connect_config: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigArgsDict']]]
     """
     The configuration for Private Service Connect (PSC).
     Structure is documented below.
@@ -2447,7 +2447,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConf
     """
     A list of Projects from which the forwarding rule will target the service attachment.
     """
-    psc_automation_configs: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgs']]]
+    psc_automation_configs: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentEndpointConfigPrivateServiceConnectConfigPscAutomationConfigsArgsDict']]]
     """
     PSC config that is used to automatically create PSC endpoints in the user projects.
     Structure is documented below.
@@ -2683,7 +2683,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigArgsDict(TypedDict):
     Whether the user accepts the End User License Agreement (EULA)
     for the model.
     """
-    container_spec: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgs']]]
+    container_spec: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict']]]
     """
     Specification of a container for serving predictions. Some fields in this
     message correspond to fields in the [Kubernetes Container v1 core
@@ -2900,7 +2900,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     Deployment timeout.
     Limit for deployment timeout is 2 hours.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecEnvArgsDict']]]]]
     """
     List of environment variables to set in the container. After the container
     starts running, code running in the container can read these environment
@@ -2928,7 +2928,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
     Structure is documented below.
     """
-    grpc_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs']]]]]
+    grpc_ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgsDict']]]]]
     """
     List of ports to expose from the container. Vertex AI sends gRPC
     prediction requests that it receives to the first port on this list. Vertex
@@ -2939,7 +2939,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     corresponds to the `ports` field of the Kubernetes Containers v1 core API.
     Structure is documented below.
     """
-    health_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs']]]
+    health_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict']]]
     """
     Probe describes a health check to be performed against a container to
     determine whether it is alive or ready to receive traffic.
@@ -2969,13 +2969,13 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     [`AIP_DEPLOYED_MODEL_ID` environment
     variable](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#aip-variables).)
     """
-    liveness_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgs']]]
+    liveness_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict']]]
     """
     Probe describes a health check to be performed against a container to
     determine whether it is alive or ready to receive traffic.
     Structure is documented below.
     """
-    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs']]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgsDict']]]]]
     """
     List of ports to expose from the container. Vertex AI sends any
     prediction requests that it receives to the first port on this list. Vertex
@@ -3027,7 +3027,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecArgsDict(TypedD
     The amount of the VM memory to reserve as the shared memory for the model
     in megabytes.
     """
-    startup_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgs']]]
+    startup_probe: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict']]]
     """
     Probe describes a health check to be performed against a container to
     determine whether it is alive or ready to receive traffic.
@@ -3686,7 +3686,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecGrpcPortArgs:
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExecArgsDict']]]
     """
     ExecAction specifies a command to execute.
     Structure is documented below.
@@ -3697,12 +3697,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
     Defaults to 3. Minimum value is 1.
     Maps to Kubernetes probe argument 'failureThreshold'.
     """
-    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeGrpcArgsDict']]]
     """
     GrpcAction checks the health of a container using a gRPC service.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetArgsDict']]]
     """
     HttpGetAction describes an action based on HTTP Get requests.
     Structure is documented below.
@@ -3725,7 +3725,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeArgs
     Defaults to 1. Minimum value is 1.
     Maps to Kubernetes probe argument 'successThreshold'.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocketArgsDict']]]
     """
     TcpSocketAction probes the health of a container by opening a TCP socket
     connection.
@@ -4027,7 +4027,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttp
     Host name to connect to, defaults to the model serving container's IP.
     You probably want to set "Host" in httpHeaders instead.
     """
-    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgs']]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeHttpGetHttpHeaderArgsDict']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -4253,7 +4253,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpS
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeExecArgsDict']]]
     """
     ExecAction specifies a command to execute.
     Structure is documented below.
@@ -4264,12 +4264,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
     Defaults to 3. Minimum value is 1.
     Maps to Kubernetes probe argument 'failureThreshold'.
     """
-    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeGrpcArgsDict']]]
     """
     GrpcAction checks the health of a container using a gRPC service.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetArgsDict']]]
     """
     HttpGetAction describes an action based on HTTP Get requests.
     Structure is documented below.
@@ -4292,7 +4292,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeAr
     Defaults to 1. Minimum value is 1.
     Maps to Kubernetes probe argument 'successThreshold'.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeTcpSocketArgsDict']]]
     """
     TcpSocketAction probes the health of a container by opening a TCP socket
     connection.
@@ -4594,7 +4594,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHt
     Host name to connect to, defaults to the model serving container's IP.
     You probably want to set "Host" in httpHeaders instead.
     """
-    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgs']]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecLivenessProbeHttpGetHttpHeaderArgsDict']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -4852,7 +4852,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPortArgs:
 
 
 class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExecArgsDict']]]
     """
     ExecAction specifies a command to execute.
     Structure is documented below.
@@ -4863,12 +4863,12 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
     Defaults to 3. Minimum value is 1.
     Maps to Kubernetes probe argument 'failureThreshold'.
     """
-    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeGrpcArgsDict']]]
     """
     GrpcAction checks the health of a container using a gRPC service.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetArgsDict']]]
     """
     HttpGetAction describes an action based on HTTP Get requests.
     Structure is documented below.
@@ -4891,7 +4891,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeArg
     Defaults to 1. Minimum value is 1.
     Maps to Kubernetes probe argument 'successThreshold'.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeTcpSocketArgsDict']]]
     """
     TcpSocketAction probes the health of a container by opening a TCP socket
     connection.
@@ -5193,7 +5193,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
     Host name to connect to, defaults to the model serving container's IP.
     You probably want to set "Host" in httpHeaders instead.
     """
-    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgs']]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGetHttpHeaderArgsDict']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -5724,7 +5724,7 @@ class AiFeatureOnlineStoreBigtableAutoScalingArgs:
 
 
 class AiFeatureOnlineStoreDedicatedServingEndpointArgsDict(TypedDict):
-    private_service_connect_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]]
+    private_service_connect_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgsDict']]]
     """
     Private service connect config.
     Structure is documented below.
@@ -6196,7 +6196,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict(TypedDict):
     """
     Column of embedding. This column contains the source data to create index for vector search.
     """
-    brute_force_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgs']]]
+    brute_force_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigBruteForceConfigArgsDict']]]
     """
     Configuration options for using brute force search, which simply implements the standard linear search in the database for each query. It is primarily meant for benchmarking and to generate the ground truth for approximate search.
     """
@@ -6218,7 +6218,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfigArgsDict(TypedDict):
     """
     Columns of features that are used to filter vector search results.
     """
-    tree_ah_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgs']]]
+    tree_ah_config: NotRequired[pulumi.Input[Optional['AiFeatureOnlineStoreFeatureviewVectorSearchConfigTreeAhConfigArgsDict']]]
     """
     Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
     Structure is documented below.
@@ -6600,22 +6600,22 @@ class AiFeatureStoreEntityTypeIamMemberConditionArgs:
 
 
 class AiFeatureStoreEntityTypeMonitoringConfigArgsDict(TypedDict):
-    categorical_threshold_config: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs']]]
+    categorical_threshold_config: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgsDict']]]
     """
     Threshold for categorical features of anomaly detection. This is shared by all types of Featurestore Monitoring for categorical features (i.e. Features with type (Feature.ValueType) BOOL or STRING).
     Structure is documented below.
     """
-    import_features_analysis: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgs']]]
+    import_features_analysis: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysisArgsDict']]]
     """
     The config for ImportFeatures Analysis Based Feature Monitoring.
     Structure is documented below.
     """
-    numerical_threshold_config: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgs']]]
+    numerical_threshold_config: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigArgsDict']]]
     """
     Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
     Structure is documented below.
     """
-    snapshot_analysis: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs']]]
+    snapshot_analysis: NotRequired[pulumi.Input[Optional['AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgsDict']]]
     """
     The config for Snapshot Analysis Based Feature Monitoring.
     Structure is documented below.
@@ -7024,7 +7024,7 @@ class AiFeatureStoreOnlineServingConfigArgsDict(TypedDict):
     """
     The number of nodes for each cluster. The number of nodes will not scale automatically but can be scaled manually by providing different values when updating.
     """
-    scaling: NotRequired[pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigScalingArgs']]]
+    scaling: NotRequired[pulumi.Input[Optional['AiFeatureStoreOnlineServingConfigScalingArgsDict']]]
     """
     Online serving scaling configuration. Only one of fixedNodeCount and scaling can be set. Setting one will reset the other.
     Structure is documented below.
@@ -7365,7 +7365,7 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpecArgs:
 
 
 class AiIndexEndpointDeployedIndexDeployedIndexAuthConfigArgsDict(TypedDict):
-    auth_provider: NotRequired[pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgs']]]
+    auth_provider: NotRequired[pulumi.Input[Optional['AiIndexEndpointDeployedIndexDeployedIndexAuthConfigAuthProviderArgsDict']]]
     """
     Defines the authentication provider that the DeployedIndex uses.
     Structure is documented below.
@@ -7451,7 +7451,7 @@ class AiIndexEndpointDeployedIndexPrivateEndpointArgsDict(TypedDict):
     (Output)
     The ip address used to send match gRPC requests.
     """
-    psc_automated_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgs']]]]]
+    psc_automated_endpoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointDeployedIndexPrivateEndpointPscAutomatedEndpointArgsDict']]]]]
     """
     (Output)
     PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig is set.
@@ -7641,7 +7641,7 @@ class AiIndexEndpointPrivateServiceConnectConfigArgsDict(TypedDict):
     """
     A list of Projects from which the forwarding rule will target the service attachment.
     """
-    psc_automation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgs']]]]]
+    psc_automation_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfigArgsDict']]]]]
     """
     List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
     Structure is documented below.
@@ -7899,7 +7899,7 @@ class AiIndexMetadataConfigArgsDict(TypedDict):
     """
     The number of dimensions of the input vectors.
     """
-    algorithm_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigArgs']]]
+    algorithm_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigArgsDict']]]
     """
     The configuration with regard to the algorithms used for efficient search. This field may be required based on your configuration.
     Structure is documented below.
@@ -8065,12 +8065,12 @@ class AiIndexMetadataConfigArgs:
 
 
 class AiIndexMetadataConfigAlgorithmConfigArgsDict(TypedDict):
-    brute_force_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs']]]
+    brute_force_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgsDict']]]
     """
     Configuration options for using brute force search, which simply implements the
     standard linear search in the database for each query.
     """
-    tree_ah_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs']]]
+    tree_ah_config: NotRequired[pulumi.Input[Optional['AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgsDict']]]
     """
     Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
     Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
@@ -8248,16 +8248,16 @@ class AiMetadataStoreStateArgs:
 
 
 class AiRagEngineConfigRagManagedDbConfigArgsDict(TypedDict):
-    basic: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigBasicArgs']]]
+    basic: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigBasicArgsDict']]]
     """
     Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
     NOTE: This is the default tier if not explicitly chosen.
     """
-    scaled: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigScaledArgs']]]
+    scaled: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigScaledArgsDict']]]
     """
     Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
     """
-    unprovisioned: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs']]]
+    unprovisioned: NotRequired[pulumi.Input[Optional['AiRagEngineConfigRagManagedDbConfigUnprovisionedArgsDict']]]
     """
     Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
     NOTE: Once deleted the data cannot be recovered. To start using RAG Engine again, you will need to update the tier by calling the UpdateRagEngineConfig API.
@@ -8350,7 +8350,7 @@ class AiRagEngineConfigRagManagedDbConfigUnprovisionedArgs:
 
 
 class AiReasoningEngineContextSpecArgsDict(TypedDict):
-    memory_bank_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgs']]]
+    memory_bank_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigArgsDict']]]
     """
     Specification for a Memory Bank, which manages memories for the Agent Engine.
     Structure is documented below.
@@ -8386,17 +8386,17 @@ class AiReasoningEngineContextSpecMemoryBankConfigArgsDict(TypedDict):
     """
     If true, no memory revisions will be created for any requests to the Memory Bank.
     """
-    generation_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs']]]
+    generation_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgsDict']]]
     """
     Configuration for how to generate memories for the Memory Bank.
     Structure is documented below.
     """
-    similarity_search_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs']]]
+    similarity_search_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgsDict']]]
     """
     Configuration for how to perform similarity search on memories.
     Structure is documented below.
     """
-    ttl_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgs']]]
+    ttl_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict']]]
     """
     Configuration for automatic TTL ("time-to-live") of the memories in the Memory Bank.
     Structure is documented below.
@@ -8540,7 +8540,7 @@ class AiReasoningEngineContextSpecMemoryBankConfigTtlConfigArgsDict(TypedDict):
     """
     The default TTL duration of the memories in the Memory Bank.
     """
-    granular_ttl_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgs']]]
+    granular_ttl_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineContextSpecMemoryBankConfigTtlConfigGranularTtlConfigArgsDict']]]
     """
     The granular TTL configuration of the memories in the Memory Bank.
     Structure is documented below.
@@ -8814,12 +8814,12 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     Optional. Declarations for object class methods in OpenAPI
     specification format.
     """
-    container_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgs']]]
+    container_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecContainerSpecArgsDict']]]
     """
     Deploy from a container image with a defined entrypoint and commands.
     Structure is documented below.
     """
-    deployment_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgs']]]
+    deployment_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecArgsDict']]]
     """
     Optional. The specification of a Reasoning Engine deployment.
     Structure is documented below.
@@ -8839,7 +8839,7 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     * `AGENT_IDENTITY`: Use Agent Identity. The `service_account` field must not be set.
     Possible values are: `SERVICE_ACCOUNT`, `AGENT_IDENTITY`.
     """
-    package_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgs']]]
+    package_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecPackageSpecArgsDict']]]
     """
     Optional. User provided package spec of the ReasoningEngine.
     Ignored when users directly specify a deployment image through
@@ -8855,7 +8855,7 @@ class AiReasoningEngineSpecArgsDict(TypedDict):
     extensions. If not specified, the Vertex AI Reasoning Engine service
     Agent in the project will be used.
     """
-    source_code_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgs']]]
+    source_code_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecArgsDict']]]
     """
     Specification for deploying from source code.
     Structure is documented below.
@@ -9090,7 +9090,7 @@ class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
     Optional. Concurrency for each container and agent server.
     Recommended value: 2 * cpu + 1. Defaults to 9.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecEnvArgsDict']]]]]
     """
     Optional. Environment variables to be set with the Reasoning
     Engine deployment.
@@ -9108,7 +9108,7 @@ class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
     Optional. The minimum number of application instances that will be
     kept running at all times. Defaults to 1. Range: [0, 10].
     """
-    psc_interface_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgs']]]
+    psc_interface_config: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict']]]
     """
     Optional. Configuration for PSC-Interface.
     Structure is documented below.
@@ -9125,7 +9125,7 @@ class AiReasoningEngineSpecDeploymentSpecArgsDict(TypedDict):
     For more information, go to
     https://cloud.google.com/run/docs/configuring/memory-limits.
     """
-    secret_envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgs']]]]]
+    secret_envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecSecretEnvArgsDict']]]]]
     """
     Optional. Environment variables where the value is a secret in
     Cloud Secret Manager. To use this feature, add 'Secret Manager
@@ -9365,7 +9365,7 @@ class AiReasoningEngineSpecDeploymentSpecEnvArgs:
 
 
 class AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigArgsDict(TypedDict):
-    dns_peering_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgs']]]]]
+    dns_peering_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AiReasoningEngineSpecDeploymentSpecPscInterfaceConfigDnsPeeringConfigArgsDict']]]]]
     """
     Optional. DNS peering configurations.
     When specified, Vertex AI will attempt to configure DNS
@@ -9733,22 +9733,22 @@ class AiReasoningEngineSpecPackageSpecArgs:
 
 
 class AiReasoningEngineSpecSourceCodeSpecArgsDict(TypedDict):
-    developer_connect_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgs']]]
+    developer_connect_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecDeveloperConnectSourceArgsDict']]]
     """
     Specification for source code to be fetched from a Git repository managed through the Developer Connect service.
     Structure is documented below.
     """
-    image_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecImageSpecArgs']]]
+    image_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecImageSpecArgsDict']]]
     """
     Configuration for building an image with custom config file.
     Structure is documented below.
     """
-    inline_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgs']]]
+    inline_source: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecInlineSourceArgsDict']]]
     """
     Source code is provided directly in the request.
     Structure is documented below.
     """
-    python_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgs']]]
+    python_spec: NotRequired[pulumi.Input[Optional['AiReasoningEngineSpecSourceCodeSpecPythonSpecArgsDict']]]
     """
     Specification for running a Python application from source.
     Structure is documented below.

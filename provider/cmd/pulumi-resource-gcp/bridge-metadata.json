@@ -59042,6 +59042,9 @@
             "gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy": 0,
             "gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy": 0
+        },
+        "listResources": {
+            "gcp:serviceaccount/account:Account": 1
         }
     }
 }

@@ -69,12 +69,12 @@ class CollectionVectorSchemaArgsDict(TypedDict):
     """
     The identifier for this object. Format specified above.
     """
-    dense_vector: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaDenseVectorArgs']]]
+    dense_vector: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaDenseVectorArgsDict']]]
     """
     Message describing a dense vector field.
     Structure is documented below.
     """
-    sparse_vector: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaSparseVectorArgs']]]
+    sparse_vector: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaSparseVectorArgsDict']]]
     """
     Message describing a sparse vector field.
     """
@@ -140,7 +140,7 @@ class CollectionVectorSchemaDenseVectorArgsDict(TypedDict):
     """
     Dimensionality of the vector field.
     """
-    vertex_embedding_config: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgs']]]
+    vertex_embedding_config: NotRequired[pulumi.Input[Optional['CollectionVectorSchemaDenseVectorVertexEmbeddingConfigArgsDict']]]
     """
     Message describing the configuration for generating embeddings for a vector
     field using Vertex AI embeddings API.

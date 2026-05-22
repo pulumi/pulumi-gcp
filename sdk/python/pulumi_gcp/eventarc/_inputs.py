@@ -146,12 +146,12 @@ class MessageBusLoggingConfigArgs:
 
 
 class PipelineDestinationArgsDict(TypedDict):
-    authentication_config: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigArgs']]]
+    authentication_config: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigArgsDict']]]
     """
     Represents a config used to authenticate message requests.
     Structure is documented below.
     """
-    http_endpoint: NotRequired[pulumi.Input[Optional['PipelineDestinationHttpEndpointArgs']]]
+    http_endpoint: NotRequired[pulumi.Input[Optional['PipelineDestinationHttpEndpointArgsDict']]]
     """
     Represents a HTTP endpoint destination.
     Structure is documented below.
@@ -163,13 +163,13 @@ class PipelineDestinationArgsDict(TypedDict):
     the Pipeline. Format:
     `projects/{project}/locations/{location}/messageBuses/{message_bus}`
     """
-    network_config: NotRequired[pulumi.Input[Optional['PipelineDestinationNetworkConfigArgs']]]
+    network_config: NotRequired[pulumi.Input[Optional['PipelineDestinationNetworkConfigArgsDict']]]
     """
     Represents a network config to be used for destination resolution and
     connectivity.
     Structure is documented below.
     """
-    output_payload_format: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatArgs']]]
+    output_payload_format: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatArgsDict']]]
     """
     Represents the format of message data.
     Structure is documented below.
@@ -334,7 +334,7 @@ class PipelineDestinationArgs:
 
 
 class PipelineDestinationAuthenticationConfigArgsDict(TypedDict):
-    google_oidc: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigGoogleOidcArgs']]]
+    google_oidc: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigGoogleOidcArgsDict']]]
     """
     Represents a config used to authenticate with a Google OIDC token using
     a GCP service account. Use this authentication method to invoke your
@@ -342,7 +342,7 @@ class PipelineDestinationAuthenticationConfigArgsDict(TypedDict):
     support Google OIDC.
     Structure is documented below.
     """
-    oauth_token: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigOauthTokenArgs']]]
+    oauth_token: NotRequired[pulumi.Input[Optional['PipelineDestinationAuthenticationConfigOauthTokenArgsDict']]]
     """
     Contains information needed for generating an
     [OAuth token](https://developers.google.com/identity/protocols/OAuth2).
@@ -1123,16 +1123,16 @@ class PipelineDestinationNetworkConfigArgs:
 
 
 class PipelineDestinationOutputPayloadFormatArgsDict(TypedDict):
-    avro: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatAvroArgs']]]
+    avro: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatAvroArgsDict']]]
     """
     The format of an AVRO message payload.
     Structure is documented below.
     """
-    json: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatJsonArgs']]]
+    json: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatJsonArgsDict']]]
     """
     The format of a JSON message payload.
     """
-    protobuf: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatProtobufArgs']]]
+    protobuf: NotRequired[pulumi.Input[Optional['PipelineDestinationOutputPayloadFormatProtobufArgsDict']]]
     """
     The format of a Protobuf message payload.
     Structure is documented below.
@@ -1265,16 +1265,16 @@ class PipelineDestinationOutputPayloadFormatProtobufArgs:
 
 
 class PipelineInputPayloadFormatArgsDict(TypedDict):
-    avro: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatAvroArgs']]]
+    avro: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatAvroArgsDict']]]
     """
     The format of an AVRO message payload.
     Structure is documented below.
     """
-    json: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatJsonArgs']]]
+    json: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatJsonArgsDict']]]
     """
     The format of a JSON message payload.
     """
-    protobuf: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatProtobufArgs']]]
+    protobuf: NotRequired[pulumi.Input[Optional['PipelineInputPayloadFormatProtobufArgsDict']]]
     """
     The format of a Protobuf message payload.
     Structure is documented below.
@@ -1442,7 +1442,7 @@ class PipelineLoggingConfigArgs:
 
 
 class PipelineMediationArgsDict(TypedDict):
-    transformation: NotRequired[pulumi.Input[Optional['PipelineMediationTransformationArgs']]]
+    transformation: NotRequired[pulumi.Input[Optional['PipelineMediationTransformationArgsDict']]]
     """
     Transformation defines the way to transform an incoming message.
     Structure is documented below.
@@ -1820,22 +1820,22 @@ class TriggerDestinationArgsDict(TypedDict):
     (Output)
     The Cloud Function resource name. Only Cloud Functions V2 is supported. Format projects/{project}/locations/{location}/functions/{function} This is a read-only field. [WARNING] Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
     """
-    cloud_run_service: NotRequired[pulumi.Input[Optional['TriggerDestinationCloudRunServiceArgs']]]
+    cloud_run_service: NotRequired[pulumi.Input[Optional['TriggerDestinationCloudRunServiceArgsDict']]]
     """
     Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
     Structure is documented below.
     """
-    gke: NotRequired[pulumi.Input[Optional['TriggerDestinationGkeArgs']]]
+    gke: NotRequired[pulumi.Input[Optional['TriggerDestinationGkeArgsDict']]]
     """
     A GKE service capable of receiving events. The service should be running in the same project as the trigger.
     Structure is documented below.
     """
-    http_endpoint: NotRequired[pulumi.Input[Optional['TriggerDestinationHttpEndpointArgs']]]
+    http_endpoint: NotRequired[pulumi.Input[Optional['TriggerDestinationHttpEndpointArgsDict']]]
     """
     An HTTP endpoint destination described by an URI.
     Structure is documented below.
     """
-    network_config: NotRequired[pulumi.Input[Optional['TriggerDestinationNetworkConfigArgs']]]
+    network_config: NotRequired[pulumi.Input[Optional['TriggerDestinationNetworkConfigArgsDict']]]
     """
     Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
     Structure is documented below.
@@ -2287,7 +2287,7 @@ class TriggerRetryPolicyArgs:
 
 
 class TriggerTransportArgsDict(TypedDict):
-    pubsub: NotRequired[pulumi.Input[Optional['TriggerTransportPubsubArgs']]]
+    pubsub: NotRequired[pulumi.Input[Optional['TriggerTransportPubsubArgsDict']]]
     """
     The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
     Structure is documented below.

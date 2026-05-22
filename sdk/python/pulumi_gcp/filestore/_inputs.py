@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 class InstanceDirectoryServicesArgsDict(TypedDict):
-    ldap: NotRequired[pulumi.Input[Optional['InstanceDirectoryServicesLdapArgs']]]
+    ldap: NotRequired[pulumi.Input[Optional['InstanceDirectoryServicesLdapArgsDict']]]
     """
     Configuration for LDAP servers.
     Structure is documented below.
@@ -190,7 +190,7 @@ class InstanceDirectoryServicesLdapArgs:
 
 
 class InstanceEffectiveReplicationArgsDict(TypedDict):
-    replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgs']]]]]
+    replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEffectiveReplicationReplicaArgsDict']]]]]
     """
     The replication role.
     Structure is documented below.
@@ -358,7 +358,7 @@ class InstanceFileSharesArgsDict(TypedDict):
     """
     The name of the fileshare (16 characters or less)
     """
-    nfs_export_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgs']]]]]
+    nfs_export_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceFileSharesNfsExportOptionArgsDict']]]]]
     """
     Nfs Export Options. There is a limit of 10 export options per file share.
     Structure is documented below.
@@ -642,7 +642,7 @@ class InstanceFileSharesNfsExportOptionArgs:
 
 
 class InstanceInitialReplicationArgsDict(TypedDict):
-    replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgs']]]]]
+    replicas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceInitialReplicationReplicaArgsDict']]]]]
     """
     The replication role.
     Structure is documented below.
@@ -752,7 +752,7 @@ class InstanceNetworkArgsDict(TypedDict):
     (Output)
     A list of IPv4 or IPv6 addresses.
     """
-    psc_config: NotRequired[pulumi.Input[Optional['InstanceNetworkPscConfigArgs']]]
+    psc_config: NotRequired[pulumi.Input[Optional['InstanceNetworkPscConfigArgsDict']]]
     """
     Private Service Connect configuration.
     Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
@@ -926,14 +926,14 @@ class InstanceNetworkPscConfigArgs:
 
 
 class InstancePerformanceConfigArgsDict(TypedDict):
-    fixed_iops: NotRequired[pulumi.Input[Optional['InstancePerformanceConfigFixedIopsArgs']]]
+    fixed_iops: NotRequired[pulumi.Input[Optional['InstancePerformanceConfigFixedIopsArgsDict']]]
     """
     The instance will have a fixed provisioned IOPS value,
     which will remain constant regardless of instance
     capacity.
     Structure is documented below.
     """
-    iops_per_tb: NotRequired[pulumi.Input[Optional['InstancePerformanceConfigIopsPerTbArgs']]]
+    iops_per_tb: NotRequired[pulumi.Input[Optional['InstancePerformanceConfigIopsPerTbArgsDict']]]
     """
     The instance provisioned IOPS will change dynamically
     based on the capacity of the instance.

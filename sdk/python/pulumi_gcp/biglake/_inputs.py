@@ -762,7 +762,7 @@ class TableHiveOptionsArgsDict(TypedDict):
     list of "key": value pairs.
     Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    storage_descriptor: NotRequired[pulumi.Input[Optional['TableHiveOptionsStorageDescriptorArgs']]]
+    storage_descriptor: NotRequired[pulumi.Input[Optional['TableHiveOptionsStorageDescriptorArgsDict']]]
     """
     Stores physical storage information on the data.
     Structure is documented below.

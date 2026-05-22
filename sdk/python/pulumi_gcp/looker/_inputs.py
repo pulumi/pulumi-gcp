@@ -976,7 +976,7 @@ class InstancePscConfigArgsDict(TypedDict):
     (Output)
     URI of the Looker service attachment.
     """
-    service_attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgs']]]]]
+    service_attachments: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscConfigServiceAttachmentArgsDict']]]]]
     """
     List of egress service attachment configurations.
     Structure is documented below.

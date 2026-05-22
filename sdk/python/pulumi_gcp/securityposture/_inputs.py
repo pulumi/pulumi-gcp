@@ -139,7 +139,7 @@ class PosturePolicySetPolicyArgsDict(TypedDict):
     """
     ID of the policy.
     """
-    compliance_standards: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgs']]]]]
+    compliance_standards: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyComplianceStandardArgsDict']]]]]
     """
     Mapping for policy to security standards and controls.
     Structure is documented below.
@@ -272,22 +272,22 @@ class PosturePolicySetPolicyComplianceStandardArgs:
 
 
 class PosturePolicySetPolicyConstraintArgsDict(TypedDict):
-    org_policy_constraint: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgs']]]
+    org_policy_constraint: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintArgsDict']]]
     """
     Organization policy canned constraint definition.
     Structure is documented below.
     """
-    org_policy_constraint_custom: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgs']]]
+    org_policy_constraint_custom: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict']]]
     """
     Organization policy custom constraint policy definition.
     Structure is documented below.
     """
-    security_health_analytics_custom_module: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgs']]]
+    security_health_analytics_custom_module: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleArgsDict']]]
     """
     Definition of Security Health Analytics Custom Module.
     Structure is documented below.
     """
-    security_health_analytics_module: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgs']]]
+    security_health_analytics_module: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsModuleArgsDict']]]
     """
     Security Health Analytics built-in detector definition.
     Structure is documented below.
@@ -428,7 +428,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomArgsDict(TypedDic
     Definition of policy rules
     Structure is documented below.
     """
-    custom_constraint: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgs']]]
+    custom_constraint: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraintArgsDict']]]
     """
     Organization policy custom constraint definition.
     Structure is documented below.
@@ -628,7 +628,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDic
     """
     Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
     """
-    condition: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleConditionArgsDict']]]
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
     This page details the objects and attributes that are used to the build the CEL expressions for
@@ -644,7 +644,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleArgsDic
     If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
     This field can be set only in policies for boolean constraints.
     """
-    values: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgs']]]
+    values: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValuesArgsDict']]]
     """
     List of values to be used for this policy rule. This field can be set only in policies for list constraints.
     Structure is documented below.
@@ -889,7 +889,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict(Type
     """
     Setting this to true means that all values are allowed. This field can be set only in policies for list constraints.
     """
-    condition: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleConditionArgsDict']]]
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language.
     This page details the objects and attributes that are used to the build the CEL expressions for
@@ -905,7 +905,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleArgsDict(Type
     If `true`, then the policy is enforced. If `false`, then any configuration is acceptable.
     This field can be set only in policies for boolean constraints.
     """
-    values: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgs']]]
+    values: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintOrgPolicyConstraintPolicyRuleValuesArgsDict']]]
     """
     List of values to be used for this policy rule. This field can be set only in policies for list constraints.
     Structure is documented below.
@@ -1266,7 +1266,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
     The severity to assign to findings generated by the module.
     Possible values are: `SEVERITY_UNSPECIFIED`, `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`.
     """
-    custom_output: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgs']]]
+    custom_output: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict']]]
     """
     Custom output properties. A set of optional name-value pairs that define custom source properties to
     return with each finding that is generated by the custom module. The custom
@@ -1408,7 +1408,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigA
 
 
 class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputArgsDict(TypedDict):
-    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgs']]]]]
+    properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyArgsDict']]]]]
     """
     A list of custom output properties to add to the finding.
     Structure is documented below.
@@ -1444,7 +1444,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigC
     """
     Name of the property for the custom output.
     """
-    value_expression: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgs']]]
+    value_expression: NotRequired[pulumi.Input[Optional['PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigCustomOutputPropertyValueExpressionArgsDict']]]
     """
     The CEL expression for the custom output. A resource property can be
     specified to return the value of the property or a text string enclosed

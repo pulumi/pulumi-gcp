@@ -998,17 +998,17 @@ class ConnectionConfigurationArgsDict(TypedDict):
     The ID of the connector. Possible values include `google-alloydb`, `google-cloudsql-mysql`,
     `google-cloudsql-postgres`, and other connector IDs supported by the BigQuery Connector framework.
     """
-    authentication: NotRequired[pulumi.Input[Optional['ConnectionConfigurationAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['ConnectionConfigurationAuthenticationArgsDict']]]
     """
     Authentication configuration for the connector.
     Structure is documented below.
     """
-    endpoint: NotRequired[pulumi.Input[Optional['ConnectionConfigurationEndpointArgs']]]
+    endpoint: NotRequired[pulumi.Input[Optional['ConnectionConfigurationEndpointArgsDict']]]
     """
     Endpoint configuration for the connector.
     Structure is documented below.
     """
-    network: NotRequired[pulumi.Input[Optional['ConnectionConfigurationNetworkArgs']]]
+    network: NotRequired[pulumi.Input[Optional['ConnectionConfigurationNetworkArgsDict']]]
     """
     Network configuration for the connector.
     Structure is documented below.
@@ -1170,7 +1170,7 @@ class ConnectionConfigurationAuthenticationArgsDict(TypedDict):
     (Output)
     Output only. The service account used for authenticating with the connector.
     """
-    username_password: NotRequired[pulumi.Input[Optional['ConnectionConfigurationAuthenticationUsernamePasswordArgs']]]
+    username_password: NotRequired[pulumi.Input[Optional['ConnectionConfigurationAuthenticationUsernamePasswordArgsDict']]]
     """
     Username/password authentication configuration.
     Structure is documented below.
@@ -1353,7 +1353,7 @@ class ConnectionConfigurationEndpointArgs:
 
 
 class ConnectionConfigurationNetworkArgsDict(TypedDict):
-    private_service_connect: NotRequired[pulumi.Input[Optional['ConnectionConfigurationNetworkPrivateServiceConnectArgs']]]
+    private_service_connect: NotRequired[pulumi.Input[Optional['ConnectionConfigurationNetworkPrivateServiceConnectArgsDict']]]
     """
     Private Service Connect configuration for the connector.
     Structure is documented below.
@@ -1504,7 +1504,7 @@ class ConnectionIamMemberConditionArgs:
 
 
 class ConnectionSparkArgsDict(TypedDict):
-    metastore_service_config: NotRequired[pulumi.Input[Optional['ConnectionSparkMetastoreServiceConfigArgs']]]
+    metastore_service_config: NotRequired[pulumi.Input[Optional['ConnectionSparkMetastoreServiceConfigArgsDict']]]
     """
     Dataproc Metastore Service configuration for the connection.
     Structure is documented below.
@@ -1514,7 +1514,7 @@ class ConnectionSparkArgsDict(TypedDict):
     (Output)
     The account ID of the service created for the purpose of this connection.
     """
-    spark_history_server_config: NotRequired[pulumi.Input[Optional['ConnectionSparkSparkHistoryServerConfigArgs']]]
+    spark_history_server_config: NotRequired[pulumi.Input[Optional['ConnectionSparkSparkHistoryServerConfigArgsDict']]]
     """
     Spark History Server configuration for the connection.
     Structure is documented below.
@@ -2055,13 +2055,13 @@ class Datapolicyv2DataPolicyIamMemberConditionArgs:
 
 
 class DatasetAccessArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[Optional['DatasetAccessConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['DatasetAccessConditionArgsDict']]]
     """
     Condition for the binding. If CEL expression in this field is true, this
     access binding will be considered.
     Structure is documented below.
     """
-    dataset: NotRequired[pulumi.Input[Optional['DatasetAccessDatasetArgs']]]
+    dataset: NotRequired[pulumi.Input[Optional['DatasetAccessDatasetArgsDict']]]
     """
     Grants all resources of particular types in a particular dataset read access to the current dataset.
     Structure is documented below.
@@ -2088,7 +2088,7 @@ class DatasetAccessArgsDict(TypedDict):
     are swapped by the API to their basic counterparts. See
     [official docs](https://cloud.google.com/bigquery/docs/access-control).
     """
-    routine: NotRequired[pulumi.Input[Optional['DatasetAccessRoutineArgs']]]
+    routine: NotRequired[pulumi.Input[Optional['DatasetAccessRoutineArgsDict']]]
     """
     A routine from a different dataset to grant access to. Queries
     executed against that routine will have read access to tables in
@@ -2110,7 +2110,7 @@ class DatasetAccessArgsDict(TypedDict):
     An email address of a user to grant access to. For example:
     fred@example.com
     """
-    view: NotRequired[pulumi.Input[Optional['DatasetAccessViewArgs']]]
+    view: NotRequired[pulumi.Input[Optional['DatasetAccessViewArgsDict']]]
     """
     A view from a different dataset to grant access to. Queries
     executed against that view will have read access to tables in
@@ -3176,12 +3176,12 @@ class JobCopyArgsDict(TypedDict):
     Default value is `CREATE_IF_NEEDED`.
     Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
     """
-    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobCopyDestinationEncryptionConfigurationArgs']]]
+    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobCopyDestinationEncryptionConfigurationArgsDict']]]
     """
     Custom encryption configuration (e.g., Cloud KMS keys)
     Structure is documented below.
     """
-    destination_table: NotRequired[pulumi.Input[Optional['JobCopyDestinationTableArgs']]]
+    destination_table: NotRequired[pulumi.Input[Optional['JobCopyDestinationTableArgsDict']]]
     """
     The destination table.
     Structure is documented below.
@@ -3535,12 +3535,12 @@ class JobExtractArgsDict(TypedDict):
     """
     Whether to print out a header row in the results. Default is true.
     """
-    source_model: NotRequired[pulumi.Input[Optional['JobExtractSourceModelArgs']]]
+    source_model: NotRequired[pulumi.Input[Optional['JobExtractSourceModelArgsDict']]]
     """
     A reference to the model being exported.
     Structure is documented below.
     """
-    source_table: NotRequired[pulumi.Input[Optional['JobExtractSourceTableArgs']]]
+    source_table: NotRequired[pulumi.Input[Optional['JobExtractSourceTableArgsDict']]]
     """
     A reference to the table being exported.
     Structure is documented below.
@@ -3872,7 +3872,7 @@ class JobLoadArgsDict(TypedDict):
     Default value is `CREATE_IF_NEEDED`.
     Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
     """
-    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobLoadDestinationEncryptionConfigurationArgs']]]
+    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobLoadDestinationEncryptionConfigurationArgsDict']]]
     """
     Custom encryption configuration (e.g., Cloud KMS keys)
     Structure is documented below.
@@ -3918,7 +3918,7 @@ class JobLoadArgsDict(TypedDict):
     empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as
     an empty value.
     """
-    parquet_options: NotRequired[pulumi.Input[Optional['JobLoadParquetOptionsArgs']]]
+    parquet_options: NotRequired[pulumi.Input[Optional['JobLoadParquetOptionsArgsDict']]]
     """
     Parquet Options for load and make external tables.
     Structure is documented below.
@@ -3963,7 +3963,7 @@ class JobLoadArgsDict(TypedDict):
     For orc, specify "ORC". [Beta] For Bigtable, specify "BIGTABLE".
     The default value is CSV.
     """
-    time_partitioning: NotRequired[pulumi.Input[Optional['JobLoadTimePartitioningArgs']]]
+    time_partitioning: NotRequired[pulumi.Input[Optional['JobLoadTimePartitioningArgsDict']]]
     """
     Time-based partitioning specification for the destination table.
     Structure is documented below.
@@ -4707,7 +4707,7 @@ class JobQueryArgsDict(TypedDict):
     Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed.
     However, you must still set destinationTable when result size exceeds the allowed maximum response size.
     """
-    connection_properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryConnectionPropertyArgs']]]]]
+    connection_properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryConnectionPropertyArgsDict']]]]]
     """
     Connection properties to customize query behavior. Under JDBC, these correspond
     directly to connection properties passed to the DriverManager. Under ODBC, these
@@ -4728,17 +4728,17 @@ class JobQueryArgsDict(TypedDict):
     Default value is `CREATE_IF_NEEDED`.
     Possible values are: `CREATE_IF_NEEDED`, `CREATE_NEVER`.
     """
-    default_dataset: NotRequired[pulumi.Input[Optional['JobQueryDefaultDatasetArgs']]]
+    default_dataset: NotRequired[pulumi.Input[Optional['JobQueryDefaultDatasetArgsDict']]]
     """
     Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
     Structure is documented below.
     """
-    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobQueryDestinationEncryptionConfigurationArgs']]]
+    destination_encryption_configuration: NotRequired[pulumi.Input[Optional['JobQueryDestinationEncryptionConfigurationArgsDict']]]
     """
     Custom encryption configuration (e.g., Cloud KMS keys)
     Structure is documented below.
     """
-    destination_table: NotRequired[pulumi.Input[Optional['JobQueryDestinationTableArgs']]]
+    destination_table: NotRequired[pulumi.Input[Optional['JobQueryDestinationTableArgsDict']]]
     """
     Describes the table where the query results should be stored.
     This property must be set for large results that exceed the maximum response size.
@@ -4780,7 +4780,7 @@ class JobQueryArgsDict(TypedDict):
     ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
     ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.
     """
-    script_options: NotRequired[pulumi.Input[Optional['JobQueryScriptOptionsArgs']]]
+    script_options: NotRequired[pulumi.Input[Optional['JobQueryScriptOptionsArgsDict']]]
     """
     Options controlling the execution of scripts.
     Structure is documented below.
@@ -4796,7 +4796,7 @@ class JobQueryArgsDict(TypedDict):
     tables in the query are modified. Moreover, the query cache is only available when a query does not have a destination table specified.
     The default value is true.
     """
-    user_defined_function_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgs']]]]]
+    user_defined_function_resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobQueryUserDefinedFunctionResourceArgsDict']]]]]
     """
     Describes user-defined function resources used in the query.
     Structure is documented below.
@@ -5556,13 +5556,13 @@ class JobQueryUserDefinedFunctionResourceArgs:
 
 
 class JobStatusArgsDict(TypedDict):
-    error_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]]
+    error_results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorResultArgsDict']]]]]
     """
     (Output)
     Final error result of the job. If present, indicates that the job has completed and was unsuccessful.
     Structure is documented below.
     """
-    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorArgs']]]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobStatusErrorArgsDict']]]]]
     """
     (Output)
     The first errors encountered during the running of the job. The final message
@@ -5836,7 +5836,7 @@ class ReservationAutoscaleArgs:
 
 
 class ReservationReplicationStatusArgsDict(TypedDict):
-    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgs']]]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ReservationReplicationStatusErrorArgsDict']]]]]
     """
     (Output)
     The last error encountered while trying to replicate changes from the primary to the
@@ -6807,7 +6807,7 @@ class TableExternalCatalogTableOptionsArgsDict(TypedDict):
     properties of the open source table. Corresponds with hive meta store table
     parameters. Maximum size of 4Mib.
     """
-    storage_descriptor: NotRequired[pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorArgs']]]
+    storage_descriptor: NotRequired[pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorArgsDict']]]
     """
     A storage descriptor containing information
     about the physical storage of this table. Structure is documented below.
@@ -6901,7 +6901,7 @@ class TableExternalCatalogTableOptionsStorageDescriptorArgsDict(TypedDict):
     OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The
     maximum length is 128 characters.
     """
-    serde_info: NotRequired[pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs']]]
+    serde_info: NotRequired[pulumi.Input[Optional['TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgsDict']]]
     """
     Serializer and deserializer information. Structure
     is documented below.
@@ -7083,12 +7083,12 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     A list of the fully-qualified URIs that point to
     your data in Google Cloud.
     """
-    avro_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationAvroOptionsArgs']]]
+    avro_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationAvroOptionsArgsDict']]]
     """
     Additional options if `source_format` is set to
     "AVRO".  Structure is documented below.
     """
-    bigtable_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationBigtableOptionsArgs']]]
+    bigtable_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationBigtableOptionsArgsDict']]]
     """
     Additional properties to set if
     `source_format` is set to "BIGTABLE". Structure is documented below.
@@ -7109,7 +7109,7 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     table schema must be specified using the top-level `schema` field
     documented above.
     """
-    csv_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationCsvOptionsArgs']]]
+    csv_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationCsvOptionsArgsDict']]]
     """
     Additional properties to set if
     `source_format` is set to "CSV". Structure is documented below.
@@ -7136,13 +7136,13 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     By default source URIs are expanded against the underlying storage.
     Other options include specifying manifest files. Only applicable to object storage systems. Docs
     """
-    google_sheets_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationGoogleSheetsOptionsArgs']]]
+    google_sheets_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationGoogleSheetsOptionsArgsDict']]]
     """
     Additional options if
     `source_format` is set to "GOOGLE_SHEETS". Structure is
     documented below.
     """
-    hive_partitioning_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationHivePartitioningOptionsArgs']]]
+    hive_partitioning_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationHivePartitioningOptionsArgsDict']]]
     """
     When set, configures hive partitioning
     support. Not all storage formats support hive partitioning -- requesting hive
@@ -7162,7 +7162,7 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     """
     Used to indicate that a JSON variant, rather than normal JSON, is being used as the sourceFormat. This should only be used in combination with the `JSON` source format. Valid values are: `GEOJSON`.
     """
-    json_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationJsonOptionsArgs']]]
+    json_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationJsonOptionsArgsDict']]]
     """
     Additional properties to set if
     `source_format` is set to "JSON". Structure is documented below.
@@ -7180,7 +7180,7 @@ class TableExternalDataConfigurationArgsDict(TypedDict):
     """
     Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
     """
-    parquet_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationParquetOptionsArgs']]]
+    parquet_options: NotRequired[pulumi.Input[Optional['TableExternalDataConfigurationParquetOptionsArgsDict']]]
     """
     Additional properties to set if
     `source_format` is set to "PARQUET". Structure is documented below.
@@ -7705,7 +7705,7 @@ class TableExternalDataConfigurationAvroOptionsArgs:
 
 
 class TableExternalDataConfigurationBigtableOptionsArgsDict(TypedDict):
-    column_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgs']]]]]
+    column_families: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict']]]]]
     """
     A list of column families to expose in the table schema along with their types. This list restricts the column families that can be referenced in queries and specifies their value types. You can use this list to do type conversions - see the 'type' field for more details. If you leave this list empty, all column families are present in the table schema and their values are read as BYTES. During a query only the column families referenced in that query are read from Bigtable.  Structure is documented below.
     """
@@ -7794,7 +7794,7 @@ class TableExternalDataConfigurationBigtableOptionsArgs:
 
 
 class TableExternalDataConfigurationBigtableOptionsColumnFamilyArgsDict(TypedDict):
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableExternalDataConfigurationBigtableOptionsColumnFamilyColumnArgsDict']]]]]
     """
     A List of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as Other columns can be accessed as a list through column field.  Structure is documented below.
     """
@@ -8734,13 +8734,13 @@ class TableSchemaForeignTypeInfoArgs:
 
 
 class TableTableConstraintsArgsDict(TypedDict):
-    foreign_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgs']]]]]
+    foreign_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TableTableConstraintsForeignKeyArgsDict']]]]]
     """
     Present only if the table has a foreign key.
     The foreign key is not enforced.
     Structure is documented below.
     """
-    primary_key: NotRequired[pulumi.Input[Optional['TableTableConstraintsPrimaryKeyArgs']]]
+    primary_key: NotRequired[pulumi.Input[Optional['TableTableConstraintsPrimaryKeyArgsDict']]]
     """
     Represents the primary key constraint
     on a table's columns. Present only if the table has a primary key.

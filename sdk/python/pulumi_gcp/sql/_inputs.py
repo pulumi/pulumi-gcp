@@ -1081,8 +1081,8 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     This specifies when the instance should be
     active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
     """
-    active_directory_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]]
-    advanced_machine_features: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]]
+    active_directory_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsActiveDirectoryConfigArgsDict']]]
+    advanced_machine_features: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsAdvancedMachineFeaturesArgsDict']]]
     auto_upgrade_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables
@@ -1103,12 +1103,12 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     For read pool instances, this field is read-only. The availability type is changed by specifying
     the number of nodes (`node_count`).
     """
-    backup_configuration: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationArgs']]]
+    backup_configuration: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationArgsDict']]]
     collation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of server instance collation.
     """
-    connection_pool_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgs']]]]]
+    connection_pool_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigArgsDict']]]]]
     """
     The managed connection pool setting for a Cloud SQL instance.
     """
@@ -1120,7 +1120,7 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     Configures ExecuteSql API's access to the instance. connections, can be `ALLOW_DATA_API` or `DISALLOW_DATA_API` (default). `ALLOW_DATA_API` allows using ExecuteSql API to connect to the instance. For private IP instances, this allows authorized users to access the instance from the public internet using ExecuteSql API.
     """
-    data_cache_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsDataCacheConfigArgs']]]
+    data_cache_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsDataCacheConfigArgsDict']]]
     """
     Data cache configurations.
     """
@@ -1132,12 +1132,12 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     Provisioned throughput measured in MiB per second for the data disk. This field is only used for `HYPERDISK_BALANCED` disk types.
     """
-    database_flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]]
+    database_flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgsDict']]]]]
     deletion_protection_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables deletion protection of an instance at the GCP level. Enabling this protection will guard against accidental deletion across all surfaces (API, gcloud, Cloud Console and Terraform) by enabling the [GCP Cloud SQL instance deletion protection](https://cloud.google.com/sql/docs/postgres/deletion-protection). Terraform provider support was introduced in version 4.48.0. Defaults to `false`.
     """
-    deny_maintenance_period: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']]]
+    deny_maintenance_period: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsDenyMaintenancePeriodArgsDict']]]
     disk_autoresize: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
@@ -1174,30 +1174,30 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     Enables [Cloud SQL instances to connect to Vertex AI](https://cloud.google.com/sql/docs/postgres/integrate-cloud-sql-with-vertex-ai) and pass requests for real-time predictions and insights. Defaults to `false`.
     """
-    entraid_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsEntraidConfigArgs']]]
+    entraid_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsEntraidConfigArgsDict']]]
     """
     The Microsoft Entra ID configuration for the SQL Server instance.
     """
-    final_backup_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsFinalBackupConfigArgs']]]
+    final_backup_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsFinalBackupConfigArgsDict']]]
     """
     Config used to determine the final backup settings for the instance
     """
-    insights_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsInsightsConfigArgs']]]
+    insights_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsInsightsConfigArgsDict']]]
     """
     Configuration of Query Insights.
     """
-    ip_configuration: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsIpConfigurationArgs']]]
-    location_preference: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsLocationPreferenceArgs']]]
-    maintenance_window: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsMaintenanceWindowArgs']]]
+    ip_configuration: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsIpConfigurationArgsDict']]]
+    location_preference: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsLocationPreferenceArgsDict']]]
+    maintenance_window: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsMaintenanceWindowArgsDict']]]
     """
     Declares a one-hour maintenance window when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time.
     """
-    password_validation_policy: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgs']]]
+    password_validation_policy: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsPasswordValidationPolicyArgsDict']]]
     pricing_plan: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Pricing plan for this instance, can only be `PER_USE`.
     """
-    read_pool_auto_scale_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgs']]]
+    read_pool_auto_scale_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsReadPoolAutoScaleConfigArgsDict']]]
     """
     Configuration of Read Pool Auto Scale.
     """
@@ -1205,7 +1205,7 @@ class DatabaseInstanceSettingsArgsDict(TypedDict):
     """
     When this parameter is set to true, Cloud SQL retains backups of the instance even after the instance is deleted. The `ON_DEMAND` backup will be retained until customer deletes the backup or the project. The `AUTOMATED` backup will be retained based on the backups retention setting.
     """
-    sql_server_audit_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsSqlServerAuditConfigArgs']]]
+    sql_server_audit_config: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsSqlServerAuditConfigArgsDict']]]
     time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
@@ -1915,7 +1915,7 @@ class DatabaseInstanceSettingsAdvancedMachineFeaturesArgs:
 
 
 class DatabaseInstanceSettingsBackupConfigurationArgsDict(TypedDict):
-    backup_retention_settings: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]]
+    backup_retention_settings: NotRequired[pulumi.Input[Optional['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgsDict']]]
     """
     Backup retention settings. The configuration is detailed below.
     """
@@ -2145,7 +2145,7 @@ class DatabaseInstanceSettingsConnectionPoolConfigArgsDict(TypedDict):
     """
     True if the manager connection pooling configuration is enabled.
     """
-    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgs']]]]]
+    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsConnectionPoolConfigFlagArgsDict']]]]]
     """
     List of connection pool configuration flags
     """
@@ -2610,7 +2610,7 @@ class DatabaseInstanceSettingsIpConfigurationArgsDict(TypedDict):
     """
     The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
     """
-    authorized_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs']]]]]
+    authorized_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgsDict']]]]]
     custom_subject_alternative_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The custom subject alternative names for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
@@ -2633,7 +2633,7 @@ class DatabaseInstanceSettingsIpConfigurationArgsDict(TypedDict):
     At least `ipv4_enabled` must be enabled or a `private_network` must be configured.
     This setting can be updated, but it cannot be removed after it is set.
     """
-    psc_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]]]
+    psc_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict']]]]]
     """
     PSC settings for a Cloud SQL instance.
     """
@@ -2931,7 +2931,7 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict(TypedDict):
     """
     Name of network attachment resource used to authorize a producer service to connect a PSC interface to the consumer's VPC. For example: "projects/myProject/regions/myRegion/networkAttachments/myNetworkAttachment". This is required to enable outbound connection on a PSC instance.
     """
-    psc_auto_connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]]
+    psc_auto_connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict']]]]]
     """
     A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
     """
@@ -3416,7 +3416,7 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigArgsDict(TypedDict):
     """
     The cooldown period for scale out operations.
     """
-    target_metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgs']]]]]
+    target_metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetricArgsDict']]]]]
     """
     Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
     """
@@ -3675,7 +3675,7 @@ class UserPasswordPolicyArgsDict(TypedDict):
     """
     Password expiration duration with one week grace period.
     """
-    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgs']]]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UserPasswordPolicyStatusArgsDict']]]]]
 
 @pulumi.input_type
 class UserPasswordPolicyArgs:

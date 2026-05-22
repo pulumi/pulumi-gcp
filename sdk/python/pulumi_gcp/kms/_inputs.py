@@ -303,7 +303,7 @@ class CryptoKeyPrimaryArgs:
 
 
 class CryptoKeyVersionAttestationArgsDict(TypedDict):
-    cert_chains: NotRequired[pulumi.Input[Optional['CryptoKeyVersionAttestationCertChainsArgs']]]
+    cert_chains: NotRequired[pulumi.Input[Optional['CryptoKeyVersionAttestationCertChainsArgsDict']]]
     """
     The certificate chains needed to validate the attestation
     Structure is documented below.
@@ -313,7 +313,7 @@ class CryptoKeyVersionAttestationArgsDict(TypedDict):
     (Output)
     The attestation data provided by the HSM when the key operation was performed.
     """
-    external_protection_level_options: NotRequired[pulumi.Input[Optional['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs']]]
+    external_protection_level_options: NotRequired[pulumi.Input[Optional['CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgsDict']]]
     """
     ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
     Structure is documented below.

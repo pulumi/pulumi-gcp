@@ -82,27 +82,27 @@ __all__ = [
 ]
 
 class ApplicationAttributesArgsDict(TypedDict):
-    business_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationAttributesBusinessOwnerArgs']]]]]
+    business_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationAttributesBusinessOwnerArgsDict']]]]]
     """
     Optional. Business team that ensures user needs are met and value is delivered
     Structure is documented below.
     """
-    criticality: NotRequired[pulumi.Input[Optional['ApplicationAttributesCriticalityArgs']]]
+    criticality: NotRequired[pulumi.Input[Optional['ApplicationAttributesCriticalityArgsDict']]]
     """
     Criticality of the Application, Service, or Workload
     Structure is documented below.
     """
-    developer_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationAttributesDeveloperOwnerArgs']]]]]
+    developer_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationAttributesDeveloperOwnerArgsDict']]]]]
     """
     Optional. Developer team that owns development and coding.
     Structure is documented below.
     """
-    environment: NotRequired[pulumi.Input[Optional['ApplicationAttributesEnvironmentArgs']]]
+    environment: NotRequired[pulumi.Input[Optional['ApplicationAttributesEnvironmentArgsDict']]]
     """
     Environment of the Application, Service, or Workload
     Structure is documented below.
     """
-    operator_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationAttributesOperatorOwnerArgs']]]]]
+    operator_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationAttributesOperatorOwnerArgsDict']]]]]
     """
     Optional. Operator team that ensures runtime and operations.
     Structure is documented below.
@@ -452,27 +452,27 @@ class ApplicationScopeArgs:
 
 
 class ServiceAttributesArgsDict(TypedDict):
-    business_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttributesBusinessOwnerArgs']]]]]
+    business_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttributesBusinessOwnerArgsDict']]]]]
     """
     Business team that ensures user needs are met and value is delivered
     Structure is documented below.
     """
-    criticality: NotRequired[pulumi.Input[Optional['ServiceAttributesCriticalityArgs']]]
+    criticality: NotRequired[pulumi.Input[Optional['ServiceAttributesCriticalityArgsDict']]]
     """
     Criticality of the Application, Service, or Workload
     Structure is documented below.
     """
-    developer_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttributesDeveloperOwnerArgs']]]]]
+    developer_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttributesDeveloperOwnerArgsDict']]]]]
     """
     Developer team that owns development and coding.
     Structure is documented below.
     """
-    environment: NotRequired[pulumi.Input[Optional['ServiceAttributesEnvironmentArgs']]]
+    environment: NotRequired[pulumi.Input[Optional['ServiceAttributesEnvironmentArgsDict']]]
     """
     Environment of the Application, Service, or Workload
     Structure is documented below.
     """
-    operator_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttributesOperatorOwnerArgs']]]]]
+    operator_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAttributesOperatorOwnerArgsDict']]]]]
     """
     Operator team that ensures runtime and operations.
     Structure is documented below.
@@ -782,13 +782,13 @@ class ServiceAttributesOperatorOwnerArgs:
 
 
 class ServiceServicePropertyArgsDict(TypedDict):
-    extended_metadatas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataArgs']]]]]
+    extended_metadatas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataArgsDict']]]]]
     """
     (Output)
     Output only. Additional metadata specific to the resource type.
     Structure is documented below.
     """
-    functional_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyFunctionalTypeArgs']]]]]
+    functional_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyFunctionalTypeArgsDict']]]]]
     """
     (Output)
     Output only. The type of the service.
@@ -799,7 +799,7 @@ class ServiceServicePropertyArgsDict(TypedDict):
     (Output)
     Output only. The service project identifier that the underlying cloud resource resides in.
     """
-    identities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgs']]]]]
+    identities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyIdentityArgsDict']]]]]
     """
     (Output)
     The identity associated with the service.
@@ -809,7 +809,7 @@ class ServiceServicePropertyArgsDict(TypedDict):
     """
     Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
     """
-    registration_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyRegistrationTypeArgs']]]]]
+    registration_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyRegistrationTypeArgsDict']]]]]
     """
     (Output)
     Output only. The registration type of the service.
@@ -966,7 +966,7 @@ class ServiceServicePropertyExtendedMetadataArgsDict(TypedDict):
     (Output)
     The key of the extended metadata.
     """
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceServicePropertyExtendedMetadataValueArgsDict']]]]]
     """
     (Output)
     The value of the extended metadata.
@@ -1205,27 +1205,27 @@ class ServiceServiceReferenceArgs:
 
 
 class WorkloadAttributesArgsDict(TypedDict):
-    business_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadAttributesBusinessOwnerArgs']]]]]
+    business_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadAttributesBusinessOwnerArgsDict']]]]]
     """
     Business team that ensures user needs are met and value is delivered
     Structure is documented below.
     """
-    criticality: NotRequired[pulumi.Input[Optional['WorkloadAttributesCriticalityArgs']]]
+    criticality: NotRequired[pulumi.Input[Optional['WorkloadAttributesCriticalityArgsDict']]]
     """
     Criticality of the Application, Service, or Workload
     Structure is documented below.
     """
-    developer_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadAttributesDeveloperOwnerArgs']]]]]
+    developer_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadAttributesDeveloperOwnerArgsDict']]]]]
     """
     Developer team that owns development and coding.
     Structure is documented below.
     """
-    environment: NotRequired[pulumi.Input[Optional['WorkloadAttributesEnvironmentArgs']]]
+    environment: NotRequired[pulumi.Input[Optional['WorkloadAttributesEnvironmentArgsDict']]]
     """
     Environment of the Application, Service, or Workload
     Structure is documented below.
     """
-    operator_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadAttributesOperatorOwnerArgs']]]]]
+    operator_owners: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadAttributesOperatorOwnerArgsDict']]]]]
     """
     Operator team that ensures runtime and operations.
     Structure is documented below.
@@ -1535,13 +1535,13 @@ class WorkloadAttributesOperatorOwnerArgs:
 
 
 class WorkloadWorkloadPropertyArgsDict(TypedDict):
-    extended_metadatas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataArgs']]]]]
+    extended_metadatas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataArgsDict']]]]]
     """
     (Output)
     Output only. Additional metadata specific to the resource type.
     Structure is documented below.
     """
-    functional_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyFunctionalTypeArgs']]]]]
+    functional_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyFunctionalTypeArgsDict']]]]]
     """
     (Output)
     Output only. The functional type of a service or workload.
@@ -1552,7 +1552,7 @@ class WorkloadWorkloadPropertyArgsDict(TypedDict):
     (Output)
     Output only. The service project identifier that the underlying cloud resource resides in. Empty for non cloud resources.
     """
-    identities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgs']]]]]
+    identities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyIdentityArgsDict']]]]]
     """
     (Output)
     The identity associated with the workload.
@@ -1693,7 +1693,7 @@ class WorkloadWorkloadPropertyExtendedMetadataArgsDict(TypedDict):
     (Output)
     The key of the extended metadata.
     """
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkloadWorkloadPropertyExtendedMetadataValueArgsDict']]]]]
     """
     (Output)
     The value of the extended metadata.

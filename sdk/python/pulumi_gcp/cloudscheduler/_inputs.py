@@ -40,7 +40,7 @@ class JobAppEngineHttpTargetArgsDict(TypedDict):
     If the relative URL is empty, then the root path "/" will be used.
     No spaces are allowed, and the maximum length allowed is 2083 characters
     """
-    app_engine_routing: NotRequired[pulumi.Input[Optional['JobAppEngineHttpTargetAppEngineRoutingArgs']]]
+    app_engine_routing: NotRequired[pulumi.Input[Optional['JobAppEngineHttpTargetAppEngineRoutingArgsDict']]]
     """
     App Engine Routing setting for the job.
     Structure is documented below.
@@ -268,13 +268,13 @@ class JobHttpTargetArgsDict(TypedDict):
     """
     Which HTTP method to use for the request.
     """
-    oauth_token: NotRequired[pulumi.Input[Optional['JobHttpTargetOauthTokenArgs']]]
+    oauth_token: NotRequired[pulumi.Input[Optional['JobHttpTargetOauthTokenArgsDict']]]
     """
     Contains information needed for generating an OAuth token.
     This type of authorization should be used when sending requests to a GCP endpoint.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input[Optional['JobHttpTargetOidcTokenArgs']]]
+    oidc_token: NotRequired[pulumi.Input[Optional['JobHttpTargetOidcTokenArgsDict']]]
     """
     Contains information needed for generating an OpenID Connect token.
     This type of authorization should be used when sending requests to third party endpoints or Cloud Run.

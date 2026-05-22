@@ -137,22 +137,22 @@ class FloorsettingAiPlatformFloorSettingArgs:
 
 
 class FloorsettingFilterConfigArgsDict(TypedDict):
-    malicious_uri_filter_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigMaliciousUriFilterSettingsArgs']]]
+    malicious_uri_filter_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigMaliciousUriFilterSettingsArgsDict']]]
     """
     Malicious URI filter settings.
     Structure is documented below.
     """
-    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgs']]]
+    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigPiAndJailbreakFilterSettingsArgsDict']]]
     """
     Prompt injection and Jailbreak Filter settings.
     Structure is documented below.
     """
-    rai_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigRaiSettingsArgs']]]
+    rai_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigRaiSettingsArgsDict']]]
     """
     Responsible AI Filter settings.
     Structure is documented below.
     """
-    sdp_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsArgs']]]
+    sdp_settings: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsArgsDict']]]
     """
     Sensitive Data Protection settings.
     Structure is documented below.
@@ -446,12 +446,12 @@ class FloorsettingFilterConfigRaiSettingsRaiFilterArgs:
 
 
 class FloorsettingFilterConfigSdpSettingsArgsDict(TypedDict):
-    advanced_config: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgs']]]
+    advanced_config: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsAdvancedConfigArgsDict']]]
     """
     Sensitive Data Protection Advanced configuration.
     Structure is documented below.
     """
-    basic_config: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsBasicConfigArgs']]]
+    basic_config: NotRequired[pulumi.Input[Optional['FloorsettingFilterConfigSdpSettingsBasicConfigArgsDict']]]
     """
     Sensitive Data Protection basic configuration.
     Structure is documented below.
@@ -630,7 +630,7 @@ class FloorsettingFilterConfigSdpSettingsBasicConfigArgs:
 
 
 class FloorsettingFloorSettingMetadataArgsDict(TypedDict):
-    multi_language_detection: NotRequired[pulumi.Input[Optional['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgs']]]
+    multi_language_detection: NotRequired[pulumi.Input[Optional['FloorsettingFloorSettingMetadataMultiLanguageDetectionArgsDict']]]
     """
     Metadata for multi language detection.
     Structure is documented below.
@@ -765,22 +765,22 @@ class FloorsettingGoogleMcpServerFloorSettingArgs:
 
 
 class TemplateFilterConfigArgsDict(TypedDict):
-    malicious_uri_filter_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgs']]]
+    malicious_uri_filter_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigMaliciousUriFilterSettingsArgsDict']]]
     """
     Malicious URI filter settings.
     Structure is documented below.
     """
-    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigPiAndJailbreakFilterSettingsArgs']]]
+    pi_and_jailbreak_filter_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigPiAndJailbreakFilterSettingsArgsDict']]]
     """
     Prompt injection and Jailbreak Filter settings.
     Structure is documented below.
     """
-    rai_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigRaiSettingsArgs']]]
+    rai_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigRaiSettingsArgsDict']]]
     """
     Responsible AI Filter settings.
     Structure is documented below.
     """
-    sdp_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgs']]]
+    sdp_settings: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsArgsDict']]]
     """
     Sensitive Data Protection settings.
     Structure is documented below.
@@ -1074,12 +1074,12 @@ class TemplateFilterConfigRaiSettingsRaiFilterArgs:
 
 
 class TemplateFilterConfigSdpSettingsArgsDict(TypedDict):
-    advanced_config: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsAdvancedConfigArgs']]]
+    advanced_config: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsAdvancedConfigArgsDict']]]
     """
     Sensitive Data Protection Advanced configuration.
     Structure is documented below.
     """
-    basic_config: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsBasicConfigArgs']]]
+    basic_config: NotRequired[pulumi.Input[Optional['TemplateFilterConfigSdpSettingsBasicConfigArgsDict']]]
     """
     Sensitive Data Protection basic configuration.
     Structure is documented below.
@@ -1296,7 +1296,7 @@ class TemplateTemplateMetadataArgsDict(TypedDict):
     """
     If true, log template crud operations.
     """
-    multi_language_detection: NotRequired[pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgs']]]
+    multi_language_detection: NotRequired[pulumi.Input[Optional['TemplateTemplateMetadataMultiLanguageDetectionArgsDict']]]
     """
     Metadata to enable multi language detection via template.
     Structure is documented below.

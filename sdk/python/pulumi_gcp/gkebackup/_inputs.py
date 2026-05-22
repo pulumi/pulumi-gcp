@@ -92,7 +92,7 @@ class BackupPlanBackupConfigArgsDict(TypedDict):
     """
     If True, include all namespaced resources.
     """
-    encryption_key: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigEncryptionKeyArgs']]]
+    encryption_key: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigEncryptionKeyArgsDict']]]
     """
     This defines a customer managed encryption key that will be used to encrypt the "config"
     portion (the Kubernetes resources) of Backups created via this plan.
@@ -114,17 +114,17 @@ class BackupPlanBackupConfigArgsDict(TypedDict):
     Backup for GKE detects Kubernetes configuration that is
     non-standard or requires additional setup to restore.
     """
-    selected_applications: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedApplicationsArgs']]]
+    selected_applications: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedApplicationsArgsDict']]]
     """
     A list of namespaced Kubernetes Resources.
     Structure is documented below.
     """
-    selected_namespace_labels: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespaceLabelsArgs']]]
+    selected_namespace_labels: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespaceLabelsArgsDict']]]
     """
     If set, include just the resources in the listed namespace Labels.
     Structure is documented below.
     """
-    selected_namespaces: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespacesArgs']]]
+    selected_namespaces: NotRequired[pulumi.Input[Optional['BackupPlanBackupConfigSelectedNamespacesArgsDict']]]
     """
     If set, include just the resources in the listed namespaces.
     Structure is documented below.
@@ -508,7 +508,7 @@ class BackupPlanBackupScheduleArgsDict(TypedDict):
     """
     This flag denotes whether automatic Backup creation is paused for this BackupPlan.
     """
-    rpo_config: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigArgs']]]
+    rpo_config: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigArgsDict']]]
     """
     Defines the RPO schedule configuration for this BackupPlan. This is mutually
     exclusive with the cronSchedule field since at most one schedule can be defined
@@ -592,7 +592,7 @@ class BackupPlanBackupScheduleRpoConfigArgsDict(TypedDict):
     maximum data loss in time that is acceptable for this BackupPlan. This must be
     at least 60, i.e., 1 hour, and at most 86400, i.e., 60 days.
     """
-    exclusion_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgs']]]]]
+    exclusion_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict']]]]]
     """
     User specified time windows during which backup can NOT happen for this BackupPlan.
     Backups should start and finish outside of any given exclusion window. Note: backup
@@ -683,13 +683,13 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowArgsDict(TypedDict):
     Specifying this field to "False" is an error.
     Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
     """
-    days_of_week: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgs']]]
+    days_of_week: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeekArgsDict']]]
     """
     The exclusion window occurs on these days of each week in UTC.
     Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
     Structure is documented below.
     """
-    single_occurrence_date: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgs']]]
+    single_occurrence_date: NotRequired[pulumi.Input[Optional['BackupPlanBackupScheduleRpoConfigExclusionWindowSingleOccurrenceDateArgsDict']]]
     """
     No recurrence. The exclusion window occurs only once and on this date in UTC.
     Only one of singleOccurrenceDate, daily and daysOfWeek may be set.
@@ -1314,12 +1314,12 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
     for more information on each policy option.
     Possible values are: `USE_EXISTING_VERSION`, `USE_BACKUP_VERSION`.
     """
-    cluster_resource_restore_scope: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigClusterResourceRestoreScopeArgs']]]
+    cluster_resource_restore_scope: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict']]]
     """
     Identifies the cluster-scoped resources to restore from the Backup.
     Structure is documented below.
     """
-    excluded_namespaces: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigExcludedNamespacesArgs']]]
+    excluded_namespaces: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigExcludedNamespacesArgsDict']]]
     """
     A list of selected namespaces excluded from restoration.
     All namespaces except those in this list will be restored.
@@ -1340,25 +1340,25 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
     Do not restore any namespaced resources if set to "True".
     Specifying this field to "False" is not allowed.
     """
-    restore_order: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigRestoreOrderArgs']]]
+    restore_order: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigRestoreOrderArgsDict']]]
     """
     It contains custom ordering to use on a Restore.
     Structure is documented below.
     """
-    selected_applications: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigSelectedApplicationsArgs']]]
+    selected_applications: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigSelectedApplicationsArgsDict']]]
     """
     A list of selected ProtectedApplications to restore.
     The listed ProtectedApplications and all the resources
     to which they refer will be restored.
     Structure is documented below.
     """
-    selected_namespaces: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigSelectedNamespacesArgs']]]
+    selected_namespaces: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigSelectedNamespacesArgsDict']]]
     """
     A list of selected namespaces to restore from the Backup.
     The listed Namespaces and all resources contained in them will be restored.
     Structure is documented below.
     """
-    transformation_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgs']]]]]
+    transformation_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleArgsDict']]]]]
     """
     A list of transformation rules to be applied against Kubernetes
     resources as they are selected for restoration from a Backup.
@@ -1377,7 +1377,7 @@ class RestorePlanRestoreConfigArgsDict(TypedDict):
     for more information on each policy option.
     Possible values are: `RESTORE_VOLUME_DATA_FROM_BACKUP`, `REUSE_VOLUME_HANDLE_FROM_BACKUP`, `NO_VOLUME_DATA_RESTORATION`.
     """
-    volume_data_restore_policy_bindings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgs']]]]]
+    volume_data_restore_policy_bindings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigVolumeDataRestorePolicyBindingArgsDict']]]]]
     """
     A table that binds volumes by their scope to a restore policy. Bindings
     must have a unique scope. Any volumes not scoped in the bindings are
@@ -1664,7 +1664,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict(TypedDict):
     If True, all valid cluster-scoped resources will be restored.
     Mutually exclusive to any other field in `clusterResourceRestoreScope`.
     """
-    excluded_group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgs']]]]]
+    excluded_group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKindArgsDict']]]]]
     """
     A list of cluster-scoped resource group kinds to NOT restore from the backup.
     If specified, all valid cluster-scoped resources will be restored except
@@ -1677,7 +1677,7 @@ class RestorePlanRestoreConfigClusterResourceRestoreScopeArgsDict(TypedDict):
     If True, no cluster-scoped resources will be restored.
     Mutually exclusive to any other field in `clusterResourceRestoreScope`.
     """
-    selected_group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgs']]]]]
+    selected_group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKindArgsDict']]]]]
     """
     A list of cluster-scoped resource group kinds to restore from the backup.
     If specified, only the selected resources will be restored.
@@ -2250,7 +2250,7 @@ class RestorePlanRestoreConfigTransformationRuleArgsDict(TypedDict):
     The description is a user specified string description
     of the transformation rule.
     """
-    resource_filter: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigTransformationRuleResourceFilterArgs']]]
+    resource_filter: NotRequired[pulumi.Input[Optional['RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict']]]
     """
     This field is used to specify a set of fields that should be used to
     determine which resources in backup should be acted upon by the
@@ -2432,7 +2432,7 @@ class RestorePlanRestoreConfigTransformationRuleFieldActionArgs:
 
 
 class RestorePlanRestoreConfigTransformationRuleResourceFilterArgsDict(TypedDict):
-    group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgs']]]]]
+    group_kinds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKindArgsDict']]]]]
     """
     (Filtering parameter) Any resource subject to transformation must
     belong to one of the listed "types". If this field is not provided,

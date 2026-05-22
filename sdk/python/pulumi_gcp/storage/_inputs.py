@@ -269,12 +269,12 @@ class BatchOperationsJobBucketListBucketsArgsDict(TypedDict):
     """
     Bucket name for the objects to be transformed.
     """
-    manifest: NotRequired[pulumi.Input[Optional['BatchOperationsJobBucketListBucketsManifestArgs']]]
+    manifest: NotRequired[pulumi.Input[Optional['BatchOperationsJobBucketListBucketsManifestArgsDict']]]
     """
     contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
     Structure is documented below.
     """
-    prefix_list: NotRequired[pulumi.Input[Optional['BatchOperationsJobBucketListBucketsPrefixListArgs']]]
+    prefix_list: NotRequired[pulumi.Input[Optional['BatchOperationsJobBucketListBucketsPrefixListArgsDict']]]
     """
     Specifies objects matching a prefix set.
     Structure is documented below.
@@ -816,11 +816,11 @@ class BucketCustomPlacementConfigArgs:
 
 
 class BucketEncryptionArgsDict(TypedDict):
-    customer_managed_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgs']]]
+    customer_managed_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionCustomerManagedEncryptionEnforcementConfigArgsDict']]]
     """
     If omitted, then new objects with CMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
     """
-    customer_supplied_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgs']]]
+    customer_supplied_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionCustomerSuppliedEncryptionEnforcementConfigArgsDict']]]
     """
     If omitted, then new objects with CSEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
     """
@@ -841,7 +841,7 @@ class BucketEncryptionArgsDict(TypedDict):
     state of the project.
     You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
     """
-    google_managed_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgs']]]
+    google_managed_encryption_enforcement_config: NotRequired[pulumi.Input[Optional['BucketEncryptionGoogleManagedEncryptionEnforcementConfigArgsDict']]]
     """
     If omitted, then new objects with GMEK encryption-type is allowed. If set, then new objects created in this bucket must comply with enforcement config. Changing this has no effect on existing objects; it applies to new objects only, Structure is documented below documented below.
     """
@@ -1290,11 +1290,11 @@ class BucketIpFilterArgsDict(TypedDict):
     """
     While set `true`, allows cross-org VPCs in the bucket's IP filter configuration.
     """
-    public_network_source: NotRequired[pulumi.Input[Optional['BucketIpFilterPublicNetworkSourceArgs']]]
+    public_network_source: NotRequired[pulumi.Input[Optional['BucketIpFilterPublicNetworkSourceArgsDict']]]
     """
     The public network IP address ranges that can access the bucket and its data. Structure is documented below.
     """
-    vpc_network_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgs']]]]]
+    vpc_network_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BucketIpFilterVpcNetworkSourceArgsDict']]]]]
     """
     The list of VPC networks that can access the bucket. Structure is documented below.
     """
@@ -2381,22 +2381,22 @@ class ControlFolderIntelligenceConfigEffectiveIntelligenceConfigArgs:
 
 
 class ControlFolderIntelligenceConfigFilterArgsDict(TypedDict):
-    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]]
+    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]]
     """
     Buckets to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]]
+    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]]
     """
     Locations to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]]
+    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]]
     """
     Buckets to include in the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]]
+    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlFolderIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]]
     """
     Locations to include in the Storage Intelligence plan.
     Structure is documented below.
@@ -2681,22 +2681,22 @@ class ControlOrganizationIntelligenceConfigEffectiveIntelligenceConfigArgs:
 
 
 class ControlOrganizationIntelligenceConfigFilterArgsDict(TypedDict):
-    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]]
+    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]]
     """
     Buckets to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]]
+    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]]
     """
     Locations to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]]
+    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]]
     """
     Buckets to include in the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]]
+    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlOrganizationIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]]
     """
     Locations to include in the Storage Intelligence plan.
     Structure is documented below.
@@ -2981,22 +2981,22 @@ class ControlProjectIntelligenceConfigEffectiveIntelligenceConfigArgs:
 
 
 class ControlProjectIntelligenceConfigFilterArgsDict(TypedDict):
-    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgs']]]
+    excluded_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageBucketsArgsDict']]]
     """
     Buckets to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgs']]]
+    excluded_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterExcludedCloudStorageLocationsArgsDict']]]
     """
     Locations to exclude from the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgs']]]
+    included_cloud_storage_buckets: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageBucketsArgsDict']]]
     """
     Buckets to include in the Storage Intelligence plan.
     Structure is documented below.
     """
-    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgs']]]
+    included_cloud_storage_locations: NotRequired[pulumi.Input[Optional['ControlProjectIntelligenceConfigFilterIncludedCloudStorageLocationsArgsDict']]]
     """
     Locations to include in the Storage Intelligence plan.
     Structure is documented below.
@@ -3964,7 +3964,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgsDict(TypedDict):
     Options for where the inventory reports are stored.
     Structure is documented below.
     """
-    storage_filters: NotRequired[pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]]
+    storage_filters: NotRequired[pulumi.Input[Optional['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -4556,19 +4556,19 @@ class TransferJobNotificationConfigArgs:
 
 
 class TransferJobReplicationSpecArgsDict(TypedDict):
-    gcs_data_sink: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSinkArgs']]]
+    gcs_data_sink: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSinkArgsDict']]]
     """
     A Google Cloud Storage data sink. Structure documented below.
     """
-    gcs_data_source: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSourceArgs']]]
+    gcs_data_source: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecGcsDataSourceArgsDict']]]
     """
     A Google Cloud Storage data source. Structure documented below.
     """
-    object_conditions: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecObjectConditionsArgs']]]
+    object_conditions: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecObjectConditionsArgsDict']]]
     """
     Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
     """
-    transfer_options: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsArgs']]]
+    transfer_options: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsArgsDict']]]
     """
     Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
     """
@@ -4879,7 +4879,7 @@ class TransferJobReplicationSpecTransferOptionsArgsDict(TypedDict):
     Whether objects that exist only in the sink should be deleted. Note that this option and
     `delete_objects_from_source_after_transfer` are mutually exclusive.
     """
-    metadata_options: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgs']]]
+    metadata_options: NotRequired[pulumi.Input[Optional['TransferJobReplicationSpecTransferOptionsMetadataOptionsArgsDict']]]
     """
     Specifies the metadata options for running a transfer. Structure documented below.
     """
@@ -5179,11 +5179,11 @@ class TransferJobScheduleArgsDict(TypedDict):
     """
     Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
     """
-    schedule_end_date: NotRequired[pulumi.Input[Optional['TransferJobScheduleScheduleEndDateArgs']]]
+    schedule_end_date: NotRequired[pulumi.Input[Optional['TransferJobScheduleScheduleEndDateArgsDict']]]
     """
     The last day the recurring transfer will be run. If `schedule_end_date` is the same as `schedule_start_date`, the transfer will be executed only once. Structure documented below.
     """
-    start_time_of_day: NotRequired[pulumi.Input[Optional['TransferJobScheduleStartTimeOfDayArgs']]]
+    start_time_of_day: NotRequired[pulumi.Input[Optional['TransferJobScheduleStartTimeOfDayArgsDict']]]
     """
     The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
     """
@@ -5476,43 +5476,43 @@ class TransferJobScheduleStartTimeOfDayArgs:
 
 
 class TransferJobTransferSpecArgsDict(TypedDict):
-    aws_s3_compatible_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceArgs']]]
+    aws_s3_compatible_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceArgsDict']]]
     """
     An AWS S3 Compatible data source. Structure documented below.
     """
-    aws_s3_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceArgs']]]
+    aws_s3_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceArgsDict']]]
     """
     An AWS S3 data source. Structure documented below.
     """
-    azure_blob_storage_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']]]
+    azure_blob_storage_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict']]]
     """
     An Azure Blob Storage data source. Structure documented below.
     """
-    gcs_data_sink: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecGcsDataSinkArgs']]]
+    gcs_data_sink: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecGcsDataSinkArgsDict']]]
     """
     A Google Cloud Storage data sink. Structure documented below.
     """
-    gcs_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecGcsDataSourceArgs']]]
+    gcs_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecGcsDataSourceArgsDict']]]
     """
     A Google Cloud Storage data source. Structure documented below.
     """
-    hdfs_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecHdfsDataSourceArgs']]]
+    hdfs_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecHdfsDataSourceArgsDict']]]
     """
     An HDFS data source. Structure documented below.
     """
-    http_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecHttpDataSourceArgs']]]
+    http_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecHttpDataSourceArgsDict']]]
     """
     A HTTP URL data source. Structure documented below.
     """
-    object_conditions: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecObjectConditionsArgs']]]
+    object_conditions: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecObjectConditionsArgsDict']]]
     """
     Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
     """
-    posix_data_sink: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecPosixDataSinkArgs']]]
+    posix_data_sink: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecPosixDataSinkArgsDict']]]
     """
     A POSIX data sink. Structure documented below.
     """
-    posix_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecPosixDataSourceArgs']]]
+    posix_data_source: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecPosixDataSourceArgsDict']]]
     """
     A POSIX filesystem data source. Structure documented below.
     """
@@ -5524,11 +5524,11 @@ class TransferJobTransferSpecArgsDict(TypedDict):
     """
     Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
     """
-    transfer_manifest: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferManifestArgs']]]
+    transfer_manifest: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferManifestArgsDict']]]
     """
     Use a manifest file to limit which object are transferred. See [Storage Transfer Service manifest file format](https://cloud.google.com/storage-transfer/docs/manifest). Structure documented below.
     """
-    transfer_options: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsArgs']]]
+    transfer_options: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsArgsDict']]]
     """
     Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
     """
@@ -5781,7 +5781,7 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceArgsDict(TypedDict):
     """
     Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
     """
-    s3_metadata: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgs']]]
+    s3_metadata: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3CompatibleDataSourceS3MetadataArgsDict']]]
     """
     S3 compatible metadata.
     """
@@ -5965,7 +5965,7 @@ class TransferJobTransferSpecAwsS3DataSourceArgsDict(TypedDict):
     """
     S3 Bucket name.
     """
-    aws_access_key: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs']]]
+    aws_access_key: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgsDict']]]
     """
     AWS credentials block.
     """
@@ -6164,7 +6164,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict(TypedDict):
     """
     The name of the Azure Storage account.
     """
-    azure_credentials: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs']]]
+    azure_credentials: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgsDict']]]
     """
     ) Credentials used to authenticate API requests to Azure block.
     """
@@ -6172,7 +6172,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceArgsDict(TypedDict):
     """
     ) Full Resource name of a secret in Secret Manager containing [SAS Credentials in JSON form](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#azureblobstoragedata:~:text=begin%20with%20a%20%27/%27.-,credentialsSecret,-string). Service Agent for Storage Transfer must have permissions to access secret. If credentials_secret is specified, do not specify azure_credentials.`,
     """
-    federated_identity_config: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgs']]]
+    federated_identity_config: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecAzureBlobStorageDataSourceFederatedIdentityConfigArgsDict']]]
     """
     Federated identity config of a user registered Azure application. Structure documented below.
     """
@@ -6738,7 +6738,7 @@ class TransferJobTransferSpecTransferOptionsArgsDict(TypedDict):
     Whether objects that exist only in the sink should be deleted. Note that this option and
     `delete_objects_from_source_after_transfer` are mutually exclusive.
     """
-    metadata_options: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsMetadataOptionsArgs']]]
+    metadata_options: NotRequired[pulumi.Input[Optional['TransferJobTransferSpecTransferOptionsMetadataOptionsArgsDict']]]
     """
     Specifies the metadata options for running a transfer. Structure documented below.
     """

@@ -119,7 +119,7 @@ class ConnectionAuthConfigArgsDict(TypedDict):
     authType of the Connection
     Possible values are: `USER_PASSWORD`.
     """
-    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgs']]]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionAuthConfigAdditionalVariableArgsDict']]]]]
     """
     List containing additional auth configs.
     Structure is documented below.
@@ -128,27 +128,27 @@ class ConnectionAuthConfigArgsDict(TypedDict):
     """
     The type of authentication configured.
     """
-    oauth2_auth_code_flow: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowArgs']]]
+    oauth2_auth_code_flow: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowArgsDict']]]
     """
     Parameters to support Oauth 2.0 Auth Code Grant Authentication.
     Structure is documented below.
     """
-    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsArgs']]]
+    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsArgsDict']]]
     """
     OAuth3 Client Credentials for Authentication.
     Structure is documented below.
     """
-    oauth2_jwt_bearer: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerArgs']]]
+    oauth2_jwt_bearer: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerArgsDict']]]
     """
     OAuth2 JWT Bearer for Authentication.
     Structure is documented below.
     """
-    ssh_public_key: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeyArgs']]]
+    ssh_public_key: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeyArgsDict']]]
     """
     SSH Public Key for Authentication.
     Structure is documented below.
     """
-    user_password: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigUserPasswordArgs']]]
+    user_password: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigUserPasswordArgsDict']]]
     """
     User password for Authentication.
     Structure is documented below.
@@ -311,7 +311,7 @@ class ConnectionAuthConfigAdditionalVariableArgsDict(TypedDict):
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']]]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
@@ -320,7 +320,7 @@ class ConnectionAuthConfigAdditionalVariableArgsDict(TypedDict):
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableSecretValueArgs']]]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigAdditionalVariableSecretValueArgsDict']]]
     """
     Secret value of configVariable
     Structure is documented below.
@@ -530,7 +530,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlowArgsDict(TypedDict):
     """
     Client ID for user-provided OAuth app.
     """
-    client_secret: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgs']]]
+    client_secret: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2AuthCodeFlowClientSecretArgsDict']]]
     """
     Client secret for user-provided OAuth app.
     """
@@ -666,7 +666,7 @@ class ConnectionAuthConfigOauth2ClientCredentialsArgsDict(TypedDict):
     """
     Secret version of Password for Authentication.
     """
-    client_secret: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs']]]
+    client_secret: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgsDict']]]
     """
     Secret version reference containing the client secret.
     """
@@ -741,13 +741,13 @@ class ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs:
 
 
 class ConnectionAuthConfigOauth2JwtBearerArgsDict(TypedDict):
-    client_key: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerClientKeyArgs']]]
+    client_key: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerClientKeyArgsDict']]]
     """
     Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate.
     This private key will be used to sign JWTs used for the jwt-bearer authorization grant.
     Specified in the form as: projects/*/secrets/*/versions/*.
     """
-    jwt_claims: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs']]]
+    jwt_claims: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgsDict']]]
     """
     JwtClaims providers fields to generate the token.
     """
@@ -910,12 +910,12 @@ class ConnectionAuthConfigSshPublicKeyArgsDict(TypedDict):
     """
     Format of SSH Client cert.
     """
-    ssh_client_cert: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertArgs']]]
+    ssh_client_cert: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertArgsDict']]]
     """
     SSH Client Cert. It should contain both public and private key.
     Structure is documented below.
     """
-    ssh_client_cert_pass: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertPassArgs']]]
+    ssh_client_cert_pass: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict']]]
     """
     Password (passphrase) for ssh client certificate if it has one.
     Structure is documented below.
@@ -1068,7 +1068,7 @@ class ConnectionAuthConfigUserPasswordArgsDict(TypedDict):
     """
     Username for Authentication.
     """
-    password: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigUserPasswordPasswordArgs']]]
+    password: NotRequired[pulumi.Input[Optional['ConnectionAuthConfigUserPasswordPasswordArgsDict']]]
     """
     Password for Authentication.
     Structure is documented below.
@@ -1154,7 +1154,7 @@ class ConnectionConfigVariableArgsDict(TypedDict):
     """
     Boolean Value of configVariable
     """
-    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionConfigVariableEncryptionKeyValueArgs']]]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionConfigVariableEncryptionKeyValueArgsDict']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
@@ -1163,7 +1163,7 @@ class ConnectionConfigVariableArgsDict(TypedDict):
     """
     Integer Value of configVariable
     """
-    secret_value: NotRequired[pulumi.Input[Optional['ConnectionConfigVariableSecretValueArgs']]]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionConfigVariableSecretValueArgsDict']]]
     """
     Secret value of configVariable.
     Structure is documented below.
@@ -1401,7 +1401,7 @@ class ConnectionDestinationConfigArgsDict(TypedDict):
     """
     The key is the destination identifier that is supported by the Connector.
     """
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionDestinationConfigDestinationArgsDict']]]]]
     """
     The destinations for the key.
     Structure is documented below.
@@ -1522,12 +1522,12 @@ class ConnectionEventingConfigArgsDict(TypedDict):
     registrationDestinationConfig
     Structure is documented below.
     """
-    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgs']]]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAdditionalVariableArgsDict']]]]]
     """
     List containing additional auth configs.
     Structure is documented below.
     """
-    auth_config: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigArgs']]]
+    auth_config: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigArgsDict']]]
     """
     authConfig for Eventing Configuration.
     Structure is documented below.
@@ -1622,7 +1622,7 @@ class ConnectionEventingConfigAdditionalVariableArgsDict(TypedDict):
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']]]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
@@ -1631,7 +1631,7 @@ class ConnectionEventingConfigAdditionalVariableArgsDict(TypedDict):
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableSecretValueArgs']]]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAdditionalVariableSecretValueArgsDict']]]
     """
     Secret value of configVariable
     Structure is documented below.
@@ -1844,7 +1844,7 @@ class ConnectionEventingConfigAuthConfigArgsDict(TypedDict):
     User password for Authentication.
     Structure is documented below.
     """
-    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgs']]]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict']]]]]
     """
     List containing additional auth configs.
     Structure is documented below.
@@ -1938,7 +1938,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict(TypedDict):
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']]]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
@@ -1947,7 +1947,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgsDict(TypedDict):
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs']]]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgsDict']]]
     """
     Secret value of configVariable
     Structure is documented below.
@@ -2150,7 +2150,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs:
 
 
 class ConnectionEventingConfigAuthConfigUserPasswordArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs']]]
+    password: NotRequired[pulumi.Input[Optional['ConnectionEventingConfigAuthConfigUserPasswordPasswordArgsDict']]]
     """
     Password for Authentication.
     Structure is documented below.
@@ -2233,7 +2233,7 @@ class ConnectionEventingConfigAuthConfigUserPasswordPasswordArgs:
 
 
 class ConnectionEventingConfigRegistrationDestinationConfigArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingConfigRegistrationDestinationConfigDestinationArgsDict']]]]]
     """
     destinations for the connection
     Structure is documented below.
@@ -2358,7 +2358,7 @@ class ConnectionEventingRuntimeDataArgsDict(TypedDict):
     """
     Events listener endpoint. The value will populated after provisioning the events listener.
     """
-    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgs']]]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionEventingRuntimeDataStatusArgsDict']]]]]
     """
     (Output)
     Current status of eventing.
@@ -2614,7 +2614,7 @@ class ConnectionSslConfigArgsDict(TypedDict):
     Enum for controlling the SSL Type (TLS/MTLS)
     Possible values are: `TLS`, `MTLS`.
     """
-    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgs']]]]]
+    additional_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionSslConfigAdditionalVariableArgsDict']]]]]
     """
     Additional SSL related field values.
     Structure is documented below.
@@ -2624,22 +2624,22 @@ class ConnectionSslConfigArgsDict(TypedDict):
     Type of Client Cert (PEM/JKS/.. etc.)
     Possible values are: `PEM`.
     """
-    client_certificate: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientCertificateArgs']]]
+    client_certificate: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientCertificateArgsDict']]]
     """
     Client Certificate
     Structure is documented below.
     """
-    client_private_key: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyArgs']]]
+    client_private_key: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyArgsDict']]]
     """
     Client Private Key
     Structure is documented below.
     """
-    client_private_key_pass: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyPassArgs']]]
+    client_private_key_pass: NotRequired[pulumi.Input[Optional['ConnectionSslConfigClientPrivateKeyPassArgsDict']]]
     """
     Secret containing the passphrase protecting the Client Private Key
     Structure is documented below.
     """
-    private_server_certificate: NotRequired[pulumi.Input[Optional['ConnectionSslConfigPrivateServerCertificateArgs']]]
+    private_server_certificate: NotRequired[pulumi.Input[Optional['ConnectionSslConfigPrivateServerCertificateArgsDict']]]
     """
     Private Server Certificate. Needs to be specified if trust model is PRIVATE.
     Structure is documented below.
@@ -2852,7 +2852,7 @@ class ConnectionSslConfigAdditionalVariableArgsDict(TypedDict):
     """
     Boolean Value of configVariable.
     """
-    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']]]
+    encryption_key_value: NotRequired[pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict']]]
     """
     Encryption key value of configVariable.
     Structure is documented below.
@@ -2861,7 +2861,7 @@ class ConnectionSslConfigAdditionalVariableArgsDict(TypedDict):
     """
     Integer Value of configVariable.
     """
-    secret_value: NotRequired[pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableSecretValueArgs']]]
+    secret_value: NotRequired[pulumi.Input[Optional['ConnectionSslConfigAdditionalVariableSecretValueArgsDict']]]
     """
     Secret value of configVariable
     Structure is documented below.

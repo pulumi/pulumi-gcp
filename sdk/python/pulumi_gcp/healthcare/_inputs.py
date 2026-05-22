@@ -517,7 +517,7 @@ class FhirStoreConsentConfigArgsDict(TypedDict):
     Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
     Possible values are: `CONSENT_ENFORCEMENT_VERSION_UNSPECIFIED`, `V1`.
     """
-    access_determination_log_config: NotRequired[pulumi.Input[Optional['FhirStoreConsentConfigAccessDeterminationLogConfigArgs']]]
+    access_determination_log_config: NotRequired[pulumi.Input[Optional['FhirStoreConsentConfigAccessDeterminationLogConfigArgsDict']]]
     """
     Specifies how the server logs the consent-aware requests. If not specified, the AccessDeterminationLogConfig.LogLevel.MINIMUM option is used.
     Structure is documented below.
@@ -526,7 +526,7 @@ class FhirStoreConsentConfigArgsDict(TypedDict):
     """
     The default value is false. If set to true, when accessing FHIR resources, the consent headers will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
     """
-    consent_header_handling: NotRequired[pulumi.Input[Optional['FhirStoreConsentConfigConsentHeaderHandlingArgs']]]
+    consent_header_handling: NotRequired[pulumi.Input[Optional['FhirStoreConsentConfigConsentHeaderHandlingArgsDict']]]
     """
     Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
     Structure is documented below.
@@ -1023,7 +1023,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgsDict(TypedDict):
     concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
     value 2. The maximum depth allowed is 5.
     """
-    last_updated_partition_config: NotRequired[pulumi.Input[Optional['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs']]]
+    last_updated_partition_config: NotRequired[pulumi.Input[Optional['FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgsDict']]]
     """
     The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
     Structure is documented below.
@@ -1675,7 +1675,7 @@ class PipelineJobMappingPipelineJobArgsDict(TypedDict):
     to true. The destination store must use FHIR version R4.
     Format: project/{projectID}/locations/{locationID}/datasets/{datasetName}/fhirStores/{fhirStoreID}.
     """
-    fhir_streaming_source: NotRequired[pulumi.Input[Optional['PipelineJobMappingPipelineJobFhirStreamingSourceArgs']]]
+    fhir_streaming_source: NotRequired[pulumi.Input[Optional['PipelineJobMappingPipelineJobFhirStreamingSourceArgsDict']]]
     """
     A streaming FHIR data source.
     Structure is documented below.
@@ -1837,7 +1837,7 @@ class PipelineJobMappingPipelineJobMappingConfigArgsDict(TypedDict):
     """
     Describes the mapping configuration.
     """
-    whistle_config_source: NotRequired[pulumi.Input[Optional['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgs']]]
+    whistle_config_source: NotRequired[pulumi.Input[Optional['PipelineJobMappingPipelineJobMappingConfigWhistleConfigSourceArgsDict']]]
     """
     Specifies the path to the mapping configuration for harmonization pipeline.
     Structure is documented below.

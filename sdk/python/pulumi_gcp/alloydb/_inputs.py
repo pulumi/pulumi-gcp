@@ -253,7 +253,7 @@ class ClusterAutomatedBackupPolicyArgsDict(TypedDict):
     """
     Whether automated backups are enabled.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyEncryptionConfigArgsDict']]]
     """
     EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
     Structure is documented below.
@@ -266,17 +266,17 @@ class ClusterAutomatedBackupPolicyArgsDict(TypedDict):
     """
     The location where the backup will be stored. Currently, the only supported option is to store the backup in the same region as the cluster.
     """
-    quantity_based_retention: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs']]]
+    quantity_based_retention: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyQuantityBasedRetentionArgsDict']]]
     """
     Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
     Structure is documented below.
     """
-    time_based_retention: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyTimeBasedRetentionArgs']]]
+    time_based_retention: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyTimeBasedRetentionArgsDict']]]
     """
     Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
     Structure is documented below.
     """
-    weekly_schedule: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyWeeklyScheduleArgs']]]
+    weekly_schedule: NotRequired[pulumi.Input[Optional['ClusterAutomatedBackupPolicyWeeklyScheduleArgsDict']]]
     """
     Weekly schedule for the Backup.
     Structure is documented below.
@@ -725,7 +725,7 @@ class ClusterContinuousBackupConfigArgsDict(TypedDict):
     """
     Whether continuous backup recovery is enabled. If not set, defaults to true.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['ClusterContinuousBackupConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['ClusterContinuousBackupConfigEncryptionConfigArgsDict']]]
     """
     EncryptionConfig describes the encryption config of a cluster or a backup that is encrypted with a CMEK (customer-managed encryption key).
     Structure is documented below.
@@ -835,7 +835,7 @@ class ClusterContinuousBackupInfoArgsDict(TypedDict):
     (Output)
     When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
     """
-    encryption_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgs']]]]]
+    encryption_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterContinuousBackupInfoEncryptionInfoArgsDict']]]]]
     """
     (Output)
     Output only. The encryption information for the WALs and backups required for ContinuousBackup.
@@ -1203,7 +1203,7 @@ class ClusterInitialUserArgs:
 
 
 class ClusterMaintenanceUpdatePolicyArgsDict(TypedDict):
-    maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgs']]]]]
+    maintenance_windows: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterMaintenanceUpdatePolicyMaintenanceWindowArgsDict']]]]]
     """
     Preferred windows to perform maintenance. Currently limited to 1.
     Structure is documented below.
@@ -1829,7 +1829,7 @@ class InstanceClientConnectionConfigArgsDict(TypedDict):
     """
     Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
     """
-    ssl_config: NotRequired[pulumi.Input[Optional['InstanceClientConnectionConfigSslConfigArgs']]]
+    ssl_config: NotRequired[pulumi.Input[Optional['InstanceClientConnectionConfigSslConfigArgsDict']]]
     """
     SSL config option for this instance.
     Structure is documented below.
@@ -2065,7 +2065,7 @@ class InstanceNetworkConfigArgsDict(TypedDict):
     If set, the instance IPs will be created from this allocated range and will override the IP range used by the parent cluster.
     The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
     """
-    authorized_external_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkConfigAuthorizedExternalNetworkArgs']]]]]
+    authorized_external_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceNetworkConfigAuthorizedExternalNetworkArgsDict']]]]]
     """
     A list of external networks authorized to access this instance. This
     field is only allowed to be set when `enable_public_ip` is set to
@@ -2412,7 +2412,7 @@ class InstancePscInstanceConfigArgsDict(TypedDict):
     List of consumer projects that are allowed to create PSC endpoints to service-attachments to this instance.
     These should be specified as project numbers only.
     """
-    psc_auto_connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgs']]]]]
+    psc_auto_connections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscInstanceConfigPscAutoConnectionArgsDict']]]]]
     """
     Configurations for setting up PSC service automation.
     Structure is documented below.
@@ -2423,7 +2423,7 @@ class InstancePscInstanceConfigArgsDict(TypedDict):
     The DNS name of the instance for PSC connectivity.
     Name convention: <uid>.<uid>.<region>.alloydb-psc.goog
     """
-    psc_interface_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgs']]]]]
+    psc_interface_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstancePscInstanceConfigPscInterfaceConfigArgsDict']]]]]
     """
     Configurations for setting up PSC interfaces attached to the instance
     which are used for outbound connectivity. Currently, AlloyDB supports only 0 or 1 PSC interface.

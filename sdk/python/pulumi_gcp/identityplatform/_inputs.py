@@ -87,7 +87,7 @@ class ConfigBlockingFunctionsArgsDict(TypedDict):
     Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
     Structure is documented below.
     """
-    forward_inbound_credentials: NotRequired[pulumi.Input[Optional['ConfigBlockingFunctionsForwardInboundCredentialsArgs']]]
+    forward_inbound_credentials: NotRequired[pulumi.Input[Optional['ConfigBlockingFunctionsForwardInboundCredentialsArgsDict']]]
     """
     The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
     Structure is documented below.
@@ -286,7 +286,7 @@ class ConfigClientArgsDict(TypedDict):
     (Output)
     Firebase subdomain.
     """
-    permissions: NotRequired[pulumi.Input[Optional['ConfigClientPermissionsArgs']]]
+    permissions: NotRequired[pulumi.Input[Optional['ConfigClientPermissionsArgsDict']]]
     """
     Configuration related to restricting a user's ability to affect their account.
     Structure is documented below.
@@ -410,7 +410,7 @@ class ConfigMfaArgsDict(TypedDict):
     A list of usable second factors for this project.
     Each value may be one of: `PHONE_SMS`.
     """
-    provider_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigMfaProviderConfigArgs']]]]]
+    provider_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigMfaProviderConfigArgsDict']]]]]
     """
     A list of usable second factors for this project along with their configurations.
     This field does not support phone based MFA, for that use the 'enabledProviders' field.
@@ -491,7 +491,7 @@ class ConfigMfaProviderConfigArgsDict(TypedDict):
     Whether MultiFactor Authentication has been enabled for this project.
     Possible values are: `DISABLED`, `ENABLED`, `MANDATORY`.
     """
-    totp_provider_config: NotRequired[pulumi.Input[Optional['ConfigMfaProviderConfigTotpProviderConfigArgs']]]
+    totp_provider_config: NotRequired[pulumi.Input[Optional['ConfigMfaProviderConfigTotpProviderConfigArgsDict']]]
     """
     TOTP MFA provider config for this project.
     Structure is documented below.
@@ -570,7 +570,7 @@ class ConfigMfaProviderConfigTotpProviderConfigArgs:
 
 
 class ConfigMonitoringArgsDict(TypedDict):
-    request_logging: NotRequired[pulumi.Input[Optional['ConfigMonitoringRequestLoggingArgs']]]
+    request_logging: NotRequired[pulumi.Input[Optional['ConfigMonitoringRequestLoggingArgsDict']]]
     """
     Configuration for logging requests made to this project to Stackdriver Logging
     Structure is documented below.
@@ -686,7 +686,7 @@ class ConfigMultiTenantArgs:
 
 
 class ConfigQuotaArgsDict(TypedDict):
-    sign_up_quota_config: NotRequired[pulumi.Input[Optional['ConfigQuotaSignUpQuotaConfigArgs']]]
+    sign_up_quota_config: NotRequired[pulumi.Input[Optional['ConfigQuotaSignUpQuotaConfigArgsDict']]]
     """
     Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
     Structure is documented below.
@@ -791,23 +791,23 @@ class ConfigSignInArgsDict(TypedDict):
     """
     Whether to allow more than one account to have the same email.
     """
-    anonymous: NotRequired[pulumi.Input[Optional['ConfigSignInAnonymousArgs']]]
+    anonymous: NotRequired[pulumi.Input[Optional['ConfigSignInAnonymousArgsDict']]]
     """
     Configuration options related to authenticating an anonymous user.
     Structure is documented below.
     """
-    email: NotRequired[pulumi.Input[Optional['ConfigSignInEmailArgs']]]
+    email: NotRequired[pulumi.Input[Optional['ConfigSignInEmailArgsDict']]]
     """
     Configuration options related to authenticating a user by their email address.
     Structure is documented below.
     """
-    hash_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigSignInHashConfigArgs']]]]]
+    hash_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConfigSignInHashConfigArgsDict']]]]]
     """
     (Output)
     Output only. Hash config information.
     Structure is documented below.
     """
-    phone_number: NotRequired[pulumi.Input[Optional['ConfigSignInPhoneNumberArgs']]]
+    phone_number: NotRequired[pulumi.Input[Optional['ConfigSignInPhoneNumberArgsDict']]]
     """
     Configuration options related to authenticated a user by their phone number.
     Structure is documented below.
@@ -1156,12 +1156,12 @@ class ConfigSignInPhoneNumberArgs:
 
 
 class ConfigSmsRegionConfigArgsDict(TypedDict):
-    allow_by_default: NotRequired[pulumi.Input[Optional['ConfigSmsRegionConfigAllowByDefaultArgs']]]
+    allow_by_default: NotRequired[pulumi.Input[Optional['ConfigSmsRegionConfigAllowByDefaultArgsDict']]]
     """
     A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
     Structure is documented below.
     """
-    allowlist_only: NotRequired[pulumi.Input[Optional['ConfigSmsRegionConfigAllowlistOnlyArgs']]]
+    allowlist_only: NotRequired[pulumi.Input[Optional['ConfigSmsRegionConfigAllowlistOnlyArgsDict']]]
     """
     A policy of only allowing regions by explicitly adding them to an allowlist.
     Structure is documented below.
@@ -1391,7 +1391,7 @@ class InboundSamlConfigSpConfigArgsDict(TypedDict):
     """
     Callback URI where responses from IDP are handled. Must start with `https://`.
     """
-    sp_certificates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgs']]]]]
+    sp_certificates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InboundSamlConfigSpConfigSpCertificateArgsDict']]]]]
     """
     (Output)
     The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
@@ -1549,7 +1549,7 @@ class OauthIdpConfigResponseTypeArgs:
 
 
 class TenantClientArgsDict(TypedDict):
-    permissions: NotRequired[pulumi.Input[Optional['TenantClientPermissionsArgs']]]
+    permissions: NotRequired[pulumi.Input[Optional['TenantClientPermissionsArgsDict']]]
     """
     Configuration related to restricting a user's ability to affect their account.
     Structure is documented below.
@@ -1756,7 +1756,7 @@ class TenantInboundSamlConfigSpConfigArgsDict(TypedDict):
     """
     Unique identifier for all SAML entities.
     """
-    sp_certificates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgs']]]]]
+    sp_certificates: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TenantInboundSamlConfigSpConfigSpCertificateArgsDict']]]]]
     """
     (Output)
     The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.

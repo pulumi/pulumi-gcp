@@ -92,7 +92,7 @@ class ConnectionProfileAlloydbArgsDict(TypedDict):
     """
     Required. The AlloyDB cluster ID that this connection profile is associated with.
     """
-    settings: NotRequired[pulumi.Input[Optional['ConnectionProfileAlloydbSettingsArgs']]]
+    settings: NotRequired[pulumi.Input[Optional['ConnectionProfileAlloydbSettingsArgsDict']]]
     """
     Immutable. Metadata used to create the destination AlloyDB cluster.
     Structure is documented below.
@@ -153,7 +153,7 @@ class ConnectionProfileAlloydbSettingsArgsDict(TypedDict):
     """
     Labels for the AlloyDB cluster created by DMS.
     """
-    primary_instance_settings: NotRequired[pulumi.Input[Optional['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs']]]
+    primary_instance_settings: NotRequired[pulumi.Input[Optional['ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgsDict']]]
     """
     Settings for the cluster's primary instance
     Structure is documented below.
@@ -464,7 +464,7 @@ class ConnectionProfileCloudsqlArgsDict(TypedDict):
     (Output)
     Output only. The Cloud SQL database instance's public IP.
     """
-    settings: NotRequired[pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsArgs']]]
+    settings: NotRequired[pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsArgsDict']]]
     """
     Immutable. Metadata used to create the destination Cloud SQL database.
     Structure is documented below.
@@ -595,7 +595,7 @@ class ConnectionProfileCloudsqlSettingsArgsDict(TypedDict):
     The edition of the given Cloud SQL instance.
     Possible values are: `ENTERPRISE`, `ENTERPRISE_PLUS`.
     """
-    ip_config: NotRequired[pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsIpConfigArgs']]]
+    ip_config: NotRequired[pulumi.Input[Optional['ConnectionProfileCloudsqlSettingsIpConfigArgsDict']]]
     """
     The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
     Structure is documented below.
@@ -925,7 +925,7 @@ class ConnectionProfileCloudsqlSettingsArgs:
 
 
 class ConnectionProfileCloudsqlSettingsIpConfigArgsDict(TypedDict):
-    authorized_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgs']]]]]
+    authorized_networks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetworkArgsDict']]]]]
     """
     The list of external networks that are allowed to connect to the instance using the IP.
     Structure is documented below.
@@ -1209,7 +1209,7 @@ class ConnectionProfileMysqlArgsDict(TypedDict):
     """
     The network port of the source MySQL database.
     """
-    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfileMysqlSslArgs']]]
+    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfileMysqlSslArgsDict']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
@@ -1479,7 +1479,7 @@ class ConnectionProfileOracleArgsDict(TypedDict):
     """
     Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
     """
-    forward_ssh_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleForwardSshConnectivityArgs']]]
+    forward_ssh_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleForwardSshConnectivityArgsDict']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
@@ -1489,17 +1489,17 @@ class ConnectionProfileOracleArgsDict(TypedDict):
     (Output)
     Output only. Indicates If this connection profile password is stored.
     """
-    private_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOraclePrivateConnectivityArgs']]]
+    private_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOraclePrivateConnectivityArgsDict']]]
     """
     Configuration for using a private network to communicate with the source database
     Structure is documented below.
     """
-    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleSslArgs']]]
+    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleSslArgsDict']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
     """
-    static_service_ip_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleStaticServiceIpConnectivityArgs']]]
+    static_service_ip_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfileOracleStaticServiceIpConnectivityArgsDict']]]
     """
     This object has no nested fields.
     Static IP address connectivity configured on service project.
@@ -1977,12 +1977,12 @@ class ConnectionProfilePostgresqlArgsDict(TypedDict):
     """
     The network port of the source MySQL database.
     """
-    private_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlPrivateConnectivityArgs']]]
+    private_connectivity: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlPrivateConnectivityArgsDict']]]
     """
     Private connectivity.
     Structure is documented below.
     """
-    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlSslArgs']]]
+    ssl: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlSslArgsDict']]]
     """
     SSL configuration for the destination to connect to the source database.
     Structure is documented below.
@@ -2326,7 +2326,7 @@ class ConnectionProfilePostgresqlSslArgs:
 
 
 class MigrationJobDumpFlagsArgsDict(TypedDict):
-    dump_flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgs']]]]]
+    dump_flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobDumpFlagsDumpFlagArgsDict']]]]]
     """
     A list of dump flags
     Structure is documented below.
@@ -2485,7 +2485,7 @@ class MigrationJobErrorArgs:
 
 
 class MigrationJobObjectsConfigArgsDict(TypedDict):
-    source_objects_config: NotRequired[pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigArgs']]]
+    source_objects_config: NotRequired[pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigArgsDict']]]
     """
     Configuration for the source objects to be migrated.
     Structure is documented below.
@@ -2517,7 +2517,7 @@ class MigrationJobObjectsConfigArgs:
 
 
 class MigrationJobObjectsConfigSourceObjectsConfigArgsDict(TypedDict):
-    object_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgs']]]]]
+    object_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgsDict']]]]]
     """
     The list of objects to migrate. Should only be set when
     `objectsSelectionType` is `SPECIFIED_OBJECTS`.
@@ -2584,7 +2584,7 @@ class MigrationJobObjectsConfigSourceObjectsConfigArgs:
 
 
 class MigrationJobObjectsConfigSourceObjectsConfigObjectConfigArgsDict(TypedDict):
-    object_identifier: NotRequired[pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgs']]]
+    object_identifier: NotRequired[pulumi.Input[Optional['MigrationJobObjectsConfigSourceObjectsConfigObjectConfigObjectIdentifierArgsDict']]]
     """
     The identifier of the migration job object.
     Structure is documented below.

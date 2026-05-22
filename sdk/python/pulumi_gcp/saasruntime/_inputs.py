@@ -852,12 +852,12 @@ class UnitKindInputVariableMappingArgsDict(TypedDict):
     """
     name of the variable
     """
-    from_: NotRequired[pulumi.Input[Optional['UnitKindInputVariableMappingFromArgs']]]
+    from_: NotRequired[pulumi.Input[Optional['UnitKindInputVariableMappingFromArgsDict']]]
     """
     Output variables whose values will be passed on to dependencies
     Structure is documented below.
     """
-    to: NotRequired[pulumi.Input[Optional['UnitKindInputVariableMappingToArgs']]]
+    to: NotRequired[pulumi.Input[Optional['UnitKindInputVariableMappingToArgsDict']]]
     """
     Input variables whose values will be passed on to dependencies
     Structure is documented below.
@@ -1040,12 +1040,12 @@ class UnitKindOutputVariableMappingArgsDict(TypedDict):
     """
     name of the variable
     """
-    from_: NotRequired[pulumi.Input[Optional['UnitKindOutputVariableMappingFromArgs']]]
+    from_: NotRequired[pulumi.Input[Optional['UnitKindOutputVariableMappingFromArgsDict']]]
     """
     Output variables whose values will be passed on to dependencies
     Structure is documented below.
     """
-    to: NotRequired[pulumi.Input[Optional['UnitKindOutputVariableMappingToArgs']]]
+    to: NotRequired[pulumi.Input[Optional['UnitKindOutputVariableMappingToArgsDict']]]
     """
     Input variables whose values will be passed on to dependencies
     Structure is documented below.
@@ -1419,7 +1419,7 @@ class UnitOperationDeprovisionArgs:
 
 
 class UnitOperationProvisionArgsDict(TypedDict):
-    input_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgs']]]]]
+    input_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationProvisionInputVariableArgsDict']]]]]
     """
     Set of input variables. Maximum 100. (optional)
     Structure is documented below.
@@ -1551,7 +1551,7 @@ class UnitOperationProvisionInputVariableArgs:
 
 
 class UnitOperationUpgradeArgsDict(TypedDict):
-    input_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgs']]]]]
+    input_variables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['UnitOperationUpgradeInputVariableArgsDict']]]]]
     """
     Set of input variables. Maximum 100. (optional)
     Structure is documented below.

@@ -987,12 +987,12 @@ class RegistrationContactSettingsTechnicalContactPostalAddressArgs:
 
 
 class RegistrationDnsSettingsArgsDict(TypedDict):
-    custom_dns: NotRequired[pulumi.Input[Optional['RegistrationDnsSettingsCustomDnsArgs']]]
+    custom_dns: NotRequired[pulumi.Input[Optional['RegistrationDnsSettingsCustomDnsArgsDict']]]
     """
     Configuration for an arbitrary DNS provider.
     Structure is documented below.
     """
-    glue_records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgs']]]]]
+    glue_records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsGlueRecordArgsDict']]]]]
     """
     The list of glue records for this Registration. Commonly empty.
     Structure is documented below.
@@ -1047,7 +1047,7 @@ class RegistrationDnsSettingsCustomDnsArgsDict(TypedDict):
     Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
     name, with Unicode domain names expressed in Punycode format.
     """
-    ds_records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgs']]]]]
+    ds_records: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RegistrationDnsSettingsCustomDnsDsRecordArgsDict']]]]]
     """
     The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
     the values to set here. If this field is empty, DNSSEC is disabled.

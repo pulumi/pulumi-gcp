@@ -875,18 +875,18 @@ class LogViewIamMemberConditionArgs:
 
 
 class MetricBucketOptionsArgsDict(TypedDict):
-    explicit_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsExplicitBucketsArgs']]]
+    explicit_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsExplicitBucketsArgsDict']]]
     """
     Specifies a set of buckets with arbitrary widths.
     Structure is documented below.
     """
-    exponential_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsExponentialBucketsArgs']]]
+    exponential_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsExponentialBucketsArgsDict']]]
     """
     Specifies an exponential sequence of buckets that have a width that is proportional to the value of
     the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.
     Structure is documented below.
     """
-    linear_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsLinearBucketsArgs']]]
+    linear_buckets: NotRequired[pulumi.Input[Optional['MetricBucketOptionsLinearBucketsArgsDict']]]
     """
     Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
     Each bucket represents a constant absolute uncertainty on the specific value in the bucket.
@@ -1139,7 +1139,7 @@ class MetricMetricDescriptorArgsDict(TypedDict):
     without an ending period, for example "Request count". This field is optional but it is
     recommended to be set for any metrics associated with user-visible concepts, such as Quota.
     """
-    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgs']]]]]
+    labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MetricMetricDescriptorLabelArgsDict']]]]]
     """
     The set of labels that can be used to describe a specific instance of this metric type. For
     example, the appengine.googleapis.com/http/server/response_latencies metric type has a label
@@ -1957,7 +1957,7 @@ class SavedQueryLoggingQueryArgsDict(TypedDict):
     """
     Characters will be counted from the start of the string.
     """
-    summary_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgs']]]]]
+    summary_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SavedQueryLoggingQuerySummaryFieldArgsDict']]]]]
     """
     The names of the fields to display in the summary.
     Structure is documented below.

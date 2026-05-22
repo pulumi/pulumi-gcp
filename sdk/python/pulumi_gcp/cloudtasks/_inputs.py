@@ -147,7 +147,7 @@ class QueueAppEngineRoutingOverrideArgs:
 
 
 class QueueHttpTargetArgsDict(TypedDict):
-    header_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgs']]]]]
+    header_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['QueueHttpTargetHeaderOverrideArgsDict']]]]]
     """
     HTTP target headers.
     This map contains the header field names and values.
@@ -165,21 +165,21 @@ class QueueHttpTargetArgsDict(TypedDict):
     Note that if the value is set to GET the body of the task will be ignored at execution time.
     Possible values are: `HTTP_METHOD_UNSPECIFIED`, `POST`, `GET`, `HEAD`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`.
     """
-    oauth_token: NotRequired[pulumi.Input[Optional['QueueHttpTargetOauthTokenArgs']]]
+    oauth_token: NotRequired[pulumi.Input[Optional['QueueHttpTargetOauthTokenArgsDict']]]
     """
     If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
     This type of authorization should generally be used only when calling Google APIs hosted on *.googleapis.com.
     Note that both the service account email and the scope MUST be specified when using the queue-level authorization override.
     Structure is documented below.
     """
-    oidc_token: NotRequired[pulumi.Input[Optional['QueueHttpTargetOidcTokenArgs']]]
+    oidc_token: NotRequired[pulumi.Input[Optional['QueueHttpTargetOidcTokenArgsDict']]]
     """
     If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
     This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
     Note that both the service account email and the audience MUST be specified when using the queue-level authorization override.
     Structure is documented below.
     """
-    uri_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverrideArgs']]]
+    uri_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverrideArgsDict']]]
     """
     URI override.
     When specified, overrides the execution URI for all the tasks in the queue.
@@ -507,7 +507,7 @@ class QueueHttpTargetUriOverrideArgsDict(TypedDict):
     is set to "example.net", the overridden URI will be changed to "https://example.net".
     Host value cannot be an empty string (INVALID_ARGUMENT).
     """
-    path_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverridePathOverrideArgs']]]
+    path_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverridePathOverrideArgsDict']]]
     """
     URI path.
     When specified, replaces the existing path of the task URL.
@@ -522,7 +522,7 @@ class QueueHttpTargetUriOverrideArgsDict(TypedDict):
     Note that the port value must be a positive integer.
     Setting the port to 0 (Zero) clears the URI port.
     """
-    query_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverrideQueryOverrideArgs']]]
+    query_override: NotRequired[pulumi.Input[Optional['QueueHttpTargetUriOverrideQueryOverrideArgsDict']]]
     """
     URI query.
     When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.

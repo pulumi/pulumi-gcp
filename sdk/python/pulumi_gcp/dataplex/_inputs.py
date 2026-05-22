@@ -314,7 +314,7 @@ class AssetDiscoverySpecArgsDict(TypedDict):
     """
     Required. Whether discovery is enabled.
     """
-    csv_options: NotRequired[pulumi.Input[Optional['AssetDiscoverySpecCsvOptionsArgs']]]
+    csv_options: NotRequired[pulumi.Input[Optional['AssetDiscoverySpecCsvOptionsArgsDict']]]
     """
     Optional. Configuration for CSV data.
     """
@@ -326,7 +326,7 @@ class AssetDiscoverySpecArgsDict(TypedDict):
     """
     Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
     """
-    json_options: NotRequired[pulumi.Input[Optional['AssetDiscoverySpecJsonOptionsArgs']]]
+    json_options: NotRequired[pulumi.Input[Optional['AssetDiscoverySpecJsonOptionsArgsDict']]]
     """
     Optional. Configuration for Json data.
     """
@@ -592,7 +592,7 @@ class AssetDiscoveryStatusArgsDict(TypedDict):
     """
     Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
     """
-    stats: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetDiscoveryStatusStatArgs']]]]]
+    stats: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AssetDiscoveryStatusStatArgsDict']]]]]
     """
     Data Stats of the asset reported by discovery.
     """
@@ -1379,12 +1379,12 @@ class DatascanDataArgs:
 
 
 class DatascanDataDiscoverySpecArgsDict(TypedDict):
-    bigquery_publishing_config: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecBigqueryPublishingConfigArgs']]]
+    bigquery_publishing_config: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecBigqueryPublishingConfigArgsDict']]]
     """
     Configuration for metadata publishing.
     Structure is documented below.
     """
-    storage_config: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecStorageConfigArgs']]]
+    storage_config: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecStorageConfigArgsDict']]]
     """
     Configurations related to Cloud Storage as the data source.
     Structure is documented below.
@@ -1526,7 +1526,7 @@ class DatascanDataDiscoverySpecBigqueryPublishingConfigArgs:
 
 
 class DatascanDataDiscoverySpecStorageConfigArgsDict(TypedDict):
-    csv_options: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecStorageConfigCsvOptionsArgs']]]
+    csv_options: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecStorageConfigCsvOptionsArgsDict']]]
     """
     Configuration for CSV data.
     Structure is documented below.
@@ -1539,7 +1539,7 @@ class DatascanDataDiscoverySpecStorageConfigArgsDict(TypedDict):
     """
     Defines the data to include during discovery when only a subset of the data should be considered. Provide a list of patterns that identify the data to include. For Cloud Storage bucket assets, these patterns are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these patterns are interpreted as patterns to match table names.
     """
-    json_options: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecStorageConfigJsonOptionsArgs']]]
+    json_options: NotRequired[pulumi.Input[Optional['DatascanDataDiscoverySpecStorageConfigJsonOptionsArgsDict']]]
     """
     Configuration for JSON data.
     Structure is documented below.
@@ -1792,19 +1792,19 @@ class DatascanDataProfileSpecArgsDict(TypedDict):
     """
     If set, the latest DataScan job result will be published to Dataplex Catalog.
     """
-    exclude_fields: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecExcludeFieldsArgs']]]
+    exclude_fields: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecExcludeFieldsArgsDict']]]
     """
     The fields to exclude from data profile.
     If specified, the fields will be excluded from data profile, regardless of `include_fields` value.
     Structure is documented below.
     """
-    include_fields: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecIncludeFieldsArgs']]]
+    include_fields: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecIncludeFieldsArgsDict']]]
     """
     The fields to include in data profile.
     If not specified, all fields at the time of profile scan job execution are included, except for ones listed in `exclude_fields`.
     Structure is documented below.
     """
-    post_scan_actions: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecPostScanActionsArgs']]]
+    post_scan_actions: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecPostScanActionsArgsDict']]]
     """
     Actions to take upon job completion.
     Structure is documented below.
@@ -2008,7 +2008,7 @@ class DatascanDataProfileSpecIncludeFieldsArgs:
 
 
 class DatascanDataProfileSpecPostScanActionsArgsDict(TypedDict):
-    bigquery_export: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecPostScanActionsBigqueryExportArgs']]]
+    bigquery_export: NotRequired[pulumi.Input[Optional['DatascanDataProfileSpecPostScanActionsBigqueryExportArgsDict']]]
     """
     If set, results will be exported to the provided BigQuery table.
     Structure is documented below.
@@ -2084,7 +2084,7 @@ class DatascanDataQualitySpecArgsDict(TypedDict):
     """
     A filter to selectively run a subset of rules.
     """
-    post_scan_actions: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsArgs']]]
+    post_scan_actions: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsArgsDict']]]
     """
     Actions to take upon job completion.
     Structure is documented below.
@@ -2093,7 +2093,7 @@ class DatascanDataQualitySpecArgsDict(TypedDict):
     """
     A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
     """
-    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgsDict']]]]]
     """
     The list of rules to evaluate against a data source. At least one rule is required.
     Structure is documented below.
@@ -2233,12 +2233,12 @@ class DatascanDataQualitySpecArgs:
 
 
 class DatascanDataQualitySpecPostScanActionsArgsDict(TypedDict):
-    bigquery_export: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsBigqueryExportArgs']]]
+    bigquery_export: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsBigqueryExportArgsDict']]]
     """
     If set, results will be exported to the provided BigQuery table.
     Structure is documented below.
     """
-    notification_report: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportArgs']]]
+    notification_report: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportArgsDict']]]
     """
     The configuration of notification report post scan action.
     Structure is documented below.
@@ -2325,15 +2325,15 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportArgsDict(TypedDict
     The individuals or groups who are designated to receive notifications upon triggers.
     Structure is documented below.
     """
-    job_end_trigger: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgs']]]
+    job_end_trigger: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportJobEndTriggerArgsDict']]]
     """
     This trigger is triggered whenever a scan job run ends, regardless of the result.
     """
-    job_failure_trigger: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgs']]]
+    job_failure_trigger: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportJobFailureTriggerArgsDict']]]
     """
     This trigger is triggered when the scan job itself fails, regardless of the result.
     """
-    score_threshold_trigger: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgs']]]
+    score_threshold_trigger: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecPostScanActionsNotificationReportScoreThresholdTriggerArgsDict']]]
     """
     This trigger is triggered when the DQ score in the job result is less than a specified input score.
     Structure is documented below.
@@ -2519,36 +2519,36 @@ class DatascanDataQualitySpecRuleArgsDict(TypedDict):
     Must start with a letter.
     Must end with a number or a letter.
     """
-    non_null_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleNonNullExpectationArgs']]]
+    non_null_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleNonNullExpectationArgsDict']]]
     """
     ColumnMap rule which evaluates whether each column value is null.
     """
-    range_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleRangeExpectationArgs']]]
+    range_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleRangeExpectationArgsDict']]]
     """
     ColumnMap rule which evaluates whether each column value lies between a specified range.
     Structure is documented below.
     """
-    regex_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleRegexExpectationArgs']]]
+    regex_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleRegexExpectationArgsDict']]]
     """
     ColumnMap rule which evaluates whether each column value matches a specified regex.
     Structure is documented below.
     """
-    row_condition_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleRowConditionExpectationArgs']]]
+    row_condition_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleRowConditionExpectationArgsDict']]]
     """
     Table rule which evaluates whether each row passes the specified condition.
     Structure is documented below.
     """
-    set_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleSetExpectationArgs']]]
+    set_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleSetExpectationArgsDict']]]
     """
     ColumnMap rule which evaluates whether each column value is contained by a specified set.
     Structure is documented below.
     """
-    sql_assertion: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleSqlAssertionArgs']]]
+    sql_assertion: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleSqlAssertionArgsDict']]]
     """
     Table rule which evaluates whether any row matches invalid state.
     Structure is documented below.
     """
-    statistic_range_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']]]
+    statistic_range_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleStatisticRangeExpectationArgsDict']]]
     """
     ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
     Structure is documented below.
@@ -2557,12 +2557,12 @@ class DatascanDataQualitySpecRuleArgsDict(TypedDict):
     """
     Whether the Rule is active or suspended. Default = false.
     """
-    table_condition_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleTableConditionExpectationArgs']]]
+    table_condition_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleTableConditionExpectationArgsDict']]]
     """
     Table rule which evaluates whether the provided expression is true.
     Structure is documented below.
     """
-    template_reference: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleTemplateReferenceArgs']]]
+    template_reference: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleTemplateReferenceArgsDict']]]
     """
     Aggregate rule which references a rule template and provides the parameters to be substituted in the template.
     Structure is documented below.
@@ -2571,7 +2571,7 @@ class DatascanDataQualitySpecRuleArgsDict(TypedDict):
     """
     The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
     """
-    uniqueness_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleUniquenessExpectationArgs']]]
+    uniqueness_expectation: NotRequired[pulumi.Input[Optional['DatascanDataQualitySpecRuleUniquenessExpectationArgsDict']]]
     """
     Row-level rule which evaluates whether each column value is unique.
     """
@@ -3268,7 +3268,7 @@ class DatascanDataQualitySpecRuleTemplateReferenceArgsDict(TypedDict):
     """
     The resource name of the template entry.
     """
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatascanDataQualitySpecRuleTemplateReferenceValueArgs']]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DatascanDataQualitySpecRuleTemplateReferenceValueArgsDict']]]]]
     """
     The map of parameter name and value.
     Structure is documented below.
@@ -3371,16 +3371,16 @@ class DatascanDataQualitySpecRuleUniquenessExpectationArgs:
 
 
 class DatascanExecutionIdentityArgsDict(TypedDict):
-    dataplex_service_agent: NotRequired[pulumi.Input[Optional['DatascanExecutionIdentityDataplexServiceAgentArgs']]]
+    dataplex_service_agent: NotRequired[pulumi.Input[Optional['DatascanExecutionIdentityDataplexServiceAgentArgsDict']]]
     """
     The Dataplex service agent associated with the user's project.
     """
-    service_account: NotRequired[pulumi.Input[Optional['DatascanExecutionIdentityServiceAccountArgs']]]
+    service_account: NotRequired[pulumi.Input[Optional['DatascanExecutionIdentityServiceAccountArgsDict']]]
     """
     Service account to use to execute a datascan.
     Structure is documented below.
     """
-    user_credential: NotRequired[pulumi.Input[Optional['DatascanExecutionIdentityUserCredentialArgs']]]
+    user_credential: NotRequired[pulumi.Input[Optional['DatascanExecutionIdentityUserCredentialArgsDict']]]
     """
     The credential of the calling user. Supports only ONE_TIME trigger type.
     """
@@ -3540,16 +3540,16 @@ class DatascanExecutionSpecArgs:
 
 
 class DatascanExecutionSpecTriggerArgsDict(TypedDict):
-    on_demand: NotRequired[pulumi.Input[Optional['DatascanExecutionSpecTriggerOnDemandArgs']]]
+    on_demand: NotRequired[pulumi.Input[Optional['DatascanExecutionSpecTriggerOnDemandArgsDict']]]
     """
     The scan runs once via dataScans.run API.
     """
-    one_time: NotRequired[pulumi.Input[Optional['DatascanExecutionSpecTriggerOneTimeArgs']]]
+    one_time: NotRequired[pulumi.Input[Optional['DatascanExecutionSpecTriggerOneTimeArgsDict']]]
     """
     The scan runs once upon DataScan creation.
     Structure is documented below.
     """
-    schedule: NotRequired[pulumi.Input[Optional['DatascanExecutionSpecTriggerScheduleArgs']]]
+    schedule: NotRequired[pulumi.Input[Optional['DatascanExecutionSpecTriggerScheduleArgsDict']]]
     """
     The scan is scheduled to run periodically.
     Structure is documented below.
@@ -4000,7 +4000,7 @@ class EntryAspectAspectArgs:
 
 
 class EntryEntrySourceArgsDict(TypedDict):
-    ancestors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryEntrySourceAncestorArgs']]]]]
+    ancestors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EntryEntrySourceAncestorArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -5202,7 +5202,7 @@ class TaskExecutionSpecArgs:
 
 
 class TaskExecutionStatusArgsDict(TypedDict):
-    latest_jobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]]]]
+    latest_jobs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgsDict']]]]]
     """
     (Output)
     latest job execution.
@@ -5576,7 +5576,7 @@ class TaskNotebookArgsDict(TypedDict):
     """
     Cloud Storage URIs of files to be placed in the working directory of each executor.
     """
-    infrastructure_spec: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecArgs']]]
+    infrastructure_spec: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecArgsDict']]]
     """
     Infrastructure specification for the execution.
     Structure is documented below.
@@ -5655,17 +5655,17 @@ class TaskNotebookArgs:
 
 
 class TaskNotebookInfrastructureSpecArgsDict(TypedDict):
-    batch: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecBatchArgs']]]
+    batch: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecBatchArgsDict']]]
     """
     Compute resources needed for a Task when using Dataproc Serverless.
     Structure is documented below.
     """
-    container_image: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecContainerImageArgs']]]
+    container_image: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecContainerImageArgsDict']]]
     """
     Container Image Runtime Configuration.
     Structure is documented below.
     """
-    vpc_network: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecVpcNetworkArgs']]]
+    vpc_network: NotRequired[pulumi.Input[Optional['TaskNotebookInfrastructureSpecVpcNetworkArgsDict']]]
     """
     Vpc network.
     Structure is documented below.
@@ -5948,7 +5948,7 @@ class TaskSparkArgsDict(TypedDict):
     """
     Cloud Storage URIs of files to be placed in the working directory of each executor.
     """
-    infrastructure_spec: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecArgs']]]
+    infrastructure_spec: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecArgsDict']]]
     """
     Infrastructure specification for the execution.
     Structure is documented below.
@@ -6112,17 +6112,17 @@ class TaskSparkArgs:
 
 
 class TaskSparkInfrastructureSpecArgsDict(TypedDict):
-    batch: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecBatchArgs']]]
+    batch: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecBatchArgsDict']]]
     """
     Compute resources needed for a Task when using Dataproc Serverless.
     Structure is documented below.
     """
-    container_image: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecContainerImageArgs']]]
+    container_image: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecContainerImageArgsDict']]]
     """
     Container Image Runtime Configuration.
     Structure is documented below.
     """
-    vpc_network: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecVpcNetworkArgs']]]
+    vpc_network: NotRequired[pulumi.Input[Optional['TaskSparkInfrastructureSpecVpcNetworkArgsDict']]]
     """
     Vpc network.
     Structure is documented below.
@@ -6581,7 +6581,7 @@ class ZoneDiscoverySpecArgsDict(TypedDict):
     """
     Required. Whether discovery is enabled.
     """
-    csv_options: NotRequired[pulumi.Input[Optional['ZoneDiscoverySpecCsvOptionsArgs']]]
+    csv_options: NotRequired[pulumi.Input[Optional['ZoneDiscoverySpecCsvOptionsArgsDict']]]
     """
     Optional. Configuration for CSV data.
     """
@@ -6593,7 +6593,7 @@ class ZoneDiscoverySpecArgsDict(TypedDict):
     """
     Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
     """
-    json_options: NotRequired[pulumi.Input[Optional['ZoneDiscoverySpecJsonOptionsArgs']]]
+    json_options: NotRequired[pulumi.Input[Optional['ZoneDiscoverySpecJsonOptionsArgsDict']]]
     """
     Optional. Configuration for Json data.
     """

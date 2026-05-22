@@ -161,7 +161,7 @@ class BackupScheduleIncrementalBackupSpecArgs:
 
 
 class BackupScheduleSpecArgsDict(TypedDict):
-    cron_spec: NotRequired[pulumi.Input[Optional['BackupScheduleSpecCronSpecArgs']]]
+    cron_spec: NotRequired[pulumi.Input[Optional['BackupScheduleSpecCronSpecArgsDict']]]
     """
     Cron style schedule specification..
     Structure is documented below.
@@ -465,12 +465,12 @@ class DatabaseIAMMemberConditionArgs:
 
 
 class InstanceAutoscalingConfigArgsDict(TypedDict):
-    asymmetric_autoscaling_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs']]]]]
+    asymmetric_autoscaling_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgsDict']]]]]
     """
     Asymmetric autoscaling options for specific replicas.
     Structure is documented below.
     """
-    autoscaling_limits: NotRequired[pulumi.Input[Optional['InstanceAutoscalingConfigAutoscalingLimitsArgs']]]
+    autoscaling_limits: NotRequired[pulumi.Input[Optional['InstanceAutoscalingConfigAutoscalingLimitsArgsDict']]]
     """
     Defines scale in controls to reduce the risk of response latency
     and outages due to abrupt scale-in events. Users can define the minimum and
@@ -480,7 +480,7 @@ class InstanceAutoscalingConfigArgsDict(TypedDict):
     min_limit and max_limit.
     Structure is documented below.
     """
-    autoscaling_targets: NotRequired[pulumi.Input[Optional['InstanceAutoscalingConfigAutoscalingTargetsArgs']]]
+    autoscaling_targets: NotRequired[pulumi.Input[Optional['InstanceAutoscalingConfigAutoscalingTargetsArgsDict']]]
     """
     Defines scale in controls to reduce the risk of response latency
     and outages due to abrupt scale-in events
@@ -614,7 +614,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs:
 
 
 class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgsDict(TypedDict):
-    autoscaling_limits: NotRequired[pulumi.Input[Optional['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs']]]
+    autoscaling_limits: NotRequired[pulumi.Input[Optional['InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1227,7 +1227,7 @@ class InstanceIAMMemberConditionArgs:
 
 
 class InstancePartitionAutoscalingConfigArgsDict(TypedDict):
-    autoscaling_limits: NotRequired[pulumi.Input[Optional['InstancePartitionAutoscalingConfigAutoscalingLimitsArgs']]]
+    autoscaling_limits: NotRequired[pulumi.Input[Optional['InstancePartitionAutoscalingConfigAutoscalingLimitsArgsDict']]]
     """
     Defines scale in controls to reduce the risk of response latency
     and outages due to abrupt scale-in events. Users can define the minimum and
@@ -1237,7 +1237,7 @@ class InstancePartitionAutoscalingConfigArgsDict(TypedDict):
     min_limit and max_limit.
     Structure is documented below.
     """
-    autoscaling_targets: NotRequired[pulumi.Input[Optional['InstancePartitionAutoscalingConfigAutoscalingTargetsArgs']]]
+    autoscaling_targets: NotRequired[pulumi.Input[Optional['InstancePartitionAutoscalingConfigAutoscalingTargetsArgsDict']]]
     """
     Defines scale in controls to reduce the risk of response latency
     and outages due to abrupt scale-in events

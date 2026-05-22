@@ -806,7 +806,7 @@ class JobTemplateArgs:
 
 
 class JobTemplateTemplateArgsDict(TypedDict):
-    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerArgs']]]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerArgsDict']]]]]
     """
     Holds the single container that defines the unit of execution for this task.
     Structure is documented below.
@@ -828,7 +828,7 @@ class JobTemplateTemplateArgsDict(TypedDict):
     """
     Number of retries allowed per Task, before marking this Task failed. Defaults to 3. Minimum value is 0.
     """
-    node_selector: NotRequired[pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgs']]]
+    node_selector: NotRequired[pulumi.Input[Optional['JobTemplateTemplateNodeSelectorArgsDict']]]
     """
     Node Selector describes the hardware requirements of the resources.
     Structure is documented below.
@@ -842,12 +842,12 @@ class JobTemplateTemplateArgsDict(TypedDict):
     Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
     A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgs']]]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeArgsDict']]]]]
     """
     A list of Volumes to make available to containers.
     Structure is documented below.
     """
-    vpc_access: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgs']]]
+    vpc_access: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVpcAccessArgsDict']]]
     """
     VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     Structure is documented below.
@@ -1049,7 +1049,7 @@ class JobTemplateTemplateContainerArgsDict(TypedDict):
     """
     Names of the containers that must start before this container.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerEnvArgsDict']]]]]
     """
     List of environment variables to set in the container.
     Structure is documented below.
@@ -1058,25 +1058,25 @@ class JobTemplateTemplateContainerArgsDict(TypedDict):
     """
     Name of the container specified as a DNS_LABEL.
     """
-    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgs']]]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerPortArgsDict']]]]]
     """
     List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
     If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerResourcesArgs']]]
+    resources: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerResourcesArgsDict']]]
     """
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
-    startup_probe: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeArgs']]]
+    startup_probe: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeArgsDict']]]
     """
     Startup probe of application within the container.
     All other probes are disabled if a startup probe is provided, until it
     succeeds. Container will not be added to service endpoints if the probe fails.
     Structure is documented below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerVolumeMountArgsDict']]]]]
     """
     Volume to mount into the container's filesystem.
     Structure is documented below.
@@ -1293,7 +1293,7 @@ class JobTemplateTemplateContainerEnvArgsDict(TypedDict):
     """
     Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
     """
-    value_source: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceArgs']]]
+    value_source: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceArgsDict']]]
     """
     Source for the environment variable's value.
     Structure is documented below.
@@ -1356,7 +1356,7 @@ class JobTemplateTemplateContainerEnvArgs:
 
 
 class JobTemplateTemplateContainerEnvValueSourceArgsDict(TypedDict):
-    secret_key_ref: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs']]]
+    secret_key_ref: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]]
     """
     Selects a secret and a specific version from Cloud Secret Manager.
     Structure is documented below.
@@ -1518,12 +1518,12 @@ class JobTemplateTemplateContainerStartupProbeArgsDict(TypedDict):
     Minimum consecutive failures for the probe to be considered failed after
     having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeGrpcArgsDict']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeHttpGetArgsDict']]]
     """
     HttpGet specifies the http request to perform.
     Structure is documented below.
@@ -1539,7 +1539,7 @@ class JobTemplateTemplateContainerStartupProbeArgsDict(TypedDict):
     How often (in seconds) to perform the probe.
     Default to 10 seconds. Minimum value is 1. Maximum value is 240.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['JobTemplateTemplateContainerStartupProbeTcpSocketArgsDict']]]
     """
     TcpSocket specifies an action involving a TCP port.
     Structure is documented below.
@@ -1747,7 +1747,7 @@ class JobTemplateTemplateContainerStartupProbeGrpcArgs:
 
 
 class JobTemplateTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -2001,27 +2001,27 @@ class JobTemplateTemplateVolumeArgsDict(TypedDict):
     """
     Volume's name.
     """
-    cloud_sql_instance: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeCloudSqlInstanceArgs']]]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeCloudSqlInstanceArgsDict']]]
     """
     For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
     Structure is documented below.
     """
-    empty_dir: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeEmptyDirArgs']]]
+    empty_dir: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeEmptyDirArgsDict']]]
     """
     Ephemeral storage used as a shared volume.
     Structure is documented below.
     """
-    gcs: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeGcsArgsDict']]]
     """
     Cloud Storage bucket mounted as a volume using GCSFuse.
     Structure is documented below.
     """
-    nfs: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeNfsArgs']]]
+    nfs: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeNfsArgsDict']]]
     """
     NFS share mounted as a volume.
     Structure is documented below.
     """
-    secret: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeSecretArgs']]]
+    secret: NotRequired[pulumi.Input[Optional['JobTemplateTemplateVolumeSecretArgsDict']]]
     """
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
     Structure is documented below.
@@ -2371,7 +2371,7 @@ class JobTemplateTemplateVolumeSecretArgsDict(TypedDict):
     """
     Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
     """
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVolumeSecretItemArgsDict']]]]]
     """
     If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
     Structure is documented below.
@@ -2510,7 +2510,7 @@ class JobTemplateTemplateVpcAccessArgsDict(TypedDict):
     Traffic VPC egress settings.
     Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
     """
-    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgs']]]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['JobTemplateTemplateVpcAccessNetworkInterfaceArgsDict']]]]]
     """
     Direct VPC egress settings. Currently only single network interface is supported.
     Structure is documented below.
@@ -3549,7 +3549,7 @@ class ServiceTemplateArgsDict(TypedDict):
     All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
     This field follows Kubernetes annotations' namespacing, limits, and rules.
     """
-    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerArgs']]]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerArgsDict']]]]]
     """
     Holds the containers that define the unit of execution for this Service.
     Structure is documented below.
@@ -3583,7 +3583,7 @@ class ServiceTemplateArgsDict(TypedDict):
     Sets the maximum number of requests that each serving instance can receive.
     If not specified or 0, defaults to 80 when requested CPU >= 1 and defaults to 1 when requested CPU < 1.
     """
-    node_selector: NotRequired[pulumi.Input[Optional['ServiceTemplateNodeSelectorArgs']]]
+    node_selector: NotRequired[pulumi.Input[Optional['ServiceTemplateNodeSelectorArgsDict']]]
     """
     Node Selector describes the hardware requirements of the resources.
     Structure is documented below.
@@ -3592,7 +3592,7 @@ class ServiceTemplateArgsDict(TypedDict):
     """
     The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
     """
-    scaling: NotRequired[pulumi.Input[Optional['ServiceTemplateScalingArgs']]]
+    scaling: NotRequired[pulumi.Input[Optional['ServiceTemplateScalingArgsDict']]]
     """
     Scaling settings for this Revision.
     Structure is documented below.
@@ -3601,7 +3601,7 @@ class ServiceTemplateArgsDict(TypedDict):
     """
     Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
     """
-    service_mesh: NotRequired[pulumi.Input[Optional['ServiceTemplateServiceMeshArgs']]]
+    service_mesh: NotRequired[pulumi.Input[Optional['ServiceTemplateServiceMeshArgsDict']]]
     """
     (Optional, Beta)
     Enables Cloud Service Mesh for this Revision.
@@ -3616,12 +3616,12 @@ class ServiceTemplateArgsDict(TypedDict):
     Max allowed time for an instance to respond to a request.
     A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
     """
-    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeArgs']]]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeArgsDict']]]]]
     """
     A list of Volumes to make available to containers.
     Structure is documented below.
     """
-    vpc_access: NotRequired[pulumi.Input[Optional['ServiceTemplateVpcAccessArgs']]]
+    vpc_access: NotRequired[pulumi.Input[Optional['ServiceTemplateVpcAccessArgsDict']]]
     """
     VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     Structure is documented below.
@@ -3951,7 +3951,7 @@ class ServiceTemplateContainerArgsDict(TypedDict):
     """
     Base image for this container. If set, it indicates that the service is enrolled into automatic base image update.
     """
-    build_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgs']]]]]
+    build_infos: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerBuildInfoArgsDict']]]]]
     """
     (Output)
     The build info of the container image.
@@ -3965,12 +3965,12 @@ class ServiceTemplateContainerArgsDict(TypedDict):
     """
     Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerEnvArgsDict']]]]]
     """
     List of environment variables to set in the container.
     Structure is documented below.
     """
-    liveness_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeArgs']]]
+    liveness_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeArgsDict']]]
     """
     Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     Structure is documented below.
@@ -3979,34 +3979,34 @@ class ServiceTemplateContainerArgsDict(TypedDict):
     """
     Name of the container specified as a DNS_LABEL.
     """
-    ports: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerPortsArgs']]]
+    ports: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerPortsArgsDict']]]
     """
     List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible.
     If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on
     Structure is documented below.
     """
-    readiness_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeArgs']]]
+    readiness_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeArgsDict']]]
     """
     Periodic probe of container readiness.
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerResourcesArgs']]]
+    resources: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerResourcesArgsDict']]]
     """
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
-    source_code: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgs']]]
+    source_code: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerSourceCodeArgsDict']]]
     """
     (Optional, Beta)
     Location of the source.
     Structure is documented below.
     """
-    startup_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeArgs']]]
+    startup_probe: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeArgsDict']]]
     """
     Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
     Structure is documented below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerVolumeMountArgsDict']]]]]
     """
     Volume to mount into the container's filesystem.
     Structure is documented below.
@@ -4360,7 +4360,7 @@ class ServiceTemplateContainerEnvArgsDict(TypedDict):
     """
     Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
     """
-    value_source: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceArgs']]]
+    value_source: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceArgsDict']]]
     """
     Source for the environment variable's value.
     Structure is documented below.
@@ -4423,7 +4423,7 @@ class ServiceTemplateContainerEnvArgs:
 
 
 class ServiceTemplateContainerEnvValueSourceArgsDict(TypedDict):
-    secret_key_ref: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgs']]]
+    secret_key_ref: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]]
     """
     Selects a secret and a specific version from Cloud Secret Manager.
     Structure is documented below.
@@ -4507,12 +4507,12 @@ class ServiceTemplateContainerLivenessProbeArgsDict(TypedDict):
     """
     Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeGrpcArgsDict']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeHttpGetArgsDict']]]
     """
     HTTPGet specifies the http request to perform.
     Structure is documented below.
@@ -4525,7 +4525,7 @@ class ServiceTemplateContainerLivenessProbeArgsDict(TypedDict):
     """
     How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerLivenessProbeTcpSocketArgsDict']]]
     """
     TCPSocketAction describes an action based on opening a socket
     Structure is documented below.
@@ -4725,7 +4725,7 @@ class ServiceTemplateContainerLivenessProbeGrpcArgs:
 
 
 class ServiceTemplateContainerLivenessProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs']]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgsDict']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -4933,12 +4933,12 @@ class ServiceTemplateContainerReadinessProbeArgsDict(TypedDict):
     Minimum consecutive failures for the probe to be considered failed after
     having succeeded. Defaults to 3.
     """
-    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeGrpcArgsDict']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerReadinessProbeHttpGetArgsDict']]]
     """
     HttpGet specifies the http request to perform.
     Structure is documented below.
@@ -5263,7 +5263,7 @@ class ServiceTemplateContainerResourcesArgs:
 
 
 class ServiceTemplateContainerSourceCodeArgsDict(TypedDict):
-    cloud_storage_source: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerSourceCodeCloudStorageSourceArgs']]]
+    cloud_storage_source: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerSourceCodeCloudStorageSourceArgsDict']]]
     """
     Cloud Storage source.
     Structure is documented below.
@@ -5366,12 +5366,12 @@ class ServiceTemplateContainerStartupProbeArgsDict(TypedDict):
     """
     Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeGrpcArgsDict']]]
     """
     GRPC specifies an action involving a GRPC port.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeHttpGetArgsDict']]]
     """
     HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
     Structure is documented below.
@@ -5384,7 +5384,7 @@ class ServiceTemplateContainerStartupProbeArgsDict(TypedDict):
     """
     How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ServiceTemplateContainerStartupProbeTcpSocketArgsDict']]]
     """
     TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
     Structure is documented below.
@@ -5584,7 +5584,7 @@ class ServiceTemplateContainerStartupProbeGrpcArgs:
 
 
 class ServiceTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgs']]]]]
+    http_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateContainerStartupProbeHttpGetHttpHeaderArgsDict']]]]]
     """
     Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -5916,27 +5916,27 @@ class ServiceTemplateVolumeArgsDict(TypedDict):
     """
     Volume's name.
     """
-    cloud_sql_instance: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeCloudSqlInstanceArgs']]]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeCloudSqlInstanceArgsDict']]]
     """
     For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
     Structure is documented below.
     """
-    empty_dir: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeEmptyDirArgs']]]
+    empty_dir: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeEmptyDirArgsDict']]]
     """
     Ephemeral storage used as a shared volume.
     Structure is documented below.
     """
-    gcs: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeGcsArgsDict']]]
     """
     Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
     Structure is documented below.
     """
-    nfs: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeNfsArgs']]]
+    nfs: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeNfsArgsDict']]]
     """
     Represents an NFS mount.
     Structure is documented below.
     """
-    secret: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeSecretArgs']]]
+    secret: NotRequired[pulumi.Input[Optional['ServiceTemplateVolumeSecretArgsDict']]]
     """
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
     Structure is documented below.
@@ -6285,7 +6285,7 @@ class ServiceTemplateVolumeSecretArgsDict(TypedDict):
     """
     Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
     """
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVolumeSecretItemArgsDict']]]]]
     """
     If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
     Structure is documented below.
@@ -6425,7 +6425,7 @@ class ServiceTemplateVpcAccessArgsDict(TypedDict):
     Traffic VPC egress settings.
     Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
     """
-    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgs']]]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceTemplateVpcAccessNetworkInterfaceArgsDict']]]]]
     """
     Direct VPC egress settings. Currently only single network interface is supported.
     Structure is documented below.
@@ -7586,7 +7586,7 @@ class WorkerPoolTemplateArgsDict(TypedDict):
     All system annotations in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
     This field follows Kubernetes annotations' namespacing, limits, and rules.
     """
-    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgs']]]]]
+    containers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerArgsDict']]]]]
     """
     Holds the containers that define the unit of execution for this WorkerPool.
     Structure is documented below.
@@ -7616,7 +7616,7 @@ class WorkerPoolTemplateArgsDict(TypedDict):
     Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
     All system labels in v1 now have a corresponding field in v2 WorkerPoolRevisionTemplate.
     """
-    node_selector: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateNodeSelectorArgs']]]
+    node_selector: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateNodeSelectorArgsDict']]]
     """
     Node Selector describes the hardware requirements of the resources.
     Structure is documented below.
@@ -7629,12 +7629,12 @@ class WorkerPoolTemplateArgsDict(TypedDict):
     """
     Email address of the IAM service account associated with the revision of the WorkerPool. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
     """
-    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgs']]]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeArgsDict']]]]]
     """
     A list of Volumes to make available to containers.
     Structure is documented below.
     """
-    vpc_access: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVpcAccessArgs']]]
+    vpc_access: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVpcAccessArgsDict']]]
     """
     VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
     Structure is documented below.
@@ -7880,12 +7880,12 @@ class WorkerPoolTemplateContainerArgsDict(TypedDict):
     """
     Names of the containers that must start before this container.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerEnvArgsDict']]]]]
     """
     List of environment variables to set in the container.
     Structure is documented below.
     """
-    liveness_probe: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeArgs']]]
+    liveness_probe: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeArgsDict']]]
     """
     Periodic probe of container liveness. Container will be restarted if the probe fails.
     Structure is documented below.
@@ -7894,17 +7894,17 @@ class WorkerPoolTemplateContainerArgsDict(TypedDict):
     """
     Name of the container specified as a DNS_LABEL.
     """
-    resources: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerResourcesArgs']]]
+    resources: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerResourcesArgsDict']]]
     """
     Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
     Structure is documented below.
     """
-    startup_probe: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeArgs']]]
+    startup_probe: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeArgsDict']]]
     """
     Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
     Structure is documented below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgs']]]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateContainerVolumeMountArgsDict']]]]]
     """
     Volume to mount into the container's filesystem.
     Structure is documented below.
@@ -8115,7 +8115,7 @@ class WorkerPoolTemplateContainerEnvArgsDict(TypedDict):
     """
     Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
     """
-    value_source: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceArgs']]]
+    value_source: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceArgsDict']]]
     """
     Source for the environment variable's value.
     Structure is documented below.
@@ -8178,7 +8178,7 @@ class WorkerPoolTemplateContainerEnvArgs:
 
 
 class WorkerPoolTemplateContainerEnvValueSourceArgsDict(TypedDict):
-    secret_key_ref: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgs']]]
+    secret_key_ref: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerEnvValueSourceSecretKeyRefArgsDict']]]
     """
     Selects a secret and a specific version from Cloud Secret Manager.
     Structure is documented below.
@@ -8262,12 +8262,12 @@ class WorkerPoolTemplateContainerLivenessProbeArgsDict(TypedDict):
     """
     Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeGrpcArgsDict']]]
     """
     Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetArgsDict']]]
     """
     Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
@@ -8280,7 +8280,7 @@ class WorkerPoolTemplateContainerLivenessProbeArgsDict(TypedDict):
     """
     Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeTcpSocketArgsDict']]]
     """
     Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
@@ -8465,7 +8465,7 @@ class WorkerPoolTemplateContainerLivenessProbeGrpcArgs:
 
 
 class WorkerPoolTemplateContainerLivenessProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgs']]]
+    http_headers: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerLivenessProbeHttpGetHttpHeadersArgsDict']]]
     """
     Optional. Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -8647,12 +8647,12 @@ class WorkerPoolTemplateContainerStartupProbeArgsDict(TypedDict):
     """
     Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
     """
-    grpc: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeGrpcArgs']]]
+    grpc: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeGrpcArgsDict']]]
     """
     Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
     """
-    http_get: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetArgs']]]
+    http_get: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetArgsDict']]]
     """
     Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
@@ -8665,7 +8665,7 @@ class WorkerPoolTemplateContainerStartupProbeArgsDict(TypedDict):
     """
     Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
     """
-    tcp_socket: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeTcpSocketArgs']]]
+    tcp_socket: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeTcpSocketArgsDict']]]
     """
     Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
     Structure is documented below.
@@ -8850,7 +8850,7 @@ class WorkerPoolTemplateContainerStartupProbeGrpcArgs:
 
 
 class WorkerPoolTemplateContainerStartupProbeHttpGetArgsDict(TypedDict):
-    http_headers: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgs']]]
+    http_headers: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeadersArgsDict']]]
     """
     Optional. Custom headers to set in the request. HTTP allows repeated headers.
     Structure is documented below.
@@ -9098,27 +9098,27 @@ class WorkerPoolTemplateVolumeArgsDict(TypedDict):
     """
     Volume's name.
     """
-    cloud_sql_instance: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeCloudSqlInstanceArgs']]]
+    cloud_sql_instance: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeCloudSqlInstanceArgsDict']]]
     """
     For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
     Structure is documented below.
     """
-    empty_dir: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeEmptyDirArgs']]]
+    empty_dir: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeEmptyDirArgsDict']]]
     """
     Ephemeral storage used as a shared volume.
     Structure is documented below.
     """
-    gcs: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeGcsArgsDict']]]
     """
     Cloud Storage bucket mounted as a volume using GCSFuse. This feature is only supported in the gen2 execution environment.
     Structure is documented below.
     """
-    nfs: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeNfsArgs']]]
+    nfs: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeNfsArgsDict']]]
     """
     Represents an NFS mount.
     Structure is documented below.
     """
-    secret: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeSecretArgs']]]
+    secret: NotRequired[pulumi.Input[Optional['WorkerPoolTemplateVolumeSecretArgsDict']]]
     """
     Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
     Structure is documented below.
@@ -9467,7 +9467,7 @@ class WorkerPoolTemplateVolumeSecretArgsDict(TypedDict):
     """
     Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting.
     """
-    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgs']]]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVolumeSecretItemArgsDict']]]]]
     """
     If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version.
     Structure is documented below.
@@ -9607,7 +9607,7 @@ class WorkerPoolTemplateVpcAccessArgsDict(TypedDict):
     Traffic VPC egress settings.
     Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
     """
-    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgs']]]]]
+    network_interfaces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['WorkerPoolTemplateVpcAccessNetworkInterfaceArgsDict']]]]]
     """
     Direct VPC egress settings. Currently only single network interface is supported.
     Structure is documented below.

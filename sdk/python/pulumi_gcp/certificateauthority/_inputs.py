@@ -277,7 +277,7 @@ class AuthorityConfigArgsDict(TypedDict):
     Describes how some of the technical X.509 fields in a certificate should be populated.
     Structure is documented below.
     """
-    subject_key_id: NotRequired[pulumi.Input[Optional['AuthorityConfigSubjectKeyIdArgs']]]
+    subject_key_id: NotRequired[pulumi.Input[Optional['AuthorityConfigSubjectKeyIdArgsDict']]]
     """
     When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
     Structure is documented below.
@@ -348,7 +348,7 @@ class AuthorityConfigSubjectConfigArgsDict(TypedDict):
     Contains distinguished name fields such as the location and organization.
     Structure is documented below.
     """
-    subject_alt_name: NotRequired[pulumi.Input[Optional['AuthorityConfigSubjectConfigSubjectAltNameArgs']]]
+    subject_alt_name: NotRequired[pulumi.Input[Optional['AuthorityConfigSubjectConfigSubjectAltNameArgsDict']]]
     """
     The subject alternative name fields.
     Structure is documented below.
@@ -697,7 +697,7 @@ class AuthorityConfigX509ConfigArgsDict(TypedDict):
     """
     Indicates the intended use for keys that correspond to a certificate.
     """
-    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgs']]]]]
+    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityConfigX509ConfigAdditionalExtensionArgsDict']]]]]
     """
     Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
     """
@@ -706,11 +706,11 @@ class AuthorityConfigX509ConfigArgsDict(TypedDict):
     Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
     "Authority Information Access" extension in the certificate.
     """
-    name_constraints: NotRequired[pulumi.Input[Optional['AuthorityConfigX509ConfigNameConstraintsArgs']]]
+    name_constraints: NotRequired[pulumi.Input[Optional['AuthorityConfigX509ConfigNameConstraintsArgsDict']]]
     """
     Describes the X.509 name constraints extension.
     """
-    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgs']]]]]
+    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityConfigX509ConfigPolicyIdArgsDict']]]]]
     """
     Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
     """
@@ -1032,7 +1032,7 @@ class AuthorityConfigX509ConfigKeyUsageArgsDict(TypedDict):
     Describes high-level ways in which a key may be used.
     Structure is documented below.
     """
-    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]]]
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict']]]]]
     """
     An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
     Structure is documented below.
@@ -1797,7 +1797,7 @@ class AuthoritySubordinateConfigArgsDict(TypedDict):
     and usability purposes only. The resource name is in the format
     `projects/*/locations/*/caPools/*/certificateAuthorities/*`.
     """
-    pem_issuer_chain: NotRequired[pulumi.Input[Optional['AuthoritySubordinateConfigPemIssuerChainArgs']]]
+    pem_issuer_chain: NotRequired[pulumi.Input[Optional['AuthoritySubordinateConfigPemIssuerChainArgsDict']]]
     """
     Contains the PEM certificate chain for the issuers of this CertificateAuthority,
     but not pem certificate for this CA itself.
@@ -2122,12 +2122,12 @@ class CaPoolIamMemberConditionArgs:
 
 
 class CaPoolIssuancePolicyArgsDict(TypedDict):
-    allowed_issuance_modes: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyAllowedIssuanceModesArgs']]]
+    allowed_issuance_modes: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyAllowedIssuanceModesArgsDict']]]
     """
     IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
     Structure is documented below.
     """
-    allowed_key_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgs']]]]]
+    allowed_key_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyAllowedKeyTypeArgsDict']]]]]
     """
     If any AllowedKeyType is specified, then the certificate request's public key must match one of the key types listed here.
     Otherwise, any key may be used. You can specify only one key type of those listed here.
@@ -2141,7 +2141,7 @@ class CaPoolIssuancePolicyArgsDict(TypedDict):
     time minus the backdate_duration. The not_after_time will be adjusted to preserve the
     requested lifetime. The backdate_duration must be less than or equal to 48 hours.
     """
-    baseline_values: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyBaselineValuesArgs']]]
+    baseline_values: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyBaselineValuesArgsDict']]]
     """
     A set of X.509 values that will be applied to all certificates issued through this CaPool. If a certificate request
     includes conflicting values for the same properties, they will be overwritten by the values defined here. If a certificate
@@ -2149,7 +2149,7 @@ class CaPoolIssuancePolicyArgsDict(TypedDict):
     issuance request will fail.
     Structure is documented below.
     """
-    identity_constraints: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyIdentityConstraintsArgs']]]
+    identity_constraints: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyIdentityConstraintsArgsDict']]]
     """
     Describes constraints on identities that may appear in Certificates issued through this CaPool.
     If this is omitted, then this CaPool will not add restrictions on a certificate's identity.
@@ -2340,12 +2340,12 @@ class CaPoolIssuancePolicyAllowedIssuanceModesArgs:
 
 
 class CaPoolIssuancePolicyAllowedKeyTypeArgsDict(TypedDict):
-    elliptic_curve: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs']]]
+    elliptic_curve: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgsDict']]]
     """
     Represents an allowed Elliptic Curve key type.
     Structure is documented below.
     """
-    rsa: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyAllowedKeyTypeRsaArgs']]]
+    rsa: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyAllowedKeyTypeRsaArgsDict']]]
     """
     Describes an RSA key that may be used in a Certificate issued from a CaPool.
     Structure is documented below.
@@ -2491,7 +2491,7 @@ class CaPoolIssuancePolicyBaselineValuesArgsDict(TypedDict):
     Indicates the intended use for keys that correspond to a certificate.
     Structure is documented below.
     """
-    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs']]]]]
+    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgsDict']]]]]
     """
     Specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
     Structure is documented below.
@@ -2501,12 +2501,12 @@ class CaPoolIssuancePolicyBaselineValuesArgsDict(TypedDict):
     Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
     "Authority Information Access" extension in the certificate.
     """
-    name_constraints: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgs']]]
+    name_constraints: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyBaselineValuesNameConstraintsArgsDict']]]
     """
     Describes the X.509 name constraints extension.
     Structure is documented below.
     """
-    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgs']]]]]
+    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesPolicyIdArgsDict']]]]]
     """
     Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
     Structure is documented below.
@@ -2837,7 +2837,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsageArgsDict(TypedDict):
     Describes high-level ways in which a key may be used.
     Structure is documented below.
     """
-    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgs']]]]]
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsageArgsDict']]]]]
     """
     An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
     Structure is documented below.
@@ -3547,7 +3547,7 @@ class CaPoolIssuancePolicyIdentityConstraintsArgsDict(TypedDict):
     If this is set, the Subject field may be copied from a certificate request into the signed certificate.
     Otherwise, the requested Subject will be discarded.
     """
-    cel_expression: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs']]]
+    cel_expression: NotRequired[pulumi.Input[Optional['CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgsDict']]]
     """
     A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a
     certificate is signed. To see the full allowed syntax and some examples,
@@ -3803,13 +3803,13 @@ class CertificateCertificateDescriptionArgsDict(TypedDict):
     (Output)
     Describes lists of issuer CA certificate URLs that appear in the "Authority Information Access" extension in the certificate.
     """
-    authority_key_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]]]]
+    authority_key_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgsDict']]]]]
     """
     (Output)
     Identifies the subjectKeyId of the parent certificate, per https://tools.ietf.org/html/rfc5280#section-4.2.1.1
     Structure is documented below.
     """
-    cert_fingerprints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]]]]
+    cert_fingerprints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgsDict']]]]]
     """
     (Output)
     The hash of the x.509 certificate.
@@ -3820,25 +3820,25 @@ class CertificateCertificateDescriptionArgsDict(TypedDict):
     (Output)
     Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
     """
-    public_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]]]]
+    public_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgsDict']]]]]
     """
     (Output)
     A PublicKey describes a public key.
     Structure is documented below.
     """
-    subject_descriptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]]]]
+    subject_descriptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgsDict']]]]]
     """
     (Output)
     Describes some of the values in a certificate that are related to the subject and lifetime.
     Structure is documented below.
     """
-    subject_key_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]]]]
+    subject_key_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgsDict']]]]]
     """
     (Output)
     Provides a means of identifiying certificates that contain a particular public key, per https://tools.ietf.org/html/rfc5280#section-4.2.1.2.
     Structure is documented below.
     """
-    x509_descriptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgs']]]]]
+    x509_descriptions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionArgsDict']]]]]
     """
     (Output)
     A structured description of the issued X.509 certificate.
@@ -4146,13 +4146,13 @@ class CertificateCertificateDescriptionSubjectDescriptionArgsDict(TypedDict):
     (Output)
     The time at which the certificate becomes valid.
     """
-    subject_alt_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]]]]
+    subject_alt_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgsDict']]]]]
     """
     (Output)
     The subject alternative name fields.
     Structure is documented below.
     """
-    subjects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]]]]
+    subjects: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgsDict']]]]]
     """
     (Output)
     Contains distinguished name fields such as the location and organization.
@@ -4450,7 +4450,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectArgs:
 
 
 class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgsDict(TypedDict):
-    custom_sans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]]]]
+    custom_sans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgsDict']]]]]
     """
     (Output)
     Contains additional subject alternative name values.
@@ -4570,7 +4570,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     (Output)
     Indicates whether or not the name constraints are marked critical.
     """
-    obect_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]]]]
+    obect_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgsDict']]]]]
     """
     (Output)
     Describes how some of the technical fields in a certificate should be populated.
@@ -4704,7 +4704,7 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
 
 
 class CertificateCertificateDescriptionX509DescriptionArgsDict(TypedDict):
-    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgs']]]]]
+    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgsDict']]]]]
     """
     (Output)
     Describes custom X.509 extensions.
@@ -4716,25 +4716,25 @@ class CertificateCertificateDescriptionX509DescriptionArgsDict(TypedDict):
     Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
     "Authority Information Access" extension in the certificate.
     """
-    ca_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgs']]]]]
+    ca_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionCaOptionArgsDict']]]]]
     """
     (Output)
     Describes values that are relevant in a CA certificate.
     Structure is documented below.
     """
-    key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgs']]]]]
+    key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageArgsDict']]]]]
     """
     (Output)
     Indicates the intended use for keys that correspond to a certificate.
     Structure is documented below.
     """
-    name_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgs']]]]]
+    name_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionNameConstraintArgsDict']]]]]
     """
     (Output)
     Describes the X.509 name constraints extension.
     Structure is documented below.
     """
-    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgs']]]]]
+    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionPolicyIdArgsDict']]]]]
     """
     (Output)
     Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
@@ -4874,7 +4874,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtensionArgsDic
     Indicates whether or not this extension is critical (i.e., if the client does not know how to
     handle this extension, the client should consider this to be an error).
     """
-    object_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgs']]]]]
+    object_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectIdArgsDict']]]]]
     """
     Describes values that are relevant in a CA certificate.
     Structure is documented below.
@@ -5025,17 +5025,17 @@ class CertificateCertificateDescriptionX509DescriptionCaOptionArgs:
 
 
 class CertificateCertificateDescriptionX509DescriptionKeyUsageArgsDict(TypedDict):
-    base_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgs']]]]]
+    base_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsageArgsDict']]]]]
     """
     Describes high-level ways in which a key may be used.
     Structure is documented below.
     """
-    extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgs']]]]]
+    extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsageArgsDict']]]]]
     """
     Describes high-level ways in which a key may be used.
     Structure is documented below.
     """
-    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgs']]]]]
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsageArgsDict']]]]]
     """
     An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
     Structure is documented below.
@@ -5758,7 +5758,7 @@ class CertificateConfigArgsDict(TypedDict):
     Describes how some of the technical X.509 fields in a certificate should be populated.
     Structure is documented below.
     """
-    subject_key_id: NotRequired[pulumi.Input[Optional['CertificateConfigSubjectKeyIdArgs']]]
+    subject_key_id: NotRequired[pulumi.Input[Optional['CertificateConfigSubjectKeyIdArgsDict']]]
     """
     When specified this provides a custom SKI to be used in the certificate. This should only be used to maintain a SKI of an existing CA originally created outside CA service, which was not generated using method (1) described in RFC 5280 section 4.2.1.2..
     Structure is documented below.
@@ -5903,7 +5903,7 @@ class CertificateConfigSubjectConfigArgsDict(TypedDict):
     Contains distinguished name fields such as the location and organization.
     Structure is documented below.
     """
-    subject_alt_name: NotRequired[pulumi.Input[Optional['CertificateConfigSubjectConfigSubjectAltNameArgs']]]
+    subject_alt_name: NotRequired[pulumi.Input[Optional['CertificateConfigSubjectConfigSubjectAltNameArgsDict']]]
     """
     The subject alternative name fields.
     Structure is documented below.
@@ -6243,7 +6243,7 @@ class CertificateConfigX509ConfigArgsDict(TypedDict):
     Indicates the intended use for keys that correspond to a certificate.
     Structure is documented below.
     """
-    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgs']]]]]
+    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateConfigX509ConfigAdditionalExtensionArgsDict']]]]]
     """
     (Output)
     Describes custom X.509 extensions.
@@ -6255,19 +6255,19 @@ class CertificateConfigX509ConfigArgsDict(TypedDict):
     Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the
     "Authority Information Access" extension in the certificate.
     """
-    ca_options: NotRequired[pulumi.Input[Optional['CertificateConfigX509ConfigCaOptionsArgs']]]
+    ca_options: NotRequired[pulumi.Input[Optional['CertificateConfigX509ConfigCaOptionsArgsDict']]]
     """
     (Output)
     Describes values that are relevant in a CA certificate.
     Structure is documented below.
     """
-    name_constraints: NotRequired[pulumi.Input[Optional['CertificateConfigX509ConfigNameConstraintsArgs']]]
+    name_constraints: NotRequired[pulumi.Input[Optional['CertificateConfigX509ConfigNameConstraintsArgsDict']]]
     """
     (Output)
     Describes the X.509 name constraints extension.
     Structure is documented below.
     """
-    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgs']]]]]
+    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateConfigX509ConfigPolicyIdArgsDict']]]]]
     """
     (Output)
     Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
@@ -6612,7 +6612,7 @@ class CertificateConfigX509ConfigKeyUsageArgsDict(TypedDict):
     Describes high-level ways in which a key may be used.
     Structure is documented below.
     """
-    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs']]]]]
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgsDict']]]]]
     """
     An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
     Structure is documented below.
@@ -7533,7 +7533,7 @@ class CertificateTemplateIdentityConstraintsArgsDict(TypedDict):
     """
     Required. If this is true, the Subject field may be copied from a certificate request into the signed certificate. Otherwise, the requested Subject will be discarded.
     """
-    cel_expression: NotRequired[pulumi.Input[Optional['CertificateTemplateIdentityConstraintsCelExpressionArgs']]]
+    cel_expression: NotRequired[pulumi.Input[Optional['CertificateTemplateIdentityConstraintsCelExpressionArgsDict']]]
     """
     Optional. A CEL expression that may be used to validate the resolved X.509 Subject and/or Subject Alternative Name before a certificate is signed. To see the full allowed syntax and some examples, see https://cloud.google.com/certificate-authority-service/docs/using-cel
     Structure is documented below.
@@ -7684,7 +7684,7 @@ class CertificateTemplateIdentityConstraintsCelExpressionArgs:
 
 
 class CertificateTemplatePassthroughExtensionsArgsDict(TypedDict):
-    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs']]]]]
+    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePassthroughExtensionsAdditionalExtensionArgsDict']]]]]
     """
     Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
     Structure is documented below.
@@ -7764,7 +7764,7 @@ class CertificateTemplatePassthroughExtensionsAdditionalExtensionArgs:
 
 
 class CertificateTemplatePredefinedValuesArgsDict(TypedDict):
-    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgs']]]]]
+    additional_extensions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesAdditionalExtensionArgsDict']]]]]
     """
     Optional. Describes custom X.509 extensions.
     Structure is documented below.
@@ -7773,22 +7773,22 @@ class CertificateTemplatePredefinedValuesArgsDict(TypedDict):
     """
     Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
     """
-    ca_options: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesCaOptionsArgs']]]
+    ca_options: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesCaOptionsArgsDict']]]
     """
     Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
     Structure is documented below.
     """
-    key_usage: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesKeyUsageArgs']]]
+    key_usage: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesKeyUsageArgsDict']]]
     """
     Optional. Indicates the intended use for keys that correspond to a certificate.
     Structure is documented below.
     """
-    name_constraints: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesNameConstraintsArgs']]]
+    name_constraints: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesNameConstraintsArgsDict']]]
     """
     Describes the X.509 name constraints extension.
     Structure is documented below.
     """
-    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgs']]]]]
+    policy_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesPolicyIdArgsDict']]]]]
     """
     Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
     Structure is documented below.
@@ -8110,17 +8110,17 @@ class CertificateTemplatePredefinedValuesCaOptionsArgs:
 
 
 class CertificateTemplatePredefinedValuesKeyUsageArgsDict(TypedDict):
-    base_key_usage: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgs']]]
+    base_key_usage: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsageArgsDict']]]
     """
     Describes high-level ways in which a key may be used.
     Structure is documented below.
     """
-    extended_key_usage: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgs']]]
+    extended_key_usage: NotRequired[pulumi.Input[Optional['CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsageArgsDict']]]
     """
     Detailed scenarios in which a key may be used.
     Structure is documented below.
     """
-    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgs']]]]]
+    unknown_extended_key_usages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsageArgsDict']]]]]
     """
     Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
     Structure is documented below.

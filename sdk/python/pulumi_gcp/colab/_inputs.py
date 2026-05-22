@@ -68,17 +68,17 @@ __all__ = [
 ]
 
 class NotebookExecutionCustomEnvironmentSpecArgsDict(TypedDict):
-    machine_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecMachineSpecArgs']]]
+    machine_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecMachineSpecArgsDict']]]
     """
     'The machine configuration of the runtime.'
     Structure is documented below.
     """
-    network_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgs']]]
+    network_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecNetworkSpecArgsDict']]]
     """
     The network configuration for the runtime.
     Structure is documented below.
     """
-    persistent_disk_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgs']]]
+    persistent_disk_spec: NotRequired[pulumi.Input[Optional['NotebookExecutionCustomEnvironmentSpecPersistentDiskSpecArgsDict']]]
     """
     The configuration for the data disk of the runtime.
     Structure is documented below.
@@ -876,17 +876,17 @@ class RuntimeTemplateShieldedVmConfigArgs:
 
 
 class RuntimeTemplateSoftwareConfigArgsDict(TypedDict):
-    colab_image: NotRequired[pulumi.Input[Optional['RuntimeTemplateSoftwareConfigColabImageArgs']]]
+    colab_image: NotRequired[pulumi.Input[Optional['RuntimeTemplateSoftwareConfigColabImageArgsDict']]]
     """
     Colab Image Configuration.
     Structure is documented below.
     """
-    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgs']]]]]
+    envs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeTemplateSoftwareConfigEnvArgsDict']]]]]
     """
     Environment variables to be passed to the container.
     Structure is documented below.
     """
-    post_startup_script_config: NotRequired[pulumi.Input[Optional['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgs']]]
+    post_startup_script_config: NotRequired[pulumi.Input[Optional['RuntimeTemplateSoftwareConfigPostStartupScriptConfigArgsDict']]]
     """
     Post startup script config.
     Structure is documented below.
@@ -1147,7 +1147,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict(Type
     """
     The NotebookRuntimeTemplate to source compute configuration from.
     """
-    dataform_repository_source: NotRequired[pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgs']]]
+    dataform_repository_source: NotRequired[pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobDataformRepositorySourceArgsDict']]]
     """
     The Dataform Repository containing the input notebook.
     Structure is documented below.
@@ -1160,7 +1160,7 @@ class ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobArgsDict(Type
     """
     The user email to run the execution as.
     """
-    gcs_notebook_source: NotRequired[pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgs']]]
+    gcs_notebook_source: NotRequired[pulumi.Input[Optional['ScheduleCreateNotebookExecutionJobRequestNotebookExecutionJobGcsNotebookSourceArgsDict']]]
     """
     The Cloud Storage uri for the input notebook.
     Structure is documented below.

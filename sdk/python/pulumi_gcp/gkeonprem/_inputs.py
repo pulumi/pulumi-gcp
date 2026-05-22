@@ -382,7 +382,7 @@ class BareMetalAdminClusterControlPlaneArgsDict(TypedDict):
     Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
     Structure is documented below.
     """
-    api_server_args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgs']]]]]
+    api_server_args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneApiServerArgArgsDict']]]]]
     """
     Customizes the default API server args. Only a subset of
     customized flags are supported. Please refer to the API server
@@ -525,7 +525,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
     Example:
     { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -533,7 +533,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigA
     """
     The available Operating Systems to be run in a Node.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -791,12 +791,12 @@ class BareMetalAdminClusterLoadBalancerArgsDict(TypedDict):
     Specified the Bare Metal Load Balancer Config
     Structure is documented below.
     """
-    bgp_lb_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigArgs']]]
+    bgp_lb_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerManualLbConfigArgs']]]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerManualLbConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -880,7 +880,7 @@ class BareMetalAdminClusterLoadBalancerArgs:
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
-    address_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgs']]]]]
+    address_pools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigAddressPoolArgsDict']]]]]
     """
     a list of non-overlapping IP pools used
     by load balancer typed services.
@@ -890,12 +890,12 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
     """
     BGP autonomous system number (ASN) of the cluster.
     """
-    bgp_peer_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs']]]]]
+    bgp_peer_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgsDict']]]]]
     """
     BGP autonomous system number (ASN) of the cluster.
     Structure is documented below.
     """
-    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]]
+    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1145,7 +1145,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
-    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]]
+    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1177,7 +1177,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs
 
 
 class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
-    kubelet_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]]
+    kubelet_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1189,7 +1189,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
     Example:
     { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -1197,7 +1197,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
     """
     The available Operating Systems to be run in a Node.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -1619,12 +1619,12 @@ class BareMetalAdminClusterNetworkConfigArgsDict(TypedDict):
     """
     Enables the use of advanced Anthos networking features.
     """
-    island_mode_cidr: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigIslandModeCidrArgs']]]
+    island_mode_cidr: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigIslandModeCidrArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    multiple_network_interfaces_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]]
+    multiple_network_interfaces_config: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict']]]
     """
     Configuration for multiple network interfaces.
     Structure is documented below.
@@ -1893,7 +1893,7 @@ class BareMetalAdminClusterProxyArgs:
 
 
 class BareMetalAdminClusterSecurityConfigArgsDict(TypedDict):
-    authorization: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterSecurityConfigAuthorizationArgs']]]
+    authorization: NotRequired[pulumi.Input[Optional['BareMetalAdminClusterSecurityConfigAuthorizationArgsDict']]]
     """
     Configures user access to the Bare Metal User cluster.
     Structure is documented below.
@@ -1984,7 +1984,7 @@ class BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs:
 
 
 class BareMetalAdminClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -2395,7 +2395,7 @@ class BareMetalAdminClusterValidationCheckArgsDict(TypedDict):
     (Output)
     The scenario when the preflight checks were run..
     """
-    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgs']]]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusArgsDict']]]]]
     """
     (Output)
     Specifies the detailed validation check status
@@ -2466,7 +2466,7 @@ class BareMetalAdminClusterValidationCheckArgs:
 
 
 class BareMetalAdminClusterValidationCheckStatusArgsDict(TypedDict):
-    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgs']]]]]
+    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalAdminClusterValidationCheckStatusResultArgsDict']]]]]
     """
     (Output)
     Individual checks which failed as part of the Preflight check execution.
@@ -2691,7 +2691,7 @@ class BareMetalClusterControlPlaneArgsDict(TypedDict):
     Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
     Structure is documented below.
     """
-    api_server_args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgs']]]]]
+    api_server_args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneApiServerArgArgsDict']]]]]
     """
     Customizes the default API server args. Only a subset of
     customized flags are supported. Please refer to the API server
@@ -2840,7 +2840,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDi
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]]
     """
     The list of machine addresses in the Bare Metal Node Pool.
     Structure is documented below.
@@ -2849,7 +2849,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgsDi
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgsDict']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -3148,17 +3148,17 @@ class BareMetalClusterLoadBalancerArgsDict(TypedDict):
     Specified the Bare Metal Load Balancer Config
     Structure is documented below.
     """
-    bgp_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigArgs']]]
+    bgp_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigArgsDict']]]
     """
     Configuration for BGP typed load balancers.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerManualLbConfigArgs']]]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerManualLbConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    metal_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigArgs']]]
+    metal_lb_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -3281,7 +3281,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigArgsDict(TypedDict):
     This field can be updated after cluster creation.
     Structure is documented below.
     """
-    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs']]]
+    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict']]]
     """
     Specifies the node pool running data plane load balancing. L2 connectivity
     is required among nodes in this pool. If missing, the control plane node
@@ -3554,7 +3554,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs:
 
 
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
-    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]]
+    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]]
     """
     The generic configuration for a node pool running a load balancer.
     Structure is documented below.
@@ -3586,7 +3586,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs:
 
 
 class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict(TypedDict):
-    kubelet_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgs']]]
+    kubelet_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfigArgsDict']]]
     """
     The modifiable kubelet configurations for the baremetal machines.
     Structure is documented below.
@@ -3604,7 +3604,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]]
     """
     The list of machine addresses in the Bare Metal Node Pool.
     Structure is documented below.
@@ -3613,7 +3613,7 @@ class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolC
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -4025,7 +4025,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
     IngressVIP must be included in the pools.
     Structure is documented below.
     """
-    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs']]]
+    load_balancer_node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict']]]
     """
     Specifies the load balancer's node pool configuration.
     Structure is documented below.
@@ -4168,7 +4168,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs:
 
 
 class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgsDict(TypedDict):
-    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgs']]]
+    node_pool_config: NotRequired[pulumi.Input[Optional['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigArgsDict']]]
     """
     The generic configuration for a node pool running a load balancer.
     Structure is documented below.
@@ -4213,7 +4213,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
     An object containing a list of "key": value pairs.
     For example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
     """
-    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgs']]]]]
+    node_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfigArgsDict']]]]]
     """
     The list of machine addresses in the Bare Metal Node Pool.
     Structure is documented below.
@@ -4222,7 +4222,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaintArgsDict']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -4592,17 +4592,17 @@ class BareMetalClusterNetworkConfigArgsDict(TypedDict):
     Setting configuration for advanced networking features will automatically
     set this flag.
     """
-    island_mode_cidr: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigIslandModeCidrArgs']]]
+    island_mode_cidr: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigIslandModeCidrArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    multiple_network_interfaces_config: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgs']]]
+    multiple_network_interfaces_config: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfigArgsDict']]]
     """
     Configuration for multiple network interfaces.
     Structure is documented below.
     """
-    sr_iov_config: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigSrIovConfigArgs']]]
+    sr_iov_config: NotRequired[pulumi.Input[Optional['BareMetalClusterNetworkConfigSrIovConfigArgsDict']]]
     """
     Configuration for SR-IOV.
     Structure is documented below.
@@ -4981,7 +4981,7 @@ class BareMetalClusterProxyArgs:
 
 
 class BareMetalClusterSecurityConfigArgsDict(TypedDict):
-    authorization: NotRequired[pulumi.Input[Optional['BareMetalClusterSecurityConfigAuthorizationArgs']]]
+    authorization: NotRequired[pulumi.Input[Optional['BareMetalClusterSecurityConfigAuthorizationArgsDict']]]
     """
     Configures user access to the Bare Metal User cluster.
     Structure is documented below.
@@ -5072,7 +5072,7 @@ class BareMetalClusterSecurityConfigAuthorizationAdminUserArgs:
 
 
 class BareMetalClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -5515,7 +5515,7 @@ class BareMetalClusterValidationCheckArgsDict(TypedDict):
     (Output)
     The scenario when the preflight checks were run..
     """
-    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgs']]]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusArgsDict']]]]]
     """
     (Output)
     Specifies the detailed validation check status
@@ -5586,7 +5586,7 @@ class BareMetalClusterValidationCheckArgs:
 
 
 class BareMetalClusterValidationCheckStatusArgsDict(TypedDict):
-    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgs']]]]]
+    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalClusterValidationCheckStatusResultArgsDict']]]]]
     """
     (Output)
     Individual checks which failed as part of the Preflight check execution.
@@ -5764,7 +5764,7 @@ class BareMetalNodePoolNodePoolConfigArgsDict(TypedDict):
     """
     Specifies the nodes operating system (default: LINUX).
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolNodePoolConfigTaintArgsDict']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
@@ -6014,7 +6014,7 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
 
 
 class BareMetalNodePoolStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['BareMetalNodePoolStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -6236,7 +6236,7 @@ class VMwareClusterAntiAffinityGroupsArgs:
 
 
 class VMwareClusterAuthorizationArgsDict(TypedDict):
-    admin_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgs']]]]]
+    admin_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterAuthorizationAdminUserArgsDict']]]]]
     """
     Users that will be granted the cluster-admin role on the cluster, providing
     full access to the cluster.
@@ -6327,7 +6327,7 @@ class VMwareClusterAutoRepairConfigArgs:
 
 
 class VMwareClusterControlPlaneNodeArgsDict(TypedDict):
-    auto_resize_config: NotRequired[pulumi.Input[Optional['VMwareClusterControlPlaneNodeAutoResizeConfigArgs']]]
+    auto_resize_config: NotRequired[pulumi.Input[Optional['VMwareClusterControlPlaneNodeAutoResizeConfigArgsDict']]]
     """
     AutoResizeConfig provides auto resizing configurations.
     Structure is documented below.
@@ -6347,7 +6347,7 @@ class VMwareClusterControlPlaneNodeArgsDict(TypedDict):
     The number of control plane nodes for this VMware User Cluster.
     (default: 1 replica).
     """
-    vsphere_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgs']]]]]
+    vsphere_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterControlPlaneNodeVsphereConfigArgsDict']]]]]
     """
     (Output)
     Vsphere-specific config.
@@ -6644,22 +6644,22 @@ class VMwareClusterFleetArgs:
 
 
 class VMwareClusterLoadBalancerArgsDict(TypedDict):
-    f5_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerF5ConfigArgs']]]
+    f5_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerF5ConfigArgsDict']]]
     """
     Configuration for F5 Big IP typed load balancers.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerManualLbConfigArgs']]]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerManualLbConfigArgsDict']]]
     """
     Manually configured load balancers.
     Structure is documented below.
     """
-    metal_lb_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerMetalLbConfigArgs']]]
+    metal_lb_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerMetalLbConfigArgsDict']]]
     """
     Configuration for MetalLB typed load balancers.
     Structure is documented below.
     """
-    vip_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerVipConfigArgs']]]
+    vip_config: NotRequired[pulumi.Input[Optional['VMwareClusterLoadBalancerVipConfigArgsDict']]]
     """
     The VIPs used by the load balancer.
     Structure is documented below.
@@ -7129,22 +7129,22 @@ class VMwareClusterNetworkConfigArgsDict(TypedDict):
     from these ranges. Only a single range is supported.. This field
     cannot be changed after creation.
     """
-    control_plane_v2_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigArgs']]]
+    control_plane_v2_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict']]]
     """
     Configuration for control plane V2 mode.
     Structure is documented below.
     """
-    dhcp_ip_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigDhcpIpConfigArgs']]]
+    dhcp_ip_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigDhcpIpConfigArgsDict']]]
     """
     Configuration settings for a DHCP IP configuration.
     Structure is documented below.
     """
-    host_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigHostConfigArgs']]]
+    host_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigHostConfigArgsDict']]]
     """
     Represents common network settings irrespective of the host's IP address.
     Structure is documented below.
     """
-    static_ip_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigStaticIpConfigArgs']]]
+    static_ip_config: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigStaticIpConfigArgsDict']]]
     """
     Configuration settings for a static IP configuration.
     Structure is documented below.
@@ -7286,7 +7286,7 @@ class VMwareClusterNetworkConfigArgs:
 
 
 class VMwareClusterNetworkConfigControlPlaneV2ConfigArgsDict(TypedDict):
-    control_plane_ip_block: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgs']]]
+    control_plane_ip_block: NotRequired[pulumi.Input[Optional['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict']]]
     """
     Static IP addresses for the control plane nodes.
     """
@@ -7319,7 +7319,7 @@ class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockArgsDict(
     """
     The network gateway used by the VMware User Cluster.
     """
-    ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgs']]]]]
+    ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIpArgsDict']]]]]
     """
     The node's network configurations used by the VMware User Cluster.
     Structure is documented below.
@@ -7690,7 +7690,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
 
 
 class VMwareClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -7957,7 +7957,7 @@ class VMwareClusterValidationCheckArgsDict(TypedDict):
     (Output)
     The scenario when the preflight checks were run..
     """
-    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgs']]]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusArgsDict']]]]]
     """
     (Output)
     Specifies the detailed validation check status
@@ -8028,7 +8028,7 @@ class VMwareClusterValidationCheckArgs:
 
 
 class VMwareClusterValidationCheckStatusArgsDict(TypedDict):
-    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgs']]]]]
+    results: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareClusterValidationCheckStatusResultArgsDict']]]]]
     """
     (Output)
     Individual checks which failed as part of the Preflight check execution.
@@ -8395,12 +8395,12 @@ class VMwareNodePoolConfigArgsDict(TypedDict):
     """
     The number of nodes in the node pool.
     """
-    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgs']]]]]
+    taints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigTaintArgsDict']]]]]
     """
     The initial taints assigned to nodes of this node pool.
     Structure is documented below.
     """
-    vsphere_config: NotRequired[pulumi.Input[Optional['VMwareNodePoolConfigVsphereConfigArgs']]]
+    vsphere_config: NotRequired[pulumi.Input[Optional['VMwareNodePoolConfigVsphereConfigArgsDict']]]
     """
     Specifies the vSphere config for node pool.
     Structure is documented below.
@@ -8669,7 +8669,7 @@ class VMwareNodePoolConfigVsphereConfigArgsDict(TypedDict):
     """
     Vsphere host groups to apply to all VMs in the node pool
     """
-    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgsDict']]]]]
     """
     Tags to apply to VMs.
     Structure is documented below.
@@ -8829,7 +8829,7 @@ class VMwareNodePoolNodePoolAutoscalingArgs:
 
 
 class VMwareNodePoolStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VMwareNodePoolStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from user cluster controller.
@@ -9026,7 +9026,7 @@ class VMwareNodePoolStatusConditionArgs:
 
 
 class VmwareAdminClusterAddonNodeArgsDict(TypedDict):
-    auto_resize_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]]
+    auto_resize_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterAddonNodeAutoResizeConfigArgsDict']]]
     """
     Specifies auto resize config.
     Structure is documented below.
@@ -9120,7 +9120,7 @@ class VmwareAdminClusterAntiAffinityGroupsArgs:
 
 
 class VmwareAdminClusterAuthorizationArgsDict(TypedDict):
-    viewer_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]]
+    viewer_users: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgsDict']]]]]
     """
     Users that will be granted the cluster-admin role on the cluster, providing
     full access to the cluster.
@@ -9323,17 +9323,17 @@ class VmwareAdminClusterLoadBalancerArgsDict(TypedDict):
     Specified the VMware Load Balancer Config
     Structure is documented below.
     """
-    f5_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerF5ConfigArgs']]]
+    f5_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerF5ConfigArgsDict']]]
     """
     Configuration for F5 Big IP typed load balancers.
     Structure is documented below.
     """
-    manual_lb_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]]
+    manual_lb_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerManualLbConfigArgsDict']]]
     """
     Manually configured load balancers.
     Structure is documented below.
     """
-    metal_lb_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]]
+    metal_lb_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict']]]
     """
     Metal LB load balancers.
     Structure is documented below.
@@ -9711,22 +9711,22 @@ class VmwareAdminClusterNetworkConfigArgsDict(TypedDict):
     from these ranges. Only a single range is supported.. This field
     cannot be changed after creation.
     """
-    dhcp_ip_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]]
+    dhcp_ip_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigDhcpIpConfigArgsDict']]]
     """
     Configuration settings for a DHCP IP configuration.
     Structure is documented below.
     """
-    ha_control_plane_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]]
+    ha_control_plane_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict']]]
     """
     Configuration for HA admin cluster control plane.
     Structure is documented below.
     """
-    host_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHostConfigArgs']]]
+    host_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHostConfigArgsDict']]]
     """
     Represents common network settings irrespective of the host's IP address.
     Structure is documented below.
     """
-    static_ip_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]]
+    static_ip_config: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict']]]
     """
     Configuration settings for a static IP configuration.
     Structure is documented below.
@@ -9899,7 +9899,7 @@ class VmwareAdminClusterNetworkConfigDhcpIpConfigArgs:
 
 
 class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict(TypedDict):
-    control_plane_ip_block: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]]
+    control_plane_ip_block: NotRequired[pulumi.Input[Optional['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgsDict']]]
     """
     Static IP addresses for the control plane nodes.
     Structure is documented below.
@@ -10117,7 +10117,7 @@ class VmwareAdminClusterNetworkConfigHostConfigArgs:
 
 
 class VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict(TypedDict):
-    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]]
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgsDict']]]]]
     """
     Represents the configuration values for static IP allocation to nodes.
     Structure is documented below.
@@ -10266,7 +10266,7 @@ class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
 
 
 class VmwareAdminClusterPlatformConfigArgsDict(TypedDict):
-    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]]
+    bundles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgsDict']]]]]
     """
     (Output)
     The list of bundles installed in the admin cluster.
@@ -10285,7 +10285,7 @@ class VmwareAdminClusterPlatformConfigArgsDict(TypedDict):
     If the target version is not installed in the platform
     (bundle versions), download the target version bundle.
     """
-    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgsDict']]]]]
     """
     (Output)
     ResourceStatus representing detailed cluster state.
@@ -10391,7 +10391,7 @@ class VmwareAdminClusterPlatformConfigArgs:
 
 
 class VmwareAdminClusterPlatformConfigBundleArgsDict(TypedDict):
-    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]]
+    statuses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgsDict']]]]]
     """
     ResourceStatus representing detailed cluster state.
     Structure is documented below.
@@ -10443,7 +10443,7 @@ class VmwareAdminClusterPlatformConfigBundleArgs:
 
 
 class VmwareAdminClusterPlatformConfigBundleStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10640,7 +10640,7 @@ class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
 
 
 class VmwareAdminClusterPlatformConfigStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
@@ -10937,7 +10937,7 @@ class VmwareAdminClusterProxyArgs:
 
 
 class VmwareAdminClusterStatusArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgsDict']]]]]
     """
     (Output)
     ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.

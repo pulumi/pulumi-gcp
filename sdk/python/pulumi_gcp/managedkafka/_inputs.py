@@ -363,7 +363,7 @@ class ClusterTlsConfigArgsDict(TypedDict):
     """
     The rules for mapping mTLS certificate Distinguished Names (DNs) to shortened principal names for Kafka ACLs. This field corresponds exactly to the ssl.principal.mapping.rules broker config and matches the format and syntax defined in the Apache Kafka documentation. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means that the default Kafka behavior is used. Example: `RULE:^CN=(.?),OU=ServiceUsers.$/$1@example.com/,DEFAULT`
     """
-    trust_config: NotRequired[pulumi.Input[Optional['ClusterTlsConfigTrustConfigArgs']]]
+    trust_config: NotRequired[pulumi.Input[Optional['ClusterTlsConfigTrustConfigArgsDict']]]
     """
     The configuration of the broker truststore. If specified, clients can use mTLS for authentication.
     Structure is documented below.
@@ -411,7 +411,7 @@ class ClusterTlsConfigArgs:
 
 
 class ClusterTlsConfigTrustConfigArgsDict(TypedDict):
-    cas_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgs']]]]]
+    cas_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterTlsConfigTrustConfigCasConfigArgsDict']]]]]
     """
     Configuration for the Google Certificate Authority Service. To support mTLS, you must specify at least one `cas_configs` block. A maximum of 10 CA pools can be specified. Additional CA pools may be specified with additional `cas_configs` blocks.
     Structure is documented below.

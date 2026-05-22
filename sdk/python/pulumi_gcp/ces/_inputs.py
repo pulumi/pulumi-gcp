@@ -1266,13 +1266,13 @@ class AgentToolsetArgs:
 
 
 class AppAudioProcessingConfigArgsDict(TypedDict):
-    ambient_sound_config: NotRequired[pulumi.Input[Optional['AppAudioProcessingConfigAmbientSoundConfigArgs']]]
+    ambient_sound_config: NotRequired[pulumi.Input[Optional['AppAudioProcessingConfigAmbientSoundConfigArgsDict']]]
     """
     Configuration for the ambient sound to be played with the synthesized agent
     response, to enhance the naturalness of the conversation.
     Structure is documented below.
     """
-    barge_in_config: NotRequired[pulumi.Input[Optional['AppAudioProcessingConfigBargeInConfigArgs']]]
+    barge_in_config: NotRequired[pulumi.Input[Optional['AppAudioProcessingConfigBargeInConfigArgsDict']]]
     """
     Configuration for how the user barge-in activities should be handled.
     Structure is documented below.
@@ -1283,7 +1283,7 @@ class AppAudioProcessingConfigArgsDict(TypedDict):
     prompts the user for reengagement. If not set, the agent will not prompt
     the user for reengagement.
     """
-    synthesize_speech_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppAudioProcessingConfigSynthesizeSpeechConfigArgs']]]]]
+    synthesize_speech_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppAudioProcessingConfigSynthesizeSpeechConfigArgsDict']]]]]
     """
     Configuration of how the agent response should be synthesized, mapping from
     the language code to SynthesizeSpeechConfig.
@@ -1705,7 +1705,7 @@ class AppClientCertificateSettingsArgs:
 
 
 class AppDataStoreSettingsArgsDict(TypedDict):
-    engines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppDataStoreSettingsEngineArgs']]]]]
+    engines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppDataStoreSettingsEngineArgsDict']]]]]
     """
     (Output)
     The engines for the app.
@@ -1831,7 +1831,7 @@ class AppDefaultChannelProfileArgsDict(TypedDict):
     """
     Whether to disable DTMF (dual-tone multi-frequency).
     """
-    persona_property: NotRequired[pulumi.Input[Optional['AppDefaultChannelProfilePersonaPropertyArgs']]]
+    persona_property: NotRequired[pulumi.Input[Optional['AppDefaultChannelProfilePersonaPropertyArgsDict']]]
     """
     Represents the persona property of a channel.
     Structure is documented below.
@@ -1840,7 +1840,7 @@ class AppDefaultChannelProfileArgsDict(TypedDict):
     """
     The unique identifier of the channel profile.
     """
-    web_widget_config: NotRequired[pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigArgs']]]
+    web_widget_config: NotRequired[pulumi.Input[Optional['AppDefaultChannelProfileWebWidgetConfigArgsDict']]]
     """
     Message for configuration for the web widget.
     Structure is documented below.
@@ -2109,7 +2109,7 @@ class AppDefaultChannelProfileWebWidgetConfigArgs:
 
 
 class AppEvaluationMetricsThresholdsArgsDict(TypedDict):
-    golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgs']]]
+    golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict']]]
     """
     Settings for golden evaluations.
     Structure is documented below.
@@ -2141,12 +2141,12 @@ class AppEvaluationMetricsThresholdsArgs:
 
 
 class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsArgsDict(TypedDict):
-    expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgs']]]
+    expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholdsArgsDict']]]
     """
     Expectation level metrics thresholds.
     Structure is documented below.
     """
-    turn_level_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgs']]]
+    turn_level_metrics_thresholds: NotRequired[pulumi.Input[Optional['AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholdsArgsDict']]]
     """
     Turn level metrics thresholds.
     Structure is documented below.
@@ -2399,27 +2399,27 @@ class AppLanguageSettingsArgs:
 
 
 class AppLoggingSettingsArgsDict(TypedDict):
-    audio_recording_config: NotRequired[pulumi.Input[Optional['AppLoggingSettingsAudioRecordingConfigArgs']]]
+    audio_recording_config: NotRequired[pulumi.Input[Optional['AppLoggingSettingsAudioRecordingConfigArgsDict']]]
     """
     Configuration for how the audio interactions should be recorded.
     Structure is documented below.
     """
-    bigquery_export_settings: NotRequired[pulumi.Input[Optional['AppLoggingSettingsBigqueryExportSettingsArgs']]]
+    bigquery_export_settings: NotRequired[pulumi.Input[Optional['AppLoggingSettingsBigqueryExportSettingsArgsDict']]]
     """
     Settings to describe the BigQuery export behaviors for the app.
     Structure is documented below.
     """
-    cloud_logging_settings: NotRequired[pulumi.Input[Optional['AppLoggingSettingsCloudLoggingSettingsArgs']]]
+    cloud_logging_settings: NotRequired[pulumi.Input[Optional['AppLoggingSettingsCloudLoggingSettingsArgsDict']]]
     """
     Settings to describe the Cloud Logging behaviors for the app.
     Structure is documented below.
     """
-    conversation_logging_settings: NotRequired[pulumi.Input[Optional['AppLoggingSettingsConversationLoggingSettingsArgs']]]
+    conversation_logging_settings: NotRequired[pulumi.Input[Optional['AppLoggingSettingsConversationLoggingSettingsArgsDict']]]
     """
     Settings to describe the conversation logging behaviors for the app.
     Structure is documented below.
     """
-    redaction_config: NotRequired[pulumi.Input[Optional['AppLoggingSettingsRedactionConfigArgs']]]
+    redaction_config: NotRequired[pulumi.Input[Optional['AppLoggingSettingsRedactionConfigArgsDict']]]
     """
     Configuration to instruct how sensitive data should be handled.
     Structure is documented below.
@@ -3409,36 +3409,36 @@ class AppVariableDeclarationSchemaArgs:
 
 
 class AppVersionSnapshotArgsDict(TypedDict):
-    agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentArgs']]]]]
+    agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentArgsDict']]]]]
     """
     (Output)
     List of agents in the app.
     Structure is documented below.
     """
-    apps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppArgs']]]]]
+    apps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppArgsDict']]]]]
     """
     Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
     """
-    examples: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleArgs']]]]]
+    examples: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleArgsDict']]]]]
     """
     (Output)
     List of examples in the app.
     Structure is documented below.
     """
-    guardrails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailArgs']]]]]
+    guardrails: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailArgsDict']]]]]
     """
     (Output)
     List of guardrails for the app.
     Format:
     `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
     """
-    tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolArgs']]]]]
+    tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolArgsDict']]]]]
     """
     (Output)
     List of available tools for the agent.
     Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
     """
-    toolsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetArgs']]]]]
+    toolsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetArgsDict']]]]]
     """
     (Output)
     List of toolsets for the agent.
@@ -3571,7 +3571,7 @@ class AppVersionSnapshotArgs:
 
 
 class AppVersionSnapshotAgentArgsDict(TypedDict):
-    after_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterAgentCallbackArgs']]]]]
+    after_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterAgentCallbackArgsDict']]]]]
     """
     (Output)
     The callbacks to execute after the agent is called.
@@ -3580,7 +3580,7 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     execution stops and any remaining callbacks are skipped.
     Structure is documented below.
     """
-    after_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterModelCallbackArgs']]]]]
+    after_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterModelCallbackArgsDict']]]]]
     """
     (Output)
     The callbacks to execute after the model is called. If there are multiple
@@ -3590,7 +3590,7 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     execution stops and any remaining callbacks are skipped.
     Structure is documented below.
     """
-    after_tool_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterToolCallbackArgs']]]]]
+    after_tool_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentAfterToolCallbackArgsDict']]]]]
     """
     (Output)
     The callbacks to execute after the tool is invoked. If there are multiple
@@ -3600,7 +3600,7 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     execution stops and any remaining callbacks are skipped.
     Structure is documented below.
     """
-    before_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeAgentCallbackArgs']]]]]
+    before_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeAgentCallbackArgsDict']]]]]
     """
     (Output)
     The callbacks to execute before the agent is called.
@@ -3609,7 +3609,7 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     execution stops and any remaining callbacks are skipped.
     Structure is documented below.
     """
-    before_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeModelCallbackArgs']]]]]
+    before_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeModelCallbackArgsDict']]]]]
     """
     (Output)
     The callbacks to execute before the model is called. If there are multiple
@@ -3619,7 +3619,7 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     execution stops and any remaining callbacks are skipped.
     Structure is documented below.
     """
-    before_tool_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeToolCallbackArgs']]]]]
+    before_tool_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentBeforeToolCallbackArgsDict']]]]]
     """
     (Output)
     The callbacks to execute before the tool is invoked. If there are multiple
@@ -3673,13 +3673,13 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     (Output)
     Instructions for the LLM model to guide the agent's behavior.
     """
-    llm_agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentLlmAgentArgs']]]]]
+    llm_agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentLlmAgentArgsDict']]]]]
     """
     (Output)
     Default agent type. The agent uses instructions and callbacks specified in
     the agent to perform the task using a large language model.
     """
-    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentModelSettingArgs']]]]]
+    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentModelSettingArgsDict']]]]]
     """
     (Output)
     Model settings contains various configurations for the LLM model.
@@ -3692,7 +3692,7 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
     """
-    remote_dialogflow_agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentRemoteDialogflowAgentArgs']]]]]
+    remote_dialogflow_agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentRemoteDialogflowAgentArgsDict']]]]]
     """
     (Output)
     The agent which will transfer execution to an existing remote
@@ -3708,7 +3708,7 @@ class AppVersionSnapshotAgentArgsDict(TypedDict):
     List of available tools for the agent.
     Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
     """
-    toolsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentToolsetArgs']]]]]
+    toolsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAgentToolsetArgsDict']]]]]
     """
     (Output)
     List of toolsets for the agent.
@@ -4924,14 +4924,14 @@ class AppVersionSnapshotAgentToolsetArgs:
 
 
 class AppVersionSnapshotAppArgsDict(TypedDict):
-    audio_processing_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigArgs']]]]]
+    audio_processing_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigArgsDict']]]]]
     """
     (Output)
     Configuration for how the input and output audio should be processed and
     delivered.
     Structure is documented below.
     """
-    client_certificate_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppClientCertificateSettingArgs']]]]]
+    client_certificate_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppClientCertificateSettingArgsDict']]]]]
     """
     (Output)
     The default client certificate settings for the app.
@@ -4942,13 +4942,13 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     (Output)
     Timestamp when the toolset was created.
     """
-    data_store_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingArgs']]]]]
+    data_store_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingArgsDict']]]]]
     """
     (Output)
     Data store related settings for the app.
     Structure is documented below.
     """
-    default_channel_profiles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileArgs']]]]]
+    default_channel_profiles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileArgsDict']]]]]
     """
     (Output)
     A ChannelProfile configures the agent's behavior for a specific communication
@@ -4975,7 +4975,7 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     operation. If the etag is empty, the update will overwrite any concurrent
     changes.
     """
-    evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdArgs']]]]]
+    evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict']]]]]
     """
     (Output)
     Threshold settings for metrics in an Evaluation.
@@ -4995,13 +4995,13 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/apps/{app}/guardrails/{guardrail}`
     """
-    language_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLanguageSettingArgs']]]]]
+    language_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLanguageSettingArgsDict']]]]]
     """
     (Output)
     Language settings of the app.
     Structure is documented below.
     """
-    logging_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingArgs']]]]]
+    logging_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingArgsDict']]]]]
     """
     (Output)
     Settings to describe the logging behaviors for the app.
@@ -5013,7 +5013,7 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     Metadata about the app. This field can be used to store additional
     information relevant to the app's details or intended usages.
     """
-    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppModelSettingArgs']]]]]
+    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppModelSettingArgsDict']]]]]
     """
     (Output)
     Model settings contains various configurations for the LLM model.
@@ -5032,7 +5032,7 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     The root agent is the entry point of the app.
     Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
     """
-    time_zone_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppTimeZoneSettingArgs']]]]]
+    time_zone_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppTimeZoneSettingArgsDict']]]]]
     """
     (Output)
     TimeZone settings of the app.
@@ -5043,7 +5043,7 @@ class AppVersionSnapshotAppArgsDict(TypedDict):
     (Output)
     Timestamp when the toolset was last updated.
     """
-    variable_declarations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgs']]]]]
+    variable_declarations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationArgsDict']]]]]
     """
     (Output)
     The declarations of the variables.
@@ -5476,14 +5476,14 @@ class AppVersionSnapshotAppArgs:
 
 
 class AppVersionSnapshotAppAudioProcessingConfigArgsDict(TypedDict):
-    ambient_sound_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgs']]]]]
+    ambient_sound_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfigArgsDict']]]]]
     """
     (Output)
     Configuration for the ambient sound to be played with the synthesized agent
     response, to enhance the naturalness of the conversation.
     Structure is documented below.
     """
-    barge_in_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgs']]]]]
+    barge_in_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigBargeInConfigArgsDict']]]]]
     """
     (Output)
     Configuration for how the user barge-in activities should be handled.
@@ -5496,7 +5496,7 @@ class AppVersionSnapshotAppAudioProcessingConfigArgsDict(TypedDict):
     prompts the user for reengagement. If not set, the agent will not prompt
     the user for reengagement.
     """
-    synthesize_speech_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgs']]]]]
+    synthesize_speech_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppAudioProcessingConfigSynthesizeSpeechConfigArgsDict']]]]]
     """
     (Output)
     Configuration of how the agent response should be synthesized, mapping from
@@ -5956,7 +5956,7 @@ class AppVersionSnapshotAppClientCertificateSettingArgs:
 
 
 class AppVersionSnapshotAppDataStoreSettingArgsDict(TypedDict):
-    engines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingEngineArgs']]]]]
+    engines: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDataStoreSettingEngineArgsDict']]]]]
     """
     (Output)
     The engines for the app.
@@ -6094,7 +6094,7 @@ class AppVersionSnapshotAppDefaultChannelProfileArgsDict(TypedDict):
     (Output)
     Whether to disable DTMF (dual-tone multi-frequency).
     """
-    persona_properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgs']]]]]
+    persona_properties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfilePersonaPropertyArgsDict']]]]]
     """
     (Output)
     Represents the persona property of a channel.
@@ -6105,7 +6105,7 @@ class AppVersionSnapshotAppDefaultChannelProfileArgsDict(TypedDict):
     (Output)
     The unique identifier of the channel profile.
     """
-    web_widget_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs']]]]]
+    web_widget_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgsDict']]]]]
     """
     (Output)
     Message for configuration for the web widget.
@@ -6399,7 +6399,7 @@ class AppVersionSnapshotAppDefaultChannelProfileWebWidgetConfigArgs:
 
 
 class AppVersionSnapshotAppEvaluationMetricsThresholdArgsDict(TypedDict):
-    golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgs']]]]]
+    golden_evaluation_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict']]]]]
     """
     (Output)
     Settings for golden evaluations.
@@ -6434,13 +6434,13 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdArgs:
 
 
 class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdArgsDict(TypedDict):
-    expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgs']]]]]
+    expectation_level_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdExpectationLevelMetricsThresholdArgsDict']]]]]
     """
     (Output)
     Expectation level metrics thresholds.
     Structure is documented below.
     """
-    turn_level_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgs']]]]]
+    turn_level_metrics_thresholds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThresholdArgsDict']]]]]
     """
     (Output)
     Turn level metrics thresholds.
@@ -6719,31 +6719,31 @@ class AppVersionSnapshotAppLanguageSettingArgs:
 
 
 class AppVersionSnapshotAppLoggingSettingArgsDict(TypedDict):
-    audio_recording_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgs']]]]]
+    audio_recording_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingAudioRecordingConfigArgsDict']]]]]
     """
     (Output)
     Configuration for how the audio interactions should be recorded.
     Structure is documented below.
     """
-    bigquery_export_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgs']]]]]
+    bigquery_export_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingBigqueryExportSettingArgsDict']]]]]
     """
     (Output)
     Settings to describe the BigQuery export behaviors for the app.
     Structure is documented below.
     """
-    cloud_logging_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgs']]]]]
+    cloud_logging_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingCloudLoggingSettingArgsDict']]]]]
     """
     (Output)
     Settings to describe the Cloud Logging behaviors for the app.
     Structure is documented below.
     """
-    conversation_logging_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgs']]]]]
+    conversation_logging_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingConversationLoggingSettingArgsDict']]]]]
     """
     (Output)
     Settings to describe the conversation logging behaviors for the app.
     Structure is documented below.
     """
-    redaction_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingRedactionConfigArgs']]]]]
+    redaction_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppLoggingSettingRedactionConfigArgsDict']]]]]
     """
     (Output)
     Configuration to instruct how sensitive data should be handled.
@@ -7303,7 +7303,7 @@ class AppVersionSnapshotAppVariableDeclarationArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
     """
-    schemas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationSchemaArgs']]]]]
+    schemas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotAppVariableDeclarationSchemaArgsDict']]]]]
     """
     (Output)
     Represents a select subset of an OpenAPI 3.0 schema object.
@@ -7836,7 +7836,7 @@ class AppVersionSnapshotExampleArgsDict(TypedDict):
     The example may become invalid if referencing resources are deleted.
     Invalid examples will not be used as few-shot examples.
     """
-    messages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageArgs']]]]]
+    messages: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageArgsDict']]]]]
     """
     (Output)
     The collection of messages that make up the conversation.
@@ -8037,7 +8037,7 @@ class AppVersionSnapshotExampleArgs:
 
 
 class AppVersionSnapshotExampleMessageArgsDict(TypedDict):
-    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkArgs']]]]]
+    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkArgsDict']]]]]
     """
     (Output)
     Content of the message as a series of chunks.
@@ -8095,14 +8095,14 @@ class AppVersionSnapshotExampleMessageArgs:
 
 
 class AppVersionSnapshotExampleMessageChunkArgsDict(TypedDict):
-    agent_transfers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkAgentTransferArgs']]]]]
+    agent_transfers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkAgentTransferArgsDict']]]]]
     """
     (Output)
     Represents an event indicating the transfer of a conversation to a different
     agent.
     Structure is documented below.
     """
-    images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkImageArgs']]]]]
+    images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkImageArgsDict']]]]]
     """
     (Output)
     Represents an image input or output in the conversation.
@@ -8113,13 +8113,13 @@ class AppVersionSnapshotExampleMessageChunkArgsDict(TypedDict):
     (Output)
     Text for the agent to respond with.
     """
-    tool_calls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallArgs']]]]]
+    tool_calls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallArgsDict']]]]]
     """
     (Output)
     Request for the client or the agent to execute the specified tool.
     Structure is documented below.
     """
-    tool_responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseArgs']]]]]
+    tool_responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseArgsDict']]]]]
     """
     (Output)
     The execution result of a specific tool from the client or the agent.
@@ -8405,7 +8405,7 @@ class AppVersionSnapshotExampleMessageChunkToolCallArgsDict(TypedDict):
     The name of the tool to execute.
     Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
     """
-    toolset_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgs']]]]]
+    toolset_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolCallToolsetToolArgsDict']]]]]
     """
     (Output)
     A tool that is created from a toolset.
@@ -8594,7 +8594,7 @@ class AppVersionSnapshotExampleMessageChunkToolResponseArgsDict(TypedDict):
     The name of the tool to execute.
     Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
     """
-    toolset_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgs']]]]]
+    toolset_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgsDict']]]]]
     """
     (Output)
     A tool that is created from a toolset.
@@ -8764,20 +8764,20 @@ class AppVersionSnapshotExampleMessageChunkToolResponseToolsetToolArgs:
 
 
 class AppVersionSnapshotGuardrailArgsDict(TypedDict):
-    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionArgs']]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionArgsDict']]]]]
     """
     (Output)
     Action that is taken when a certain precondition is met.
     Structure is documented below.
     """
-    code_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackArgs']]]]]
+    code_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackArgsDict']]]]]
     """
     (Output)
     Guardrail that blocks the conversation based on the code callbacks
     provided.
     Structure is documented below.
     """
-    content_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailContentFilterArgs']]]]]
+    content_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailContentFilterArgsDict']]]]]
     """
     (Output)
     Guardrail that bans certain content from being used in the conversation.
@@ -8808,21 +8808,21 @@ class AppVersionSnapshotGuardrailArgsDict(TypedDict):
     operation. If the etag is empty, the update will overwrite any concurrent
     changes.
     """
-    llm_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyArgs']]]]]
+    llm_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyArgsDict']]]]]
     """
     (Output)
     Guardrail that blocks the conversation if the LLM response is considered
     violating the policy based on the LLM classification.
     Structure is documented below.
     """
-    llm_prompt_securities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityArgs']]]]]
+    llm_prompt_securities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityArgsDict']]]]]
     """
     (Output)
     Guardrail that blocks the conversation if the input is considered unsafe
     based on the LLM classification.
     Structure is documented below.
     """
-    model_safeties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetyArgs']]]]]
+    model_safeties: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetyArgsDict']]]]]
     """
     (Output)
     Model safety settings overrides. When this is set, it will override the
@@ -9111,19 +9111,19 @@ class AppVersionSnapshotGuardrailArgs:
 
 
 class AppVersionSnapshotGuardrailActionArgsDict(TypedDict):
-    generative_answers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionGenerativeAnswerArgs']]]]]
+    generative_answers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionGenerativeAnswerArgsDict']]]]]
     """
     (Output)
     The agent will immediately respond with a generative answer.
     Structure is documented below.
     """
-    respond_immediatelies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyArgs']]]]]
+    respond_immediatelies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyArgsDict']]]]]
     """
     (Output)
     The agent will immediately respond with a preconfigured response.
     Structure is documented below.
     """
-    transfer_agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionTransferAgentArgs']]]]]
+    transfer_agents: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionTransferAgentArgsDict']]]]]
     """
     (Output)
     The agent will transfer the conversation to a different agent.
@@ -9230,7 +9230,7 @@ class AppVersionSnapshotGuardrailActionGenerativeAnswerArgs:
 
 
 class AppVersionSnapshotGuardrailActionRespondImmediatelyArgsDict(TypedDict):
-    responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgs']]]]]
+    responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailActionRespondImmediatelyResponseArgsDict']]]]]
     """
     (Output)
     The canned responses for the agent to choose from. The response is chosen
@@ -9364,28 +9364,28 @@ class AppVersionSnapshotGuardrailActionTransferAgentArgs:
 
 
 class AppVersionSnapshotGuardrailCodeCallbackArgsDict(TypedDict):
-    after_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgs']]]]]
+    after_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterAgentCallbackArgsDict']]]]]
     """
     (Output)
     A callback defines the custom logic to be executed at various stages of
     agent interaction.
     Structure is documented below.
     """
-    after_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgs']]]]]
+    after_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackAfterModelCallbackArgsDict']]]]]
     """
     (Output)
     A callback defines the custom logic to be executed at various stages of
     agent interaction.
     Structure is documented below.
     """
-    before_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgs']]]]]
+    before_agent_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeAgentCallbackArgsDict']]]]]
     """
     (Output)
     A callback defines the custom logic to be executed at various stages of
     agent interaction.
     Structure is documented below.
     """
-    before_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgs']]]]]
+    before_model_callbacks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailCodeCallbackBeforeModelCallbackArgsDict']]]]]
     """
     (Output)
     A callback defines the custom logic to be executed at various stages of
@@ -9938,7 +9938,7 @@ class AppVersionSnapshotGuardrailLlmPolicyArgsDict(TypedDict):
     conversation.
     When not set a default value of 10 will be used.
     """
-    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyModelSettingArgs']]]]]
+    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPolicyModelSettingArgsDict']]]]]
     """
     (Output)
     Model settings contains various configurations for the LLM model.
@@ -10149,14 +10149,14 @@ class AppVersionSnapshotGuardrailLlmPolicyModelSettingArgs:
 
 
 class AppVersionSnapshotGuardrailLlmPromptSecurityArgsDict(TypedDict):
-    custom_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgs']]]]]
+    custom_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgsDict']]]]]
     """
     (Output)
     Guardrail that blocks the conversation if the LLM response is considered
     violating the policy based on the LLM classification.
     Structure is documented below.
     """
-    default_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgs']]]]]
+    default_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgsDict']]]]]
     """
     (Output)
     Configuration for default system security settings.
@@ -10226,7 +10226,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgsDict(TypedDict
     conversation.
     When not set a default value of 10 will be used.
     """
-    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgs']]]]]
+    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyModelSettingArgsDict']]]]]
     """
     (Output)
     Model settings contains various configurations for the LLM model.
@@ -10475,7 +10475,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgs:
 
 
 class AppVersionSnapshotGuardrailModelSafetyArgsDict(TypedDict):
-    safety_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetySafetySettingArgs']]]]]
+    safety_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotGuardrailModelSafetySafetySettingArgsDict']]]]]
     """
     (Output)
     List of safety settings.
@@ -10598,7 +10598,7 @@ class AppVersionSnapshotGuardrailModelSafetySafetySettingArgs:
 
 
 class AppVersionSnapshotToolArgsDict(TypedDict):
-    client_functions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionArgs']]]]]
+    client_functions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionArgsDict']]]]]
     """
     (Output)
     Represents a client-side function that the agent can invoke. When the
@@ -10612,7 +10612,7 @@ class AppVersionSnapshotToolArgsDict(TypedDict):
     (Output)
     Timestamp when the toolset was created.
     """
-    data_store_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolArgs']]]]]
+    data_store_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolArgsDict']]]]]
     """
     (Output)
     Tool to retrieve from Vertex AI Search datastore or engine for grounding.
@@ -10645,7 +10645,7 @@ class AppVersionSnapshotToolArgsDict(TypedDict):
     If the tool is generated by the LLM assistant, this field contains a
     descriptive summary of the generation.
     """
-    google_search_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolGoogleSearchToolArgs']]]]]
+    google_search_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolGoogleSearchToolArgsDict']]]]]
     """
     (Output)
     Represents a tool to perform Google web searches for grounding.
@@ -10660,19 +10660,19 @@ class AppVersionSnapshotToolArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
     """
-    open_api_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolArgs']]]]]
+    open_api_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolArgsDict']]]]]
     """
     (Output)
     A remote API tool defined by an OpenAPI schema.
     Structure is documented below.
     """
-    python_functions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolPythonFunctionArgs']]]]]
+    python_functions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolPythonFunctionArgsDict']]]]]
     """
     (Output)
     A Python function tool.
     Structure is documented below.
     """
-    system_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolSystemToolArgs']]]]]
+    system_tools: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolSystemToolArgsDict']]]]]
     """
     (Output)
     The system tool.
@@ -10977,13 +10977,13 @@ class AppVersionSnapshotToolClientFunctionArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
     """
-    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionParameterArgs']]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionParameterArgsDict']]]]]
     """
     (Output)
     Represents a select subset of an OpenAPI 3.0 schema object.
     Structure is documented below.
     """
-    responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionResponseArgs']]]]]
+    responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolClientFunctionResponseArgsDict']]]]]
     """
     (Output)
     Represents a select subset of an OpenAPI 3.0 schema object.
@@ -11930,7 +11930,7 @@ class AppVersionSnapshotToolClientFunctionResponseArgs:
 
 
 class AppVersionSnapshotToolDataStoreToolArgsDict(TypedDict):
-    boost_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecArgs']]]]]
+    boost_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecArgsDict']]]]]
     """
     (Output)
     Boost specification to boost certain documents.
@@ -11940,7 +11940,7 @@ class AppVersionSnapshotToolDataStoreToolArgsDict(TypedDict):
     """
     The description of the app version.
     """
-    engine_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceArgs']]]]]
+    engine_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceArgsDict']]]]]
     """
     (Output)
     Configuration for searching within an Engine, potentially targeting
@@ -11953,7 +11953,7 @@ class AppVersionSnapshotToolDataStoreToolArgsDict(TypedDict):
     Number of search results to return per query.
     The default value is 10. The maximum allowed value is 10.
     """
-    modality_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigArgs']]]]]
+    modality_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict']]]]]
     """
     (Output)
     The modality configs for the data store.
@@ -12102,7 +12102,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecArgsDict(TypedDict):
     name of DataStore, such as
     projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}.
     """
-    specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgs']]]]]
+    specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgsDict']]]]]
     """
     (Output)
     A list of boosting specifications.
@@ -12159,7 +12159,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecArgs:
 
 
 class AppVersionSnapshotToolDataStoreToolBoostSpecSpecArgsDict(TypedDict):
-    condition_boost_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgs']]]]]
+    condition_boost_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict']]]]]
     """
     (Output)
     A list of boosting specifications.
@@ -12206,7 +12206,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict
     Setting to 0.0 means no boost applied. The boosting condition is
     ignored.
     """
-    boost_control_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs']]]]]
+    boost_control_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict']]]]]
     """
     (Output)
     Specification for custom ranking based on customer specified attribute
@@ -12326,7 +12326,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
     NUMERICAL
     FRESHNESS
     """
-    control_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs']]]]]
+    control_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict']]]]]
     """
     (Output)
     The control points used to define the curve. The monotonic function
@@ -12530,7 +12530,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
 
 
 class AppVersionSnapshotToolDataStoreToolEngineSourceArgsDict(TypedDict):
-    data_store_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgs']]]]]
+    data_store_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgsDict']]]]]
     """
     (Output)
     Use to target specific DataStores within the Engine.
@@ -12629,7 +12629,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceArgs:
 
 
 class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgsDict(TypedDict):
-    data_stores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs']]]]]
+    data_stores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict']]]]]
     """
     (Output)
     A DataStore resource in Vertex AI Search.
@@ -12693,7 +12693,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceArgs:
 
 
 class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict(TypedDict):
-    connector_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs']]]]]
+    connector_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict']]]]]
     """
     (Output)
     The connector config for the data store connection.
@@ -12957,7 +12957,7 @@ class AppVersionSnapshotToolDataStoreToolEngineSourceDataStoreSourceDataStoreCon
 
 
 class AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict(TypedDict):
-    grounding_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgs']]]]]
+    grounding_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfigArgsDict']]]]]
     """
     (Output)
     Grounding configuration.
@@ -12971,13 +12971,13 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigArgsDict(TypedDict):
     TEXT
     AUDIO
     """
-    rewriter_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgs']]]]]
+    rewriter_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgsDict']]]]]
     """
     (Output)
     Rewriter configuration.
     Structure is documented below.
     """
-    summarization_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgs']]]]]
+    summarization_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgsDict']]]]]
     """
     (Output)
     Summarization configuration.
@@ -13154,7 +13154,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigArgsDict(Ty
     (Output)
     Whether summarization is disabled.
     """
-    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgs']]]]]
+    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettingArgsDict']]]]]
     """
     (Output)
     Model settings contains various configurations for the LLM model.
@@ -13302,7 +13302,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigArgsDi
     (Output)
     Whether summarization is disabled.
     """
-    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgs']]]]]
+    model_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSettingArgsDict']]]]]
     """
     (Output)
     Model settings contains various configurations for the LLM model.
@@ -13532,7 +13532,7 @@ class AppVersionSnapshotToolGoogleSearchToolArgs:
 
 
 class AppVersionSnapshotToolOpenApiToolArgsDict(TypedDict):
-    api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationArgs']]]]]
+    api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationArgsDict']]]]]
     """
     (Output)
     Authentication information required for API calls.
@@ -13560,13 +13560,13 @@ class AppVersionSnapshotToolOpenApiToolArgsDict(TypedDict):
     (Output)
     The OpenAPI schema of the toolset.
     """
-    service_directory_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgs']]]]]
+    service_directory_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgsDict']]]]]
     """
     (Output)
     Configuration for tools using Service Directory.
     Structure is documented below.
     """
-    tls_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigArgs']]]]]
+    tls_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigArgsDict']]]]]
     """
     (Output)
     The TLS configuration.
@@ -13755,25 +13755,25 @@ class AppVersionSnapshotToolOpenApiToolArgs:
 
 
 class AppVersionSnapshotToolOpenApiToolApiAuthenticationArgsDict(TypedDict):
-    api_key_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgs']]]]]
+    api_key_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with API key.
     Structure is documented below.
     """
-    oauth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgs']]]]]
+    oauth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with OAuth.
     Structure is documented below.
     """
-    service_account_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs']]]]]
+    service_account_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication using a custom service account.
     Structure is documented below.
     """
-    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]]]
+    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with [ID
@@ -14224,7 +14224,7 @@ class AppVersionSnapshotToolOpenApiToolServiceDirectoryConfigArgs:
 
 
 class AppVersionSnapshotToolOpenApiToolTlsConfigArgsDict(TypedDict):
-    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgs']]]]]
+    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolOpenApiToolTlsConfigCaCertArgsDict']]]]]
     """
     (Output)
     Specifies a list of allowed custom CA certificates for HTTPS
@@ -14514,7 +14514,7 @@ class AppVersionSnapshotToolsetArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
     """
-    open_api_toolsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetArgs']]]]]
+    open_api_toolsets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetArgsDict']]]]]
     """
     (Output)
     A toolset that contains a list of tools that are defined by an OpenAPI
@@ -14691,7 +14691,7 @@ class AppVersionSnapshotToolsetArgs:
 
 
 class AppVersionSnapshotToolsetOpenApiToolsetArgsDict(TypedDict):
-    api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgs']]]]]
+    api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgsDict']]]]]
     """
     (Output)
     Authentication information required for API calls.
@@ -14708,13 +14708,13 @@ class AppVersionSnapshotToolsetOpenApiToolsetArgsDict(TypedDict):
     (Output)
     The OpenAPI schema of the toolset.
     """
-    service_directory_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgs']]]]]
+    service_directory_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgsDict']]]]]
     """
     (Output)
     Configuration for tools using Service Directory.
     Structure is documented below.
     """
-    tls_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgs']]]]]
+    tls_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict']]]]]
     """
     (Output)
     The TLS configuration.
@@ -14865,31 +14865,31 @@ class AppVersionSnapshotToolsetOpenApiToolsetArgs:
 
 
 class AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationArgsDict(TypedDict):
-    api_key_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs']]]]]
+    api_key_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with API key.
     Structure is documented below.
     """
-    bearer_token_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs']]]]]
+    bearer_token_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with a bearer token.
     Structure is documented below.
     """
-    oauth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs']]]]]
+    oauth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with OAuth.
     Structure is documented below.
     """
-    service_account_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs']]]]]
+    service_account_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication using a custom service account.
     Structure is documented below.
     """
-    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]]]
+    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with [ID
@@ -15389,7 +15389,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetServiceDirectoryConfigArgs:
 
 
 class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigArgsDict(TypedDict):
-    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgs']]]]]
+    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCertArgsDict']]]]]
     """
     (Output)
     Specifies a list of allowed custom CA certificates for HTTPS
@@ -15530,7 +15530,7 @@ class DeploymentChannelProfileArgsDict(TypedDict):
     """
     Whether to disable DTMF (dual-tone multi-frequency).
     """
-    persona_property: NotRequired[pulumi.Input[Optional['DeploymentChannelProfilePersonaPropertyArgs']]]
+    persona_property: NotRequired[pulumi.Input[Optional['DeploymentChannelProfilePersonaPropertyArgsDict']]]
     """
     Represents the persona property of a channel.
     Structure is documented below.
@@ -15539,7 +15539,7 @@ class DeploymentChannelProfileArgsDict(TypedDict):
     """
     The unique identifier of the channel profile.
     """
-    web_widget_config: NotRequired[pulumi.Input[Optional['DeploymentChannelProfileWebWidgetConfigArgs']]]
+    web_widget_config: NotRequired[pulumi.Input[Optional['DeploymentChannelProfileWebWidgetConfigArgsDict']]]
     """
     Message for configuration for the web widget.
     Structure is documented below.
@@ -15728,7 +15728,7 @@ class DeploymentChannelProfileWebWidgetConfigArgsDict(TypedDict):
     CHAT_ONLY
     CHAT_VOICE_AND_VIDEO
     """
-    security_settings: NotRequired[pulumi.Input[Optional['DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgs']]]
+    security_settings: NotRequired[pulumi.Input[Optional['DeploymentChannelProfileWebWidgetConfigSecuritySettingsArgsDict']]]
     """
     The security settings of the web widget.
     Structure is documented below.
@@ -15988,7 +15988,7 @@ class EvaluationGoldenTurnArgsDict(TypedDict):
 
     <a name="nested_golden_turns_root_span"></a>The `root_span` block contains:
     """
-    root_spans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationGoldenTurnRootSpanArgs']]]]]
+    root_spans: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationGoldenTurnRootSpanArgsDict']]]]]
     """
     (Output)
     The root span of the golden turn for processing and maintaining audio information.
@@ -16178,17 +16178,17 @@ class EvaluationGoldenTurnRootSpanArgs:
 
 
 class EvaluationGoldenTurnStepArgsDict(TypedDict):
-    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepAgentTransferArgs']]]
+    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepAgentTransferArgsDict']]]
     """
     Represents an event indicating the transfer of the conversation to a different agent.
     Structure is documented below.
     """
-    expectation: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationArgs']]]
+    expectation: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationArgsDict']]]
     """
     Executes an expectation on the current turn to verify the agent's behavior. Note: 'user_input' and 'expectation' are mutually exclusive.
     Structure is documented below.
     """
-    user_input: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputArgs']]]
+    user_input: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputArgsDict']]]
     """
     Represents user input for the conversation. Note: 'user_input' and 'expectation' are mutually exclusive.
     Structure is documented below.
@@ -16307,17 +16307,17 @@ class EvaluationGoldenTurnStepAgentTransferArgs:
 
 
 class EvaluationGoldenTurnStepExpectationArgsDict(TypedDict):
-    agent_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseArgs']]]
+    agent_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseArgsDict']]]
     """
     Expectation on agent response.
     Structure is documented below.
     """
-    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentTransferArgs']]]
+    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentTransferArgsDict']]]
     """
     Expectation on agent transfer.
     Structure is documented below.
     """
-    mock_tool_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationMockToolResponseArgs']]]
+    mock_tool_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationMockToolResponseArgsDict']]]
     """
     A mock response to provide if a tool is called.
     Structure is documented below.
@@ -16326,17 +16326,17 @@ class EvaluationGoldenTurnStepExpectationArgsDict(TypedDict):
     """
     A note describing the expectation.
     """
-    tool_call: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolCallArgs']]]
+    tool_call: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolCallArgsDict']]]
     """
     Expectation on tool call.
     Structure is documented below.
     """
-    tool_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolResponseArgs']]]
+    tool_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolResponseArgsDict']]]
     """
     Expectation on tool response.
     Structure is documented below.
     """
-    updated_variables: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationUpdatedVariablesArgs']]]
+    updated_variables: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationUpdatedVariablesArgsDict']]]
     """
     Expectation on updated variables.
     Structure is documented below.
@@ -16474,7 +16474,7 @@ class EvaluationGoldenTurnStepExpectationArgs:
 
 
 class EvaluationGoldenTurnStepExpectationAgentResponseArgsDict(TypedDict):
-    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationGoldenTurnStepExpectationAgentResponseChunkArgs']]]]]
+    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationGoldenTurnStepExpectationAgentResponseChunkArgsDict']]]]]
     """
     Content of the message as a series of chunks.
     Structure is documented below.
@@ -16526,17 +16526,17 @@ class EvaluationGoldenTurnStepExpectationAgentResponseArgs:
 
 
 class EvaluationGoldenTurnStepExpectationAgentResponseChunkArgsDict(TypedDict):
-    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgs']]]
+    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkAgentTransferArgsDict']]]
     """
     Represents an event indicating the transfer of a conversation to a different agent.
     Structure is documented below.
     """
-    blob: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgs']]]
+    blob: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkBlobArgsDict']]]
     """
     Represents a blob input or output in the conversation.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkImageArgsDict']]]
     """
     Represents an image input or output in the conversation.
     Structure is documented below.
@@ -16545,12 +16545,12 @@ class EvaluationGoldenTurnStepExpectationAgentResponseChunkArgsDict(TypedDict):
     """
     Text data.
     """
-    tool_call: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgs']]]
+    tool_call: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgsDict']]]
     """
     Request for the client or the agent to execute the specified tool.
     Structure is documented below.
     """
-    tool_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgs']]]
+    tool_response: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgsDict']]]
     """
     The execution result of a specific tool from the client or the agent.
     Structure is documented below.
@@ -16852,7 +16852,7 @@ class EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallArgsDict(Type
     """
     The resource name of the tool.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolCallToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -17015,7 +17015,7 @@ class EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseArgsDict(
     """
     The resource name of the tool.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationAgentResponseChunkToolResponseToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -17230,7 +17230,7 @@ class EvaluationGoldenTurnStepExpectationMockToolResponseArgsDict(TypedDict):
     """
     Name of the tool to execute.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationMockToolResponseToolsetToolArgsDict']]]
     """
     The toolset tool that got executed.
     Structure is documented below.
@@ -17393,7 +17393,7 @@ class EvaluationGoldenTurnStepExpectationToolCallArgsDict(TypedDict):
     """
     The resource name of the tool.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolCallToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -17556,7 +17556,7 @@ class EvaluationGoldenTurnStepExpectationToolResponseArgsDict(TypedDict):
     """
     The resource name of the tool.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepExpectationToolResponseToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -17735,7 +17735,7 @@ class EvaluationGoldenTurnStepUserInputArgsDict(TypedDict):
     """
     Audio data from the end user.
     """
-    blob: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputBlobArgs']]]
+    blob: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputBlobArgsDict']]]
     """
     Blob data from the end user.
     Structure is documented below.
@@ -17744,12 +17744,12 @@ class EvaluationGoldenTurnStepUserInputArgsDict(TypedDict):
     """
     DTMF digits from the end user.
     """
-    event: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputEventArgs']]]
+    event: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputEventArgsDict']]]
     """
     An event to be sent to the session.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputImageArgsDict']]]
     """
     Image data from the end user.
     Structure is documented below.
@@ -17758,7 +17758,7 @@ class EvaluationGoldenTurnStepUserInputArgsDict(TypedDict):
     """
     Natural language query.
     """
-    tool_responses: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputToolResponsesArgs']]]
+    tool_responses: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputToolResponsesArgsDict']]]
     """
     The list of tool execution results.
     Structure is documented below.
@@ -18054,7 +18054,7 @@ class EvaluationGoldenTurnStepUserInputImageArgs:
 
 
 class EvaluationGoldenTurnStepUserInputToolResponsesArgsDict(TypedDict):
-    tool_responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgs']]]]]
+    tool_responses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgsDict']]]]]
     """
     The list of tool execution results.
     Structure is documented below.
@@ -18103,7 +18103,7 @@ class EvaluationGoldenTurnStepUserInputToolResponsesToolResponseArgsDict(TypedDi
     """
     Name of the tool to execute.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationGoldenTurnStepUserInputToolResponsesToolResponseToolsetToolArgsDict']]]
     """
     The toolset tool that got executed.
     Structure is documented below.
@@ -18273,7 +18273,7 @@ class EvaluationScenarioArgsDict(TypedDict):
     """
     Task completion behavior.
     """
-    user_facts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationScenarioUserFactArgs']]]]]
+    user_facts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationScenarioUserFactArgsDict']]]]]
     """
     Facts about the user as a key value pair.
     Structure is documented below.
@@ -18440,12 +18440,12 @@ class EvaluationScenarioArgs:
 
 
 class EvaluationScenarioScenarioExpectationArgsDict(TypedDict):
-    agent_response: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseArgs']]]
+    agent_response: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseArgsDict']]]
     """
     Agent response.
     Structure is documented below.
     """
-    tool_expectation: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationArgs']]]
+    tool_expectation: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationArgsDict']]]
     """
     Tool expectation.
     Structure is documented below.
@@ -18495,7 +18495,7 @@ class EvaluationScenarioScenarioExpectationArgs:
 
 
 class EvaluationScenarioScenarioExpectationAgentResponseArgsDict(TypedDict):
-    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationScenarioScenarioExpectationAgentResponseChunkArgs']]]]]
+    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EvaluationScenarioScenarioExpectationAgentResponseChunkArgsDict']]]]]
     """
     Content of the message as a series of chunks.
     Structure is documented below.
@@ -18547,17 +18547,17 @@ class EvaluationScenarioScenarioExpectationAgentResponseArgs:
 
 
 class EvaluationScenarioScenarioExpectationAgentResponseChunkArgsDict(TypedDict):
-    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgs']]]
+    agent_transfer: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkAgentTransferArgsDict']]]
     """
     Represents an event indicating the transfer of a conversation to a different agent.
     Structure is documented below.
     """
-    blob: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgs']]]
+    blob: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkBlobArgsDict']]]
     """
     Represents a blob input or output in the conversation.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkImageArgsDict']]]
     """
     Represents an image input or output in the conversation.
     Structure is documented below.
@@ -18566,12 +18566,12 @@ class EvaluationScenarioScenarioExpectationAgentResponseChunkArgsDict(TypedDict)
     """
     Text data.
     """
-    tool_call: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgs']]]
+    tool_call: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgsDict']]]
     """
     Request for the client or the agent to execute the specified tool.
     Structure is documented below.
     """
-    tool_response: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgs']]]
+    tool_response: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgsDict']]]
     """
     The execution result of a specific tool from the client or the agent.
     Structure is documented below.
@@ -18873,7 +18873,7 @@ class EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallArgsDict(Ty
     """
     The resource name of the tool.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolCallToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -19036,7 +19036,7 @@ class EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseArgsDic
     """
     The resource name of the tool.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -19182,12 +19182,12 @@ class EvaluationScenarioScenarioExpectationAgentResponseChunkToolResponseToolset
 
 
 class EvaluationScenarioScenarioExpectationToolExpectationArgsDict(TypedDict):
-    expected_tool_call: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgs']]]
+    expected_tool_call: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgsDict']]]
     """
     Expected tool call.
     Structure is documented below.
     """
-    mock_tool_response: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgs']]]
+    mock_tool_response: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgsDict']]]
     """
     Mock tool response.
     Structure is documented below.
@@ -19254,7 +19254,7 @@ class EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallArgsDi
     """
     Name of the tool.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationExpectedToolCallToolsetToolArgsDict']]]
     """
     The toolset tool.
     Structure is documented below.
@@ -19418,7 +19418,7 @@ class EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseArgsDi
     """
     Name of the tool to execute.
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['EvaluationScenarioScenarioExpectationToolExpectationMockToolResponseToolsetToolArgsDict']]]
     """
     The toolset tool that got executed.
     Structure is documented below.
@@ -19612,7 +19612,7 @@ class EvaluationScenarioUserFactArgs:
 
 
 class ExampleMessageArgsDict(TypedDict):
-    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageChunkArgs']]]]]
+    chunks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ExampleMessageChunkArgsDict']]]]]
     """
     Content of the message as a series of chunks.
     Structure is documented below.
@@ -19664,13 +19664,13 @@ class ExampleMessageArgs:
 
 
 class ExampleMessageChunkArgsDict(TypedDict):
-    agent_transfer: NotRequired[pulumi.Input[Optional['ExampleMessageChunkAgentTransferArgs']]]
+    agent_transfer: NotRequired[pulumi.Input[Optional['ExampleMessageChunkAgentTransferArgsDict']]]
     """
     Represents an event indicating the transfer of a conversation to a different
     agent.
     Structure is documented below.
     """
-    image: NotRequired[pulumi.Input[Optional['ExampleMessageChunkImageArgs']]]
+    image: NotRequired[pulumi.Input[Optional['ExampleMessageChunkImageArgsDict']]]
     """
     Represents an image input or output in the conversation.
     Structure is documented below.
@@ -19679,12 +19679,12 @@ class ExampleMessageChunkArgsDict(TypedDict):
     """
     Text data.
     """
-    tool_call: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolCallArgs']]]
+    tool_call: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolCallArgsDict']]]
     """
     Request for the client or the agent to execute the specified tool.
     Structure is documented below.
     """
-    tool_response: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolResponseArgs']]]
+    tool_response: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolResponseArgsDict']]]
     """
     The execution result of a specific tool from the client or the agent.
     Structure is documented below.
@@ -19947,7 +19947,7 @@ class ExampleMessageChunkToolCallArgsDict(TypedDict):
     The name of the tool to execute.
     Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolCallToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolCallToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -20126,7 +20126,7 @@ class ExampleMessageChunkToolResponseArgsDict(TypedDict):
     The name of the tool to execute.
     Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}`
     """
-    toolset_tool: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolResponseToolsetToolArgs']]]
+    toolset_tool: NotRequired[pulumi.Input[Optional['ExampleMessageChunkToolResponseToolsetToolArgsDict']]]
     """
     A tool that is created from a toolset.
     Structure is documented below.
@@ -20285,17 +20285,17 @@ class ExampleMessageChunkToolResponseToolsetToolArgs:
 
 
 class GuardrailActionArgsDict(TypedDict):
-    generative_answer: NotRequired[pulumi.Input[Optional['GuardrailActionGenerativeAnswerArgs']]]
+    generative_answer: NotRequired[pulumi.Input[Optional['GuardrailActionGenerativeAnswerArgsDict']]]
     """
     The agent will immediately respond with a generative answer.
     Structure is documented below.
     """
-    respond_immediately: NotRequired[pulumi.Input[Optional['GuardrailActionRespondImmediatelyArgs']]]
+    respond_immediately: NotRequired[pulumi.Input[Optional['GuardrailActionRespondImmediatelyArgsDict']]]
     """
     The agent will immediately respond with a preconfigured response.
     Structure is documented below.
     """
-    transfer_agent: NotRequired[pulumi.Input[Optional['GuardrailActionTransferAgentArgs']]]
+    transfer_agent: NotRequired[pulumi.Input[Optional['GuardrailActionTransferAgentArgsDict']]]
     """
     The agent will transfer the conversation to a different agent.
     Structure is documented below.
@@ -20513,25 +20513,25 @@ class GuardrailActionTransferAgentArgs:
 
 
 class GuardrailCodeCallbackArgsDict(TypedDict):
-    after_agent_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackAfterAgentCallbackArgs']]]
+    after_agent_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackAfterAgentCallbackArgsDict']]]
     """
     A callback defines the custom logic to be executed at various stages of
     agent interaction.
     Structure is documented below.
     """
-    after_model_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackAfterModelCallbackArgs']]]
+    after_model_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackAfterModelCallbackArgsDict']]]
     """
     A callback defines the custom logic to be executed at various stages of
     agent interaction.
     Structure is documented below.
     """
-    before_agent_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackBeforeAgentCallbackArgs']]]
+    before_agent_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackBeforeAgentCallbackArgsDict']]]
     """
     A callback defines the custom logic to be executed at various stages of
     agent interaction.
     Structure is documented below.
     """
-    before_model_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackBeforeModelCallbackArgs']]]
+    before_model_callback: NotRequired[pulumi.Input[Optional['GuardrailCodeCallbackBeforeModelCallbackArgsDict']]]
     """
     A callback defines the custom logic to be executed at various stages of
     agent interaction.
@@ -21063,7 +21063,7 @@ class GuardrailLlmPolicyArgsDict(TypedDict):
     conversation.
     When not set a default value of 10 will be used.
     """
-    model_settings: NotRequired[pulumi.Input[Optional['GuardrailLlmPolicyModelSettingsArgs']]]
+    model_settings: NotRequired[pulumi.Input[Optional['GuardrailLlmPolicyModelSettingsArgsDict']]]
     """
     Model settings contains various configurations for the LLM model.
     Structure is documented below.
@@ -21260,13 +21260,13 @@ class GuardrailLlmPolicyModelSettingsArgs:
 
 
 class GuardrailLlmPromptSecurityArgsDict(TypedDict):
-    custom_policy: NotRequired[pulumi.Input[Optional['GuardrailLlmPromptSecurityCustomPolicyArgs']]]
+    custom_policy: NotRequired[pulumi.Input[Optional['GuardrailLlmPromptSecurityCustomPolicyArgsDict']]]
     """
     Guardrail that blocks the conversation if the LLM response is considered
     violating the policy based on the LLM classification.
     Structure is documented below.
     """
-    default_settings: NotRequired[pulumi.Input[Optional['GuardrailLlmPromptSecurityDefaultSettingsArgs']]]
+    default_settings: NotRequired[pulumi.Input[Optional['GuardrailLlmPromptSecurityDefaultSettingsArgsDict']]]
     """
     Configuration for default system security settings.
     Structure is documented below.
@@ -21350,7 +21350,7 @@ class GuardrailLlmPromptSecurityCustomPolicyArgsDict(TypedDict):
     conversation.
     When not set a default value of 10 will be used.
     """
-    model_settings: NotRequired[pulumi.Input[Optional['GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgs']]]
+    model_settings: NotRequired[pulumi.Input[Optional['GuardrailLlmPromptSecurityCustomPolicyModelSettingsArgsDict']]]
     """
     Model settings contains various configurations for the LLM model.
     Structure is documented below.
@@ -21708,12 +21708,12 @@ class ToolClientFunctionArgsDict(TypedDict):
     """
     The function description.
     """
-    parameters: NotRequired[pulumi.Input[Optional['ToolClientFunctionParametersArgs']]]
+    parameters: NotRequired[pulumi.Input[Optional['ToolClientFunctionParametersArgsDict']]]
     """
     Represents a select subset of an OpenAPI 3.0 schema object.
     Structure is documented below.
     """
-    response: NotRequired[pulumi.Input[Optional['ToolClientFunctionResponseArgs']]]
+    response: NotRequired[pulumi.Input[Optional['ToolClientFunctionResponseArgsDict']]]
     """
     Represents a select subset of an OpenAPI 3.0 schema object.
     Structure is documented below.
@@ -22778,7 +22778,7 @@ class ToolDataStoreToolArgsDict(TypedDict):
     """
     The data store tool name.
     """
-    boost_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecArgs']]]]]
+    boost_specs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecArgsDict']]]]]
     """
     Boost specification to boost certain documents.
     Structure is documented below.
@@ -22787,7 +22787,7 @@ class ToolDataStoreToolArgsDict(TypedDict):
     """
     The tool description.
     """
-    engine_source: NotRequired[pulumi.Input[Optional['ToolDataStoreToolEngineSourceArgs']]]
+    engine_source: NotRequired[pulumi.Input[Optional['ToolDataStoreToolEngineSourceArgsDict']]]
     """
     Configuration for searching within an Engine, potentially targeting
     specific DataStores.
@@ -22801,7 +22801,7 @@ class ToolDataStoreToolArgsDict(TypedDict):
 
     > **Warning:** `max_results` is deprecated and will be removed in a future release.
     """
-    modality_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolModalityConfigArgs']]]]]
+    modality_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolModalityConfigArgsDict']]]]]
     """
     The modality configs for the data store.
     Structure is documented below.
@@ -23036,7 +23036,7 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecArgsDict(TypedDict):
     Setting to 0.0 means no boost applied. The boosting condition is
     ignored.
     """
-    boost_control_spec: NotRequired[pulumi.Input[Optional['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgs']]]
+    boost_control_spec: NotRequired[pulumi.Input[Optional['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict']]]
     """
     Specification for custom ranking based on customer specified attribute
     value. It provides more controls for customized ranking than the simple
@@ -23138,7 +23138,7 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecArgsDict(T
     NUMERICAL
     FRESHNESS
     """
-    control_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgs']]]]]
+    control_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPointArgsDict']]]]]
     """
     The control points used to define the curve. The monotonic function
     (defined through the interpolation_type above) passes through the
@@ -23331,7 +23331,7 @@ class ToolDataStoreToolEngineSourceArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}`
     """
-    data_store_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceArgs']]]]]
+    data_store_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceArgsDict']]]]]
     """
     Use to target specific DataStores within the Engine.
     If empty, the search applies to all DataStores associated with the
@@ -23417,7 +23417,7 @@ class ToolDataStoreToolEngineSourceArgs:
 
 
 class ToolDataStoreToolEngineSourceDataStoreSourceArgsDict(TypedDict):
-    data_store: NotRequired[pulumi.Input[Optional['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgs']]]
+    data_store: NotRequired[pulumi.Input[Optional['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict']]]
     """
     A DataStore resource in Vertex AI Search.
     Structure is documented below.
@@ -23481,7 +23481,7 @@ class ToolDataStoreToolEngineSourceDataStoreSourceDataStoreArgsDict(TypedDict):
     Format:
     `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
     """
-    connector_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgs']]]]]
+    connector_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolDataStoreToolEngineSourceDataStoreSourceDataStoreConnectorConfigArgsDict']]]]]
     """
     (Output)
     The connector config for the data store connection.
@@ -23745,17 +23745,17 @@ class ToolDataStoreToolModalityConfigArgsDict(TypedDict):
     TEXT
     AUDIO
     """
-    grounding_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigGroundingConfigArgs']]]
+    grounding_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigGroundingConfigArgsDict']]]
     """
     Grounding configuration.
     Structure is documented below.
     """
-    rewriter_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigRewriterConfigArgs']]]
+    rewriter_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigRewriterConfigArgsDict']]]
     """
     Rewriter configuration.
     Structure is documented below.
     """
-    summarization_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigSummarizationConfigArgs']]]
+    summarization_config: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigSummarizationConfigArgsDict']]]
     """
     Summarization configuration.
     Structure is documented below.
@@ -24047,7 +24047,7 @@ class ToolDataStoreToolModalityConfigSummarizationConfigArgsDict(TypedDict):
     """
     Whether summarization is disabled.
     """
-    model_settings: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgs']]]
+    model_settings: NotRequired[pulumi.Input[Optional['ToolDataStoreToolModalityConfigSummarizationConfigModelSettingsArgsDict']]]
     """
     Model settings contains various configurations for the LLM model.
     Structure is documented below.
@@ -24314,7 +24314,7 @@ class ToolGoogleSearchToolArgs:
 
 
 class ToolOpenApiToolArgsDict(TypedDict):
-    api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationArgs']]]]]
+    api_authentications: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationArgsDict']]]]]
     """
     (Output)
     Authentication information required for API calls.
@@ -24340,13 +24340,13 @@ class ToolOpenApiToolArgsDict(TypedDict):
     (Output)
     The OpenAPI schema in JSON or YAML format.
     """
-    service_directory_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolServiceDirectoryConfigArgs']]]]]
+    service_directory_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolServiceDirectoryConfigArgsDict']]]]]
     """
     (Output)
     Configuration for tools using Service Directory.
     Structure is documented below.
     """
-    tls_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigArgs']]]]]
+    tls_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigArgsDict']]]]]
     """
     (Output)
     The TLS configuration.
@@ -24528,31 +24528,31 @@ class ToolOpenApiToolArgs:
 
 
 class ToolOpenApiToolApiAuthenticationArgsDict(TypedDict):
-    api_key_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationApiKeyConfigArgs']]]]]
+    api_key_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationApiKeyConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with API key.
     Structure is documented below.
     """
-    bearer_token_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationBearerTokenConfigArgs']]]]]
+    bearer_token_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationBearerTokenConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with a bearer token.
     Structure is documented below.
     """
-    oauth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationOauthConfigArgs']]]]]
+    oauth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationOauthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with OAuth.
     Structure is documented below.
     """
-    service_account_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgs']]]]]
+    service_account_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAccountAuthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication using a custom service account.
     Structure is documented below.
     """
-    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]]]
+    service_agent_id_token_auth_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]]]
     """
     (Output)
     Configurations for authentication with [ID
@@ -25055,7 +25055,7 @@ class ToolOpenApiToolServiceDirectoryConfigArgs:
 
 
 class ToolOpenApiToolTlsConfigArgsDict(TypedDict):
-    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigCaCertArgs']]]]]
+    ca_certs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ToolOpenApiToolTlsConfigCaCertArgsDict']]]]]
     """
     (Output)
     Specifies a list of allowed custom CA certificates for HTTPS
@@ -25325,7 +25325,7 @@ class ToolsetMcpToolsetArgsDict(TypedDict):
     https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http
     for more details.
     """
-    api_authentication: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationArgs']]]
+    api_authentication: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationArgsDict']]]
     """
     Authentication information required to access tools and execute a tool
     against the MCP server. For API key auth, the API key can only be sent in
@@ -25340,13 +25340,13 @@ class ToolsetMcpToolsetArgsDict(TypedDict):
     https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/tool/open-api#openapi-injection
     for more details.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetServiceDirectoryConfigArgsDict']]]
     """
     Service Directory configuration for VPC-SC, used to resolve service names
     within a perimeter.
     Structure is documented below.
     """
-    tls_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetTlsConfigArgs']]]
+    tls_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetTlsConfigArgsDict']]]
     """
     The TLS configuration. Includes the custom server certificates that the
     client should trust.
@@ -25470,27 +25470,27 @@ class ToolsetMcpToolsetArgs:
 
 
 class ToolsetMcpToolsetApiAuthenticationArgsDict(TypedDict):
-    api_key_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgs']]]
+    api_key_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationApiKeyConfigArgsDict']]]
     """
     Configurations for authentication with API key.
     Structure is documented below.
     """
-    bearer_token_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgs']]]
+    bearer_token_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationBearerTokenConfigArgsDict']]]
     """
     Configurations for authentication with a bearer token.
     Structure is documented below.
     """
-    oauth_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationOauthConfigArgs']]]
+    oauth_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationOauthConfigArgsDict']]]
     """
     Configurations for authentication with OAuth.
     Structure is documented below.
     """
-    service_account_auth_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgs']]]
+    service_account_auth_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]]
     """
     Configurations for authentication using a custom service account.
     Structure is documented below.
     """
-    service_agent_id_token_auth_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]
+    service_agent_id_token_auth_config: NotRequired[pulumi.Input[Optional['ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]
     """
     Configurations for authentication with [ID
     token](https://cloud.google.com/docs/authentication/token-types#id) generated
@@ -26078,7 +26078,7 @@ class ToolsetOpenApiToolsetArgsDict(TypedDict):
     """
     The OpenAPI schema of the toolset.
     """
-    api_authentication: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationArgs']]]
+    api_authentication: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationArgsDict']]]
     """
     Authentication information required for API calls.
     Structure is documented below.
@@ -26088,12 +26088,12 @@ class ToolsetOpenApiToolsetArgsDict(TypedDict):
     If true, the agent will ignore unknown fields in the API response for all
     operations defined in the OpenAPI schema.
     """
-    service_directory_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetServiceDirectoryConfigArgs']]]
+    service_directory_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetServiceDirectoryConfigArgsDict']]]
     """
     Configuration for tools using Service Directory.
     Structure is documented below.
     """
-    tls_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetTlsConfigArgs']]]
+    tls_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetTlsConfigArgsDict']]]
     """
     The TLS configuration.
     Structure is documented below.
@@ -26232,27 +26232,27 @@ class ToolsetOpenApiToolsetArgs:
 
 
 class ToolsetOpenApiToolsetApiAuthenticationArgsDict(TypedDict):
-    api_key_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgs']]]
+    api_key_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationApiKeyConfigArgsDict']]]
     """
     Configurations for authentication with API key.
     Structure is documented below.
     """
-    bearer_token_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgs']]]
+    bearer_token_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationBearerTokenConfigArgsDict']]]
     """
     Configurations for authentication with a bearer token.
     Structure is documented below.
     """
-    oauth_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgs']]]
+    oauth_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationOauthConfigArgsDict']]]
     """
     Configurations for authentication with OAuth.
     Structure is documented below.
     """
-    service_account_auth_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgs']]]
+    service_account_auth_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationServiceAccountAuthConfigArgsDict']]]
     """
     Configurations for authentication using a custom service account.
     Structure is documented below.
     """
-    service_agent_id_token_auth_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs']]]
+    service_agent_id_token_auth_config: NotRequired[pulumi.Input[Optional['ToolsetOpenApiToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgsDict']]]
     """
     Configurations for authentication with [ID
     token](https://cloud.google.com/docs/authentication/token-types#id) generated

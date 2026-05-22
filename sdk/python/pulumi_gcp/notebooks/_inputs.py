@@ -834,7 +834,7 @@ class RuntimeSoftwareConfigArgsDict(TypedDict):
     """
     Install Nvidia Driver automatically.
     """
-    kernels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgs']]]]]
+    kernels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeSoftwareConfigKernelArgsDict']]]]]
     """
     Use a list of container images to use as Kernels in the notebook instance.
     Structure is documented below.
@@ -1108,7 +1108,7 @@ class RuntimeVirtualMachineArgsDict(TypedDict):
     (Output)
     The user-friendly name of the Managed Compute Engine instance.
     """
-    virtual_machine_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigArgs']]]
+    virtual_machine_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigArgsDict']]]
     """
     Virtual Machine configuration settings.
     Structure is documented below.
@@ -1185,17 +1185,17 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     """
     The Compute Engine machine type used for runtimes.
     """
-    accelerator_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs']]]
+    accelerator_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgsDict']]]
     """
     The Compute Engine accelerator configuration for this runtime.
     Structure is documented below.
     """
-    container_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs']]]]]
+    container_images: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['RuntimeVirtualMachineVirtualMachineConfigContainerImageArgsDict']]]]]
     """
     Use a list of container images to start the notebook instance.
     Structure is documented below.
     """
-    encryption_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgs']]]
+    encryption_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigEncryptionConfigArgsDict']]]
     """
     Encryption settings for virtual machine data disk.
     Structure is documented below.
@@ -1259,7 +1259,7 @@ class RuntimeVirtualMachineVirtualMachineConfigArgsDict(TypedDict):
     Reserved IP Range name is used for VPC Peering. The
     subnetwork allocation will use the range *name* if it's assigned.
     """
-    shielded_instance_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgs']]]
+    shielded_instance_config: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfigArgsDict']]]
     """
     Shielded VM Instance configuration settings.
     Structure is documented below.
@@ -1784,7 +1784,7 @@ class RuntimeVirtualMachineVirtualMachineConfigDataDiskArgsDict(TypedDict):
     reserved for the boot disk. If you have many disks attached
     to an instance, each disk would have a unique index number.
     """
-    initialize_params: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgs']]]
+    initialize_params: NotRequired[pulumi.Input[Optional['RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParamsArgsDict']]]
     """
     Input only. Specifies the parameters for a new disk that will
     be created alongside the new instance. Use initialization

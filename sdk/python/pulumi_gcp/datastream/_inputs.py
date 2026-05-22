@@ -508,17 +508,17 @@ class ConnectionProfileMongodbProfileArgsDict(TypedDict):
     A reference to a Secret Manager resource name storing the MongoDB
     connection password. Mutually exclusive with password.
     """
-    srv_connection_format: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileSrvConnectionFormatArgs']]]
+    srv_connection_format: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileSrvConnectionFormatArgsDict']]]
     """
     Srv connection format. Mutually exclusive with
     standard_connection_Format.
     """
-    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileSslConfigArgs']]]
+    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileSslConfigArgsDict']]]
     """
     SSL configuration for the MongoDB connection.
     Structure is documented below.
     """
-    standard_connection_format: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileStandardConnectionFormatArgs']]]
+    standard_connection_format: NotRequired[pulumi.Input[Optional['ConnectionProfileMongodbProfileStandardConnectionFormatArgsDict']]]
     """
     Standard connection format. Mutually exclusive with
     srv_connection_format.
@@ -976,7 +976,7 @@ class ConnectionProfileMysqlProfileArgsDict(TypedDict):
     """
     A reference to a Secret Manager resource name storing the user's password.
     """
-    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfileMysqlProfileSslConfigArgs']]]
+    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfileMysqlProfileSslConfigArgsDict']]]
     """
     SSL configuration for the MySQL connection.
     Structure is documented below.
@@ -1427,7 +1427,7 @@ class ConnectionProfilePostgresqlProfileArgsDict(TypedDict):
     """
     A reference to a Secret Manager resource name storing the user's password.
     """
-    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigArgs']]]
+    ssl_config: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigArgsDict']]]
     """
     SSL configuration for the PostgreSQL connection.
     Structure is documented below.
@@ -1554,13 +1554,13 @@ class ConnectionProfilePostgresqlProfileArgs:
 
 
 class ConnectionProfilePostgresqlProfileSslConfigArgsDict(TypedDict):
-    server_and_client_verification: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgs']]]
+    server_and_client_verification: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerificationArgsDict']]]
     """
     If this field is set, the communication will be encrypted with TLS encryption
     and both the server identity and the client identity will be authenticated.
     Structure is documented below.
     """
-    server_verification: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgs']]]
+    server_verification: NotRequired[pulumi.Input[Optional['ConnectionProfilePostgresqlProfileSslConfigServerVerificationArgsDict']]]
     """
     If this field is set, the communication will be encrypted with TLS encryption
     and the server identity will be authenticated.
@@ -1774,12 +1774,12 @@ class ConnectionProfileSalesforceProfileArgsDict(TypedDict):
     """
     Domain for the Salesforce Org.
     """
-    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgs']]]
+    oauth2_client_credentials: NotRequired[pulumi.Input[Optional['ConnectionProfileSalesforceProfileOauth2ClientCredentialsArgsDict']]]
     """
     OAuth credentials to use for Salesforce authentication.
     Structure is documented below.
     """
-    user_credentials: NotRequired[pulumi.Input[Optional['ConnectionProfileSalesforceProfileUserCredentialsArgs']]]
+    user_credentials: NotRequired[pulumi.Input[Optional['ConnectionProfileSalesforceProfileUserCredentialsArgsDict']]]
     """
     User credentials to use for Salesforce authentication.
     Structure is documented below.
@@ -2353,37 +2353,37 @@ class PrivateConnectionVpcPeeringConfigArgs:
 
 
 class StreamBackfillAllArgsDict(TypedDict):
-    mongodb_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllMongodbExcludedObjectsArgs']]]
+    mongodb_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllMongodbExcludedObjectsArgsDict']]]
     """
     MongoDB data source objects to avoid backfilling.
     Structure is documented below.
     """
-    mysql_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllMysqlExcludedObjectsArgs']]]
+    mysql_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllMysqlExcludedObjectsArgsDict']]]
     """
     MySQL data source objects to avoid backfilling.
     Structure is documented below.
     """
-    oracle_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllOracleExcludedObjectsArgs']]]
+    oracle_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllOracleExcludedObjectsArgsDict']]]
     """
     PostgreSQL data source objects to avoid backfilling.
     Structure is documented below.
     """
-    postgresql_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllPostgresqlExcludedObjectsArgs']]]
+    postgresql_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllPostgresqlExcludedObjectsArgsDict']]]
     """
     PostgreSQL data source objects to avoid backfilling.
     Structure is documented below.
     """
-    salesforce_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSalesforceExcludedObjectsArgs']]]
+    salesforce_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSalesforceExcludedObjectsArgsDict']]]
     """
     Salesforce objects to avoid backfilling.
     Structure is documented below.
     """
-    spanner_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSpannerExcludedObjectsArgs']]]
+    spanner_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSpannerExcludedObjectsArgsDict']]]
     """
     Spanner objects to avoid backfilling.
     Structure is documented below.
     """
-    sql_server_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSqlServerExcludedObjectsArgs']]]
+    sql_server_excluded_objects: NotRequired[pulumi.Input[Optional['StreamBackfillAllSqlServerExcludedObjectsArgsDict']]]
     """
     SQL Server data source objects to avoid backfilling.
     Structure is documented below.
@@ -2558,7 +2558,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseArgsDict(TypedDict):
     """
     Database name.
     """
-    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgs']]]]]
+    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict']]]]]
     """
     Collections in the database.
     Structure is documented below.
@@ -2609,7 +2609,7 @@ class StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionArgsDict(TypedDic
     """
     Collection name.
     """
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgs']]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMongodbExcludedObjectsDatabaseCollectionFieldArgsDict']]]]]
     """
     Fields in the collection.
     Structure is documented below.
@@ -2720,7 +2720,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseArgsDict(TypedDict):
     """
     Database name.
     """
-    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgs']]]]]
+    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -2771,7 +2771,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableArgsDict(Typed
     """
     Table name.
     """
-    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]]
+    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]]
     """
     MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -3008,7 +3008,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaArgsDict(TypedDict):
     """
     Schema name.
     """
-    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgs']]]]]
+    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -3059,7 +3059,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableArgsDict(Type
     """
     Table name.
     """
-    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgs']]]]]
+    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllOracleExcludedObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]]
     """
     Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -3354,7 +3354,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaArgsDict(TypedDi
     """
     Database name.
     """
-    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs']]]]]
+    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -3405,7 +3405,7 @@ class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableA
     """
     Table name.
     """
-    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]]
+    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]]
     """
     PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -3664,7 +3664,7 @@ class StreamBackfillAllSalesforceExcludedObjectsArgs:
 
 
 class StreamBackfillAllSalesforceExcludedObjectsObjectArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgs']]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSalesforceExcludedObjectsObjectFieldArgsDict']]]]]
     """
     Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
     Structure is documented below.
@@ -3780,7 +3780,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaArgsDict(TypedDict):
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgs']]]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -3831,7 +3831,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableArgsDict(TypedDict):
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSpannerExcludedObjectsSchemaTableColumnArgsDict']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -4013,7 +4013,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaArgsDict(TypedDict):
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgs']]]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -4064,7 +4064,7 @@ class StreamBackfillAllSqlServerExcludedObjectsSchemaTableArgsDict(TypedDict):
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamBackfillAllSqlServerExcludedObjectsSchemaTableColumnArgsDict']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -4317,12 +4317,12 @@ class StreamDestinationConfigArgsDict(TypedDict):
     """
     Destination connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
     """
-    bigquery_destination_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigArgs']]]
+    bigquery_destination_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigArgsDict']]]
     """
     A configuration for how data should be loaded to Google BigQuery.
     Structure is documented below.
     """
-    gcs_destination_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigArgs']]]
+    gcs_destination_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigArgsDict']]]
     """
     A configuration for how data should be loaded to Cloud Storage.
     Structure is documented below.
@@ -4387,13 +4387,13 @@ class StreamDestinationConfigArgs:
 
 
 class StreamDestinationConfigBigqueryDestinationConfigArgsDict(TypedDict):
-    append_only: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgs']]]
+    append_only: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigAppendOnlyArgsDict']]]
     """
     AppendOnly mode defines that the stream of changes (INSERT, UPDATE-INSERT, UPDATE-DELETE and DELETE
     events) to a source table will be written to the destination Google BigQuery table, retaining the
     historical state of the data.
     """
-    blmt_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgs']]]
+    blmt_config: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigBlmtConfigArgsDict']]]
     """
     BigLake Managed Tables configuration for BigQuery streams.
     Structure is documented below.
@@ -4405,18 +4405,18 @@ class StreamDestinationConfigBigqueryDestinationConfigArgsDict(TypedDict):
     will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
     A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s". Defaults to 900s.
     """
-    merge: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigMergeArgs']]]
+    merge: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigMergeArgsDict']]]
     """
     Merge mode defines that all changes to a table will be merged at the destination Google BigQuery
     table. This is the default write mode. When selected, BigQuery reflects the way the data is stored
     in the source database. With Merge mode, no historical record of the change events is kept.
     """
-    single_target_dataset: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgs']]]
+    single_target_dataset: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSingleTargetDatasetArgsDict']]]
     """
     A single target dataset to which all data will be streamed.
     Structure is documented below.
     """
-    source_hierarchy_datasets: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs']]]
+    source_hierarchy_datasets: NotRequired[pulumi.Input[Optional['StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgsDict']]]
     """
     Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
     Structure is documented below.
@@ -4834,7 +4834,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
 
 
 class StreamDestinationConfigGcsDestinationConfigArgsDict(TypedDict):
-    avro_file_format: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgs']]]
+    avro_file_format: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigAvroFileFormatArgsDict']]]
     """
     AVRO file format configuration.
     """
@@ -4848,7 +4848,7 @@ class StreamDestinationConfigGcsDestinationConfigArgsDict(TypedDict):
     """
     The maximum file size to be saved in the bucket.
     """
-    json_file_format: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgs']]]
+    json_file_format: NotRequired[pulumi.Input[Optional['StreamDestinationConfigGcsDestinationConfigJsonFileFormatArgsDict']]]
     """
     JSON file format configuration.
     Structure is documented below.
@@ -5069,12 +5069,12 @@ class StreamRuleSetArgs:
 
 
 class StreamRuleSetCustomizationRuleArgsDict(TypedDict):
-    bigquery_clustering: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryClusteringArgs']]]
+    bigquery_clustering: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryClusteringArgsDict']]]
     """
     BigQuery clustering rule.
     Structure is documented below.
     """
-    bigquery_partitioning: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningArgs']]]
+    bigquery_partitioning: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict']]]
     """
     BigQuery partitioning rule.
     Structure is documented below.
@@ -5152,12 +5152,12 @@ class StreamRuleSetCustomizationRuleBigqueryClusteringArgs:
 
 
 class StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict(TypedDict):
-    ingestion_time_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgs']]]
+    ingestion_time_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIngestionTimePartitionArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    integer_range_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgs']]]
+    integer_range_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartitionArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -5166,7 +5166,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningArgsDict(TypedDict):
     """
     If true, queries over the table require a partition filter.
     """
-    time_unit_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs']]]
+    time_unit_partition: NotRequired[pulumi.Input[Optional['StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -5418,7 +5418,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartitionArgs:
 
 
 class StreamRuleSetObjectFilterArgsDict(TypedDict):
-    source_object_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierArgs']]]
+    source_object_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict']]]
     """
     Specific source object identifier.
     Structure is documented below.
@@ -5450,37 +5450,37 @@ class StreamRuleSetObjectFilterArgs:
 
 
 class StreamRuleSetObjectFilterSourceObjectIdentifierArgsDict(TypedDict):
-    mongodb_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgs']]]
+    mongodb_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMongodbIdentifierArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    mysql_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgs']]]
+    mysql_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierMysqlIdentifierArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    oracle_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgs']]]
+    oracle_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifierArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    postgresql_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgs']]]
+    postgresql_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierPostgresqlIdentifierArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    salesforce_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgs']]]
+    salesforce_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSalesforceIdentifierArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    spanner_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgs']]]
+    spanner_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSpannerIdentifierArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    sql_server_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgs']]]
+    sql_server_identifier: NotRequired[pulumi.Input[Optional['StreamRuleSetObjectFilterSourceObjectIdentifierSqlServerIdentifierArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -5935,37 +5935,37 @@ class StreamSourceConfigArgsDict(TypedDict):
     """
     Source connection profile resource. Format: projects/{project}/locations/{location}/connectionProfiles/{name}
     """
-    mongodb_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigArgs']]]
+    mongodb_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigArgsDict']]]
     """
     MongoDB source configuration.
     Structure is documented below.
     """
-    mysql_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigArgs']]]
+    mysql_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigArgsDict']]]
     """
     MySQL data source configuration.
     Structure is documented below.
     """
-    oracle_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigArgs']]]
+    oracle_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigArgsDict']]]
     """
     MySQL data source configuration.
     Structure is documented below.
     """
-    postgresql_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigArgs']]]
+    postgresql_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigArgsDict']]]
     """
     PostgreSQL data source configuration.
     Structure is documented below.
     """
-    salesforce_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigArgs']]]
+    salesforce_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigArgsDict']]]
     """
     Salesforce data source configuration.
     Structure is documented below.
     """
-    spanner_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigArgs']]]
+    spanner_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigArgsDict']]]
     """
     Spanner data source configuration.
     Structure is documented below.
     """
-    sql_server_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigArgs']]]
+    sql_server_source_config: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigArgsDict']]]
     """
     SQL Server data source configuration.
     Structure is documented below.
@@ -6120,12 +6120,12 @@ class StreamSourceConfigArgs:
 
 
 class StreamSourceConfigMongodbSourceConfigArgsDict(TypedDict):
-    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs']]]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict']]]
     """
     MongoDB collections to include in the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs']]]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict']]]
     """
     MongoDB collections to include in the stream.
     Structure is documented below.
@@ -6201,7 +6201,7 @@ class StreamSourceConfigMongodbSourceConfigArgs:
 
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgsDict(TypedDict):
-    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgs']]]]]
+    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict']]]]]
     """
     MongoDB databases in the cluster.
     Structure is documented below.
@@ -6233,7 +6233,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsArgs:
 
 
 class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseArgsDict(TypedDict):
-    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgs']]]]]
+    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsDict']]]]]
     """
     Collections in the database.
     Structure is documented below.
@@ -6289,7 +6289,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionArgsD
     """
     Collection name.
     """
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgs']]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionFieldArgsDict']]]]]
     """
     Fields in the collection.
     Structure is documented below.
@@ -6366,7 +6366,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
 
 
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgsDict(TypedDict):
-    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgs']]]]]
+    databases: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict']]]]]
     """
     MongoDB databases in the cluster.
     Structure is documented below.
@@ -6398,7 +6398,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsArgs:
 
 
 class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseArgsDict(TypedDict):
-    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgs']]]]]
+    collections: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsDict']]]]]
     """
     Collections in the database.
     Structure is documented below.
@@ -6454,7 +6454,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionArgsD
     """
     Collection name.
     """
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgs']]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionFieldArgsDict']]]]]
     """
     Fields in the collection.
     Structure is documented below.
@@ -6531,20 +6531,20 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
 
 
 class StreamSourceConfigMysqlSourceConfigArgsDict(TypedDict):
-    binary_log_position: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]]
+    binary_log_position: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict']]]
     """
     CDC reader reads from binary logs replication cdc method.
     """
-    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict']]]
     """
     MySQL objects to exclude from the stream.
     Structure is documented below.
     """
-    gtid: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigGtidArgs']]]
+    gtid: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigGtidArgsDict']]]
     """
     CDC reader reads from gtid based replication.
     """
-    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict']]]
     """
     MySQL objects to retrieve from the source.
     Structure is documented below.
@@ -6716,7 +6716,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgsDict(Typ
     """
     Database name.
     """
-    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs']]]]]
+    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -6767,7 +6767,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableAr
     """
     Table name.
     """
-    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]]
+    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]]
     """
     MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -7013,7 +7013,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgsDict(Typ
     """
     Database name.
     """
-    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs']]]]]
+    mysql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgsDict']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -7064,7 +7064,7 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableAr
     """
     Table name.
     """
-    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs']]]]]
+    mysql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict']]]]]
     """
     MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -7266,16 +7266,16 @@ class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMy
 
 
 class StreamSourceConfigOracleSourceConfigArgsDict(TypedDict):
-    drop_large_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgs']]]
+    drop_large_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigDropLargeObjectsArgsDict']]]
     """
     Configuration to drop large object values.
     """
-    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigExcludeObjectsArgs']]]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigExcludeObjectsArgsDict']]]
     """
     Oracle objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigIncludeObjectsArgs']]]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigIncludeObjectsArgsDict']]]
     """
     Oracle objects to retrieve from the source.
     Structure is documented below.
@@ -7290,7 +7290,7 @@ class StreamSourceConfigOracleSourceConfigArgsDict(TypedDict):
     Maximum number of concurrent CDC tasks. The number should be non negative.
     If not set (or set to 0), the system's default value will be used.
     """
-    stream_large_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgs']]]
+    stream_large_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigOracleSourceConfigStreamLargeObjectsArgsDict']]]
     """
     Configuration to drop large object values.
     """
@@ -7451,7 +7451,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgsDict(Typ
     """
     Schema name.
     """
-    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgs']]]]]
+    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableArgsDict']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -7502,7 +7502,7 @@ class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableA
     """
     Table name.
     """
-    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]]
+    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]]
     """
     Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -7797,7 +7797,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaArgsDict(Typ
     """
     Schema name.
     """
-    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgs']]]]]
+    oracle_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableArgsDict']]]]]
     """
     Tables in the database.
     Structure is documented below.
@@ -7848,7 +7848,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableA
     """
     Table name.
     """
-    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgs']]]]]
+    oracle_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumnArgsDict']]]]]
     """
     Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -8127,12 +8127,12 @@ class StreamSourceConfigPostgresqlSourceConfigArgsDict(TypedDict):
     The name of the logical replication slot that's configured with
     the pgoutput plugin.
     """
-    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs']]]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgsDict']]]
     """
     PostgreSQL objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs']]]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgsDict']]]
     """
     PostgreSQL objects to retrieve from the source.
     Structure is documented below.
@@ -8274,7 +8274,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaArgs
     """
     Database name.
     """
-    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]]
+    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -8325,7 +8325,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
     """
     Table name.
     """
-    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]]
+    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]]
     """
     PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -8588,7 +8588,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs
     """
     Database name.
     """
-    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgs']]]]]
+    postgresql_tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -8639,7 +8639,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
     """
     Table name.
     """
-    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs']]]]]
+    postgresql_columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgsDict']]]]]
     """
     PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -8871,12 +8871,12 @@ class StreamSourceConfigSalesforceSourceConfigArgsDict(TypedDict):
     """
     Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
     """
-    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs']]]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgsDict']]]
     """
     Salesforce objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs']]]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgsDict']]]
     """
     Salesforce objects to retrieve from the source.
     Structure is documented below.
@@ -8972,7 +8972,7 @@ class StreamSourceConfigSalesforceSourceConfigExcludeObjectsArgs:
 
 
 class StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgs']]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigExcludeObjectsObjectFieldArgsDict']]]]]
     """
     Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
     Structure is documented below.
@@ -9084,7 +9084,7 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsArgs:
 
 
 class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectArgsDict(TypedDict):
-    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgs']]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectFieldArgsDict']]]]]
     """
     Fields in the Salesforce object. When unspecified as part of include/exclude objects, includes/excludes everything/nothing.
     Structure is documented below.
@@ -9173,7 +9173,7 @@ class StreamSourceConfigSpannerSourceConfigArgsDict(TypedDict):
     """
     The Spanner change stream name to use.
     """
-    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgs']]]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigExcludeObjectsArgsDict']]]
     """
     Spanner objects to retrieve from the source.
     Structure is documented below.
@@ -9182,7 +9182,7 @@ class StreamSourceConfigSpannerSourceConfigArgsDict(TypedDict):
     """
     The FGAC role to use for Spanner queries.
     """
-    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgs']]]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSpannerSourceConfigIncludeObjectsArgsDict']]]
     """
     Spanner objects to retrieve from the source.
     Structure is documented below.
@@ -9378,7 +9378,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaArgsDict(TypedDic
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgs']]]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -9429,7 +9429,7 @@ class StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableArgsDict(Typ
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -9612,7 +9612,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaArgsDict(TypedDic
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgs']]]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -9663,7 +9663,7 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableArgsDict(Typ
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -9811,16 +9811,16 @@ class StreamSourceConfigSpannerSourceConfigIncludeObjectsSchemaTableColumnArgs:
 
 
 class StreamSourceConfigSqlServerSourceConfigArgsDict(TypedDict):
-    change_tables: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigChangeTablesArgs']]]
+    change_tables: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigChangeTablesArgsDict']]]
     """
     CDC reader reads from change tables.
     """
-    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgs']]]
+    exclude_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigExcludeObjectsArgsDict']]]
     """
     SQL Server objects to exclude from the stream.
     Structure is documented below.
     """
-    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgs']]]
+    include_objects: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigIncludeObjectsArgsDict']]]
     """
     SQL Server objects to retrieve from the source.
     Structure is documented below.
@@ -9833,7 +9833,7 @@ class StreamSourceConfigSqlServerSourceConfigArgsDict(TypedDict):
     """
     Max concurrent CDC tasks.
     """
-    transaction_logs: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgs']]]
+    transaction_logs: NotRequired[pulumi.Input[Optional['StreamSourceConfigSqlServerSourceConfigTransactionLogsArgsDict']]]
     """
     CDC reader reads from transaction logs.
     """
@@ -9990,7 +9990,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaArgsDict(TypedD
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgs']]]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -10041,7 +10041,7 @@ class StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableArgsDict(T
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigExcludeObjectsSchemaTableColumnArgsDict']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.
@@ -10316,7 +10316,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaArgsDict(TypedD
     """
     Schema name.
     """
-    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgs']]]]]
+    tables: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict']]]]]
     """
     Tables in the schema.
     Structure is documented below.
@@ -10367,7 +10367,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableArgsDict(T
     """
     Table name.
     """
-    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgs']]]]]
+    columns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTableColumnArgsDict']]]]]
     """
     Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
     Structure is documented below.

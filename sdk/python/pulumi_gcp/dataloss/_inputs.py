@@ -814,17 +814,17 @@ __all__ = [
 ]
 
 class PreventionDeidentifyTemplateDeidentifyConfigArgsDict(TypedDict):
-    image_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs']]]
+    image_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgsDict']]]
     """
     Treat the dataset as an image and redact.
     Structure is documented below.
     """
-    info_type_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs']]]
+    info_type_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgsDict']]]
     """
     Treat the dataset as free-form text and apply the same free text transformation everywhere
     Structure is documented below.
     """
-    record_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgs']]]
+    record_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgsDict']]]
     """
     Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
     Structure is documented below.
@@ -923,20 +923,20 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs:
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgsDict(TypedDict):
-    all_info_types: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgs']]]
+    all_info_types: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypesArgsDict']]]
     """
     Apply transformation to all findings not specified in other ImageTransformation's selectedInfoTypes.
     """
-    all_text: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgs']]]
+    all_text: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllTextArgsDict']]]
     """
     Apply transformation to all text that doesn't match an infoType.
     """
-    redaction_color: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgs']]]
+    redaction_color: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColorArgsDict']]]
     """
     The color to use when redacting content from an image. If not specified, the default is black.
     Structure is documented below.
     """
-    selected_info_types: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgs']]]
+    selected_info_types: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesArgsDict']]]
     """
     Apply transformation to the selected infoTypes.
     Structure is documented below.
@@ -1143,7 +1143,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformS
     """
     Name of the information type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypesInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -1278,7 +1278,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
     Structure is documented below.
     """
-    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs']]]]]
+    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgsDict']]]]]
     """
     InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
     all findings that correspond to infoTypes that were requested in InspectConfig.
@@ -1336,7 +1336,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     Name of the information type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -1434,7 +1434,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict(TypedDict):
-    bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs']]]
+    bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict']]]
     """
     Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
     This can be used on data of type: number, long, string, timestamp.
@@ -1442,17 +1442,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
     Structure is documented below.
     """
-    character_mask_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs']]]
+    character_mask_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]]
     """
     Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
     Structure is documented below.
     """
-    crypto_deterministic_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']]]
+    crypto_deterministic_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]]
     """
     Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
     Structure is documented below.
     """
-    crypto_hash_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs']]]
+    crypto_hash_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]]
     """
     Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
     Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
@@ -1460,18 +1460,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
     Structure is documented below.
     """
-    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']]]
+    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]]
     """
     Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
     Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
     Structure is documented below.
     """
-    date_shift_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs']]]
+    date_shift_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]]
     """
     Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
     Structure is documented below.
     """
-    fixed_size_bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs']]]
+    fixed_size_bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]]
     """
     Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
     The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
@@ -1480,16 +1480,16 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
     Structure is documented below.
     """
-    redact_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs']]]
+    redact_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]]
     """
     Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
     """
-    replace_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs']]]
+    replace_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict']]]
     """
     Replace each input value with a given value.
     Structure is documented below.
     """
-    replace_dictionary_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs']]]
+    replace_dictionary_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]]
     """
     Replace with a value randomly drawn (with replacement) from a dictionary.
     Structure is documented below.
@@ -1498,7 +1498,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     Replace each matching finding with the name of the info type.
     """
-    time_part_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs']]]
+    time_part_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict']]]
     """
     For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
     Structure is documented below.
@@ -1746,7 +1746,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
-    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgs']]]]]
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]]]
     """
     Set of buckets. Ranges must be non-overlapping.
     Bucket is represented as a range, along with replacement values.
@@ -1787,13 +1787,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     The `replacement_value` block must only contain one argument.
     Structure is documented below.
     """
-    max: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs']]]
+    max: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]]
     """
     Upper bound of the range, exclusive; type must match min.
     The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
     Structure is documented below.
     """
-    min: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs']]]
+    min: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]]
     """
     Lower bound of the range, inclusive. Type should be the same as max if used.
     The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
@@ -1867,7 +1867,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -1889,7 +1889,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -2183,7 +2183,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -2205,7 +2205,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -2499,7 +2499,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -2521,7 +2521,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -2815,7 +2815,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
-    characters_to_ignores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs']]]]]
+    characters_to_ignores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]]
     """
     Characters to skip when doing de-identification of a value. These will be left alone and skipped.
     Structure is documented below.
@@ -2971,7 +2971,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]]
     """
     A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
     If the context is not set, plaintext would be used as is for encryption. If the context is set but:
@@ -2981,12 +2981,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
     Structure is documented below.
     """
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]]
     """
     The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
     Structure is documented below.
     """
-    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs']]]
+    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']]]
     """
     The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
     For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
@@ -3114,7 +3114,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -3122,12 +3122,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -3317,7 +3317,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -3416,7 +3416,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']]]
     """
     The key used by the encryption function.
     Structure is documented below.
@@ -3448,7 +3448,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -3456,12 +3456,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -3652,7 +3652,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
     Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
     """
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]]
     """
     The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
     If the context is set but:
@@ -3665,7 +3665,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     *   a string is encoded in UTF-8 format followed by a single byte of value 2
     Structure is documented below.
     """
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]]
     """
     The key used by the encryption algorithm.
     Structure is documented below.
@@ -3679,7 +3679,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
     """
-    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']]]
+    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]]
     """
     The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
     For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
@@ -3853,7 +3853,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -3861,12 +3861,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -4056,7 +4056,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -4164,13 +4164,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
     For example, 3 means shift date to at most 3 days into the future.
     """
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]]
     """
     Points to the field that contains the context, for example, an entity id.
     If set, must also set cryptoKey. If set, shift will be consistent for the given context.
     Structure is documented below.
     """
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]]
     """
     Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
     Structure is documented below.
@@ -4282,7 +4282,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -4290,12 +4290,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -4716,7 +4716,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -4738,7 +4738,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -5142,12 +5142,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsArgsDict(TypedDict):
-    field_transformations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs']]]]]
+    field_transformations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgsDict']]]]]
     """
     Transform the record by applying various field transformations.
     Structure is documented below.
     """
-    record_suppressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgs']]]]]
+    record_suppressions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgsDict']]]]]
     """
     Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
     Structure is documented below.
@@ -5203,7 +5203,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
     Structure is documented below.
     """
-    condition: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgsDict']]]
     """
     Only apply the transformation if the condition evaluates to true for the given RecordCondition. The conditions are allowed to reference fields that are not used in the actual transformation.
     Example Use Cases:
@@ -5211,13 +5211,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     - Redact a field if the date of birth field is greater than 85.
     Structure is documented below.
     """
-    info_type_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs']]]
+    info_type_transformations: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgsDict']]]
     """
     Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
     Only one of `primitive_transformation` or `info_type_transformations` must be specified.
     Structure is documented below.
     """
-    primitive_transformation: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs']]]
+    primitive_transformation: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgsDict']]]
     """
     Apply the transformation to the entire field.
     The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
@@ -5318,7 +5318,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgsDict(TypedDict):
-    expressions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgs']]]
+    expressions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgsDict']]]
     """
     An expression, consisting of an operator and conditions.
     Structure is documented below.
@@ -5350,7 +5350,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgs']]]
+    conditions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgsDict']]]
     """
     Conditions to apply to the expression.
     Structure is documented below.
@@ -5408,7 +5408,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionArgsDict']]]]]
     """
     A collection of conditions.
     Structure is documented below.
@@ -5450,7 +5450,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Operator used to compare the field or infoType to the value.
     Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
     """
-    value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueArgsDict']]]
     """
     Value to compare against. [Mandatory, except for EXISTS tests.]
     Structure is documented below.
@@ -5549,7 +5549,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -5571,7 +5571,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -5947,7 +5947,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
     Structure is documented below.
     """
-    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgs']]]]]
+    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeArgsDict']]]]]
     """
     InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
     all findings that correspond to infoTypes that were requested in InspectConfig.
@@ -6005,7 +6005,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     Name of the information type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -6103,7 +6103,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationArgsDict(TypedDict):
-    bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgs']]]
+    bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigArgsDict']]]
     """
     Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
     This can be used on data of type: number, long, string, timestamp.
@@ -6111,17 +6111,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
     Structure is documented below.
     """
-    character_mask_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs']]]
+    character_mask_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]]
     """
     Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
     Structure is documented below.
     """
-    crypto_deterministic_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']]]
+    crypto_deterministic_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]]
     """
     Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
     Structure is documented below.
     """
-    crypto_hash_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgs']]]
+    crypto_hash_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]]
     """
     Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
     Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
@@ -6129,18 +6129,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
     Structure is documented below.
     """
-    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']]]
+    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]]
     """
     Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
     Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
     Structure is documented below.
     """
-    date_shift_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs']]]
+    date_shift_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgsDict']]]
     """
     Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
     Structure is documented below.
     """
-    fixed_size_bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs']]]
+    fixed_size_bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]]
     """
     Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
     The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
@@ -6149,25 +6149,25 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
     Structure is documented below.
     """
-    redact_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgs']]]
+    redact_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfigArgsDict']]]
     """
     Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
     """
-    replace_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs']]]
+    replace_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgsDict']]]
     """
     Replace each input value with a given value.
     Structure is documented below.
     """
-    replace_dictionary_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgs']]]
+    replace_dictionary_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]]
     """
     Replace with a value randomly drawn (with replacement) from a dictionary.
     Structure is documented below.
     """
-    replace_with_info_type_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgs']]]
+    replace_with_info_type_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceWithInfoTypeConfigArgsDict']]]
     """
     Replace each matching finding with the name of the info type.
     """
-    time_part_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgs']]]
+    time_part_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfigArgsDict']]]
     """
     For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
     Structure is documented below.
@@ -6455,13 +6455,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     The `replacement_value` block must only contain one argument.
     Structure is documented below.
     """
-    max: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs']]]
+    max: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]]
     """
     Upper bound of the range, exclusive; type must match min.
     The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
     Structure is documented below.
     """
-    min: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgs']]]
+    min: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]]
     """
     Lower bound of the range, inclusive. Type should be the same as max if used.
     The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
@@ -6535,7 +6535,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict(TypedDict):
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -6557,7 +6557,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -6851,7 +6851,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict(TypedDict):
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -6873,7 +6873,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -7167,7 +7167,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueArgsDict(TypedDict):
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -7189,7 +7189,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -7483,7 +7483,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
-    characters_to_ignores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs']]]]]
+    characters_to_ignores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]]
     """
     Characters to skip when doing de-identification of a value. These will be left alone and skipped.
     Structure is documented below.
@@ -7656,7 +7656,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY\\_TOKEN\\_TYPE.
     Structure is documented below.
     """
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]]
     """
     A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
     If the context is not set, plaintext would be used as is for encryption. If the context is set but:
@@ -7779,7 +7779,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -7787,12 +7787,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -7982,7 +7982,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -8111,7 +8111,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -8119,12 +8119,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -8320,7 +8320,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
     Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
     """
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]]
     """
     The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
     If the context is set but:
@@ -8342,7 +8342,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
     """
-    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']]]
+    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]]
     """
     The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
     For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
@@ -8514,7 +8514,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -8522,12 +8522,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -8717,7 +8717,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -8824,13 +8824,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
     For example, 3 means shift date to at most 3 days into the future.
     """
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]]
     """
     Points to the field that contains the context, for example, an entity id.
     If set, must also set cryptoKey. If set, shift will be consistent for the given context.
     Structure is documented below.
     """
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]]
     """
     Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
     Structure is documented below.
@@ -8942,7 +8942,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -8950,12 +8950,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -9376,7 +9376,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -9398,7 +9398,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -9810,7 +9810,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgsDict(TypedDict):
-    bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgs']]]
+    bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgsDict']]]
     """
     Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 > LOW 31-65 > MEDIUM 66-100 > HIGH
     This can be used on data of type: number, long, string, timestamp.
@@ -9818,17 +9818,17 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
     Structure is documented below.
     """
-    character_mask_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgs']]]
+    character_mask_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict']]]
     """
     Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3).
     Structure is documented below.
     """
-    crypto_deterministic_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgs']]]
+    crypto_deterministic_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict']]]
     """
     Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC [https://tools.ietf.org/html/rfc5297](https://tools.ietf.org/html/rfc5297).
     Structure is documented below.
     """
-    crypto_hash_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgs']]]
+    crypto_hash_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgsDict']]]
     """
     Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
     Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
@@ -9836,18 +9836,18 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
     Structure is documented below.
     """
-    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgs']]]
+    crypto_replace_ffx_fpe_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigArgsDict']]]
     """
     Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
     Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
     Structure is documented below.
     """
-    date_shift_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgs']]]
+    date_shift_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigArgsDict']]]
     """
     Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
     Structure is documented below.
     """
-    fixed_size_bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgs']]]
+    fixed_size_bucketing_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigArgsDict']]]
     """
     Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
     The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
@@ -9856,21 +9856,21 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
     Structure is documented below.
     """
-    redact_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgs']]]
+    redact_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigArgsDict']]]
     """
     Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input 'My phone number is 206-555-0123', the output would be 'My phone number is '.
     """
-    replace_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs']]]
+    replace_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgsDict']]]
     """
     Replace each input value with a given value.
     Structure is documented below.
     """
-    replace_dictionary_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgs']]]
+    replace_dictionary_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict']]]
     """
     Replace with a value randomly drawn (with replacement) from a dictionary.
     Structure is documented below.
     """
-    time_part_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgs']]]
+    time_part_config: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfigArgsDict']]]
     """
     For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
     Structure is documented below.
@@ -10102,7 +10102,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigArgsDict(TypedDict):
-    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgs']]]]]
+    buckets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketArgsDict']]]]]
     """
     Set of buckets. Ranges must be non-overlapping.
     Bucket is represented as a range, along with replacement values.
@@ -10143,13 +10143,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     The `replacement_value` block must only contain one argument.
     Structure is documented below.
     """
-    max: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgs']]]
+    max: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxArgsDict']]]
     """
     Upper bound of the range, exclusive; type must match min.
     The `max` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
     Structure is documented below.
     """
-    min: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgs']]]
+    min: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinArgsDict']]]
     """
     Lower bound of the range, inclusive. Type should be the same as max if used.
     The `min` block must only contain one argument. See the `bucketing_config` block description for more information about choosing a data type.
@@ -10227,7 +10227,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -10249,7 +10249,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -10563,7 +10563,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -10585,7 +10585,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -10899,7 +10899,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -10921,7 +10921,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -11231,7 +11231,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigArgsDict(TypedDict):
-    characters_to_ignores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs']]]]]
+    characters_to_ignores: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgsDict']]]]]
     """
     Characters to skip when doing de-identification of a value. These will be left alone and skipped.
     Structure is documented below.
@@ -11387,7 +11387,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigArgsDict(TypedDict):
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContextArgsDict']]]
     """
     A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well.
     If the context is not set, plaintext would be used as is for encryption. If the context is set but:
@@ -11397,12 +11397,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note that case (1) is expected when an InfoTypeTransformation is applied to both structured and unstructured ContentItems.
     Structure is documented below.
     """
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict']]]
     """
     The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
     Structure is documented below.
     """
-    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgs']]]
+    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeArgsDict']]]
     """
     The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate}
     For example, if the name of custom info type is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
@@ -11530,7 +11530,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -11538,12 +11538,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -11733,7 +11733,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -11832,7 +11832,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigArgsDict(TypedDict):
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict']]]
     """
     The key used by the encryption function.
     Structure is documented below.
@@ -11864,7 +11864,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -11872,12 +11872,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -12068,7 +12068,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
     Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
     """
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContextArgsDict']]]
     """
     The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
     If the context is set but:
@@ -12081,7 +12081,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     *   a string is encoded in UTF-8 format followed by a single byte of value 2
     Structure is documented below.
     """
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict']]]
     """
     The key used by the encryption algorithm.
     Structure is documented below.
@@ -12095,7 +12095,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     The native way to select the alphabet. Must be in the range \\[2, 95\\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
     """
-    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs']]]
+    surrogate_info_type: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgsDict']]]
     """
     The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info\\_type\\_name(surrogate\\_character\\_count):surrogate
     For example, if the name of custom infoType is 'MY\\_TOKEN\\_INFO\\_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY\\_TOKEN\\_INFO\\_TYPE(3):abc'
@@ -12269,7 +12269,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -12277,12 +12277,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -12472,7 +12472,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -12580,13 +12580,13 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
     For example, 3 means shift date to at most 3 days into the future.
     """
-    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgs']]]
+    context: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigContextArgsDict']]]
     """
     Points to the field that contains the context, for example, an entity id.
     If set, must also set cryptoKey. If set, shift will be consistent for the given context.
     Structure is documented below.
     """
-    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs']]]
+    crypto_key: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict']]]
     """
     Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and cryptoKey. If set, must also set context. Can only be applied to table items.
     Structure is documented below.
@@ -12699,7 +12699,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgsDict(TypedDict):
-    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgs']]]
+    kms_wrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrappedArgsDict']]]
     """
     KMS wrapped key.
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a KMS-wrapped crypto key: dlp.kms.encrypt
@@ -12707,12 +12707,12 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     Note: When you use Cloud KMS for cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     Structure is documented below.
     """
-    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgs']]]
+    transient: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyTransientArgsDict']]]
     """
     Transient crypto key. Use this to have a random data crypto key generated. It will be discarded after the request finishes. Only one of this, `unwrapped` or `kms_wrapped` must be specified.
     Structure is documented below.
     """
-    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgs']]]
+    unwrapped: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyUnwrappedArgsDict']]]
     """
     Unwrapped crypto key. Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible. Only one of this, `transient` or `kms_wrapped` must be specified.
     Structure is documented below.
@@ -12992,7 +12992,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -13014,7 +13014,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -13328,7 +13328,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -13350,7 +13350,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -13707,7 +13707,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -13729,7 +13729,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -14042,7 +14042,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigArgsDict(TypedDict):
-    word_list: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs']]]
+    word_list: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgsDict']]]
     """
     A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
     Structure is documented below.
@@ -14134,7 +14134,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgs']]]
+    condition: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgsDict']]]
     """
     A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
     Structure is documented below.
@@ -14166,7 +14166,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionArgsDict(TypedDict):
-    expressions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgs']]]
+    expressions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgsDict']]]
     """
     An expression, consisting of an operator and conditions.
     Structure is documented below.
@@ -14198,7 +14198,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgs']]]
+    conditions: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgsDict']]]
     """
     Conditions to apply to the expression.
     Structure is documented below.
@@ -14256,7 +14256,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionArgsDict']]]]]
     """
     A collection of conditions.
     Structure is documented below.
@@ -14298,7 +14298,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     Operator used to compare the field or infoType to the value.
     Possible values are: `EQUAL_TO`, `NOT_EQUAL_TO`, `GREATER_THAN`, `LESS_THAN`, `GREATER_THAN_OR_EQUALS`, `LESS_THAN_OR_EQUALS`, `EXISTS`.
     """
-    value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueArgsDict']]]
     """
     Value to compare against. [Mandatory, except for EXISTS tests.]
     Structure is documented below.
@@ -14397,7 +14397,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     """
     A boolean value.
     """
-    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgs']]]
+    date_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValueArgsDict']]]
     """
     Represents a whole or partial calendar date.
     Structure is documented below.
@@ -14419,7 +14419,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     """
     A string value.
     """
-    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgs']]]
+    time_value: NotRequired[pulumi.Input[Optional['PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueTimeValueArgsDict']]]
     """
     Represents a time of day.
     Structure is documented below.
@@ -14729,29 +14729,29 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
 
 
 class PreventionDiscoveryConfigActionArgsDict(TypedDict):
-    export_data: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionExportDataArgs']]]
+    export_data: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionExportDataArgsDict']]]
     """
     Export data profiles into a provided location
     Structure is documented below.
     """
-    pub_sub_notification: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPubSubNotificationArgs']]]
+    pub_sub_notification: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPubSubNotificationArgsDict']]]
     """
     Publish a message into the Pub/Sub topic.
     Structure is documented below.
     """
-    publish_to_chronicle: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPublishToChronicleArgs']]]
+    publish_to_chronicle: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPublishToChronicleArgsDict']]]
     """
     Publishes generated data profiles to Google Security Operations. For more information, see [Use Sensitive Data Protection data in context-aware analytics](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
     """
-    publish_to_dataplex_catalog: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgs']]]
+    publish_to_dataplex_catalog: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPublishToDataplexCatalogArgsDict']]]
     """
     Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
     """
-    publish_to_scc: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPublishToSccArgs']]]
+    publish_to_scc: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPublishToSccArgsDict']]]
     """
     Publishes findings to Security Command Center for each data profile.
     """
-    tag_resources: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionTagResourcesArgs']]]
+    tag_resources: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionTagResourcesArgsDict']]]
     """
     Tag the profiled resources with the specified tag values.
     Structure is documented below.
@@ -14867,14 +14867,14 @@ class PreventionDiscoveryConfigActionArgs:
 
 
 class PreventionDiscoveryConfigActionExportDataArgsDict(TypedDict):
-    profile_table: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionExportDataProfileTableArgs']]]
+    profile_table: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionExportDataProfileTableArgsDict']]]
     """
     Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
     The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitive_data_protection_discovery`
     and table will be named `discovery_profiles`. This table will be placed in the same project as the container project running the scan.
     Structure is documented below.
     """
-    sample_findings_table: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgs']]]
+    sample_findings_table: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionExportDataSampleFindingsTableArgsDict']]]
     """
     Store sample findings in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery
     Structure is documented below.
@@ -15076,7 +15076,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationArgsDict(TypedDict):
     The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
     Possible values are: `NEW_PROFILE`, `CHANGED_PROFILE`, `SCORE_INCREASED`, `ERROR_CHANGED`.
     """
-    pubsub_condition: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgs']]]
+    pubsub_condition: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgsDict']]]
     """
     Conditions for triggering pubsub
     Structure is documented below.
@@ -15164,7 +15164,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationArgs:
 
 
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgsDict(TypedDict):
-    expressions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgs']]]
+    expressions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict']]]
     """
     An expression
     Structure is documented below.
@@ -15196,7 +15196,7 @@ class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionArgs:
 
 
 class PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsArgsDict(TypedDict):
-    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgs']]]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigActionPubSubNotificationPubsubConditionExpressionsConditionArgsDict']]]]]
     """
     Conditions to apply to the expression
     Structure is documented below.
@@ -15342,7 +15342,7 @@ class PreventionDiscoveryConfigActionTagResourcesArgsDict(TypedDict):
     The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`.
     Each value may be one of: `PROFILE_GENERATION_NEW`, `PROFILE_GENERATION_UPDATE`.
     """
-    tag_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgs']]]]]
+    tag_conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict']]]]]
     """
     The tags to associate with different conditions.
     Structure is documented below.
@@ -15408,12 +15408,12 @@ class PreventionDiscoveryConfigActionTagResourcesArgs:
 
 
 class PreventionDiscoveryConfigActionTagResourcesTagConditionArgsDict(TypedDict):
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScoreArgsDict']]]
     """
     Conditions attaching the tag to a resource on its profile having this sensitivity score.
     Structure is documented below.
     """
-    tag: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs']]]
+    tag: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgsDict']]]
     """
     The tag value to attach to resources.
     Structure is documented below.
@@ -15523,7 +15523,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionTagArgs:
 
 
 class PreventionDiscoveryConfigErrorArgsDict(TypedDict):
-    details: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigErrorDetailsArgs']]]
+    details: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigErrorDetailsArgsDict']]]
     """
     A list of messages that carry the error details.
     """
@@ -15641,7 +15641,7 @@ class PreventionDiscoveryConfigErrorDetailsArgs:
 
 
 class PreventionDiscoveryConfigOrgConfigArgsDict(TypedDict):
-    location: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigOrgConfigLocationArgs']]]
+    location: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigOrgConfigLocationArgsDict']]]
     """
     The data to scan folder org or project
     Structure is documented below.
@@ -15742,7 +15742,7 @@ class PreventionDiscoveryConfigOrgConfigLocationArgs:
 
 
 class PreventionDiscoveryConfigOtherCloudStartingLocationArgsDict(TypedDict):
-    aws_location: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgs']]]
+    aws_location: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -15823,27 +15823,27 @@ class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocationArgs:
 
 
 class PreventionDiscoveryConfigTargetArgsDict(TypedDict):
-    big_query_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetArgs']]]
+    big_query_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetArgsDict']]]
     """
     BigQuery target for Discovery. The first target to match a table will be the one applied.
     Structure is documented below.
     """
-    cloud_sql_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetArgs']]]
+    cloud_sql_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetArgsDict']]]
     """
     Cloud SQL target for Discovery. The first target to match a table will be the one applied.
     Structure is documented below.
     """
-    cloud_storage_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetArgs']]]
+    cloud_storage_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict']]]
     """
     Cloud Storage target for Discovery. The first target to match a bucket will be the one applied.
     Structure is documented below.
     """
-    other_cloud_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetArgs']]]
+    other_cloud_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetArgsDict']]]
     """
     Other clouds target for discovery. The first target to match a resource will be the one applied.
     Structure is documented below.
     """
-    secrets_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetSecretsTargetArgs']]]
+    secrets_target: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetSecretsTargetArgsDict']]]
     """
     Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them as vulnerabilities to Security Command Center. Only one target of this type is allowed.
     """
@@ -15944,21 +15944,21 @@ class PreventionDiscoveryConfigTargetArgs:
 
 
 class PreventionDiscoveryConfigTargetBigQueryTargetArgsDict(TypedDict):
-    cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgs']]]
+    cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict']]]
     """
     How often and when to update profiles. New tables that match both the fiter and conditions are scanned as quickly as possible depending on system capacity.
     Structure is documented below.
     """
-    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgs']]]
+    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict']]]
     """
     In addition to matching the filter, these conditions must be true before a profile is generated
     Structure is documented below.
     """
-    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgs']]]
+    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgsDict']]]
     """
     Tables that match this filter will not have profiles created.
     """
-    filter: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterArgsDict']]]
     """
     Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table
     Structure is documented below.
@@ -16042,17 +16042,17 @@ class PreventionDiscoveryConfigTargetBigQueryTargetArgs:
 
 
 class PreventionDiscoveryConfigTargetBigQueryTargetCadenceArgsDict(TypedDict):
-    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgs']]]
+    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceInspectTemplateModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
     Structure is documented below.
     """
-    schema_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgs']]]
+    schema_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceSchemaModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when a schema is modified
     Structure is documented below.
     """
-    table_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgs']]]
+    table_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetCadenceTableModifiedCadenceArgsDict']]]
     """
     Governs when to update profile when a table is modified.
     Structure is documented below.
@@ -16266,7 +16266,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict(TypedDict)
     """
     File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
     """
-    or_conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgs']]]
+    or_conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetConditionsOrConditionsArgsDict']]]
     """
     At least one of the conditions must be true for a table to be scanned.
     Structure is documented below.
@@ -16276,7 +16276,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditionsArgsDict(TypedDict)
     Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
     Possible values are: `BIG_QUERY_COLLECTION_ALL_TYPES`, `BIG_QUERY_COLLECTION_ONLY_SUPPORTED_TYPES`.
     """
-    types: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgs']]]
+    types: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetConditionsTypesArgsDict']]]
     """
     Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
     Each value may be one of: `DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES`, `DATABASE_RESOURCE_TYPE_TABLE`.
@@ -16450,16 +16450,16 @@ class PreventionDiscoveryConfigTargetBigQueryTargetDisabledArgs:
 
 
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterArgsDict(TypedDict):
-    other_tables: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgs']]]
+    other_tables: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterOtherTablesArgsDict']]]
     """
     Catch-all. This should always be the last filter in the list because anything above it will apply first.
     """
-    table_reference: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs']]]
+    table_reference: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgsDict']]]
     """
     The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
     Structure is documented below.
     """
-    tables: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs']]]
+    tables: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgsDict']]]
     """
     A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
     Structure is documented below.
@@ -16607,7 +16607,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReferenceArgs:
 
 
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgsDict(TypedDict):
-    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgs']]]
+    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict']]]
     """
     A collection of regular expressions to match a BQ table against.
     Structure is documented below.
@@ -16639,7 +16639,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesArgs:
 
 
 class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesArgsDict(TypedDict):
-    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgs']]]]]
+    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPatternArgsDict']]]]]
     """
     The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
     Structure is documented below.
@@ -16745,16 +16745,16 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetArgsDict(TypedDict):
     Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
     Structure is documented below.
     """
-    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgs']]]
+    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetConditionsArgsDict']]]
     """
     In addition to matching the filter, these conditions must be true before a profile is generated.
     Structure is documented below.
     """
-    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs']]]
+    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgsDict']]]
     """
     Disable profiling for database resources that match this filter.
     """
-    generation_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgs']]]
+    generation_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict']]]
     """
     How often and when to update profiles. New tables that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
     Structure is documented below.
@@ -16901,17 +16901,17 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetDisabledArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgsDict(TypedDict):
-    collection: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs']]]
+    collection: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict']]]
     """
     A collection of resources for this filter to apply to.
     Structure is documented below.
     """
-    database_resource_reference: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgs']]]
+    database_resource_reference: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterDatabaseResourceReferenceArgsDict']]]
     """
     The database resource to scan. Targets including this can only include one target (the target with this database resource reference).
     Structure is documented below.
     """
-    others: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs']]]
+    others: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgsDict']]]
     """
     Match discovery resources not covered by any other filter.
     """
@@ -16976,7 +16976,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgsDict(TypedDict):
-    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgs']]]
+    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict']]]
     """
     A collection of regular expressions to match a resource against.
     Structure is documented below.
@@ -17008,7 +17008,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
-    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgs']]]]]
+    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudSqlTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]]
     """
     The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
     Structure is documented below.
@@ -17223,7 +17223,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetFilterOthersArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict(TypedDict):
-    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']]]
+    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
     Structure is documented below.
@@ -17233,7 +17233,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceArgsDict(Typ
     Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
     Possible values are: `UPDATE_FREQUENCY_NEVER`, `UPDATE_FREQUENCY_DAILY`, `UPDATE_FREQUENCY_MONTHLY`.
     """
-    schema_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgs']]]
+    schema_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when a schema is modified
     Structure is documented below.
@@ -17392,16 +17392,16 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetArgsDict(TypedDict):
     The buckets the generation_cadence applies to. The first target with a matching filter will be the one to apply to a bucket.
     Structure is documented below.
     """
-    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgs']]]
+    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict']]]
     """
     In addition to matching the filter, these conditions must be true before a profile is generated.
     Structure is documented below.
     """
-    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs']]]
+    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgsDict']]]
     """
     Disable profiling for buckets that match this filter.
     """
-    generation_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgs']]]
+    generation_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict']]]
     """
     How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
     Structure is documented below.
@@ -17484,7 +17484,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetConditionsArgsDict(TypedDict):
-    cloud_storage_conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgs']]]
+    cloud_storage_conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetConditionsCloudStorageConditionsArgsDict']]]
     """
     Cloud Storage conditions.
     Structure is documented below.
@@ -17620,17 +17620,17 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetDisabledArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterArgsDict(TypedDict):
-    cloud_storage_resource_reference: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgs']]]
+    cloud_storage_resource_reference: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourceReferenceArgsDict']]]
     """
     The bucket to scan. Targets including this can only include one target (the target with this bucket). This enables profiling the contents of a single bucket, while the other options allow for easy profiling of many buckets within a project or an organization.
     Structure is documented below.
     """
-    collection: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs']]]
+    collection: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict']]]
     """
     A collection of resources for this filter to apply to.
     Structure is documented below.
     """
-    others: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs']]]
+    others: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgsDict']]]
     """
     Match discovery resources not covered by any other filter.
     """
@@ -17744,12 +17744,12 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCloudStorageResourc
 
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgsDict(TypedDict):
-    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgs']]]
+    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict']]]
     """
     A collection of regular expressions to match a resource against.
     Structure is documented below.
     """
-    include_tags: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgs']]]
+    include_tags: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgsDict']]]
     """
     For a resource to match the tag filters, the resource must have all of the
     provided tags attached. Tags refer to Resource Manager tags bound to the
@@ -17805,7 +17805,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
-    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgs']]]]]
+    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]]
     """
     The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
     Structure is documented below.
@@ -17837,7 +17837,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
 
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
-    cloud_storage_regex: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgs']]]
+    cloud_storage_regex: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPatternCloudStorageRegexArgsDict']]]
     """
     Regex for Cloud Storage.
     Structure is documented below.
@@ -17918,7 +17918,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
 
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsArgsDict(TypedDict):
-    tag_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilterArgs']]]]]
+    tag_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeTagsTagFilterArgsDict']]]]]
     """
     A resource must match ALL of the specified tag filters to be included in the collection.
     Structure is documented below.
@@ -18023,7 +18023,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterOthersArgs:
 
 
 class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceArgsDict(TypedDict):
-    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']]]
+    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
     Structure is documented below.
@@ -18115,21 +18115,21 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetArgsDict(TypedDict):
     Required. The resources that the discovery cadence applies to. The first target with a matching filter will be the one to apply to a resource.
     Structure is documented below.
     """
-    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgs']]]
+    conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict']]]
     """
     In addition to matching the filter, these conditions must be true before a profile is generated.
     Structure is documented below.
     """
-    data_source_type: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgs']]]
+    data_source_type: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetDataSourceTypeArgsDict']]]
     """
     Required. The type of data profiles generated by this discovery target. Supported values are: aws/s3/bucket
     Structure is documented below.
     """
-    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgs']]]
+    disabled: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgsDict']]]
     """
     Disable profiling for resources that match this filter.
     """
-    generation_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgs']]]
+    generation_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgsDict']]]
     """
     How often and when to update profiles. New resources that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
     Structure is documented below.
@@ -18230,7 +18230,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetArgs:
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetConditionsArgsDict(TypedDict):
-    amazon_s3_bucket_conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgs']]]
+    amazon_s3_bucket_conditions: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetConditionsAmazonS3BucketConditionsArgsDict']]]
     """
     Amazon S3 bucket conditions.
     Structure is documented below.
@@ -18378,16 +18378,16 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetDisabledArgs:
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgsDict(TypedDict):
-    collection: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgs']]]
+    collection: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgsDict']]]
     """
     A collection of resources for this filter to apply to.
     Structure is documented below.
     """
-    others: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgs']]]
+    others: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgsDict']]]
     """
     Match discovery resources not covered by any other filter.
     """
-    single_resource: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgs']]]
+    single_resource: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDict']]]
     """
     The resource to scan. Configs using this filter can only have one target (the target with this single resource reference).
     Structure is documented below.
@@ -18453,7 +18453,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterArgs:
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgsDict(TypedDict):
-    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgs']]]
+    include_regexes: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgsDict']]]
     """
     A collection of regular expressions to match a resource against.
     Structure is documented below.
@@ -18485,7 +18485,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionArgs:
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesArgsDict(TypedDict):
-    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgs']]]]]
+    patterns: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgsDict']]]]]
     """
     The group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all lengths of regular expressions can't exceed 10 KiB.
     Structure is documented below.
@@ -18517,7 +18517,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternArgsDict(TypedDict):
-    amazon_s3_bucket_regex: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgs']]]
+    amazon_s3_bucket_regex: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgsDict']]]
     """
     Regex for Cloud Storage.
     Structure is documented below.
@@ -18558,7 +18558,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRege
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexArgsDict(TypedDict):
-    aws_account_regex: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgs']]]
+    aws_account_regex: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterCollectionIncludeRegexesPatternAmazonS3BucketRegexAwsAccountRegexArgsDict']]]
     """
     The AWS account regex
     """
@@ -18645,7 +18645,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterOthersArgs:
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgsDict(TypedDict):
-    amazon_s3_bucket: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgs']]]
+    amazon_s3_bucket: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgsDict']]]
     """
     Amazon S3 bucket.
     Structure is documented below.
@@ -18686,7 +18686,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceArgs:
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketArgsDict(TypedDict):
-    aws_account: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgs']]]
+    aws_account: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccountArgsDict']]]
     """
     The AWS account.
     """
@@ -18764,7 +18764,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
 
 
 class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceArgsDict(TypedDict):
-    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgs']]]
+    inspect_template_modified_cadence: NotRequired[pulumi.Input[Optional['PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadenceArgsDict']]]
     """
     Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
     Structure is documented below.
@@ -18865,7 +18865,7 @@ class PreventionInspectTemplateInspectConfigArgsDict(TypedDict):
     List of options defining data content to scan. If empty, text, images, and other content will be included.
     Each value may be one of: `CONTENT_TEXT`, `CONTENT_IMAGE`.
     """
-    custom_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgs']]]]]
+    custom_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict']]]]]
     """
     Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
     Structure is documented below.
@@ -18878,7 +18878,7 @@ class PreventionInspectTemplateInspectConfigArgsDict(TypedDict):
     """
     When true, a contextual quote from the data that triggered a finding is included in the response.
     """
-    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgs']]]]]
+    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigInfoTypeArgsDict']]]]]
     """
     Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
     or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
@@ -18886,7 +18886,7 @@ class PreventionInspectTemplateInspectConfigArgsDict(TypedDict):
     By default this may be all types, but may change over time as detectors are updated.
     Structure is documented below.
     """
-    limits: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigLimitsArgs']]]
+    limits: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigLimitsArgsDict']]]
     """
     Configuration to control the number of findings returned.
     Structure is documented below.
@@ -18897,7 +18897,7 @@ class PreventionInspectTemplateInspectConfigArgsDict(TypedDict):
     Default value is `POSSIBLE`.
     Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
     """
-    rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgs']]]]]
+    rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigRuleSetArgsDict']]]]]
     """
     Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
     other rules are executed in the order they are specified for each info type.
@@ -19070,7 +19070,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict(TypedDict):
     treated as a custom info type.
     Structure is documented below.
     """
-    dictionary: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs']]]
+    dictionary: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgsDict']]]
     """
     Dictionary which defines the rule.
     Structure is documented below.
@@ -19087,22 +19087,22 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeArgsDict(TypedDict):
     Default value is `VERY_LIKELY`.
     Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
     """
-    regex: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs']]]
+    regex: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgsDict']]]
     """
     Regular expression which defines the rule.
     Structure is documented below.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
     """
-    stored_type: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs']]]
+    stored_type: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgsDict']]]
     """
     A reference to a StoredInfoType to use with scanning.
     Structure is documented below.
     """
-    surrogate_type: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs']]]
+    surrogate_type: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgsDict']]]
     """
     Message for detecting output from deidentification transformations that support reversing.
     """
@@ -19266,12 +19266,12 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs:
 
 
 class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgsDict(TypedDict):
-    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']]]
+    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict']]]
     """
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
     Structure is documented below.
     """
-    word_list: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgs']]]
+    word_list: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordListArgsDict']]]
     """
     List of words or phrases to search for.
     Structure is documented below.
@@ -19385,7 +19385,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgsDict(Typed
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
     listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -19612,7 +19612,7 @@ class PreventionInspectTemplateInspectConfigInfoTypeArgsDict(TypedDict):
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
     at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -19720,7 +19720,7 @@ class PreventionInspectTemplateInspectConfigLimitsArgsDict(TypedDict):
     """
     Max number of findings that will be returned per request/job. The maximum returned is 2000.
     """
-    max_findings_per_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]]]]
+    max_findings_per_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict']]]]]
     """
     Configuration of findings limit given for specified infoTypes.
     Structure is documented below.
@@ -19786,7 +19786,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict
     """
     Max findings limit for the given infoType.
     """
-    info_type: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs']]]
+    info_type: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict']]]
     """
     Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
     not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
@@ -19844,7 +19844,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
     listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -20002,7 +20002,7 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeArgsDict(TypedDict):
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
     at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -20102,12 +20102,12 @@ class PreventionInspectTemplateInspectConfigRuleSetInfoTypeSensitivityScoreArgs:
 
 
 class PreventionInspectTemplateInspectConfigRuleSetRuleArgsDict(TypedDict):
-    exclusion_rule: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs']]]
+    exclusion_rule: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict']]]
     """
     The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
     Structure is documented below.
     """
-    hotword_rule: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs']]]
+    hotword_rule: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgsDict']]]
     """
     Hotword-based detection rule.
     Structure is documented below.
@@ -20162,23 +20162,23 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgsDict(Typ
     How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
     Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
     """
-    dictionary: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs']]]
+    dictionary: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]]
     """
     Dictionary which defines the rule.
     Structure is documented below.
     """
-    exclude_by_hotword: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs']]]
+    exclude_by_hotword: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict']]]
     """
     Drop if the hotword rule is contained in the proximate context.
     For tabular data, the context includes the column name.
     Structure is documented below.
     """
-    exclude_info_types: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']]]
+    exclude_info_types: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict']]]
     """
     Set of infoTypes for which findings would affect this rule.
     Structure is documented below.
     """
-    regex: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgs']]]
+    regex: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegexArgsDict']]]
     """
     Regular expression which defines the rule.
     Structure is documented below.
@@ -20283,12 +20283,12 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs:
 
 
 class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
-    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs']]]
+    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict']]]
     """
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
     Structure is documented below.
     """
-    word_list: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs']]]
+    word_list: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]]
     """
     List of words or phrases to search for.
     Structure is documented below.
@@ -20601,7 +20601,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoT
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
     at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -21014,12 +21014,12 @@ class PreventionJobTriggerInspectJobArgsDict(TypedDict):
     Information on where to inspect
     Structure is documented below.
     """
-    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobActionArgs']]]]]
+    actions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobActionArgsDict']]]]]
     """
     Configuration block for the actions to execute on the completion of a job. Can be specified multiple times, but only one for each type. Each action block supports fields documented below. This argument is processed in attribute-as-blocks mode.
     Structure is documented below.
     """
-    inspect_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigArgs']]]
+    inspect_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigArgsDict']]]
     """
     The core content of the template.
     Structure is documented below.
@@ -21106,40 +21106,40 @@ class PreventionJobTriggerInspectJobArgs:
 
 
 class PreventionJobTriggerInspectJobActionArgsDict(TypedDict):
-    deidentify: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyArgs']]]
+    deidentify: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyArgsDict']]]
     """
     Create a de-identified copy of the requested table or files.
     Structure is documented below.
     """
-    job_notification_emails: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgs']]]
+    job_notification_emails: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionJobNotificationEmailsArgsDict']]]
     """
     Sends an email when the job completes. The email goes to IAM project owners and technical Essential Contacts.
     """
-    pub_sub: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPubSubArgs']]]
+    pub_sub: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPubSubArgsDict']]]
     """
     Publish a message into a given Pub/Sub topic when the job completes.
     Structure is documented below.
     """
-    publish_findings_to_cloud_data_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgs']]]
+    publish_findings_to_cloud_data_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalogArgsDict']]]
     """
     (Optional, Deprecated)
     Publish findings of a DlpJob to Data Catalog.
 
     > **Warning:** `publish_findings_to_cloud_data_catalog` is deprecated and will be removed in a future major release. To publish findings to Dataplex Catalog, use `publish_findings_to_dataplex_catalog` instead.
     """
-    publish_findings_to_dataplex_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgs']]]
+    publish_findings_to_dataplex_catalog: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishFindingsToDataplexCatalogArgsDict']]]
     """
     Publish findings of a DlpJob as an aspect to Dataplex Universal Catalog.
     """
-    publish_summary_to_cscc: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgs']]]
+    publish_summary_to_cscc: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishSummaryToCsccArgsDict']]]
     """
     Publish the result summary of a DlpJob to the Cloud Security Command Center.
     """
-    publish_to_stackdriver: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishToStackdriverArgs']]]
+    publish_to_stackdriver: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionPublishToStackdriverArgsDict']]]
     """
     Enable Stackdriver metric dlp.googleapis.com/findingCount.
     """
-    save_findings: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionSaveFindingsArgs']]]
+    save_findings: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionSaveFindingsArgsDict']]]
     """
     If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
     Structure is documented below.
@@ -21312,12 +21312,12 @@ class PreventionJobTriggerInspectJobActionDeidentifyArgsDict(TypedDict):
     If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started.
     Each value may be one of: `IMAGE`, `TEXT_FILE`, `CSV`, `TSV`.
     """
-    transformation_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs']]]
+    transformation_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgsDict']]]
     """
     User specified deidentify templates and configs for structured, unstructured, and image files.
     Structure is documented below.
     """
-    transformation_details_storage_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs']]]
+    transformation_details_storage_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgsDict']]]
     """
     Config for storing transformation details.
     Structure is documented below.
@@ -21700,7 +21700,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict(Typed
     Only for use with external storage.
     Possible values are: `BASIC_COLUMNS`, `GCS_COLUMNS`, `DATASTORE_COLUMNS`, `BIG_QUERY_COLUMNS`, `ALL_COLUMNS`.
     """
-    storage_path: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgs']]]
+    storage_path: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigStoragePathArgsDict']]]
     """
     Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number
     as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use
@@ -21709,7 +21709,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgsDict(Typed
     Cloud Storage, the output schema field should not be set. If set, it will be ignored.
     Structure is documented below.
     """
-    table: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs']]]
+    table: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgsDict']]]
     """
     Information on the location of the target BigQuery Table.
     Structure is documented below.
@@ -21901,7 +21901,7 @@ class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs:
 
 
 class PreventionJobTriggerInspectJobInspectConfigArgsDict(TypedDict):
-    custom_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs']]]]]
+    custom_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict']]]]]
     """
     Custom info types to be used. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to learn more.
     Structure is documented below.
@@ -21914,7 +21914,7 @@ class PreventionJobTriggerInspectJobInspectConfigArgsDict(TypedDict):
     """
     When true, a contextual quote from the data that triggered a finding is included in the response.
     """
-    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgs']]]]]
+    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict']]]]]
     """
     Restricts what infoTypes to look for. The values must correspond to InfoType values returned by infoTypes.list
     or listed at https://cloud.google.com/dlp/docs/infotypes-reference.
@@ -21922,7 +21922,7 @@ class PreventionJobTriggerInspectJobInspectConfigArgsDict(TypedDict):
     By default this may be all types, but may change over time as detectors are updated.
     Structure is documented below.
     """
-    limits: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigLimitsArgs']]]
+    limits: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigLimitsArgsDict']]]
     """
     Configuration to control the number of findings returned.
     Structure is documented below.
@@ -21933,7 +21933,7 @@ class PreventionJobTriggerInspectJobInspectConfigArgsDict(TypedDict):
     Default value is `POSSIBLE`.
     Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
     """
-    rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetArgs']]]]]
+    rule_sets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetArgsDict']]]]]
     """
     Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
     other rules are executed in the order they are specified for each info type.
@@ -22088,7 +22088,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict(TypedDic
     treated as a custom info type.
     Structure is documented below.
     """
-    dictionary: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs']]]
+    dictionary: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgsDict']]]
     """
     Dictionary which defines the rule.
     Structure is documented below.
@@ -22105,22 +22105,22 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgsDict(TypedDic
     Default value is `VERY_LIKELY`.
     Possible values are: `VERY_UNLIKELY`, `UNLIKELY`, `POSSIBLE`, `LIKELY`, `VERY_LIKELY`.
     """
-    regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs']]]
+    regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgsDict']]]
     """
     Regular expression which defines the rule.
     Structure is documented below.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
     """
-    stored_type: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgs']]]
+    stored_type: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredTypeArgsDict']]]
     """
     A reference to a StoredInfoType to use with scanning.
     Structure is documented below.
     """
-    surrogate_type: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgs']]]
+    surrogate_type: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateTypeArgsDict']]]
     """
     Message for detecting output from deidentification transformations that support reversing.
     """
@@ -22284,12 +22284,12 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs:
 
 
 class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgsDict(TypedDict):
-    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgs']]]
+    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePathArgsDict']]]
     """
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
     Structure is documented below.
     """
-    word_list: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgs']]]
+    word_list: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordListArgsDict']]]
     """
     List of words or phrases to search for.
     Structure is documented below.
@@ -22403,7 +22403,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgsDict(
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
     listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -22653,7 +22653,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeArgsDict(TypedDict):
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
     at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -22753,7 +22753,7 @@ class PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScoreArgs:
 
 
 class PreventionJobTriggerInspectJobInspectConfigLimitsArgsDict(TypedDict):
-    max_findings_per_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgs']]]]]
+    max_findings_per_info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict']]]]]
     """
     Configuration of findings limit given for specified infoTypes.
     Structure is documented below.
@@ -22825,7 +22825,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsArgs:
 
 
 class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeArgsDict(TypedDict):
-    info_type: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs']]]
+    info_type: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgsDict']]]
     """
     Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
     not have an infoType, the DLP API applies the limit against all infoTypes that are found but not
@@ -22888,7 +22888,7 @@ class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInf
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
     listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -22993,7 +22993,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetArgsDict(TypedDict):
     Set of rules to be applied to infoTypes. The rules are applied in order.
     Structure is documented below.
     """
-    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs']]]]]
+    info_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgsDict']]]]]
     """
     List of infoTypes this rule set is applied to.
     Structure is documented below.
@@ -23047,7 +23047,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgsDict(TypedDi
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
     at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -23147,12 +23147,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeSensitivityScore
 
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgsDict(TypedDict):
-    exclusion_rule: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs']]]
+    exclusion_rule: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDict']]]
     """
     The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
     Structure is documented below.
     """
-    hotword_rule: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgs']]]
+    hotword_rule: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgsDict']]]
     """
     Hotword-based detection rule.
     Structure is documented below.
@@ -23207,22 +23207,22 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgsDic
     How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
     Possible values are: `MATCHING_TYPE_FULL_MATCH`, `MATCHING_TYPE_PARTIAL_MATCH`, `MATCHING_TYPE_INVERSE_MATCH`.
     """
-    dictionary: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgs']]]
+    dictionary: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict']]]
     """
     Dictionary which defines the rule.
     Structure is documented below.
     """
-    exclude_by_hotword: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs']]]
+    exclude_by_hotword: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict']]]
     """
     Drop if the hotword rule is contained in the proximate context.
     Structure is documented below.
     """
-    exclude_info_types: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs']]]
+    exclude_info_types: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgsDict']]]
     """
     Set of infoTypes for which findings would affect this rule.
     Structure is documented below.
     """
-    regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgs']]]
+    regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexArgsDict']]]
     """
     Regular expression which defines the rule.
     Structure is documented below.
@@ -23325,12 +23325,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleArgs:
 
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryArgsDict(TypedDict):
-    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgs']]]
+    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePathArgsDict']]]
     """
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
     Structure is documented below.
     """
-    word_list: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgs']]]
+    word_list: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordListArgsDict']]]
     """
     List of words or phrases to search for.
     Structure is documented below.
@@ -23439,12 +23439,12 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDiction
 
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgsDict(TypedDict):
-    hotword_regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs']]]
+    hotword_regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgsDict']]]
     """
     Regular expression pattern defining what qualifies as a hotword.
     Structure is documented below.
     """
-    proximity: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs']]]
+    proximity: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgsDict']]]
     """
     Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
     exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
@@ -23646,7 +23646,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
     Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
     at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
     """
-    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs']]]
+    sensitivity_score: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgsDict']]]
     """
     Optional custom sensitivity for this InfoType. This only applies to data profiling.
     Structure is documented below.
@@ -23797,17 +23797,17 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegexAr
 
 
 class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleArgsDict(TypedDict):
-    hotword_regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs']]]
+    hotword_regex: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgsDict']]]
     """
     Regular expression pattern defining what qualifies as a hotword.
     Structure is documented below.
     """
-    likelihood_adjustment: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs']]]
+    likelihood_adjustment: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgsDict']]]
     """
     Likelihood adjustment to apply to all matching findings.
     Structure is documented below.
     """
-    proximity: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs']]]
+    proximity: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgsDict']]]
     """
     Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
     exceed 1000 characters. Note that the finding itself will be included in the window, so that hotwords may be
@@ -24058,27 +24058,27 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity
 
 
 class PreventionJobTriggerInspectJobStorageConfigArgsDict(TypedDict):
-    big_query_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs']]]
+    big_query_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgsDict']]]
     """
     Options defining BigQuery table and row identifiers.
     Structure is documented below.
     """
-    cloud_storage_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs']]]
+    cloud_storage_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgsDict']]]
     """
     Options defining a file or a set of files within a Google Cloud Storage bucket.
     Structure is documented below.
     """
-    datastore_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs']]]
+    datastore_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgsDict']]]
     """
     Options defining a data set within Google Cloud Datastore.
     Structure is documented below.
     """
-    hybrid_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs']]]
+    hybrid_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgsDict']]]
     """
     Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
     Structure is documented below.
     """
-    timespan_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs']]]
+    timespan_config: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgsDict']]]
     """
     Configuration of the timespan of the items to include in scanning
     Structure is documented below.
@@ -24187,19 +24187,19 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgsDict(TypedDi
     Set of files to scan.
     Structure is documented below.
     """
-    excluded_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs']]]]]
+    excluded_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgsDict']]]]]
     """
     References to fields excluded from scanning.
     This allows you to skip inspection of entire columns which you know have no findings.
     Structure is documented below.
     """
-    identifying_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs']]]]]
+    identifying_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgsDict']]]]]
     """
     Specifies the BigQuery fields that will be returned with findings.
     If not specified, no identifying fields will be returned for findings.
     Structure is documented below.
     """
-    included_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs']]]]]
+    included_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgsDict']]]]]
     """
     Limit scanning only to these fields.
     Structure is documented below.
@@ -24677,7 +24677,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs:
 
 
 class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgsDict(TypedDict):
-    regex_file_set: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgs']]]
+    regex_file_set: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSetArgsDict']]]
     """
     The regex-filtered set of files to scan.
     Structure is documented below.
@@ -24974,7 +24974,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgsDict(TypedDict
     Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z?`.
     No more than 10 keys can be required.
     """
-    table_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgs']]]
+    table_options: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgsDict']]]
     """
     If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
     Structure is documented below.
@@ -25072,7 +25072,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsArgs:
 
 
 class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsArgsDict(TypedDict):
-    identifying_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgs']]]]]
+    identifying_fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingFieldArgsDict']]]]]
     """
     The columns that are the primary keys for table objects included in ContentItem. A copy of this
     cell's value will stored alongside alongside each finding so that the finding can be traced to
@@ -25153,7 +25153,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgsDict(TypedDic
     """
     Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
     """
-    timestamp_field: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs']]]
+    timestamp_field: NotRequired[pulumi.Input[Optional['PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgsDict']]]
     """
     Specification of the field containing the timestamp of scanned items.
     Structure is documented below.
@@ -25282,11 +25282,11 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArg
 
 
 class PreventionJobTriggerTriggerArgsDict(TypedDict):
-    manual: NotRequired[pulumi.Input[Optional['PreventionJobTriggerTriggerManualArgs']]]
+    manual: NotRequired[pulumi.Input[Optional['PreventionJobTriggerTriggerManualArgsDict']]]
     """
     For use with hybrid jobs. Jobs must be manually created and finished.
     """
-    schedule: NotRequired[pulumi.Input[Optional['PreventionJobTriggerTriggerScheduleArgs']]]
+    schedule: NotRequired[pulumi.Input[Optional['PreventionJobTriggerTriggerScheduleArgsDict']]]
     """
     Schedule for triggered jobs
     Structure is documented below.
@@ -25381,12 +25381,12 @@ class PreventionJobTriggerTriggerScheduleArgs:
 
 
 class PreventionStoredInfoTypeDictionaryArgsDict(TypedDict):
-    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeDictionaryCloudStoragePathArgs']]]
+    cloud_storage_path: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeDictionaryCloudStoragePathArgsDict']]]
     """
     Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
     Structure is documented below.
     """
-    word_list: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeDictionaryWordListArgs']]]
+    word_list: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeDictionaryWordListArgsDict']]]
     """
     List of words or phrases to search for.
     Structure is documented below.
@@ -25501,12 +25501,12 @@ class PreventionStoredInfoTypeLargeCustomDictionaryArgsDict(TypedDict):
     If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
     Structure is documented below.
     """
-    big_query_field: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs']]]
+    big_query_field: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgsDict']]]
     """
     Field in a BigQuery table where each cell represents a dictionary phrase.
     Structure is documented below.
     """
-    cloud_storage_file_set: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs']]]
+    cloud_storage_file_set: NotRequired[pulumi.Input[Optional['PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgsDict']]]
     """
     Set of files containing newline-delimited lists of dictionary phrases.
     Structure is documented below.

@@ -80,7 +80,7 @@ class DeploymentTargetArgsDict(TypedDict):
     The root configuration file to use for this deployment.
     Structure is documented below.
     """
-    imports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentTargetImportArgs']]]]]
+    imports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentTargetImportArgsDict']]]]]
     """
     Specifies import files for this configuration. This can be
     used to import templates or other files. For example, you might

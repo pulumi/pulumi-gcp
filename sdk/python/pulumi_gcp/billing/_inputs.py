@@ -284,7 +284,7 @@ class BudgetAmountArgsDict(TypedDict):
     Boolean. Set value to true to use. Do not set to false, instead
     use the `specified_amount` block.
     """
-    specified_amount: NotRequired[pulumi.Input[Optional['BudgetAmountSpecifiedAmountArgs']]]
+    specified_amount: NotRequired[pulumi.Input[Optional['BudgetAmountSpecifiedAmountArgsDict']]]
     """
     A specified amount to use as the budget. currencyCode is
     optional. If specified, it must match the currency of the
@@ -455,7 +455,7 @@ class BudgetBudgetFilterArgsDict(TypedDict):
     Default value is `INCLUDE_ALL_CREDITS`.
     Possible values are: `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, `INCLUDE_SPECIFIED_CREDITS`.
     """
-    custom_period: NotRequired[pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodArgs']]]
+    custom_period: NotRequired[pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodArgsDict']]]
     """
     Specifies to track usage from any start date (required) to any end date (optional).
     This time period is static, it does not recur.
@@ -718,7 +718,7 @@ class BudgetBudgetFilterCustomPeriodArgsDict(TypedDict):
     A start date is required. The start date must be after January 1, 2017.
     Structure is documented below.
     """
-    end_date: NotRequired[pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodEndDateArgs']]]
+    end_date: NotRequired[pulumi.Input[Optional['BudgetBudgetFilterCustomPeriodEndDateArgsDict']]]
     """
     Optional. The end date of the time period. Budgets with elapsed end date won't be processed.
     If unset, specifies to track all usage incurred since the startDate.

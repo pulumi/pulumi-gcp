@@ -568,7 +568,7 @@ __all__ = [
 ]
 
 class GuestPoliciesAssignmentArgsDict(TypedDict):
-    group_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgs']]]]]
+    group_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentGroupLabelArgsDict']]]]]
     """
     Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
     for example "env=prod or env=staging".
@@ -589,7 +589,7 @@ class GuestPoliciesAssignmentArgsDict(TypedDict):
     by the instance or to target specific VM instances for development and testing.
     Only supported for project-level policies and must reference instances within this project.
     """
-    os_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgs']]]]]
+    os_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesAssignmentOsTypeArgsDict']]]]]
     """
     Targets VM instances matching at least one of the following OS types.
     VM instances must match all supplied criteria for a given OsType to be included.
@@ -902,22 +902,22 @@ class GuestPoliciesPackageArgs:
 
 
 class GuestPoliciesPackageRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryAptArgsDict']]]
     """
     An Apt Repository.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryGooArgs']]]
+    goo: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryGooArgsDict']]]
     """
     A Goo Repository.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryYumArgsDict']]]
     """
     A Yum Repository.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['GuestPoliciesPackageRepositoryZypperArgsDict']]]
     """
     A Zypper Repository.
     Structure is documented below.
@@ -1352,7 +1352,7 @@ class GuestPoliciesRecipeArgsDict(TypedDict):
     This means that requests to create multiple recipes with the same name and version are rejected since they
     could potentially have conflicting assignments.
     """
-    artifacts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgs']]]]]
+    artifacts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeArtifactArgsDict']]]]]
     """
     Resources available to be used in the steps in the recipe.
     Structure is documented below.
@@ -1367,13 +1367,13 @@ class GuestPoliciesRecipeArgsDict(TypedDict):
     Default value is `INSTALLED`.
     Possible values are: `INSTALLED`, `UPDATED`, `REMOVED`.
     """
-    install_steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgs']]]]]
+    install_steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeInstallStepArgsDict']]]]]
     """
     Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation.
     Any steps taken (including partially completed steps) are not rolled back.
     Structure is documented below.
     """
-    update_steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgs']]]]]
+    update_steps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GuestPoliciesRecipeUpdateStepArgsDict']]]]]
     """
     Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
     Any steps taken (including partially completed steps) are not rolled back.
@@ -1526,12 +1526,12 @@ class GuestPoliciesRecipeArtifactArgsDict(TypedDict):
     Remote: A checksum must be specified, and only protocols with transport-layer security are permitted.
     GCS: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeArtifactGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeArtifactGcsArgsDict']]]
     """
     A Google Cloud Storage artifact.
     Structure is documented below.
     """
-    remote: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeArtifactRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeArtifactRemoteArgsDict']]]
     """
     A generic remote artifact.
     Structure is documented below.
@@ -1751,37 +1751,37 @@ class GuestPoliciesRecipeArtifactRemoteArgs:
 
 
 class GuestPoliciesRecipeInstallStepArgsDict(TypedDict):
-    archive_extraction: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepArchiveExtractionArgs']]]
+    archive_extraction: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepArchiveExtractionArgsDict']]]
     """
     Extracts an archive into the specified directory.
     Structure is documented below.
     """
-    dpkg_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepDpkgInstallationArgs']]]
+    dpkg_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepDpkgInstallationArgsDict']]]
     """
     Installs a deb file via dpkg.
     Structure is documented below.
     """
-    file_copy: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileCopyArgs']]]
+    file_copy: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileCopyArgsDict']]]
     """
     Copies a file onto the instance.
     Structure is documented below.
     """
-    file_exec: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileExecArgs']]]
+    file_exec: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepFileExecArgsDict']]]
     """
     Executes an artifact or local file.
     Structure is documented below.
     """
-    msi_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepMsiInstallationArgs']]]
+    msi_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepMsiInstallationArgsDict']]]
     """
     Installs an MSI file.
     Structure is documented below.
     """
-    rpm_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepRpmInstallationArgs']]]
+    rpm_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepRpmInstallationArgsDict']]]
     """
     Installs an rpm file via the rpm utility.
     Structure is documented below.
     """
-    script_run: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepScriptRunArgs']]]
+    script_run: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeInstallStepScriptRunArgsDict']]]
     """
     Runs commands in a shell.
     Structure is documented below.
@@ -2383,37 +2383,37 @@ class GuestPoliciesRecipeInstallStepScriptRunArgs:
 
 
 class GuestPoliciesRecipeUpdateStepArgsDict(TypedDict):
-    archive_extraction: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepArchiveExtractionArgs']]]
+    archive_extraction: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepArchiveExtractionArgsDict']]]
     """
     Extracts an archive into the specified directory.
     Structure is documented below.
     """
-    dpkg_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepDpkgInstallationArgs']]]
+    dpkg_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepDpkgInstallationArgsDict']]]
     """
     Installs a deb file via dpkg.
     Structure is documented below.
     """
-    file_copy: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileCopyArgs']]]
+    file_copy: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileCopyArgsDict']]]
     """
     Copies a file onto the instance.
     Structure is documented below.
     """
-    file_exec: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileExecArgs']]]
+    file_exec: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepFileExecArgsDict']]]
     """
     Executes an artifact or local file.
     Structure is documented below.
     """
-    msi_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepMsiInstallationArgs']]]
+    msi_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepMsiInstallationArgsDict']]]
     """
     Installs an MSI file.
     Structure is documented below.
     """
-    rpm_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepRpmInstallationArgs']]]
+    rpm_installation: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepRpmInstallationArgsDict']]]
     """
     Installs an rpm file via the rpm utility.
     Structure is documented below.
     """
-    script_run: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepScriptRunArgs']]]
+    script_run: NotRequired[pulumi.Input[Optional['GuestPoliciesRecipeUpdateStepScriptRunArgsDict']]]
     """
     Runs commands in a shell.
     Structure is documented below.
@@ -3020,21 +3020,21 @@ class OsPolicyAssignmentInstanceFilterArgsDict(TypedDict):
     Target all VMs in the project. If true, no other criteria
     is permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgs']]]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterExclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM exclusion. If
     the list has more than one label set, the VM is excluded if any of the label
     sets are applicable for the VM. Structure is
     documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgs']]]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM inclusion. If
     the list has more than one `LabelSet`, the VM is included if any of the
     label sets are applicable for the VM. Structure is
     documented below.
     """
-    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgs']]]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentInstanceFilterInventoryArgsDict']]]]]
     """
     List of inventories to select VMs. A VM is
     selected if its inventory data matches at least one of the following
@@ -3421,7 +3421,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupArgsDict(TypedDict):
     group. The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs']]]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgsDict']]]]]
     """
     List of inventory filters for the resource
     group. The resources in this resource group are applied to the target VM if
@@ -3560,22 +3560,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceArgsDict(TypedDict):
     *   Must end with a number or a letter.
     *   Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict']]]
     """
     Exec resource Structure is
     documented below.
     """
-    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict']]]
     """
     File resource Structure is
     documented below.
     """
-    pkg: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs']]]
+    pkg: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict']]]
     """
     Package resource Structure is
     documented below.
     """
-    repository: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs']]]
+    repository: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict']]]
     """
     Package repository resource Structure is
     documented below.
@@ -3696,7 +3696,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgsDict(TypedDict):
     a failure running validate. Structure is
     documented below.
     """
-    enforce: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs']]]
+    enforce: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict']]]
     """
     What to run to bring this resource into the desired
     state. An exit code of 100 indicates "success", any other exit code
@@ -3767,7 +3767,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgsDict(TypedDi
     Optional arguments to pass to the source during
     execution.
     """
-    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]]
     """
     A remote or local file. Structure is
     documented below.
@@ -3895,7 +3895,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict(Typ
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]]
     """
     A Cloud Storage object. Structure is
     documented below.
@@ -3904,7 +3904,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgsDict(Typ
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -4118,7 +4118,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgsDict(TypedD
     Optional arguments to pass to the source during
     execution.
     """
-    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict']]]
     """
     A remote or local file. Structure is
     documented below.
@@ -4246,7 +4246,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict(Ty
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]]
     """
     A Cloud Storage object. Structure is
     documented below.
@@ -4255,7 +4255,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgsDict(Ty
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -4473,7 +4473,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgsDict(TypedDict):
     A a file with this content. The size of the content
     is limited to 1024 characters.
     """
-    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict']]]
     """
     A remote or local source. Structure is
     documented below.
@@ -4602,7 +4602,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict)
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgsDict']]]
     """
     A Cloud Storage object. Structure is
     documented below.
@@ -4611,7 +4611,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgsDict(TypedDict)
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -4821,37 +4821,37 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgsDict(TypedDict):
     this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
     `REMOVED`.
     """
-    apt: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgsDict']]]
     """
     A package managed by Apt. Structure is
     documented below.
     """
-    deb: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs']]]
+    deb: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgsDict']]]
     """
     A deb package file. Structure is
     documented below.
     """
-    googet: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs']]]
+    googet: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgsDict']]]
     """
     A package managed by GooGet. Structure is
     documented below.
     """
-    msi: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs']]]
+    msi: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgsDict']]]
     """
     An MSI package. Structure is
     documented below.
     """
-    rpm: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs']]]
+    rpm: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgsDict']]]
     """
     An rpm package file. Structure is
     documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgsDict']]]
     """
     A package managed by YUM. Structure is
     documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgsDict']]]
     """
     A package managed by Zypper. Structure is
     documented below.
@@ -5101,7 +5101,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedD
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]]
     """
     A Cloud Storage object. Structure is
     documented below.
@@ -5110,7 +5110,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgsDict(TypedD
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -5405,7 +5405,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedD
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]]
     """
     A Cloud Storage object. Structure is
     documented below.
@@ -5414,7 +5414,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgsDict(TypedD
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -5681,7 +5681,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedD
     subject to validations based on the file type: Remote: A checksum must be
     specified. Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]]
     """
     A Cloud Storage object. Structure is
     documented below.
@@ -5690,7 +5690,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgsDict(TypedD
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]]
     """
     A generic remote file. Structure is
     documented below.
@@ -5950,22 +5950,22 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs:
 
 
 class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgsDict']]]
     """
     An Apt Repository. Structure is
     documented below.
     """
-    goo: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs']]]
+    goo: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgsDict']]]
     """
     A Goo Repository. Structure is
     documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgsDict']]]
     """
     A Yum Repository. Structure is
     documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]]
     """
     A Zypper Repository. Structure is
     documented below.
@@ -6531,7 +6531,7 @@ class PatchDeploymentInstanceFilterArgsDict(TypedDict):
     """
     Target all VM instances in the project. If true, no other criteria is permitted.
     """
-    group_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgs']]]]]
+    group_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PatchDeploymentInstanceFilterGroupLabelArgsDict']]]]]
     """
     Targets VM instances matching ANY of these GroupLabels. This allows targeting of disparate groups of VM instances.
     Structure is documented below.
@@ -6707,12 +6707,12 @@ class PatchDeploymentOneTimeScheduleArgs:
 
 
 class PatchDeploymentPatchConfigArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigAptArgsDict']]]
     """
     Apt update settings. Use this setting to override the default apt patch rules.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigGooArgs']]]
+    goo: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigGooArgsDict']]]
     """
     goo update settings. Use this setting to override the default goo patch rules.
     Structure is documented below.
@@ -6721,12 +6721,12 @@ class PatchDeploymentPatchConfigArgsDict(TypedDict):
     """
     Allows the patch job to run on Managed instance groups (MIGs).
     """
-    post_step: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepArgs']]]
+    post_step: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepArgsDict']]]
     """
     The ExecStep to run after the patch update.
     Structure is documented below.
     """
-    pre_step: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepArgs']]]
+    pre_step: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepArgsDict']]]
     """
     The ExecStep to run before the patch update.
     Structure is documented below.
@@ -6745,17 +6745,17 @@ class PatchDeploymentPatchConfigArgsDict(TypedDict):
     2. The patch job is reported as `SUCCEEDED` if it completes without errors, even if some instances are `SKIPPED`.
     3. The patch job is reported as `COMPLETED_WITH_INACTIVE_VMS` if it completes without errors, but does not patch instances that are `INACTIVE`.
     """
-    windows_update: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigWindowsUpdateArgs']]]
+    windows_update: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigWindowsUpdateArgsDict']]]
     """
     Windows update settings. Use this setting to override the default Windows patch rules.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigYumArgsDict']]]
     """
     Yum update settings. Use this setting to override the default yum patch rules.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigZypperArgsDict']]]
     """
     zypper update settings. Use this setting to override the default zypper patch rules.
     Structure is documented below.
@@ -7061,12 +7061,12 @@ class PatchDeploymentPatchConfigGooArgs:
 
 
 class PatchDeploymentPatchConfigPostStepArgsDict(TypedDict):
-    linux_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs']]]
+    linux_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict']]]
     """
     The ExecStepConfig for all Linux VMs targeted by the PatchJob.
     Structure is documented below.
     """
-    windows_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs']]]
+    windows_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict']]]
     """
     The ExecStepConfig for all Windows VMs targeted by the PatchJob.
     Structure is documented below.
@@ -7120,7 +7120,7 @@ class PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgsDict(TypedDict):
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs']]]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgsDict']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
@@ -7284,7 +7284,7 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgsDict(TypedDict)
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs']]]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgsDict']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
@@ -7444,12 +7444,12 @@ class PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs:
 
 
 class PatchDeploymentPatchConfigPreStepArgsDict(TypedDict):
-    linux_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs']]]
+    linux_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict']]]
     """
     The ExecStepConfig for all Linux VMs targeted by the PatchJob.
     Structure is documented below.
     """
-    windows_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs']]]
+    windows_exec_step_config: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict']]]
     """
     The ExecStepConfig for all Windows VMs targeted by the PatchJob.
     Structure is documented below.
@@ -7503,7 +7503,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgsDict(TypedDict):
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs']]]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgsDict']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
@@ -7667,7 +7667,7 @@ class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgsDict(TypedDict):
     """
     Defaults to [0]. A list of possible return values that the execution can return to indicate a success.
     """
-    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgs']]]
+    gcs_object: NotRequired[pulumi.Input[Optional['PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObjectArgsDict']]]
     """
     A Cloud Storage object containing the executable.
     Structure is documented below.
@@ -8151,7 +8151,7 @@ class PatchDeploymentRecurringScheduleArgsDict(TypedDict):
     The time the last patch job ran successfully.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    monthly: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyArgs']]]
+    monthly: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyArgsDict']]]
     """
     Schedule with monthly executions.
     Structure is documented below.
@@ -8167,7 +8167,7 @@ class PatchDeploymentRecurringScheduleArgsDict(TypedDict):
     The time that the recurring schedule becomes effective. Defaults to createTime of the patch deployment.
     A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
     """
-    weekly: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleWeeklyArgs']]]
+    weekly: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleWeeklyArgsDict']]]
     """
     Schedule with weekly executions.
     Structure is documented below.
@@ -8335,7 +8335,7 @@ class PatchDeploymentRecurringScheduleMonthlyArgsDict(TypedDict):
     Months without the target day will be skipped. For example, a schedule to run "every month on the 31st"
     will not run in February, April, June, etc.
     """
-    week_day_of_month: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs']]]
+    week_day_of_month: NotRequired[pulumi.Input[Optional['PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgsDict']]]
     """
     Week day in a month.
     Structure is documented below.
@@ -8759,7 +8759,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceArgsDict(TypedDict):
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
-    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]]
+    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDict']]]
     """
     OS policy assignment is an API resource that is used to
     apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -9197,21 +9197,21 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Target all VMs in the project. If true, no other criteria is
     permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM exclusion.
     If the list has more than one label set, the VM is excluded if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM inclusion.
     If the list has more than one `LabelSet`, the VM is included if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgsDict']]]]]
     """
     List of inventories to select VMs.
     A VM is selected if its inventory data matches at least one of the
@@ -9604,7 +9604,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgsDict']]]]]
     """
     List of inventory filters for the resource group.
     The resources in this resource group are applied to the target VM if it
@@ -9751,7 +9751,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     * Must end with a number or a letter.
     * Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgsDict']]]
     """
     A resource that allows executing scripts on the VM.
     The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -9777,17 +9777,17 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     were chosen.
     Structure is documented below.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgsDict']]]
     """
     A resource that manages the state of a file.
     Structure is documented below.
     """
-    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]]
+    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgsDict']]]
     """
     A resource that manages a system package.
     Structure is documented below.
     """
-    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]]
+    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict']]]
     """
     A resource that manages a package repository.
     Structure is documented below.
@@ -9945,7 +9945,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A file or script to execute.
     Structure is documented below.
     """
-    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]]
+    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgsDict']]]
     """
     A file or script to execute.
     Structure is documented below.
@@ -10003,7 +10003,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -10133,7 +10133,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -10142,7 +10142,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -10357,7 +10357,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -10487,7 +10487,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -10496,7 +10496,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -10716,7 +10716,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     A a file with this content.
     The size of the content is limited to 32KiB.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -10858,7 +10858,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -10867,7 +10867,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -11078,43 +11078,43 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     The desired state the agent should maintain for this package.
     Possible values are: `INSTALLED`, `REMOVED`.
     """
-    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgsDict']]]
     """
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
     Structure is documented below.
     """
-    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]]
+    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]]
     """
     A deb package file. dpkg packages only support INSTALLED state.
     Structure is documented below.
     """
-    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]]
+    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgsDict']]]
     """
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
     Structure is documented below.
     """
-    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]]
+    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]]
     """
     An MSI package. MSI packages only support INSTALLED state.
     Structure is documented below.
     """
-    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]]
+    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgsDict']]]
     """
     An RPM package file. RPM packages only support INSTALLED state.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgsDict']]]
     """
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
@@ -11384,7 +11384,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -11393,7 +11393,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -11694,7 +11694,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -11703,7 +11703,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -11976,7 +11976,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -11985,7 +11985,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -12247,28 +12247,28 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
 
 class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgsDict']]]
     """
     Represents a single apt package repository. These will be added to
     a repo file that will be managed at
     `/etc/apt/sources.list.d/google_osconfig.list`.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]]
+    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgsDict']]]
     """
     Represents a Goo package repository. These are added to a repo file
     that is managed at
     `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgsDict']]]
     """
     Represents a single yum package repository. These are added to a
     repo file that is managed at
     `/etc/yum.repos.d/google_osconfig.repo`.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]]
     """
     Represents a single zypper package repository. These are added to a
     repo file that is managed at
@@ -12842,7 +12842,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
 
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeArgsDict(TypedDict):
-    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgs']]]]]
+    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgsDict']]]]]
     """
     Selectors of the orchestration scope. There is a logical AND between each
     selector defined.
@@ -12886,12 +12886,12 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeArgs:
 
 
 class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorArgsDict(TypedDict):
-    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgs']]]
+    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelectorArgsDict']]]
     """
     Selector containing locations in scope.
     Structure is documented below.
     """
-    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgs']]]
+    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySelectorArgsDict']]]
     """
     Selector containing Cloud Resource Manager resource hierarchy nodes.
     Structure is documented below.
@@ -13028,13 +13028,13 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorResourceHierarchySe
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStateArgsDict(TypedDict):
-    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgs']]]]]
+    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDict']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
     """
-    previous_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgs']]]]]
+    previous_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsDict']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
@@ -13089,7 +13089,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateArgs:
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateArgsDict(TypedDict):
-    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgs']]]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorArgsDict']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -13326,7 +13326,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorA
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetailArgsDict']]]]]
     """
     (Output)
     A list of messages that carry the error details.  There is a common set of
@@ -13463,7 +13463,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorD
 
 
 class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateArgsDict(TypedDict):
-    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgs']]]]]
+    errors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorArgsDict']]]]]
     """
     (Output)
     The `Status` type defines a logical error model that is suitable for
@@ -13700,7 +13700,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
     (Output)
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateErrorDetailArgsDict']]]]]
     """
     (Output)
     A list of messages that carry the error details.  There is a common set of
@@ -13854,7 +13854,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceArgsDict(TypedDict)
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
-    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]]
+    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDict']]]
     """
     OS policy assignment is an API resource that is used to
     apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -14295,21 +14295,21 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Target all VMs in the project. If true, no other criteria is
     permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM exclusion.
     If the list has more than one label set, the VM is excluded if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM inclusion.
     If the list has more than one `LabelSet`, the VM is included if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgsDict']]]]]
     """
     List of inventories to select VMs.
     A VM is selected if its inventory data matches at least one of the
@@ -14711,7 +14711,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgsDict']]]]]
     """
     List of inventory filters for the resource group.
     The resources in this resource group are applied to the target VM if it
@@ -14858,7 +14858,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     * Must end with a number or a letter.
     * Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgsDict']]]
     """
     A resource that allows executing scripts on the VM.
     The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -14884,17 +14884,17 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     were chosen.
     Structure is documented below.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgsDict']]]
     """
     A resource that manages the state of a file.
     Structure is documented below.
     """
-    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]]
+    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgsDict']]]
     """
     A resource that manages a system package.
     Structure is documented below.
     """
-    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]]
+    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict']]]
     """
     A resource that manages a package repository.
     Structure is documented below.
@@ -15052,7 +15052,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A file or script to execute.
     Structure is documented below.
     """
-    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]]
+    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgsDict']]]
     """
     A file or script to execute.
     Structure is documented below.
@@ -15114,7 +15114,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -15252,7 +15252,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -15261,7 +15261,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -15480,7 +15480,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -15618,7 +15618,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -15627,7 +15627,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -15851,7 +15851,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     A a file with this content.
     The size of the content is limited to 32KiB.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -16001,7 +16001,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -16010,7 +16010,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -16224,43 +16224,43 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     INSTALLED
     REMOVED
     """
-    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgsDict']]]
     """
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
     Structure is documented below.
     """
-    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]]
+    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]]
     """
     A deb package file. dpkg packages only support INSTALLED state.
     Structure is documented below.
     """
-    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]]
+    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgsDict']]]
     """
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
     Structure is documented below.
     """
-    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]]
+    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]]
     """
     An MSI package. MSI packages only support INSTALLED state.
     Structure is documented below.
     """
-    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]]
+    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgsDict']]]
     """
     An RPM package file. RPM packages only support INSTALLED state.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgsDict']]]
     """
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
@@ -16536,7 +16536,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -16545,7 +16545,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -16846,7 +16846,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -16855,7 +16855,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -17128,7 +17128,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -17137,7 +17137,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -17399,28 +17399,28 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
 
 class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgsDict']]]
     """
     Represents a single apt package repository. These will be added to
     a repo file that will be managed at
     `/etc/apt/sources.list.d/google_osconfig.list`.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]]
+    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgsDict']]]
     """
     Represents a Goo package repository. These are added to a repo file
     that is managed at
     `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgsDict']]]
     """
     Represents a single yum package repository. These are added to a
     repo file that is managed at
     `/etc/yum.repos.d/google_osconfig.repo`.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]]
     """
     Represents a single zypper package repository. These are added to a
     repo file that is managed at
@@ -18003,7 +18003,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeArgsDict(TypedDict):
-    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgs']]]]]
+    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgsDict']]]]]
     """
     Optional. Selectors of the orchestration scope. There is a logical AND between each
     selector defined.
@@ -18047,12 +18047,12 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeArgs:
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorArgsDict(TypedDict):
-    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgs']]]
+    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelectorArgsDict']]]
     """
     Selector containing locations in scope.
     Structure is documented below.
     """
-    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgs']]]
+    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHierarchySelectorArgsDict']]]
     """
     Selector containing Cloud Resource Manager resource hierarchy nodes.
     Structure is documented below.
@@ -18189,13 +18189,13 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorResourceHiera
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStateArgsDict(TypedDict):
-    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgs']]]]]
+    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgsDict']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
     """
-    previous_iteration_state: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgs']]]
+    previous_iteration_state: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgsDict']]]
     """
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
@@ -18247,7 +18247,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateArgs:
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgs']]]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorArgsDict']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -18480,7 +18480,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetailArgsDict']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
@@ -18606,7 +18606,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
 
 
 class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgs']]]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorArgsDict']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -18839,7 +18839,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStat
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorForOrganizationOrchestrationStatePreviousIterationStateErrorDetailArgsDict']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
@@ -18982,7 +18982,7 @@ class V2PolicyOrchestratorOrchestratedResourceArgsDict(TypedDict):
 
     <a name="nested_orchestrated_resource_os_policy_assignment_v1_payload"></a>The `os_policy_assignment_v1_payload` block supports:
     """
-    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgs']]]
+    os_policy_assignment_v1_payload: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadArgsDict']]]
     """
     OS policy assignment is an API resource that is used to
     apply a set of OS policies to a dynamically targeted group of Compute Engine
@@ -19397,21 +19397,21 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanc
     Target all VMs in the project. If true, no other criteria is
     permitted.
     """
-    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgs']]]]]
+    exclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterExclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM exclusion.
     If the list has more than one label set, the VM is excluded if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgs']]]]]
+    inclusion_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInclusionLabelArgsDict']]]]]
     """
     List of label sets used for VM inclusion.
     If the list has more than one `LabelSet`, the VM is included if any
     of the label sets are applicable for the VM.
     Structure is documented below.
     """
-    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgs']]]]]
+    inventories: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilterInventoryArgsDict']]]]]
     """
     List of inventories to select VMs.
     A VM is selected if its inventory data matches at least one of the
@@ -19813,7 +19813,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     The resources are executed in the exact order specified here.
     Structure is documented below.
     """
-    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgs']]]]]
+    inventory_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilterArgsDict']]]]]
     """
     List of inventory filters for the resource group.
     The resources in this resource group are applied to the target VM if it
@@ -19960,7 +19960,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     * Must end with a number or a letter.
     * Must be unique within the OS policy.
     """
-    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgs']]]
+    exec_: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecArgsDict']]]
     """
     A resource that allows executing scripts on the VM.
     The `ExecResource` has 2 stages: `validate` and `enforce` and both stages
@@ -19986,17 +19986,17 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     were chosen.
     Structure is documented below.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileArgsDict']]]
     """
     A resource that manages the state of a file.
     Structure is documented below.
     """
-    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgs']]]
+    pkg: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgArgsDict']]]
     """
     A resource that manages a system package.
     Structure is documented below.
     """
-    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgs']]]
+    repository: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict']]]
     """
     A resource that manages a package repository.
     Structure is documented below.
@@ -20154,7 +20154,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A file or script to execute.
     Structure is documented below.
     """
-    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgs']]]
+    enforce: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceArgsDict']]]
     """
     A file or script to execute.
     Structure is documented below.
@@ -20216,7 +20216,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -20354,7 +20354,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -20363,7 +20363,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforceFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -20582,7 +20582,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     Optional arguments to pass to the source during execution.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -20720,7 +20720,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -20729,7 +20729,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecValidateFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -20953,7 +20953,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     A a file with this content.
     The size of the content is limited to 32KiB.
     """
-    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgs']]]
+    file: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileArgsDict']]]
     """
     A remote or local file.
     Structure is documented below.
@@ -21103,7 +21103,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -21112,7 +21112,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFileFileRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -21326,43 +21326,43 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     INSTALLED
     REMOVED
     """
-    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgAptArgsDict']]]
     """
     A package managed by APT.
     - install: `apt-get update && apt-get -y install [name]`
     - remove: `apt-get -y remove [name]`
     Structure is documented below.
     """
-    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgs']]]
+    deb: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebArgsDict']]]
     """
     A deb package file. dpkg packages only support INSTALLED state.
     Structure is documented below.
     """
-    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgs']]]
+    googet: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgGoogetArgsDict']]]
     """
     A package managed by GooGet.
     - install: `googet -noconfirm install package`
     - remove: `googet -noconfirm remove package`
     Structure is documented below.
     """
-    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgs']]]
+    msi: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiArgsDict']]]
     """
     An MSI package. MSI packages only support INSTALLED state.
     Structure is documented below.
     """
-    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgs']]]
+    rpm: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmArgsDict']]]
     """
     An RPM package file. RPM packages only support INSTALLED state.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgYumArgsDict']]]
     """
     A package managed by YUM.
     - install: `yum -y install package`
     - remove: `yum -y remove package`
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgZypperArgsDict']]]
     """
     A package managed by Zypper.
     - install: `zypper -y install package`
@@ -21638,7 +21638,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -21647,7 +21647,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgDebSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -21948,7 +21948,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -21957,7 +21957,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -22230,7 +22230,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     Remote: A checksum must be specified.
     Cloud Storage: An object generation number must be specified.
     """
-    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs']]]
+    gcs: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceGcsArgsDict']]]
     """
     Specifies a file available as a Cloud Storage Object.
     Structure is documented below.
@@ -22239,7 +22239,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
     """
     A local path within the VM to use.
     """
-    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs']]]
+    remote: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgsDict']]]
     """
     Specifies a file available via some URI.
     Structure is documented below.
@@ -22501,28 +22501,28 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
 
 
 class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryArgsDict(TypedDict):
-    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgs']]]
+    apt: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryAptArgsDict']]]
     """
     Represents a single apt package repository. These will be added to
     a repo file that will be managed at
     `/etc/apt/sources.list.d/google_osconfig.list`.
     Structure is documented below.
     """
-    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgs']]]
+    goo: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryGooArgsDict']]]
     """
     Represents a Goo package repository. These are added to a repo file
     that is managed at
     `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
     Structure is documented below.
     """
-    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgs']]]
+    yum: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryYumArgsDict']]]
     """
     Represents a single yum package repository. These are added to a
     repo file that is managed at
     `/etc/yum.repos.d/google_osconfig.repo`.
     Structure is documented below.
     """
-    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgs']]]
+    zypper: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceRepositoryZypperArgsDict']]]
     """
     Represents a single zypper package repository. These are added to a
     repo file that is managed at
@@ -23105,7 +23105,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
 
 
 class V2PolicyOrchestratorOrchestrationScopeArgsDict(TypedDict):
-    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgs']]]]]
+    selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationScopeSelectorArgsDict']]]]]
     """
     Optional. Selectors of the orchestration scope. There is a logical AND between each
     selector defined.
@@ -23149,12 +23149,12 @@ class V2PolicyOrchestratorOrchestrationScopeArgs:
 
 
 class V2PolicyOrchestratorOrchestrationScopeSelectorArgsDict(TypedDict):
-    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgs']]]
+    location_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorLocationSelectorArgsDict']]]
     """
     Selector containing locations in scope.
     Structure is documented below.
     """
-    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgs']]]
+    resource_hierarchy_selector: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArgsDict']]]
     """
     Selector containing Cloud Resource Manager resource hierarchy nodes.
     Structure is documented below.
@@ -23291,13 +23291,13 @@ class V2PolicyOrchestratorOrchestrationScopeSelectorResourceHierarchySelectorArg
 
 
 class V2PolicyOrchestratorOrchestrationStateArgsDict(TypedDict):
-    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgs']]]]]
+    current_iteration_states: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict']]]]]
     """
     (Output)
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
     """
-    previous_iteration_state: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgs']]]
+    previous_iteration_state: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict']]]
     """
     Describes the state of a single iteration of the orchestrator.
     Structure is documented below.
@@ -23349,7 +23349,7 @@ class V2PolicyOrchestratorOrchestrationStateArgs:
 
 
 class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgs']]]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgsDict']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -23582,7 +23582,7 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorArgsDict(T
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs']]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgsDict']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.
@@ -23708,7 +23708,7 @@ class V2PolicyOrchestratorOrchestrationStateCurrentIterationStateErrorDetailArgs
 
 
 class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateArgsDict(TypedDict):
-    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgs']]]
+    error: NotRequired[pulumi.Input[Optional['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgsDict']]]
     """
     The `Status` type defines a logical error model that is suitable for
     different programming environments, including REST APIs and RPC APIs. It is
@@ -23941,7 +23941,7 @@ class V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorArgsDict(
     """
     The status code, which should be an enum value of google.rpc.Code.
     """
-    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgs']]]]]
+    details: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2PolicyOrchestratorOrchestrationStatePreviousIterationStateErrorDetailArgsDict']]]]]
     """
     A list of messages that carry the error details.  There is a common set of
     message types for APIs to use.

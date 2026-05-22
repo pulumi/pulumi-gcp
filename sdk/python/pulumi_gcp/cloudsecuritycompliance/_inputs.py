@@ -156,7 +156,7 @@ class CloudControlParameterSpecArgsDict(TypedDict):
     NUMBER
     ONEOF
     """
-    default_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueArgs']]]
+    default_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueArgsDict']]]
     """
     Possible parameter value types.
     Structure is documented below.
@@ -169,17 +169,17 @@ class CloudControlParameterSpecArgsDict(TypedDict):
     """
     The display name of the parameter. The maximum length is 200 characters.
     """
-    sub_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgs']]]]]
+    sub_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterArgsDict']]]]]
     """
     The parameter spec of the cloud control.
     Structure is documented below.
     """
-    substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgs']]]]]
+    substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubstitutionRuleArgsDict']]]]]
     """
     List of parameter substitutions.
     Structure is documented below.
     """
-    validation: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationArgs']]]
+    validation: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationArgsDict']]]
     """
     Validation of the parameter.
     Structure is documented below.
@@ -362,12 +362,12 @@ class CloudControlParameterSpecDefaultValueArgsDict(TypedDict):
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueArgs']]]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueArgsDict']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -473,7 +473,7 @@ class CloudControlParameterSpecDefaultValueOneofValueArgsDict(TypedDict):
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgs']]]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -529,7 +529,7 @@ class CloudControlParameterSpecDefaultValueOneofValueParameterValueArgsDict(Type
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecDefaultValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -687,7 +687,7 @@ class CloudControlParameterSpecSubParameterArgsDict(TypedDict):
     NUMBER
     ONEOF
     """
-    default_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueArgs']]]
+    default_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueArgsDict']]]
     """
     Possible parameter value types.
     Structure is documented below.
@@ -700,12 +700,12 @@ class CloudControlParameterSpecSubParameterArgsDict(TypedDict):
     """
     The display name of the parameter. The maximum length is 200 characters.
     """
-    substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgs']]]]]
+    substitution_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict']]]]]
     """
     List of parameter substitutions.
     Structure is documented below.
     """
-    validation: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationArgs']]]
+    validation: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationArgsDict']]]
     """
     Validation of the parameter.
     Structure is documented below.
@@ -870,12 +870,12 @@ class CloudControlParameterSpecSubParameterDefaultValueArgsDict(TypedDict):
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgs']]]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -981,7 +981,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueArgsDict(TypedD
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgs']]]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueArgsDict']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -1037,7 +1037,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueA
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -1177,12 +1177,12 @@ class CloudControlParameterSpecSubParameterDefaultValueStringListValueArgs:
 
 
 class CloudControlParameterSpecSubParameterSubstitutionRuleArgsDict(TypedDict):
-    attribute_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgs']]]
+    attribute_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRuleArgsDict']]]
     """
     Attribute at the given path is substituted entirely.
     Structure is documented below.
     """
-    placeholder_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgs']]]
+    placeholder_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]]
     """
     Placeholder is substituted in the rendered string.
     Structure is documented below.
@@ -1293,17 +1293,17 @@ class CloudControlParameterSpecSubParameterSubstitutionRulePlaceholderSubstituti
 
 
 class CloudControlParameterSpecSubParameterValidationArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesArgs']]]
+    allowed_values: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesArgsDict']]]
     """
     Allowed set of values for the parameter.
     Structure is documented below.
     """
-    int_range: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationIntRangeArgs']]]
+    int_range: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationIntRangeArgsDict']]]
     """
     Number range for number parameters.
     Structure is documented below.
     """
-    regexp_pattern: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationRegexpPatternArgs']]]
+    regexp_pattern: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationRegexpPatternArgsDict']]]
     """
     Regular Expression Validator for parameter values.
     Structure is documented below.
@@ -1410,12 +1410,12 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueArgsDict(
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgs']]]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueArgsDict']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -1521,7 +1521,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgs']]]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueArgsDict']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -1577,7 +1577,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValu
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubParameterValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -1792,12 +1792,12 @@ class CloudControlParameterSpecSubParameterValidationRegexpPatternArgs:
 
 
 class CloudControlParameterSpecSubstitutionRuleArgsDict(TypedDict):
-    attribute_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgs']]]
+    attribute_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRuleAttributeSubstitutionRuleArgsDict']]]
     """
     Attribute at the given path is substituted entirely.
     Structure is documented below.
     """
-    placeholder_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs']]]
+    placeholder_substitution_rule: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgsDict']]]
     """
     Placeholder is substituted in the rendered string.
     Structure is documented below.
@@ -1908,17 +1908,17 @@ class CloudControlParameterSpecSubstitutionRulePlaceholderSubstitutionRuleArgs:
 
 
 class CloudControlParameterSpecValidationArgsDict(TypedDict):
-    allowed_values: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesArgs']]]
+    allowed_values: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesArgsDict']]]
     """
     Allowed set of values for the parameter.
     Structure is documented below.
     """
-    int_range: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationIntRangeArgs']]]
+    int_range: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationIntRangeArgsDict']]]
     """
     Number range for number parameters.
     Structure is documented below.
     """
-    regexp_pattern: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationRegexpPatternArgs']]]
+    regexp_pattern: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationRegexpPatternArgsDict']]]
     """
     Regular Expression Validator for parameter values.
     Structure is documented below.
@@ -2025,12 +2025,12 @@ class CloudControlParameterSpecValidationAllowedValuesValueArgsDict(TypedDict):
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgs']]]
+    oneof_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -2136,7 +2136,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueArgsDict(Ty
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgs']]]
+    parameter_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueArgsDict']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -2192,7 +2192,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -2411,7 +2411,7 @@ class CloudControlRuleArgsDict(TypedDict):
     """
     The functionality enabled by the Rule.
     """
-    cel_expression: NotRequired[pulumi.Input[Optional['CloudControlRuleCelExpressionArgs']]]
+    cel_expression: NotRequired[pulumi.Input[Optional['CloudControlRuleCelExpressionArgsDict']]]
     """
     A [CEL
     expression](https://cloud.google.com/certificate-authority-service/docs/using-cel).
@@ -2486,7 +2486,7 @@ class CloudControlRuleCelExpressionArgsDict(TypedDict):
     Logic expression in CEL language.
     The max length of the condition is 1000 characters.
     """
-    resource_types_values: NotRequired[pulumi.Input[Optional['CloudControlRuleCelExpressionResourceTypesValuesArgs']]]
+    resource_types_values: NotRequired[pulumi.Input[Optional['CloudControlRuleCelExpressionResourceTypesValuesArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -2572,7 +2572,7 @@ class FrameworkCloudControlDetailArgsDict(TypedDict):
     The name of the CloudControl in the format:
     “organizations/{organization}/locations/{location}/cloudControls/{cloud-control}”
     """
-    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgs']]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkCloudControlDetailParameterArgsDict']]]]]
     """
     Parameters is a key-value pair that is required by the CloudControl. The
     specification of these parameters will be present in cloudcontrol.Eg: {
@@ -2700,12 +2700,12 @@ class FrameworkCloudControlDetailParameterParameterValueArgsDict(TypedDict):
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueArgs']]]
+    oneof_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -2811,7 +2811,7 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueArgsDict(Typed
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgs']]]
+    parameter_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueArgsDict']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -2867,7 +2867,7 @@ class FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValue
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkCloudControlDetailParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -3114,7 +3114,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsArgsDict(TypedDi
     “organizations/{organization}/locations/{location}/
     cloudControls/{cloud-control}”
     """
-    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgs']]]]]
+    parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterArgsDict']]]]]
     """
     Parameters is a key-value pair that is required by the CloudControl. The
     specification of these parameters will be present in cloudcontrol.Eg: {
@@ -3244,12 +3244,12 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
     """
     Represents a double value.
     """
-    oneof_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgs']]]
+    oneof_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueArgsDict']]]
     """
     Sub-parameter values.
     Structure is documented below.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -3355,7 +3355,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
     """
     The name of the parameter.
     """
-    parameter_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgs']]]
+    parameter_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueArgsDict']]]
     """
     The value of the parameter.
     Structure is documented below.
@@ -3411,7 +3411,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
     """
     Represents a double value.
     """
-    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgs']]]
+    string_list_value: NotRequired[pulumi.Input[Optional['FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValueArgsDict']]]
     """
     A list of strings.
     Structure is documented below.
@@ -3606,7 +3606,7 @@ class FrameworkDeploymentTargetResourceConfigArgsDict(TypedDict):
     CRM node in format organizations/{organization}, folders/{folder},
     or projects/{project}
     """
-    target_resource_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgs']]]
+    target_resource_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict']]]
     """
     TargetResourceCreationConfig contains the config to create a new resource to
     be used as the target_resource of a deployment.
@@ -3659,13 +3659,13 @@ class FrameworkDeploymentTargetResourceConfigArgs:
 
 
 class FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigArgsDict(TypedDict):
-    folder_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgs']]]
+    folder_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigFolderCreationConfigArgsDict']]]
     """
     FolderCreationConfig contains the config to create a new folder to be used
     as the target_resource of a deployment.
     Structure is documented below.
     """
-    project_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgs']]]
+    project_creation_config: NotRequired[pulumi.Input[Optional['FrameworkDeploymentTargetResourceConfigTargetResourceCreationConfigProjectCreationConfigArgsDict']]]
     """
     ProjectCreationConfig contains the config to create a new project to be used
     as the target_resource of a deployment.

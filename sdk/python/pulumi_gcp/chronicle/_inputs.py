@@ -652,7 +652,7 @@ class DashboardChartDashboardChartArgsDict(TypedDict):
     Visualization config for a chart.
     Structure is documented below.
     """
-    chart_datasource: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartChartDatasourceArgs']]]
+    chart_datasource: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartChartDatasourceArgsDict']]]
     """
     Query and datasource used in the chart.
     Structure is documented below.
@@ -661,7 +661,7 @@ class DashboardChartDashboardChartArgsDict(TypedDict):
     """
     Description of the dashboardChart.
     """
-    drill_down_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigArgs']]]
+    drill_down_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigArgsDict']]]
     """
     Drill down configuration.
     Structure is documented below.
@@ -889,11 +889,11 @@ class DashboardChartDashboardChartChartDatasourceArgs:
 
 
 class DashboardChartDashboardChartDrillDownConfigArgsDict(TypedDict):
-    left_drill_downs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgs']]]]]
+    left_drill_downs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgsDict']]]]]
     """
     Structure is documented below.
     """
-    right_drill_downs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgs']]]]]
+    right_drill_downs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartDrillDownConfigRightDrillDownArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -946,12 +946,12 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownArgsDict(TypedDict
     """
     (Required)
     """
-    custom_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs']]]
+    custom_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    default_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgs']]]
+    default_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownDefaultSettingsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1035,12 +1035,12 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
     """
     (Required)
     """
-    external_link: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgs']]]
+    external_link: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsExternalLinkArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    filter: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsFilterArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1049,7 +1049,7 @@ class DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsArgs
     """
     (Optional)
     """
-    query: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgs']]]
+    query: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigLeftDrillDownCustomSettingsQueryArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1384,12 +1384,12 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownArgsDict(TypedDic
     """
     (Required)
     """
-    custom_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgs']]]
+    custom_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    default_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgs']]]
+    default_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1473,17 +1473,17 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsArg
     """
     (Required)
     """
-    external_link: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgs']]]
+    external_link: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsExternalLinkArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    filter: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgs']]]
+    filter: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsFilterArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    query: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgs']]]
+    query: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartDrillDownConfigRightDrillDownCustomSettingsQueryArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1794,16 +1794,16 @@ class DashboardChartDashboardChartDrillDownConfigRightDrillDownDefaultSettingsAr
 
 
 class DashboardChartDashboardChartVisualizationArgsDict(TypedDict):
-    button: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonArgs']]]
+    button: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonArgsDict']]]
     """
     Button config if tileType is TILE_TYPE_BUTTON.
     Structure is documented below.
     """
-    column_defs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgs']]]]]
+    column_defs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationColumnDefArgsDict']]]]]
     """
     Structure is documented below.
     """
-    google_maps_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgs']]]
+    google_maps_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1812,16 +1812,16 @@ class DashboardChartDashboardChartVisualizationArgsDict(TypedDict):
     """
     (Optional)
     """
-    legends: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgs']]]]]
+    legends: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationLegendArgsDict']]]]]
     """
     Structure is documented below.
     """
-    markdown: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownArgs']]]
+    markdown: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownArgsDict']]]
     """
     Markdown config if tileType is TILE_TYPE_MARKDOWN.
     Structure is documented below.
     """
-    series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgs']]]]]
+    series: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -1829,7 +1829,7 @@ class DashboardChartDashboardChartVisualizationArgsDict(TypedDict):
     """
     (Optional)
     """
-    table_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTableConfigArgs']]]
+    table_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTableConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -1838,20 +1838,20 @@ class DashboardChartDashboardChartVisualizationArgsDict(TypedDict):
     """
     (Optional)
     """
-    tooltip: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTooltipArgs']]]
+    tooltip: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationTooltipArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    visual_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgs']]]]]
+    visual_maps: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapArgsDict']]]]]
     """
     Structure is documented below.
     """
-    x_axes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgs']]]]]
+    x_axes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationXAxisArgsDict']]]]]
     """
     Structure is documented below.
     """
-    y_axes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgs']]]]]
+    y_axes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationYAxisArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -2114,7 +2114,7 @@ class DashboardChartDashboardChartVisualizationButtonArgsDict(TypedDict):
     """
     (Optional)
     """
-    properties: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonPropertiesArgs']]]
+    properties: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationButtonPropertiesArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2306,12 +2306,12 @@ class DashboardChartDashboardChartVisualizationColumnDefArgs:
 
 
 class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgsDict(TypedDict):
-    data_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgs']]]
+    data_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigDataSettingsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    map_position: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgs']]]
+    map_position: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigMapPositionArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2320,7 +2320,7 @@ class DashboardChartDashboardChartVisualizationGoogleMapsConfigArgsDict(TypedDic
     """
     Possible values are: `PLOT_MODE_UNSPECIFIED`, `PLOT_MODE_POINTS`, `PLOT_MODE_HEATMAP`, `PLOT_MODE_BOTH`.
     """
-    point_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgs']]]
+    point_settings: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationGoogleMapsConfigPointSettingsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2844,7 +2844,7 @@ class DashboardChartDashboardChartVisualizationMarkdownArgsDict(TypedDict):
     """
     (Required)
     """
-    properties: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs']]]
+    properties: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationMarkdownPropertiesArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2920,17 +2920,17 @@ class DashboardChartDashboardChartVisualizationMarkdownPropertiesArgs:
 
 
 class DashboardChartDashboardChartVisualizationSeriesArgsDict(TypedDict):
-    area_style: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgs']]]
+    area_style: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesAreaStyleArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    data_label: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesDataLabelArgs']]]
+    data_label: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesDataLabelArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    encode: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesEncodeArgs']]]
+    encode: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesEncodeArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2939,17 +2939,17 @@ class DashboardChartDashboardChartVisualizationSeriesArgsDict(TypedDict):
     """
     (Optional)
     """
-    gauge_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgs']]]
+    gauge_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    item_colors: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsArgs']]]
+    item_colors: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    item_style: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemStyleArgs']]]
+    item_style: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemStyleArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -2958,7 +2958,7 @@ class DashboardChartDashboardChartVisualizationSeriesArgsDict(TypedDict):
     """
     (Optional)
     """
-    metric_trend_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs']]]
+    metric_trend_config: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -3557,17 +3557,17 @@ class DashboardChartDashboardChartVisualizationSeriesEncodeArgs:
 
 
 class DashboardChartDashboardChartVisualizationSeriesGaugeConfigArgsDict(TypedDict):
-    base_value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgs']]]
+    base_value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigBaseValueArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    limit_value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgs']]]
+    limit_value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesGaugeConfigLimitValueArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
     """
-    threshold_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgs']]]]]
+    threshold_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -3779,7 +3779,7 @@ class DashboardChartDashboardChartVisualizationSeriesGaugeConfigThresholdValueAr
 
 
 class DashboardChartDashboardChartVisualizationSeriesItemColorsArgsDict(TypedDict):
-    colors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgs']]]]]
+    colors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -3812,7 +3812,7 @@ class DashboardChartDashboardChartVisualizationSeriesItemColorsColorArgsDict(Typ
     """
     (Optional)
     """
-    value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['DashboardChartDashboardChartVisualizationSeriesItemColorsColorValueArgsDict']]]
     """
     A nested object resource.
     Structure is documented below.
@@ -4067,11 +4067,11 @@ class DashboardChartDashboardChartVisualizationSeriesMetricTrendConfigArgs:
 
 
 class DashboardChartDashboardChartVisualizationTableConfigArgsDict(TypedDict):
-    column_render_type_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgs']]]]]
+    column_render_type_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnRenderTypeSettingArgsDict']]]]]
     """
     Structure is documented below.
     """
-    column_tooltip_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgs']]]]]
+    column_tooltip_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationTableConfigColumnTooltipSettingArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -4302,7 +4302,7 @@ class DashboardChartDashboardChartVisualizationTooltipArgs:
 
 
 class DashboardChartDashboardChartVisualizationVisualMapArgsDict(TypedDict):
-    pieces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgs']]]]]
+    pieces: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['DashboardChartDashboardChartVisualizationVisualMapPieceArgsDict']]]]]
     """
     Structure is documented below.
     """
@@ -4627,7 +4627,7 @@ class DashboardChartDashboardQueryArgsDict(TypedDict):
     (Output)
     This checksum is computed by the server.
     """
-    input: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputArgs']]]
+    input: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputArgsDict']]]
     """
     Input parameters for the query, such as time windows.
     Structure is documented below.
@@ -4715,12 +4715,12 @@ class DashboardChartDashboardQueryArgs:
 
 
 class DashboardChartDashboardQueryInputArgsDict(TypedDict):
-    relative_time: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputRelativeTimeArgs']]]
+    relative_time: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputRelativeTimeArgsDict']]]
     """
     Relative time range.
     Structure is documented below.
     """
-    time_window: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputTimeWindowArgs']]]
+    time_window: NotRequired[pulumi.Input[Optional['DashboardChartDashboardQueryInputTimeWindowArgsDict']]]
     """
     Specific start and end times.
     Structure is documented below.
@@ -4887,7 +4887,7 @@ class DataAccessScopeAllowedDataAccessLabelArgsDict(TypedDict):
     The asset namespace will match the namespace itself.
     The ingestion key value pair will match the key of the tuple.
     """
-    ingestion_label: NotRequired[pulumi.Input[Optional['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs']]]
+    ingestion_label: NotRequired[pulumi.Input[Optional['DataAccessScopeAllowedDataAccessLabelIngestionLabelArgsDict']]]
     """
     Representation of an ingestion label type.
     Structure is documented below.
@@ -5071,7 +5071,7 @@ class DataAccessScopeDeniedDataAccessLabelArgsDict(TypedDict):
     The asset namespace will match the namespace itself.
     The ingestion key value pair will match the key of the tuple.
     """
-    ingestion_label: NotRequired[pulumi.Input[Optional['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs']]]
+    ingestion_label: NotRequired[pulumi.Input[Optional['DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict']]]
     """
     Representation of an ingestion label type.
     Structure is documented below.
@@ -5446,31 +5446,31 @@ class FeedDetailsArgsDict(TypedDict):
     Format:
     projects/{project}/locations/{location}/instances/{instance}/logTypes/{log_type}
     """
-    amazon_kinesis_firehose_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonKinesisFirehoseSettingsArgs']]]
+    amazon_kinesis_firehose_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonKinesisFirehoseSettingsArgsDict']]]
     """
     Settings required by Amazon Kinesis Firehose Feeds(HTTP-Push).
     """
-    amazon_s3_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3SettingsArgs']]]
+    amazon_s3_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3SettingsArgsDict']]]
     """
     Amazon S3 settings.
     Structure is documented below.
     """
-    amazon_s3_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsArgs']]]
+    amazon_s3_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsArgsDict']]]
     """
     AmazonS3V2Settings is the settings proto for Omniflow S3 feeds.
     Structure is documented below.
     """
-    amazon_sqs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsArgs']]]
+    amazon_sqs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsArgsDict']]]
     """
     Amazon SQS settings.
     Structure is documented below.
     """
-    amazon_sqs_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsV2SettingsArgs']]]
+    amazon_sqs_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsV2SettingsArgsDict']]]
     """
     AmazonSQSV2Settings is the settings proto for Omniflow SQS feeds.
     Structure is documented below.
     """
-    anomali_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAnomaliSettingsArgs']]]
+    anomali_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAnomaliSettingsArgsDict']]]
     """
     Anomali IOC settings.
     Structure is documented below.
@@ -5479,92 +5479,92 @@ class FeedDetailsArgsDict(TypedDict):
     """
     The asset namespace to apply to all logs ingested through this feed.
     """
-    aws_ec2_hosts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsArgs']]]
+    aws_ec2_hosts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsArgsDict']]]
     """
     AWS EC2 Hosts Settings.
     Structure is documented below.
     """
-    aws_ec2_instances_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsArgs']]]
+    aws_ec2_instances_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsArgsDict']]]
     """
     AWS EC2 Instances Settings.
     Structure is documented below.
     """
-    aws_ec2_vpcs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsArgs']]]
+    aws_ec2_vpcs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsArgsDict']]]
     """
     AWS EC2 Vpcs Settings.
     Structure is documented below.
     """
-    aws_iam_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsIamSettingsArgs']]]
+    aws_iam_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAwsIamSettingsArgsDict']]]
     """
     AWSIAMSettings contains details needed for creating an AWS IAM feed.
     Structure is documented below.
     """
-    azure_ad_audit_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsArgs']]]
+    azure_ad_audit_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsArgsDict']]]
     """
     Azure AD Audit settings.
     Structure is documented below.
     """
-    azure_ad_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsArgs']]]
+    azure_ad_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsArgsDict']]]
     """
     Azure AD Context settings.
     Structure is documented below.
     """
-    azure_ad_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdSettingsArgs']]]
+    azure_ad_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdSettingsArgsDict']]]
     """
     Azure AD settings.
     Structure is documented below.
     """
-    azure_blob_store_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsArgs']]]
+    azure_blob_store_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsArgsDict']]]
     """
     Azure Blob Storage settings.
     Structure is documented below.
     """
-    azure_blob_store_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreV2SettingsArgs']]]
+    azure_blob_store_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreV2SettingsArgsDict']]]
     """
     AzureBlobStoreV2Settings is the settings proto for Azure Blob Storage feeds.
     Structure is documented below.
     """
-    azure_event_hub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureEventHubSettingsArgs']]]
+    azure_event_hub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureEventHubSettingsArgsDict']]]
     """
     Settings required by Azure Event Hub Feeds.
     Structure is documented below.
     """
-    azure_mdm_intune_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsArgs']]]
+    azure_mdm_intune_settings: NotRequired[pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsArgsDict']]]
     """
     Azure MDM Intune settings.
     Structure is documented below.
     """
-    cloud_passage_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCloudPassageSettingsArgs']]]
+    cloud_passage_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCloudPassageSettingsArgsDict']]]
     """
     CloudPassage settings.
     Structure is documented below.
     """
-    cortex_xdr_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCortexXdrSettingsArgs']]]
+    cortex_xdr_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCortexXdrSettingsArgsDict']]]
     """
     PAN Cortex XDR settings.
     Structure is documented below.
     """
-    crowdstrike_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeAlertsSettingsArgs']]]
+    crowdstrike_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeAlertsSettingsArgsDict']]]
     """
     CrowdStrike Alerts settings.
     Structure is documented below.
     """
-    crowdstrike_detects_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsArgs']]]
+    crowdstrike_detects_settings: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsArgsDict']]]
     """
     CrowdStrike Detects settings.
     Structure is documented below.
     """
-    dummy_log_type_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsArgs']]]
+    dummy_log_type_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsArgsDict']]]
     """
     Settings required by Feeds of DummyLogType(used for testing purposes).
     Structure is documented below.
     """
-    duo_auth_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDuoAuthSettingsArgs']]]
+    duo_auth_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDuoAuthSettingsArgsDict']]]
     """
     Duo Authentication settings.
     Structure is documented below.
     """
-    duo_user_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsArgs']]]
+    duo_user_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsArgsDict']]]
     """
     Duo User Context settings.
     Structure is documented below.
@@ -5594,59 +5594,59 @@ class FeedDetailsArgsDict(TypedDict):
     GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN
     Possible values are: `GOOGLE_CLOUD_STORAGE`, `HTTP`, `SFTP`, `AMAZON_S3`, `AZURE_BLOBSTORE`, `API`, `AMAZON_SQS`, `PUBSUB`, `AMAZON_KINESIS_FIREHOSE`, `WEBHOOK`, `HTTPS_PUSH_GOOGLE_CLOUD_PUBSUB`, `HTTPS_PUSH_AMAZON_KINESIS_FIREHOSE`, `HTTPS_PUSH_WEBHOOK`, `AZURE_EVENT_HUB`, `GOOGLE_CLOUD_STORAGE_V2`, `AMAZON_S3_V2`, `AMAZON_SQS_V2`, `AZURE_BLOBSTORE_V2`, `GOOGLE_CLOUD_STORAGE_EVENT_DRIVEN`.
     """
-    fox_it_stix_settings: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsArgs']]]
+    fox_it_stix_settings: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsArgsDict']]]
     """
     Fox-IT STIX settings.
     Structure is documented below.
     """
-    gcs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGcsSettingsArgs']]]
+    gcs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGcsSettingsArgsDict']]]
     """
     Google Cloud Storage settings.
     Structure is documented below.
     """
-    gcs_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGcsV2SettingsArgs']]]
+    gcs_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGcsV2SettingsArgsDict']]]
     """
     GoogleCloudStorageV2Settings is the settings proto for Omniflow Google Cloud
     Storage feeds.
     Structure is documented below.
     """
-    google_cloud_identity_device_users_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs']]]
+    google_cloud_identity_device_users_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgsDict']]]
     """
     Google Cloud Identity Device Users settings.
     Structure is documented below.
     """
-    google_cloud_identity_devices_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsArgs']]]
+    google_cloud_identity_devices_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsArgsDict']]]
     """
     Google Cloud Identity Devices settings.
     Structure is documented below.
     """
-    google_cloud_storage_event_driven_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgs']]]
+    google_cloud_storage_event_driven_settings: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudStorageEventDrivenSettingsArgsDict']]]
     """
     GoogleCloudStorageEventDrivenSettings is the settings proto for Omniflow
     Google Cloud Storage feeds driven by pubsub events.
     Structure is documented below.
     """
-    http_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpSettingsArgs']]]
+    http_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpSettingsArgsDict']]]
     """
     HTTP settings.
     Structure is documented below.
     """
-    https_push_amazon_kinesis_firehose_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgs']]]
+    https_push_amazon_kinesis_firehose_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushAmazonKinesisFirehoseSettingsArgsDict']]]
     """
     Settings required by Amazon Kinesis Firehose Feeds(HTTPS-Push V2).
     Structure is documented below.
     """
-    https_push_google_cloud_pubsub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgs']]]
+    https_push_google_cloud_pubsub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushGoogleCloudPubsubSettingsArgsDict']]]
     """
     Settings required by Google Cloud Platform Pub/Sub Feeds(HTTPS-Push V2).
     Structure is documented below.
     """
-    https_push_webhook_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushWebhookSettingsArgs']]]
+    https_push_webhook_settings: NotRequired[pulumi.Input[Optional['FeedDetailsHttpsPushWebhookSettingsArgsDict']]]
     """
     Settings required by Webhook Feeds(HTTPS-Push V2).
     Structure is documented below.
     """
-    imperva_waf_settings: NotRequired[pulumi.Input[Optional['FeedDetailsImpervaWafSettingsArgs']]]
+    imperva_waf_settings: NotRequired[pulumi.Input[Optional['FeedDetailsImpervaWafSettingsArgsDict']]]
     """
     Imperva WAF settings.
     Structure is documented below.
@@ -5656,122 +5656,122 @@ class FeedDetailsArgsDict(TypedDict):
     The ingestion metadata labels to apply to all logs ingested through this
     feed, and the resulting normalized data.
     """
-    mandiant_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMandiantIocSettingsArgs']]]
+    mandiant_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMandiantIocSettingsArgsDict']]]
     """
     Mandiant IOC settings.
     Structure is documented below.
     """
-    microsoft_graph_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsArgs']]]
+    microsoft_graph_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsArgsDict']]]
     """
     Microsoft Graph Alert settings.
     Structure is documented below.
     """
-    microsoft_security_center_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgs']]]
+    microsoft_security_center_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsArgsDict']]]
     """
     Microsoft Security Center alert settings.
     Structure is documented below.
     """
-    mimecast_mail_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailSettingsArgs']]]
+    mimecast_mail_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailSettingsArgsDict']]]
     """
     Mimecast Mail settings.
     Structure is documented below.
     """
-    mimecast_mail_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsArgs']]]
+    mimecast_mail_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsArgsDict']]]
     """
     Mimecast Mail V2 Settings.
     Structure is documented below.
     """
-    netskope_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsArgs']]]
+    netskope_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsArgsDict']]]
     """
     Netskope Alert settings.
     Structure is documented below.
     """
-    netskope_alert_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsArgs']]]
+    netskope_alert_v2_settings: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsArgsDict']]]
     """
     Netskope Alert V2 settings.
     Structure is documented below.
     """
-    office365_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOffice365SettingsArgs']]]
+    office365_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOffice365SettingsArgsDict']]]
     """
     Office 365 settings.
     Structure is documented below.
     """
-    okta_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOktaSettingsArgs']]]
+    okta_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOktaSettingsArgsDict']]]
     """
     Okta settings.
     Structure is documented below.
     """
-    okta_user_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsArgs']]]
+    okta_user_context_settings: NotRequired[pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsArgsDict']]]
     """
     Okta user context settings.
     Structure is documented below.
     """
-    pan_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPanIocSettingsArgs']]]
+    pan_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPanIocSettingsArgsDict']]]
     """
     PAN IOC settings.
     Structure is documented below.
     """
-    pan_prisma_cloud_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsArgs']]]
+    pan_prisma_cloud_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsArgsDict']]]
     """
     PAN Prisma Cloud settings.
     Structure is documented below.
     """
-    proofpoint_mail_settings: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointMailSettingsArgs']]]
+    proofpoint_mail_settings: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointMailSettingsArgsDict']]]
     """
     Proofpoint Mail settings.
     Structure is documented below.
     """
-    proofpoint_on_demand_settings: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsArgs']]]
+    proofpoint_on_demand_settings: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsArgsDict']]]
     """
     Proofpoint On-demand settings.
     Structure is documented below.
     """
-    pubsub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPubsubSettingsArgs']]]
+    pubsub_settings: NotRequired[pulumi.Input[Optional['FeedDetailsPubsubSettingsArgsDict']]]
     """
     Settings required by Google Cloud Pub/Sub Feeds(HTTP-Push).
     Structure is documented below.
     """
-    qualys_scan_settings: NotRequired[pulumi.Input[Optional['FeedDetailsQualysScanSettingsArgs']]]
+    qualys_scan_settings: NotRequired[pulumi.Input[Optional['FeedDetailsQualysScanSettingsArgsDict']]]
     """
     Qualys Scan settings.
     Structure is documented below.
     """
-    qualys_vm_settings: NotRequired[pulumi.Input[Optional['FeedDetailsQualysVmSettingsArgs']]]
+    qualys_vm_settings: NotRequired[pulumi.Input[Optional['FeedDetailsQualysVmSettingsArgsDict']]]
     """
     Qualys VM settings.
     Structure is documented below.
     """
-    rapid7_insight_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsArgs']]]
+    rapid7_insight_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsArgsDict']]]
     """
     Rapid7 Insight settings.
     Structure is documented below.
     """
-    recorded_future_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsArgs']]]
+    recorded_future_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsArgsDict']]]
     """
     Recorded Future IOC settings.
     Structure is documented below.
     """
-    rh_isac_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsArgs']]]
+    rh_isac_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsArgsDict']]]
     """
     RH-ISAC settings.
     Structure is documented below.
     """
-    salesforce_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsArgs']]]
+    salesforce_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsArgsDict']]]
     """
     Salesforce settings.
     Structure is documented below.
     """
-    sentinelone_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsArgs']]]
+    sentinelone_alert_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsArgsDict']]]
     """
     SentinelOne Alert settings.
     Structure is documented below.
     """
-    service_now_cmdb_settings: NotRequired[pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsArgs']]]
+    service_now_cmdb_settings: NotRequired[pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsArgsDict']]]
     """
     ServiceNow CMDB settings.
     Structure is documented below.
     """
-    sftp_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSftpSettingsArgs']]]
+    sftp_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSftpSettingsArgsDict']]]
     """
     SFTP settings.
     Structure is documented below.
@@ -5785,81 +5785,81 @@ class FeedDetailsArgsDict(TypedDict):
     READY
     AUTH_RECONFIG_REQUIRED
     """
-    symantec_event_export_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsArgs']]]
+    symantec_event_export_settings: NotRequired[pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsArgsDict']]]
     """
     Symantec Event Export settings.
     Structure is documented below.
     """
-    thinkst_canary_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsArgs']]]
+    thinkst_canary_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsArgsDict']]]
     """
     Thinkst Canary settings.
     Structure is documented below.
     """
-    threat_connect_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsArgs']]]
+    threat_connect_ioc_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsArgsDict']]]
     """
     ThreatConnect IOC Settings.
     Structure is documented below.
     """
-    threat_connect_ioc_v3_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsArgs']]]
+    threat_connect_ioc_v3_settings: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsArgsDict']]]
     """
     ThreatConnectIoCV3Settings
     Structure is documented below.
     """
-    trellix_hx_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsArgs']]]
+    trellix_hx_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsArgsDict']]]
     """
     Settings required by Feeds of TrellixHxAlerts.
     Structure is documented below.
     """
-    trellix_hx_bulk_acqs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsArgs']]]
+    trellix_hx_bulk_acqs_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsArgsDict']]]
     """
     Settings required by Feeds of TrellixHxBulkAcqs.
     Structure is documented below.
     """
-    trellix_hx_hosts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsArgs']]]
+    trellix_hx_hosts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsArgsDict']]]
     """
     Settings required by Feeds of TrellixHxHosts.
     Structure is documented below.
     """
-    webhook_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWebhookSettingsArgs']]]
+    webhook_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWebhookSettingsArgsDict']]]
     """
     Settings required by Webhook Feeds(HTTP-Push).
     """
-    workday_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkdaySettingsArgs']]]
+    workday_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkdaySettingsArgsDict']]]
     """
     Workday settings.
     Structure is documented below.
     """
-    workspace_activity_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsArgs']]]
+    workspace_activity_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsArgsDict']]]
     """
     Workspace Activity settings.
     Structure is documented below.
     """
-    workspace_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsArgs']]]
+    workspace_alerts_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsArgsDict']]]
     """
     Workspace Alert settings.
     Structure is documented below.
     """
-    workspace_chrome_os_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsArgs']]]
+    workspace_chrome_os_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsArgsDict']]]
     """
     Workspace Chrome OS settings.
     Structure is documented below.
     """
-    workspace_groups_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsArgs']]]
+    workspace_groups_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsArgsDict']]]
     """
     Workspace Groups settings.
     Structure is documented below.
     """
-    workspace_mobile_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsArgs']]]
+    workspace_mobile_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsArgsDict']]]
     """
     Workspace Mobile settings.
     Structure is documented below.
     """
-    workspace_privileges_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsArgs']]]
+    workspace_privileges_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsArgsDict']]]
     """
     Workspace Privileges settings.
     Structure is documented below.
     """
-    workspace_users_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsArgs']]]
+    workspace_users_settings: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsArgsDict']]]
     """
     Workspace Users settings.
     Structure is documented below.
@@ -7396,7 +7396,7 @@ class FeedDetailsAmazonS3SettingsArgsDict(TypedDict):
     FOLDERS
     FOLDERS_RECURSIVE
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3SettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3SettingsAuthenticationArgsDict']]]
     """
     Amazon S3 auth.
     """
@@ -7834,12 +7834,12 @@ class FeedDetailsAmazonS3V2SettingsArgs:
 
 
 class FeedDetailsAmazonS3V2SettingsAuthenticationArgsDict(TypedDict):
-    access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgs']]]
+    access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAccessKeySecretAuthArgsDict']]]
     """
     S3 V2 access key and secret auth.
     Structure is documented below.
     """
-    aws_iam_role_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgs']]]
+    aws_iam_role_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonS3V2SettingsAuthenticationAwsIamRoleAuthArgsDict']]]
     """
     AWS IAM Role Auth for SQS V2.
     Structure is documented below.
@@ -7998,7 +7998,7 @@ class FeedDetailsAmazonSqsSettingsArgsDict(TypedDict):
     """
     Account number of the owner of the queue.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationArgsDict']]]
     """
     Amazon SQS auth.
     Structure is documented below.
@@ -8214,12 +8214,12 @@ class FeedDetailsAmazonSqsSettingsArgs:
 
 
 class FeedDetailsAmazonSqsSettingsAuthenticationArgsDict(TypedDict):
-    additional_s3_access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgs']]]
+    additional_s3_access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationAdditionalS3AccessKeySecretAuthArgsDict']]]
     """
     Additional S3 access key secret auth.
     Structure is documented below.
     """
-    sqs_access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgs']]]
+    sqs_access_key_secret_auth: NotRequired[pulumi.Input[Optional['FeedDetailsAmazonSqsSettingsAuthenticationSqsAccessKeySecretAuthArgsDict']]]
     """
     Amazon SQS access key and secret auth.
     Structure is documented below.
@@ -8677,7 +8677,7 @@ class FeedDetailsAmazonSqsV2SettingsAuthenticationSqsV2AccessKeySecretAuthArgs:
 
 
 class FeedDetailsAnomaliSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAnomaliSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAnomaliSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -8779,7 +8779,7 @@ class FeedDetailsAnomaliSettingsAuthenticationArgs:
 
 
 class FeedDetailsAwsEc2HostsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2HostsSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     """
@@ -8878,7 +8878,7 @@ class FeedDetailsAwsEc2HostsSettingsAuthenticationArgs:
 
 
 class FeedDetailsAwsEc2InstancesSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2InstancesSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     """
@@ -8977,7 +8977,7 @@ class FeedDetailsAwsEc2InstancesSettingsAuthenticationArgs:
 
 
 class FeedDetailsAwsEc2VpcsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsEc2VpcsSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     """
@@ -9084,7 +9084,7 @@ class FeedDetailsAwsIamSettingsArgsDict(TypedDict):
     ROLES
     GROUPS
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsIamSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAwsIamSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -9214,7 +9214,7 @@ class FeedDetailsAzureAdAuditSettingsArgsDict(TypedDict):
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdAuditSettingsAuthenticationArgsDict']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
@@ -9358,7 +9358,7 @@ class FeedDetailsAzureAdContextSettingsArgsDict(TypedDict):
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdContextSettingsAuthenticationArgsDict']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
@@ -9542,7 +9542,7 @@ class FeedDetailsAzureAdSettingsArgsDict(TypedDict):
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureAdSettingsAuthenticationArgsDict']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
@@ -9682,7 +9682,7 @@ class FeedDetailsAzureAdSettingsAuthenticationArgs:
 
 
 class FeedDetailsAzureBlobStoreSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureBlobStoreSettingsAuthenticationArgsDict']]]
     """
     Azure auth.
     Structure is documented below.
@@ -10284,7 +10284,7 @@ class FeedDetailsAzureMdmIntuneSettingsArgsDict(TypedDict):
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsAzureMdmIntuneSettingsAuthenticationArgsDict']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
@@ -10424,7 +10424,7 @@ class FeedDetailsAzureMdmIntuneSettingsAuthenticationArgs:
 
 
 class FeedDetailsCloudPassageSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCloudPassageSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCloudPassageSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -10546,7 +10546,7 @@ class FeedDetailsCloudPassageSettingsAuthenticationArgs:
 
 
 class FeedDetailsCortexXdrSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCortexXdrSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCortexXdrSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -10618,7 +10618,7 @@ class FeedDetailsCortexXdrSettingsArgs:
 
 
 class FeedDetailsCortexXdrSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsCortexXdrSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -10853,7 +10853,7 @@ class FeedDetailsCrowdstrikeAlertsSettingsAuthenticationArgs:
 
 
 class FeedDetailsCrowdstrikeDetectsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsCrowdstrikeDetectsSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
@@ -11010,7 +11010,7 @@ class FeedDetailsDummyLogTypeSettingsArgsDict(TypedDict):
     """
     Full API Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDummyLogTypeSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -11058,7 +11058,7 @@ class FeedDetailsDummyLogTypeSettingsArgs:
 
 
 class FeedDetailsDummyLogTypeSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -11142,7 +11142,7 @@ class FeedDetailsDummyLogTypeSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsDuoAuthSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDuoAuthSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDuoAuthSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -11264,7 +11264,7 @@ class FeedDetailsDuoAuthSettingsAuthenticationArgs:
 
 
 class FeedDetailsDuoUserContextSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsDuoUserContextSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -11386,7 +11386,7 @@ class FeedDetailsDuoUserContextSettingsAuthenticationArgs:
 
 
 class FeedDetailsFoxItStixSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -11399,7 +11399,7 @@ class FeedDetailsFoxItStixSettingsArgsDict(TypedDict):
     """
     TAXII poll service URI.
     """
-    ssl: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsSslArgs']]]
+    ssl: NotRequired[pulumi.Input[Optional['FeedDetailsFoxItStixSettingsSslArgsDict']]]
     """
     An SSL client certificate keypair.
     Structure is documented below.
@@ -11858,7 +11858,7 @@ class FeedDetailsGcsV2SettingsArgs:
 
 
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -11890,12 +11890,12 @@ class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsArgs:
 
 
 class FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDeviceUsersSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -12070,7 +12070,7 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsArgsDict(TypedDict):
     """
     API Version
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -12118,12 +12118,12 @@ class FeedDetailsGoogleCloudIdentityDevicesSettingsArgs:
 
 
 class FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsGoogleCloudIdentityDevicesSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -12587,7 +12587,7 @@ class FeedDetailsHttpsPushWebhookSettingsArgs:
 
 
 class FeedDetailsImpervaWafSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsImpervaWafSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsImpervaWafSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -12619,7 +12619,7 @@ class FeedDetailsImpervaWafSettingsArgs:
 
 
 class FeedDetailsImpervaWafSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -12703,7 +12703,7 @@ class FeedDetailsImpervaWafSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsMandiantIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMandiantIocSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMandiantIocSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -12755,7 +12755,7 @@ class FeedDetailsMandiantIocSettingsArgs:
 
 
 class FeedDetailsMandiantIocSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMandiantIocSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -12843,7 +12843,7 @@ class FeedDetailsMicrosoftGraphAlertSettingsArgsDict(TypedDict):
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftGraphAlertSettingsAuthenticationArgsDict']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
@@ -12987,7 +12987,7 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsArgsDict(TypedDict):
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgsDict']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     Structure is documented below.
@@ -13147,7 +13147,7 @@ class FeedDetailsMicrosoftSecurityCenterAlertSettingsAuthenticationArgs:
 
 
 class FeedDetailsMimecastMailSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -13199,7 +13199,7 @@ class FeedDetailsMimecastMailSettingsArgs:
 
 
 class FeedDetailsMimecastMailSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -13283,7 +13283,7 @@ class FeedDetailsMimecastMailSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsMimecastMailV2SettingsArgsDict(TypedDict):
-    auth_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs']]]
+    auth_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsMimecastMailV2SettingsAuthCredentialsArgsDict']]]
     """
     OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
     NEXT TAG: 3
@@ -13367,7 +13367,7 @@ class FeedDetailsMimecastMailV2SettingsAuthCredentialsArgs:
 
 
 class FeedDetailsNetskopeAlertSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -13459,7 +13459,7 @@ class FeedDetailsNetskopeAlertSettingsArgs:
 
 
 class FeedDetailsNetskopeAlertSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -13543,7 +13543,7 @@ class FeedDetailsNetskopeAlertSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsNetskopeAlertV2SettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsNetskopeAlertV2SettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     """
@@ -13632,7 +13632,7 @@ class FeedDetailsNetskopeAlertV2SettingsArgs:
 
 
 class FeedDetailsNetskopeAlertV2SettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsNetskopeAlertV2SettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -13720,7 +13720,7 @@ class FeedDetailsOffice365SettingsArgsDict(TypedDict):
     """
     API Auth Endpoint.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOffice365SettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOffice365SettingsAuthenticationArgsDict']]]
     """
     Microsoft OAuth 2.0 client credentials grant.
     """
@@ -13895,7 +13895,7 @@ class FeedDetailsOffice365SettingsAuthenticationArgs:
 
 
 class FeedDetailsOktaSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOktaSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOktaSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -13947,7 +13947,7 @@ class FeedDetailsOktaSettingsArgs:
 
 
 class FeedDetailsOktaSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -14031,7 +14031,7 @@ class FeedDetailsOktaSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsOktaUserContextSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsOktaUserContextSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -14103,7 +14103,7 @@ class FeedDetailsOktaUserContextSettingsArgs:
 
 
 class FeedDetailsOktaUserContextSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -14187,7 +14187,7 @@ class FeedDetailsOktaUserContextSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsPanIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsPanIocSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsPanIocSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -14259,7 +14259,7 @@ class FeedDetailsPanIocSettingsArgs:
 
 
 class FeedDetailsPanIocSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -14343,7 +14343,7 @@ class FeedDetailsPanIocSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsPanPrismaCloudSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsPanPrismaCloudSettingsAuthenticationArgsDict']]]
     """
     PAN Prisma Cloud auth.
     Structure is documented below.
@@ -14453,7 +14453,7 @@ class FeedDetailsPanPrismaCloudSettingsAuthenticationArgs:
 
 
 class FeedDetailsProofpointMailSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointMailSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointMailSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -14555,7 +14555,7 @@ class FeedDetailsProofpointMailSettingsAuthenticationArgs:
 
 
 class FeedDetailsProofpointOnDemandSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsProofpointOnDemandSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -14607,7 +14607,7 @@ class FeedDetailsProofpointOnDemandSettingsArgs:
 
 
 class FeedDetailsProofpointOnDemandSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsProofpointOnDemandSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -14728,7 +14728,7 @@ class FeedDetailsQualysScanSettingsArgsDict(TypedDict):
     SCAN_COMPLIANCE_OUTPUT
     SCAN_COMPLIANCE_CONTROL_OUTPUT
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsQualysScanSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsQualysScanSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -14874,7 +14874,7 @@ class FeedDetailsQualysScanSettingsAuthenticationArgs:
 
 
 class FeedDetailsQualysVmSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsQualysVmSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsQualysVmSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -14996,7 +14996,7 @@ class FeedDetailsQualysVmSettingsAuthenticationArgs:
 
 
 class FeedDetailsRapid7InsightSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRapid7InsightSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     """
@@ -15065,7 +15065,7 @@ class FeedDetailsRapid7InsightSettingsArgs:
 
 
 class FeedDetailsRapid7InsightSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -15149,7 +15149,7 @@ class FeedDetailsRapid7InsightSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsRecordedFutureIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRecordedFutureIocSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -15181,7 +15181,7 @@ class FeedDetailsRecordedFutureIocSettingsArgs:
 
 
 class FeedDetailsRecordedFutureIocSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -15265,7 +15265,7 @@ class FeedDetailsRecordedFutureIocSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsRhIsacIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsRhIsacIocSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 client credentials grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
@@ -15373,12 +15373,12 @@ class FeedDetailsSalesforceSettingsArgsDict(TypedDict):
     """
     API hostname.
     """
-    oauth_jwt_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgs']]]
+    oauth_jwt_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
     """
-    oauth_password_grant_auth: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs']]]
+    oauth_password_grant_auth: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgsDict']]]
     """
     OAuth 2.0 password grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
@@ -15444,12 +15444,12 @@ class FeedDetailsSalesforceSettingsArgs:
 
 
 class FeedDetailsSalesforceSettingsOauthJwtCredentialsArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsSalesforceSettingsOauthJwtCredentialsRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -15729,7 +15729,7 @@ class FeedDetailsSalesforceSettingsOauthPasswordGrantAuthArgs:
 
 
 class FeedDetailsSentineloneAlertSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSentineloneAlertSettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -15821,7 +15821,7 @@ class FeedDetailsSentineloneAlertSettingsArgs:
 
 
 class FeedDetailsSentineloneAlertSettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -15905,7 +15905,7 @@ class FeedDetailsSentineloneAlertSettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsServiceNowCmdbSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsServiceNowCmdbSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -16047,7 +16047,7 @@ class FeedDetailsServiceNowCmdbSettingsAuthenticationArgs:
 
 
 class FeedDetailsSftpSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSftpSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSftpSettingsAuthenticationArgsDict']]]
     """
     SFTP Auth.
     Structure is documented below.
@@ -16252,7 +16252,7 @@ class FeedDetailsSftpSettingsAuthenticationArgs:
 
 
 class FeedDetailsSymantecEventExportSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsSymantecEventExportSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 refresh token grant. See https://tools.ietf.org/html/rfc6749.
     Structure is documented below.
@@ -16376,7 +16376,7 @@ class FeedDetailsSymantecEventExportSettingsAuthenticationArgs:
 
 
 class FeedDetailsThinkstCanarySettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThinkstCanarySettingsAuthenticationArgsDict']]]
     """
     HTTP header based authentication.
     Structure is documented below.
@@ -16428,7 +16428,7 @@ class FeedDetailsThinkstCanarySettingsArgs:
 
 
 class FeedDetailsThinkstCanarySettingsAuthenticationArgsDict(TypedDict):
-    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs']]]]]
+    header_key_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgsDict']]]]]
     """
     Header key-value pairs.
     Structure is documented below.
@@ -16512,7 +16512,7 @@ class FeedDetailsThinkstCanarySettingsAuthenticationHeaderKeyValueArgs:
 
 
 class FeedDetailsThreatConnectIocSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocSettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     Structure is documented below.
@@ -16654,7 +16654,7 @@ class FeedDetailsThreatConnectIocSettingsAuthenticationArgs:
 
 
 class FeedDetailsThreatConnectIocV3SettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsThreatConnectIocV3SettingsAuthenticationArgsDict']]]
     """
     Info for username and secret based authentication.
     """
@@ -16853,7 +16853,7 @@ class FeedDetailsThreatConnectIocV3SettingsAuthenticationArgs:
 
 
 class FeedDetailsTrellixHxAlertsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationArgsDict']]]
     """
     TrellixStarXAuthentication contains a oneof with all of the authentication
     types supported by Trellix *X devices.
@@ -16923,13 +16923,13 @@ class FeedDetailsTrellixHxAlertsSettingsArgs:
 
 
 class FeedDetailsTrellixHxAlertsSettingsAuthenticationArgsDict(TypedDict):
-    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgs']]]
+    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationMssoArgsDict']]]
     """
     Info for MssoAuthentication using a username, password, and login api
     endpoint.
     Structure is documented below.
     """
-    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgs']]]
+    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxAlertsSettingsAuthenticationTrellixIamArgsDict']]]
     """
     Settings for TrellixIAMAuthentication.
     Structure is documented below.
@@ -17203,7 +17203,7 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgsDict(TypedDict):
     - or -
     https://htapdeviceproxy.md.mandiant.net/dphb/hx//
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgsDict']]]
     """
     TrellixStarXAuthentication contains a oneof with all of the authentication
     types supported by Trellix *X devices.
@@ -17263,13 +17263,13 @@ class FeedDetailsTrellixHxBulkAcqsSettingsArgs:
 
 
 class FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationArgsDict(TypedDict):
-    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgs']]]
+    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationMssoArgsDict']]]
     """
     Info for MssoAuthentication using a username, password, and login api
     endpoint.
     Structure is documented below.
     """
-    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgs']]]
+    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxBulkAcqsSettingsAuthenticationTrellixIamArgsDict']]]
     """
     Settings for TrellixIAMAuthentication.
     Structure is documented below.
@@ -17537,7 +17537,7 @@ class FeedDetailsTrellixHxHostsSettingsArgsDict(TypedDict):
     - or -
     https://htapdeviceproxy.md.mandiant.net/dphb/hx//
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationArgsDict']]]
     """
     TrellixStarXAuthentication contains a oneof with all of the authentication
     types supported by Trellix *X devices.
@@ -17597,13 +17597,13 @@ class FeedDetailsTrellixHxHostsSettingsArgs:
 
 
 class FeedDetailsTrellixHxHostsSettingsAuthenticationArgsDict(TypedDict):
-    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgs']]]
+    msso: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationMssoArgsDict']]]
     """
     Info for MssoAuthentication using a username, password, and login api
     endpoint.
     Structure is documented below.
     """
-    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgs']]]
+    trellix_iam: NotRequired[pulumi.Input[Optional['FeedDetailsTrellixHxHostsSettingsAuthenticationTrellixIamArgsDict']]]
     """
     Settings for TrellixIAMAuthentication.
     Structure is documented below.
@@ -17871,7 +17871,7 @@ class FeedDetailsWebhookSettingsArgs:
 
 
 class FeedDetailsWorkdaySettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkdaySettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkdaySettingsAuthenticationArgsDict']]]
     """
     Authentication for Workday.
     Structure is documented below.
@@ -18100,7 +18100,7 @@ class FeedDetailsWorkspaceActivitySettingsArgsDict(TypedDict):
     """
     Applications.
     """
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -18168,12 +18168,12 @@ class FeedDetailsWorkspaceActivitySettingsArgs:
 
 
 class FeedDetailsWorkspaceActivitySettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -18344,7 +18344,7 @@ class FeedDetailsWorkspaceActivitySettingsAuthenticationRsCredentialsArgs:
 
 
 class FeedDetailsWorkspaceAlertsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -18396,12 +18396,12 @@ class FeedDetailsWorkspaceAlertsSettingsArgs:
 
 
 class FeedDetailsWorkspaceAlertsSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -18572,7 +18572,7 @@ class FeedDetailsWorkspaceAlertsSettingsAuthenticationRsCredentialsArgs:
 
 
 class FeedDetailsWorkspaceChromeOsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -18624,12 +18624,12 @@ class FeedDetailsWorkspaceChromeOsSettingsArgs:
 
 
 class FeedDetailsWorkspaceChromeOsSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -18800,7 +18800,7 @@ class FeedDetailsWorkspaceChromeOsSettingsAuthenticationRsCredentialsArgs:
 
 
 class FeedDetailsWorkspaceGroupsSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -18852,12 +18852,12 @@ class FeedDetailsWorkspaceGroupsSettingsArgs:
 
 
 class FeedDetailsWorkspaceGroupsSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -19028,7 +19028,7 @@ class FeedDetailsWorkspaceGroupsSettingsAuthenticationRsCredentialsArgs:
 
 
 class FeedDetailsWorkspaceMobileSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -19080,12 +19080,12 @@ class FeedDetailsWorkspaceMobileSettingsArgs:
 
 
 class FeedDetailsWorkspaceMobileSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -19256,7 +19256,7 @@ class FeedDetailsWorkspaceMobileSettingsAuthenticationRsCredentialsArgs:
 
 
 class FeedDetailsWorkspacePrivilegesSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -19308,12 +19308,12 @@ class FeedDetailsWorkspacePrivilegesSettingsArgs:
 
 
 class FeedDetailsWorkspacePrivilegesSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -19484,7 +19484,7 @@ class FeedDetailsWorkspacePrivilegesSettingsAuthenticationRsCredentialsArgs:
 
 
 class FeedDetailsWorkspaceUsersSettingsArgsDict(TypedDict):
-    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationArgs']]]
+    authentication: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationArgsDict']]]
     """
     OAuth 2.0 JWT grant. See, https://tools.ietf.org/html/rfc7519
     Structure is documented below.
@@ -19565,12 +19565,12 @@ class FeedDetailsWorkspaceUsersSettingsArgs:
 
 
 class FeedDetailsWorkspaceUsersSettingsAuthenticationArgsDict(TypedDict):
-    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgs']]]
+    claims: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationClaimsArgsDict']]]
     """
     Claims identifying a specific customer.
     Structure is documented below.
     """
-    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs']]]
+    rs_credentials: NotRequired[pulumi.Input[Optional['FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgsDict']]]
     """
     RS credentials.
     Structure is documented below.
@@ -19851,7 +19851,7 @@ class FeedFailureDetailsArgs:
 
 
 class NativeDashboardChartArgsDict(TypedDict):
-    chart_layout: NotRequired[pulumi.Input[Optional['NativeDashboardChartChartLayoutArgs']]]
+    chart_layout: NotRequired[pulumi.Input[Optional['NativeDashboardChartChartLayoutArgsDict']]]
     """
     The visual layout parameters of this chart within the dashboard.
     Structure is documented below.
@@ -20030,7 +20030,7 @@ class NativeDashboardFilterArgsDict(TypedDict):
     """
     The UDM field path being filtered.
     """
-    filter_operator_and_field_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgs']]]]]
+    filter_operator_and_field_values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NativeDashboardFilterFilterOperatorAndFieldValueArgsDict']]]]]
     """
     The specific operator and value set for the filter.
     Structure is documented below.
@@ -20297,7 +20297,7 @@ class ReferenceListEntryArgs:
 
 
 class ReferenceListScopeInfoArgsDict(TypedDict):
-    reference_list_scope: NotRequired[pulumi.Input[Optional['ReferenceListScopeInfoReferenceListScopeArgs']]]
+    reference_list_scope: NotRequired[pulumi.Input[Optional['ReferenceListScopeInfoReferenceListScopeArgsDict']]]
     """
     ReferenceListScope specifies the list of scope names of the reference list.
     Structure is documented below.
@@ -20477,7 +20477,7 @@ class RuleCompilationDiagnosticArgsDict(TypedDict):
     (Output)
     Output only. The diagnostic message.
     """
-    position: NotRequired[pulumi.Input[Optional['RuleCompilationDiagnosticPositionArgs']]]
+    position: NotRequired[pulumi.Input[Optional['RuleCompilationDiagnosticPositionArgsDict']]]
     """
     CompilationPosition represents the location of a compilation diagnostic in
     rule text.
@@ -20776,7 +20776,7 @@ class WatchlistEntityCountArgs:
 
 
 class WatchlistEntityPopulationMechanismArgsDict(TypedDict):
-    manual: NotRequired[pulumi.Input[Optional['WatchlistEntityPopulationMechanismManualArgs']]]
+    manual: NotRequired[pulumi.Input[Optional['WatchlistEntityPopulationMechanismManualArgsDict']]]
     """
     Entities are added manually.
     """

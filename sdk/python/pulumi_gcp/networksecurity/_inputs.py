@@ -270,13 +270,13 @@ class AddressGroupIamMemberConditionArgs:
 
 
 class AuthorizationPolicyRuleArgsDict(TypedDict):
-    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgs']]]]]
+    destinations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleDestinationArgsDict']]]]]
     """
     List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
     If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
     Structure is documented below.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthorizationPolicyRuleSourceArgsDict']]]]]
     """
     List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ipBlocks match.
     If not set, the action specified in the 'action' field will be applied without any rule checks for the source.
@@ -343,7 +343,7 @@ class AuthorizationPolicyRuleDestinationArgsDict(TypedDict):
     """
     List of destination ports to match. At least one port should match.
     """
-    http_header_match: NotRequired[pulumi.Input[Optional['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs']]]
+    http_header_match: NotRequired[pulumi.Input[Optional['AuthorizationPolicyRuleDestinationHttpHeaderMatchArgsDict']]]
     """
     Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match.
     Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
@@ -525,12 +525,12 @@ class AuthorizationPolicyRuleSourceArgs:
 
 
 class AuthzPolicyCustomProviderArgsDict(TypedDict):
-    authz_extension: NotRequired[pulumi.Input[Optional['AuthzPolicyCustomProviderAuthzExtensionArgs']]]
+    authz_extension: NotRequired[pulumi.Input[Optional['AuthzPolicyCustomProviderAuthzExtensionArgsDict']]]
     """
     Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified.
     Structure is documented below.
     """
-    cloud_iap: NotRequired[pulumi.Input[Optional['AuthzPolicyCustomProviderCloudIapArgs']]]
+    cloud_iap: NotRequired[pulumi.Input[Optional['AuthzPolicyCustomProviderCloudIapArgsDict']]]
     """
     Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places.
     Structure is documented below.
@@ -636,12 +636,12 @@ class AuthzPolicyCustomProviderCloudIapArgs:
 
 
 class AuthzPolicyHttpRuleArgsDict(TypedDict):
-    from_: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromArgs']]]
+    from_: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromArgsDict']]]
     """
     Describes properties of one or more sources of a request.
     Structure is documented below.
     """
-    to: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToArgs']]]
+    to: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToArgsDict']]]
     """
     Describes properties of one or more targets of a request
     Structure is documented below.
@@ -711,12 +711,12 @@ class AuthzPolicyHttpRuleArgs:
 
 
 class AuthzPolicyHttpRuleFromArgsDict(TypedDict):
-    not_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgs']]]]]
+    not_sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceArgsDict']]]]]
     """
     Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. Limited to 1 not_source.
     Structure is documented below.
     """
-    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgs']]]]]
+    sources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceArgsDict']]]]]
     """
     Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
     Structure is documented below.
@@ -766,18 +766,18 @@ class AuthzPolicyHttpRuleFromArgs:
 
 
 class AuthzPolicyHttpRuleFromNotSourceArgsDict(TypedDict):
-    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgs']]]]]
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceIpBlockArgsDict']]]]]
     """
     A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
     Structure is documented below.
     """
-    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgs']]]]]
+    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict']]]]]
     """
     A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
     Limited to 5 principals.
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgs']]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromNotSourceResourceArgsDict']]]]]
     """
     A list of resources to match against the resource of the source VM of a request.
     Limited to 5 resources.
@@ -931,7 +931,7 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
     """
-    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs']]]
+    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgsDict']]]
     """
     Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
     Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
@@ -1280,12 +1280,12 @@ class AuthzPolicyHttpRuleFromNotSourcePrincipalPrincipalArgs:
 
 
 class AuthzPolicyHttpRuleFromNotSourceResourceArgsDict(TypedDict):
-    iam_service_account: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgs']]]
+    iam_service_account: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccountArgsDict']]]
     """
     An IAM service account to match against the source service account of the VM sending the request.
     Structure is documented below.
     """
-    tag_value_id_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs']]]
+    tag_value_id_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgsDict']]]
     """
     A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
     Structure is documented below.
@@ -1500,18 +1500,18 @@ class AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSetArgs:
 
 
 class AuthzPolicyHttpRuleFromSourceArgsDict(TypedDict):
-    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgs']]]]]
+    ip_blocks: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceIpBlockArgsDict']]]]]
     """
     A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ipBlocks per Authorization Policy
     Structure is documented below.
     """
-    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgs']]]]]
+    principals: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourcePrincipalArgsDict']]]]]
     """
     A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
     Limited to 5 principals.
     Structure is documented below.
     """
-    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgs']]]]]
+    resources: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleFromSourceResourceArgsDict']]]]]
     """
     A list of resources to match against the resource of the source VM of a request.
     Limited to 5 resources.
@@ -1665,7 +1665,7 @@ class AuthzPolicyHttpRuleFromSourcePrincipalArgsDict(TypedDict):
 
     > **Warning:** `principals.prefix` is deprecated and will be removed in a future major release. Use `principals.principal.prefix` instead.
     """
-    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs']]]
+    principal: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgsDict']]]
     """
     Required. A non-empty string whose value is matched against the principal value based on the principalSelector.
     Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors.
@@ -2014,12 +2014,12 @@ class AuthzPolicyHttpRuleFromSourcePrincipalPrincipalArgs:
 
 
 class AuthzPolicyHttpRuleFromSourceResourceArgsDict(TypedDict):
-    iam_service_account: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgs']]]
+    iam_service_account: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceIamServiceAccountArgsDict']]]
     """
     An IAM service account to match against the source service account of the VM sending the request.
     Structure is documented below.
     """
-    tag_value_id_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs']]]
+    tag_value_id_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgsDict']]]
     """
     A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
     Structure is documented below.
@@ -2234,12 +2234,12 @@ class AuthzPolicyHttpRuleFromSourceResourceTagValueIdSetArgs:
 
 
 class AuthzPolicyHttpRuleToArgsDict(TypedDict):
-    not_operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgs']]]]]
+    not_operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationArgsDict']]]]]
     """
     Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. Limited to 1 not_operation.
     Structure is documented below.
     """
-    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgs']]]]]
+    operations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationArgsDict']]]]]
     """
     Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
     Structure is documented below.
@@ -2289,12 +2289,12 @@ class AuthzPolicyHttpRuleToArgs:
 
 
 class AuthzPolicyHttpRuleToNotOperationArgsDict(TypedDict):
-    header_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetArgs']]]
+    header_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict']]]
     """
     A list of headers to match against in http header.
     Structure is documented below.
     """
-    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgs']]]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHostArgsDict']]]]]
     """
     A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
@@ -2304,7 +2304,7 @@ class AuthzPolicyHttpRuleToNotOperationArgsDict(TypedDict):
     """
     A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
     """
-    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgs']]]]]
+    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationPathArgsDict']]]]]
     """
     A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
@@ -2396,7 +2396,7 @@ class AuthzPolicyHttpRuleToNotOperationArgs:
 
 
 class AuthzPolicyHttpRuleToNotOperationHeaderSetArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict']]]]]
     """
     A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
     Structure is documented below.
@@ -2432,7 +2432,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderArgsDict(TypedDict):
     """
     Specifies the name of the header in the request.
     """
-    value: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValueArgsDict']]]
     """
     Specifies how the header match will be performed.
     Structure is documented below.
@@ -2879,18 +2879,18 @@ class AuthzPolicyHttpRuleToNotOperationPathArgs:
 
 
 class AuthzPolicyHttpRuleToOperationArgsDict(TypedDict):
-    header_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetArgs']]]
+    header_set: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetArgsDict']]]
     """
     A list of headers to match against in http header.
     Structure is documented below.
     """
-    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgs']]]]]
+    hosts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHostArgsDict']]]]]
     """
     A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
     Structure is documented below.
     """
-    mcp: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationMcpArgs']]]
+    mcp: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationMcpArgsDict']]]
     """
     Defines the MCP protocol attributes to match on. MCP based match is allowed only when the AuthzPolicy points to an AgentGateway.
     Structure is documented below.
@@ -2899,7 +2899,7 @@ class AuthzPolicyHttpRuleToOperationArgsDict(TypedDict):
     """
     A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
     """
-    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgs']]]]]
+    paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationPathArgsDict']]]]]
     """
     A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
     Limited to 10 matches.
@@ -3009,7 +3009,7 @@ class AuthzPolicyHttpRuleToOperationArgs:
 
 
 class AuthzPolicyHttpRuleToOperationHeaderSetArgsDict(TypedDict):
-    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgs']]]]]
+    headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict']]]]]
     """
     A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
     Structure is documented below.
@@ -3045,7 +3045,7 @@ class AuthzPolicyHttpRuleToOperationHeaderSetHeaderArgsDict(TypedDict):
     """
     Specifies the name of the header in the request.
     """
-    value: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgs']]]
+    value: NotRequired[pulumi.Input[Optional['AuthzPolicyHttpRuleToOperationHeaderSetHeaderValueArgsDict']]]
     """
     Specifies how the header match will be performed.
     Structure is documented below.
@@ -3365,7 +3365,7 @@ class AuthzPolicyHttpRuleToOperationMcpArgsDict(TypedDict):
     Default value is `SKIP_BASE_PROTOCOL_METHODS`.
     Possible values are: `SKIP_BASE_PROTOCOL_METHODS`, `MATCH_BASE_PROTOCOL_METHODS`.
     """
-    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgs']]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodArgsDict']]]]]
     """
     Defines a set of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the includeBaseProtocolMethods to true to match on all the other MCP protocol methods.
     Structure is documented below.
@@ -3425,7 +3425,7 @@ class AuthzPolicyHttpRuleToOperationMcpMethodArgsDict(TypedDict):
     3) “prompts/get”, “tools/call”, “resources/subscribe”, “resources/unsubscribe”, “resources/read”
     Params cannot be specified for categories 1) and 2).
     """
-    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgs']]]]]
+    params: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AuthzPolicyHttpRuleToOperationMcpMethodParamArgsDict']]]]]
     """
     MCP method parameters to match against.
     Structure is documented below.
@@ -3783,12 +3783,12 @@ class AuthzPolicyTargetArgs:
 
 
 class ClientTlsPolicyClientCertificateArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgs']]]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ClientTlsPolicyClientCertificateCertificateProviderInstanceArgsDict']]]
     """
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input[Optional['ClientTlsPolicyClientCertificateGrpcEndpointArgs']]]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ClientTlsPolicyClientCertificateGrpcEndpointArgsDict']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.
@@ -3894,12 +3894,12 @@ class ClientTlsPolicyClientCertificateGrpcEndpointArgs:
 
 
 class ClientTlsPolicyServerValidationCaArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs']]]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict']]]
     """
     The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input[Optional['ClientTlsPolicyServerValidationCaGrpcEndpointArgs']]]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.
@@ -4366,7 +4366,7 @@ class InterceptEndpointGroupAssociationLocationsDetailArgs:
 
 
 class InterceptEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
-    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgs']]]]]
+    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InterceptEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]]
     """
     (Output)
     The list of locations where the deployment group is present.
@@ -4826,7 +4826,7 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
 
 
 class MirroringEndpointGroupConnectedDeploymentGroupArgsDict(TypedDict):
-    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgs']]]]]
+    locations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['MirroringEndpointGroupConnectedDeploymentGroupLocationArgsDict']]]]]
     """
     (Output)
     The list of locations where the deployment group is present.
@@ -5265,17 +5265,17 @@ class SecurityProfileCustomMirroringProfileArgs:
 
 
 class SecurityProfileThreatPreventionProfileArgsDict(TypedDict):
-    antivirus_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgs']]]]]
+    antivirus_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileAntivirusOverrideArgsDict']]]]]
     """
     Defines what action to take for antivirus threats per protocol.
     Structure is documented below.
     """
-    severity_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]]
+    severity_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgsDict']]]]]
     """
     The configuration for overriding threats actions by severity match.
     Structure is documented below.
     """
-    threat_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]]
+    threat_overrides: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgsDict']]]]]
     """
     The configuration for overriding threats actions by threat id match.
     If a threat is matched both by configuration provided in severity overrides
@@ -5528,7 +5528,7 @@ class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
 
 
 class SecurityProfileUrlFilteringProfileArgsDict(TypedDict):
-    url_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgs']]]]]
+    url_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SecurityProfileUrlFilteringProfileUrlFilterArgsDict']]]]]
     """
     The configuration for action to take based on domain name match.
     A domain name would be checked for matching filters through the list in order of highest to lowest priority,
@@ -5645,7 +5645,7 @@ class SecurityProfileUrlFilteringProfileUrlFilterArgs:
 
 
 class ServerTlsPolicyMtlsPolicyArgsDict(TypedDict):
-    client_validation_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]]
+    client_validation_cas: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict']]]]]
     """
     Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
     Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -5732,13 +5732,13 @@ class ServerTlsPolicyMtlsPolicyArgs:
 
 
 class ServerTlsPolicyMtlsPolicyClientValidationCaArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgsDict']]]
     """
     Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
     Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgsDict']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.
@@ -5846,13 +5846,13 @@ class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
 
 
 class ServerTlsPolicyServerCertificateArgsDict(TypedDict):
-    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]]
+    certificate_provider_instance: NotRequired[pulumi.Input[Optional['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgsDict']]]
     """
     Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
     Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
     Structure is documented below.
     """
-    grpc_endpoint: NotRequired[pulumi.Input[Optional['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]]
+    grpc_endpoint: NotRequired[pulumi.Input[Optional['ServerTlsPolicyServerCertificateGrpcEndpointArgsDict']]]
     """
     gRPC specific configuration to access the gRPC server to obtain the cert and private key.
     Structure is documented below.

@@ -248,7 +248,7 @@ class EnterpriseKeyWebSettingsArgsDict(TypedDict):
     """
     Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE. Possible values: CHALLENGE_SECURITY_PREFERENCE_UNSPECIFIED, USABILITY, BALANCE, SECURITY
     """
-    challenge_settings: NotRequired[pulumi.Input[Optional['EnterpriseKeyWebSettingsChallengeSettingsArgs']]]
+    challenge_settings: NotRequired[pulumi.Input[Optional['EnterpriseKeyWebSettingsChallengeSettingsArgsDict']]]
     """
     Settings for POLICY_BASED_CHALLENGE keys to control when a challenge is triggered.
     Structure is documented below.
@@ -364,7 +364,7 @@ class EnterpriseKeyWebSettingsChallengeSettingsArgsDict(TypedDict):
     Defines when a challenge is triggered by default.
     Structure is documented below.
     """
-    action_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgs']]]]]
+    action_settings: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseKeyWebSettingsChallengeSettingsActionSettingArgsDict']]]]]
     """
     The action to score threshold map. The action name should be the same as the action name passed in the `data-action` attribute. Action names are case-insensitive.
     Structure is documented below.
