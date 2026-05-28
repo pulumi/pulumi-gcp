@@ -3466,7 +3466,7 @@ public final class KmsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", TypeShape.of(GetKMSSecretAsymmetricResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+     * &gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
      * 
      * This data source allows you to encrypt data with Google Cloud KMS and use the
      * ciphertext within your resource definitions.
@@ -3588,7 +3588,7 @@ public final class KmsFunctions {
         return getKMSSecretCiphertext(args, InvokeOptions.Empty);
     }
     /**
-     * !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+     * &gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
      * 
      * This data source allows you to encrypt data with Google Cloud KMS and use the
      * ciphertext within your resource definitions.
@@ -3710,7 +3710,7 @@ public final class KmsFunctions {
         return getKMSSecretCiphertextPlain(args, InvokeOptions.Empty);
     }
     /**
-     * !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+     * &gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
      * 
      * This data source allows you to encrypt data with Google Cloud KMS and use the
      * ciphertext within your resource definitions.
@@ -3832,7 +3832,7 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", TypeShape.of(GetKMSSecretCiphertextResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+     * &gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
      * 
      * This data source allows you to encrypt data with Google Cloud KMS and use the
      * ciphertext within your resource definitions.
@@ -3954,7 +3954,7 @@ public final class KmsFunctions {
         return Deployment.getInstance().invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", TypeShape.of(GetKMSSecretCiphertextResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+     * &gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
      * 
      * This data source allows you to encrypt data with Google Cloud KMS and use the
      * ciphertext within your resource definitions.

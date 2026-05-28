@@ -17186,7 +17186,7 @@ class ClusterPrivateClusterConfig(dict):
         :param _builtins.str private_endpoint_subnetwork: Subnetwork in cluster's network where master's endpoint will be provisioned.
         :param _builtins.str public_endpoint: The external IP address of this cluster's master endpoint.
                
-               !> The Google provider is unable to validate certain configurations of
+               > The Google provider is unable to validate certain configurations of
                `private_cluster_config` when `enable_private_nodes` is `false`. It's
                recommended that you omit the block entirely if the field is not set to `true`.
         """
@@ -17283,7 +17283,7 @@ class ClusterPrivateClusterConfig(dict):
         """
         The external IP address of this cluster's master endpoint.
 
-        !> The Google provider is unable to validate certain configurations of
+        > The Google provider is unable to validate certain configurations of
         `private_cluster_config` when `enable_private_nodes` is `false`. It's
         recommended that you omit the block entirely if the field is not set to `true`.
         """

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * !> **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+ * > **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
  *
  * This data source allows you to encrypt data with Google Cloud KMS and use the
  * ciphertext within your resource definitions.
@@ -109,7 +109,7 @@ export interface GetKMSSecretCiphertextResult {
     readonly plaintext: string;
 }
 /**
- * !> **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+ * > **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
  *
  * This data source allows you to encrypt data with Google Cloud KMS and use the
  * ciphertext within your resource definitions.

@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.organizations.IAMPolicy
  * 
- * !&gt; **Warning:** New organizations have several default policies which will,
+ * &gt; **Warning:** New organizations have several default policies which will,
  *    without extreme caution, be **overwritten** by use of this resource.
  *    The safest alternative is to use multiple `gcp.organizations.IAMBinding`
  *    resources. This resource makes it easy to remove your own access to

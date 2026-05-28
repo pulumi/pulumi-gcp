@@ -181,7 +181,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+     * &gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
@@ -190,7 +190,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A list of predefined keys to split the table on.
-     * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+     * &gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
      * to delete/recreate the entire `gcp.bigtable.Table` resource.
      * 
      */
@@ -458,7 +458,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param splitKeys A list of predefined keys to split the table on.
-         * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+         * &gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
          * to delete/recreate the entire `gcp.bigtable.Table` resource.
          * 
          * @return builder
@@ -471,7 +471,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param splitKeys A list of predefined keys to split the table on.
-         * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+         * &gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
          * to delete/recreate the entire `gcp.bigtable.Table` resource.
          * 
          * @return builder
@@ -483,7 +483,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param splitKeys A list of predefined keys to split the table on.
-         * !&gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
+         * &gt; **Warning:** Modifying the `splitKeys` of an existing table will cause the provider
          * to delete/recreate the entire `gcp.bigtable.Table` resource.
          * 
          * @return builder

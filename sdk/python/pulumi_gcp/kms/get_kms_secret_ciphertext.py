@@ -83,7 +83,7 @@ def get_kms_secret_ciphertext(crypto_key: Optional[_builtins.str] = None,
                               plaintext: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKMSSecretCiphertextResult:
     """
-    !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
+    > **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
 
     This data source allows you to encrypt data with Google Cloud KMS and use the
     ciphertext within your resource definitions.
@@ -163,7 +163,7 @@ def get_kms_secret_ciphertext_output(crypto_key: pulumi.Input[Optional[_builtins
                                      plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSSecretCiphertextResult]:
     """
-    !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
+    > **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
 
     This data source allows you to encrypt data with Google Cloud KMS and use the
     ciphertext within your resource definitions.

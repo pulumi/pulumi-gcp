@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.NetworkManagement
     public static class GetConnectivityTestRun
     {
         /// <summary>
-        /// !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+        /// &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
         /// 
         /// A connectivity test is a static analysis of your resource configurations
         /// that enables you to evaluate connectivity to and from Google Cloud
@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.NetworkManagement
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectivityTestRunResult>("gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun", args ?? new GetConnectivityTestRunArgs(), options.WithDefaults());
 
         /// <summary>
-        /// !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+        /// &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
         /// 
         /// A connectivity test is a static analysis of your resource configurations
         /// that enables you to evaluate connectivity to and from Google Cloud
@@ -240,7 +240,7 @@ namespace Pulumi.Gcp.NetworkManagement
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectivityTestRunResult>("gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun", args ?? new GetConnectivityTestRunInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+        /// &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
         /// 
         /// A connectivity test is a static analysis of your resource configurations
         /// that enables you to evaluate connectivity to and from Google Cloud

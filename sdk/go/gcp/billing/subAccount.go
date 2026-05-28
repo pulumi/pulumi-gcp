@@ -14,7 +14,7 @@ import (
 
 // Allows creation and management of a Google Cloud Billing Subaccount.
 //
-// !> **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+// > **WARNING:** Deleting this resource will not delete or close the billing subaccount.
 //
 // ```go
 // package main
