@@ -179,7 +179,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A list of predefined keys to split the table on.
-        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
+        /// &gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
         /// to delete/recreate the entire `gcp.bigtable.Table` resource.
         /// </summary>
         [Output("splitKeys")]
@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A list of predefined keys to split the table on.
-        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
+        /// &gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
         /// to delete/recreate the entire `gcp.bigtable.Table` resource.
         /// </summary>
         public InputList<string> SplitKeys
@@ -404,7 +404,7 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A list of predefined keys to split the table on.
-        /// !&gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
+        /// &gt; **Warning:** Modifying the `SplitKeys` of an existing table will cause the provider
         /// to delete/recreate the entire `gcp.bigtable.Table` resource.
         /// </summary>
         public InputList<string> SplitKeys

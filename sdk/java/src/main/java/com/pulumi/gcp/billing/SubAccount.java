@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 /**
  * Allows creation and management of a Google Cloud Billing Subaccount.
  * 
- * !&gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
+ * &gt; **WARNING:** Deleting this resource will not delete or close the billing subaccount.
  * 
  * <pre>
  * {@code

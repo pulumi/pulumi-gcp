@@ -19,7 +19,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class NetworkmanagementFunctions {
     /**
-     * !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+     * &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
      * 
      * A connectivity test is a static analysis of your resource configurations
      * that enables you to evaluate connectivity to and from Google Cloud
@@ -137,7 +137,7 @@ public final class NetworkmanagementFunctions {
         return getConnectivityTestRun(args, InvokeOptions.Empty);
     }
     /**
-     * !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+     * &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
      * 
      * A connectivity test is a static analysis of your resource configurations
      * that enables you to evaluate connectivity to and from Google Cloud
@@ -255,7 +255,7 @@ public final class NetworkmanagementFunctions {
         return getConnectivityTestRunPlain(args, InvokeOptions.Empty);
     }
     /**
-     * !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+     * &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
      * 
      * A connectivity test is a static analysis of your resource configurations
      * that enables you to evaluate connectivity to and from Google Cloud
@@ -373,7 +373,7 @@ public final class NetworkmanagementFunctions {
         return Deployment.getInstance().invoke("gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun", TypeShape.of(GetConnectivityTestRunResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+     * &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
      * 
      * A connectivity test is a static analysis of your resource configurations
      * that enables you to evaluate connectivity to and from Google Cloud
@@ -491,7 +491,7 @@ public final class NetworkmanagementFunctions {
         return Deployment.getInstance().invoke("gcp:networkmanagement/getConnectivityTestRun:getConnectivityTestRun", TypeShape.of(GetConnectivityTestRunResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
+     * &gt; This datasource triggers side effects on the target resource. It will take a long time to refresh (i.e. `pulumi preview` will take much longer than usual) and may modify the state of the parent resource or other copies of the resource copying the same parent.
      * 
      * A connectivity test is a static analysis of your resource configurations
      * that enables you to evaluate connectivity to and from Google Cloud

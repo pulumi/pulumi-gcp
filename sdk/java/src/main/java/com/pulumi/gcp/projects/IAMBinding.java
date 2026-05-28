@@ -33,7 +33,7 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.projects.IAMPolicy
  * 
- * !&gt; **Be careful!** You can accidentally lock yourself out of your project
+ * &gt; **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
  *    from anyone without organization-level access to the project. Proceed with caution.
  *    It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project
@@ -330,7 +330,7 @@ import javax.annotation.Nullable;
  * 
  * ## gcp.projects.IAMPolicy
  * 
- * !&gt; **Be careful!** You can accidentally lock yourself out of your project
+ * &gt; **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
  *    from anyone without organization-level access to the project. Proceed with caution.
  *    It&#39;s not recommended to use `gcp.projects.IAMPolicy` with your provider project

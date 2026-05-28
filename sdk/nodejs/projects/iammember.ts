@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * ## gcp.projects.IAMPolicy
  *
- * !> **Be careful!** You can accidentally lock yourself out of your project
+ * > **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
  *    from anyone without organization-level access to the project. Proceed with caution.
  *    It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
@@ -155,7 +155,7 @@ import * as utilities from "../utilities";
  *
  * ## gcp.projects.IAMPolicy
  *
- * !> **Be careful!** You can accidentally lock yourself out of your project
+ * > **Be careful!** You can accidentally lock yourself out of your project
  *    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
  *    from anyone without organization-level access to the project. Proceed with caution.
  *    It's not recommended to use `gcp.projects.IAMPolicy` with your provider project

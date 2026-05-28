@@ -234,7 +234,7 @@ class IAMBinding(pulumi.CustomResource):
 
         ## organizations.IAMPolicy
 
-        !> **Warning:** New organizations have several default policies which will,
+        > **Warning:** New organizations have several default policies which will,
            without extreme caution, be **overwritten** by use of this resource.
            The safest alternative is to use multiple `organizations.IAMBinding`
            resources. This resource makes it easy to remove your own access to
@@ -483,7 +483,7 @@ class IAMBinding(pulumi.CustomResource):
 
         ## organizations.IAMPolicy
 
-        !> **Warning:** New organizations have several default policies which will,
+        > **Warning:** New organizations have several default policies which will,
            without extreme caution, be **overwritten** by use of this resource.
            The safest alternative is to use multiple `organizations.IAMBinding`
            resources. This resource makes it easy to remove your own access to

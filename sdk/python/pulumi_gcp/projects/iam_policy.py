@@ -170,7 +170,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         ## projects.IAMPolicy
 
-        !> **Be careful!** You can accidentally lock yourself out of your project
+        > **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project
@@ -291,7 +291,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         ## projects.IAMPolicy
 
-        !> **Be careful!** You can accidentally lock yourself out of your project
+        > **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project
@@ -455,7 +455,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         ## projects.IAMPolicy
 
-        !> **Be careful!** You can accidentally lock yourself out of your project
+        > **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project
@@ -576,7 +576,7 @@ class IAMPolicy(pulumi.CustomResource):
 
         ## projects.IAMPolicy
 
-        !> **Be careful!** You can accidentally lock yourself out of your project
+        > **Be careful!** You can accidentally lock yourself out of your project
            using this resource. Deleting a `projects.IAMPolicy` removes access
            from anyone without organization-level access to the project. Proceed with caution.
            It's not recommended to use `projects.IAMPolicy` with your provider project

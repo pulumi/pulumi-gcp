@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *
  * ## gcp.folder.IAMPolicy
  *
- * !> **Be careful!** You can accidentally lock yourself out of your folder
+ * > **Be careful!** You can accidentally lock yourself out of your folder
  *    using this resource. Deleting a `gcp.folder.IAMPolicy` removes access
  *    from anyone without permissions on its parent folder/organization. Proceed with caution.
  *    It's not recommended to use `gcp.folder.IAMPolicy` with your provider folder

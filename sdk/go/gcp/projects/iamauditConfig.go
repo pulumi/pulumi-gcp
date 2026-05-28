@@ -29,7 +29,7 @@ import (
 //
 // ## projects.IAMPolicy
 //
-// !> **Be careful!** You can accidentally lock yourself out of your project
+// > **Be careful!** You can accidentally lock yourself out of your project
 //
 //	using this resource. Deleting a `projects.IAMPolicy` removes access
 //	from anyone without organization-level access to the project. Proceed with caution.
@@ -289,7 +289,7 @@ import (
 //
 // ## projects.IAMPolicy
 //
-// !> **Be careful!** You can accidentally lock yourself out of your project
+// > **Be careful!** You can accidentally lock yourself out of your project
 //
 //	using this resource. Deleting a `projects.IAMPolicy` removes access
 //	from anyone without organization-level access to the project. Proceed with caution.

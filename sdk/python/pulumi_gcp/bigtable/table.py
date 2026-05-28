@@ -57,7 +57,7 @@ class TableArgs:
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
         pulumi.set(__self__, "instance_name", instance_name)
@@ -206,7 +206,7 @@ class TableArgs:
     def split_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
         to delete/recreate the entire `bigtable.Table` resource.
         """
         return pulumi.get(self, "split_keys")
@@ -255,7 +255,7 @@ class _TableState:
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
         if automated_backup_policy is not None:
@@ -405,7 +405,7 @@ class _TableState:
     def split_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
         to delete/recreate the entire `bigtable.Table` resource.
         """
         return pulumi.get(self, "split_keys")
@@ -535,7 +535,7 @@ class Table(pulumi.CustomResource):
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
         ...
@@ -718,7 +718,7 @@ class Table(pulumi.CustomResource):
                					The schema must be a valid JSON encoded string representing a Type's struct protobuf message. Note that for bytes sequence (like delimited_bytes.delimiter)
                					the delimiter must be base64 encoded. For example, if you want to set a delimiter to a single byte character "#", it should be set to "Iw==", which is the base64 encoding of the byte sequence "#".
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] split_keys: A list of predefined keys to split the table on.
-               !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+               > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -827,7 +827,7 @@ class Table(pulumi.CustomResource):
     def split_keys(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
         A list of predefined keys to split the table on.
-        !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
+        > **Warning:** Modifying the `split_keys` of an existing table will cause the provider
         to delete/recreate the entire `bigtable.Table` resource.
         """
         return pulumi.get(self, "split_keys")
