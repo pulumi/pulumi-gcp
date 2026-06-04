@@ -459,7 +459,16 @@ func preConfigureCallbackWithLogger(
 		}
 
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
-			regionList, err := getRegionsList(ctx, config.Project, gcpClientOpts)
+			// Reuse the credentials LoadAndValidate just resolved so the regions
+			// client doesn't fall back to ADC discovery. ADC is absent under
+			// Workload Identity Federation / OIDC / explicit-access-token flows,
+			// and the fallback fails with a spurious "could not find default
+			// credentials" warning even though every other API call succeeds.
+			regionListOpts := gcpClientOpts
+			if len(regionListOpts) == 0 && config.TokenSource != nil {
+				regionListOpts = []option.ClientOption{option.WithTokenSource(config.TokenSource)}
+			}
+			regionList, err := getRegionsList(ctx, config.Project, regionListOpts)
 			if err != nil {
 				tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("failed to get regions list: %v", err))
 				return nil

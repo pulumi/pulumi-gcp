@@ -134,6 +134,51 @@ func TestPreConfigureCallbackNoErrWhenRegionListCallErrors(t *testing.T) {
 	require.NoError(t, err)
 }
 
+func TestPreConfigureCallbackForwardsTokenSourceToRegionList(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	t.Setenv("GOOGLE_PROJECT", "myproject")
+	t.Setenv("GOOGLE_REGION", "us-central1")
+	t.Setenv("GOOGLE_OAUTH_ACCESS_TOKEN", "ya29.fake-token-for-regression-test")
+
+	// Point every well-known ADC location at an empty dir so the regions client
+	// can only authenticate via the access token above. Without this, a
+	// developer with cached `gcloud auth application-default login` credentials
+	// would mask the regression.
+	emptyDir := t.TempDir()
+	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+	t.Setenv("HOME", emptyDir)
+	t.Setenv("CLOUDSDK_CONFIG", emptyDir)
+	t.Setenv("APPDATA", emptyDir)
+	t.Setenv("USERPROFILE", emptyDir)
+
+	logs := &rejectWarning{t: t, banned: "could not find default credentials"}
+	ctx := testutil.InitLogging(t, context.Background(), logs)
+
+	callback := preConfigureCallbackWithLogger(new(atomic.Bool), nil)
+	require.NoError(t, callback(ctx, nil, nil, nil))
+}
+
+// rejectWarning fails the test if any warning contains the banned substring.
+type rejectWarning struct {
+	t      *testing.T
+	banned string
+}
+
+func (r *rejectWarning) Log(_ context.Context, sev diag.Severity, urn resource.URN, msg string) error {
+	if sev == diag.Warning {
+		assert.NotContainsf(r.t, msg, r.banned, "unexpected warning for URN %s", urn)
+	}
+	return nil
+}
+
+func (r *rejectWarning) LogStatus(_ context.Context, sev diag.Severity, urn resource.URN, msg string) error {
+	assert.Failf(r.t, "Unexpected status", "log: %s@%s: %q", sev, urn, msg)
+	return nil
+}
+
 func TestPreConfigureCallbackNoWarningWhenNoProjectEnvSet(t *testing.T) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
