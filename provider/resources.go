@@ -81,6 +81,7 @@ const (
 	gcpComposer                 = "Composer"                 // Cloud Composer resources
 	gcpCompute                  = "Compute"                  // Compute resources
 	gcpContainerAnalysis        = "ContainerAnalysis"        // Container Analysis resources
+	gcpConfigDeployment         = "ConfigDeployment"         // Config Deployment resources
 	gcpDNS                      = "Dns"                      // DNS resources
 	gcpDeveloperConnect         = "DeveloperConnect"         // Developer Connect
 	gcpDataCatalog              = "DataCatalog"              // Data Catalog resources
@@ -1250,6 +1251,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_container_azure_cluster":    {Tok: gcpResource(gcpKubernetes, "AzureCluster")},
 			"google_container_azure_node_pool":  {Tok: gcpResource(gcpKubernetes, "AzureNodePool")},
 			"google_container_attached_cluster": {Tok: gcpResource(gcpKubernetes, "AttachedCluster")},
+
+			// Config Deployment resources
+			"google_config_deployment": {Tok: gcpResource(gcpConfigDeployment, "Deployment")},
 
 			// Data Flow resources
 			"google_dataflow_job":               {Tok: gcpResource(gcpDataFlow, "Job")},
