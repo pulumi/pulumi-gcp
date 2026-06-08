@@ -451,6 +451,10 @@
     {
       "old": "    * MODE_UNSPECIFIED: Not Set\n    * GCE_METADATA: Expose all Compute Engine metadata to pods.\n    * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.\n",
       "new": "  * UNSPECIFIED: Not Set\n  * GCE_METADATA: Expose all Compute Engine metadata to pods.\n  * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.\n"
+    },
+    {
+      "old": "* `managed_machine_learning_diagnostics_config` - (Optional, [Beta](../guides/provider_versions.html.markdown)) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is [documented below](#nested_managed_ml_diagnostics_config).\n",
+      "new": "* `managed_machine_learning_diagnostics_config` - (Optional, [Beta](../guides/provider_versions.html.markdown)) Configuration for the GKE Managed ML Diagnostics feature. Structure is [documented below](#nested_managed_ml_diagnostics_config).\n"
     }
   ],
   "container_engine_versions.html.markdown": [

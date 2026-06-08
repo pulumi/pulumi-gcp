@@ -1074,14 +1074,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenancePolicy);
     }
     /**
-     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
      * 
      */
     @Export(name="managedMachineLearningDiagnosticsConfig", refs={ClusterManagedMachineLearningDiagnosticsConfig.class}, tree="[0]")
     private Output<ClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfig;
 
     /**
-     * @return ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * @return Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
      * 
      */
     public Output<ClusterManagedMachineLearningDiagnosticsConfig> managedMachineLearningDiagnosticsConfig() {

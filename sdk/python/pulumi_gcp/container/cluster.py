@@ -218,7 +218,7 @@ class ClusterArgs:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -1139,7 +1139,7 @@ class ClusterArgs:
     @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
     def managed_machine_learning_diagnostics_config(self) -> pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
         """
-        ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_machine_learning_diagnostics_config")
 
@@ -1935,7 +1935,7 @@ class _ClusterState:
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        :param pulumi.Input['ClusterManagedMachineLearningDiagnosticsConfigArgs'] managed_machine_learning_diagnostics_config: Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         :param pulumi.Input['ClusterManagedOpentelemetryConfigArgs'] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input['ClusterMasterAuthArgs'] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -2922,7 +2922,7 @@ class _ClusterState:
     @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
     def managed_machine_learning_diagnostics_config(self) -> pulumi.Input[Optional['ClusterManagedMachineLearningDiagnosticsConfigArgs']]:
         """
-        ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_machine_learning_diagnostics_config")
 
@@ -3901,7 +3901,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -4590,7 +4590,7 @@ class Cluster(pulumi.CustomResource):
                `logging.googleapis.com/kubernetes`(Stackdriver Kubernetes Engine Logging), and `none`. Defaults to `logging.googleapis.com/kubernetes`
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: The maintenance policy to use for the cluster. Structure is
                documented below.
-        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        :param pulumi.Input[Union['ClusterManagedMachineLearningDiagnosticsConfigArgs', 'ClusterManagedMachineLearningDiagnosticsConfigArgsDict']] managed_machine_learning_diagnostics_config: Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterManagedOpentelemetryConfigArgs', 'ClusterManagedOpentelemetryConfigArgsDict']] managed_opentelemetry_config: ) Configuration for the [GKE Managed OpenTelemetry](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/managed-otel-gke) feature. Structure is documented below.
         :param pulumi.Input[Union['ClusterMasterAuthArgs', 'ClusterMasterAuthArgsDict']] master_auth: The authentication information for accessing the
                Kubernetes master. Some values in this block are only returned by the API if
@@ -5292,7 +5292,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="managedMachineLearningDiagnosticsConfig")
     def managed_machine_learning_diagnostics_config(self) -> pulumi.Output['outputs.ClusterManagedMachineLearningDiagnosticsConfig']:
         """
-        ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         """
         return pulumi.get(self, "managed_machine_learning_diagnostics_config")
 
@@ -5762,4 +5762,3 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "workload_identity_config")
-

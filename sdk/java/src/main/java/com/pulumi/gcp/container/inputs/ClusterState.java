@@ -925,14 +925,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
      * 
      */
     @Import(name="managedMachineLearningDiagnosticsConfig")
     private @Nullable Output<ClusterManagedMachineLearningDiagnosticsConfigArgs> managedMachineLearningDiagnosticsConfig;
 
     /**
-     * @return ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * @return Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterManagedMachineLearningDiagnosticsConfigArgs>> managedMachineLearningDiagnosticsConfig() {
@@ -3101,7 +3101,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedMachineLearningDiagnosticsConfig ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+         * @param managedMachineLearningDiagnosticsConfig Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
          * 
          * @return builder
          * 
@@ -3112,7 +3112,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param managedMachineLearningDiagnosticsConfig ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+         * @param managedMachineLearningDiagnosticsConfig Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
          * 
          * @return builder
          * 

@@ -525,7 +525,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        /// Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         /// </summary>
         [Output("managedMachineLearningDiagnosticsConfig")]
         public Output<Outputs.ClusterManagedMachineLearningDiagnosticsConfig> ManagedMachineLearningDiagnosticsConfig { get; private set; } = null!;
@@ -1296,7 +1296,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        /// Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         /// </summary>
         [Input("managedMachineLearningDiagnosticsConfig")]
         public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }
@@ -2030,7 +2030,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
-        /// ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+        /// Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
         /// </summary>
         [Input("managedMachineLearningDiagnosticsConfig")]
         public Input<Inputs.ClusterManagedMachineLearningDiagnosticsConfigGetArgs>? ManagedMachineLearningDiagnosticsConfig { get; set; }

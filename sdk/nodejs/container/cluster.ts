@@ -414,7 +414,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     declare public readonly maintenancePolicy: pulumi.Output<outputs.container.ClusterMaintenancePolicy | undefined>;
     /**
-     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
      */
     declare public readonly managedMachineLearningDiagnosticsConfig: pulumi.Output<outputs.container.ClusterManagedMachineLearningDiagnosticsConfig>;
     /**
@@ -1176,7 +1176,7 @@ export interface ClusterState {
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy | undefined>;
     /**
-     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
      */
     managedMachineLearningDiagnosticsConfig?: pulumi.Input<inputs.container.ClusterManagedMachineLearningDiagnosticsConfig | undefined>;
     /**
@@ -1714,7 +1714,7 @@ export interface ClusterArgs {
      */
     maintenancePolicy?: pulumi.Input<inputs.container.ClusterMaintenancePolicy | undefined>;
     /**
-     * ) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is documented below.
+     * Configuration for the GKE Managed ML Diagnostics feature. Structure is documented below.
      */
     managedMachineLearningDiagnosticsConfig?: pulumi.Input<inputs.container.ClusterManagedMachineLearningDiagnosticsConfig | undefined>;
     /**

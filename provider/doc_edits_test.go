@@ -42,6 +42,14 @@ func TestReplacementsDotJSON(t *testing.T) {
 	actual, err = edit.Edit("unrelated.html.markdown", []byte("Terraform should be untouched here."))
 	require.NoError(t, err)
 	assert.Equal(t, "Terraform should be untouched here.", string(actual))
+
+	actual, err = edit.Edit("container_cluster.html.markdown", []byte(
+		"* `managed_machine_learning_diagnostics_config` - (Optional, [Beta](../guides/provider_versions.html.markdown)) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is [documented below](#nested_managed_ml_diagnostics_config).\n",
+	))
+	require.NoError(t, err)
+	assert.Equal(t,
+		"* `managed_machine_learning_diagnostics_config` - (Optional, [Beta](../guides/provider_versions.html.markdown)) Configuration for the GKE Managed ML Diagnostics feature. Structure is [documented below](#nested_managed_ml_diagnostics_config).\n",
+		string(actual))
 }
 
 func TestAggregateIAMExemptedMembersReplacement(t *testing.T) {
