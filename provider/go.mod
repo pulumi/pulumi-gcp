@@ -230,8 +230,8 @@ require (
 	github.com/pulumi/esc v0.25.0 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
 	github.com/pulumi/pulumi-dotnet/pulumi-language-dotnet/v3 v3.106.2 // indirect
-	github.com/pulumi/pulumi-java v1.28.0 // indirect
-	github.com/pulumi/pulumi-yaml v1.35.1-0.20260605104711-2fb599d00f64 // indirect
+	github.com/pulumi/pulumi-java v1.29.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.35.1 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
