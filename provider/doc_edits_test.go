@@ -43,6 +43,8 @@ func TestReplacementsDotJSON(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, "Terraform should be untouched here.", string(actual))
 
+	// Upstream currently ships a placeholder TODO URL here. We should not surface
+	// that broken internal marker in generated user-facing docs.
 	actual, err = edit.Edit("container_cluster.html.markdown", []byte(
 		"* `managed_machine_learning_diagnostics_config` - (Optional, [Beta](../guides/provider_versions.html.markdown)) Configuration for the [GKE Managed ML Diagnostics](https://docs.cloud.google.com/kubernetes-engine/docs/concepts/TODO) feature. Structure is [documented below](#nested_managed_ml_diagnostics_config).\n",
 	))
