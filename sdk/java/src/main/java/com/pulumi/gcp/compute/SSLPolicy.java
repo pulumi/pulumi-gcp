@@ -75,6 +75,41 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Ssl Policy Post Quantum
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.SSLPolicy;
+ * import com.pulumi.gcp.compute.SSLPolicyArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var post_quantum_ssl_policy = new SSLPolicy("post-quantum-ssl-policy", SSLPolicyArgs.builder()
+ *             .name("post-quantum-ssl-policy")
+ *             .profile("MODERN")
+ *             .minTlsVersion("TLS_1_2")
+ *             .postQuantumKeyExchange("ENABLED")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -252,6 +287,38 @@ public class SSLPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer
+     * negotiates X25519MLKEM768 key exchange when clients advertise support for it.
+     * When set to `DEFAULT`, or if no SSL Policy is attached to
+     * the target proxy, the load balancer disallows X25519MLKEM768 key
+     * exchange before October 2026, and allows it afterward. When set to
+     * `ENABLED`, the load balancer allows X25519MLKEM768 key
+     * exchange. When set to `DEFERRED`, the load balancer
+     * disallows X25519MLKEM768 key exchange until October 2027, and allows
+     * it afterward.
+     * Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+     * 
+     */
+    @Export(name="postQuantumKeyExchange", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> postQuantumKeyExchange;
+
+    /**
+     * @return One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer
+     * negotiates X25519MLKEM768 key exchange when clients advertise support for it.
+     * When set to `DEFAULT`, or if no SSL Policy is attached to
+     * the target proxy, the load balancer disallows X25519MLKEM768 key
+     * exchange before October 2026, and allows it afterward. When set to
+     * `ENABLED`, the load balancer allows X25519MLKEM768 key
+     * exchange. When set to `DEFERRED`, the load balancer
+     * disallows X25519MLKEM768 key exchange until October 2027, and allows
+     * it afterward.
+     * Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+     * 
+     */
+    public Output<Optional<String>> postQuantumKeyExchange() {
+        return Codegen.optional(this.postQuantumKeyExchange);
     }
     /**
      * Profile specifies the set of SSL features that can be used by the

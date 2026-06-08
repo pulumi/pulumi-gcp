@@ -272,7 +272,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
  * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
- * import com.pulumi.gcp.datastream.inputs.ConnectionProfileForwardSshConnectivityArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -293,12 +292,6 @@ import javax.annotation.Nullable;
  *             .gcsProfile(ConnectionProfileGcsProfileArgs.builder()
  *                 .bucket("my-bucket")
  *                 .rootPath("/path")
- *                 .build())
- *             .forwardSshConnectivity(ConnectionProfileForwardSshConnectivityArgs.builder()
- *                 .hostname("google.com")
- *                 .username("my-user")
- *                 .port(8022)
- *                 .password("swordfish")
  *                 .build())
  *             .labels(Map.of("key", "value"))
  *             .build());

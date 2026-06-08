@@ -324,6 +324,7 @@ class _CloudVmClusterState:
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
                  gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input['CloudVmClusterIdentityConnectorArgs']]]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  location: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -360,6 +361,9 @@ class _CloudVmClusterState:
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
                of Exadata infrastructure.
+        :param pulumi.Input[Sequence[pulumi.Input['CloudVmClusterIdentityConnectorArgs']]] identity_connectors: The identity connector details which will allow OCI to securely access
+               the resources in the customer project.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the VM Cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -405,6 +409,8 @@ class _CloudVmClusterState:
             pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
         if gcp_oracle_zone is not None:
             pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
+        if identity_connectors is not None:
+            pulumi.set(__self__, "identity_connectors", identity_connectors)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -568,6 +574,20 @@ class _CloudVmClusterState:
     @gcp_oracle_zone.setter
     def gcp_oracle_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gcp_oracle_zone", value)
+
+    @_builtins.property
+    @pulumi.getter(name="identityConnectors")
+    def identity_connectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CloudVmClusterIdentityConnectorArgs']]]]:
+        """
+        The identity connector details which will allow OCI to securely access
+        the resources in the customer project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identity_connectors")
+
+    @identity_connectors.setter
+    def identity_connectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CloudVmClusterIdentityConnectorArgs']]]]):
+        pulumi.set(self, "identity_connectors", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1153,6 +1173,7 @@ class CloudVmCluster(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["gcp_oracle_zone"] = None
+            __props__.__dict__["identity_connectors"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
@@ -1178,6 +1199,7 @@ class CloudVmCluster(pulumi.CustomResource):
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             exadata_infrastructure: pulumi.Input[Optional[_builtins.str]] = None,
             gcp_oracle_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            identity_connectors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict']]]]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             location: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1218,6 +1240,9 @@ class CloudVmCluster(pulumi.CustomResource):
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
         :param pulumi.Input[_builtins.str] gcp_oracle_zone: GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
                of Exadata infrastructure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CloudVmClusterIdentityConnectorArgs', 'CloudVmClusterIdentityConnectorArgsDict']]]] identity_connectors: The identity connector details which will allow OCI to securely access
+               the resources in the customer project.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels or tags associated with the VM Cluster.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1256,6 +1281,7 @@ class CloudVmCluster(pulumi.CustomResource):
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["exadata_infrastructure"] = exadata_infrastructure
         __props__.__dict__["gcp_oracle_zone"] = gcp_oracle_zone
+        __props__.__dict__["identity_connectors"] = identity_connectors
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -1367,6 +1393,16 @@ class CloudVmCluster(pulumi.CustomResource):
         of Exadata infrastructure.
         """
         return pulumi.get(self, "gcp_oracle_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="identityConnectors")
+    def identity_connectors(self) -> pulumi.Output[Sequence['outputs.CloudVmClusterIdentityConnector']]:
+        """
+        The identity connector details which will allow OCI to securely access
+        the resources in the customer project.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "identity_connectors")
 
     @_builtins.property
     @pulumi.getter

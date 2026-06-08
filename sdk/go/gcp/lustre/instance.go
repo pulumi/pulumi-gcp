@@ -46,7 +46,7 @@ import (
 //			// config, add an additional network resource or change
 //			// this from "data"to "resource"
 //			lustre_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "my-network",
+//				Name: pulumi.StringRef("my-network"),
 //			}, nil)
 //			if err != nil {
 //				return err

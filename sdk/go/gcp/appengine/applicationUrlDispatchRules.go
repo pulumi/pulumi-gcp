@@ -55,7 +55,7 @@ import (
 //			adminV3, err := appengine.NewStandardAppVersion(ctx, "admin_v3", &appengine.StandardAppVersionArgs{
 //				VersionId: pulumi.String("v3"),
 //				Service:   pulumi.String("admin"),
-//				Runtime:   pulumi.String("nodejs20"),
+//				Runtime:   pulumi.String("nodejs22"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},

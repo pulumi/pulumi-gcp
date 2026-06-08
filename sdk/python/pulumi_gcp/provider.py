@@ -75,6 +75,7 @@ class ProviderArgs:
                  colab_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  composer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  compute_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_center_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  container_analysis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  container_attached_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -344,6 +345,8 @@ class ProviderArgs:
             pulumi.set(__self__, "composer_custom_endpoint", composer_custom_endpoint)
         if compute_custom_endpoint is not None:
             pulumi.set(__self__, "compute_custom_endpoint", compute_custom_endpoint)
+        if config_custom_endpoint is not None:
+            pulumi.set(__self__, "config_custom_endpoint", config_custom_endpoint)
         if contact_center_insights_custom_endpoint is not None:
             pulumi.set(__self__, "contact_center_insights_custom_endpoint", contact_center_insights_custom_endpoint)
         if container_analysis_custom_endpoint is not None:
@@ -1157,6 +1160,15 @@ class ProviderArgs:
     @compute_custom_endpoint.setter
     def compute_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="configCustomEndpoint")
+    def config_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "config_custom_endpoint")
+
+    @config_custom_endpoint.setter
+    def config_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "config_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="contactCenterInsightsCustomEndpoint")
@@ -2624,6 +2636,7 @@ class Provider(pulumi.ProviderResource):
                  colab_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  composer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  compute_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_center_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  container_analysis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  container_attached_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -2874,6 +2887,7 @@ class Provider(pulumi.ProviderResource):
                  colab_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  composer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  compute_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  contact_center_insights_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  container_analysis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  container_attached_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -3094,6 +3108,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["colab_custom_endpoint"] = colab_custom_endpoint
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
+            __props__.__dict__["config_custom_endpoint"] = config_custom_endpoint
             __props__.__dict__["contact_center_insights_custom_endpoint"] = contact_center_insights_custom_endpoint
             __props__.__dict__["container_analysis_custom_endpoint"] = container_analysis_custom_endpoint
             __props__.__dict__["container_attached_custom_endpoint"] = container_attached_custom_endpoint
@@ -3528,6 +3543,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="computeCustomEndpoint")
     def compute_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         return pulumi.get(self, "compute_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="configCustomEndpoint")
+    def config_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        return pulumi.get(self, "config_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="contactCenterInsightsCustomEndpoint")

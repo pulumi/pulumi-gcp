@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
+import com.pulumi.gcp.datafusion.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceNetworkConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -214,6 +215,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="maintenancePolicy")
+    private @Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy;
+
+    /**
+     * @return Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
+        return Optional.ofNullable(this.maintenancePolicy);
     }
 
     /**
@@ -429,6 +447,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.enableStackdriverMonitoring = $.enableStackdriverMonitoring;
         this.eventPublishConfig = $.eventPublishConfig;
         this.labels = $.labels;
+        this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
         this.options = $.options;
@@ -730,6 +749,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param maintenancePolicy Configure the maintenance policy for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(@Nullable Output<InstanceMaintenancePolicyArgs> maintenancePolicy) {
+            $.maintenancePolicy = maintenancePolicy;
+            return this;
+        }
+
+        /**
+         * @param maintenancePolicy Configure the maintenance policy for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
+            return maintenancePolicy(Output.of(maintenancePolicy));
         }
 
         /**

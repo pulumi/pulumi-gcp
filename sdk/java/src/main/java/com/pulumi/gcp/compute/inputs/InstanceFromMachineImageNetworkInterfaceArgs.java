@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkInterfaceAccessConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -48,6 +49,21 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
      */
     public Optional<Output<List<InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs>>> aliasIpRanges() {
         return Optional.ofNullable(this.aliasIpRanges);
+    }
+
+    /**
+     * An array of IPv6 alias IP ranges for this network interface.
+     * 
+     */
+    @Import(name="aliasIpv6Ranges")
+    private @Nullable Output<List<InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs>> aliasIpv6Ranges;
+
+    /**
+     * @return An array of IPv6 alias IP ranges for this network interface.
+     * 
+     */
+    public Optional<Output<List<InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs>>> aliasIpv6Ranges() {
+        return Optional.ofNullable(this.aliasIpv6Ranges);
     }
 
     /**
@@ -327,6 +343,7 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
     private InstanceFromMachineImageNetworkInterfaceArgs(InstanceFromMachineImageNetworkInterfaceArgs $) {
         this.accessConfigs = $.accessConfigs;
         this.aliasIpRanges = $.aliasIpRanges;
+        this.aliasIpv6Ranges = $.aliasIpv6Ranges;
         this.igmpQuery = $.igmpQuery;
         this.internalIpv6PrefixLength = $.internalIpv6PrefixLength;
         this.ipv6AccessConfigs = $.ipv6AccessConfigs;
@@ -425,6 +442,37 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
          */
         public Builder aliasIpRanges(InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
+        }
+
+        /**
+         * @param aliasIpv6Ranges An array of IPv6 alias IP ranges for this network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasIpv6Ranges(@Nullable Output<List<InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs>> aliasIpv6Ranges) {
+            $.aliasIpv6Ranges = aliasIpv6Ranges;
+            return this;
+        }
+
+        /**
+         * @param aliasIpv6Ranges An array of IPv6 alias IP ranges for this network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasIpv6Ranges(List<InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs> aliasIpv6Ranges) {
+            return aliasIpv6Ranges(Output.of(aliasIpv6Ranges));
+        }
+
+        /**
+         * @param aliasIpv6Ranges An array of IPv6 alias IP ranges for this network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder aliasIpv6Ranges(InstanceFromMachineImageNetworkInterfaceAliasIpv6RangeArgs... aliasIpv6Ranges) {
+            return aliasIpv6Ranges(List.of(aliasIpv6Ranges));
         }
 
         /**

@@ -23,6 +23,7 @@ class FlexTemplateJobArgs:
                  additional_experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,11 +51,12 @@ class FlexTemplateJobArgs:
 
         :param pulumi.Input[_builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
-               
-               - - -
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] additional_pipeline_options: List of pipeline options that should be used by the job. An example value is `["numberOfWorkerHarnessThreads=20"]`.
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
+        :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+               
+               - - -
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
                When a 'terraform destroy' or 'pulumi up' would delete the resource,
                the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -99,6 +101,8 @@ class FlexTemplateJobArgs:
             pulumi.set(__self__, "additional_pipeline_options", additional_pipeline_options)
         if autoscaling_algorithm is not None:
             pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if enable_streaming_engine is not None:
@@ -150,8 +154,6 @@ class FlexTemplateJobArgs:
         """
         The GCS path to the Dataflow job Flex
         Template.
-
-        - - -
         """
         return pulumi.get(self, "container_spec_gcs_path")
 
@@ -194,6 +196,20 @@ class FlexTemplateJobArgs:
     @autoscaling_algorithm.setter
     def autoscaling_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "autoscaling_algorithm", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+
+        - - -
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -481,6 +497,7 @@ class _FlexTemplateJobState:
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -516,6 +533,7 @@ class _FlexTemplateJobState:
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[_builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
+        :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
                
                - - -
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -568,6 +586,8 @@ class _FlexTemplateJobState:
             pulumi.set(__self__, "autoscaling_algorithm", autoscaling_algorithm)
         if container_spec_gcs_path is not None:
             pulumi.set(__self__, "container_spec_gcs_path", container_spec_gcs_path)
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if effective_labels is not None:
@@ -665,14 +685,26 @@ class _FlexTemplateJobState:
         """
         The GCS path to the Dataflow job Flex
         Template.
-
-        - - -
         """
         return pulumi.get(self, "container_spec_gcs_path")
 
     @container_spec_gcs_path.setter
     def container_spec_gcs_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_spec_gcs_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+
+        - - -
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")
@@ -1023,6 +1055,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1135,6 +1168,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[_builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
+        :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
                
                - - -
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -1281,6 +1315,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                  additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
                  deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
                  ip_configuration: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1318,6 +1353,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             if container_spec_gcs_path is None and not opts.urn:
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
             __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
+            __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["enable_streaming_engine"] = enable_streaming_engine
             __props__.__dict__["ip_configuration"] = ip_configuration
@@ -1361,6 +1397,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             additional_pipeline_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             autoscaling_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
             container_spec_gcs_path: pulumi.Input[Optional[_builtins.str]] = None,
+            create_ignore_already_exists: pulumi.Input[Optional[_builtins.bool]] = None,
             deletion_policy: pulumi.Input[Optional[_builtins.str]] = None,
             effective_labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             enable_streaming_engine: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1400,6 +1437,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] autoscaling_algorithm: The algorithm to use for autoscaling.
         :param pulumi.Input[_builtins.str] container_spec_gcs_path: The GCS path to the Dataflow job Flex
                Template.
+        :param pulumi.Input[_builtins.bool] create_ignore_already_exists: If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
                
                - - -
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
@@ -1452,6 +1490,7 @@ class FlexTemplateJob(pulumi.CustomResource):
         __props__.__dict__["additional_pipeline_options"] = additional_pipeline_options
         __props__.__dict__["autoscaling_algorithm"] = autoscaling_algorithm
         __props__.__dict__["container_spec_gcs_path"] = container_spec_gcs_path
+        __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
         __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_streaming_engine"] = enable_streaming_engine
@@ -1511,10 +1550,18 @@ class FlexTemplateJob(pulumi.CustomResource):
         """
         The GCS path to the Dataflow job Flex
         Template.
+        """
+        return pulumi.get(self, "container_spec_gcs_path")
+
+    @_builtins.property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
 
         - - -
         """
-        return pulumi.get(self, "container_spec_gcs_path")
+        return pulumi.get(self, "create_ignore_already_exists")
 
     @_builtins.property
     @pulumi.getter(name="deletionPolicy")

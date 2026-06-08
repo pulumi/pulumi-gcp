@@ -12,14 +12,11 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// <summary>
     /// The Transport resource is a top-level resource used by customers to control Partner Cross-Cloud Interconnect (CCI) connections.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about Transport, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.transport)
+    /// * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.transports)
     /// * How-to Guides
-    ///     * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/beta/network-connectivity/transports)
+    ///     * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/network-connectivity/transports)
     /// 
     /// ## Example Usage
     /// 
@@ -37,16 +34,16 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary_network = new Gcp.Compute.Network("primary-network", new()
     ///     {
-    ///         Name = "tf-test-my-vpc-network_44154",
+    ///         Name = "tf-test-my-vpc-network_90221",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Transport("primary", new()
     ///     {
-    ///         Name = "tf-test-basic-transport_90221",
+    ///         Name = "tf-test-basic-transport_88987",
     ///         Region = "us-east4",
     ///         Description = "A sample transport",
-    ///         RemoteProfile = $"https://networkconnectivity.googleapis.com/v1beta/{project.Apply(getProjectResult =&gt; getProjectResult.Id)}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
+    ///         RemoteProfile = $"https://networkconnectivity.googleapis.com/v1/{project.Apply(getProjectResult =&gt; getProjectResult.Id)}/locations/us-east4/remoteTransportProfiles/aws-us-east-1",
     ///         Network = primary_network.Name,
     ///         Bandwidth = "BPS_1G",
     ///         RemoteAccountId = "123",
@@ -81,6 +78,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     public partial class Transport : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
         /// </summary>
         [Output("adminEnabled")]
@@ -93,6 +91,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<ImmutableArray<string>> AdvertisedRoutes { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         /// </summary>
         [Output("autoAccept")]
@@ -134,6 +133,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string> GeneratedActivationKey { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         /// </summary>
         [Output("hub")]
@@ -185,6 +185,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Output<string?> ProvidedActivationKey { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         /// </summary>
         [Output("pscRoutingEnabled")]
@@ -281,6 +282,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     public sealed class TransportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
         /// </summary>
         [Input("adminEnabled")]
@@ -299,6 +301,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         /// </summary>
         [Input("autoAccept")]
@@ -328,6 +331,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         /// </summary>
         [Input("hub")]
@@ -379,6 +383,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? ProvidedActivationKey { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         /// </summary>
         [Input("pscRoutingEnabled")]
@@ -419,6 +424,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     public sealed class TransportState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (Optional, Beta)
         /// Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
         /// </summary>
         [Input("adminEnabled")]
@@ -437,6 +443,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
         /// </summary>
         [Input("autoAccept")]
@@ -488,6 +495,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? GeneratedActivationKey { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
         /// </summary>
         [Input("hub")]
@@ -545,6 +553,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? ProvidedActivationKey { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
         /// </summary>
         [Input("pscRoutingEnabled")]

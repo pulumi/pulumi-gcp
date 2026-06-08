@@ -45,6 +45,11 @@ export type Guardrail = import("./guardrail").Guardrail;
 export const Guardrail: typeof import("./guardrail").Guardrail = null as any;
 utilities.lazyLoad(exports, ["Guardrail"], () => require("./guardrail"));
 
+export { SecuritySettingsArgs, SecuritySettingsState } from "./securitySettings";
+export type SecuritySettings = import("./securitySettings").SecuritySettings;
+export const SecuritySettings: typeof import("./securitySettings").SecuritySettings = null as any;
+utilities.lazyLoad(exports, ["SecuritySettings"], () => require("./securitySettings"));
+
 export { ToolArgs, ToolState } from "./tool";
 export type Tool = import("./tool").Tool;
 export const Tool: typeof import("./tool").Tool = null as any;
@@ -76,6 +81,8 @@ const _module = {
                 return new Example(name, <any>undefined, { urn })
             case "gcp:ces/guardrail:Guardrail":
                 return new Guardrail(name, <any>undefined, { urn })
+            case "gcp:ces/securitySettings:SecuritySettings":
+                return new SecuritySettings(name, <any>undefined, { urn })
             case "gcp:ces/tool:Tool":
                 return new Tool(name, <any>undefined, { urn })
             case "gcp:ces/toolset:Toolset":
@@ -93,5 +100,6 @@ pulumi.runtime.registerResourceModule("gcp", "ces/deployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/evaluation", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/example", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/guardrail", _module)
+pulumi.runtime.registerResourceModule("gcp", "ces/securitySettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/tool", _module)
 pulumi.runtime.registerResourceModule("gcp", "ces/toolset", _module)

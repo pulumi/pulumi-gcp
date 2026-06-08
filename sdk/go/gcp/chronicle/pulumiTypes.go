@@ -45098,6 +45098,136 @@ func (o FeedFailureDetailsPtrOutput) HttpErrorCode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type FindingsRefinementOutcomeFilter struct {
+	// The operator to be applied to the outcome variable.
+	// Possible values:
+	// EQUAL
+	// CONTAINS
+	// MATCHES_REGEX
+	// MATCHES_CIDR
+	OutcomeFilterOperator string `pulumi:"outcomeFilterOperator"`
+	// The value of the outcome variable to match.
+	OutcomeValue string `pulumi:"outcomeValue"`
+	// The outcome variable name.
+	OutcomeVariable string `pulumi:"outcomeVariable"`
+}
+
+// FindingsRefinementOutcomeFilterInput is an input type that accepts FindingsRefinementOutcomeFilterArgs and FindingsRefinementOutcomeFilterOutput values.
+// You can construct a concrete instance of `FindingsRefinementOutcomeFilterInput` via:
+//
+//	FindingsRefinementOutcomeFilterArgs{...}
+type FindingsRefinementOutcomeFilterInput interface {
+	pulumi.Input
+
+	ToFindingsRefinementOutcomeFilterOutput() FindingsRefinementOutcomeFilterOutput
+	ToFindingsRefinementOutcomeFilterOutputWithContext(context.Context) FindingsRefinementOutcomeFilterOutput
+}
+
+type FindingsRefinementOutcomeFilterArgs struct {
+	// The operator to be applied to the outcome variable.
+	// Possible values:
+	// EQUAL
+	// CONTAINS
+	// MATCHES_REGEX
+	// MATCHES_CIDR
+	OutcomeFilterOperator pulumi.StringInput `pulumi:"outcomeFilterOperator"`
+	// The value of the outcome variable to match.
+	OutcomeValue pulumi.StringInput `pulumi:"outcomeValue"`
+	// The outcome variable name.
+	OutcomeVariable pulumi.StringInput `pulumi:"outcomeVariable"`
+}
+
+func (FindingsRefinementOutcomeFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FindingsRefinementOutcomeFilter)(nil)).Elem()
+}
+
+func (i FindingsRefinementOutcomeFilterArgs) ToFindingsRefinementOutcomeFilterOutput() FindingsRefinementOutcomeFilterOutput {
+	return i.ToFindingsRefinementOutcomeFilterOutputWithContext(context.Background())
+}
+
+func (i FindingsRefinementOutcomeFilterArgs) ToFindingsRefinementOutcomeFilterOutputWithContext(ctx context.Context) FindingsRefinementOutcomeFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FindingsRefinementOutcomeFilterOutput)
+}
+
+// FindingsRefinementOutcomeFilterArrayInput is an input type that accepts FindingsRefinementOutcomeFilterArray and FindingsRefinementOutcomeFilterArrayOutput values.
+// You can construct a concrete instance of `FindingsRefinementOutcomeFilterArrayInput` via:
+//
+//	FindingsRefinementOutcomeFilterArray{ FindingsRefinementOutcomeFilterArgs{...} }
+type FindingsRefinementOutcomeFilterArrayInput interface {
+	pulumi.Input
+
+	ToFindingsRefinementOutcomeFilterArrayOutput() FindingsRefinementOutcomeFilterArrayOutput
+	ToFindingsRefinementOutcomeFilterArrayOutputWithContext(context.Context) FindingsRefinementOutcomeFilterArrayOutput
+}
+
+type FindingsRefinementOutcomeFilterArray []FindingsRefinementOutcomeFilterInput
+
+func (FindingsRefinementOutcomeFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FindingsRefinementOutcomeFilter)(nil)).Elem()
+}
+
+func (i FindingsRefinementOutcomeFilterArray) ToFindingsRefinementOutcomeFilterArrayOutput() FindingsRefinementOutcomeFilterArrayOutput {
+	return i.ToFindingsRefinementOutcomeFilterArrayOutputWithContext(context.Background())
+}
+
+func (i FindingsRefinementOutcomeFilterArray) ToFindingsRefinementOutcomeFilterArrayOutputWithContext(ctx context.Context) FindingsRefinementOutcomeFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FindingsRefinementOutcomeFilterArrayOutput)
+}
+
+type FindingsRefinementOutcomeFilterOutput struct{ *pulumi.OutputState }
+
+func (FindingsRefinementOutcomeFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FindingsRefinementOutcomeFilter)(nil)).Elem()
+}
+
+func (o FindingsRefinementOutcomeFilterOutput) ToFindingsRefinementOutcomeFilterOutput() FindingsRefinementOutcomeFilterOutput {
+	return o
+}
+
+func (o FindingsRefinementOutcomeFilterOutput) ToFindingsRefinementOutcomeFilterOutputWithContext(ctx context.Context) FindingsRefinementOutcomeFilterOutput {
+	return o
+}
+
+// The operator to be applied to the outcome variable.
+// Possible values:
+// EQUAL
+// CONTAINS
+// MATCHES_REGEX
+// MATCHES_CIDR
+func (o FindingsRefinementOutcomeFilterOutput) OutcomeFilterOperator() pulumi.StringOutput {
+	return o.ApplyT(func(v FindingsRefinementOutcomeFilter) string { return v.OutcomeFilterOperator }).(pulumi.StringOutput)
+}
+
+// The value of the outcome variable to match.
+func (o FindingsRefinementOutcomeFilterOutput) OutcomeValue() pulumi.StringOutput {
+	return o.ApplyT(func(v FindingsRefinementOutcomeFilter) string { return v.OutcomeValue }).(pulumi.StringOutput)
+}
+
+// The outcome variable name.
+func (o FindingsRefinementOutcomeFilterOutput) OutcomeVariable() pulumi.StringOutput {
+	return o.ApplyT(func(v FindingsRefinementOutcomeFilter) string { return v.OutcomeVariable }).(pulumi.StringOutput)
+}
+
+type FindingsRefinementOutcomeFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (FindingsRefinementOutcomeFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FindingsRefinementOutcomeFilter)(nil)).Elem()
+}
+
+func (o FindingsRefinementOutcomeFilterArrayOutput) ToFindingsRefinementOutcomeFilterArrayOutput() FindingsRefinementOutcomeFilterArrayOutput {
+	return o
+}
+
+func (o FindingsRefinementOutcomeFilterArrayOutput) ToFindingsRefinementOutcomeFilterArrayOutputWithContext(ctx context.Context) FindingsRefinementOutcomeFilterArrayOutput {
+	return o
+}
+
+func (o FindingsRefinementOutcomeFilterArrayOutput) Index(i pulumi.IntInput) FindingsRefinementOutcomeFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FindingsRefinementOutcomeFilter {
+		return vs[0].([]FindingsRefinementOutcomeFilter)[vs[1].(int)]
+	}).(FindingsRefinementOutcomeFilterOutput)
+}
+
 type NativeDashboardChart struct {
 	// The visual layout parameters of this chart within the dashboard.
 	// Structure is documented below.
@@ -47796,6 +47926,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsPtrInput)(nil)).Elem(), FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedFailureDetailsInput)(nil)).Elem(), FeedFailureDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeedFailureDetailsPtrInput)(nil)).Elem(), FeedFailureDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FindingsRefinementOutcomeFilterInput)(nil)).Elem(), FindingsRefinementOutcomeFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FindingsRefinementOutcomeFilterArrayInput)(nil)).Elem(), FindingsRefinementOutcomeFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartInput)(nil)).Elem(), NativeDashboardChartArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartArrayInput)(nil)).Elem(), NativeDashboardChartArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NativeDashboardChartChartLayoutInput)(nil)).Elem(), NativeDashboardChartChartLayoutArgs{})
@@ -48334,6 +48466,8 @@ func init() {
 	pulumi.RegisterOutputType(FeedDetailsWorkspaceUsersSettingsAuthenticationRsCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(FeedFailureDetailsOutput{})
 	pulumi.RegisterOutputType(FeedFailureDetailsPtrOutput{})
+	pulumi.RegisterOutputType(FindingsRefinementOutcomeFilterOutput{})
+	pulumi.RegisterOutputType(FindingsRefinementOutcomeFilterArrayOutput{})
 	pulumi.RegisterOutputType(NativeDashboardChartOutput{})
 	pulumi.RegisterOutputType(NativeDashboardChartArrayOutput{})
 	pulumi.RegisterOutputType(NativeDashboardChartChartLayoutOutput{})

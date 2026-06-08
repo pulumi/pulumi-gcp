@@ -80,6 +80,8 @@ type LookupSSLPolicyResult struct {
 	// The minimum supported TLS version of this policy.
 	MinTlsVersion string `pulumi:"minTlsVersion"`
 	Name          string `pulumi:"name"`
+	// The post-quantum key exchange setting of this policy.
+	PostQuantumKeyExchange string `pulumi:"postQuantumKeyExchange"`
 	// The Google-curated or custom profile used by this policy.
 	Profile string  `pulumi:"profile"`
 	Project *string `pulumi:"project"`
@@ -168,6 +170,11 @@ func (o LookupSSLPolicyResultOutput) MinTlsVersion() pulumi.StringOutput {
 
 func (o LookupSSLPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSSLPolicyResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The post-quantum key exchange setting of this policy.
+func (o LookupSSLPolicyResultOutput) PostQuantumKeyExchange() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSSLPolicyResult) string { return v.PostQuantumKeyExchange }).(pulumi.StringOutput)
 }
 
 // The Google-curated or custom profile used by this policy.

@@ -162,14 +162,14 @@ import javax.annotation.Nullable;
  * 
  *         var defaultSubnetwork = new Subnetwork("defaultSubnetwork", SubnetworkArgs.builder()
  *             .name("my-subnetwork")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .network(defaultNetwork.id())
  *             .ipCidrRange("10.0.0.0/16")
  *             .build());
  * 
  *         var defaultNetworkAttachment = new NetworkAttachment("defaultNetworkAttachment", NetworkAttachmentArgs.builder()
  *             .name("my-network-attachment")
- *             .region("us-central1")
+ *             .region("us-west1")
  *             .description("basic network attachment description")
  *             .connectionPreference("ACCEPT_AUTOMATIC")
  *             .subnetworks(defaultSubnetwork.selfLink())
@@ -177,7 +177,7 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new PrivateConnection("default", PrivateConnectionArgs.builder()
  *             .displayName("Connection profile")
- *             .location("us-central1")
+ *             .location("us-west1")
  *             .privateConnectionId("my-connection")
  *             .labels(Map.of("key", "value"))
  *             .pscInterfaceConfig(PrivateConnectionPscInterfaceConfigArgs.builder()

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotGuardrailLlmPromptSecurityCustomPolicyArgs;
 import com.pulumi.gcp.ces.inputs.AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgs;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,11 +58,31 @@ public final class AppVersionSnapshotGuardrailLlmPromptSecurityArgs extends com.
         return Optional.ofNullable(this.defaultSettings);
     }
 
+    /**
+     * (Output)
+     * If an error occurs during the policy check, fail open and do not trigger
+     * the guardrail.
+     * 
+     */
+    @Import(name="failOpen")
+    private @Nullable Output<Boolean> failOpen;
+
+    /**
+     * @return (Output)
+     * If an error occurs during the policy check, fail open and do not trigger
+     * the guardrail.
+     * 
+     */
+    public Optional<Output<Boolean>> failOpen() {
+        return Optional.ofNullable(this.failOpen);
+    }
+
     private AppVersionSnapshotGuardrailLlmPromptSecurityArgs() {}
 
     private AppVersionSnapshotGuardrailLlmPromptSecurityArgs(AppVersionSnapshotGuardrailLlmPromptSecurityArgs $) {
         this.customPolicies = $.customPolicies;
         this.defaultSettings = $.defaultSettings;
+        this.failOpen = $.failOpen;
     }
 
     public static Builder builder() {
@@ -157,6 +178,31 @@ public final class AppVersionSnapshotGuardrailLlmPromptSecurityArgs extends com.
          */
         public Builder defaultSettings(AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSettingArgs... defaultSettings) {
             return defaultSettings(List.of(defaultSettings));
+        }
+
+        /**
+         * @param failOpen (Output)
+         * If an error occurs during the policy check, fail open and do not trigger
+         * the guardrail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(@Nullable Output<Boolean> failOpen) {
+            $.failOpen = failOpen;
+            return this;
+        }
+
+        /**
+         * @param failOpen (Output)
+         * If an error occurs during the policy check, fail open and do not trigger
+         * the guardrail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failOpen(Boolean failOpen) {
+            return failOpen(Output.of(failOpen));
         }
 
         public AppVersionSnapshotGuardrailLlmPromptSecurityArgs build() {

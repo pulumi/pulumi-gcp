@@ -50,6 +50,7 @@ __all__ = [
     'ConversationProfileNewMessageEventNotificationConfig',
     'ConversationProfileNewRecognitionResultNotificationConfig',
     'ConversationProfileNotificationConfig',
+    'ConversationProfileSipConfig',
     'ConversationProfileSttConfig',
     'ConversationProfileTtsConfig',
     'ConversationProfileTtsConfigVoice',
@@ -310,6 +311,8 @@ __all__ = [
     'GeneratorSummarizationContextFewShotExampleSummarizationSectionListSummarizationSection',
     'GeneratorSummarizationContextSummarizationSection',
     'IntentFollowupIntentInfo',
+    'SipTrunkConnection',
+    'SipTrunkConnectionErrorDetail',
 ]
 
 @pulumi.output_type
@@ -396,7 +399,7 @@ class ConversationProfileHumanAgentAssistantConfig(dict):
                Structure is documented below.
         :param 'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigArgs' human_agent_suggestion_config: Configuration for agent assistance of human agent participant.
                Structure is documented below.
-        :param 'ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs' message_analysis_config: desc
+        :param 'ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs' message_analysis_config: Configuration for analyzing conversation messages.
                Structure is documented below.
         :param 'ConversationProfileHumanAgentAssistantConfigNotificationConfigArgs' notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -433,7 +436,7 @@ class ConversationProfileHumanAgentAssistantConfig(dict):
     @pulumi.getter(name="messageAnalysisConfig")
     def message_analysis_config(self) -> Optional['outputs.ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfig']:
         """
-        desc
+        Configuration for analyzing conversation messages.
         Structure is documented below.
         """
         return pulumi.get(self, "message_analysis_config")
@@ -849,7 +852,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
                This feature is only supported for types: ARTICLE_SUGGESTION, FAQ.
                Structure is documented below.
         :param _builtins.int max_results: Maximum number of results to return.
-        :param 'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs' sections: he customized sections chosen to return when requesting a summary of a conversation.
+        :param 'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSectionsArgs' sections: The customized sections chosen to return when requesting a summary of a conversation.
                Structure is documented below.
         """
         if confidence_threshold is not None:
@@ -927,7 +930,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
     @pulumi.getter
     def sections(self) -> Optional['outputs.ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections']:
         """
-        he customized sections chosen to return when requesting a summary of a conversation.
+        The customized sections chosen to return when requesting a summary of a conversation.
         Structure is documented below.
         """
         return pulumi.get(self, "sections")
@@ -1020,7 +1023,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
                  agent: _builtins.str,
                  human_agent_side_config: Optional['outputs.ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig'] = None):
         """
-        :param _builtins.str agent: he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        :param _builtins.str agent: The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
         :param 'ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs' human_agent_side_config: The Dialogflow assist configuration for human agent.
                Structure is documented below.
         """
@@ -1032,7 +1035,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
     @pulumi.getter
     def agent(self) -> _builtins.str:
         """
-        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
         """
         return pulumi.get(self, "agent")
 
@@ -1615,7 +1618,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
                This feature is supported for types: DIALOGFLOW_ASSIST.
                Structure is documented below.
         :param _builtins.int max_results: Maximum number of results to return.
-        :param 'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs' sections: he customized sections chosen to return when requesting a summary of a conversation.
+        :param 'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSectionsArgs' sections: The customized sections chosen to return when requesting a summary of a conversation.
                Structure is documented below.
         """
         if confidence_threshold is not None:
@@ -1669,7 +1672,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
     @pulumi.getter
     def sections(self) -> Optional['outputs.ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigSections']:
         """
-        he customized sections chosen to return when requesting a summary of a conversation.
+        The customized sections chosen to return when requesting a summary of a conversation.
         Structure is documented below.
         """
         return pulumi.get(self, "sections")
@@ -1762,7 +1765,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
                  agent: _builtins.str,
                  human_agent_side_config: Optional['outputs.ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfig'] = None):
         """
-        :param _builtins.str agent: he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        :param _builtins.str agent: The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
         :param 'ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceHumanAgentSideConfigArgs' human_agent_side_config: The Dialogflow assist configuration for human agent.
                Structure is documented below.
         """
@@ -1774,7 +1777,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
     @pulumi.getter
     def agent(self) -> _builtins.str:
         """
-        he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
+        The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/<Project ID>/locations/<Location ID>/agent.
         """
         return pulumi.get(self, "agent")
 
@@ -2282,6 +2285,126 @@ class ConversationProfileNotificationConfig(dict):
 
 
 @pulumi.output_type
+class ConversationProfileSipConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowVirtualAgentInteraction":
+            suggest = "allow_virtual_agent_interaction"
+        elif key == "copyInboundCallLegHeaders":
+            suggest = "copy_inbound_call_leg_headers"
+        elif key == "createConversationOnTheFly":
+            suggest = "create_conversation_on_the_fly"
+        elif key == "ignoreReinviteMediaDirection":
+            suggest = "ignore_reinvite_media_direction"
+        elif key == "inactiveStart":
+            suggest = "inactive_start"
+        elif key == "keepConversationRunning":
+            suggest = "keep_conversation_running"
+        elif key == "maxAudioRecordingDuration":
+            suggest = "max_audio_recording_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConversationProfileSipConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConversationProfileSipConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConversationProfileSipConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_virtual_agent_interaction: Optional[_builtins.bool] = None,
+                 copy_inbound_call_leg_headers: Optional[Sequence[_builtins.str]] = None,
+                 create_conversation_on_the_fly: Optional[_builtins.bool] = None,
+                 ignore_reinvite_media_direction: Optional[_builtins.bool] = None,
+                 inactive_start: Optional[_builtins.bool] = None,
+                 keep_conversation_running: Optional[_builtins.bool] = None,
+                 max_audio_recording_duration: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool allow_virtual_agent_interaction: Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.
+        :param Sequence[_builtins.str] copy_inbound_call_leg_headers: List of inbound call leg headers to be copied to outbound call legs created later.
+        :param _builtins.bool create_conversation_on_the_fly: Asks Dialogflow Telephony to create the conversation provided in the SIP header on the fly when the call comes in.
+        :param _builtins.bool ignore_reinvite_media_direction: Ignores any media direction in the reINVITE SDP offer. Reuse the previous media direction.
+        :param _builtins.bool inactive_start: Starts the conversation with inactive SDP directives
+        :param _builtins.bool keep_conversation_running: Keeps the conversation running even if the call is disconnected.
+        :param _builtins.str max_audio_recording_duration: Max duration for audio recording. Overrides the default value of 15 min. Max value is 8 hours.
+        """
+        if allow_virtual_agent_interaction is not None:
+            pulumi.set(__self__, "allow_virtual_agent_interaction", allow_virtual_agent_interaction)
+        if copy_inbound_call_leg_headers is not None:
+            pulumi.set(__self__, "copy_inbound_call_leg_headers", copy_inbound_call_leg_headers)
+        if create_conversation_on_the_fly is not None:
+            pulumi.set(__self__, "create_conversation_on_the_fly", create_conversation_on_the_fly)
+        if ignore_reinvite_media_direction is not None:
+            pulumi.set(__self__, "ignore_reinvite_media_direction", ignore_reinvite_media_direction)
+        if inactive_start is not None:
+            pulumi.set(__self__, "inactive_start", inactive_start)
+        if keep_conversation_running is not None:
+            pulumi.set(__self__, "keep_conversation_running", keep_conversation_running)
+        if max_audio_recording_duration is not None:
+            pulumi.set(__self__, "max_audio_recording_duration", max_audio_recording_duration)
+
+    @_builtins.property
+    @pulumi.getter(name="allowVirtualAgentInteraction")
+    def allow_virtual_agent_interaction(self) -> Optional[_builtins.bool]:
+        """
+        Allows interactions with a Dialogflow virtual agent even if the call is connected for SIPREC purposes.
+        """
+        return pulumi.get(self, "allow_virtual_agent_interaction")
+
+    @_builtins.property
+    @pulumi.getter(name="copyInboundCallLegHeaders")
+    def copy_inbound_call_leg_headers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of inbound call leg headers to be copied to outbound call legs created later.
+        """
+        return pulumi.get(self, "copy_inbound_call_leg_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="createConversationOnTheFly")
+    def create_conversation_on_the_fly(self) -> Optional[_builtins.bool]:
+        """
+        Asks Dialogflow Telephony to create the conversation provided in the SIP header on the fly when the call comes in.
+        """
+        return pulumi.get(self, "create_conversation_on_the_fly")
+
+    @_builtins.property
+    @pulumi.getter(name="ignoreReinviteMediaDirection")
+    def ignore_reinvite_media_direction(self) -> Optional[_builtins.bool]:
+        """
+        Ignores any media direction in the reINVITE SDP offer. Reuse the previous media direction.
+        """
+        return pulumi.get(self, "ignore_reinvite_media_direction")
+
+    @_builtins.property
+    @pulumi.getter(name="inactiveStart")
+    def inactive_start(self) -> Optional[_builtins.bool]:
+        """
+        Starts the conversation with inactive SDP directives
+        """
+        return pulumi.get(self, "inactive_start")
+
+    @_builtins.property
+    @pulumi.getter(name="keepConversationRunning")
+    def keep_conversation_running(self) -> Optional[_builtins.bool]:
+        """
+        Keeps the conversation running even if the call is disconnected.
+        """
+        return pulumi.get(self, "keep_conversation_running")
+
+    @_builtins.property
+    @pulumi.getter(name="maxAudioRecordingDuration")
+    def max_audio_recording_duration(self) -> Optional[_builtins.str]:
+        """
+        Max duration for audio recording. Overrides the default value of 15 min. Max value is 8 hours.
+        """
+        return pulumi.get(self, "max_audio_recording_duration")
+
+
+@pulumi.output_type
 class ConversationProfileSttConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2320,7 +2443,7 @@ class ConversationProfileSttConfig(dict):
                  use_timeout_based_endpointing: Optional[_builtins.bool] = None):
         """
         :param _builtins.str audio_encoding: Audio encoding of the audio content to process.
-               Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+               Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
         :param _builtins.bool enable_word_info: If true, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words.
         :param _builtins.str language_code: The language of the supplied audio.
         :param _builtins.str model: Which Speech model to select.
@@ -2328,7 +2451,7 @@ class ConversationProfileSttConfig(dict):
         :param _builtins.int sample_rate_hertz: Sample rate (in Hertz) of the audio content sent in the query.
         :param _builtins.str speech_model_variant: The speech model used in speech to text.
                Possible values are: `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE`, `USE_STANDARD`, `USE_ENHANCED`.
-        :param _builtins.bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        :param _builtins.bool use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
         if audio_encoding is not None:
             pulumi.set(__self__, "audio_encoding", audio_encoding)
@@ -2350,7 +2473,7 @@ class ConversationProfileSttConfig(dict):
     def audio_encoding(self) -> Optional[_builtins.str]:
         """
         Audio encoding of the audio content to process.
-        Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+        Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
         """
         return pulumi.get(self, "audio_encoding")
 
@@ -2400,7 +2523,7 @@ class ConversationProfileSttConfig(dict):
     @pulumi.getter(name="useTimeoutBasedEndpointing")
     def use_timeout_based_endpointing(self) -> Optional[_builtins.bool]:
         """
-        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
         return pulumi.get(self, "use_timeout_based_endpointing")
 
@@ -18168,5 +18291,126 @@ class IntentFollowupIntentInfo(dict):
         Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
         return pulumi.get(self, "parent_followup_intent_name")
+
+
+@pulumi.output_type
+class SipTrunkConnection(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionId":
+            suggest = "connection_id"
+        elif key == "errorDetails":
+            suggest = "error_details"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SipTrunkConnection. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SipTrunkConnection.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SipTrunkConnection.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_id: Optional[_builtins.str] = None,
+                 error_details: Optional[Sequence['outputs.SipTrunkConnectionErrorDetail']] = None,
+                 state: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_id: (Output)
+               Output only. The unique identifier of the connection.
+        :param Sequence['SipTrunkConnectionErrorDetailArgs'] error_details: (Output)
+               Output only. The error details of the connection.
+               Structure is documented below.
+        :param _builtins.str state: (Output)
+               Output only. The state of the connection.
+        :param _builtins.str update_time: (Output)
+               Output only. The last update time of the connection.
+        """
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if error_details is not None:
+            pulumi.set(__self__, "error_details", error_details)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The unique identifier of the connection.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> Optional[Sequence['outputs.SipTrunkConnectionErrorDetail']]:
+        """
+        (Output)
+        Output only. The error details of the connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The state of the connection.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The last update time of the connection.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class SipTrunkConnectionErrorDetail(dict):
+    def __init__(__self__, *,
+                 code: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str code: (Output)
+               Output only. The error code.
+        :param _builtins.str message: (Output)
+               Output only. The error message.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @_builtins.property
+    @pulumi.getter
+    def code(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The error code.
+        """
+        return pulumi.get(self, "code")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Output only. The error message.
+        """
+        return pulumi.get(self, "message")
 
 

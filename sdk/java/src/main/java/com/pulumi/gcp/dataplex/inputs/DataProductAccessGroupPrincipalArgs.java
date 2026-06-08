@@ -30,10 +30,26 @@ public final class DataProductAccessGroupPrincipalArgs extends com.pulumi.resour
         return Optional.ofNullable(this.googleGroup);
     }
 
+    /**
+     * Specifies the email of the producer service account.
+     * 
+     */
+    @Import(name="serviceAccount")
+    private @Nullable Output<String> serviceAccount;
+
+    /**
+     * @return Specifies the email of the producer service account.
+     * 
+     */
+    public Optional<Output<String>> serviceAccount() {
+        return Optional.ofNullable(this.serviceAccount);
+    }
+
     private DataProductAccessGroupPrincipalArgs() {}
 
     private DataProductAccessGroupPrincipalArgs(DataProductAccessGroupPrincipalArgs $) {
         this.googleGroup = $.googleGroup;
+        this.serviceAccount = $.serviceAccount;
     }
 
     public static Builder builder() {
@@ -73,6 +89,27 @@ public final class DataProductAccessGroupPrincipalArgs extends com.pulumi.resour
          */
         public Builder googleGroup(String googleGroup) {
             return googleGroup(Output.of(googleGroup));
+        }
+
+        /**
+         * @param serviceAccount Specifies the email of the producer service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(@Nullable Output<String> serviceAccount) {
+            $.serviceAccount = serviceAccount;
+            return this;
+        }
+
+        /**
+         * @param serviceAccount Specifies the email of the producer service account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccount(String serviceAccount) {
+            return serviceAccount(Output.of(serviceAccount));
         }
 
         public DataProductAccessGroupPrincipalArgs build() {

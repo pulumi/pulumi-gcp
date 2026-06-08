@@ -71,6 +71,11 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// </summary>
         public readonly string GcpOracleZone;
         /// <summary>
+        /// The identity connector details which will allow OCI to securely access
+        /// the resources in the customer project.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetCloudVmClustersCloudVmClusterIdentityConnectorResult> IdentityConnectors;
+        /// <summary>
         /// Labels or tags associated with the VM Cluster. 
         /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -146,6 +151,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string gcpOracleZone,
 
+            ImmutableArray<Outputs.GetCloudVmClustersCloudVmClusterIdentityConnectorResult> identityConnectors,
+
             ImmutableDictionary<string, string> labels,
 
             string location,
@@ -175,6 +182,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             EffectiveLabels = effectiveLabels;
             ExadataInfrastructure = exadataInfrastructure;
             GcpOracleZone = gcpOracleZone;
+            IdentityConnectors = identityConnectors;
             Labels = labels;
             Location = location;
             Name = name;

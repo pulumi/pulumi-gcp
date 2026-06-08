@@ -14,6 +14,13 @@ namespace Pulumi.Gcp.Firebase.Inputs
     {
         /// <summary>
         /// (Output)
+        /// The last segment of bucket.name.
+        /// </summary>
+        [Input("bucketId")]
+        public Input<string>? BucketId { get; set; }
+
+        /// <summary>
+        /// (Output)
         /// The resource name of the bucket in the format
         /// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
         /// </summary>

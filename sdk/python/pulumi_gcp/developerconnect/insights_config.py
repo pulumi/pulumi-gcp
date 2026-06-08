@@ -606,7 +606,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_44339",
+            project_id="dci-tf-_34599",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -683,7 +683,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_34599",
+            application_id="tf-test-example-application_79513",
             scope={
                 "type": "REGIONAL",
             },
@@ -691,7 +691,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic-apphub-_79513",
+            insights_config_id="tf-test-ic-apphub-_55500",
             project=project.project_id,
             annotations={},
             labels={},
@@ -721,7 +721,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_55500",
+            project_id="dci-tf-_12223",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -798,7 +798,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
             location="us-central1",
-            insights_config_id="tf-test-ic-projects-_12223",
+            insights_config_id="tf-test-ic-projects-_49547",
             project=project.project_id,
             annotations={},
             labels={},
@@ -882,7 +882,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_44339",
+            project_id="dci-tf-_34599",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -959,7 +959,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         my_apphub_application = gcp.apphub.Application("my_apphub_application",
             location="us-central1",
-            application_id="tf-test-example-application_34599",
+            application_id="tf-test-example-application_79513",
             scope={
                 "type": "REGIONAL",
             },
@@ -967,7 +967,7 @@ class InsightsConfig(pulumi.CustomResource):
             opts = pulumi.ResourceOptions(depends_on=[wait_for_propagation]))
         insights_config = gcp.developerconnect.InsightsConfig("insights_config",
             location="us-central1",
-            insights_config_id="tf-test-ic-apphub-_79513",
+            insights_config_id="tf-test-ic-apphub-_55500",
             project=project.project_id,
             annotations={},
             labels={},
@@ -997,7 +997,7 @@ class InsightsConfig(pulumi.CustomResource):
         import pulumiverse_time as time
 
         project = gcp.organizations.Project("project",
-            project_id="dci-tf-_55500",
+            project_id="dci-tf-_12223",
             name="Service Project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
@@ -1074,7 +1074,7 @@ class InsightsConfig(pulumi.CustomResource):
             ]))
         insights_config_projects = gcp.developerconnect.InsightsConfig("insights_config_projects",
             location="us-central1",
-            insights_config_id="tf-test-ic-projects-_12223",
+            insights_config_id="tf-test-ic-projects-_49547",
             project=project.project_id,
             annotations={},
             labels={},

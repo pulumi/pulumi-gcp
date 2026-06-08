@@ -33,6 +33,7 @@ class InstanceArgs:
                  enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
                  event_publish_config: pulumi.Input[Optional['InstanceEventPublishConfigArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_config: pulumi.Input[Optional['InstanceNetworkConfigArgs']] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -82,6 +83,8 @@ class InstanceArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Configure the maintenance policy for this instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
@@ -123,6 +126,8 @@ class InstanceArgs:
             pulumi.set(__self__, "event_publish_config", event_publish_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
@@ -313,6 +318,19 @@ class InstanceArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
+        """
+        Configure the maintenance policy for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -458,6 +476,8 @@ class _InstanceState:
                  event_publish_config: pulumi.Input[Optional['InstanceEventPublishConfigArgs']] = None,
                  gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_events: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceEventArgs']]]] = None,
+                 maintenance_policy: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_config: pulumi.Input[Optional['InstanceNetworkConfigArgs']] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -509,6 +529,10 @@ class _InstanceState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMaintenanceEventArgs']]] maintenance_events: The maintenance events for this instance.
+               Structure is documented below.
+        :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Configure the maintenance policy for this instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input['InstanceNetworkConfigArgs'] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
@@ -526,13 +550,8 @@ class _InstanceState:
         :param pulumi.Input[_builtins.str] service_account: (Beta, Deprecated)
                Service account which will be used to access resources in the customer project.
         :param pulumi.Input[_builtins.str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[_builtins.str] state: The current state of this Data Fusion instance.
-               - CREATING: Instance is being created
-               - RUNNING: Instance is running and ready for requests
-               - FAILED: Instance creation failed
-               - DELETING: Instance is being deleted
-               - UPGRADING: Instance is being upgraded
-               - RESTARTING: Instance is being restarted
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the maintenance event.
         :param pulumi.Input[_builtins.str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
@@ -584,6 +603,10 @@ class _InstanceState:
             pulumi.set(__self__, "gcs_bucket", gcs_bucket)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if maintenance_events is not None:
+            pulumi.set(__self__, "maintenance_events", maintenance_events)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
@@ -821,6 +844,32 @@ class _InstanceState:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="maintenanceEvents")
+    def maintenance_events(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceEventArgs']]]]:
+        """
+        The maintenance events for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_events")
+
+    @maintenance_events.setter
+    def maintenance_events(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceMaintenanceEventArgs']]]]):
+        pulumi.set(self, "maintenance_events", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]:
+        """
+        Configure the maintenance policy for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: pulumi.Input[Optional['InstanceMaintenancePolicyArgs']]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -963,13 +1012,8 @@ class _InstanceState:
     @pulumi.getter
     def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The current state of this Data Fusion instance.
-        - CREATING: Instance is being created
-        - RUNNING: Instance is running and ready for requests
-        - FAILED: Instance creation failed
-        - DELETING: Instance is being deleted
-        - UPGRADING: Instance is being upgraded
-        - RESTARTING: Instance is being restarted
+        (Output)
+        The state of the maintenance event.
         """
         return pulumi.get(self, "state")
 
@@ -1092,6 +1136,7 @@ class Instance(pulumi.CustomResource):
                  enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
                  event_publish_config: pulumi.Input[Optional[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1329,6 +1374,8 @@ class Instance(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Configure the maintenance policy for this instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
@@ -1588,6 +1635,7 @@ class Instance(pulumi.CustomResource):
                  enable_stackdriver_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
                  event_publish_config: pulumi.Input[Optional[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
                  options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1619,6 +1667,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
             __props__.__dict__["event_publish_config"] = event_publish_config
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["options"] = options
@@ -1636,6 +1685,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["gcs_bucket"] = None
+            __props__.__dict__["maintenance_events"] = None
             __props__.__dict__["p4_service_account"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["service_account"] = None
@@ -1671,6 +1721,8 @@ class Instance(pulumi.CustomResource):
             event_publish_config: pulumi.Input[Optional[Union['InstanceEventPublishConfigArgs', 'InstanceEventPublishConfigArgsDict']]] = None,
             gcs_bucket: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maintenance_events: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceMaintenanceEventArgs', 'InstanceMaintenanceEventArgsDict']]]]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_config: pulumi.Input[Optional[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']]] = None,
             options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -1726,6 +1778,10 @@ class Instance(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceMaintenanceEventArgs', 'InstanceMaintenanceEventArgsDict']]]] maintenance_events: The maintenance events for this instance.
+               Structure is documented below.
+        :param pulumi.Input[Union['InstanceMaintenancePolicyArgs', 'InstanceMaintenancePolicyArgsDict']] maintenance_policy: Configure the maintenance policy for this instance.
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input[Union['InstanceNetworkConfigArgs', 'InstanceNetworkConfigArgsDict']] network_config: Network configuration options. These are required when a private Data Fusion instance is to be created.
                Structure is documented below.
@@ -1743,13 +1799,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_account: (Beta, Deprecated)
                Service account which will be used to access resources in the customer project.
         :param pulumi.Input[_builtins.str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
-        :param pulumi.Input[_builtins.str] state: The current state of this Data Fusion instance.
-               - CREATING: Instance is being created
-               - RUNNING: Instance is running and ready for requests
-               - FAILED: Instance creation failed
-               - DELETING: Instance is being deleted
-               - UPGRADING: Instance is being upgraded
-               - RESTARTING: Instance is being restarted
+        :param pulumi.Input[_builtins.str] state: (Output)
+               The state of the maintenance event.
         :param pulumi.Input[_builtins.str] state_message: Additional information about the current state of this Data Fusion instance if available.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] tags: A map of resource manager tags.
                Resource manager tag keys and values have the same definition as resource manager tags.
@@ -1790,6 +1841,8 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["event_publish_config"] = event_publish_config
         __props__.__dict__["gcs_bucket"] = gcs_bucket
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["maintenance_events"] = maintenance_events
+        __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
         __props__.__dict__["options"] = options
@@ -1946,6 +1999,24 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "labels")
 
     @_builtins.property
+    @pulumi.getter(name="maintenanceEvents")
+    def maintenance_events(self) -> pulumi.Output[Sequence['outputs.InstanceMaintenanceEvent']]:
+        """
+        The maintenance events for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_events")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> pulumi.Output[Optional['outputs.InstanceMaintenancePolicy']]:
+        """
+        Configure the maintenance policy for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
@@ -2044,13 +2115,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The current state of this Data Fusion instance.
-        - CREATING: Instance is being created
-        - RUNNING: Instance is running and ready for requests
-        - FAILED: Instance creation failed
-        - DELETING: Instance is being deleted
-        - UPGRADING: Instance is being upgraded
-        - RESTARTING: Instance is being restarted
+        (Output)
+        The state of the maintenance event.
         """
         return pulumi.get(self, "state")
 

@@ -181,6 +181,9 @@ type FutureReservation struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params FutureReservationParamsPtrOutput `pulumi:"params"`
 	// Planning state before being submitted for evaluation
 	// Possible values are: `DRAFT`, `SUBMITTED`.
 	PlanningStatus pulumi.StringOutput `pulumi:"planningStatus"`
@@ -287,6 +290,9 @@ type futureReservationState struct {
 	Name *string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix *string `pulumi:"namePrefix"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *FutureReservationParams `pulumi:"params"`
 	// Planning state before being submitted for evaluation
 	// Possible values are: `DRAFT`, `SUBMITTED`.
 	PlanningStatus *string `pulumi:"planningStatus"`
@@ -361,6 +367,9 @@ type FutureReservationState struct {
 	Name pulumi.StringPtrInput
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params FutureReservationParamsPtrInput
 	// Planning state before being submitted for evaluation
 	// Possible values are: `DRAFT`, `SUBMITTED`.
 	PlanningStatus pulumi.StringPtrInput
@@ -437,6 +446,9 @@ type futureReservationArgs struct {
 	Name *string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix *string `pulumi:"namePrefix"`
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params *FutureReservationParams `pulumi:"params"`
 	// Planning state before being submitted for evaluation
 	// Possible values are: `DRAFT`, `SUBMITTED`.
 	PlanningStatus *string `pulumi:"planningStatus"`
@@ -501,6 +513,9 @@ type FutureReservationArgs struct {
 	Name pulumi.StringPtrInput
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix pulumi.StringPtrInput
+	// Additional params passed with the request, but not persisted as part of resource payload
+	// Structure is documented below.
+	Params FutureReservationParamsPtrInput
 	// Planning state before being submitted for evaluation
 	// Possible values are: `DRAFT`, `SUBMITTED`.
 	PlanningStatus pulumi.StringPtrInput
@@ -687,6 +702,12 @@ func (o FutureReservationOutput) Name() pulumi.StringOutput {
 // Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 func (o FutureReservationOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
+}
+
+// Additional params passed with the request, but not persisted as part of resource payload
+// Structure is documented below.
+func (o FutureReservationOutput) Params() FutureReservationParamsPtrOutput {
+	return o.ApplyT(func(v *FutureReservation) FutureReservationParamsPtrOutput { return v.Params }).(FutureReservationParamsPtrOutput)
 }
 
 // Planning state before being submitted for evaluation

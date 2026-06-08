@@ -46,14 +46,14 @@ public final class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs ext
     }
 
     /**
-     * (Optional)
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="rawKey")
     private @Nullable Output<String> rawKey;
 
     /**
-     * @return (Optional)
+     * @return **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> rawKey() {
@@ -61,14 +61,14 @@ public final class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs ext
     }
 
     /**
-     * (Optional)
+     * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     @Import(name="rsaEncryptedKey")
     private @Nullable Output<String> rsaEncryptedKey;
 
     /**
-     * @return (Optional)
+     * @return **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<Output<String>> rsaEncryptedKey() {
@@ -145,7 +145,7 @@ public final class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs ext
         }
 
         /**
-         * @param rawKey (Optional)
+         * @param rawKey **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs ext
         }
 
         /**
-         * @param rawKey (Optional)
+         * @param rawKey **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs ext
         }
 
         /**
-         * @param rsaEncryptedKey (Optional)
+         * @param rsaEncryptedKey **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs ext
         }
 
         /**
-         * @param rsaEncryptedKey (Optional)
+         * @param rsaEncryptedKey **Note**: This property is sensitive and will not be displayed in the plan.
          * 
          * @return builder
          * 

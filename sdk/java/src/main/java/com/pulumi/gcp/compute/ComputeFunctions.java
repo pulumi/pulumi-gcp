@@ -137,6 +137,8 @@ import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSecurityPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
+import com.pulumi.gcp.compute.inputs.GetServiceAttachmentPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyPlainArgs;
@@ -224,6 +226,7 @@ import com.pulumi.gcp.compute.outputs.GetRouterStatusResult;
 import com.pulumi.gcp.compute.outputs.GetRoutersResult;
 import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSecurityPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetServiceAttachmentResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
 import com.pulumi.gcp.compute.outputs.GetStoragePoolIamPolicyResult;
@@ -10166,6 +10169,86 @@ public final class ComputeFunctions {
      * </pre>
      * 
      */
+    public static Output<GetNetworkResult> getNetwork() {
+        return getNetwork(GetNetworkArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a network within GCE from its name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("default-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNetworkResult> getNetworkPlain() {
+        return getNetworkPlain(GetNetworkPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Get a network within GCE from its name.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-network = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
+     *             .name("default-us-east1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetNetworkResult> getNetwork(GetNetworkArgs args) {
         return getNetwork(args, InvokeOptions.Empty);
     }
@@ -14542,18 +14625,208 @@ public final class ComputeFunctions {
     public static CompletableFuture<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupPlain(GetRegionNetworkEndpointGroupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", TypeShape.of(GetRegionNetworkEndpointGroupResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getRegionSSLPolicy(GetRegionSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetRegionSSLPolicyResult> getRegionSSLPolicy(GetRegionSSLPolicyArgs args) {
         return getRegionSSLPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getRegionSSLPolicy(GetRegionSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetRegionSSLPolicyResult> getRegionSSLPolicyPlain(GetRegionSSLPolicyPlainArgs args) {
         return getRegionSSLPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getRegionSSLPolicy(GetRegionSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetRegionSSLPolicyResult> getRegionSSLPolicy(GetRegionSSLPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", TypeShape.of(GetRegionSSLPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getRegionSSLPolicy(GetRegionSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetRegionSSLPolicyResult> getRegionSSLPolicy(GetRegionSSLPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", TypeShape.of(GetRegionSSLPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+     *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionSSLPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-ssl-policy = ComputeFunctions.getRegionSSLPolicy(GetRegionSSLPolicyArgs.builder()
+     *             .name("production-ssl-policy")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetRegionSSLPolicyResult> getRegionSSLPolicyPlain(GetRegionSSLPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionSSLPolicy:getRegionSSLPolicy", TypeShape.of(GetRegionSSLPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -17715,6 +17988,226 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSecurityPolicyResult> getSecurityPolicyPlain(GetSecurityPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSecurityPolicy:getSecurityPolicy", TypeShape.of(GetSecurityPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a specific [service attachment](https://cloud.google.com/vpc/docs/configure-private-service-connect-services) within a region. For more information see the
+     * [official documentation](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getServiceAttachment(GetServiceAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-service-attachment")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServiceAttachmentResult> getServiceAttachment(GetServiceAttachmentArgs args) {
+        return getServiceAttachment(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a specific [service attachment](https://cloud.google.com/vpc/docs/configure-private-service-connect-services) within a region. For more information see the
+     * [official documentation](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getServiceAttachment(GetServiceAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-service-attachment")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServiceAttachmentResult> getServiceAttachmentPlain(GetServiceAttachmentPlainArgs args) {
+        return getServiceAttachmentPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get a specific [service attachment](https://cloud.google.com/vpc/docs/configure-private-service-connect-services) within a region. For more information see the
+     * [official documentation](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getServiceAttachment(GetServiceAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-service-attachment")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServiceAttachmentResult> getServiceAttachment(GetServiceAttachmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getServiceAttachment:getServiceAttachment", TypeShape.of(GetServiceAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a specific [service attachment](https://cloud.google.com/vpc/docs/configure-private-service-connect-services) within a region. For more information see the
+     * [official documentation](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getServiceAttachment(GetServiceAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-service-attachment")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetServiceAttachmentResult> getServiceAttachment(GetServiceAttachmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getServiceAttachment:getServiceAttachment", TypeShape.of(GetServiceAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a specific [service attachment](https://cloud.google.com/vpc/docs/configure-private-service-connect-services) within a region. For more information see the
+     * [official documentation](https://cloud.google.com/vpc/docs/configure-private-service-connect-services)
+     * and [API](https://cloud.google.com/compute/docs/reference/rest/v1/serviceAttachments/get).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetServiceAttachmentArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ComputeFunctions.getServiceAttachment(GetServiceAttachmentArgs.builder()
+     *             .project("my-project")
+     *             .name("my-service-attachment")
+     *             .region("us-west2")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetServiceAttachmentResult> getServiceAttachmentPlain(GetServiceAttachmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getServiceAttachment:getServiceAttachment", TypeShape.of(GetServiceAttachmentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * To get more information about Snapshot, see:

@@ -121,6 +121,11 @@ public final class ClusterNodeConfig {
      */
     private @Nullable ClusterNodeConfigGcfsConfig gcfsConfig;
     /**
+     * @return The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+     * 
+     */
+    private @Nullable String gpudirectStrategy;
+    /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
      * 
@@ -434,6 +439,13 @@ public final class ClusterNodeConfig {
         return Optional.ofNullable(this.gcfsConfig);
     }
     /**
+     * @return The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+     * 
+     */
+    public Optional<String> gpudirectStrategy() {
+        return Optional.ofNullable(this.gpudirectStrategy);
+    }
+    /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
      * 
@@ -722,6 +734,7 @@ public final class ClusterNodeConfig {
         private @Nullable ClusterNodeConfigFastSocket fastSocket;
         private @Nullable Boolean flexStart;
         private @Nullable ClusterNodeConfigGcfsConfig gcfsConfig;
+        private @Nullable String gpudirectStrategy;
         private @Nullable List<ClusterNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable ClusterNodeConfigGvnic gvnic;
         private @Nullable ClusterNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
@@ -771,6 +784,7 @@ public final class ClusterNodeConfig {
     	      this.fastSocket = defaults.fastSocket;
     	      this.flexStart = defaults.flexStart;
     	      this.gcfsConfig = defaults.gcfsConfig;
+    	      this.gpudirectStrategy = defaults.gpudirectStrategy;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
     	      this.hostMaintenancePolicy = defaults.hostMaintenancePolicy;
@@ -890,6 +904,12 @@ public final class ClusterNodeConfig {
         public Builder gcfsConfig(@Nullable ClusterNodeConfigGcfsConfig gcfsConfig) {
 
             this.gcfsConfig = gcfsConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpudirectStrategy(@Nullable String gpudirectStrategy) {
+
+            this.gpudirectStrategy = gpudirectStrategy;
             return this;
         }
         @CustomType.Setter
@@ -1118,6 +1138,7 @@ public final class ClusterNodeConfig {
             _resultValue.fastSocket = fastSocket;
             _resultValue.flexStart = flexStart;
             _resultValue.gcfsConfig = gcfsConfig;
+            _resultValue.gpudirectStrategy = gpudirectStrategy;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.gvnic = gvnic;
             _resultValue.hostMaintenancePolicy = hostMaintenancePolicy;

@@ -220,6 +220,37 @@ namespace Pulumi.Gcp.NetworkManagement
     /// 
     /// });
     /// ```
+    /// ### Network Management Connectivity Test Gke Pod
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pod_test = new Gcp.NetworkManagement.ConnectivityTest("pod-test", new()
+    ///     {
+    ///         Name = "conn-test-pod",
+    ///         Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
+    ///         {
+    ///             IpAddress = "10.0.0.1",
+    ///             ProjectId = "test-project",
+    ///             NetworkType = "GCP_NETWORK",
+    ///         },
+    ///         Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
+    ///         {
+    ///             IpAddress = "10.0.0.2",
+    ///             ProjectId = "test-project",
+    ///             NetworkType = "GCP_NETWORK",
+    ///             GkePod = "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name",
+    ///         },
+    ///         Protocol = "TCP",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

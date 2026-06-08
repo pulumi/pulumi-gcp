@@ -48,8 +48,7 @@ class BackupArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] name: The resource name of the backup. Needs to be unique per location.
-        :param pulumi.Input['BackupOntapSourceArgs'] ontap_source: (Optional, Beta)
-               Details of the ONTAP source volume and snapshot.
+        :param pulumi.Input['BackupOntapSourceArgs'] ontap_source: Details of the ONTAP source volume and snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -161,7 +160,6 @@ class BackupArgs:
     @pulumi.getter(name="ontapSource")
     def ontap_source(self) -> pulumi.Input[Optional['BackupOntapSourceArgs']]:
         """
-        (Optional, Beta)
         Details of the ONTAP source volume and snapshot.
         Structure is documented below.
         """
@@ -255,8 +253,7 @@ class _BackupState:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location of the backup.
         :param pulumi.Input[_builtins.str] name: The resource name of the backup. Needs to be unique per location.
-        :param pulumi.Input['BackupOntapSourceArgs'] ontap_source: (Optional, Beta)
-               Details of the ONTAP source volume and snapshot.
+        :param pulumi.Input['BackupOntapSourceArgs'] ontap_source: Details of the ONTAP source volume and snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -443,7 +440,6 @@ class _BackupState:
     @pulumi.getter(name="ontapSource")
     def ontap_source(self) -> pulumi.Input[Optional['BackupOntapSourceArgs']]:
         """
-        (Optional, Beta)
         Details of the ONTAP source volume and snapshot.
         Structure is documented below.
         """
@@ -661,8 +657,7 @@ class Backup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location of the backup.
         :param pulumi.Input[_builtins.str] name: The resource name of the backup. Needs to be unique per location.
-        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']] ontap_source: (Optional, Beta)
-               Details of the ONTAP source volume and snapshot.
+        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']] ontap_source: Details of the ONTAP source volume and snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -867,8 +862,7 @@ class Backup(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[_builtins.str] location: Location of the backup.
         :param pulumi.Input[_builtins.str] name: The resource name of the backup. Needs to be unique per location.
-        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']] ontap_source: (Optional, Beta)
-               Details of the ONTAP source volume and snapshot.
+        :param pulumi.Input[Union['BackupOntapSourceArgs', 'BackupOntapSourceArgsDict']] ontap_source: Details of the ONTAP source volume and snapshot.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1001,7 +995,6 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="ontapSource")
     def ontap_source(self) -> pulumi.Output[Optional['outputs.BackupOntapSource']]:
         """
-        (Optional, Beta)
         Details of the ONTAP source volume and snapshot.
         Structure is documented below.
         """

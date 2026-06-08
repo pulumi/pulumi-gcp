@@ -15,14 +15,14 @@ public final class GetControlOrganizationIntelligenceConfigArgs extends com.pulu
     public static final GetControlOrganizationIntelligenceConfigArgs Empty = new GetControlOrganizationIntelligenceConfigArgs();
 
     /**
-     * The id of GCP organization.
+     * Identifier of the GCP Organization. For GCP org, this field should be organization number.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The id of GCP organization.
+     * @return Identifier of the GCP Organization. For GCP org, this field should be organization number.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class GetControlOrganizationIntelligenceConfigArgs extends com.pulu
         }
 
         /**
-         * @param name The id of GCP organization.
+         * @param name Identifier of the GCP Organization. For GCP org, this field should be organization number.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetControlOrganizationIntelligenceConfigArgs extends com.pulu
         }
 
         /**
-         * @param name The id of GCP organization.
+         * @param name Identifier of the GCP Organization. For GCP org, this field should be organization number.
          * 
          * @return builder
          * 

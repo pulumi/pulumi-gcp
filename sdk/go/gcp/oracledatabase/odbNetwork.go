@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name:    "new",
+//				Name:    pulumi.StringRef("new"),
 //				Project: pulumi.StringRef("my-project"),
 //			}, nil)
 //			if err != nil {
@@ -76,7 +76,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name:    "new",
+//				Name:    pulumi.StringRef("new"),
 //				Project: pulumi.StringRef("my-project"),
 //			}, nil)
 //			if err != nil {

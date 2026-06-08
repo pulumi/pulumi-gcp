@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Firestore.Inputs
     public sealed class FieldTtlConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+        /// </summary>
+        [Input("expirationOffset")]
+        public Input<string>? ExpirationOffset { get; set; }
+
+        /// <summary>
         /// (Output)
         /// The state of TTL (time-to-live) configuration for documents that have this Field set.
         /// </summary>

@@ -1059,6 +1059,654 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Title() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type FolderAccessPolicyDetails struct {
+	// A list of access policy rules.
+	// Structure is documented below.
+	Rules []FolderAccessPolicyDetailsRule `pulumi:"rules"`
+}
+
+// FolderAccessPolicyDetailsInput is an input type that accepts FolderAccessPolicyDetailsArgs and FolderAccessPolicyDetailsOutput values.
+// You can construct a concrete instance of `FolderAccessPolicyDetailsInput` via:
+//
+//	FolderAccessPolicyDetailsArgs{...}
+type FolderAccessPolicyDetailsInput interface {
+	pulumi.Input
+
+	ToFolderAccessPolicyDetailsOutput() FolderAccessPolicyDetailsOutput
+	ToFolderAccessPolicyDetailsOutputWithContext(context.Context) FolderAccessPolicyDetailsOutput
+}
+
+type FolderAccessPolicyDetailsArgs struct {
+	// A list of access policy rules.
+	// Structure is documented below.
+	Rules FolderAccessPolicyDetailsRuleArrayInput `pulumi:"rules"`
+}
+
+func (FolderAccessPolicyDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetails)(nil)).Elem()
+}
+
+func (i FolderAccessPolicyDetailsArgs) ToFolderAccessPolicyDetailsOutput() FolderAccessPolicyDetailsOutput {
+	return i.ToFolderAccessPolicyDetailsOutputWithContext(context.Background())
+}
+
+func (i FolderAccessPolicyDetailsArgs) ToFolderAccessPolicyDetailsOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsOutput)
+}
+
+func (i FolderAccessPolicyDetailsArgs) ToFolderAccessPolicyDetailsPtrOutput() FolderAccessPolicyDetailsPtrOutput {
+	return i.ToFolderAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i FolderAccessPolicyDetailsArgs) ToFolderAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsOutput).ToFolderAccessPolicyDetailsPtrOutputWithContext(ctx)
+}
+
+// FolderAccessPolicyDetailsPtrInput is an input type that accepts FolderAccessPolicyDetailsArgs, FolderAccessPolicyDetailsPtr and FolderAccessPolicyDetailsPtrOutput values.
+// You can construct a concrete instance of `FolderAccessPolicyDetailsPtrInput` via:
+//
+//	        FolderAccessPolicyDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FolderAccessPolicyDetailsPtrInput interface {
+	pulumi.Input
+
+	ToFolderAccessPolicyDetailsPtrOutput() FolderAccessPolicyDetailsPtrOutput
+	ToFolderAccessPolicyDetailsPtrOutputWithContext(context.Context) FolderAccessPolicyDetailsPtrOutput
+}
+
+type folderAccessPolicyDetailsPtrType FolderAccessPolicyDetailsArgs
+
+func FolderAccessPolicyDetailsPtr(v *FolderAccessPolicyDetailsArgs) FolderAccessPolicyDetailsPtrInput {
+	return (*folderAccessPolicyDetailsPtrType)(v)
+}
+
+func (*folderAccessPolicyDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderAccessPolicyDetails)(nil)).Elem()
+}
+
+func (i *folderAccessPolicyDetailsPtrType) ToFolderAccessPolicyDetailsPtrOutput() FolderAccessPolicyDetailsPtrOutput {
+	return i.ToFolderAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *folderAccessPolicyDetailsPtrType) ToFolderAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsPtrOutput)
+}
+
+type FolderAccessPolicyDetailsOutput struct{ *pulumi.OutputState }
+
+func (FolderAccessPolicyDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetails)(nil)).Elem()
+}
+
+func (o FolderAccessPolicyDetailsOutput) ToFolderAccessPolicyDetailsOutput() FolderAccessPolicyDetailsOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsOutput) ToFolderAccessPolicyDetailsOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsOutput) ToFolderAccessPolicyDetailsPtrOutput() FolderAccessPolicyDetailsPtrOutput {
+	return o.ToFolderAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o FolderAccessPolicyDetailsOutput) ToFolderAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FolderAccessPolicyDetails) *FolderAccessPolicyDetails {
+		return &v
+	}).(FolderAccessPolicyDetailsPtrOutput)
+}
+
+// A list of access policy rules.
+// Structure is documented below.
+func (o FolderAccessPolicyDetailsOutput) Rules() FolderAccessPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetails) []FolderAccessPolicyDetailsRule { return v.Rules }).(FolderAccessPolicyDetailsRuleArrayOutput)
+}
+
+type FolderAccessPolicyDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (FolderAccessPolicyDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderAccessPolicyDetails)(nil)).Elem()
+}
+
+func (o FolderAccessPolicyDetailsPtrOutput) ToFolderAccessPolicyDetailsPtrOutput() FolderAccessPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsPtrOutput) ToFolderAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsPtrOutput) Elem() FolderAccessPolicyDetailsOutput {
+	return o.ApplyT(func(v *FolderAccessPolicyDetails) FolderAccessPolicyDetails {
+		if v != nil {
+			return *v
+		}
+		var ret FolderAccessPolicyDetails
+		return ret
+	}).(FolderAccessPolicyDetailsOutput)
+}
+
+// A list of access policy rules.
+// Structure is documented below.
+func (o FolderAccessPolicyDetailsPtrOutput) Rules() FolderAccessPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v *FolderAccessPolicyDetails) []FolderAccessPolicyDetailsRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(FolderAccessPolicyDetailsRuleArrayOutput)
+}
+
+type FolderAccessPolicyDetailsRule struct {
+	// The conditions that determine whether this rule applies to a request.
+	// Conditions are identified by their key, which is the FQDN of the service
+	// that they are relevant to. For example:
+	//
+	// Each rule is evaluated independently. If this rule does not apply
+	// to a request, other rules might still apply.
+	// Currently supported keys are as follows:
+	// * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+	//   resource fields.
+	// * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+	//   [resource
+	//   tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+	//   combine them using boolean and logical operators. Other functions and
+	//   operators are not supported.
+	//   Structure is documented below.
+	Conditions []FolderAccessPolicyDetailsRuleCondition `pulumi:"conditions"`
+	// Customer specified description of the rule. Must be less than or equal to
+	// 256 characters.
+	Description *string `pulumi:"description"`
+	// The effect of the rule.
+	// Possible values:
+	// DENY
+	// ALLOW
+	// Possible values are: `DENY`, `ALLOW`.
+	Effect string `pulumi:"effect"`
+	// The identities that are excluded from the access policy rule, even if they
+	// are listed in the `principals`. For example, you could add a Google
+	// group to the `principals`, then exclude specific users who belong to
+	// that group.
+	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
+	// Attributes that are used to determine whether this rule applies to a
+	// request.
+	// Structure is documented below.
+	Operation FolderAccessPolicyDetailsRuleOperation `pulumi:"operation"`
+	// The identities for which this rule's effect governs using one or more
+	// permissions on Google Cloud resources. This field can contain the
+	// following values:
+	// * `principal://goog/subject/{email_id}`: A specific Google Account.
+	//   Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+	//   example, `principal://goog/subject/alice@example.com`.
+	// * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+	//   A Google Cloud service account. For example,
+	//   `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+	// * `principalSet://goog/group/{group_id}`: A Google group. For example,
+	//   `principalSet://goog/group/admins@example.com`.
+	// * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+	//   principals associated with the specified Google Workspace or Cloud
+	//   Identity customer ID. For example,
+	//   `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+	//   If an identifier that was previously set on a policy is soft deleted, then
+	//   calls to read that policy will return the identifier with a deleted
+	//   prefix. Users cannot set identifiers with this syntax.
+	// * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+	//   Google Account that was deleted recently. For example,
+	//   `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+	//   the Google Account is recovered, this identifier reverts to the standard
+	//   identifier for a Google Account.
+	// * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+	//   that was deleted recently. For example,
+	//   `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+	//   If the Google group is restored, this identifier reverts to the standard
+	//   identifier for a Google group.
+	// * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+	//   A Google Cloud service account that was deleted recently. For example,
+	//   `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+	//   If the service account is undeleted, this identifier reverts to the
+	//   standard identifier for a service account.
+	Principals []string `pulumi:"principals"`
+}
+
+// FolderAccessPolicyDetailsRuleInput is an input type that accepts FolderAccessPolicyDetailsRuleArgs and FolderAccessPolicyDetailsRuleOutput values.
+// You can construct a concrete instance of `FolderAccessPolicyDetailsRuleInput` via:
+//
+//	FolderAccessPolicyDetailsRuleArgs{...}
+type FolderAccessPolicyDetailsRuleInput interface {
+	pulumi.Input
+
+	ToFolderAccessPolicyDetailsRuleOutput() FolderAccessPolicyDetailsRuleOutput
+	ToFolderAccessPolicyDetailsRuleOutputWithContext(context.Context) FolderAccessPolicyDetailsRuleOutput
+}
+
+type FolderAccessPolicyDetailsRuleArgs struct {
+	// The conditions that determine whether this rule applies to a request.
+	// Conditions are identified by their key, which is the FQDN of the service
+	// that they are relevant to. For example:
+	//
+	// Each rule is evaluated independently. If this rule does not apply
+	// to a request, other rules might still apply.
+	// Currently supported keys are as follows:
+	// * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+	//   resource fields.
+	// * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+	//   [resource
+	//   tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+	//   combine them using boolean and logical operators. Other functions and
+	//   operators are not supported.
+	//   Structure is documented below.
+	Conditions FolderAccessPolicyDetailsRuleConditionArrayInput `pulumi:"conditions"`
+	// Customer specified description of the rule. Must be less than or equal to
+	// 256 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The effect of the rule.
+	// Possible values:
+	// DENY
+	// ALLOW
+	// Possible values are: `DENY`, `ALLOW`.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The identities that are excluded from the access policy rule, even if they
+	// are listed in the `principals`. For example, you could add a Google
+	// group to the `principals`, then exclude specific users who belong to
+	// that group.
+	ExcludedPrincipals pulumi.StringArrayInput `pulumi:"excludedPrincipals"`
+	// Attributes that are used to determine whether this rule applies to a
+	// request.
+	// Structure is documented below.
+	Operation FolderAccessPolicyDetailsRuleOperationInput `pulumi:"operation"`
+	// The identities for which this rule's effect governs using one or more
+	// permissions on Google Cloud resources. This field can contain the
+	// following values:
+	// * `principal://goog/subject/{email_id}`: A specific Google Account.
+	//   Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+	//   example, `principal://goog/subject/alice@example.com`.
+	// * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+	//   A Google Cloud service account. For example,
+	//   `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+	// * `principalSet://goog/group/{group_id}`: A Google group. For example,
+	//   `principalSet://goog/group/admins@example.com`.
+	// * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+	//   principals associated with the specified Google Workspace or Cloud
+	//   Identity customer ID. For example,
+	//   `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+	//   If an identifier that was previously set on a policy is soft deleted, then
+	//   calls to read that policy will return the identifier with a deleted
+	//   prefix. Users cannot set identifiers with this syntax.
+	// * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+	//   Google Account that was deleted recently. For example,
+	//   `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+	//   the Google Account is recovered, this identifier reverts to the standard
+	//   identifier for a Google Account.
+	// * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+	//   that was deleted recently. For example,
+	//   `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+	//   If the Google group is restored, this identifier reverts to the standard
+	//   identifier for a Google group.
+	// * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+	//   A Google Cloud service account that was deleted recently. For example,
+	//   `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+	//   If the service account is undeleted, this identifier reverts to the
+	//   standard identifier for a service account.
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+}
+
+func (FolderAccessPolicyDetailsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i FolderAccessPolicyDetailsRuleArgs) ToFolderAccessPolicyDetailsRuleOutput() FolderAccessPolicyDetailsRuleOutput {
+	return i.ToFolderAccessPolicyDetailsRuleOutputWithContext(context.Background())
+}
+
+func (i FolderAccessPolicyDetailsRuleArgs) ToFolderAccessPolicyDetailsRuleOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsRuleOutput)
+}
+
+// FolderAccessPolicyDetailsRuleArrayInput is an input type that accepts FolderAccessPolicyDetailsRuleArray and FolderAccessPolicyDetailsRuleArrayOutput values.
+// You can construct a concrete instance of `FolderAccessPolicyDetailsRuleArrayInput` via:
+//
+//	FolderAccessPolicyDetailsRuleArray{ FolderAccessPolicyDetailsRuleArgs{...} }
+type FolderAccessPolicyDetailsRuleArrayInput interface {
+	pulumi.Input
+
+	ToFolderAccessPolicyDetailsRuleArrayOutput() FolderAccessPolicyDetailsRuleArrayOutput
+	ToFolderAccessPolicyDetailsRuleArrayOutputWithContext(context.Context) FolderAccessPolicyDetailsRuleArrayOutput
+}
+
+type FolderAccessPolicyDetailsRuleArray []FolderAccessPolicyDetailsRuleInput
+
+func (FolderAccessPolicyDetailsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i FolderAccessPolicyDetailsRuleArray) ToFolderAccessPolicyDetailsRuleArrayOutput() FolderAccessPolicyDetailsRuleArrayOutput {
+	return i.ToFolderAccessPolicyDetailsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i FolderAccessPolicyDetailsRuleArray) ToFolderAccessPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsRuleArrayOutput)
+}
+
+type FolderAccessPolicyDetailsRuleOutput struct{ *pulumi.OutputState }
+
+func (FolderAccessPolicyDetailsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o FolderAccessPolicyDetailsRuleOutput) ToFolderAccessPolicyDetailsRuleOutput() FolderAccessPolicyDetailsRuleOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsRuleOutput) ToFolderAccessPolicyDetailsRuleOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleOutput {
+	return o
+}
+
+// The conditions that determine whether this rule applies to a request.
+// Conditions are identified by their key, which is the FQDN of the service
+// that they are relevant to. For example:
+//
+// Each rule is evaluated independently. If this rule does not apply
+// to a request, other rules might still apply.
+// Currently supported keys are as follows:
+//   - `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+//     resource fields.
+//   - `iam.googleapis.com`: Can use `CEL` functions that evaluate
+//     [resource
+//     tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+//     combine them using boolean and logical operators. Other functions and
+//     operators are not supported.
+//     Structure is documented below.
+func (o FolderAccessPolicyDetailsRuleOutput) Conditions() FolderAccessPolicyDetailsRuleConditionArrayOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRule) []FolderAccessPolicyDetailsRuleCondition { return v.Conditions }).(FolderAccessPolicyDetailsRuleConditionArrayOutput)
+}
+
+// Customer specified description of the rule. Must be less than or equal to
+// 256 characters.
+func (o FolderAccessPolicyDetailsRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The effect of the rule.
+// Possible values:
+// DENY
+// ALLOW
+// Possible values are: `DENY`, `ALLOW`.
+func (o FolderAccessPolicyDetailsRuleOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRule) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The identities that are excluded from the access policy rule, even if they
+// are listed in the `principals`. For example, you could add a Google
+// group to the `principals`, then exclude specific users who belong to
+// that group.
+func (o FolderAccessPolicyDetailsRuleOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRule) []string { return v.ExcludedPrincipals }).(pulumi.StringArrayOutput)
+}
+
+// Attributes that are used to determine whether this rule applies to a
+// request.
+// Structure is documented below.
+func (o FolderAccessPolicyDetailsRuleOutput) Operation() FolderAccessPolicyDetailsRuleOperationOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRule) FolderAccessPolicyDetailsRuleOperation { return v.Operation }).(FolderAccessPolicyDetailsRuleOperationOutput)
+}
+
+// The identities for which this rule's effect governs using one or more
+// permissions on Google Cloud resources. This field can contain the
+// following values:
+//   - `principal://goog/subject/{email_id}`: A specific Google Account.
+//     Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+//     example, `principal://goog/subject/alice@example.com`.
+//   - `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+//     A Google Cloud service account. For example,
+//     `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+//   - `principalSet://goog/group/{group_id}`: A Google group. For example,
+//     `principalSet://goog/group/admins@example.com`.
+//   - `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+//     principals associated with the specified Google Workspace or Cloud
+//     Identity customer ID. For example,
+//     `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+//     If an identifier that was previously set on a policy is soft deleted, then
+//     calls to read that policy will return the identifier with a deleted
+//     prefix. Users cannot set identifiers with this syntax.
+//   - `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+//     Google Account that was deleted recently. For example,
+//     `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+//     the Google Account is recovered, this identifier reverts to the standard
+//     identifier for a Google Account.
+//   - `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+//     that was deleted recently. For example,
+//     `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+//     If the Google group is restored, this identifier reverts to the standard
+//     identifier for a Google group.
+//   - `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+//     A Google Cloud service account that was deleted recently. For example,
+//     `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+//     If the service account is undeleted, this identifier reverts to the
+//     standard identifier for a service account.
+func (o FolderAccessPolicyDetailsRuleOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRule) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+type FolderAccessPolicyDetailsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderAccessPolicyDetailsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o FolderAccessPolicyDetailsRuleArrayOutput) ToFolderAccessPolicyDetailsRuleArrayOutput() FolderAccessPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsRuleArrayOutput) ToFolderAccessPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsRuleArrayOutput) Index(i pulumi.IntInput) FolderAccessPolicyDetailsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderAccessPolicyDetailsRule {
+		return vs[0].([]FolderAccessPolicyDetailsRule)[vs[1].(int)]
+	}).(FolderAccessPolicyDetailsRuleOutput)
+}
+
+type FolderAccessPolicyDetailsRuleCondition struct {
+	// Textual representation of an expression in Common Expression Language
+	// syntax.
+	Expression *string `pulumi:"expression"`
+	// The identifier for this object. Format specified above.
+	Service string `pulumi:"service"`
+}
+
+// FolderAccessPolicyDetailsRuleConditionInput is an input type that accepts FolderAccessPolicyDetailsRuleConditionArgs and FolderAccessPolicyDetailsRuleConditionOutput values.
+// You can construct a concrete instance of `FolderAccessPolicyDetailsRuleConditionInput` via:
+//
+//	FolderAccessPolicyDetailsRuleConditionArgs{...}
+type FolderAccessPolicyDetailsRuleConditionInput interface {
+	pulumi.Input
+
+	ToFolderAccessPolicyDetailsRuleConditionOutput() FolderAccessPolicyDetailsRuleConditionOutput
+	ToFolderAccessPolicyDetailsRuleConditionOutputWithContext(context.Context) FolderAccessPolicyDetailsRuleConditionOutput
+}
+
+type FolderAccessPolicyDetailsRuleConditionArgs struct {
+	// Textual representation of an expression in Common Expression Language
+	// syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The identifier for this object. Format specified above.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (FolderAccessPolicyDetailsRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (i FolderAccessPolicyDetailsRuleConditionArgs) ToFolderAccessPolicyDetailsRuleConditionOutput() FolderAccessPolicyDetailsRuleConditionOutput {
+	return i.ToFolderAccessPolicyDetailsRuleConditionOutputWithContext(context.Background())
+}
+
+func (i FolderAccessPolicyDetailsRuleConditionArgs) ToFolderAccessPolicyDetailsRuleConditionOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsRuleConditionOutput)
+}
+
+// FolderAccessPolicyDetailsRuleConditionArrayInput is an input type that accepts FolderAccessPolicyDetailsRuleConditionArray and FolderAccessPolicyDetailsRuleConditionArrayOutput values.
+// You can construct a concrete instance of `FolderAccessPolicyDetailsRuleConditionArrayInput` via:
+//
+//	FolderAccessPolicyDetailsRuleConditionArray{ FolderAccessPolicyDetailsRuleConditionArgs{...} }
+type FolderAccessPolicyDetailsRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToFolderAccessPolicyDetailsRuleConditionArrayOutput() FolderAccessPolicyDetailsRuleConditionArrayOutput
+	ToFolderAccessPolicyDetailsRuleConditionArrayOutputWithContext(context.Context) FolderAccessPolicyDetailsRuleConditionArrayOutput
+}
+
+type FolderAccessPolicyDetailsRuleConditionArray []FolderAccessPolicyDetailsRuleConditionInput
+
+func (FolderAccessPolicyDetailsRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (i FolderAccessPolicyDetailsRuleConditionArray) ToFolderAccessPolicyDetailsRuleConditionArrayOutput() FolderAccessPolicyDetailsRuleConditionArrayOutput {
+	return i.ToFolderAccessPolicyDetailsRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i FolderAccessPolicyDetailsRuleConditionArray) ToFolderAccessPolicyDetailsRuleConditionArrayOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsRuleConditionArrayOutput)
+}
+
+type FolderAccessPolicyDetailsRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (FolderAccessPolicyDetailsRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (o FolderAccessPolicyDetailsRuleConditionOutput) ToFolderAccessPolicyDetailsRuleConditionOutput() FolderAccessPolicyDetailsRuleConditionOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsRuleConditionOutput) ToFolderAccessPolicyDetailsRuleConditionOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleConditionOutput {
+	return o
+}
+
+// Textual representation of an expression in Common Expression Language
+// syntax.
+func (o FolderAccessPolicyDetailsRuleConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRuleCondition) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o FolderAccessPolicyDetailsRuleConditionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRuleCondition) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type FolderAccessPolicyDetailsRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderAccessPolicyDetailsRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (o FolderAccessPolicyDetailsRuleConditionArrayOutput) ToFolderAccessPolicyDetailsRuleConditionArrayOutput() FolderAccessPolicyDetailsRuleConditionArrayOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsRuleConditionArrayOutput) ToFolderAccessPolicyDetailsRuleConditionArrayOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleConditionArrayOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsRuleConditionArrayOutput) Index(i pulumi.IntInput) FolderAccessPolicyDetailsRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderAccessPolicyDetailsRuleCondition {
+		return vs[0].([]FolderAccessPolicyDetailsRuleCondition)[vs[1].(int)]
+	}).(FolderAccessPolicyDetailsRuleConditionOutput)
+}
+
+type FolderAccessPolicyDetailsRuleOperation struct {
+	// Specifies the permissions that this rule excludes from the set of
+	// affected permissions given by `permissions`. If a permission appears in
+	// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+	// subject to the policy effect.
+	// The excluded permissions can be specified using the same syntax as
+	// `permissions`.
+	ExcludedPermissions []string `pulumi:"excludedPermissions"`
+	// The permissions that are explicitly affected by this rule. Each
+	// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+	// `{service_fqdn}` is the fully qualified domain name for the service.
+	// Currently supported permissions are as follows:
+	// * `eventarc.googleapis.com/messageBuses.publish`.
+	Permissions []string `pulumi:"permissions"`
+}
+
+// FolderAccessPolicyDetailsRuleOperationInput is an input type that accepts FolderAccessPolicyDetailsRuleOperationArgs and FolderAccessPolicyDetailsRuleOperationOutput values.
+// You can construct a concrete instance of `FolderAccessPolicyDetailsRuleOperationInput` via:
+//
+//	FolderAccessPolicyDetailsRuleOperationArgs{...}
+type FolderAccessPolicyDetailsRuleOperationInput interface {
+	pulumi.Input
+
+	ToFolderAccessPolicyDetailsRuleOperationOutput() FolderAccessPolicyDetailsRuleOperationOutput
+	ToFolderAccessPolicyDetailsRuleOperationOutputWithContext(context.Context) FolderAccessPolicyDetailsRuleOperationOutput
+}
+
+type FolderAccessPolicyDetailsRuleOperationArgs struct {
+	// Specifies the permissions that this rule excludes from the set of
+	// affected permissions given by `permissions`. If a permission appears in
+	// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+	// subject to the policy effect.
+	// The excluded permissions can be specified using the same syntax as
+	// `permissions`.
+	ExcludedPermissions pulumi.StringArrayInput `pulumi:"excludedPermissions"`
+	// The permissions that are explicitly affected by this rule. Each
+	// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+	// `{service_fqdn}` is the fully qualified domain name for the service.
+	// Currently supported permissions are as follows:
+	// * `eventarc.googleapis.com/messageBuses.publish`.
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+}
+
+func (FolderAccessPolicyDetailsRuleOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetailsRuleOperation)(nil)).Elem()
+}
+
+func (i FolderAccessPolicyDetailsRuleOperationArgs) ToFolderAccessPolicyDetailsRuleOperationOutput() FolderAccessPolicyDetailsRuleOperationOutput {
+	return i.ToFolderAccessPolicyDetailsRuleOperationOutputWithContext(context.Background())
+}
+
+func (i FolderAccessPolicyDetailsRuleOperationArgs) ToFolderAccessPolicyDetailsRuleOperationOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderAccessPolicyDetailsRuleOperationOutput)
+}
+
+type FolderAccessPolicyDetailsRuleOperationOutput struct{ *pulumi.OutputState }
+
+func (FolderAccessPolicyDetailsRuleOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderAccessPolicyDetailsRuleOperation)(nil)).Elem()
+}
+
+func (o FolderAccessPolicyDetailsRuleOperationOutput) ToFolderAccessPolicyDetailsRuleOperationOutput() FolderAccessPolicyDetailsRuleOperationOutput {
+	return o
+}
+
+func (o FolderAccessPolicyDetailsRuleOperationOutput) ToFolderAccessPolicyDetailsRuleOperationOutputWithContext(ctx context.Context) FolderAccessPolicyDetailsRuleOperationOutput {
+	return o
+}
+
+// Specifies the permissions that this rule excludes from the set of
+// affected permissions given by `permissions`. If a permission appears in
+// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+// subject to the policy effect.
+// The excluded permissions can be specified using the same syntax as
+// `permissions`.
+func (o FolderAccessPolicyDetailsRuleOperationOutput) ExcludedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRuleOperation) []string { return v.ExcludedPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The permissions that are explicitly affected by this rule. Each
+// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+// `{service_fqdn}` is the fully qualified domain name for the service.
+// Currently supported permissions are as follows:
+// * `eventarc.googleapis.com/messageBuses.publish`.
+func (o FolderAccessPolicyDetailsRuleOperationOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FolderAccessPolicyDetailsRuleOperation) []string { return v.Permissions }).(pulumi.StringArrayOutput)
+}
+
 type FoldersPolicyBindingCondition struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
@@ -2064,6 +2712,654 @@ func (o PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrincipalAccessBoundaryPolicyDetailsRule {
 		return vs[0].([]PrincipalAccessBoundaryPolicyDetailsRule)[vs[1].(int)]
 	}).(PrincipalAccessBoundaryPolicyDetailsRuleOutput)
+}
+
+type ProjectAccessPolicyDetails struct {
+	// A list of access policy rules.
+	// Structure is documented below.
+	Rules []ProjectAccessPolicyDetailsRule `pulumi:"rules"`
+}
+
+// ProjectAccessPolicyDetailsInput is an input type that accepts ProjectAccessPolicyDetailsArgs and ProjectAccessPolicyDetailsOutput values.
+// You can construct a concrete instance of `ProjectAccessPolicyDetailsInput` via:
+//
+//	ProjectAccessPolicyDetailsArgs{...}
+type ProjectAccessPolicyDetailsInput interface {
+	pulumi.Input
+
+	ToProjectAccessPolicyDetailsOutput() ProjectAccessPolicyDetailsOutput
+	ToProjectAccessPolicyDetailsOutputWithContext(context.Context) ProjectAccessPolicyDetailsOutput
+}
+
+type ProjectAccessPolicyDetailsArgs struct {
+	// A list of access policy rules.
+	// Structure is documented below.
+	Rules ProjectAccessPolicyDetailsRuleArrayInput `pulumi:"rules"`
+}
+
+func (ProjectAccessPolicyDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetails)(nil)).Elem()
+}
+
+func (i ProjectAccessPolicyDetailsArgs) ToProjectAccessPolicyDetailsOutput() ProjectAccessPolicyDetailsOutput {
+	return i.ToProjectAccessPolicyDetailsOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessPolicyDetailsArgs) ToProjectAccessPolicyDetailsOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsOutput)
+}
+
+func (i ProjectAccessPolicyDetailsArgs) ToProjectAccessPolicyDetailsPtrOutput() ProjectAccessPolicyDetailsPtrOutput {
+	return i.ToProjectAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessPolicyDetailsArgs) ToProjectAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsOutput).ToProjectAccessPolicyDetailsPtrOutputWithContext(ctx)
+}
+
+// ProjectAccessPolicyDetailsPtrInput is an input type that accepts ProjectAccessPolicyDetailsArgs, ProjectAccessPolicyDetailsPtr and ProjectAccessPolicyDetailsPtrOutput values.
+// You can construct a concrete instance of `ProjectAccessPolicyDetailsPtrInput` via:
+//
+//	        ProjectAccessPolicyDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProjectAccessPolicyDetailsPtrInput interface {
+	pulumi.Input
+
+	ToProjectAccessPolicyDetailsPtrOutput() ProjectAccessPolicyDetailsPtrOutput
+	ToProjectAccessPolicyDetailsPtrOutputWithContext(context.Context) ProjectAccessPolicyDetailsPtrOutput
+}
+
+type projectAccessPolicyDetailsPtrType ProjectAccessPolicyDetailsArgs
+
+func ProjectAccessPolicyDetailsPtr(v *ProjectAccessPolicyDetailsArgs) ProjectAccessPolicyDetailsPtrInput {
+	return (*projectAccessPolicyDetailsPtrType)(v)
+}
+
+func (*projectAccessPolicyDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAccessPolicyDetails)(nil)).Elem()
+}
+
+func (i *projectAccessPolicyDetailsPtrType) ToProjectAccessPolicyDetailsPtrOutput() ProjectAccessPolicyDetailsPtrOutput {
+	return i.ToProjectAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *projectAccessPolicyDetailsPtrType) ToProjectAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsPtrOutput)
+}
+
+type ProjectAccessPolicyDetailsOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessPolicyDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetails)(nil)).Elem()
+}
+
+func (o ProjectAccessPolicyDetailsOutput) ToProjectAccessPolicyDetailsOutput() ProjectAccessPolicyDetailsOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsOutput) ToProjectAccessPolicyDetailsOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsOutput) ToProjectAccessPolicyDetailsPtrOutput() ProjectAccessPolicyDetailsPtrOutput {
+	return o.ToProjectAccessPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectAccessPolicyDetailsOutput) ToProjectAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectAccessPolicyDetails) *ProjectAccessPolicyDetails {
+		return &v
+	}).(ProjectAccessPolicyDetailsPtrOutput)
+}
+
+// A list of access policy rules.
+// Structure is documented below.
+func (o ProjectAccessPolicyDetailsOutput) Rules() ProjectAccessPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetails) []ProjectAccessPolicyDetailsRule { return v.Rules }).(ProjectAccessPolicyDetailsRuleArrayOutput)
+}
+
+type ProjectAccessPolicyDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessPolicyDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectAccessPolicyDetails)(nil)).Elem()
+}
+
+func (o ProjectAccessPolicyDetailsPtrOutput) ToProjectAccessPolicyDetailsPtrOutput() ProjectAccessPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsPtrOutput) ToProjectAccessPolicyDetailsPtrOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsPtrOutput) Elem() ProjectAccessPolicyDetailsOutput {
+	return o.ApplyT(func(v *ProjectAccessPolicyDetails) ProjectAccessPolicyDetails {
+		if v != nil {
+			return *v
+		}
+		var ret ProjectAccessPolicyDetails
+		return ret
+	}).(ProjectAccessPolicyDetailsOutput)
+}
+
+// A list of access policy rules.
+// Structure is documented below.
+func (o ProjectAccessPolicyDetailsPtrOutput) Rules() ProjectAccessPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v *ProjectAccessPolicyDetails) []ProjectAccessPolicyDetailsRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ProjectAccessPolicyDetailsRuleArrayOutput)
+}
+
+type ProjectAccessPolicyDetailsRule struct {
+	// The conditions that determine whether this rule applies to a request.
+	// Conditions are identified by their key, which is the FQDN of the service
+	// that they are relevant to. For example:
+	//
+	// Each rule is evaluated independently. If this rule does not apply
+	// to a request, other rules might still apply.
+	// Currently supported keys are as follows:
+	// * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+	//   resource fields.
+	// * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+	//   [resource
+	//   tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+	//   combine them using boolean and logical operators. Other functions and
+	//   operators are not supported.
+	//   Structure is documented below.
+	Conditions []ProjectAccessPolicyDetailsRuleCondition `pulumi:"conditions"`
+	// Customer specified description of the rule. Must be less than or equal to
+	// 256 characters.
+	Description *string `pulumi:"description"`
+	// The effect of the rule.
+	// Possible values:
+	// DENY
+	// ALLOW
+	// Possible values are: `DENY`, `ALLOW`.
+	Effect string `pulumi:"effect"`
+	// The identities that are excluded from the access policy rule, even if they
+	// are listed in the `principals`. For example, you could add a Google
+	// group to the `principals`, then exclude specific users who belong to
+	// that group.
+	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
+	// Attributes that are used to determine whether this rule applies to a
+	// request.
+	// Structure is documented below.
+	Operation ProjectAccessPolicyDetailsRuleOperation `pulumi:"operation"`
+	// The identities for which this rule's effect governs using one or more
+	// permissions on Google Cloud resources. This field can contain the
+	// following values:
+	// * `principal://goog/subject/{email_id}`: A specific Google Account.
+	//   Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+	//   example, `principal://goog/subject/alice@example.com`.
+	// * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+	//   A Google Cloud service account. For example,
+	//   `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+	// * `principalSet://goog/group/{group_id}`: A Google group. For example,
+	//   `principalSet://goog/group/admins@example.com`.
+	// * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+	//   principals associated with the specified Google Workspace or Cloud
+	//   Identity customer ID. For example,
+	//   `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+	//   If an identifier that was previously set on a policy is soft deleted, then
+	//   calls to read that policy will return the identifier with a deleted
+	//   prefix. Users cannot set identifiers with this syntax.
+	// * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+	//   Google Account that was deleted recently. For example,
+	//   `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+	//   the Google Account is recovered, this identifier reverts to the standard
+	//   identifier for a Google Account.
+	// * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+	//   that was deleted recently. For example,
+	//   `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+	//   If the Google group is restored, this identifier reverts to the standard
+	//   identifier for a Google group.
+	// * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+	//   A Google Cloud service account that was deleted recently. For example,
+	//   `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+	//   If the service account is undeleted, this identifier reverts to the
+	//   standard identifier for a service account.
+	Principals []string `pulumi:"principals"`
+}
+
+// ProjectAccessPolicyDetailsRuleInput is an input type that accepts ProjectAccessPolicyDetailsRuleArgs and ProjectAccessPolicyDetailsRuleOutput values.
+// You can construct a concrete instance of `ProjectAccessPolicyDetailsRuleInput` via:
+//
+//	ProjectAccessPolicyDetailsRuleArgs{...}
+type ProjectAccessPolicyDetailsRuleInput interface {
+	pulumi.Input
+
+	ToProjectAccessPolicyDetailsRuleOutput() ProjectAccessPolicyDetailsRuleOutput
+	ToProjectAccessPolicyDetailsRuleOutputWithContext(context.Context) ProjectAccessPolicyDetailsRuleOutput
+}
+
+type ProjectAccessPolicyDetailsRuleArgs struct {
+	// The conditions that determine whether this rule applies to a request.
+	// Conditions are identified by their key, which is the FQDN of the service
+	// that they are relevant to. For example:
+	//
+	// Each rule is evaluated independently. If this rule does not apply
+	// to a request, other rules might still apply.
+	// Currently supported keys are as follows:
+	// * `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+	//   resource fields.
+	// * `iam.googleapis.com`: Can use `CEL` functions that evaluate
+	//   [resource
+	//   tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+	//   combine them using boolean and logical operators. Other functions and
+	//   operators are not supported.
+	//   Structure is documented below.
+	Conditions ProjectAccessPolicyDetailsRuleConditionArrayInput `pulumi:"conditions"`
+	// Customer specified description of the rule. Must be less than or equal to
+	// 256 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The effect of the rule.
+	// Possible values:
+	// DENY
+	// ALLOW
+	// Possible values are: `DENY`, `ALLOW`.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// The identities that are excluded from the access policy rule, even if they
+	// are listed in the `principals`. For example, you could add a Google
+	// group to the `principals`, then exclude specific users who belong to
+	// that group.
+	ExcludedPrincipals pulumi.StringArrayInput `pulumi:"excludedPrincipals"`
+	// Attributes that are used to determine whether this rule applies to a
+	// request.
+	// Structure is documented below.
+	Operation ProjectAccessPolicyDetailsRuleOperationInput `pulumi:"operation"`
+	// The identities for which this rule's effect governs using one or more
+	// permissions on Google Cloud resources. This field can contain the
+	// following values:
+	// * `principal://goog/subject/{email_id}`: A specific Google Account.
+	//   Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+	//   example, `principal://goog/subject/alice@example.com`.
+	// * `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+	//   A Google Cloud service account. For example,
+	//   `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+	// * `principalSet://goog/group/{group_id}`: A Google group. For example,
+	//   `principalSet://goog/group/admins@example.com`.
+	// * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+	//   principals associated with the specified Google Workspace or Cloud
+	//   Identity customer ID. For example,
+	//   `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+	//   If an identifier that was previously set on a policy is soft deleted, then
+	//   calls to read that policy will return the identifier with a deleted
+	//   prefix. Users cannot set identifiers with this syntax.
+	// * `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+	//   Google Account that was deleted recently. For example,
+	//   `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+	//   the Google Account is recovered, this identifier reverts to the standard
+	//   identifier for a Google Account.
+	// * `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+	//   that was deleted recently. For example,
+	//   `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+	//   If the Google group is restored, this identifier reverts to the standard
+	//   identifier for a Google group.
+	// * `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+	//   A Google Cloud service account that was deleted recently. For example,
+	//   `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+	//   If the service account is undeleted, this identifier reverts to the
+	//   standard identifier for a service account.
+	Principals pulumi.StringArrayInput `pulumi:"principals"`
+}
+
+func (ProjectAccessPolicyDetailsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i ProjectAccessPolicyDetailsRuleArgs) ToProjectAccessPolicyDetailsRuleOutput() ProjectAccessPolicyDetailsRuleOutput {
+	return i.ToProjectAccessPolicyDetailsRuleOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessPolicyDetailsRuleArgs) ToProjectAccessPolicyDetailsRuleOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsRuleOutput)
+}
+
+// ProjectAccessPolicyDetailsRuleArrayInput is an input type that accepts ProjectAccessPolicyDetailsRuleArray and ProjectAccessPolicyDetailsRuleArrayOutput values.
+// You can construct a concrete instance of `ProjectAccessPolicyDetailsRuleArrayInput` via:
+//
+//	ProjectAccessPolicyDetailsRuleArray{ ProjectAccessPolicyDetailsRuleArgs{...} }
+type ProjectAccessPolicyDetailsRuleArrayInput interface {
+	pulumi.Input
+
+	ToProjectAccessPolicyDetailsRuleArrayOutput() ProjectAccessPolicyDetailsRuleArrayOutput
+	ToProjectAccessPolicyDetailsRuleArrayOutputWithContext(context.Context) ProjectAccessPolicyDetailsRuleArrayOutput
+}
+
+type ProjectAccessPolicyDetailsRuleArray []ProjectAccessPolicyDetailsRuleInput
+
+func (ProjectAccessPolicyDetailsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i ProjectAccessPolicyDetailsRuleArray) ToProjectAccessPolicyDetailsRuleArrayOutput() ProjectAccessPolicyDetailsRuleArrayOutput {
+	return i.ToProjectAccessPolicyDetailsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessPolicyDetailsRuleArray) ToProjectAccessPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsRuleArrayOutput)
+}
+
+type ProjectAccessPolicyDetailsRuleOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessPolicyDetailsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o ProjectAccessPolicyDetailsRuleOutput) ToProjectAccessPolicyDetailsRuleOutput() ProjectAccessPolicyDetailsRuleOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsRuleOutput) ToProjectAccessPolicyDetailsRuleOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleOutput {
+	return o
+}
+
+// The conditions that determine whether this rule applies to a request.
+// Conditions are identified by their key, which is the FQDN of the service
+// that they are relevant to. For example:
+//
+// Each rule is evaluated independently. If this rule does not apply
+// to a request, other rules might still apply.
+// Currently supported keys are as follows:
+//   - `eventarc.googleapis.com`: Can use `CEL` functions that evaluate
+//     resource fields.
+//   - `iam.googleapis.com`: Can use `CEL` functions that evaluate
+//     [resource
+//     tags](https://cloud.google.com/iam/help/conditions/resource-tags) and
+//     combine them using boolean and logical operators. Other functions and
+//     operators are not supported.
+//     Structure is documented below.
+func (o ProjectAccessPolicyDetailsRuleOutput) Conditions() ProjectAccessPolicyDetailsRuleConditionArrayOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRule) []ProjectAccessPolicyDetailsRuleCondition { return v.Conditions }).(ProjectAccessPolicyDetailsRuleConditionArrayOutput)
+}
+
+// Customer specified description of the rule. Must be less than or equal to
+// 256 characters.
+func (o ProjectAccessPolicyDetailsRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The effect of the rule.
+// Possible values:
+// DENY
+// ALLOW
+// Possible values are: `DENY`, `ALLOW`.
+func (o ProjectAccessPolicyDetailsRuleOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRule) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// The identities that are excluded from the access policy rule, even if they
+// are listed in the `principals`. For example, you could add a Google
+// group to the `principals`, then exclude specific users who belong to
+// that group.
+func (o ProjectAccessPolicyDetailsRuleOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRule) []string { return v.ExcludedPrincipals }).(pulumi.StringArrayOutput)
+}
+
+// Attributes that are used to determine whether this rule applies to a
+// request.
+// Structure is documented below.
+func (o ProjectAccessPolicyDetailsRuleOutput) Operation() ProjectAccessPolicyDetailsRuleOperationOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRule) ProjectAccessPolicyDetailsRuleOperation { return v.Operation }).(ProjectAccessPolicyDetailsRuleOperationOutput)
+}
+
+// The identities for which this rule's effect governs using one or more
+// permissions on Google Cloud resources. This field can contain the
+// following values:
+//   - `principal://goog/subject/{email_id}`: A specific Google Account.
+//     Includes Gmail, Cloud Identity, and Google Workspace user accounts. For
+//     example, `principal://goog/subject/alice@example.com`.
+//   - `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`:
+//     A Google Cloud service account. For example,
+//     `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`.
+//   - `principalSet://goog/group/{group_id}`: A Google group. For example,
+//     `principalSet://goog/group/admins@example.com`.
+//   - `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the
+//     principals associated with the specified Google Workspace or Cloud
+//     Identity customer ID. For example,
+//     `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
+//     If an identifier that was previously set on a policy is soft deleted, then
+//     calls to read that policy will return the identifier with a deleted
+//     prefix. Users cannot set identifiers with this syntax.
+//   - `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific
+//     Google Account that was deleted recently. For example,
+//     `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If
+//     the Google Account is recovered, this identifier reverts to the standard
+//     identifier for a Google Account.
+//   - `deleted:principalSet://goog/group/{group_id}?uid={uid}`: A Google group
+//     that was deleted recently. For example,
+//     `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`.
+//     If the Google group is restored, this identifier reverts to the standard
+//     identifier for a Google group.
+//   - `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`:
+//     A Google Cloud service account that was deleted recently. For example,
+//     `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
+//     If the service account is undeleted, this identifier reverts to the
+//     standard identifier for a service account.
+func (o ProjectAccessPolicyDetailsRuleOutput) Principals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRule) []string { return v.Principals }).(pulumi.StringArrayOutput)
+}
+
+type ProjectAccessPolicyDetailsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessPolicyDetailsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectAccessPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o ProjectAccessPolicyDetailsRuleArrayOutput) ToProjectAccessPolicyDetailsRuleArrayOutput() ProjectAccessPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsRuleArrayOutput) ToProjectAccessPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsRuleArrayOutput) Index(i pulumi.IntInput) ProjectAccessPolicyDetailsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectAccessPolicyDetailsRule {
+		return vs[0].([]ProjectAccessPolicyDetailsRule)[vs[1].(int)]
+	}).(ProjectAccessPolicyDetailsRuleOutput)
+}
+
+type ProjectAccessPolicyDetailsRuleCondition struct {
+	// Textual representation of an expression in Common Expression Language
+	// syntax.
+	Expression *string `pulumi:"expression"`
+	// The identifier for this object. Format specified above.
+	Service string `pulumi:"service"`
+}
+
+// ProjectAccessPolicyDetailsRuleConditionInput is an input type that accepts ProjectAccessPolicyDetailsRuleConditionArgs and ProjectAccessPolicyDetailsRuleConditionOutput values.
+// You can construct a concrete instance of `ProjectAccessPolicyDetailsRuleConditionInput` via:
+//
+//	ProjectAccessPolicyDetailsRuleConditionArgs{...}
+type ProjectAccessPolicyDetailsRuleConditionInput interface {
+	pulumi.Input
+
+	ToProjectAccessPolicyDetailsRuleConditionOutput() ProjectAccessPolicyDetailsRuleConditionOutput
+	ToProjectAccessPolicyDetailsRuleConditionOutputWithContext(context.Context) ProjectAccessPolicyDetailsRuleConditionOutput
+}
+
+type ProjectAccessPolicyDetailsRuleConditionArgs struct {
+	// Textual representation of an expression in Common Expression Language
+	// syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// The identifier for this object. Format specified above.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ProjectAccessPolicyDetailsRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (i ProjectAccessPolicyDetailsRuleConditionArgs) ToProjectAccessPolicyDetailsRuleConditionOutput() ProjectAccessPolicyDetailsRuleConditionOutput {
+	return i.ToProjectAccessPolicyDetailsRuleConditionOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessPolicyDetailsRuleConditionArgs) ToProjectAccessPolicyDetailsRuleConditionOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsRuleConditionOutput)
+}
+
+// ProjectAccessPolicyDetailsRuleConditionArrayInput is an input type that accepts ProjectAccessPolicyDetailsRuleConditionArray and ProjectAccessPolicyDetailsRuleConditionArrayOutput values.
+// You can construct a concrete instance of `ProjectAccessPolicyDetailsRuleConditionArrayInput` via:
+//
+//	ProjectAccessPolicyDetailsRuleConditionArray{ ProjectAccessPolicyDetailsRuleConditionArgs{...} }
+type ProjectAccessPolicyDetailsRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToProjectAccessPolicyDetailsRuleConditionArrayOutput() ProjectAccessPolicyDetailsRuleConditionArrayOutput
+	ToProjectAccessPolicyDetailsRuleConditionArrayOutputWithContext(context.Context) ProjectAccessPolicyDetailsRuleConditionArrayOutput
+}
+
+type ProjectAccessPolicyDetailsRuleConditionArray []ProjectAccessPolicyDetailsRuleConditionInput
+
+func (ProjectAccessPolicyDetailsRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (i ProjectAccessPolicyDetailsRuleConditionArray) ToProjectAccessPolicyDetailsRuleConditionArrayOutput() ProjectAccessPolicyDetailsRuleConditionArrayOutput {
+	return i.ToProjectAccessPolicyDetailsRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessPolicyDetailsRuleConditionArray) ToProjectAccessPolicyDetailsRuleConditionArrayOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsRuleConditionArrayOutput)
+}
+
+type ProjectAccessPolicyDetailsRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessPolicyDetailsRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (o ProjectAccessPolicyDetailsRuleConditionOutput) ToProjectAccessPolicyDetailsRuleConditionOutput() ProjectAccessPolicyDetailsRuleConditionOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsRuleConditionOutput) ToProjectAccessPolicyDetailsRuleConditionOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleConditionOutput {
+	return o
+}
+
+// Textual representation of an expression in Common Expression Language
+// syntax.
+func (o ProjectAccessPolicyDetailsRuleConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRuleCondition) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o ProjectAccessPolicyDetailsRuleConditionOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRuleCondition) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ProjectAccessPolicyDetailsRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessPolicyDetailsRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectAccessPolicyDetailsRuleCondition)(nil)).Elem()
+}
+
+func (o ProjectAccessPolicyDetailsRuleConditionArrayOutput) ToProjectAccessPolicyDetailsRuleConditionArrayOutput() ProjectAccessPolicyDetailsRuleConditionArrayOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsRuleConditionArrayOutput) ToProjectAccessPolicyDetailsRuleConditionArrayOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleConditionArrayOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsRuleConditionArrayOutput) Index(i pulumi.IntInput) ProjectAccessPolicyDetailsRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectAccessPolicyDetailsRuleCondition {
+		return vs[0].([]ProjectAccessPolicyDetailsRuleCondition)[vs[1].(int)]
+	}).(ProjectAccessPolicyDetailsRuleConditionOutput)
+}
+
+type ProjectAccessPolicyDetailsRuleOperation struct {
+	// Specifies the permissions that this rule excludes from the set of
+	// affected permissions given by `permissions`. If a permission appears in
+	// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+	// subject to the policy effect.
+	// The excluded permissions can be specified using the same syntax as
+	// `permissions`.
+	ExcludedPermissions []string `pulumi:"excludedPermissions"`
+	// The permissions that are explicitly affected by this rule. Each
+	// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+	// `{service_fqdn}` is the fully qualified domain name for the service.
+	// Currently supported permissions are as follows:
+	// * `eventarc.googleapis.com/messageBuses.publish`.
+	Permissions []string `pulumi:"permissions"`
+}
+
+// ProjectAccessPolicyDetailsRuleOperationInput is an input type that accepts ProjectAccessPolicyDetailsRuleOperationArgs and ProjectAccessPolicyDetailsRuleOperationOutput values.
+// You can construct a concrete instance of `ProjectAccessPolicyDetailsRuleOperationInput` via:
+//
+//	ProjectAccessPolicyDetailsRuleOperationArgs{...}
+type ProjectAccessPolicyDetailsRuleOperationInput interface {
+	pulumi.Input
+
+	ToProjectAccessPolicyDetailsRuleOperationOutput() ProjectAccessPolicyDetailsRuleOperationOutput
+	ToProjectAccessPolicyDetailsRuleOperationOutputWithContext(context.Context) ProjectAccessPolicyDetailsRuleOperationOutput
+}
+
+type ProjectAccessPolicyDetailsRuleOperationArgs struct {
+	// Specifies the permissions that this rule excludes from the set of
+	// affected permissions given by `permissions`. If a permission appears in
+	// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+	// subject to the policy effect.
+	// The excluded permissions can be specified using the same syntax as
+	// `permissions`.
+	ExcludedPermissions pulumi.StringArrayInput `pulumi:"excludedPermissions"`
+	// The permissions that are explicitly affected by this rule. Each
+	// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+	// `{service_fqdn}` is the fully qualified domain name for the service.
+	// Currently supported permissions are as follows:
+	// * `eventarc.googleapis.com/messageBuses.publish`.
+	Permissions pulumi.StringArrayInput `pulumi:"permissions"`
+}
+
+func (ProjectAccessPolicyDetailsRuleOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetailsRuleOperation)(nil)).Elem()
+}
+
+func (i ProjectAccessPolicyDetailsRuleOperationArgs) ToProjectAccessPolicyDetailsRuleOperationOutput() ProjectAccessPolicyDetailsRuleOperationOutput {
+	return i.ToProjectAccessPolicyDetailsRuleOperationOutputWithContext(context.Background())
+}
+
+func (i ProjectAccessPolicyDetailsRuleOperationArgs) ToProjectAccessPolicyDetailsRuleOperationOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectAccessPolicyDetailsRuleOperationOutput)
+}
+
+type ProjectAccessPolicyDetailsRuleOperationOutput struct{ *pulumi.OutputState }
+
+func (ProjectAccessPolicyDetailsRuleOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectAccessPolicyDetailsRuleOperation)(nil)).Elem()
+}
+
+func (o ProjectAccessPolicyDetailsRuleOperationOutput) ToProjectAccessPolicyDetailsRuleOperationOutput() ProjectAccessPolicyDetailsRuleOperationOutput {
+	return o
+}
+
+func (o ProjectAccessPolicyDetailsRuleOperationOutput) ToProjectAccessPolicyDetailsRuleOperationOutputWithContext(ctx context.Context) ProjectAccessPolicyDetailsRuleOperationOutput {
+	return o
+}
+
+// Specifies the permissions that this rule excludes from the set of
+// affected permissions given by `permissions`. If a permission appears in
+// `permissions` _and_ in `excludedPermissions` then it will _not_ be
+// subject to the policy effect.
+// The excluded permissions can be specified using the same syntax as
+// `permissions`.
+func (o ProjectAccessPolicyDetailsRuleOperationOutput) ExcludedPermissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRuleOperation) []string { return v.ExcludedPermissions }).(pulumi.StringArrayOutput)
+}
+
+// The permissions that are explicitly affected by this rule. Each
+// permission uses the format `{service_fqdn}/{resource}.{verb}`, where
+// `{service_fqdn}` is the fully qualified domain name for the service.
+// Currently supported permissions are as follows:
+// * `eventarc.googleapis.com/messageBuses.publish`.
+func (o ProjectAccessPolicyDetailsRuleOperationOutput) Permissions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectAccessPolicyDetailsRuleOperation) []string { return v.Permissions }).(pulumi.StringArrayOutput)
 }
 
 type ProjectsPolicyBindingCondition struct {
@@ -9917,6 +11213,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRulePtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderAccessPolicyDetailsInput)(nil)).Elem(), FolderAccessPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderAccessPolicyDetailsPtrInput)(nil)).Elem(), FolderAccessPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderAccessPolicyDetailsRuleInput)(nil)).Elem(), FolderAccessPolicyDetailsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderAccessPolicyDetailsRuleArrayInput)(nil)).Elem(), FolderAccessPolicyDetailsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderAccessPolicyDetailsRuleConditionInput)(nil)).Elem(), FolderAccessPolicyDetailsRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderAccessPolicyDetailsRuleConditionArrayInput)(nil)).Elem(), FolderAccessPolicyDetailsRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FolderAccessPolicyDetailsRuleOperationInput)(nil)).Elem(), FolderAccessPolicyDetailsRuleOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingConditionInput)(nil)).Elem(), FoldersPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingConditionPtrInput)(nil)).Elem(), FoldersPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingTargetInput)(nil)).Elem(), FoldersPolicyBindingTargetArgs{})
@@ -9929,6 +11232,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsPtrInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsRuleInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsRuleArrayInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessPolicyDetailsInput)(nil)).Elem(), ProjectAccessPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessPolicyDetailsPtrInput)(nil)).Elem(), ProjectAccessPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessPolicyDetailsRuleInput)(nil)).Elem(), ProjectAccessPolicyDetailsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessPolicyDetailsRuleArrayInput)(nil)).Elem(), ProjectAccessPolicyDetailsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessPolicyDetailsRuleConditionInput)(nil)).Elem(), ProjectAccessPolicyDetailsRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessPolicyDetailsRuleConditionArrayInput)(nil)).Elem(), ProjectAccessPolicyDetailsRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ProjectAccessPolicyDetailsRuleOperationInput)(nil)).Elem(), ProjectAccessPolicyDetailsRuleOperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectsPolicyBindingConditionInput)(nil)).Elem(), ProjectsPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectsPolicyBindingConditionPtrInput)(nil)).Elem(), ProjectsPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProjectsPolicyBindingTargetInput)(nil)).Elem(), ProjectsPolicyBindingTargetArgs{})
@@ -10041,6 +11351,13 @@ func init() {
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRulePtrOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
+	pulumi.RegisterOutputType(FolderAccessPolicyDetailsOutput{})
+	pulumi.RegisterOutputType(FolderAccessPolicyDetailsPtrOutput{})
+	pulumi.RegisterOutputType(FolderAccessPolicyDetailsRuleOutput{})
+	pulumi.RegisterOutputType(FolderAccessPolicyDetailsRuleArrayOutput{})
+	pulumi.RegisterOutputType(FolderAccessPolicyDetailsRuleConditionOutput{})
+	pulumi.RegisterOutputType(FolderAccessPolicyDetailsRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(FolderAccessPolicyDetailsRuleOperationOutput{})
 	pulumi.RegisterOutputType(FoldersPolicyBindingConditionOutput{})
 	pulumi.RegisterOutputType(FoldersPolicyBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(FoldersPolicyBindingTargetOutput{})
@@ -10053,6 +11370,13 @@ func init() {
 	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsPtrOutput{})
 	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsRuleOutput{})
 	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput{})
+	pulumi.RegisterOutputType(ProjectAccessPolicyDetailsOutput{})
+	pulumi.RegisterOutputType(ProjectAccessPolicyDetailsPtrOutput{})
+	pulumi.RegisterOutputType(ProjectAccessPolicyDetailsRuleOutput{})
+	pulumi.RegisterOutputType(ProjectAccessPolicyDetailsRuleArrayOutput{})
+	pulumi.RegisterOutputType(ProjectAccessPolicyDetailsRuleConditionOutput{})
+	pulumi.RegisterOutputType(ProjectAccessPolicyDetailsRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(ProjectAccessPolicyDetailsRuleOperationOutput{})
 	pulumi.RegisterOutputType(ProjectsPolicyBindingConditionOutput{})
 	pulumi.RegisterOutputType(ProjectsPolicyBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ProjectsPolicyBindingTargetOutput{})

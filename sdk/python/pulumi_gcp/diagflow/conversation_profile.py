@@ -34,6 +34,7 @@ class ConversationProfileArgs:
                  notification_config: pulumi.Input[Optional['ConversationProfileNotificationConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+                 sip_config: pulumi.Input[Optional['ConversationProfileSipConfigArgs']] = None,
                  stt_config: pulumi.Input[Optional['ConversationProfileSttConfigArgs']] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  tts_config: pulumi.Input[Optional['ConversationProfileTtsConfigArgs']] = None,
@@ -42,7 +43,7 @@ class ConversationProfileArgs:
         The set of arguments for constructing a ConversationProfile resource.
 
         :param pulumi.Input[_builtins.str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
-        :param pulumi.Input[_builtins.str] location: desc
+        :param pulumi.Input[_builtins.str] location: The location of the conversation profile.
         :param pulumi.Input['ConversationProfileAutomatedAgentConfigArgs'] automated_agent_config: Configuration for an automated agent to use with this profile
                Structure is documented below.
         :param pulumi.Input[_builtins.str] deletion_policy: Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -69,6 +70,9 @@ class ConversationProfileArgs:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the CX SecuritySettings reference for the agent.
+        :param pulumi.Input['ConversationProfileSipConfigArgs'] sip_config: (Optional, Beta)
+               Configuration for SIP.
+               Structure is documented below.
         :param pulumi.Input['ConversationProfileSttConfigArgs'] stt_config: Settings for speech transcription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
@@ -101,6 +105,8 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "project", project)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
+        if sip_config is not None:
+            pulumi.set(__self__, "sip_config", sip_config)
         if stt_config is not None:
             pulumi.set(__self__, "stt_config", stt_config)
         if time_zone is not None:
@@ -126,7 +132,7 @@ class ConversationProfileArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[_builtins.str]:
         """
-        desc
+        The location of the conversation profile.
         """
         return pulumi.get(self, "location")
 
@@ -282,6 +288,20 @@ class ConversationProfileArgs:
         pulumi.set(self, "security_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="sipConfig")
+    def sip_config(self) -> pulumi.Input[Optional['ConversationProfileSipConfigArgs']]:
+        """
+        (Optional, Beta)
+        Configuration for SIP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sip_config")
+
+    @sip_config.setter
+    def sip_config(self, value: pulumi.Input[Optional['ConversationProfileSipConfigArgs']]):
+        pulumi.set(self, "sip_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="sttConfig")
     def stt_config(self) -> pulumi.Input[Optional['ConversationProfileSttConfigArgs']]:
         """
@@ -350,6 +370,7 @@ class _ConversationProfileState:
                  notification_config: pulumi.Input[Optional['ConversationProfileNotificationConfigArgs']] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+                 sip_config: pulumi.Input[Optional['ConversationProfileSipConfigArgs']] = None,
                  stt_config: pulumi.Input[Optional['ConversationProfileSttConfigArgs']] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  tts_config: pulumi.Input[Optional['ConversationProfileTtsConfigArgs']] = None,
@@ -371,10 +392,10 @@ class _ConversationProfileState:
         :param pulumi.Input['ConversationProfileHumanAgentHandoffConfigArgs'] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: Language code for the conversation profile. This should be a BCP-47 language tag.
-        :param pulumi.Input[_builtins.str] location: desc
+        :param pulumi.Input[_builtins.str] location: The location of the conversation profile.
         :param pulumi.Input['ConversationProfileLoggingConfigArgs'] logging_config: Defines logging behavior for conversation lifecycle events.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] name: name
+        :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of this conversation profile.
         :param pulumi.Input['ConversationProfileNewMessageEventNotificationConfigArgs'] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
@@ -386,6 +407,9 @@ class _ConversationProfileState:
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the CX SecuritySettings reference for the agent.
+        :param pulumi.Input['ConversationProfileSipConfigArgs'] sip_config: (Optional, Beta)
+               Configuration for SIP.
+               Structure is documented below.
         :param pulumi.Input['ConversationProfileSttConfigArgs'] stt_config: Settings for speech transcription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
@@ -422,6 +446,8 @@ class _ConversationProfileState:
             pulumi.set(__self__, "project", project)
         if security_settings is not None:
             pulumi.set(__self__, "security_settings", security_settings)
+        if sip_config is not None:
+            pulumi.set(__self__, "sip_config", sip_config)
         if stt_config is not None:
             pulumi.set(__self__, "stt_config", stt_config)
         if time_zone is not None:
@@ -515,7 +541,7 @@ class _ConversationProfileState:
     @pulumi.getter
     def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        desc
+        The location of the conversation profile.
         """
         return pulumi.get(self, "location")
 
@@ -540,7 +566,7 @@ class _ConversationProfileState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        name
+        Identifier. The unique identifier of this conversation profile.
         """
         return pulumi.get(self, "name")
 
@@ -615,6 +641,20 @@ class _ConversationProfileState:
         pulumi.set(self, "security_settings", value)
 
     @_builtins.property
+    @pulumi.getter(name="sipConfig")
+    def sip_config(self) -> pulumi.Input[Optional['ConversationProfileSipConfigArgs']]:
+        """
+        (Optional, Beta)
+        Configuration for SIP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sip_config")
+
+    @sip_config.setter
+    def sip_config(self, value: pulumi.Input[Optional['ConversationProfileSipConfigArgs']]):
+        pulumi.set(self, "sip_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="sttConfig")
     def stt_config(self) -> pulumi.Input[Optional['ConversationProfileSttConfigArgs']]:
         """
@@ -685,6 +725,7 @@ class ConversationProfile(pulumi.CustomResource):
                  notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+                 sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']]] = None,
                  stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
@@ -754,11 +795,15 @@ class ConversationProfile(pulumi.CustomResource):
             })
         bidi_profile = gcp.diagflow.ConversationProfile("bidi_profile",
             display_name="dialogflow-profile-bidi",
-            location="global",
+            location="europe-west1",
             language_code="en-US",
             use_bidi_streaming=True,
             automated_agent_config={
                 "agent": ces_app_for_agent.id,
+            },
+            sip_config={
+                "allow_virtual_agent_interaction": True,
+                "create_conversation_on_the_fly": True,
             })
         ```
 
@@ -791,7 +836,7 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: Language code for the conversation profile. This should be a BCP-47 language tag.
-        :param pulumi.Input[_builtins.str] location: desc
+        :param pulumi.Input[_builtins.str] location: The location of the conversation profile.
         :param pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']] logging_config: Defines logging behavior for conversation lifecycle events.
                Structure is documented below.
         :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
@@ -805,6 +850,9 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the CX SecuritySettings reference for the agent.
+        :param pulumi.Input[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']] sip_config: (Optional, Beta)
+               Configuration for SIP.
+               Structure is documented below.
         :param pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']] stt_config: Settings for speech transcription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
@@ -883,11 +931,15 @@ class ConversationProfile(pulumi.CustomResource):
             })
         bidi_profile = gcp.diagflow.ConversationProfile("bidi_profile",
             display_name="dialogflow-profile-bidi",
-            location="global",
+            location="europe-west1",
             language_code="en-US",
             use_bidi_streaming=True,
             automated_agent_config={
                 "agent": ces_app_for_agent.id,
+            },
+            sip_config={
+                "allow_virtual_agent_interaction": True,
+                "create_conversation_on_the_fly": True,
             })
         ```
 
@@ -932,6 +984,7 @@ class ConversationProfile(pulumi.CustomResource):
                  notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+                 sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']]] = None,
                  stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
                  time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
@@ -962,6 +1015,7 @@ class ConversationProfile(pulumi.CustomResource):
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
             __props__.__dict__["security_settings"] = security_settings
+            __props__.__dict__["sip_config"] = sip_config
             __props__.__dict__["stt_config"] = stt_config
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["tts_config"] = tts_config
@@ -991,6 +1045,7 @@ class ConversationProfile(pulumi.CustomResource):
             notification_config: pulumi.Input[Optional[Union['ConversationProfileNotificationConfigArgs', 'ConversationProfileNotificationConfigArgsDict']]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             security_settings: pulumi.Input[Optional[_builtins.str]] = None,
+            sip_config: pulumi.Input[Optional[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']]] = None,
             stt_config: pulumi.Input[Optional[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']]] = None,
             time_zone: pulumi.Input[Optional[_builtins.str]] = None,
             tts_config: pulumi.Input[Optional[Union['ConversationProfileTtsConfigArgs', 'ConversationProfileTtsConfigArgsDict']]] = None,
@@ -1016,10 +1071,10 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['ConversationProfileHumanAgentHandoffConfigArgs', 'ConversationProfileHumanAgentHandoffConfigArgsDict']] human_agent_handoff_config: Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] language_code: Language code for the conversation profile. This should be a BCP-47 language tag.
-        :param pulumi.Input[_builtins.str] location: desc
+        :param pulumi.Input[_builtins.str] location: The location of the conversation profile.
         :param pulumi.Input[Union['ConversationProfileLoggingConfigArgs', 'ConversationProfileLoggingConfigArgsDict']] logging_config: Defines logging behavior for conversation lifecycle events.
                Structure is documented below.
-        :param pulumi.Input[_builtins.str] name: name
+        :param pulumi.Input[_builtins.str] name: Identifier. The unique identifier of this conversation profile.
         :param pulumi.Input[Union['ConversationProfileNewMessageEventNotificationConfigArgs', 'ConversationProfileNewMessageEventNotificationConfigArgsDict']] new_message_event_notification_config: Pub/Sub topic on which to publish new agent assistant events.
                Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
                Structure is documented below.
@@ -1031,6 +1086,9 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[_builtins.str] security_settings: Name of the CX SecuritySettings reference for the agent.
+        :param pulumi.Input[Union['ConversationProfileSipConfigArgs', 'ConversationProfileSipConfigArgsDict']] sip_config: (Optional, Beta)
+               Configuration for SIP.
+               Structure is documented below.
         :param pulumi.Input[Union['ConversationProfileSttConfigArgs', 'ConversationProfileSttConfigArgsDict']] stt_config: Settings for speech transcription.
                Structure is documented below.
         :param pulumi.Input[_builtins.str] time_zone: The time zone of this conversational profile.
@@ -1057,6 +1115,7 @@ class ConversationProfile(pulumi.CustomResource):
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["project"] = project
         __props__.__dict__["security_settings"] = security_settings
+        __props__.__dict__["sip_config"] = sip_config
         __props__.__dict__["stt_config"] = stt_config
         __props__.__dict__["time_zone"] = time_zone
         __props__.__dict__["tts_config"] = tts_config
@@ -1123,7 +1182,7 @@ class ConversationProfile(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[_builtins.str]:
         """
-        desc
+        The location of the conversation profile.
         """
         return pulumi.get(self, "location")
 
@@ -1140,7 +1199,7 @@ class ConversationProfile(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        name
+        Identifier. The unique identifier of this conversation profile.
         """
         return pulumi.get(self, "name")
 
@@ -1189,6 +1248,16 @@ class ConversationProfile(pulumi.CustomResource):
         Name of the CX SecuritySettings reference for the agent.
         """
         return pulumi.get(self, "security_settings")
+
+    @_builtins.property
+    @pulumi.getter(name="sipConfig")
+    def sip_config(self) -> pulumi.Output[Optional['outputs.ConversationProfileSipConfig']]:
+        """
+        (Optional, Beta)
+        Configuration for SIP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sip_config")
 
     @_builtins.property
     @pulumi.getter(name="sttConfig")

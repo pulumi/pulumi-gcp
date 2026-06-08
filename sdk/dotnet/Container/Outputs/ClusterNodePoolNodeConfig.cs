@@ -82,6 +82,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigGcfsConfig? GcfsConfig;
         /// <summary>
+        /// The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+        /// </summary>
+        public readonly string? GpudirectStrategy;
+        /// <summary>
         /// List of the type and count of accelerator cards attached to the instance.
         /// Structure documented below.
         /// </summary>
@@ -290,6 +294,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodePoolNodeConfigGcfsConfig? gcfsConfig,
 
+            string? gpudirectStrategy,
+
             ImmutableArray<Outputs.ClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators,
 
             Outputs.ClusterNodePoolNodeConfigGvnic? gvnic,
@@ -368,6 +374,7 @@ namespace Pulumi.Gcp.Container.Outputs
             FastSocket = fastSocket;
             FlexStart = flexStart;
             GcfsConfig = gcfsConfig;
+            GpudirectStrategy = gpudirectStrategy;
             GuestAccelerators = guestAccelerators;
             Gvnic = gvnic;
             HostMaintenancePolicy = hostMaintenancePolicy;

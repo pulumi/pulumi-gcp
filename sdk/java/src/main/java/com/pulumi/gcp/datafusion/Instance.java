@@ -13,6 +13,8 @@ import com.pulumi.gcp.datafusion.inputs.InstanceState;
 import com.pulumi.gcp.datafusion.outputs.InstanceAccelerator;
 import com.pulumi.gcp.datafusion.outputs.InstanceCryptoKeyConfig;
 import com.pulumi.gcp.datafusion.outputs.InstanceEventPublishConfig;
+import com.pulumi.gcp.datafusion.outputs.InstanceMaintenanceEvent;
+import com.pulumi.gcp.datafusion.outputs.InstanceMaintenancePolicy;
 import com.pulumi.gcp.datafusion.outputs.InstanceNetworkConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -699,6 +701,38 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
+     * The maintenance events for this instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maintenanceEvents", refs={List.class,InstanceMaintenanceEvent.class}, tree="[0,1]")
+    private Output<List<InstanceMaintenanceEvent>> maintenanceEvents;
+
+    /**
+     * @return The maintenance events for this instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InstanceMaintenanceEvent>> maintenanceEvents() {
+        return this.maintenanceEvents;
+    }
+    /**
+     * Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="maintenancePolicy", refs={InstanceMaintenancePolicy.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceMaintenancePolicy> maintenancePolicy;
+
+    /**
+     * @return Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceMaintenancePolicy>> maintenancePolicy() {
+        return Codegen.optional(this.maintenancePolicy);
+    }
+    /**
      * The ID of the instance or a fully qualified identifier for the instance.
      * 
      */
@@ -869,26 +903,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.serviceEndpoint;
     }
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * (Output)
+     * The state of the maintenance event.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * @return (Output)
+     * The state of the maintenance event.
      * 
      */
     public Output<String> state() {

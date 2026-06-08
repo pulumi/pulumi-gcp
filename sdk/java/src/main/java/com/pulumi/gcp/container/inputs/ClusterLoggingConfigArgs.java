@@ -17,7 +17,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
      * 
      */
     @Import(name="enableComponents", required=true)
@@ -25,7 +25,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The GKE components exposing logs. Supported values include:
-     * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+     * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
      * 
      */
     public Output<List<String>> enableComponents() {
@@ -58,7 +58,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param enableComponents The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
          * 
          * @return builder
          * 
@@ -70,7 +70,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param enableComponents The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ClusterLoggingConfigArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param enableComponents The GKE components exposing logs. Supported values include:
-         * `SYSTEM_COMPONENTS`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
+         * `SYSTEM_COMPONENTS`, `KCP_VPA`, `APISERVER`, `CONTROLLER_MANAGER`, `SCHEDULER`, and `WORKLOADS`.
          * 
          * @return builder
          * 

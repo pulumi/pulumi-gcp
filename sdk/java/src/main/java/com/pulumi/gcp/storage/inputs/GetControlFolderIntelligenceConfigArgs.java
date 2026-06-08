@@ -15,14 +15,14 @@ public final class GetControlFolderIntelligenceConfigArgs extends com.pulumi.res
     public static final GetControlFolderIntelligenceConfigArgs Empty = new GetControlFolderIntelligenceConfigArgs();
 
     /**
-     * The number of GCP folder.
+     * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The number of GCP folder.
+     * @return Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class GetControlFolderIntelligenceConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The number of GCP folder.
+         * @param name Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetControlFolderIntelligenceConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param name The number of GCP folder.
+         * @param name Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
          * 
          * @return builder
          * 

@@ -33,6 +33,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ExadbVmCluster{}
 	case "gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault":
 		r = &ExascaleDbStorageVault{}
+	case "gcp:oracledatabase/goldengateConnection:GoldengateConnection":
+		r = &GoldengateConnection{}
+	case "gcp:oracledatabase/goldengateConnectionAssignment:GoldengateConnectionAssignment":
+		r = &GoldengateConnectionAssignment{}
+	case "gcp:oracledatabase/goldengateDeployment:GoldengateDeployment":
+		r = &GoldengateDeployment{}
 	case "gcp:oracledatabase/odbNetwork:OdbNetwork":
 		r = &OdbNetwork{}
 	case "gcp:oracledatabase/odbSubnet:OdbSubnet":
@@ -78,6 +84,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"oracledatabase/exascaleDbStorageVault",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"oracledatabase/goldengateConnection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"oracledatabase/goldengateConnectionAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"oracledatabase/goldengateDeployment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -36,6 +36,11 @@ public final class ConnectivityTestDestination {
      */
     private @Nullable String gkeMasterCluster;
     /**
+     * @return A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+     * 
+     */
+    private @Nullable String gkePod;
+    /**
      * @return A Compute Engine instance URI.
      * 
      */
@@ -50,6 +55,12 @@ public final class ConnectivityTestDestination {
      * 
      */
     private @Nullable String network;
+    /**
+     * @return For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+     * 
+     */
+    private @Nullable String networkType;
     /**
      * @return The IP protocol port of the endpoint. Only applicable when protocol is
      * TCP or UDP.
@@ -113,6 +124,13 @@ public final class ConnectivityTestDestination {
         return Optional.ofNullable(this.gkeMasterCluster);
     }
     /**
+     * @return A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) URI.
+     * 
+     */
+    public Optional<String> gkePod() {
+        return Optional.ofNullable(this.gkePod);
+    }
+    /**
      * @return A Compute Engine instance URI.
      * 
      */
@@ -132,6 +150,14 @@ public final class ConnectivityTestDestination {
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
+    }
+    /**
+     * @return For source endpoints, type of the network where the endpoint is located. Not relevant for destination endpoints.
+     * Possible values are: `GCP_NETWORK`, `NON_GCP_NETWORK`, `INTERNET`.
+     * 
+     */
+    public Optional<String> networkType() {
+        return Optional.ofNullable(this.networkType);
     }
     /**
      * @return The IP protocol port of the endpoint. Only applicable when protocol is
@@ -184,9 +210,11 @@ public final class ConnectivityTestDestination {
         private @Nullable String forwardingRule;
         private @Nullable String fqdn;
         private @Nullable String gkeMasterCluster;
+        private @Nullable String gkePod;
         private @Nullable String instance;
         private @Nullable String ipAddress;
         private @Nullable String network;
+        private @Nullable String networkType;
         private @Nullable Integer port;
         private @Nullable String projectId;
         private @Nullable String redisCluster;
@@ -198,9 +226,11 @@ public final class ConnectivityTestDestination {
     	      this.forwardingRule = defaults.forwardingRule;
     	      this.fqdn = defaults.fqdn;
     	      this.gkeMasterCluster = defaults.gkeMasterCluster;
+    	      this.gkePod = defaults.gkePod;
     	      this.instance = defaults.instance;
     	      this.ipAddress = defaults.ipAddress;
     	      this.network = defaults.network;
+    	      this.networkType = defaults.networkType;
     	      this.port = defaults.port;
     	      this.projectId = defaults.projectId;
     	      this.redisCluster = defaults.redisCluster;
@@ -232,6 +262,12 @@ public final class ConnectivityTestDestination {
             return this;
         }
         @CustomType.Setter
+        public Builder gkePod(@Nullable String gkePod) {
+
+            this.gkePod = gkePod;
+            return this;
+        }
+        @CustomType.Setter
         public Builder instance(@Nullable String instance) {
 
             this.instance = instance;
@@ -247,6 +283,12 @@ public final class ConnectivityTestDestination {
         public Builder network(@Nullable String network) {
 
             this.network = network;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder networkType(@Nullable String networkType) {
+
+            this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
@@ -279,9 +321,11 @@ public final class ConnectivityTestDestination {
             _resultValue.forwardingRule = forwardingRule;
             _resultValue.fqdn = fqdn;
             _resultValue.gkeMasterCluster = gkeMasterCluster;
+            _resultValue.gkePod = gkePod;
             _resultValue.instance = instance;
             _resultValue.ipAddress = ipAddress;
             _resultValue.network = network;
+            _resultValue.networkType = networkType;
             _resultValue.port = port;
             _resultValue.projectId = projectId;
             _resultValue.redisCluster = redisCluster;

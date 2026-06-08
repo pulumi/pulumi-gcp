@@ -27,7 +27,7 @@ public final class ConversationProfileHumanAgentAssistantConfig {
      */
     private @Nullable ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfig humanAgentSuggestionConfig;
     /**
-     * @return desc
+     * @return Configuration for analyzing conversation messages.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class ConversationProfileHumanAgentAssistantConfig {
         return Optional.ofNullable(this.humanAgentSuggestionConfig);
     }
     /**
-     * @return desc
+     * @return Configuration for analyzing conversation messages.
      * Structure is documented below.
      * 
      */

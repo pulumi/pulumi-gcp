@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly int? MaxResults;
         /// <summary>
-        /// he customized sections chosen to return when requesting a summary of a conversation.
+        /// The customized sections chosen to return when requesting a summary of a conversation.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigSections? Sections;

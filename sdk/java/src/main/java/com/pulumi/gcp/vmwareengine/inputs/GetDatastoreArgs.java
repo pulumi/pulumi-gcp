@@ -17,14 +17,14 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDatastoreArgs Empty = new GetDatastoreArgs();
 
     /**
-     * either regional or zonal location of the resource.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
-     * @return either regional or zonal location of the resource.
+     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     public Output<String> location() {
@@ -32,23 +32,51 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Name of the resource.
+     * The user-provided identifier of the datastore to be created.
+     * This identifier must be unique among each `Datastore` within the parent
+     * and becomes the final token in the name URI.
+     * The identifier must meet the following requirements:
+     * * Only contains 1-63 alphanumeric characters and hyphens
+     * * Begins with an alphabetical character
+     * * Ends with a non-hyphen character
+     * * Not formatted as a UUID
+     * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+     *   (section 3.5)
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the resource.
+     * @return The user-provided identifier of the datastore to be created.
+     * This identifier must be unique among each `Datastore` within the parent
+     * and becomes the final token in the name URI.
+     * The identifier must meet the following requirements:
+     * * Only contains 1-63 alphanumeric characters and hyphens
+     * * Begins with an alphabetical character
+     * * Ends with a non-hyphen character
+     * * Not formatted as a UUID
+     * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+     *   (section 3.5)
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -80,7 +108,7 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param location either regional or zonal location of the resource.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -91,7 +119,7 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param location either regional or zonal location of the resource.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -101,7 +129,16 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the resource.
+         * @param name The user-provided identifier of the datastore to be created.
+         * This identifier must be unique among each `Datastore` within the parent
+         * and becomes the final token in the name URI.
+         * The identifier must meet the following requirements:
+         * * Only contains 1-63 alphanumeric characters and hyphens
+         * * Begins with an alphabetical character
+         * * Ends with a non-hyphen character
+         * * Not formatted as a UUID
+         * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+         *   (section 3.5)
          * 
          * @return builder
          * 
@@ -112,7 +149,16 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the resource.
+         * @param name The user-provided identifier of the datastore to be created.
+         * This identifier must be unique among each `Datastore` within the parent
+         * and becomes the final token in the name URI.
+         * The identifier must meet the following requirements:
+         * * Only contains 1-63 alphanumeric characters and hyphens
+         * * Begins with an alphabetical character
+         * * Ends with a non-hyphen character
+         * * Not formatted as a UUID
+         * * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+         *   (section 3.5)
          * 
          * @return builder
          * 
@@ -121,11 +167,25 @@ public final class GetDatastoreArgs extends com.pulumi.resources.InvokeArgs {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

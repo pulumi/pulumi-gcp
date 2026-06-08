@@ -277,6 +277,21 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+     * 
+     */
+    @Import(name="gpudirectStrategy")
+    private @Nullable Output<String> gpudirectStrategy;
+
+    /**
+     * @return The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+     * 
+     */
+    public Optional<Output<String>> gpudirectStrategy() {
+        return Optional.ofNullable(this.gpudirectStrategy);
+    }
+
+    /**
      * List of the type and count of accelerator cards attached to the instance.
      * Structure documented below.
      * 
@@ -855,6 +870,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         this.fastSocket = $.fastSocket;
         this.flexStart = $.flexStart;
         this.gcfsConfig = $.gcfsConfig;
+        this.gpudirectStrategy = $.gpudirectStrategy;
         this.guestAccelerators = $.guestAccelerators;
         this.gvnic = $.gvnic;
         this.hostMaintenancePolicy = $.hostMaintenancePolicy;
@@ -1233,6 +1249,27 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
          */
         public Builder gcfsConfig(ClusterNodePoolNodeConfigGcfsConfigArgs gcfsConfig) {
             return gcfsConfig(Output.of(gcfsConfig));
+        }
+
+        /**
+         * @param gpudirectStrategy The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpudirectStrategy(@Nullable Output<String> gpudirectStrategy) {
+            $.gpudirectStrategy = gpudirectStrategy;
+            return this;
+        }
+
+        /**
+         * @param gpudirectStrategy The type of GPUDirect strategy to enable on the node. See the [GKE network docs](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/gpu-bandwidth-gpudirect-tcpx) for information on available modes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpudirectStrategy(String gpudirectStrategy) {
+            return gpudirectStrategy(Output.of(gpudirectStrategy));
         }
 
         /**

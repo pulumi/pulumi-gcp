@@ -320,6 +320,16 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * The maintenance events for this instance.
+     * Structure is documented below.
+     */
+    declare public /*out*/ readonly maintenanceEvents: pulumi.Output<outputs.datafusion.InstanceMaintenanceEvent[]>;
+    /**
+     * Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     */
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.datafusion.InstanceMaintenancePolicy | undefined>;
+    /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -372,13 +382,8 @@ export class Instance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly serviceEndpoint: pulumi.Output<string>;
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * (Output)
+     * The state of the maintenance event.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
@@ -451,6 +456,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["eventPublishConfig"] = state?.eventPublishConfig;
             resourceInputs["gcsBucket"] = state?.gcsBucket;
             resourceInputs["labels"] = state?.labels;
+            resourceInputs["maintenanceEvents"] = state?.maintenanceEvents;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["networkConfig"] = state?.networkConfig;
             resourceInputs["options"] = state?.options;
@@ -486,6 +493,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableStackdriverMonitoring"] = args?.enableStackdriverMonitoring;
             resourceInputs["eventPublishConfig"] = args?.eventPublishConfig;
             resourceInputs["labels"] = args?.labels;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["networkConfig"] = args?.networkConfig;
             resourceInputs["options"] = args?.options;
@@ -501,6 +509,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["gcsBucket"] = undefined /*out*/;
+            resourceInputs["maintenanceEvents"] = undefined /*out*/;
             resourceInputs["p4ServiceAccount"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
@@ -596,6 +605,16 @@ export interface InstanceState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * The maintenance events for this instance.
+     * Structure is documented below.
+     */
+    maintenanceEvents?: pulumi.Input<pulumi.Input<inputs.datafusion.InstanceMaintenanceEvent>[] | undefined>;
+    /**
+     * Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.datafusion.InstanceMaintenancePolicy | undefined>;
+    /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */
     name?: pulumi.Input<string | undefined>;
@@ -648,13 +667,8 @@ export interface InstanceState {
      */
     serviceEndpoint?: pulumi.Input<string | undefined>;
     /**
-     * The current state of this Data Fusion instance.
-     * - CREATING: Instance is being created
-     * - RUNNING: Instance is running and ready for requests
-     * - FAILED: Instance creation failed
-     * - DELETING: Instance is being deleted
-     * - UPGRADING: Instance is being upgraded
-     * - RESTARTING: Instance is being restarted
+     * (Output)
+     * The state of the maintenance event.
      */
     state?: pulumi.Input<string | undefined>;
     /**
@@ -762,6 +776,11 @@ export interface InstanceArgs {
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Configure the maintenance policy for this instance.
+     * Structure is documented below.
+     */
+    maintenancePolicy?: pulumi.Input<inputs.datafusion.InstanceMaintenancePolicy | undefined>;
     /**
      * The ID of the instance or a fully qualified identifier for the instance.
      */

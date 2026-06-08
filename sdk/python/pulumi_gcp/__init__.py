@@ -101,6 +101,8 @@ if typing.TYPE_CHECKING:
     compute = __compute
     import pulumi_gcp.config as __config
     config = __config
+    import pulumi_gcp.configdeployment as __configdeployment
+    configdeployment = __configdeployment
     import pulumi_gcp.contactcenterinsights as __contactcenterinsights
     contactcenterinsights = __contactcenterinsights
     import pulumi_gcp.container as __container
@@ -337,6 +339,7 @@ else:
     composer = _utilities.lazy_import('pulumi_gcp.composer')
     compute = _utilities.lazy_import('pulumi_gcp.compute')
     config = _utilities.lazy_import('pulumi_gcp.config')
+    configdeployment = _utilities.lazy_import('pulumi_gcp.configdeployment')
     contactcenterinsights = _utilities.lazy_import('pulumi_gcp.contactcenterinsights')
     container = _utilities.lazy_import('pulumi_gcp.container')
     containeranalysis = _utilities.lazy_import('pulumi_gcp.containeranalysis')
@@ -2262,6 +2265,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "ces/securitySettings",
+  "fqn": "pulumi_gcp.ces",
+  "classes": {
+   "gcp:ces/securitySettings:SecuritySettings": "SecuritySettings"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "ces/tool",
   "fqn": "pulumi_gcp.ces",
   "classes": {
@@ -2322,6 +2333,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
    "gcp:chronicle/feed:Feed": "Feed"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/findingsRefinement",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/findingsRefinement:FindingsRefinement": "FindingsRefinement"
   }
  },
  {
@@ -4438,6 +4457,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "configdeployment/deployment",
+  "fqn": "pulumi_gcp.configdeployment",
+  "classes": {
+   "gcp:configdeployment/deployment:Deployment": "Deployment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "contactcenterinsights/analysisRule",
   "fqn": "pulumi_gcp.contactcenterinsights",
   "classes": {
@@ -5778,6 +5805,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.diagflow",
   "classes": {
    "gcp:diagflow/intent:Intent": "Intent"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "diagflow/sipTrunk",
+  "fqn": "pulumi_gcp.diagflow",
+  "classes": {
+   "gcp:diagflow/sipTrunk:SipTrunk": "SipTrunk"
   }
  },
  {
@@ -7182,6 +7217,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "iam/folderAccessPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/folderAccessPolicy:FolderAccessPolicy": "FolderAccessPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "iam/foldersPolicyBinding",
   "fqn": "pulumi_gcp.iam",
   "classes": {
@@ -7218,6 +7261,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy": "PrincipalAccessBoundaryPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/projectAccessPolicy",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/projectAccessPolicy:ProjectAccessPolicy": "ProjectAccessPolicy"
   }
  },
  {
@@ -8262,6 +8313,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "migrationcenter/assetsExportJob",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/assetsExportJob:AssetsExportJob": "AssetsExportJob"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "migrationcenter/discoveryClient",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/discoveryClient:DiscoveryClient": "DiscoveryClient"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "migrationcenter/group",
   "fqn": "pulumi_gcp.migrationcenter",
   "classes": {
@@ -8274,6 +8341,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.migrationcenter",
   "classes": {
    "gcp:migrationcenter/preferenceSet:PreferenceSet": "PreferenceSet"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "migrationcenter/report",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/report:Report": "Report"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "migrationcenter/reportConfig",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/reportConfig:ReportConfig": "ReportConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "migrationcenter/settings",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/settings:Settings": "Settings"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "migrationcenter/source",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/source:Source": "Source"
   }
  },
  {
@@ -9226,6 +9325,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.oracledatabase",
   "classes": {
    "gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault": "ExascaleDbStorageVault"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/goldengateConnection",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/goldengateConnection:GoldengateConnection": "GoldengateConnection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/goldengateConnectionAssignment",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/goldengateConnectionAssignment:GoldengateConnectionAssignment": "GoldengateConnectionAssignment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "oracledatabase/goldengateDeployment",
+  "fqn": "pulumi_gcp.oracledatabase",
+  "classes": {
+   "gcp:oracledatabase/goldengateDeployment:GoldengateDeployment": "GoldengateDeployment"
   }
  },
  {

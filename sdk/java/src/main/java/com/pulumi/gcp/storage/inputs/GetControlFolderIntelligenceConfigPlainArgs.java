@@ -14,14 +14,14 @@ public final class GetControlFolderIntelligenceConfigPlainArgs extends com.pulum
     public static final GetControlFolderIntelligenceConfigPlainArgs Empty = new GetControlFolderIntelligenceConfigPlainArgs();
 
     /**
-     * The number of GCP folder.
+     * Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The number of GCP folder.
+     * @return Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
      * 
      */
     public String name() {
@@ -53,7 +53,7 @@ public final class GetControlFolderIntelligenceConfigPlainArgs extends com.pulum
         }
 
         /**
-         * @param name The number of GCP folder.
+         * @param name Identifier of the GCP Folder. For GCP Folder, this field can be folder number.
          * 
          * @return builder
          * 

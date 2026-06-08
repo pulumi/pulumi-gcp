@@ -14,14 +14,14 @@ public final class GetControlOrganizationIntelligenceConfigPlainArgs extends com
     public static final GetControlOrganizationIntelligenceConfigPlainArgs Empty = new GetControlOrganizationIntelligenceConfigPlainArgs();
 
     /**
-     * The id of GCP organization.
+     * Identifier of the GCP Organization. For GCP org, this field should be organization number.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The id of GCP organization.
+     * @return Identifier of the GCP Organization. For GCP org, this field should be organization number.
      * 
      */
     public String name() {
@@ -53,7 +53,7 @@ public final class GetControlOrganizationIntelligenceConfigPlainArgs extends com
         }
 
         /**
-         * @param name The id of GCP organization.
+         * @param name Identifier of the GCP Organization. For GCP org, this field should be organization number.
          * 
          * @return builder
          * 

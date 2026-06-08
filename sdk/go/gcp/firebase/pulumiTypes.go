@@ -9332,6 +9332,9 @@ func (o RemoteConfigRemoteConfigVersionUpdateUserArrayOutput) Index(i pulumi.Int
 
 type StorageDefaultBucketBucket struct {
 	// (Output)
+	// The last segment of bucket.name.
+	BucketId *string `pulumi:"bucketId"`
+	// (Output)
 	// The resource name of the bucket in the format
 	// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
 	Name *string `pulumi:"name"`
@@ -9349,6 +9352,9 @@ type StorageDefaultBucketBucketInput interface {
 }
 
 type StorageDefaultBucketBucketArgs struct {
+	// (Output)
+	// The last segment of bucket.name.
+	BucketId pulumi.StringPtrInput `pulumi:"bucketId"`
 	// (Output)
 	// The resource name of the bucket in the format
 	// projects/PROJECT_IDENTIFIER/buckets/BUCKET_ID
@@ -9404,6 +9410,12 @@ func (o StorageDefaultBucketBucketOutput) ToStorageDefaultBucketBucketOutput() S
 
 func (o StorageDefaultBucketBucketOutput) ToStorageDefaultBucketBucketOutputWithContext(ctx context.Context) StorageDefaultBucketBucketOutput {
 	return o
+}
+
+// (Output)
+// The last segment of bucket.name.
+func (o StorageDefaultBucketBucketOutput) BucketId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageDefaultBucketBucket) *string { return v.BucketId }).(pulumi.StringPtrOutput)
 }
 
 // (Output)

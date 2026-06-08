@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         VersionId = "v1",
     ///         Service = "liveapp",
     ///         DeleteServiceOnDestroy = true,
-    ///         Runtime = "nodejs20",
+    ///         Runtime = "nodejs22",
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
     ///         {
     ///             Shell = "node ./app.js",
@@ -74,7 +74,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         VersionId = "v2",
     ///         Service = "liveapp",
     ///         NoopOnDestroy = true,
-    ///         Runtime = "nodejs20",
+    ///         Runtime = "nodejs22",
     ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
     ///         {
     ///             Shell = "node ./app.js",

@@ -70,20 +70,20 @@ import * as utilities from "../utilities";
  * });
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "my-subnetwork",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     network: defaultNetwork.id,
  *     ipCidrRange: "10.0.0.0/16",
  * });
  * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
  *     name: "my-network-attachment",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     description: "basic network attachment description",
  *     connectionPreference: "ACCEPT_AUTOMATIC",
  *     subnetworks: [defaultSubnetwork.selfLink],
  * });
  * const _default = new gcp.datastream.PrivateConnection("default", {
  *     displayName: "Connection profile",
- *     location: "us-central1",
+ *     location: "us-west1",
  *     privateConnectionId: "my-connection",
  *     labels: {
  *         key: "value",

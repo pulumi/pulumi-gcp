@@ -19,6 +19,49 @@ namespace Pulumi.Gcp.Compute
     /// * How-to Guides
     ///     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
     /// 
+    /// ## Example Usage
+    /// 
+    /// ### Region Ssl Policy Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var region_ssl_policy = new Gcp.Compute.RegionSslPolicy("region-ssl-policy", new()
+    ///     {
+    ///         Name = "region-ssl-policy",
+    ///         Region = "us-central1",
+    ///         Profile = "MODERN",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Region Ssl Policy Post Quantum
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var post_quantum_region_ssl_policy = new Gcp.Compute.RegionSslPolicy("post-quantum-region-ssl-policy", new()
+    ///     {
+    ///         Name = "post-quantum-region-ssl-policy",
+    ///         Region = "us-central1",
+    ///         Profile = "MODERN",
+    ///         MinTlsVersion = "TLS_1_2",
+    ///         PostQuantumKeyExchange = "ENABLED",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// RegionSslPolicy can be imported using any of these accepted formats:
@@ -109,6 +152,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+        /// X25519MLKEM768 key exchange when clients advertise support for it.
+        /// When set to `DEFAULT`, or if no SSL Policy is attached to
+        /// the target proxy, the load balancer disallows X25519MLKEM768 key
+        /// exchange before October 2026, and allows it afterward. When set to
+        /// `ENABLED`, the load balancer allows X25519MLKEM768 key
+        /// exchange. When set to `DEFERRED`, the load balancer
+        /// disallows X25519MLKEM768 key exchange until October 2027, and allows
+        /// it afterward.
+        /// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+        /// </summary>
+        [Output("postQuantumKeyExchange")]
+        public Output<string?> PostQuantumKeyExchange { get; private set; } = null!;
 
         /// <summary>
         /// Profile specifies the set of SSL features that can be used by the
@@ -249,6 +307,21 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+        /// X25519MLKEM768 key exchange when clients advertise support for it.
+        /// When set to `DEFAULT`, or if no SSL Policy is attached to
+        /// the target proxy, the load balancer disallows X25519MLKEM768 key
+        /// exchange before October 2026, and allows it afterward. When set to
+        /// `ENABLED`, the load balancer allows X25519MLKEM768 key
+        /// exchange. When set to `DEFERRED`, the load balancer
+        /// disallows X25519MLKEM768 key exchange until October 2027, and allows
+        /// it afterward.
+        /// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+        /// </summary>
+        [Input("postQuantumKeyExchange")]
+        public Input<string>? PostQuantumKeyExchange { get; set; }
+
+        /// <summary>
         /// Profile specifies the set of SSL features that can be used by the
         /// load balancer when negotiating SSL with clients. If using `CUSTOM`,
         /// the set of SSL features to enable must be specified in the
@@ -366,6 +439,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// One of `DEFAULT`, `ENABLED`, or `DEFERRED`. Controls whether the load balancer negotiates
+        /// X25519MLKEM768 key exchange when clients advertise support for it.
+        /// When set to `DEFAULT`, or if no SSL Policy is attached to
+        /// the target proxy, the load balancer disallows X25519MLKEM768 key
+        /// exchange before October 2026, and allows it afterward. When set to
+        /// `ENABLED`, the load balancer allows X25519MLKEM768 key
+        /// exchange. When set to `DEFERRED`, the load balancer
+        /// disallows X25519MLKEM768 key exchange until October 2027, and allows
+        /// it afterward.
+        /// Possible values are: `DEFAULT`, `ENABLED`, `DEFERRED`.
+        /// </summary>
+        [Input("postQuantumKeyExchange")]
+        public Input<string>? PostQuantumKeyExchange { get; set; }
 
         /// <summary>
         /// Profile specifies the set of SSL features that can be used by the

@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessBoundaryPolicy{}
 	case "gcp:iam/denyPolicy:DenyPolicy":
 		r = &DenyPolicy{}
+	case "gcp:iam/folderAccessPolicy:FolderAccessPolicy":
+		r = &FolderAccessPolicy{}
 	case "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding":
 		r = &FoldersPolicyBinding{}
 	case "gcp:iam/oauthClient:OauthClient":
@@ -35,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationsPolicyBinding{}
 	case "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy":
 		r = &PrincipalAccessBoundaryPolicy{}
+	case "gcp:iam/projectAccessPolicy:ProjectAccessPolicy":
+		r = &ProjectAccessPolicy{}
 	case "gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding":
 		r = &ProjectsPolicyBinding{}
 	case "gcp:iam/workforcePool:WorkforcePool":
@@ -94,6 +98,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"iam/folderAccessPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"iam/foldersPolicyBinding",
 		&module{version},
 	)
@@ -115,6 +124,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"iam/principalAccessBoundaryPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"iam/projectAccessPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

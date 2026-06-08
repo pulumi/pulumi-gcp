@@ -22,11 +22,11 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string? KmsKeyServiceAccount;
         /// <summary>
-        /// (Optional)
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? RawKey;
         /// <summary>
-        /// (Optional)
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         public readonly string? RsaEncryptedKey;
 

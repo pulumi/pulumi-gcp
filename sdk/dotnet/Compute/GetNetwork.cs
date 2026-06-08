@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
         /// });
         /// ```
         /// </summary>
-        public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
+        public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Compute
         /// });
         /// ```
         /// </summary>
-        public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
+        public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("gcp:compute/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// - - -
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// A full or partial URL of the network profile to apply to this network.
@@ -108,6 +108,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
+
+        /// <summary>
+        /// The URI of the resource.
+        /// </summary>
+        [Input("selfLink")]
+        public string? SelfLink { get; set; }
 
         public GetNetworkArgs()
         {
@@ -123,8 +129,8 @@ namespace Pulumi.Gcp.Compute
         /// 
         /// - - -
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// A full or partial URL of the network profile to apply to this network.
@@ -138,6 +144,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The URI of the resource.
+        /// </summary>
+        [Input("selfLink")]
+        public Input<string>? SelfLink { get; set; }
 
         public GetNetworkInvokeArgs()
         {
@@ -178,7 +190,7 @@ namespace Pulumi.Gcp.Compute
         /// (Deprecated) The numeric unique identifier for the resource. `NumericId` is deprecated and will be removed in a future major release. Use `NetworkId` instead.
         /// </summary>
         public readonly string NumericId;
-        public readonly string? Project;
+        public readonly string Project;
         /// <summary>
         /// The URI of the resource.
         /// </summary>
@@ -206,7 +218,7 @@ namespace Pulumi.Gcp.Compute
 
             string numericId,
 
-            string? project,
+            string project,
 
             string selfLink,
 

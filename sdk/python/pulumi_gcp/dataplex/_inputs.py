@@ -1254,16 +1254,24 @@ class DataProductAccessGroupPrincipalArgsDict(TypedDict):
     """
     Email of the Google Group.
     """
+    service_account: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Specifies the email of the producer service account.
+    """
 
 @pulumi.input_type
 class DataProductAccessGroupPrincipalArgs:
     def __init__(__self__, *,
-                 google_group: pulumi.Input[Optional[_builtins.str]] = None):
+                 google_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] google_group: Email of the Google Group.
+        :param pulumi.Input[_builtins.str] service_account: Specifies the email of the producer service account.
         """
         if google_group is not None:
             pulumi.set(__self__, "google_group", google_group)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
 
     @_builtins.property
     @pulumi.getter(name="googleGroup")
@@ -1276,6 +1284,18 @@ class DataProductAccessGroupPrincipalArgs:
     @google_group.setter
     def google_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "google_group", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Specifies the email of the producer service account.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account", value)
 
 
 class DataProductDataAssetAccessGroupConfigArgsDict(TypedDict):

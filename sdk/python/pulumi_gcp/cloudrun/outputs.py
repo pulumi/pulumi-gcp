@@ -4075,7 +4075,10 @@ class GetServiceTemplateMetadataResult(dict):
         :param _builtins.int generation: A sequence number representing a specific generation of the desired state.
         :param Mapping[str, _builtins.str] labels: Map of string keys and values that can be used to organize and categorize
                (scope and select) objects.
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param _builtins.str namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number. It will default to the resource's project.
         :param _builtins.str resource_version: An opaque value that represents the internal version of this object that
@@ -4170,7 +4173,10 @@ class GetServiceTemplateMetadataResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -4347,7 +4353,10 @@ class GetServiceTemplateSpecContainerResult(dict):
         :param _builtins.str image: Docker image name. This is most often a reference to a container located
                in the container registry, such as gcr.io/cloudrun/hello
         :param Sequence['GetServiceTemplateSpecContainerLivenessProbeArgs'] liveness_probes: Periodic probe of container liveness. Container will be restarted if the probe fails.
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param Sequence['GetServiceTemplateSpecContainerPortArgs'] ports: List of open ports in the container.
         :param Sequence['GetServiceTemplateSpecContainerReadinessProbeArgs'] readiness_probes: Periodic probe of container readiness.
         :param Sequence['GetServiceTemplateSpecContainerResourceArgs'] resources: Compute Resources required by this container. Used to set values such as max memory
@@ -4433,7 +4442,10 @@ class GetServiceTemplateSpecContainerResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -4498,7 +4510,10 @@ class GetServiceTemplateSpecContainerEnvResult(dict):
                  value: _builtins.str,
                  value_froms: Sequence['outputs.GetServiceTemplateSpecContainerEnvValueFromResult']):
         """
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param _builtins.str value: Defaults to "".
         :param Sequence['GetServiceTemplateSpecContainerEnvValueFromArgs'] value_froms: Source for the environment variable's value. Only supports secret_key_ref.
         """
@@ -4510,7 +4525,10 @@ class GetServiceTemplateSpecContainerEnvResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -4605,7 +4623,10 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResu
     def __init__(__self__, *,
                  name: _builtins.str):
         """
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         pulumi.set(__self__, "name", name)
 
@@ -4613,7 +4634,10 @@ class GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceResu
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -4652,7 +4676,10 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(
     def __init__(__self__, *,
                  name: _builtins.str):
         """
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         pulumi.set(__self__, "name", name)
 
@@ -4660,7 +4687,10 @@ class GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceResult(
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -4691,7 +4721,10 @@ class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult(dict):
         """
         :param _builtins.str key: A Cloud Secret Manager secret version. Must be 'latest' for the latest
                version or an integer for a specific version.
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
@@ -4709,7 +4742,10 @@ class GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -4882,7 +4918,10 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult(dict):
                  name: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param _builtins.str value: The header field value.
         """
         pulumi.set(__self__, "name", name)
@@ -4892,7 +4931,10 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -4913,7 +4955,10 @@ class GetServiceTemplateSpecContainerPortResult(dict):
                  protocol: _builtins.str):
         """
         :param _builtins.int container_port: Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param _builtins.str protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
         pulumi.set(__self__, "container_port", container_port)
@@ -4932,7 +4977,10 @@ class GetServiceTemplateSpecContainerPortResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -5320,7 +5368,10 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
                  name: _builtins.str,
                  value: _builtins.str):
         """
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param _builtins.str value: The header field value.
         """
         pulumi.set(__self__, "name", name)
@@ -5330,7 +5381,10 @@ class GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -5372,7 +5426,10 @@ class GetServiceTemplateSpecContainerVolumeMountResult(dict):
         """
         :param _builtins.str mount_path: Path within the container at which the volume should be mounted.  Must
                not contain ':'.
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param _builtins.str sub_path: Path within the volume from which the container's volume should be mounted.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -5392,7 +5449,10 @@ class GetServiceTemplateSpecContainerVolumeMountResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -5416,7 +5476,10 @@ class GetServiceTemplateSpecVolumeResult(dict):
         """
         :param Sequence['GetServiceTemplateSpecVolumeCsiArgs'] csis: A filesystem specified by the Container Storage Interface (CSI).
         :param Sequence['GetServiceTemplateSpecVolumeEmptyDirArgs'] empty_dirs: Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
-        :param _builtins.str name: The name of the Cloud Run Service.
+        :param _builtins.str name: Name must be unique within a Google Cloud project and region.
+               Is required when creating resources. Name is primarily intended
+               for creation idempotence and configuration definition. Cannot be updated.
+               More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         :param Sequence['GetServiceTemplateSpecVolumeNfArgs'] nfs: A filesystem backed by a Network File System share. This filesystem requires the
                run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
         :param Sequence['GetServiceTemplateSpecVolumeSecretArgs'] secrets: The secret's value will be presented as the content of a file whose
@@ -5449,7 +5512,10 @@ class GetServiceTemplateSpecVolumeResult(dict):
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        The name of the Cloud Run Service.
+        Name must be unique within a Google Cloud project and region.
+        Is required when creating resources. Name is primarily intended
+        for creation idempotence and configuration definition. Cannot be updated.
+        More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 

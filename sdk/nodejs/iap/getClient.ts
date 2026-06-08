@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Get info about a Google Cloud IAP Client.
+ * Get information about a Identity-Aware Proxy Client.
  *
  * ## Example Usage
  *
@@ -13,13 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = gcp.organizations.getProject({
- *     projectId: "foobar",
+ * const _default = gcp.iap.getClient({
+ *     brand: projectClient.brand,
+ *     clientId: projectClient.clientId,
  * });
- * const projectClient = project.then(project => gcp.iap.getClient({
- *     brand: `projects/${project.number}/brands/[BRAND_NUMBER]`,
- *     clientId: apps.googleusercontent.com,
- * }));
  * ```
  */
 export function getClient(args: GetClientArgs, opts?: pulumi.InvokeOptions): Promise<GetClientResult> {
@@ -35,11 +32,13 @@ export function getClient(args: GetClientArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetClientArgs {
     /**
-     * The name of the brand.
+     * Identifier of the brand to which this client
+     * is attached to. The format is
+     * `projects/{project_number}/brands/{brand_id}`.
      */
     brand: string;
     /**
-     * The clientId of the brand.
+     * Output only. Unique identifier of the OAuth client.
      */
     clientId: string;
 }
@@ -59,7 +58,7 @@ export interface GetClientResult {
     readonly secret: string;
 }
 /**
- * Get info about a Google Cloud IAP Client.
+ * Get information about a Identity-Aware Proxy Client.
  *
  * ## Example Usage
  *
@@ -67,13 +66,10 @@ export interface GetClientResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = gcp.organizations.getProject({
- *     projectId: "foobar",
+ * const _default = gcp.iap.getClient({
+ *     brand: projectClient.brand,
+ *     clientId: projectClient.clientId,
  * });
- * const projectClient = project.then(project => gcp.iap.getClient({
- *     brand: `projects/${project.number}/brands/[BRAND_NUMBER]`,
- *     clientId: apps.googleusercontent.com,
- * }));
  * ```
  */
 export function getClientOutput(args: GetClientOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientResult> {
@@ -89,11 +85,13 @@ export function getClientOutput(args: GetClientOutputArgs, opts?: pulumi.InvokeO
  */
 export interface GetClientOutputArgs {
     /**
-     * The name of the brand.
+     * Identifier of the brand to which this client
+     * is attached to. The format is
+     * `projects/{project_number}/brands/{brand_id}`.
      */
     brand: pulumi.Input<string>;
     /**
-     * The clientId of the brand.
+     * Output only. Unique identifier of the OAuth client.
      */
     clientId: pulumi.Input<string>;
 }

@@ -16,23 +16,55 @@ public final class GetRegionSSLPolicyArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetRegionSSLPolicyArgs Empty = new GetRegionSSLPolicyArgs();
 
+    /**
+     * The name of the SSL Policy.
+     * 
+     * ***
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the SSL Policy.
+     * 
+     * ***
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The region in which the resource belongs. If it
+     * is not provided, the provider region is used.
+     * 
+     */
     @Import(name="region")
     private @Nullable Output<String> region;
 
+    /**
+     * @return The region in which the resource belongs. If it
+     * is not provided, the provider region is used.
+     * 
+     */
     public Optional<Output<String>> region() {
         return Optional.ofNullable(this.region);
     }
@@ -63,29 +95,73 @@ public final class GetRegionSSLPolicyArgs extends com.pulumi.resources.InvokeArg
             $ = new GetRegionSSLPolicyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the SSL Policy.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the SSL Policy.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
 
+        /**
+         * @param region The region in which the resource belongs. If it
+         * is not provided, the provider region is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable Output<String> region) {
             $.region = region;
             return this;
         }
 
+        /**
+         * @param region The region in which the resource belongs. If it
+         * is not provided, the provider region is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(String region) {
             return region(Output.of(region));
         }

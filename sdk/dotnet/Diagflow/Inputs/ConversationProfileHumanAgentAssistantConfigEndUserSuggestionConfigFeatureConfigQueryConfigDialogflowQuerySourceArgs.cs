@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     public sealed class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigDialogflowQuerySourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// he name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
+        /// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: projects/&lt;Project ID&gt;/locations/&lt;Location ID&gt;/agent.
         /// </summary>
         [Input("agent", required: true)]
         public Input<string> Agent { get; set; } = null!;

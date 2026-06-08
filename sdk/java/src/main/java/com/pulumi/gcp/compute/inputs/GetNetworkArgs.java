@@ -5,7 +5,6 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -22,8 +21,8 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
      * ***
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return The name of the network.
@@ -31,8 +30,8 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
      * ***
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -67,12 +66,28 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The URI of the resource.
+     * 
+     */
+    @Import(name="selfLink")
+    private @Nullable Output<String> selfLink;
+
+    /**
+     * @return The URI of the resource.
+     * 
+     */
+    public Optional<Output<String>> selfLink() {
+        return Optional.ofNullable(this.selfLink);
+    }
+
     private GetNetworkArgs() {}
 
     private GetNetworkArgs(GetNetworkArgs $) {
         this.name = $.name;
         this.networkProfile = $.networkProfile;
         this.project = $.project;
+        this.selfLink = $.selfLink;
     }
 
     public static Builder builder() {
@@ -101,7 +116,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -162,10 +177,28 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
             return project(Output.of(project));
         }
 
+        /**
+         * @param selfLink The URI of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfLink(@Nullable Output<String> selfLink) {
+            $.selfLink = selfLink;
+            return this;
+        }
+
+        /**
+         * @param selfLink The URI of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selfLink(String selfLink) {
+            return selfLink(Output.of(selfLink));
+        }
+
         public GetNetworkArgs build() {
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetNetworkArgs", "name");
-            }
             return $;
         }
     }

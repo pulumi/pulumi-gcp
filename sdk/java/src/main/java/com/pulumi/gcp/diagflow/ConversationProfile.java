@@ -17,6 +17,7 @@ import com.pulumi.gcp.diagflow.outputs.ConversationProfileLoggingConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileNewMessageEventNotificationConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileNewRecognitionResultNotificationConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileNotificationConfig;
+import com.pulumi.gcp.diagflow.outputs.ConversationProfileSipConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileSttConfig;
 import com.pulumi.gcp.diagflow.outputs.ConversationProfileTtsConfig;
 import java.lang.Boolean;
@@ -147,6 +148,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.diagflow.ConversationProfile;
  * import com.pulumi.gcp.diagflow.ConversationProfileArgs;
  * import com.pulumi.gcp.diagflow.inputs.ConversationProfileAutomatedAgentConfigArgs;
+ * import com.pulumi.gcp.diagflow.inputs.ConversationProfileSipConfigArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -171,11 +173,15 @@ import javax.annotation.Nullable;
  * 
  *         var bidiProfile = new ConversationProfile("bidiProfile", ConversationProfileArgs.builder()
  *             .displayName("dialogflow-profile-bidi")
- *             .location("global")
+ *             .location("europe-west1")
  *             .languageCode("en-US")
  *             .useBidiStreaming(true)
  *             .automatedAgentConfig(ConversationProfileAutomatedAgentConfigArgs.builder()
  *                 .agent(cesAppForAgent.id())
+ *                 .build())
+ *             .sipConfig(ConversationProfileSipConfigArgs.builder()
+ *                 .allowVirtualAgentInteraction(true)
+ *                 .createConversationOnTheFly(true)
  *                 .build())
  *             .build());
  * 
@@ -300,14 +306,14 @@ public class ConversationProfile extends com.pulumi.resources.CustomResource {
         return this.languageCode;
     }
     /**
-     * desc
+     * The location of the conversation profile.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return desc
+     * @return The location of the conversation profile.
      * 
      */
     public Output<String> location() {
@@ -330,14 +336,14 @@ public class ConversationProfile extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.loggingConfig);
     }
     /**
-     * name
+     * Identifier. The unique identifier of this conversation profile.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return name
+     * @return Identifier. The unique identifier of this conversation profile.
      * 
      */
     public Output<String> name() {
@@ -424,6 +430,24 @@ public class ConversationProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> securitySettings() {
         return Codegen.optional(this.securitySettings);
+    }
+    /**
+     * (Optional, Beta)
+     * Configuration for SIP.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sipConfig", refs={ConversationProfileSipConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConversationProfileSipConfig> sipConfig;
+
+    /**
+     * @return (Optional, Beta)
+     * Configuration for SIP.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConversationProfileSipConfig>> sipConfig() {
+        return Codegen.optional(this.sipConfig);
     }
     /**
      * Settings for speech transcription.

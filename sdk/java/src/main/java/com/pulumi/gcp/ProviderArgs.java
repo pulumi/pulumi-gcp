@@ -406,6 +406,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.computeCustomEndpoint);
     }
 
+    @Import(name="configCustomEndpoint")
+    private @Nullable Output<String> configCustomEndpoint;
+
+    public Optional<Output<String>> configCustomEndpoint() {
+        return Optional.ofNullable(this.configCustomEndpoint);
+    }
+
     @Import(name="contactCenterInsightsCustomEndpoint")
     private @Nullable Output<String> contactCenterInsightsCustomEndpoint;
 
@@ -1556,6 +1563,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.colabCustomEndpoint = $.colabCustomEndpoint;
         this.composerCustomEndpoint = $.composerCustomEndpoint;
         this.computeCustomEndpoint = $.computeCustomEndpoint;
+        this.configCustomEndpoint = $.configCustomEndpoint;
         this.contactCenterInsightsCustomEndpoint = $.contactCenterInsightsCustomEndpoint;
         this.containerAnalysisCustomEndpoint = $.containerAnalysisCustomEndpoint;
         this.containerAttachedCustomEndpoint = $.containerAttachedCustomEndpoint;
@@ -2225,6 +2233,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder computeCustomEndpoint(String computeCustomEndpoint) {
             return computeCustomEndpoint(Output.of(computeCustomEndpoint));
+        }
+
+        public Builder configCustomEndpoint(@Nullable Output<String> configCustomEndpoint) {
+            $.configCustomEndpoint = configCustomEndpoint;
+            return this;
+        }
+
+        public Builder configCustomEndpoint(String configCustomEndpoint) {
+            return configCustomEndpoint(Output.of(configCustomEndpoint));
         }
 
         public Builder contactCenterInsightsCustomEndpoint(@Nullable Output<String> contactCenterInsightsCustomEndpoint) {

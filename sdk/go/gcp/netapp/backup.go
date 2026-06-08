@@ -51,7 +51,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "network",
+//				Name: pulumi.StringRef("network"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -152,7 +152,6 @@ type Backup struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the backup. Needs to be unique per location.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Optional, Beta)
 	// Details of the ONTAP source volume and snapshot.
 	// Structure is documented below.
 	OntapSource BackupOntapSourcePtrOutput `pulumi:"ontapSource"`
@@ -248,7 +247,6 @@ type backupState struct {
 	Location *string `pulumi:"location"`
 	// The resource name of the backup. Needs to be unique per location.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// Details of the ONTAP source volume and snapshot.
 	// Structure is documented below.
 	OntapSource *BackupOntapSource `pulumi:"ontapSource"`
@@ -304,7 +302,6 @@ type BackupState struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the backup. Needs to be unique per location.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Details of the ONTAP source volume and snapshot.
 	// Structure is documented below.
 	OntapSource BackupOntapSourcePtrInput
@@ -353,7 +350,6 @@ type backupArgs struct {
 	Location string `pulumi:"location"`
 	// The resource name of the backup. Needs to be unique per location.
 	Name *string `pulumi:"name"`
-	// (Optional, Beta)
 	// Details of the ONTAP source volume and snapshot.
 	// Structure is documented below.
 	OntapSource *BackupOntapSource `pulumi:"ontapSource"`
@@ -390,7 +386,6 @@ type BackupArgs struct {
 	Location pulumi.StringInput
 	// The resource name of the backup. Needs to be unique per location.
 	Name pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Details of the ONTAP source volume and snapshot.
 	// Structure is documented below.
 	OntapSource BackupOntapSourcePtrInput
@@ -553,7 +548,6 @@ func (o BackupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Details of the ONTAP source volume and snapshot.
 // Structure is documented below.
 func (o BackupOutput) OntapSource() BackupOntapSourcePtrOutput {

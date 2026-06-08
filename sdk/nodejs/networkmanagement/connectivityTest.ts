@@ -148,6 +148,28 @@ import * as utilities from "../utilities";
  *     roundTrip: true,
  * });
  * ```
+ * ### Network Management Connectivity Test Gke Pod
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pod_test = new gcp.networkmanagement.ConnectivityTest("pod-test", {
+ *     name: "conn-test-pod",
+ *     source: {
+ *         ipAddress: "10.0.0.1",
+ *         projectId: "test-project",
+ *         networkType: "GCP_NETWORK",
+ *     },
+ *     destination: {
+ *         ipAddress: "10.0.0.2",
+ *         projectId: "test-project",
+ *         networkType: "GCP_NETWORK",
+ *         gkePod: "projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name",
+ *     },
+ *     protocol: "TCP",
+ * });
+ * ```
  *
  * ## Import
  *

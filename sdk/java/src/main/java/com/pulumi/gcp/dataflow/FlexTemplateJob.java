@@ -191,8 +191,6 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * The GCS path to the Dataflow job Flex
      * Template.
      * 
-     * ***
-     * 
      */
     @Export(name="containerSpecGcsPath", refs={String.class}, tree="[0]")
     private Output<String> containerSpecGcsPath;
@@ -201,11 +199,27 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      * @return The GCS path to the Dataflow job Flex
      * Template.
      * 
-     * ***
-     * 
      */
     public Output<String> containerSpecGcsPath() {
         return this.containerSpecGcsPath;
+    }
+    /**
+     * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="createIgnoreAlreadyExists", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<Boolean>> createIgnoreAlreadyExists() {
+        return Codegen.optional(this.createIgnoreAlreadyExists);
     }
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to &#34;DELETE&#34;.

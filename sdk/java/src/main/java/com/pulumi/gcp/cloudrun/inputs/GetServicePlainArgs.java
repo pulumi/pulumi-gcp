@@ -18,8 +18,6 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The location of the cloud run instance. eg us-central1
      * 
-     * ***
-     * 
      */
     @Import(name="location", required=true)
     private String location;
@@ -27,22 +25,26 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The location of the cloud run instance. eg us-central1
      * 
-     * ***
-     * 
      */
     public String location() {
         return this.location;
     }
 
     /**
-     * The name of the Cloud Run Service.
+     * Name must be unique within a Google Cloud project and region.
+     * Is required when creating resources. Name is primarily intended
+     * for creation idempotence and configuration definition. Cannot be updated.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The name of the Cloud Run Service.
+     * @return Name must be unique within a Google Cloud project and region.
+     * Is required when creating resources. Name is primarily intended
+     * for creation idempotence and configuration definition. Cannot be updated.
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     public String name() {
@@ -50,16 +52,16 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable String project;
 
     /**
-     * @return The project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<String> project() {
@@ -95,8 +97,6 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param location The location of the cloud run instance. eg us-central1
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -106,7 +106,10 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the Cloud Run Service.
+         * @param name Name must be unique within a Google Cloud project and region.
+         * Is required when creating resources. Name is primarily intended
+         * for creation idempotence and configuration definition. Cannot be updated.
+         * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
          * 
          * @return builder
          * 
@@ -117,8 +120,8 @@ public final class GetServicePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project The project in which the resource belongs. If it
-         * is not provided, the provider project is used.
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 

@@ -109,6 +109,11 @@ public final class NodePoolNodeConfig {
      */
     private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
     /**
+     * @return The type of GPUDirect strategy to enable on the node.
+     * 
+     */
+    private @Nullable String gpudirectStrategy;
+    /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * 
      */
@@ -369,6 +374,13 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.gcfsConfig);
     }
     /**
+     * @return The type of GPUDirect strategy to enable on the node.
+     * 
+     */
+    public Optional<String> gpudirectStrategy() {
+        return Optional.ofNullable(this.gpudirectStrategy);
+    }
+    /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * 
      */
@@ -616,6 +628,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigFastSocket fastSocket;
         private @Nullable Boolean flexStart;
         private @Nullable NodePoolNodeConfigGcfsConfig gcfsConfig;
+        private @Nullable String gpudirectStrategy;
         private @Nullable List<NodePoolNodeConfigGuestAccelerator> guestAccelerators;
         private @Nullable NodePoolNodeConfigGvnic gvnic;
         private @Nullable NodePoolNodeConfigHostMaintenancePolicy hostMaintenancePolicy;
@@ -665,6 +678,7 @@ public final class NodePoolNodeConfig {
     	      this.fastSocket = defaults.fastSocket;
     	      this.flexStart = defaults.flexStart;
     	      this.gcfsConfig = defaults.gcfsConfig;
+    	      this.gpudirectStrategy = defaults.gpudirectStrategy;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnic = defaults.gvnic;
     	      this.hostMaintenancePolicy = defaults.hostMaintenancePolicy;
@@ -784,6 +798,12 @@ public final class NodePoolNodeConfig {
         public Builder gcfsConfig(@Nullable NodePoolNodeConfigGcfsConfig gcfsConfig) {
 
             this.gcfsConfig = gcfsConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpudirectStrategy(@Nullable String gpudirectStrategy) {
+
+            this.gpudirectStrategy = gpudirectStrategy;
             return this;
         }
         @CustomType.Setter
@@ -1012,6 +1032,7 @@ public final class NodePoolNodeConfig {
             _resultValue.fastSocket = fastSocket;
             _resultValue.flexStart = flexStart;
             _resultValue.gcfsConfig = gcfsConfig;
+            _resultValue.gpudirectStrategy = gpudirectStrategy;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.gvnic = gvnic;
             _resultValue.hostMaintenancePolicy = hostMaintenancePolicy;

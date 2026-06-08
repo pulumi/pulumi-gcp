@@ -489,7 +489,7 @@ class PrivateConnection(pulumi.CustomResource):
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
             display_name="dbms_pc",
-            location="us-central1",
+            location="us-west1",
             private_connection_id="my-connection",
             labels={
                 "key": "value",
@@ -511,7 +511,7 @@ class PrivateConnection(pulumi.CustomResource):
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
             display_name="dbms_pc",
-            location="us-central1",
+            location="us-west1",
             private_connection_id="my-connection",
             labels={
                 "key": "value",
@@ -522,7 +522,7 @@ class PrivateConnection(pulumi.CustomResource):
             create_without_validation=False)
         default_network_attachment = gcp.compute.NetworkAttachment("default",
             name="my-attachment",
-            region="us-central1",
+            region="us-west1",
             connection_preference="ACCEPT_AUTOMATIC",
             subnetworks=[google_compute_subnetwork["default"]["id"]])
         default_network = gcp.compute.Network("default",
@@ -531,7 +531,7 @@ class PrivateConnection(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="my-subnetwork",
             ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
+            region="us-west1",
             network=default_network.id)
         ```
 
@@ -601,7 +601,7 @@ class PrivateConnection(pulumi.CustomResource):
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
             display_name="dbms_pc",
-            location="us-central1",
+            location="us-west1",
             private_connection_id="my-connection",
             labels={
                 "key": "value",
@@ -623,7 +623,7 @@ class PrivateConnection(pulumi.CustomResource):
 
         default = gcp.databasemigrationservice.PrivateConnection("default",
             display_name="dbms_pc",
-            location="us-central1",
+            location="us-west1",
             private_connection_id="my-connection",
             labels={
                 "key": "value",
@@ -634,7 +634,7 @@ class PrivateConnection(pulumi.CustomResource):
             create_without_validation=False)
         default_network_attachment = gcp.compute.NetworkAttachment("default",
             name="my-attachment",
-            region="us-central1",
+            region="us-west1",
             connection_preference="ACCEPT_AUTOMATIC",
             subnetworks=[google_compute_subnetwork["default"]["id"]])
         default_network = gcp.compute.Network("default",
@@ -643,7 +643,7 @@ class PrivateConnection(pulumi.CustomResource):
         default_subnetwork = gcp.compute.Subnetwork("default",
             name="my-subnetwork",
             ip_cidr_range="10.0.0.0/16",
-            region="us-central1",
+            region="us-west1",
             network=default_network.id)
         ```
 

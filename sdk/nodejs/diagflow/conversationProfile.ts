@@ -74,11 +74,15 @@ import * as utilities from "../utilities";
  * });
  * const bidiProfile = new gcp.diagflow.ConversationProfile("bidi_profile", {
  *     displayName: "dialogflow-profile-bidi",
- *     location: "global",
+ *     location: "europe-west1",
  *     languageCode: "en-US",
  *     useBidiStreaming: true,
  *     automatedAgentConfig: {
  *         agent: cesAppForAgent.id,
+ *     },
+ *     sipConfig: {
+ *         allowVirtualAgentInteraction: true,
+ *         createConversationOnTheFly: true,
  *     },
  * });
  * ```
@@ -156,7 +160,7 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     declare public readonly languageCode: pulumi.Output<string>;
     /**
-     * desc
+     * The location of the conversation profile.
      */
     declare public readonly location: pulumi.Output<string>;
     /**
@@ -165,7 +169,7 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     declare public readonly loggingConfig: pulumi.Output<outputs.diagflow.ConversationProfileLoggingConfig | undefined>;
     /**
-     * name
+     * Identifier. The unique identifier of this conversation profile.
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -194,6 +198,12 @@ export class ConversationProfile extends pulumi.CustomResource {
      * Name of the CX SecuritySettings reference for the agent.
      */
     declare public readonly securitySettings: pulumi.Output<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Configuration for SIP.
+     * Structure is documented below.
+     */
+    declare public readonly sipConfig: pulumi.Output<outputs.diagflow.ConversationProfileSipConfig | undefined>;
     /**
      * Settings for speech transcription.
      * Structure is documented below.
@@ -241,6 +251,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = state?.notificationConfig;
             resourceInputs["project"] = state?.project;
             resourceInputs["securitySettings"] = state?.securitySettings;
+            resourceInputs["sipConfig"] = state?.sipConfig;
             resourceInputs["sttConfig"] = state?.sttConfig;
             resourceInputs["timeZone"] = state?.timeZone;
             resourceInputs["ttsConfig"] = state?.ttsConfig;
@@ -266,6 +277,7 @@ export class ConversationProfile extends pulumi.CustomResource {
             resourceInputs["notificationConfig"] = args?.notificationConfig;
             resourceInputs["project"] = args?.project;
             resourceInputs["securitySettings"] = args?.securitySettings;
+            resourceInputs["sipConfig"] = args?.sipConfig;
             resourceInputs["sttConfig"] = args?.sttConfig;
             resourceInputs["timeZone"] = args?.timeZone;
             resourceInputs["ttsConfig"] = args?.ttsConfig;
@@ -314,7 +326,7 @@ export interface ConversationProfileState {
      */
     languageCode?: pulumi.Input<string | undefined>;
     /**
-     * desc
+     * The location of the conversation profile.
      */
     location?: pulumi.Input<string | undefined>;
     /**
@@ -323,7 +335,7 @@ export interface ConversationProfileState {
      */
     loggingConfig?: pulumi.Input<inputs.diagflow.ConversationProfileLoggingConfig | undefined>;
     /**
-     * name
+     * Identifier. The unique identifier of this conversation profile.
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -352,6 +364,12 @@ export interface ConversationProfileState {
      * Name of the CX SecuritySettings reference for the agent.
      */
     securitySettings?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Configuration for SIP.
+     * Structure is documented below.
+     */
+    sipConfig?: pulumi.Input<inputs.diagflow.ConversationProfileSipConfig | undefined>;
     /**
      * Settings for speech transcription.
      * Structure is documented below.
@@ -410,7 +428,7 @@ export interface ConversationProfileArgs {
      */
     languageCode?: pulumi.Input<string | undefined>;
     /**
-     * desc
+     * The location of the conversation profile.
      */
     location: pulumi.Input<string>;
     /**
@@ -444,6 +462,12 @@ export interface ConversationProfileArgs {
      * Name of the CX SecuritySettings reference for the agent.
      */
     securitySettings?: pulumi.Input<string | undefined>;
+    /**
+     * (Optional, Beta)
+     * Configuration for SIP.
+     * Structure is documented below.
+     */
+    sipConfig?: pulumi.Input<inputs.diagflow.ConversationProfileSipConfig | undefined>;
     /**
      * Settings for speech transcription.
      * Structure is documented below.

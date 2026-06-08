@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FieldTtlConfig {
     /**
+     * @return The offset, relative to the timestamp value from the field, used to determine the document&#39;s expiration time. Formatted as the number of seconds followed by &#39;s&#39;. For example, &#34;60s&#34; represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+     * 
+     */
+    private @Nullable String expirationOffset;
+    /**
      * @return (Output)
      * The state of TTL (time-to-live) configuration for documents that have this Field set.
      * 
@@ -19,6 +24,13 @@ public final class FieldTtlConfig {
     private @Nullable String state;
 
     private FieldTtlConfig() {}
+    /**
+     * @return The offset, relative to the timestamp value from the field, used to determine the document&#39;s expiration time. Formatted as the number of seconds followed by &#39;s&#39;. For example, &#34;60s&#34; represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+     * 
+     */
+    public Optional<String> expirationOffset() {
+        return Optional.ofNullable(this.expirationOffset);
+    }
     /**
      * @return (Output)
      * The state of TTL (time-to-live) configuration for documents that have this Field set.
@@ -37,13 +49,21 @@ public final class FieldTtlConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String expirationOffset;
         private @Nullable String state;
         public Builder() {}
         public Builder(FieldTtlConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.expirationOffset = defaults.expirationOffset;
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
+        public Builder expirationOffset(@Nullable String expirationOffset) {
+
+            this.expirationOffset = expirationOffset;
+            return this;
+        }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
 
@@ -52,6 +72,7 @@ public final class FieldTtlConfig {
         }
         public FieldTtlConfig build() {
             final var _resultValue = new FieldTtlConfig();
+            _resultValue.expirationOffset = expirationOffset;
             _resultValue.state = state;
             return _resultValue;
         }

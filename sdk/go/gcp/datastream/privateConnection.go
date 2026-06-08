@@ -129,7 +129,7 @@ import (
 //			}
 //			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "default", &compute.SubnetworkArgs{
 //				Name:        pulumi.String("my-subnetwork"),
-//				Region:      pulumi.String("us-central1"),
+//				Region:      pulumi.String("us-west1"),
 //				Network:     defaultNetwork.ID(),
 //				IpCidrRange: pulumi.String("10.0.0.0/16"),
 //			})
@@ -138,7 +138,7 @@ import (
 //			}
 //			defaultNetworkAttachment, err := compute.NewNetworkAttachment(ctx, "default", &compute.NetworkAttachmentArgs{
 //				Name:                 pulumi.String("my-network-attachment"),
-//				Region:               pulumi.String("us-central1"),
+//				Region:               pulumi.String("us-west1"),
 //				Description:          pulumi.String("basic network attachment description"),
 //				ConnectionPreference: pulumi.String("ACCEPT_AUTOMATIC"),
 //				Subnetworks: pulumi.StringArray{
@@ -150,7 +150,7 @@ import (
 //			}
 //			_, err = datastream.NewPrivateConnection(ctx, "default", &datastream.PrivateConnectionArgs{
 //				DisplayName:         pulumi.String("Connection profile"),
-//				Location:            pulumi.String("us-central1"),
+//				Location:            pulumi.String("us-west1"),
 //				PrivateConnectionId: pulumi.String("my-connection"),
 //				Labels: pulumi.StringMap{
 //					"key": pulumi.String("value"),

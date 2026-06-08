@@ -436,6 +436,20 @@ namespace Pulumi.Gcp.DataFusion
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// The maintenance events for this instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenanceEvents")]
+        public Output<ImmutableArray<Outputs.InstanceMaintenanceEvent>> MaintenanceEvents { get; private set; } = null!;
+
+        /// <summary>
+        /// Configure the maintenance policy for this instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.InstanceMaintenancePolicy?> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
         /// </summary>
         [Output("name")]
@@ -508,13 +522,8 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> ServiceEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of this Data Fusion instance.
-        /// - CREATING: Instance is being created
-        /// - RUNNING: Instance is running and ready for requests
-        /// - FAILED: Instance creation failed
-        /// - DELETING: Instance is being deleted
-        /// - UPGRADING: Instance is being upgraded
-        /// - RESTARTING: Instance is being restarted
+        /// (Output)
+        /// The state of the maintenance event.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -716,6 +725,13 @@ namespace Pulumi.Gcp.DataFusion
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Configure the maintenance policy for this instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
@@ -946,6 +962,26 @@ namespace Pulumi.Gcp.DataFusion
             set => _labels = value;
         }
 
+        [Input("maintenanceEvents")]
+        private InputList<Inputs.InstanceMaintenanceEventGetArgs>? _maintenanceEvents;
+
+        /// <summary>
+        /// The maintenance events for this instance.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceMaintenanceEventGetArgs> MaintenanceEvents
+        {
+            get => _maintenanceEvents ?? (_maintenanceEvents = new InputList<Inputs.InstanceMaintenanceEventGetArgs>());
+            set => _maintenanceEvents = value;
+        }
+
+        /// <summary>
+        /// Configure the maintenance policy for this instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.InstanceMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }
+
         /// <summary>
         /// The ID of the instance or a fully qualified identifier for the instance.
         /// </summary>
@@ -1035,13 +1071,8 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? ServiceEndpoint { get; set; }
 
         /// <summary>
-        /// The current state of this Data Fusion instance.
-        /// - CREATING: Instance is being created
-        /// - RUNNING: Instance is running and ready for requests
-        /// - FAILED: Instance creation failed
-        /// - DELETING: Instance is being deleted
-        /// - UPGRADING: Instance is being upgraded
-        /// - RESTARTING: Instance is being restarted
+        /// (Output)
+        /// The state of the maintenance event.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

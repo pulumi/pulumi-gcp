@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
     {
         /// <summary>
         /// Audio encoding of the audio content to process.
-        /// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+        /// Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
         /// </summary>
         public readonly string? AudioEncoding;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly string? SpeechModelVariant;
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         public readonly bool? UseTimeoutBasedEndpointing;
 

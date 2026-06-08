@@ -320,6 +320,14 @@ namespace Pulumi.Gcp.OracleDatabase
         public Output<string> GcpOracleZone { get; private set; } = null!;
 
         /// <summary>
+        /// The identity connector details which will allow OCI to securely access
+        /// the resources in the customer project.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("identityConnectors")]
+        public Output<ImmutableArray<Outputs.CloudVmClusterIdentityConnector>> IdentityConnectors { get; private set; } = null!;
+
+        /// <summary>
         /// Labels or tags associated with the VM Cluster.
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `EffectiveLabels` for all of the labels present on the resource.
@@ -652,6 +660,20 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("gcpOracleZone")]
         public Input<string>? GcpOracleZone { get; set; }
+
+        [Input("identityConnectors")]
+        private InputList<Inputs.CloudVmClusterIdentityConnectorGetArgs>? _identityConnectors;
+
+        /// <summary>
+        /// The identity connector details which will allow OCI to securely access
+        /// the resources in the customer project.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CloudVmClusterIdentityConnectorGetArgs> IdentityConnectors
+        {
+            get => _identityConnectors ?? (_identityConnectors = new InputList<Inputs.CloudVmClusterIdentityConnectorGetArgs>());
+            set => _identityConnectors = value;
+        }
 
         [Input("labels")]
         private InputMap<string>? _labels;

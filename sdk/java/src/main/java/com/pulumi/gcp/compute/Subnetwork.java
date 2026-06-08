@@ -531,6 +531,96 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Subnetwork With Secondary Ipv6 Range
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
+ * import com.pulumi.gcp.compute.PublicDelegatedPrefix;
+ * import com.pulumi.gcp.compute.PublicDelegatedPrefixArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var custom_test = new Network("custom-test", NetworkArgs.builder()
+ *             .name("network-with-secondary-ranges")
+ *             .autoCreateSubnetworks(false)
+ *             .enableUlaInternalIpv6(true)
+ *             .build());
+ * 
+ *         var ipv6Pap = new PublicAdvertisedPrefix("ipv6Pap", PublicAdvertisedPrefixArgs.builder()
+ *             .name("pap-for-secondary-ranges")
+ *             .ipCidrRange("2001:db8::/40")
+ *             .pdpScope("REGIONAL")
+ *             .ipv6AccessType("INTERNAL")
+ *             .description("GOOGLE_INTERNAL_TEST_PREFIX")
+ *             .build());
+ * 
+ *         var ipv6Pdp = new PublicDelegatedPrefix("ipv6Pdp", PublicDelegatedPrefixArgs.builder()
+ *             .name("pdp-for-secondary-ranges")
+ *             .region("us-central1")
+ *             .description("PDP in internal subnet mode")
+ *             .ipCidrRange("2001:db8::/48")
+ *             .parentPrefix(ipv6Pap.id())
+ *             .mode("DELEGATION")
+ *             .build());
+ * 
+ *         var ipv6SubPdp = new PublicDelegatedPrefix("ipv6SubPdp", PublicDelegatedPrefixArgs.builder()
+ *             .name("sub-pdp-for-secondary-ranges")
+ *             .region("us-central1")
+ *             .ipCidrRange("2001:db8::/56")
+ *             .parentPrefix(ipv6Pdp.id())
+ *             .mode("INTERNAL_IPV6_SUBNETWORK_CREATION")
+ *             .build());
+ * 
+ *         var subnetworkWithSecondaryIpv6Range = new Subnetwork("subnetworkWithSecondaryIpv6Range", SubnetworkArgs.builder()
+ *             .name("subnet-with-secondary-ranges")
+ *             .region("us-central1")
+ *             .network(custom_test.id())
+ *             .stackType("IPV6_ONLY")
+ *             .ipv6AccessType("INTERNAL")
+ *             .secondaryIpRanges(            
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName("v6-ula")
+ *                     .ipVersion("IPV6")
+ *                     .build(),
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName("v6-byogua-auto")
+ *                     .ipVersion("IPV6")
+ *                     .ipCollection(ipv6SubPdp.selfLink())
+ *                     .build(),
+ *                 SubnetworkSecondaryIpRangeArgs.builder()
+ *                     .rangeName("v6-byogua-manual")
+ *                     .ipVersion("IPV6")
+ *                     .ipCollection(ipv6SubPdp.selfLink())
+ *                     .ipCidrRange("2001:db8:0:2::/64")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

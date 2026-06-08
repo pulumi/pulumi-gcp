@@ -9468,7 +9468,10 @@ type GetServiceTemplateMetadata struct {
 	// Map of string keys and values that can be used to organize and categorize
 	// (scope and select) objects.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number. It will default to the resource's project.
@@ -9550,7 +9553,10 @@ type GetServiceTemplateMetadataArgs struct {
 	// Map of string keys and values that can be used to organize and categorize
 	// (scope and select) objects.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// In Cloud Run the namespace must be equal to either the
 	// project ID or project number. It will default to the resource's project.
@@ -9680,7 +9686,10 @@ func (o GetServiceTemplateMetadataOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetServiceTemplateMetadata) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateMetadataOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateMetadata) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9932,7 +9941,10 @@ type GetServiceTemplateSpecContainer struct {
 	Image string `pulumi:"image"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbes []GetServiceTemplateSpecContainerLivenessProbe `pulumi:"livenessProbes"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// List of open ports in the container.
 	Ports []GetServiceTemplateSpecContainerPort `pulumi:"ports"`
@@ -9984,7 +9996,10 @@ type GetServiceTemplateSpecContainerArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails.
 	LivenessProbes GetServiceTemplateSpecContainerLivenessProbeArrayInput `pulumi:"livenessProbes"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// List of open ports in the container.
 	Ports GetServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
@@ -10095,7 +10110,10 @@ func (o GetServiceTemplateSpecContainerOutput) LivenessProbes() GetServiceTempla
 	}).(GetServiceTemplateSpecContainerLivenessProbeArrayOutput)
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainer) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10162,7 +10180,10 @@ func (o GetServiceTemplateSpecContainerArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetServiceTemplateSpecContainerEnv struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// Defaults to "".
 	Value string `pulumi:"value"`
@@ -10182,7 +10203,10 @@ type GetServiceTemplateSpecContainerEnvInput interface {
 }
 
 type GetServiceTemplateSpecContainerEnvArgs struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defaults to "".
 	Value pulumi.StringInput `pulumi:"value"`
@@ -10241,7 +10265,10 @@ func (o GetServiceTemplateSpecContainerEnvOutput) ToGetServiceTemplateSpecContai
 	return o
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerEnvOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerEnv) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10506,7 +10533,10 @@ func (o GetServiceTemplateSpecContainerEnvFromConfigMapRefArrayOutput) Index(i p
 }
 
 type GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 }
 
@@ -10522,7 +10552,10 @@ type GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceInput
 }
 
 type GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceArgs struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -10577,7 +10610,10 @@ func (o GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOu
 	return o
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReferenceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10711,7 +10747,10 @@ func (o GetServiceTemplateSpecContainerEnvFromSecretRefArrayOutput) Index(i pulu
 }
 
 type GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 }
 
@@ -10727,7 +10766,10 @@ type GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceInput in
 }
 
 type GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceArgs struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -10782,7 +10824,10 @@ func (o GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutpu
 	return o
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReferenceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10910,7 +10955,10 @@ type GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef struct {
 	// A Cloud Secret Manager secret version. Must be 'latest' for the latest
 	// version or an integer for a specific version.
 	Key string `pulumi:"key"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 }
 
@@ -10929,7 +10977,10 @@ type GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs struct {
 	// A Cloud Secret Manager secret version. Must be 'latest' for the latest
 	// version or an integer for a specific version.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -10990,7 +11041,10 @@ func (o GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Key() pul
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerEnvValueFromSecretKeyRefOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerEnvValueFromSecretKeyRef) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11415,7 +11469,10 @@ func (o GetServiceTemplateSpecContainerLivenessProbeHttpGetArrayOutput) Index(i 
 }
 
 type GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// The header field value.
 	Value string `pulumi:"value"`
@@ -11433,7 +11490,10 @@ type GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderInput interfac
 }
 
 type GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArgs struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -11490,7 +11550,10 @@ func (o GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) ToG
 	return o
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11523,7 +11586,10 @@ func (o GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeaderArrayOutput
 type GetServiceTemplateSpecContainerPort struct {
 	// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
 	ContainerPort int `pulumi:"containerPort"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol string `pulumi:"protocol"`
@@ -11543,7 +11609,10 @@ type GetServiceTemplateSpecContainerPortInput interface {
 type GetServiceTemplateSpecContainerPortArgs struct {
 	// Port number the container listens on. This must be a valid port number (between 1 and 65535). Defaults to "8080".
 	ContainerPort pulumi.IntInput `pulumi:"containerPort"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// Protocol for port. Must be "TCP". Defaults to "TCP".
 	Protocol pulumi.StringInput `pulumi:"protocol"`
@@ -11605,7 +11674,10 @@ func (o GetServiceTemplateSpecContainerPortOutput) ContainerPort() pulumi.IntOut
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerPort) int { return v.ContainerPort }).(pulumi.IntOutput)
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerPortOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerPort) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -12564,7 +12636,10 @@ func (o GetServiceTemplateSpecContainerStartupProbeHttpGetArrayOutput) Index(i p
 }
 
 type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// The header field value.
 	Value string `pulumi:"value"`
@@ -12582,7 +12657,10 @@ type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderInput interface
 }
 
 type GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderArgs struct {
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// The header field value.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -12639,7 +12717,10 @@ func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) ToGe
 	return o
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeaderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -12773,7 +12854,10 @@ type GetServiceTemplateSpecContainerVolumeMount struct {
 	// Path within the container at which the volume should be mounted.  Must
 	// not contain ':'.
 	MountPath string `pulumi:"mountPath"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// Path within the volume from which the container's volume should be mounted.
 	SubPath string `pulumi:"subPath"`
@@ -12794,7 +12878,10 @@ type GetServiceTemplateSpecContainerVolumeMountArgs struct {
 	// Path within the container at which the volume should be mounted.  Must
 	// not contain ':'.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// Path within the volume from which the container's volume should be mounted.
 	SubPath pulumi.StringInput `pulumi:"subPath"`
@@ -12857,7 +12944,10 @@ func (o GetServiceTemplateSpecContainerVolumeMountOutput) MountPath() pulumi.Str
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -12892,7 +12982,10 @@ type GetServiceTemplateSpecVolume struct {
 	Csis []GetServiceTemplateSpecVolumeCsi `pulumi:"csis"`
 	// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 	EmptyDirs []GetServiceTemplateSpecVolumeEmptyDir `pulumi:"emptyDirs"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
 	// A filesystem backed by a Network File System share. This filesystem requires the
 	// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
@@ -12919,7 +13012,10 @@ type GetServiceTemplateSpecVolumeArgs struct {
 	Csis GetServiceTemplateSpecVolumeCsiArrayInput `pulumi:"csis"`
 	// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
 	EmptyDirs GetServiceTemplateSpecVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// A filesystem backed by a Network File System share. This filesystem requires the
 	// run.googleapis.com/execution-environment annotation to be unset or set to "gen2"
@@ -12991,7 +13087,10 @@ func (o GetServiceTemplateSpecVolumeOutput) EmptyDirs() GetServiceTemplateSpecVo
 	return o.ApplyT(func(v GetServiceTemplateSpecVolume) []GetServiceTemplateSpecVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateSpecVolumeEmptyDirArrayOutput)
 }
 
-// The name of the Cloud Run Service.
+// Name must be unique within a Google Cloud project and region.
+// Is required when creating resources. Name is primarily intended
+// for creation idempotence and configuration definition. Cannot be updated.
+// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 func (o GetServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolume) string { return v.Name }).(pulumi.StringOutput)
 }

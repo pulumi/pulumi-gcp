@@ -107,10 +107,7 @@ class AwaitableGetControlOrganizationIntelligenceConfigResult(GetControlOrganiza
 def get_control_organization_intelligence_config(name: Optional[_builtins.str] = None,
                                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetControlOrganizationIntelligenceConfigResult:
     """
-    Use this data source to get information about a Organization Storage Intelligence config resource.
-    See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-    and
-    [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+    Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
 
     ## Example Usage
 
@@ -118,11 +115,11 @@ def get_control_organization_intelligence_config(name: Optional[_builtins.str] =
     import pulumi
     import pulumi_gcp as gcp
 
-    sample_config = gcp.storage.get_control_organization_intelligence_config(name="123456789")
+    default = gcp.storage.get_control_organization_intelligence_config(name=example["name"])
     ```
 
 
-    :param _builtins.str name: The id of GCP organization.
+    :param _builtins.str name: Identifier of the GCP Organization. For GCP org, this field should be organization number.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -140,10 +137,7 @@ def get_control_organization_intelligence_config(name: Optional[_builtins.str] =
 def get_control_organization_intelligence_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetControlOrganizationIntelligenceConfigResult]:
     """
-    Use this data source to get information about a Organization Storage Intelligence config resource.
-    See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-    and
-    [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+    Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
 
     ## Example Usage
 
@@ -151,11 +145,11 @@ def get_control_organization_intelligence_config_output(name: pulumi.Input[Optio
     import pulumi
     import pulumi_gcp as gcp
 
-    sample_config = gcp.storage.get_control_organization_intelligence_config(name="123456789")
+    default = gcp.storage.get_control_organization_intelligence_config(name=example["name"])
     ```
 
 
-    :param _builtins.str name: The id of GCP organization.
+    :param _builtins.str name: Identifier of the GCP Organization. For GCP org, this field should be organization number.
     """
     __args__ = dict()
     __args__['name'] = name

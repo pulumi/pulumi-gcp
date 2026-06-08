@@ -54,7 +54,7 @@ public final class GetNetworkResult {
      */
     @Deprecated /* `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead. */
     private String numericId;
-    private @Nullable String project;
+    private String project;
     /**
      * @return The URI of the resource.
      * 
@@ -123,8 +123,8 @@ public final class GetNetworkResult {
     public String numericId() {
         return this.numericId;
     }
-    public Optional<String> project() {
-        return Optional.ofNullable(this.project);
+    public String project() {
+        return this.project;
     }
     /**
      * @return The URI of the resource.
@@ -158,7 +158,7 @@ public final class GetNetworkResult {
         private Integer networkId;
         private @Nullable String networkProfile;
         private String numericId;
-        private @Nullable String project;
+        private String project;
         private String selfLink;
         private List<String> subnetworksSelfLinks;
         public Builder() {}
@@ -240,8 +240,10 @@ public final class GetNetworkResult {
             return this;
         }
         @CustomType.Setter
-        public Builder project(@Nullable String project) {
-
+        public Builder project(String project) {
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "project");
+            }
             this.project = project;
             return this;
         }

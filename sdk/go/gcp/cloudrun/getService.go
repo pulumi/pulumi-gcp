@@ -11,9 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get information about a Google Cloud Run Service. For more information see
-// the [official documentation](https://cloud.google.com/run/docs/)
-// and [API](https://cloud.google.com/run/docs/apis).
+// Get information about a Cloud Run Service.
+//
+// For more information see the [official documentation](https://cloud.google.com/run/docs/) and
+// the [API](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services).
 //
 // ## Example Usage
 //
@@ -30,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrun.LookupService(ctx, &cloudrun.LookupServiceArgs{
-//				Name:     "my-service",
-//				Location: "us-central1",
+//				Location: defaultGoogleCloudRunService.Location,
+//				Name:     defaultGoogleCloudRunService.Name,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,13 +55,14 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
 	// The location of the cloud run instance. eg us-central1
-	//
-	// ***
 	Location string `pulumi:"location"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name string `pulumi:"name"`
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -91,13 +93,14 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
 	// The location of the cloud run instance. eg us-central1
-	//
-	// ***
 	Location pulumi.StringInput `pulumi:"location"`
-	// The name of the Cloud Run Service.
+	// Name must be unique within a Google Cloud project and region.
+	// Is required when creating resources. Name is primarily intended
+	// for creation idempotence and configuration definition. Cannot be updated.
+	// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
 	Name pulumi.StringInput `pulumi:"name"`
-	// The project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 

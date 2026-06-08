@@ -366,6 +366,144 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Firewall Policy Rule Target Type Internal Managed Lb
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyAssociation;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyAssociationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net = new Network("net", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var backend = new Subnetwork("backend", SubnetworkArgs.builder()
+ *             .name("backend-subnet")
+ *             .region("us-central1")
+ *             .network(net.id())
+ *             .ipCidrRange("10.10.0.0/24")
+ *             .build());
+ * 
+ *         var proxy = new Subnetwork("proxy", SubnetworkArgs.builder()
+ *             .name("proxy-subnet")
+ *             .region("us-central1")
+ *             .network(net.id())
+ *             .ipCidrRange("10.20.0.0/24")
+ *             .purpose("REGIONAL_MANAGED_PROXY")
+ *             .role("ACTIVE")
+ *             .build());
+ * 
+ *         var default_ = new RegionHealthCheck("default", RegionHealthCheckArgs.builder()
+ *             .name("health-check")
+ *             .region("us-central1")
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultRegionBackendService = new RegionBackendService("defaultRegionBackendService", RegionBackendServiceArgs.builder()
+ *             .name("backend-service")
+ *             .region("us-central1")
+ *             .protocol("HTTP")
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var defaultRegionUrlMap = new RegionUrlMap("defaultRegionUrlMap", RegionUrlMapArgs.builder()
+ *             .name("url-map")
+ *             .region("us-central1")
+ *             .defaultService(defaultRegionBackendService.id())
+ *             .build());
+ * 
+ *         var defaultRegionTargetHttpProxy = new RegionTargetHttpProxy("defaultRegionTargetHttpProxy", RegionTargetHttpProxyArgs.builder()
+ *             .name("target-http-proxy")
+ *             .region("us-central1")
+ *             .urlMap(defaultRegionUrlMap.id())
+ *             .build());
+ * 
+ *         var ilb = new ForwardingRule("ilb", ForwardingRuleArgs.builder()
+ *             .name("forwarding-rule")
+ *             .region("us-central1")
+ *             .network(net.id())
+ *             .subnetwork(backend.id())
+ *             .loadBalancingScheme("INTERNAL_MANAGED")
+ *             .target(defaultRegionTargetHttpProxy.id())
+ *             .ipProtocol("TCP")
+ *             .portRange("80")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(proxy)
+ *                 .build());
+ * 
+ *         var fwPolicy = new NetworkFirewallPolicy("fwPolicy", NetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()
+ *             .firewallPolicy(fwPolicy.name())
+ *             .priority(1000)
+ *             .action("allow")
+ *             .direction("INGRESS")
+ *             .targetType("INTERNAL_MANAGED_LB")
+ *             .targetForwardingRules(ilb.id())
+ *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("10.0.0.0/8")
+ *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("tcp")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var globalAssoc = new NetworkFirewallPolicyAssociation("globalAssoc", NetworkFirewallPolicyAssociationArgs.builder()
+ *             .name("global-policy-assoc-_72490")
+ *             .firewallPolicy(fwPolicy.id())
+ *             .attachmentTarget(net.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 
@@ -631,6 +769,32 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
         return Codegen.optional(this.securityProfileGroup);
     }
     /**
+     * A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    @Export(name="targetForwardingRules", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> targetForwardingRules;
+
+    /**
+     * @return A list of forwarding rules to which this rule applies.
+     * This field allows you to control which load balancers get this rule.
+     * For example, the following are valid values:
+     * - https://www.googleapis.com/compute/v1/projects/project/global/forwardingRules/forwardingRule
+     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule
+     * - projects/project/global/forwardingRules/forwardingRule
+     * - projects/project/regions/region/forwardingRules/forwardingRule
+     * 
+     */
+    public Output<Optional<List<String>>> targetForwardingRules() {
+        return Codegen.optional(this.targetForwardingRules);
+    }
+    /**
      * A list of secure tags that controls which instances the firewall rule applies to.
      * If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the targetSecureTag are in INEFFECTIVE state, then this rule will be ignored.
      * targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
@@ -663,6 +827,26 @@ public class NetworkFirewallPolicyRule extends com.pulumi.resources.CustomResour
      */
     public Output<Optional<List<String>>> targetServiceAccounts() {
         return Codegen.optional(this.targetServiceAccounts);
+    }
+    /**
+     * Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    @Export(name="targetType", refs={String.class}, tree="[0]")
+    private Output<String> targetType;
+
+    /**
+     * @return Target types of the firewall policy rule.
+     * Default value is INSTANCES.
+     * When targetType is INTERNAL_MANAGED_LB, targetForwardingRules must be set
+     * Possible values are: `INSTANCES`, `INTERNAL_MANAGED_LB`.
+     * 
+     */
+    public Output<String> targetType() {
+        return this.targetType;
     }
     /**
      * Boolean flag indicating if the traffic should be TLS decrypted.

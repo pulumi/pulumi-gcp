@@ -294,7 +294,6 @@ public class Backup extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * (Optional, Beta)
      * Details of the ONTAP source volume and snapshot.
      * Structure is documented below.
      * 
@@ -303,8 +302,7 @@ public class Backup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ BackupOntapSource> ontapSource;
 
     /**
-     * @return (Optional, Beta)
-     * Details of the ONTAP source volume and snapshot.
+     * @return Details of the ONTAP source volume and snapshot.
      * Structure is documented below.
      * 
      */

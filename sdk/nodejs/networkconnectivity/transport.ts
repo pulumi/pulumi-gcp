@@ -7,14 +7,11 @@ import * as utilities from "../utilities";
 /**
  * The Transport resource is a top-level resource used by customers to control Partner Cross-Cloud Interconnect (CCI) connections.
  *
- * > **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
- * See Provider Versions for more details on beta resources.
- *
  * To get more information about Transport, see:
  *
- * * [API documentation](https://cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1beta/projects.locations.transport)
+ * * [API documentation](https://docs.cloud.google.com/network-connectivity/docs/reference/networkconnectivity/rest/v1/projects.locations.transports)
  * * How-to Guides
- *     * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/beta/network-connectivity/transports)
+ *     * [Official Documentation](https://docs.cloud.google.com/sdk/gcloud/reference/network-connectivity/transports)
  *
  * ## Example Usage
  *
@@ -26,14 +23,14 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const primary_network = new gcp.compute.Network("primary-network", {
- *     name: "tf-test-my-vpc-network_44154",
+ *     name: "tf-test-my-vpc-network_90221",
  *     autoCreateSubnetworks: false,
  * });
  * const primary = new gcp.networkconnectivity.Transport("primary", {
- *     name: "tf-test-basic-transport_90221",
+ *     name: "tf-test-basic-transport_88987",
  *     region: "us-east4",
  *     description: "A sample transport",
- *     remoteProfile: project.then(project => `https://networkconnectivity.googleapis.com/v1beta/${project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1`),
+ *     remoteProfile: project.then(project => `https://networkconnectivity.googleapis.com/v1/${project.id}/locations/us-east4/remoteTransportProfiles/aws-us-east-1`),
  *     network: primary_network.name,
  *     bandwidth: "BPS_1G",
  *     remoteAccountId: "123",
@@ -90,6 +87,7 @@ export class Transport extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional, Beta)
      * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      */
     declare public readonly adminEnabled: pulumi.Output<boolean | undefined>;
@@ -98,6 +96,7 @@ export class Transport extends pulumi.CustomResource {
      */
     declare public readonly advertisedRoutes: pulumi.Output<string[] | undefined>;
     /**
+     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
     declare public readonly autoAccept: pulumi.Output<boolean | undefined>;
@@ -127,6 +126,7 @@ export class Transport extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly generatedActivationKey: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
     declare public readonly hub: pulumi.Output<string | undefined>;
@@ -162,6 +162,7 @@ export class Transport extends pulumi.CustomResource {
      */
     declare public readonly providedActivationKey: pulumi.Output<string | undefined>;
     /**
+     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
     declare public readonly pscRoutingEnabled: pulumi.Output<boolean | undefined>;
@@ -276,6 +277,7 @@ export class Transport extends pulumi.CustomResource {
  */
 export interface TransportState {
     /**
+     * (Optional, Beta)
      * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      */
     adminEnabled?: pulumi.Input<boolean | undefined>;
@@ -284,6 +286,7 @@ export interface TransportState {
      */
     advertisedRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
     autoAccept?: pulumi.Input<boolean | undefined>;
@@ -313,6 +316,7 @@ export interface TransportState {
      */
     generatedActivationKey?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
     hub?: pulumi.Input<string | undefined>;
@@ -348,6 +352,7 @@ export interface TransportState {
      */
     providedActivationKey?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
     pscRoutingEnabled?: pulumi.Input<boolean | undefined>;
@@ -385,6 +390,7 @@ export interface TransportState {
  */
 export interface TransportArgs {
     /**
+     * (Optional, Beta)
      * Administrative state of the underlying connectivity. If set to true (default), connectivity should be available between your environments. If set to false, the connectivity over these links is disabled. Disabling your Transport does not affect billing, and retains the underlying network bandwidth associated with the connectivity.
      */
     adminEnabled?: pulumi.Input<boolean | undefined>;
@@ -393,6 +399,7 @@ export interface TransportArgs {
      */
     advertisedRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * (Optional, Beta)
      * Controls whether resources proposed by the Transport are automatically accepted on behalf of the user.
      */
     autoAccept?: pulumi.Input<boolean | undefined>;
@@ -414,6 +421,7 @@ export interface TransportArgs {
      */
     description?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Beta)
      * The NCC Hub that the Transport should attach to. The hub must be in the same project as the Transport.
      */
     hub?: pulumi.Input<string | undefined>;
@@ -445,6 +453,7 @@ export interface TransportArgs {
      */
     providedActivationKey?: pulumi.Input<string | undefined>;
     /**
+     * (Optional, Beta)
      * Controls whether a Routing VPC Spoke should be created and attached to the NCC Hub.
      */
     pscRoutingEnabled?: pulumi.Input<boolean | undefined>;

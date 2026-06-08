@@ -125,6 +125,8 @@ composerCustomEndpoint: Optional[str]
 
 computeCustomEndpoint: Optional[str]
 
+configCustomEndpoint: Optional[str]
+
 contactCenterInsightsCustomEndpoint: Optional[str]
 
 containerAnalysisCustomEndpoint: Optional[str]

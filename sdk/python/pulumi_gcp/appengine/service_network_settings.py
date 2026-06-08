@@ -174,7 +174,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             version_id="v1",
             service="internalapp",
             delete_service_on_destroy=True,
-            runtime="nodejs20",
+            runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
             },
@@ -254,7 +254,7 @@ class ServiceNetworkSettings(pulumi.CustomResource):
             version_id="v1",
             service="internalapp",
             delete_service_on_destroy=True,
-            runtime="nodejs20",
+            runtime="nodejs22",
             entrypoint={
                 "shell": "node ./app.js",
             },

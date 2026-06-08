@@ -5,9 +5,11 @@ package com.pulumi.gcp.oracledatabase.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterIdentityConnectorArgs;
 import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterPropertiesArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -210,6 +212,25 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="identityConnectors")
+    private @Nullable Output<List<CloudVmClusterIdentityConnectorArgs>> identityConnectors;
+
+    /**
+     * @return The identity connector details which will allow OCI to securely access
+     * the resources in the customer project.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CloudVmClusterIdentityConnectorArgs>>> identityConnectors() {
+        return Optional.ofNullable(this.identityConnectors);
+    }
+
+    /**
      * Labels or tags associated with the VM Cluster.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -384,6 +405,7 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
         this.effectiveLabels = $.effectiveLabels;
         this.exadataInfrastructure = $.exadataInfrastructure;
         this.gcpOracleZone = $.gcpOracleZone;
+        this.identityConnectors = $.identityConnectors;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
@@ -668,6 +690,43 @@ public final class CloudVmClusterState extends com.pulumi.resources.ResourceArgs
          */
         public Builder gcpOracleZone(String gcpOracleZone) {
             return gcpOracleZone(Output.of(gcpOracleZone));
+        }
+
+        /**
+         * @param identityConnectors The identity connector details which will allow OCI to securely access
+         * the resources in the customer project.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityConnectors(@Nullable Output<List<CloudVmClusterIdentityConnectorArgs>> identityConnectors) {
+            $.identityConnectors = identityConnectors;
+            return this;
+        }
+
+        /**
+         * @param identityConnectors The identity connector details which will allow OCI to securely access
+         * the resources in the customer project.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityConnectors(List<CloudVmClusterIdentityConnectorArgs> identityConnectors) {
+            return identityConnectors(Output.of(identityConnectors));
+        }
+
+        /**
+         * @param identityConnectors The identity connector details which will allow OCI to securely access
+         * the resources in the customer project.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder identityConnectors(CloudVmClusterIdentityConnectorArgs... identityConnectors) {
+            return identityConnectors(List.of(identityConnectors));
         }
 
         /**

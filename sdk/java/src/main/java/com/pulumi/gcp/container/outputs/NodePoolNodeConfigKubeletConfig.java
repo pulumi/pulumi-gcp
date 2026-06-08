@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigCrashLoopBackOff;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigEvictionSoft;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigKubeletConfigEvictionSoftGracePeriod;
@@ -49,6 +50,11 @@ public final class NodePoolNodeConfigKubeletConfig {
      * 
      */
     private @Nullable String cpuManagerPolicy;
+    /**
+     * @return Contains configuration options to modify node-level parameters for container restart behavior.
+     * 
+     */
+    private @Nullable NodePoolNodeConfigKubeletConfigCrashLoopBackOff crashLoopBackOff;
     /**
      * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
      * 
@@ -164,6 +170,13 @@ public final class NodePoolNodeConfigKubeletConfig {
         return Optional.ofNullable(this.cpuManagerPolicy);
     }
     /**
+     * @return Contains configuration options to modify node-level parameters for container restart behavior.
+     * 
+     */
+    public Optional<NodePoolNodeConfigKubeletConfigCrashLoopBackOff> crashLoopBackOff() {
+        return Optional.ofNullable(this.crashLoopBackOff);
+    }
+    /**
      * @return Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
      * 
      */
@@ -277,6 +290,7 @@ public final class NodePoolNodeConfigKubeletConfig {
         private @Nullable Boolean cpuCfsQuota;
         private @Nullable String cpuCfsQuotaPeriod;
         private @Nullable String cpuManagerPolicy;
+        private @Nullable NodePoolNodeConfigKubeletConfigCrashLoopBackOff crashLoopBackOff;
         private @Nullable Integer evictionMaxPodGracePeriodSeconds;
         private @Nullable NodePoolNodeConfigKubeletConfigEvictionMinimumReclaim evictionMinimumReclaim;
         private @Nullable NodePoolNodeConfigKubeletConfigEvictionSoft evictionSoft;
@@ -300,6 +314,7 @@ public final class NodePoolNodeConfigKubeletConfig {
     	      this.cpuCfsQuota = defaults.cpuCfsQuota;
     	      this.cpuCfsQuotaPeriod = defaults.cpuCfsQuotaPeriod;
     	      this.cpuManagerPolicy = defaults.cpuManagerPolicy;
+    	      this.crashLoopBackOff = defaults.crashLoopBackOff;
     	      this.evictionMaxPodGracePeriodSeconds = defaults.evictionMaxPodGracePeriodSeconds;
     	      this.evictionMinimumReclaim = defaults.evictionMinimumReclaim;
     	      this.evictionSoft = defaults.evictionSoft;
@@ -353,6 +368,12 @@ public final class NodePoolNodeConfigKubeletConfig {
         public Builder cpuManagerPolicy(@Nullable String cpuManagerPolicy) {
 
             this.cpuManagerPolicy = cpuManagerPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder crashLoopBackOff(@Nullable NodePoolNodeConfigKubeletConfigCrashLoopBackOff crashLoopBackOff) {
+
+            this.crashLoopBackOff = crashLoopBackOff;
             return this;
         }
         @CustomType.Setter
@@ -447,6 +468,7 @@ public final class NodePoolNodeConfigKubeletConfig {
             _resultValue.cpuCfsQuota = cpuCfsQuota;
             _resultValue.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.crashLoopBackOff = crashLoopBackOff;
             _resultValue.evictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
             _resultValue.evictionMinimumReclaim = evictionMinimumReclaim;
             _resultValue.evictionSoft = evictionSoft;

@@ -12,9 +12,6 @@ namespace Pulumi.Gcp.DataPlex
     /// <summary>
     /// A data asset resource that can be packaged and shared via a data product.
     /// 
-    /// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-    /// See Provider Versions for more details on beta resources.
-    /// 
     /// To get more information about DataProductDataAsset, see:
     /// 
     /// * [API documentation](https://cloud.google.com/dataplex/docs/reference/rest/v1/projects.locations.dataProducts.dataAssets)
@@ -37,7 +34,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
-    ///         DataProductId = "tf-test-dp-_55138",
+    ///         DataProductId = "tf-test-dp-_37559",
     ///         DisplayName = "Parent Data Product",
     ///         OwnerEmails = new[]
     ///         {
@@ -52,7 +49,7 @@ namespace Pulumi.Gcp.DataPlex
     ///                 DisplayName = "Data Analyst",
     ///                 Principal = new Gcp.DataPlex.Inputs.DataProductAccessGroupPrincipalArgs
     ///                 {
-    ///                     GoogleGroup = "tf-test-analysts-_37559@example.com",
+    ///                     GoogleGroup = "tf-test-analysts-_91980@example.com",
     ///                 },
     ///             },
     ///         },
@@ -61,7 +58,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         DatasetId = "tf_test_dataset__91980",
+    ///         DatasetId = "tf_test_dataset__37118",
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -95,7 +92,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "us-central1",
-    ///         DataProductId = "tf-test-dp-_37118",
+    ///         DataProductId = "tf-test-dp-_80332",
     ///         DisplayName = "Full Example Parent DP",
     ///         OwnerEmails = new[]
     ///         {
@@ -129,7 +126,7 @@ namespace Pulumi.Gcp.DataPlex
     ///     var exampleDataset = new Gcp.BigQuery.Dataset("example", new()
     ///     {
     ///         Project = "my-project-name",
-    ///         DatasetId = "tf_test_dataset__80332",
+    ///         DatasetId = "tf_test_dataset__13293",
     ///         Location = "us-central1",
     ///     });
     /// 

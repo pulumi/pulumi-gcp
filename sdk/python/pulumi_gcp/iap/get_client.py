@@ -98,7 +98,7 @@ def get_client(brand: Optional[_builtins.str] = None,
                client_id: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClientResult:
     """
-    Get info about a Google Cloud IAP Client.
+    Get information about a Identity-Aware Proxy Client.
 
     ## Example Usage
 
@@ -106,14 +106,15 @@ def get_client(brand: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    project = gcp.organizations.get_project(project_id="foobar")
-    project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=apps["googleusercontent"]["com"])
+    default = gcp.iap.get_client(brand=project_client["brand"],
+        client_id=project_client["clientId"])
     ```
 
 
-    :param _builtins.str brand: The name of the brand.
-    :param _builtins.str client_id: The client_id of the brand.
+    :param _builtins.str brand: Identifier of the brand to which this client
+           is attached to. The format is
+           `projects/{project_number}/brands/{brand_id}`.
+    :param _builtins.str client_id: Output only. Unique identifier of the OAuth client.
     """
     __args__ = dict()
     __args__['brand'] = brand
@@ -132,7 +133,7 @@ def get_client_output(brand: pulumi.Input[Optional[_builtins.str]] = None,
                       client_id: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientResult]:
     """
-    Get info about a Google Cloud IAP Client.
+    Get information about a Identity-Aware Proxy Client.
 
     ## Example Usage
 
@@ -140,14 +141,15 @@ def get_client_output(brand: pulumi.Input[Optional[_builtins.str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    project = gcp.organizations.get_project(project_id="foobar")
-    project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=apps["googleusercontent"]["com"])
+    default = gcp.iap.get_client(brand=project_client["brand"],
+        client_id=project_client["clientId"])
     ```
 
 
-    :param _builtins.str brand: The name of the brand.
-    :param _builtins.str client_id: The client_id of the brand.
+    :param _builtins.str brand: Identifier of the brand to which this client
+           is attached to. The format is
+           `projects/{project_number}/brands/{brand_id}`.
+    :param _builtins.str client_id: Output only. Unique identifier of the OAuth client.
     """
     __args__ = dict()
     __args__['brand'] = brand

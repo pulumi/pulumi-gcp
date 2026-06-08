@@ -56,7 +56,7 @@ import (
 //				VersionId:              pulumi.String("v1"),
 //				Service:                pulumi.String("liveapp"),
 //				DeleteServiceOnDestroy: pulumi.Bool(true),
-//				Runtime:                pulumi.String("nodejs20"),
+//				Runtime:                pulumi.String("nodejs22"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},
@@ -80,7 +80,7 @@ import (
 //				VersionId:     pulumi.String("v2"),
 //				Service:       pulumi.String("liveapp"),
 //				NoopOnDestroy: pulumi.Bool(true),
-//				Runtime:       pulumi.String("nodejs20"),
+//				Runtime:       pulumi.String("nodejs22"),
 //				Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
 //					Shell: pulumi.String("node ./app.js"),
 //				},

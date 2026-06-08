@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var basic = new Field("basic", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__49547")
+ *             .collection("chatrooms__48675")
  *             .field("basic")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -85,6 +85,107 @@ import javax.annotation.Nullable;
  *                     FieldIndexConfigIndexArgs.builder()
  *                         .arrayConfig("CONTAINS")
  *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Firestore Field Timestamp Enterprise
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Field;
+ * import com.pulumi.gcp.firestore.FieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldTtlConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var timestamp_enterprise = new Field("timestamp-enterprise", FieldArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("chatrooms")
+ *             .field("timestamp")
+ *             .ttlConfig(FieldTtlConfigArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * ### Firestore Field Timestamp With Ttl Offset Enterprise
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Field;
+ * import com.pulumi.gcp.firestore.FieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldTtlConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .databaseEdition("ENTERPRISE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var timestamp_with_offset_enterprise = new Field("timestamp-with-offset-enterprise", FieldArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("chatrooms")
+ *             .field("timestamp")
+ *             .ttlConfig(FieldTtlConfigArgs.builder()
+ *                 .expirationOffset("2592000s")
  *                 .build())
  *             .build());
  * 
@@ -144,6 +245,59 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Firestore Field Timestamp With Ttl Offset
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.gcp.firestore.Field;
+ * import com.pulumi.gcp.firestore.FieldArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldTtlConfigArgs;
+ * import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database("database", DatabaseArgs.builder()
+ *             .project("my-project-name")
+ *             .name("database-id")
+ *             .locationId("nam5")
+ *             .type("FIRESTORE_NATIVE")
+ *             .deleteProtectionState("DELETE_PROTECTION_ENABLED")
+ *             .deletionPolicy("DELETE")
+ *             .build());
+ * 
+ *         var timestamp_with_offset = new Field("timestamp-with-offset", FieldArgs.builder()
+ *             .project("my-project-name")
+ *             .database(database.name())
+ *             .collection("chatrooms")
+ *             .field("timestamp")
+ *             .ttlConfig(FieldTtlConfigArgs.builder()
+ *                 .expirationOffset("2592000s")
+ *                 .build())
+ *             .indexConfig(FieldIndexConfigArgs.builder()
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * ### Firestore Field Match Override
  * 
  * <pre>
@@ -184,7 +338,7 @@ import javax.annotation.Nullable;
  *         var matchOverride = new Field("matchOverride", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__48675")
+ *             .collection("chatrooms__42702")
  *             .field("field_with_same_configuration_as_ancestor")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -244,7 +398,7 @@ import javax.annotation.Nullable;
  *         var wildcard = new Field("wildcard", FieldArgs.builder()
  *             .project("my-project-name")
  *             .database(database.name())
- *             .collection("chatrooms__42702")
+ *             .collection("chatrooms__37426")
  *             .field("*")
  *             .indexConfig(FieldIndexConfigArgs.builder()
  *                 .indexes(                
@@ -399,7 +553,7 @@ public class Field extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */
@@ -407,7 +561,7 @@ public class Field extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ FieldTtlConfig> ttlConfig;
 
     /**
-     * @return The TTL configuration for this Field. If set to an empty block (i.e. `ttlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+     * @return The TTL configuration for this Field. If set to an empty (i.e. `ttlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
      * Structure is documented below.
      * 
      */

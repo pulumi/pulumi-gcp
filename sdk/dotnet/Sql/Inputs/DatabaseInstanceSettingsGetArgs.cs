@@ -136,7 +136,7 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+        /// The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }

@@ -20,44 +20,6 @@ namespace Pulumi.Gcp.Workstations
     /// 
     /// ## Example Usage
     /// 
-    /// ### Workstation Cluster Custom Urls
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
-    ///     {
-    ///         Name = "workstations-network",
-    ///         AutoCreateSubnetworks = false,
-    ///     });
-    /// 
-    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
-    ///     {
-    ///         Name = "workstations-network",
-    ///         IpCidrRange = "10.0.0.0/24",
-    ///         Region = "us-central1",
-    ///         Network = defaultNetwork.Name,
-    ///     });
-    /// 
-    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
-    ///     {
-    ///         WorkstationClusterId = "custom-urls-cluster",
-    ///         Network = defaultNetwork.Id,
-    ///         Subnetwork = defaultSubnetwork.Id,
-    ///         Location = "us-central1",
-    ///         WorkstationAuthorizationUrl = "https://workstations.cloud.google.com/ui/auth",
-    ///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
-    ///     });
-    /// 
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
-    /// });
-    /// ```
     /// ### Workstation Cluster Basic
     /// 
     /// ```csharp
@@ -257,6 +219,44 @@ namespace Pulumi.Gcp.Workstations
     ///             };
     ///         }),
     ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Workstation Cluster Custom Urls
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultNetwork = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "workstations-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
+    ///     {
+    ///         Name = "workstations-network",
+    ///         IpCidrRange = "10.0.0.0/24",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Name,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Workstations.WorkstationCluster("default", new()
+    ///     {
+    ///         WorkstationClusterId = "custom-urls-cluster",
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         Location = "us-central1",
+    ///         WorkstationAuthorizationUrl = "https://workstations.cloud.google.com/ui/auth",
+    ///         WorkstationLaunchUrl = "https://console.cloud.google.com/workstations/launch",
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```

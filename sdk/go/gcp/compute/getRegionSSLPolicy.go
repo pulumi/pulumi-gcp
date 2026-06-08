@@ -11,6 +11,35 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets a Regional SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
+//
+//	For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetRegionSSLPolicy(ctx, &compute.GetRegionSSLPolicyArgs{
+//				Name: "production-ssl-policy",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRegionSSLPolicy(ctx *pulumi.Context, args *GetRegionSSLPolicyArgs, opts ...pulumi.InvokeOption) (*GetRegionSSLPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionSSLPolicyResult
@@ -23,27 +52,45 @@ func GetRegionSSLPolicy(ctx *pulumi.Context, args *GetRegionSSLPolicyArgs, opts 
 
 // A collection of arguments for invoking getRegionSSLPolicy.
 type GetRegionSSLPolicyArgs struct {
-	Name    string  `pulumi:"name"`
+	// The name of the SSL Policy.
+	//
+	// ***
+	Name string `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	Region  *string `pulumi:"region"`
+	// The region in which the resource belongs. If it
+	// is not provided, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getRegionSSLPolicy.
 type GetRegionSSLPolicyResult struct {
-	CreationTimestamp string   `pulumi:"creationTimestamp"`
-	CustomFeatures    []string `pulumi:"customFeatures"`
-	DeletionPolicy    string   `pulumi:"deletionPolicy"`
-	Description       string   `pulumi:"description"`
-	EnabledFeatures   []string `pulumi:"enabledFeatures"`
-	Fingerprint       string   `pulumi:"fingerprint"`
+	CreationTimestamp string `pulumi:"creationTimestamp"`
+	// If the `profile` is `CUSTOM`, these are the custom encryption
+	// ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+	// attribute will be empty.
+	CustomFeatures []string `pulumi:"customFeatures"`
+	DeletionPolicy string   `pulumi:"deletionPolicy"`
+	// Description of this SSL Policy.
+	Description string `pulumi:"description"`
+	// The set of enabled encryption ciphers as a result of the policy config
+	EnabledFeatures []string `pulumi:"enabledFeatures"`
+	// Fingerprint of this resource.
+	Fingerprint string `pulumi:"fingerprint"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string  `pulumi:"id"`
-	MinTlsVersion string  `pulumi:"minTlsVersion"`
-	Name          string  `pulumi:"name"`
-	Profile       string  `pulumi:"profile"`
-	Project       *string `pulumi:"project"`
-	Region        *string `pulumi:"region"`
-	SelfLink      string  `pulumi:"selfLink"`
+	Id string `pulumi:"id"`
+	// The minimum supported TLS version of this policy.
+	MinTlsVersion string `pulumi:"minTlsVersion"`
+	Name          string `pulumi:"name"`
+	// The post-quantum key exchange setting of this policy.
+	PostQuantumKeyExchange string `pulumi:"postQuantumKeyExchange"`
+	// The Google-curated or custom profile used by this policy.
+	Profile string  `pulumi:"profile"`
+	Project *string `pulumi:"project"`
+	Region  *string `pulumi:"region"`
+	// The URI of the created resource.
+	SelfLink string `pulumi:"selfLink"`
 }
 
 func GetRegionSSLPolicyOutput(ctx *pulumi.Context, args GetRegionSSLPolicyOutputArgs, opts ...pulumi.InvokeOption) GetRegionSSLPolicyResultOutput {
@@ -57,9 +104,16 @@ func GetRegionSSLPolicyOutput(ctx *pulumi.Context, args GetRegionSSLPolicyOutput
 
 // A collection of arguments for invoking getRegionSSLPolicy.
 type GetRegionSSLPolicyOutputArgs struct {
-	Name    pulumi.StringInput    `pulumi:"name"`
+	// The name of the SSL Policy.
+	//
+	// ***
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project in which the resource belongs. If it
+	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	Region  pulumi.StringPtrInput `pulumi:"region"`
+	// The region in which the resource belongs. If it
+	// is not provided, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (GetRegionSSLPolicyOutputArgs) ElementType() reflect.Type {
@@ -85,6 +139,9 @@ func (o GetRegionSSLPolicyResultOutput) CreationTimestamp() pulumi.StringOutput 
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
 }
 
+// If the `profile` is `CUSTOM`, these are the custom encryption
+// ciphers supported by the profile. If the `profile` is *not* `CUSTOM`, this
+// attribute will be empty.
 func (o GetRegionSSLPolicyResultOutput) CustomFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) []string { return v.CustomFeatures }).(pulumi.StringArrayOutput)
 }
@@ -93,14 +150,17 @@ func (o GetRegionSSLPolicyResultOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.DeletionPolicy }).(pulumi.StringOutput)
 }
 
+// Description of this SSL Policy.
 func (o GetRegionSSLPolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The set of enabled encryption ciphers as a result of the policy config
 func (o GetRegionSSLPolicyResultOutput) EnabledFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) []string { return v.EnabledFeatures }).(pulumi.StringArrayOutput)
 }
 
+// Fingerprint of this resource.
 func (o GetRegionSSLPolicyResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
@@ -110,6 +170,7 @@ func (o GetRegionSSLPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The minimum supported TLS version of this policy.
 func (o GetRegionSSLPolicyResultOutput) MinTlsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.MinTlsVersion }).(pulumi.StringOutput)
 }
@@ -118,6 +179,12 @@ func (o GetRegionSSLPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The post-quantum key exchange setting of this policy.
+func (o GetRegionSSLPolicyResultOutput) PostQuantumKeyExchange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.PostQuantumKeyExchange }).(pulumi.StringOutput)
+}
+
+// The Google-curated or custom profile used by this policy.
 func (o GetRegionSSLPolicyResultOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.Profile }).(pulumi.StringOutput)
 }
@@ -130,6 +197,7 @@ func (o GetRegionSSLPolicyResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// The URI of the created resource.
 func (o GetRegionSSLPolicyResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionSSLPolicyResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }

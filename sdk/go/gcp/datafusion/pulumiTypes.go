@@ -418,6 +418,734 @@ func (o InstanceEventPublishConfigPtrOutput) Topic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceMaintenanceEvent struct {
+	// (Output)
+	// The end time of the maintenance event provided in RFC 3339 format.
+	EndTime *string `pulumi:"endTime"`
+	// (Output)
+	// The start time of the maintenance event provided in RFC 3339 format.
+	StartTime *string `pulumi:"startTime"`
+	// (Output)
+	// The state of the maintenance event.
+	State *string `pulumi:"state"`
+}
+
+// InstanceMaintenanceEventInput is an input type that accepts InstanceMaintenanceEventArgs and InstanceMaintenanceEventOutput values.
+// You can construct a concrete instance of `InstanceMaintenanceEventInput` via:
+//
+//	InstanceMaintenanceEventArgs{...}
+type InstanceMaintenanceEventInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenanceEventOutput() InstanceMaintenanceEventOutput
+	ToInstanceMaintenanceEventOutputWithContext(context.Context) InstanceMaintenanceEventOutput
+}
+
+type InstanceMaintenanceEventArgs struct {
+	// (Output)
+	// The end time of the maintenance event provided in RFC 3339 format.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
+	// The start time of the maintenance event provided in RFC 3339 format.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// (Output)
+	// The state of the maintenance event.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (InstanceMaintenanceEventArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenanceEvent)(nil)).Elem()
+}
+
+func (i InstanceMaintenanceEventArgs) ToInstanceMaintenanceEventOutput() InstanceMaintenanceEventOutput {
+	return i.ToInstanceMaintenanceEventOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenanceEventArgs) ToInstanceMaintenanceEventOutputWithContext(ctx context.Context) InstanceMaintenanceEventOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceEventOutput)
+}
+
+// InstanceMaintenanceEventArrayInput is an input type that accepts InstanceMaintenanceEventArray and InstanceMaintenanceEventArrayOutput values.
+// You can construct a concrete instance of `InstanceMaintenanceEventArrayInput` via:
+//
+//	InstanceMaintenanceEventArray{ InstanceMaintenanceEventArgs{...} }
+type InstanceMaintenanceEventArrayInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenanceEventArrayOutput() InstanceMaintenanceEventArrayOutput
+	ToInstanceMaintenanceEventArrayOutputWithContext(context.Context) InstanceMaintenanceEventArrayOutput
+}
+
+type InstanceMaintenanceEventArray []InstanceMaintenanceEventInput
+
+func (InstanceMaintenanceEventArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenanceEvent)(nil)).Elem()
+}
+
+func (i InstanceMaintenanceEventArray) ToInstanceMaintenanceEventArrayOutput() InstanceMaintenanceEventArrayOutput {
+	return i.ToInstanceMaintenanceEventArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenanceEventArray) ToInstanceMaintenanceEventArrayOutputWithContext(ctx context.Context) InstanceMaintenanceEventArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenanceEventArrayOutput)
+}
+
+type InstanceMaintenanceEventOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenanceEventOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenanceEvent)(nil)).Elem()
+}
+
+func (o InstanceMaintenanceEventOutput) ToInstanceMaintenanceEventOutput() InstanceMaintenanceEventOutput {
+	return o
+}
+
+func (o InstanceMaintenanceEventOutput) ToInstanceMaintenanceEventOutputWithContext(ctx context.Context) InstanceMaintenanceEventOutput {
+	return o
+}
+
+// (Output)
+// The end time of the maintenance event provided in RFC 3339 format.
+func (o InstanceMaintenanceEventOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenanceEvent) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The start time of the maintenance event provided in RFC 3339 format.
+func (o InstanceMaintenanceEventOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenanceEvent) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The state of the maintenance event.
+func (o InstanceMaintenanceEventOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenanceEvent) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type InstanceMaintenanceEventArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenanceEventArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceMaintenanceEvent)(nil)).Elem()
+}
+
+func (o InstanceMaintenanceEventArrayOutput) ToInstanceMaintenanceEventArrayOutput() InstanceMaintenanceEventArrayOutput {
+	return o
+}
+
+func (o InstanceMaintenanceEventArrayOutput) ToInstanceMaintenanceEventArrayOutputWithContext(ctx context.Context) InstanceMaintenanceEventArrayOutput {
+	return o
+}
+
+func (o InstanceMaintenanceEventArrayOutput) Index(i pulumi.IntInput) InstanceMaintenanceEventOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceMaintenanceEvent {
+		return vs[0].([]InstanceMaintenanceEvent)[vs[1].(int)]
+	}).(InstanceMaintenanceEventOutput)
+}
+
+type InstanceMaintenancePolicy struct {
+	// The maintenance window of the instance.
+	// Structure is documented below.
+	MaintenanceWindow *InstanceMaintenancePolicyMaintenanceWindow `pulumi:"maintenanceWindow"`
+}
+
+// InstanceMaintenancePolicyInput is an input type that accepts InstanceMaintenancePolicyArgs and InstanceMaintenancePolicyOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyInput` via:
+//
+//	InstanceMaintenancePolicyArgs{...}
+type InstanceMaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput
+	ToInstanceMaintenancePolicyOutputWithContext(context.Context) InstanceMaintenancePolicyOutput
+}
+
+type InstanceMaintenancePolicyArgs struct {
+	// The maintenance window of the instance.
+	// Structure is documented below.
+	MaintenanceWindow InstanceMaintenancePolicyMaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
+}
+
+func (InstanceMaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput {
+	return i.ToInstanceMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyOutputWithContext(ctx context.Context) InstanceMaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyOutput)
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return i.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyArgs) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyOutput).ToInstanceMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyPtrInput is an input type that accepts InstanceMaintenancePolicyArgs, InstanceMaintenancePolicyPtr and InstanceMaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyPtrInput` via:
+//
+//	        InstanceMaintenancePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput
+	ToInstanceMaintenancePolicyPtrOutputWithContext(context.Context) InstanceMaintenancePolicyPtrOutput
+}
+
+type instanceMaintenancePolicyPtrType InstanceMaintenancePolicyArgs
+
+func InstanceMaintenancePolicyPtr(v *InstanceMaintenancePolicyArgs) InstanceMaintenancePolicyPtrInput {
+	return (*instanceMaintenancePolicyPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyPtrType) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return i.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyPtrType) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyPtrOutput)
+}
+
+type InstanceMaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyOutput() InstanceMaintenancePolicyOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyOutputWithContext(ctx context.Context) InstanceMaintenancePolicyOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return o.ToInstanceMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyOutput) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicy) *InstanceMaintenancePolicy {
+		return &v
+	}).(InstanceMaintenancePolicyPtrOutput)
+}
+
+// The maintenance window of the instance.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyOutput) MaintenanceWindow() InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicy) *InstanceMaintenancePolicyMaintenanceWindow {
+		return v.MaintenanceWindow
+	}).(InstanceMaintenancePolicyMaintenanceWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicy)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) ToInstanceMaintenancePolicyPtrOutput() InstanceMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) ToInstanceMaintenancePolicyPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyPtrOutput) Elem() InstanceMaintenancePolicyOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) InstanceMaintenancePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicy
+		return ret
+	}).(InstanceMaintenancePolicyOutput)
+}
+
+// The maintenance window of the instance.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyPtrOutput) MaintenanceWindow() InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicy) *InstanceMaintenancePolicyMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceWindow
+	}).(InstanceMaintenancePolicyMaintenanceWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindow struct {
+	// The recurring time window of the maintenance window.
+	// Structure is documented below.
+	RecurringTimeWindow InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow `pulumi:"recurringTimeWindow"`
+}
+
+// InstanceMaintenancePolicyMaintenanceWindowInput is an input type that accepts InstanceMaintenancePolicyMaintenanceWindowArgs and InstanceMaintenancePolicyMaintenanceWindowOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceWindowInput` via:
+//
+//	InstanceMaintenancePolicyMaintenanceWindowArgs{...}
+type InstanceMaintenancePolicyMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceWindowOutput() InstanceMaintenancePolicyMaintenanceWindowOutput
+	ToInstanceMaintenancePolicyMaintenanceWindowOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceWindowOutput
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowArgs struct {
+	// The recurring time window of the maintenance window.
+	// Structure is documented below.
+	RecurringTimeWindow InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowInput `pulumi:"recurringTimeWindow"`
+}
+
+func (InstanceMaintenancePolicyMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowOutput() InstanceMaintenancePolicyMaintenanceWindowOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowOutput)
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowOutput).ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyMaintenanceWindowPtrInput is an input type that accepts InstanceMaintenancePolicyMaintenanceWindowArgs, InstanceMaintenancePolicyMaintenanceWindowPtr and InstanceMaintenancePolicyMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceWindowPtrInput` via:
+//
+//	        InstanceMaintenancePolicyMaintenanceWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowPtrOutput
+	ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceWindowPtrOutput
+}
+
+type instanceMaintenancePolicyMaintenanceWindowPtrType InstanceMaintenancePolicyMaintenanceWindowArgs
+
+func InstanceMaintenancePolicyMaintenanceWindowPtr(v *InstanceMaintenancePolicyMaintenanceWindowArgs) InstanceMaintenancePolicyMaintenanceWindowPtrInput {
+	return (*instanceMaintenancePolicyMaintenanceWindowPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyMaintenanceWindowPtrType) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyMaintenanceWindowPtrType) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowOutput() InstanceMaintenancePolicyMaintenanceWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return o.ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyMaintenanceWindow) *InstanceMaintenancePolicyMaintenanceWindow {
+		return &v
+	}).(InstanceMaintenancePolicyMaintenanceWindowPtrOutput)
+}
+
+// The recurring time window of the maintenance window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceWindowOutput) RecurringTimeWindow() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceWindow) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow {
+		return v.RecurringTimeWindow
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowPtrOutput) Elem() InstanceMaintenancePolicyMaintenanceWindowOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindow) InstanceMaintenancePolicyMaintenanceWindow {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyMaintenanceWindow
+		return ret
+	}).(InstanceMaintenancePolicyMaintenanceWindowOutput)
+}
+
+// The recurring time window of the maintenance window.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceWindowPtrOutput) RecurringTimeWindow() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindow) *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow {
+		if v == nil {
+			return nil
+		}
+		return &v.RecurringTimeWindow
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow struct {
+	// An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+	Recurrence string `pulumi:"recurrence"`
+	// The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+	// Structure is documented below.
+	Window InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow `pulumi:"window"`
+}
+
+// InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowInput is an input type that accepts InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs and InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowInput` via:
+//
+//	InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs{...}
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs struct {
+	// An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+	Recurrence pulumi.StringInput `pulumi:"recurrence"`
+	// The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+	// Structure is documented below.
+	Window InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowInput `pulumi:"window"`
+}
+
+func (InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput)
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput).ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrInput is an input type that accepts InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs, InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtr and InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrInput` via:
+//
+//	        InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput
+}
+
+type instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrType InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs
+
+func InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtr(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrInput {
+	return (*instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrType) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrType) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return o.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow) *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow {
+		return &v
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput)
+}
+
+// An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput) Recurrence() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow) string { return v.Recurrence }).(pulumi.StringOutput)
+}
+
+// The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput) Window() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow {
+		return v.Window
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput) Elem() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow
+		return ret
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput)
+}
+
+// An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput) Recurrence() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Recurrence
+	}).(pulumi.StringPtrOutput)
+}
+
+// The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+// Structure is documented below.
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput) Window() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow) *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow {
+		if v == nil {
+			return nil
+		}
+		return &v.Window
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow struct {
+	// The end time of the time window provided in RFC 3339 format.
+	EndTime string `pulumi:"endTime"`
+	// The start time of the time window provided in RFC 3339 format.
+	StartTime string `pulumi:"startTime"`
+}
+
+// InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowInput is an input type that accepts InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs and InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowInput` via:
+//
+//	InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs{...}
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs struct {
+	// The end time of the time window provided in RFC 3339 format.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The start time of the time window provided in RFC 3339 format.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow)(nil)).Elem()
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput)
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput).ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(ctx)
+}
+
+// InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrInput is an input type that accepts InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs, InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtr and InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput values.
+// You can construct a concrete instance of `InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrInput` via:
+//
+//	        InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrInput interface {
+	pulumi.Input
+
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput
+	ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput
+}
+
+type instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrType InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs
+
+func InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtr(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrInput {
+	return (*instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrType)(v)
+}
+
+func (*instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow)(nil)).Elem()
+}
+
+func (i *instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrType) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return i.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrType) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return o.ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow) *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow {
+		return &v
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput)
+}
+
+// The end time of the time window provided in RFC 3339 format.
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The start time of the time window provided in RFC 3339 format.
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow)(nil)).Elem()
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput) ToInstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutputWithContext(ctx context.Context) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput {
+	return o
+}
+
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput) Elem() InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow) InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow
+		return ret
+	}).(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput)
+}
+
+// The end time of the time window provided in RFC 3339 format.
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start time of the time window provided in RFC 3339 format.
+func (o InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type InstanceNetworkConfig struct {
 	// Optional. Type of connection for establishing private IP connectivity between the Data Fusion customer project VPC and
 	// the corresponding tenant project from a predefined list of available connection modes.
@@ -858,6 +1586,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceCryptoKeyConfigPtrInput)(nil)).Elem(), InstanceCryptoKeyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEventPublishConfigInput)(nil)).Elem(), InstanceEventPublishConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceEventPublishConfigPtrInput)(nil)).Elem(), InstanceEventPublishConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceEventInput)(nil)).Elem(), InstanceMaintenanceEventArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceEventArrayInput)(nil)).Elem(), InstanceMaintenanceEventArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyPtrInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowPtrInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrInput)(nil)).Elem(), InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPtrInput)(nil)).Elem(), InstanceNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkConfigPrivateServiceConnectConfigInput)(nil)).Elem(), InstanceNetworkConfigPrivateServiceConnectConfigArgs{})
@@ -868,6 +1606,16 @@ func init() {
 	pulumi.RegisterOutputType(InstanceCryptoKeyConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceEventPublishConfigOutput{})
 	pulumi.RegisterOutputType(InstanceEventPublishConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenanceEventOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenanceEventArrayOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowPtrOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowOutput{})
+	pulumi.RegisterOutputType(InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkConfigPrivateServiceConnectConfigOutput{})

@@ -27,6 +27,16 @@ namespace Pulumi.Gcp.Ces.Inputs
         [Input("defaultSettings")]
         public Input<Inputs.GuardrailLlmPromptSecurityDefaultSettingsArgs>? DefaultSettings { get; set; }
 
+        /// <summary>
+        /// Determines the behavior when the guardrail encounters an LLM error.
+        /// - If true: the guardrail is bypassed.
+        /// - If false (default): the guardrail triggers/blocks.
+        /// Note: If a custom policy is provided, this field is ignored in favor of
+        /// the policy's 'failOpen' configuration.
+        /// </summary>
+        [Input("failOpen")]
+        public Input<bool>? FailOpen { get; set; }
+
         public GuardrailLlmPromptSecurityArgs()
         {
         }

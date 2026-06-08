@@ -701,7 +701,7 @@ public final class IapFunctions {
         return Deployment.getInstance().invokeAsync("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", TypeShape.of(GetAppEngineVersionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get information about a Identity-Aware Proxy Client.
      * 
      * ## Example Usage
      * 
@@ -712,8 +712,6 @@ public final class IapFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import com.pulumi.gcp.iap.IapFunctions;
      * import com.pulumi.gcp.iap.inputs.GetClientArgs;
      * import java.util.ArrayList;
@@ -729,13 +727,9 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId("foobar")
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
-     *             .clientId(apps.googleusercontent().com())
+     *         final var default = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(projectClient.brand())
+     *             .clientId(projectClient.clientId())
      *             .build());
      * 
      *     }
@@ -748,7 +742,7 @@ public final class IapFunctions {
         return getClient(args, InvokeOptions.Empty);
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get information about a Identity-Aware Proxy Client.
      * 
      * ## Example Usage
      * 
@@ -759,8 +753,6 @@ public final class IapFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import com.pulumi.gcp.iap.IapFunctions;
      * import com.pulumi.gcp.iap.inputs.GetClientArgs;
      * import java.util.ArrayList;
@@ -776,13 +768,9 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId("foobar")
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
-     *             .clientId(apps.googleusercontent().com())
+     *         final var default = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(projectClient.brand())
+     *             .clientId(projectClient.clientId())
      *             .build());
      * 
      *     }
@@ -795,7 +783,7 @@ public final class IapFunctions {
         return getClientPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get information about a Identity-Aware Proxy Client.
      * 
      * ## Example Usage
      * 
@@ -806,8 +794,6 @@ public final class IapFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import com.pulumi.gcp.iap.IapFunctions;
      * import com.pulumi.gcp.iap.inputs.GetClientArgs;
      * import java.util.ArrayList;
@@ -823,13 +809,9 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId("foobar")
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
-     *             .clientId(apps.googleusercontent().com())
+     *         final var default = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(projectClient.brand())
+     *             .clientId(projectClient.clientId())
      *             .build());
      * 
      *     }
@@ -842,7 +824,7 @@ public final class IapFunctions {
         return Deployment.getInstance().invoke("gcp:iap/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get information about a Identity-Aware Proxy Client.
      * 
      * ## Example Usage
      * 
@@ -853,8 +835,6 @@ public final class IapFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import com.pulumi.gcp.iap.IapFunctions;
      * import com.pulumi.gcp.iap.inputs.GetClientArgs;
      * import java.util.ArrayList;
@@ -870,13 +850,9 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId("foobar")
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
-     *             .clientId(apps.googleusercontent().com())
+     *         final var default = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(projectClient.brand())
+     *             .clientId(projectClient.clientId())
      *             .build());
      * 
      *     }
@@ -889,7 +865,7 @@ public final class IapFunctions {
         return Deployment.getInstance().invoke("gcp:iap/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get info about a Google Cloud IAP Client.
+     * Get information about a Identity-Aware Proxy Client.
      * 
      * ## Example Usage
      * 
@@ -900,8 +876,6 @@ public final class IapFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
-     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
-     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
      * import com.pulumi.gcp.iap.IapFunctions;
      * import com.pulumi.gcp.iap.inputs.GetClientArgs;
      * import java.util.ArrayList;
@@ -917,13 +891,9 @@ public final class IapFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
-     *             .projectId("foobar")
-     *             .build());
-     * 
-     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
-     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.number()))
-     *             .clientId(apps.googleusercontent().com())
+     *         final var default = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(projectClient.brand())
+     *             .clientId(projectClient.clientId())
      *             .build());
      * 
      *     }

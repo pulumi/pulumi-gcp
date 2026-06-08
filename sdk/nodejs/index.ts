@@ -56,6 +56,7 @@ import * as colab from "./colab";
 import * as composer from "./composer";
 import * as compute from "./compute";
 import * as config from "./config";
+import * as configdeployment from "./configdeployment";
 import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
@@ -199,6 +200,7 @@ export {
     composer,
     compute,
     config,
+    configdeployment,
     contactcenterinsights,
     container,
     containeranalysis,

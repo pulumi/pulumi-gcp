@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public Input<Inputs.ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigGetArgs>? HumanAgentSuggestionConfig { get; set; }
 
         /// <summary>
-        /// desc
+        /// Configuration for analyzing conversation messages.
         /// Structure is documented below.
         /// </summary>
         [Input("messageAnalysisConfig")]

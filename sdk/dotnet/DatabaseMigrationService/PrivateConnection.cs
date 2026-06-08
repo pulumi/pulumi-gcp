@@ -33,7 +33,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
     ///     {
     ///         DisplayName = "dbms_pc",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         PrivateConnectionId = "my-connection",
     ///         Labels = 
     ///         {
@@ -68,7 +68,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     var @default = new Gcp.DatabaseMigrationService.PrivateConnection("default", new()
     ///     {
     ///         DisplayName = "dbms_pc",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         PrivateConnectionId = "my-connection",
     ///         Labels = 
     ///         {
@@ -84,7 +84,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("default", new()
     ///     {
     ///         Name = "my-attachment",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
     ///         Subnetworks = new[]
     ///         {
@@ -102,7 +102,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///     {
     ///         Name = "my-subnetwork",
     ///         IpCidrRange = "10.0.0.0/16",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         Network = defaultNetwork.Id,
     ///     });
     /// 

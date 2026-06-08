@@ -15,14 +15,18 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetClientArgs Empty = new GetClientArgs();
 
     /**
-     * The name of the brand.
+     * Identifier of the brand to which this client
+     * is attached to. The format is
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      */
     @Import(name="brand", required=true)
     private Output<String> brand;
 
     /**
-     * @return The name of the brand.
+     * @return Identifier of the brand to which this client
+     * is attached to. The format is
+     * `projects/{project_number}/brands/{brand_id}`.
      * 
      */
     public Output<String> brand() {
@@ -30,14 +34,14 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The clientId of the brand.
+     * Output only. Unique identifier of the OAuth client.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return The clientId of the brand.
+     * @return Output only. Unique identifier of the OAuth client.
      * 
      */
     public Output<String> clientId() {
@@ -70,7 +74,9 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param brand The name of the brand.
+         * @param brand Identifier of the brand to which this client
+         * is attached to. The format is
+         * `projects/{project_number}/brands/{brand_id}`.
          * 
          * @return builder
          * 
@@ -81,7 +87,9 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param brand The name of the brand.
+         * @param brand Identifier of the brand to which this client
+         * is attached to. The format is
+         * `projects/{project_number}/brands/{brand_id}`.
          * 
          * @return builder
          * 
@@ -91,7 +99,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clientId The clientId of the brand.
+         * @param clientId Output only. Unique identifier of the OAuth client.
          * 
          * @return builder
          * 
@@ -102,7 +110,7 @@ public final class GetClientArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param clientId The clientId of the brand.
+         * @param clientId Output only. Unique identifier of the OAuth client.
          * 
          * @return builder
          * 

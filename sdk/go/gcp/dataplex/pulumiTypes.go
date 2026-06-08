@@ -2171,6 +2171,8 @@ func (o DataProductAccessGroupArrayOutput) Index(i pulumi.IntInput) DataProductA
 type DataProductAccessGroupPrincipal struct {
 	// Email of the Google Group.
 	GoogleGroup *string `pulumi:"googleGroup"`
+	// Specifies the email of the producer service account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 }
 
 // DataProductAccessGroupPrincipalInput is an input type that accepts DataProductAccessGroupPrincipalArgs and DataProductAccessGroupPrincipalOutput values.
@@ -2187,6 +2189,8 @@ type DataProductAccessGroupPrincipalInput interface {
 type DataProductAccessGroupPrincipalArgs struct {
 	// Email of the Google Group.
 	GoogleGroup pulumi.StringPtrInput `pulumi:"googleGroup"`
+	// Specifies the email of the producer service account.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 }
 
 func (DataProductAccessGroupPrincipalArgs) ElementType() reflect.Type {
@@ -2218,6 +2222,11 @@ func (o DataProductAccessGroupPrincipalOutput) ToDataProductAccessGroupPrincipal
 // Email of the Google Group.
 func (o DataProductAccessGroupPrincipalOutput) GoogleGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataProductAccessGroupPrincipal) *string { return v.GoogleGroup }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the email of the producer service account.
+func (o DataProductAccessGroupPrincipalOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataProductAccessGroupPrincipal) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
 type DataProductDataAssetAccessGroupConfig struct {

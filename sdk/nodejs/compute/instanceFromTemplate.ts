@@ -246,7 +246,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     declare public readonly scheduling: pulumi.Output<outputs.compute.InstanceFromTemplateScheduling>;
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.alias_ipv6_range` [Beta]
+     * * `network_interface.access_config`
      */
     declare public readonly scratchDisks: pulumi.Output<outputs.compute.InstanceFromTemplateScratchDisk[]>;
     /**
@@ -284,6 +286,9 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      * In addition to these, all arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the template. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
+     *
+     * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+     * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
      */
     declare public readonly zone: pulumi.Output<string>;
 
@@ -573,7 +578,9 @@ export interface InstanceFromTemplateState {
      */
     scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling | undefined>;
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.alias_ipv6_range` [Beta]
+     * * `network_interface.access_config`
      */
     scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[] | undefined>;
     /**
@@ -611,6 +618,9 @@ export interface InstanceFromTemplateState {
      * In addition to these, all arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the template. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
+     *
+     * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+     * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
      */
     zone?: pulumi.Input<string | undefined>;
 }
@@ -749,7 +759,9 @@ export interface InstanceFromTemplateArgs {
      */
     scheduling?: pulumi.Input<inputs.compute.InstanceFromTemplateScheduling | undefined>;
     /**
-     * The scratch disks attached to the instance.
+     * * `network_interface.alias_ip_range`
+     * * `network_interface.alias_ipv6_range` [Beta]
+     * * `network_interface.access_config`
      */
     scratchDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceFromTemplateScratchDisk>[] | undefined>;
     /**
@@ -779,6 +791,9 @@ export interface InstanceFromTemplateArgs {
      * In addition to these, all arguments from `gcp.compute.Instance` are supported
      * as a way to override the properties in the template. All exported attributes
      * from `gcp.compute.Instance` are likewise exported here.
+     *
+     * To support removal of Optional/Computed fields in Terraform 0.12 the following fields
+     * are marked [Attributes as Blocks](https://www.terraform.io/docs/configuration/attr-as-blocks.html):
      */
     zone?: pulumi.Input<string | undefined>;
 }

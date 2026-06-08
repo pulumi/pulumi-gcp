@@ -795,6 +795,45 @@ class Guardrail(pulumi.CustomResource):
                 },
             })
         ```
+        ### Ces Guardrail Llm Prompt Security Fail Open
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_guardrail = gcp.ces.App("ces_app_for_guardrail",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_guardrail_llm_prompt_security_fail_open = gcp.ces.Guardrail("ces_guardrail_llm_prompt_security_fail_open",
+            guardrail_id="guardrail-id",
+            location=ces_app_for_guardrail.location,
+            app=ces_app_for_guardrail.app_id,
+            display_name="my-guardrail",
+            description="Guardrail description",
+            action={
+                "generative_answer": {
+                    "prompt": "example_prompt",
+                },
+            },
+            enabled=True,
+            llm_prompt_security={
+                "fail_open": True,
+            })
+        ```
         ### Ces Guardrail Code Callback
 
         ```python
@@ -1108,6 +1147,45 @@ class Guardrail(pulumi.CustomResource):
                     "fail_open": True,
                     "allow_short_utterance": True,
                 },
+            })
+        ```
+        ### Ces Guardrail Llm Prompt Security Fail Open
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ces_app_for_guardrail = gcp.ces.App("ces_app_for_guardrail",
+            app_id="app-id",
+            location="us",
+            description="App used as parent for CES Toolset example",
+            display_name="my-app",
+            language_settings={
+                "default_language_code": "en-US",
+                "supported_language_codes": [
+                    "es-ES",
+                    "fr-FR",
+                ],
+                "enable_multilingual_support": True,
+                "fallback_action": "escalate",
+            },
+            time_zone_settings={
+                "time_zone": "America/Los_Angeles",
+            })
+        ces_guardrail_llm_prompt_security_fail_open = gcp.ces.Guardrail("ces_guardrail_llm_prompt_security_fail_open",
+            guardrail_id="guardrail-id",
+            location=ces_app_for_guardrail.location,
+            app=ces_app_for_guardrail.app_id,
+            display_name="my-guardrail",
+            description="Guardrail description",
+            action={
+                "generative_answer": {
+                    "prompt": "example_prompt",
+                },
+            },
+            enabled=True,
+            llm_prompt_security={
+                "fail_open": True,
             })
         ```
         ### Ces Guardrail Code Callback

@@ -195,6 +195,11 @@ export class FutureReservation extends pulumi.CustomResource {
      */
     declare public readonly namePrefix: pulumi.Output<string | undefined>;
     /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    declare public readonly params: pulumi.Output<outputs.compute.FutureReservationParams | undefined>;
+    /**
      * Planning state before being submitted for evaluation
      * Possible values are: `DRAFT`, `SUBMITTED`.
      */
@@ -279,6 +284,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["name"] = state?.name;
             resourceInputs["namePrefix"] = state?.namePrefix;
+            resourceInputs["params"] = state?.params;
             resourceInputs["planningStatus"] = state?.planningStatus;
             resourceInputs["project"] = state?.project;
             resourceInputs["reservationMode"] = state?.reservationMode;
@@ -307,6 +313,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["name"] = args?.name;
             resourceInputs["namePrefix"] = args?.namePrefix;
+            resourceInputs["params"] = args?.params;
             resourceInputs["planningStatus"] = args?.planningStatus;
             resourceInputs["project"] = args?.project;
             resourceInputs["reservationMode"] = args?.reservationMode;
@@ -390,6 +397,11 @@ export interface FutureReservationState {
      * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     namePrefix?: pulumi.Input<string | undefined>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.FutureReservationParams | undefined>;
     /**
      * Planning state before being submitted for evaluation
      * Possible values are: `DRAFT`, `SUBMITTED`.
@@ -511,6 +523,11 @@ export interface FutureReservationArgs {
      * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     namePrefix?: pulumi.Input<string | undefined>;
+    /**
+     * Additional params passed with the request, but not persisted as part of resource payload
+     * Structure is documented below.
+     */
+    params?: pulumi.Input<inputs.compute.FutureReservationParams | undefined>;
     /**
      * Planning state before being submitted for evaluation
      * Possible values are: `DRAFT`, `SUBMITTED`.

@@ -129,10 +129,14 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     /**
      * The GCS path to the Dataflow job Flex
      * Template.
+     */
+    declare public readonly containerSpecGcsPath: pulumi.Output<string>;
+    /**
+     * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
      *
      * - - -
      */
-    declare public readonly containerSpecGcsPath: pulumi.Output<string>;
+    declare public readonly createIgnoreAlreadyExists: pulumi.Output<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -273,6 +277,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["additionalPipelineOptions"] = state?.additionalPipelineOptions;
             resourceInputs["autoscalingAlgorithm"] = state?.autoscalingAlgorithm;
             resourceInputs["containerSpecGcsPath"] = state?.containerSpecGcsPath;
+            resourceInputs["createIgnoreAlreadyExists"] = state?.createIgnoreAlreadyExists;
             resourceInputs["deletionPolicy"] = state?.deletionPolicy;
             resourceInputs["effectiveLabels"] = state?.effectiveLabels;
             resourceInputs["enableStreamingEngine"] = state?.enableStreamingEngine;
@@ -309,6 +314,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             resourceInputs["additionalPipelineOptions"] = args?.additionalPipelineOptions;
             resourceInputs["autoscalingAlgorithm"] = args?.autoscalingAlgorithm;
             resourceInputs["containerSpecGcsPath"] = args?.containerSpecGcsPath;
+            resourceInputs["createIgnoreAlreadyExists"] = args?.createIgnoreAlreadyExists;
             resourceInputs["deletionPolicy"] = args?.deletionPolicy;
             resourceInputs["enableStreamingEngine"] = args?.enableStreamingEngine;
             resourceInputs["ipConfiguration"] = args?.ipConfiguration;
@@ -363,10 +369,14 @@ export interface FlexTemplateJobState {
     /**
      * The GCS path to the Dataflow job Flex
      * Template.
+     */
+    containerSpecGcsPath?: pulumi.Input<string | undefined>;
+    /**
+     * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
      *
      * - - -
      */
-    containerSpecGcsPath?: pulumi.Input<string | undefined>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,
@@ -510,10 +520,14 @@ export interface FlexTemplateJobArgs {
     /**
      * The GCS path to the Dataflow job Flex
      * Template.
+     */
+    containerSpecGcsPath: pulumi.Input<string>;
+    /**
+     * If true, if a 409 AlreadyExists error is returned on create, the provider will ignore it and adopt the existing resource.
      *
      * - - -
      */
-    containerSpecGcsPath: pulumi.Input<string>;
+    createIgnoreAlreadyExists?: pulumi.Input<boolean | undefined>;
     /**
      * Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
      * When a 'terraform destroy' or 'pulumi up' would delete the resource,

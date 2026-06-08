@@ -40,6 +40,48 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
     }
 
     /**
+     * (Optional, Beta)
+     * Reference to a Public Delegated Prefix (PDP) for BYOIP.
+     * This field should be specified for configuring BYOGUA internal IPv6 secondary range.
+     * When specified along with the ip_cidr_range, the ipCidrRange must lie within the PDP referenced by the `ipCollection` field.
+     * When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field.
+     * 
+     */
+    @Import(name="ipCollection")
+    private @Nullable Output<String> ipCollection;
+
+    /**
+     * @return (Optional, Beta)
+     * Reference to a Public Delegated Prefix (PDP) for BYOIP.
+     * This field should be specified for configuring BYOGUA internal IPv6 secondary range.
+     * When specified along with the ip_cidr_range, the ipCidrRange must lie within the PDP referenced by the `ipCollection` field.
+     * When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field.
+     * 
+     */
+    public Optional<Output<String>> ipCollection() {
+        return Optional.ofNullable(this.ipCollection);
+    }
+
+    /**
+     * (Optional, Beta)
+     * The IP version of the secondary range. If not specified, IPV4 is used.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    @Import(name="ipVersion")
+    private @Nullable Output<String> ipVersion;
+
+    /**
+     * @return (Optional, Beta)
+     * The IP version of the secondary range. If not specified, IPV4 is used.
+     * Possible values are: `IPV4`, `IPV6`.
+     * 
+     */
+    public Optional<Output<String>> ipVersion() {
+        return Optional.ofNullable(this.ipVersion);
+    }
+
+    /**
      * The name associated with this subnetwork secondary range, used
      * when adding an alias IP range to a VM instance. The name must
      * be 1-63 characters long, and comply with RFC1035. The name
@@ -81,6 +123,8 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
 
     private SubnetworkSecondaryIpRangeArgs(SubnetworkSecondaryIpRangeArgs $) {
         this.ipCidrRange = $.ipCidrRange;
+        this.ipCollection = $.ipCollection;
+        this.ipVersion = $.ipVersion;
         this.rangeName = $.rangeName;
         this.reservedInternalRange = $.reservedInternalRange;
     }
@@ -130,6 +174,60 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
          */
         public Builder ipCidrRange(String ipCidrRange) {
             return ipCidrRange(Output.of(ipCidrRange));
+        }
+
+        /**
+         * @param ipCollection (Optional, Beta)
+         * Reference to a Public Delegated Prefix (PDP) for BYOIP.
+         * This field should be specified for configuring BYOGUA internal IPv6 secondary range.
+         * When specified along with the ip_cidr_range, the ipCidrRange must lie within the PDP referenced by the `ipCollection` field.
+         * When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(@Nullable Output<String> ipCollection) {
+            $.ipCollection = ipCollection;
+            return this;
+        }
+
+        /**
+         * @param ipCollection (Optional, Beta)
+         * Reference to a Public Delegated Prefix (PDP) for BYOIP.
+         * This field should be specified for configuring BYOGUA internal IPv6 secondary range.
+         * When specified along with the ip_cidr_range, the ipCidrRange must lie within the PDP referenced by the `ipCollection` field.
+         * When specified without the ip_cidr_range, the range is auto-allocated from the PDP referenced by the `ipCollection` field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipCollection(String ipCollection) {
+            return ipCollection(Output.of(ipCollection));
+        }
+
+        /**
+         * @param ipVersion (Optional, Beta)
+         * The IP version of the secondary range. If not specified, IPV4 is used.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(@Nullable Output<String> ipVersion) {
+            $.ipVersion = ipVersion;
+            return this;
+        }
+
+        /**
+         * @param ipVersion (Optional, Beta)
+         * The IP version of the secondary range. If not specified, IPV4 is used.
+         * Possible values are: `IPV4`, `IPV6`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipVersion(String ipVersion) {
+            return ipVersion(Output.of(ipVersion));
         }
 
         /**

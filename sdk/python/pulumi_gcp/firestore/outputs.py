@@ -239,14 +239,43 @@ class FieldIndexConfigIndex(dict):
 
 @pulumi.output_type
 class FieldTtlConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationOffset":
+            suggest = "expiration_offset"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FieldTtlConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FieldTtlConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FieldTtlConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 expiration_offset: Optional[_builtins.str] = None,
                  state: Optional[_builtins.str] = None):
         """
+        :param _builtins.str expiration_offset: The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
         :param _builtins.str state: (Output)
                The state of TTL (time-to-live) configuration for documents that have this Field set.
         """
+        if expiration_offset is not None:
+            pulumi.set(__self__, "expiration_offset", expiration_offset)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationOffset")
+    def expiration_offset(self) -> Optional[_builtins.str]:
+        """
+        The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+        """
+        return pulumi.get(self, "expiration_offset")
 
     @_builtins.property
     @pulumi.getter

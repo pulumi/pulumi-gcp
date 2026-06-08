@@ -22,12 +22,12 @@ public final class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryp
      */
     private @Nullable String kmsKeyServiceAccount;
     /**
-     * @return (Optional)
+     * @return **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String rawKey;
     /**
-     * @return (Optional)
+     * @return **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     private @Nullable String rsaEncryptedKey;
@@ -48,14 +48,14 @@ public final class RestoreWorkloadComputeInstanceRestorePropertiesDiskDiskEncryp
         return Optional.ofNullable(this.kmsKeyServiceAccount);
     }
     /**
-     * @return (Optional)
+     * @return **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> rawKey() {
         return Optional.ofNullable(this.rawKey);
     }
     /**
-     * @return (Optional)
+     * @return **Note**: This property is sensitive and will not be displayed in the plan.
      * 
      */
     public Optional<String> rsaEncryptedKey() {

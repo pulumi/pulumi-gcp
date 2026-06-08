@@ -475,6 +475,11 @@ export const getSecurityPolicy: typeof import("./getSecurityPolicy").getSecurity
 export const getSecurityPolicyOutput: typeof import("./getSecurityPolicy").getSecurityPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSecurityPolicy","getSecurityPolicyOutput"], () => require("./getSecurityPolicy"));
 
+export { GetServiceAttachmentArgs, GetServiceAttachmentResult, GetServiceAttachmentOutputArgs } from "./getServiceAttachment";
+export const getServiceAttachment: typeof import("./getServiceAttachment").getServiceAttachment = null as any;
+export const getServiceAttachmentOutput: typeof import("./getServiceAttachment").getServiceAttachmentOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceAttachment","getServiceAttachmentOutput"], () => require("./getServiceAttachment"));
+
 export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
 export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
 export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;

@@ -17,11 +17,19 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         /// Email of the Google Group.
         /// </summary>
         public readonly string? GoogleGroup;
+        /// <summary>
+        /// Specifies the email of the producer service account.
+        /// </summary>
+        public readonly string? ServiceAccount;
 
         [OutputConstructor]
-        private DataProductAccessGroupPrincipal(string? googleGroup)
+        private DataProductAccessGroupPrincipal(
+            string? googleGroup,
+
+            string? serviceAccount)
         {
             GoogleGroup = googleGroup;
+            ServiceAccount = serviceAccount;
         }
     }
 }

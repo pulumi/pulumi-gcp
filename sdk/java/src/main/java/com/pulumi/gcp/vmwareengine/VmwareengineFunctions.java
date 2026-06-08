@@ -472,10 +472,7 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get details about a datastore resource.
-     * 
-     * To get more information about datastore, see:
-     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * Get information about a Cloud VMware Engine Datastore.
      * 
      * ## Example Usage
      * 
@@ -501,9 +498,9 @@ public final class VmwareengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name("example-ds")
-     *             .location("us-west2")
+     *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .location(exampleThirdparty.location())
+     *             .name(exampleThirdparty.name())
      *             .build());
      * 
      *     }
@@ -516,10 +513,7 @@ public final class VmwareengineFunctions {
         return getDatastore(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get details about a datastore resource.
-     * 
-     * To get more information about datastore, see:
-     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * Get information about a Cloud VMware Engine Datastore.
      * 
      * ## Example Usage
      * 
@@ -545,9 +539,9 @@ public final class VmwareengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name("example-ds")
-     *             .location("us-west2")
+     *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .location(exampleThirdparty.location())
+     *             .name(exampleThirdparty.name())
      *             .build());
      * 
      *     }
@@ -560,10 +554,7 @@ public final class VmwareengineFunctions {
         return getDatastorePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Use this data source to get details about a datastore resource.
-     * 
-     * To get more information about datastore, see:
-     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * Get information about a Cloud VMware Engine Datastore.
      * 
      * ## Example Usage
      * 
@@ -589,9 +580,9 @@ public final class VmwareengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name("example-ds")
-     *             .location("us-west2")
+     *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .location(exampleThirdparty.location())
+     *             .name(exampleThirdparty.name())
      *             .build());
      * 
      *     }
@@ -604,10 +595,7 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invoke("gcp:vmwareengine/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get details about a datastore resource.
-     * 
-     * To get more information about datastore, see:
-     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * Get information about a Cloud VMware Engine Datastore.
      * 
      * ## Example Usage
      * 
@@ -633,9 +621,9 @@ public final class VmwareengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name("example-ds")
-     *             .location("us-west2")
+     *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .location(exampleThirdparty.location())
+     *             .name(exampleThirdparty.name())
      *             .build());
      * 
      *     }
@@ -648,10 +636,7 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invoke("gcp:vmwareengine/getDatastore:getDatastore", TypeShape.of(GetDatastoreResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Use this data source to get details about a datastore resource.
-     * 
-     * To get more information about datastore, see:
-     * * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+     * Get information about a Cloud VMware Engine Datastore.
      * 
      * ## Example Usage
      * 
@@ -677,9 +662,9 @@ public final class VmwareengineFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var testDs = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
-     *             .name("example-ds")
-     *             .location("us-west2")
+     *         final var default = VmwareengineFunctions.getDatastore(GetDatastoreArgs.builder()
+     *             .location(exampleThirdparty.location())
+     *             .name(exampleThirdparty.name())
      *             .build());
      * 
      *     }

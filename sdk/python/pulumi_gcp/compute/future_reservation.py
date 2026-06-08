@@ -32,6 +32,7 @@ class FutureReservationArgs:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['FutureReservationParamsArgs']] = None,
                  planning_status: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -70,6 +71,8 @@ class FutureReservationArgs:
                characters must be a dash, lowercase letter, or digit, except the las
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+        :param pulumi.Input['FutureReservationParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] planning_status: Planning state before being submitted for evaluation
                Possible values are: `DRAFT`, `SUBMITTED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -106,6 +109,8 @@ class FutureReservationArgs:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if planning_status is not None:
             pulumi.set(__self__, "planning_status", planning_status)
         if project is not None:
@@ -272,6 +277,19 @@ class FutureReservationArgs:
         pulumi.set(self, "name_prefix", value)
 
     @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['FutureReservationParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['FutureReservationParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @_builtins.property
     @pulumi.getter(name="planningStatus")
     def planning_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -388,6 +406,7 @@ class _FutureReservationState:
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional['FutureReservationParamsArgs']] = None,
                  planning_status: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -430,6 +449,8 @@ class _FutureReservationState:
                characters must be a dash, lowercase letter, or digit, except the las
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+        :param pulumi.Input['FutureReservationParamsArgs'] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] planning_status: Planning state before being submitted for evaluation
                Possible values are: `DRAFT`, `SUBMITTED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -474,6 +495,8 @@ class _FutureReservationState:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if planning_status is not None:
             pulumi.set(__self__, "planning_status", planning_status)
         if project is not None:
@@ -647,6 +670,19 @@ class _FutureReservationState:
     @name_prefix.setter
     def name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Input[Optional['FutureReservationParamsArgs']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Optional['FutureReservationParamsArgs']]):
+        pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="planningStatus")
@@ -829,6 +865,7 @@ class FutureReservation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict']]] = None,
                  planning_status: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -966,6 +1003,8 @@ class FutureReservation(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the las
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+        :param pulumi.Input[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] planning_status: Planning state before being submitted for evaluation
                Possible values are: `DRAFT`, `SUBMITTED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1114,6 +1153,7 @@ class FutureReservation(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict']]] = None,
                  planning_status: pulumi.Input[Optional[_builtins.str]] = None,
                  project: pulumi.Input[Optional[_builtins.str]] = None,
                  reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1142,6 +1182,7 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
+            __props__.__dict__["params"] = params
             __props__.__dict__["planning_status"] = planning_status
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_mode"] = reservation_mode
@@ -1179,6 +1220,7 @@ class FutureReservation(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict']]] = None,
             planning_status: pulumi.Input[Optional[_builtins.str]] = None,
             project: pulumi.Input[Optional[_builtins.str]] = None,
             reservation_mode: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1225,6 +1267,8 @@ class FutureReservation(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the las
                character, which cannot be a dash.
         :param pulumi.Input[_builtins.str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+        :param pulumi.Input[Union['FutureReservationParamsArgs', 'FutureReservationParamsArgsDict']] params: Additional params passed with the request, but not persisted as part of resource payload
+               Structure is documented below.
         :param pulumi.Input[_builtins.str] planning_status: Planning state before being submitted for evaluation
                Possible values are: `DRAFT`, `SUBMITTED`.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
@@ -1262,6 +1306,7 @@ class FutureReservation(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["name_prefix"] = name_prefix
+        __props__.__dict__["params"] = params
         __props__.__dict__["planning_status"] = planning_status
         __props__.__dict__["project"] = project
         __props__.__dict__["reservation_mode"] = reservation_mode
@@ -1379,6 +1424,15 @@ class FutureReservation(pulumi.CustomResource):
         Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         return pulumi.get(self, "name_prefix")
+
+    @_builtins.property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.FutureReservationParams']]:
+        """
+        Additional params passed with the request, but not persisted as part of resource payload
+        Structure is documented below.
+        """
+        return pulumi.get(self, "params")
 
     @_builtins.property
     @pulumi.getter(name="planningStatus")

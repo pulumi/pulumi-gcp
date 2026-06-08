@@ -80,6 +80,7 @@ export class Provider extends pulumi.ProviderResource {
     declare public readonly colabCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly composerCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly computeCustomEndpoint: pulumi.Output<string | undefined>;
+    declare public readonly configCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly contactCenterInsightsCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly containerAnalysisCustomEndpoint: pulumi.Output<string | undefined>;
     declare public readonly containerAttachedCustomEndpoint: pulumi.Output<string | undefined>;
@@ -295,6 +296,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["colabCustomEndpoint"] = args?.colabCustomEndpoint;
             resourceInputs["composerCustomEndpoint"] = args?.composerCustomEndpoint;
             resourceInputs["computeCustomEndpoint"] = args?.computeCustomEndpoint;
+            resourceInputs["configCustomEndpoint"] = args?.configCustomEndpoint;
             resourceInputs["contactCenterInsightsCustomEndpoint"] = args?.contactCenterInsightsCustomEndpoint;
             resourceInputs["containerAnalysisCustomEndpoint"] = args?.containerAnalysisCustomEndpoint;
             resourceInputs["containerAttachedCustomEndpoint"] = args?.containerAttachedCustomEndpoint;
@@ -527,6 +529,7 @@ export interface ProviderArgs {
     colabCustomEndpoint?: pulumi.Input<string | undefined>;
     composerCustomEndpoint?: pulumi.Input<string | undefined>;
     computeCustomEndpoint?: pulumi.Input<string | undefined>;
+    configCustomEndpoint?: pulumi.Input<string | undefined>;
     contactCenterInsightsCustomEndpoint?: pulumi.Input<string | undefined>;
     containerAnalysisCustomEndpoint?: pulumi.Input<string | undefined>;
     containerAttachedCustomEndpoint?: pulumi.Input<string | undefined>;

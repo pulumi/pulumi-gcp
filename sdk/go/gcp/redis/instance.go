@@ -73,7 +73,7 @@ import (
 //			// config, add an additional network resource or change
 //			// this from "data"to "resource"
 //			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "redis-test-network",
+//				Name: pulumi.StringRef("redis-test-network"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -242,7 +242,7 @@ import (
 //			// config, add an additional network resource or change
 //			// this from "data"to "resource"
 //			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "redis-test-network",
+//				Name: pulumi.StringRef("redis-test-network"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -310,7 +310,7 @@ import (
 //			// config, add an additional network resource or change
 //			// this from "data"to "resource"
 //			redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
-//				Name: "redis-test-network",
+//				Name: pulumi.StringRef("redis-test-network"),
 //			}, nil)
 //			if err != nil {
 //				return err

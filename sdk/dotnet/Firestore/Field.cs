@@ -51,7 +51,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__49547",
+    ///         Collection = "chatrooms__48675",
     ///         FieldId = "basic",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -67,6 +67,73 @@ namespace Pulumi.Gcp.Firestore
     ///                     ArrayConfig = "CONTAINS",
     ///                 },
     ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Field Timestamp Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var timestamp_enterprise = new Gcp.Firestore.Field("timestamp-enterprise", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "chatrooms",
+    ///         FieldId = "timestamp",
+    ///         TtlConfig = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Field Timestamp With Ttl Offset Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DatabaseEdition = "ENTERPRISE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var timestamp_with_offset_enterprise = new Gcp.Firestore.Field("timestamp-with-offset-enterprise", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "chatrooms",
+    ///         FieldId = "timestamp",
+    ///         TtlConfig = new Gcp.Firestore.Inputs.FieldTtlConfigArgs
+    ///         {
+    ///             ExpirationOffset = "2592000s",
     ///         },
     ///     });
     /// 
@@ -104,6 +171,41 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
+    /// ### Firestore Field Timestamp With Ttl Offset
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Name = "database-id",
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         DeleteProtectionState = "DELETE_PROTECTION_ENABLED",
+    ///         DeletionPolicy = "DELETE",
+    ///     });
+    /// 
+    ///     var timestamp_with_offset = new Gcp.Firestore.Field("timestamp-with-offset", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Database = database.Name,
+    ///         Collection = "chatrooms",
+    ///         FieldId = "timestamp",
+    ///         TtlConfig = new Gcp.Firestore.Inputs.FieldTtlConfigArgs
+    ///         {
+    ///             ExpirationOffset = "2592000s",
+    ///         },
+    ///         IndexConfig = null,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Firestore Field Match Override
     /// 
     /// ```csharp
@@ -128,7 +230,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__48675",
+    ///         Collection = "chatrooms__42702",
     ///         FieldId = "field_with_same_configuration_as_ancestor",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -176,7 +278,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         Project = "my-project-name",
     ///         Database = database.Name,
-    ///         Collection = "chatrooms__42702",
+    ///         Collection = "chatrooms__37426",
     ///         FieldId = "*",
     ///         IndexConfig = new Gcp.Firestore.Inputs.FieldIndexConfigArgs
     ///         {
@@ -267,7 +369,7 @@ namespace Pulumi.Gcp.Firestore
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL configuration for this Field. If set to an empty block (i.e. `TtlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        /// The TTL configuration for this Field. If set to an empty (i.e. `TtlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Output("ttlConfig")]
@@ -366,7 +468,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The TTL configuration for this Field. If set to an empty block (i.e. `TtlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        /// The TTL configuration for this Field. If set to an empty (i.e. `TtlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Input("ttlConfig")]
@@ -434,7 +536,7 @@ namespace Pulumi.Gcp.Firestore
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The TTL configuration for this Field. If set to an empty block (i.e. `TtlConfig {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        /// The TTL configuration for this Field. If set to an empty (i.e. `TtlConfig {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         /// Structure is documented below.
         /// </summary>
         [Input("ttlConfig")]

@@ -264,6 +264,52 @@ import javax.annotation.Nullable;
  * }
  * }
  * </pre>
+ * ### Network Management Connectivity Test Gke Pod
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networkmanagement.ConnectivityTest;
+ * import com.pulumi.gcp.networkmanagement.ConnectivityTestArgs;
+ * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
+ * import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pod_test = new ConnectivityTest("pod-test", ConnectivityTestArgs.builder()
+ *             .name("conn-test-pod")
+ *             .source(ConnectivityTestSourceArgs.builder()
+ *                 .ipAddress("10.0.0.1")
+ *                 .projectId("test-project")
+ *                 .networkType("GCP_NETWORK")
+ *                 .build())
+ *             .destination(ConnectivityTestDestinationArgs.builder()
+ *                 .ipAddress("10.0.0.2")
+ *                 .projectId("test-project")
+ *                 .networkType("GCP_NETWORK")
+ *                 .gkePod("projects/test-project/locations/us-central1/clusters/cluster-name/namespaces/default/pods/pod-name")
+ *                 .build())
+ *             .protocol("TCP")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * 
  * ## Import
  * 

@@ -19,6 +19,11 @@ __all__ = [
     'InstanceAccelerator',
     'InstanceCryptoKeyConfig',
     'InstanceEventPublishConfig',
+    'InstanceMaintenanceEvent',
+    'InstanceMaintenancePolicy',
+    'InstanceMaintenancePolicyMaintenanceWindow',
+    'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow',
+    'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow',
     'InstanceNetworkConfig',
     'InstanceNetworkConfigPrivateServiceConnectConfig',
 ]
@@ -135,6 +140,228 @@ class InstanceEventPublishConfig(dict):
         The resource name of the Pub/Sub topic. Format: projects/{projectId}/topics/{topic_id}
         """
         return pulumi.get(self, "topic")
+
+
+@pulumi.output_type
+class InstanceMaintenanceEvent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceMaintenanceEvent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceMaintenanceEvent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceMaintenanceEvent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: Optional[_builtins.str] = None,
+                 start_time: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str end_time: (Output)
+               The end time of the maintenance event provided in RFC 3339 format.
+        :param _builtins.str start_time: (Output)
+               The start time of the maintenance event provided in RFC 3339 format.
+        :param _builtins.str state: (Output)
+               The state of the maintenance event.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The end time of the maintenance event provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The start time of the maintenance event provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "start_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The state of the maintenance event.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class InstanceMaintenancePolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceWindow":
+            suggest = "maintenance_window"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceMaintenancePolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceMaintenancePolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceMaintenancePolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maintenance_window: Optional['outputs.InstanceMaintenancePolicyMaintenanceWindow'] = None):
+        """
+        :param 'InstanceMaintenancePolicyMaintenanceWindowArgs' maintenance_window: The maintenance window of the instance.
+               Structure is documented below.
+        """
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional['outputs.InstanceMaintenancePolicyMaintenanceWindow']:
+        """
+        The maintenance window of the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+
+@pulumi.output_type
+class InstanceMaintenancePolicyMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recurringTimeWindow":
+            suggest = "recurring_time_window"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceMaintenancePolicyMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceMaintenancePolicyMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceMaintenancePolicyMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 recurring_time_window: 'outputs.InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow'):
+        """
+        :param 'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowArgs' recurring_time_window: The recurring time window of the maintenance window.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recurring_time_window", recurring_time_window)
+
+    @_builtins.property
+    @pulumi.getter(name="recurringTimeWindow")
+    def recurring_time_window(self) -> 'outputs.InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow':
+        """
+        The recurring time window of the maintenance window.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "recurring_time_window")
+
+
+@pulumi.output_type
+class InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindow(dict):
+    def __init__(__self__, *,
+                 recurrence: _builtins.str,
+                 window: 'outputs.InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow'):
+        """
+        :param _builtins.str recurrence: An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+        :param 'InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindowArgs' window: The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recurrence", recurrence)
+        pulumi.set(__self__, "window", window)
+
+    @_builtins.property
+    @pulumi.getter
+    def recurrence(self) -> _builtins.str:
+        """
+        An RRULE with format RFC-5545 for how this window reccurs. They go on for the span of time between the start and end time. The only supported FREQ value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR".
+        """
+        return pulumi.get(self, "recurrence")
+
+    @_builtins.property
+    @pulumi.getter
+    def window(self) -> 'outputs.InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow':
+        """
+        The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "window")
+
+
+@pulumi.output_type
+class InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceMaintenancePolicyMaintenanceWindowRecurringTimeWindowWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: _builtins.str,
+                 start_time: _builtins.str):
+        """
+        :param _builtins.str end_time: The end time of the time window provided in RFC 3339 format.
+        :param _builtins.str start_time: The start time of the time window provided in RFC 3339 format.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @_builtins.property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> _builtins.str:
+        """
+        The end time of the time window provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> _builtins.str:
+        """
+        The start time of the time window provided in RFC 3339 format.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type

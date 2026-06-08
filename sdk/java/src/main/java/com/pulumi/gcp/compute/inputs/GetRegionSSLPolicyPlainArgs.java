@@ -15,23 +15,55 @@ public final class GetRegionSSLPolicyPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetRegionSSLPolicyPlainArgs Empty = new GetRegionSSLPolicyPlainArgs();
 
+    /**
+     * The name of the SSL Policy.
+     * 
+     * ***
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the SSL Policy.
+     * 
+     * ***
+     * 
+     */
     public String name() {
         return this.name;
     }
 
+    /**
+     * The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable String project;
 
+    /**
+     * @return The ID of the project in which the resource belongs. If it
+     * is not provided, the provider project is used.
+     * 
+     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * The region in which the resource belongs. If it
+     * is not provided, the provider region is used.
+     * 
+     */
     @Import(name="region")
     private @Nullable String region;
 
+    /**
+     * @return The region in which the resource belongs. If it
+     * is not provided, the provider region is used.
+     * 
+     */
     public Optional<String> region() {
         return Optional.ofNullable(this.region);
     }
@@ -62,16 +94,38 @@ public final class GetRegionSSLPolicyPlainArgs extends com.pulumi.resources.Invo
             $ = new GetRegionSSLPolicyPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the SSL Policy.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs. If it
+         * is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param region The region in which the resource belongs. If it
+         * is not provided, the provider region is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder region(@Nullable String region) {
             $.region = region;
             return this;

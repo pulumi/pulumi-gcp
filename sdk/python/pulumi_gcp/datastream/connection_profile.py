@@ -911,12 +911,6 @@ class ConnectionProfile(pulumi.CustomResource):
                 "bucket": "my-bucket",
                 "root_path": "/path",
             },
-            forward_ssh_connectivity={
-                "hostname": "google.com",
-                "username": "my-user",
-                "port": 8022,
-                "password": "swordfish",
-            },
             labels={
                 "key": "value",
             })
@@ -1375,12 +1369,6 @@ class ConnectionProfile(pulumi.CustomResource):
             gcs_profile={
                 "bucket": "my-bucket",
                 "root_path": "/path",
-            },
-            forward_ssh_connectivity={
-                "hostname": "google.com",
-                "username": "my-user",
-                "port": 8022,
-                "password": "swordfish",
             },
             labels={
                 "key": "value",

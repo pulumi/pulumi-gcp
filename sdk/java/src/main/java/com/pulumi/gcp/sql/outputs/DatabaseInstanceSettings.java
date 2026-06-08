@@ -121,7 +121,7 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable Integer diskSize;
     /**
-     * @return The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+     * @return The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
      * 
      */
     private @Nullable String diskType;
@@ -340,7 +340,7 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`. `HYPERDISK_BALANCED` is preview.
+     * @return The type of data disk: `PD_SSD`, `PD_HDD`, or `HYPERDISK_BALANCED`. Defaults to `PD_SSD`.
      * 
      */
     public Optional<String> diskType() {

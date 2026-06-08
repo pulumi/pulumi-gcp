@@ -108,6 +108,11 @@ public final class GetClusterNodeConfig {
      */
     private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
     /**
+     * @return The type of GPUDirect strategy to enable on the node.
+     * 
+     */
+    private String gpudirectStrategy;
+    /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * 
      */
@@ -368,6 +373,13 @@ public final class GetClusterNodeConfig {
         return this.gcfsConfigs;
     }
     /**
+     * @return The type of GPUDirect strategy to enable on the node.
+     * 
+     */
+    public String gpudirectStrategy() {
+        return this.gpudirectStrategy;
+    }
+    /**
      * @return List of the type and count of accelerator cards attached to the instance.
      * 
      */
@@ -615,6 +627,7 @@ public final class GetClusterNodeConfig {
         private List<GetClusterNodeConfigFastSocket> fastSockets;
         private Boolean flexStart;
         private List<GetClusterNodeConfigGcfsConfig> gcfsConfigs;
+        private String gpudirectStrategy;
         private List<GetClusterNodeConfigGuestAccelerator> guestAccelerators;
         private List<GetClusterNodeConfigGvnic> gvnics;
         private List<GetClusterNodeConfigHostMaintenancePolicy> hostMaintenancePolicies;
@@ -664,6 +677,7 @@ public final class GetClusterNodeConfig {
     	      this.fastSockets = defaults.fastSockets;
     	      this.flexStart = defaults.flexStart;
     	      this.gcfsConfigs = defaults.gcfsConfigs;
+    	      this.gpudirectStrategy = defaults.gpudirectStrategy;
     	      this.guestAccelerators = defaults.guestAccelerators;
     	      this.gvnics = defaults.gvnics;
     	      this.hostMaintenancePolicies = defaults.hostMaintenancePolicies;
@@ -836,6 +850,14 @@ public final class GetClusterNodeConfig {
         }
         public Builder gcfsConfigs(GetClusterNodeConfigGcfsConfig... gcfsConfigs) {
             return gcfsConfigs(List.of(gcfsConfigs));
+        }
+        @CustomType.Setter
+        public Builder gpudirectStrategy(String gpudirectStrategy) {
+            if (gpudirectStrategy == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "gpudirectStrategy");
+            }
+            this.gpudirectStrategy = gpudirectStrategy;
+            return this;
         }
         @CustomType.Setter
         public Builder guestAccelerators(List<GetClusterNodeConfigGuestAccelerator> guestAccelerators) {
@@ -1160,6 +1182,7 @@ public final class GetClusterNodeConfig {
             _resultValue.fastSockets = fastSockets;
             _resultValue.flexStart = flexStart;
             _resultValue.gcfsConfigs = gcfsConfigs;
+            _resultValue.gpudirectStrategy = gpudirectStrategy;
             _resultValue.guestAccelerators = guestAccelerators;
             _resultValue.gvnics = gvnics;
             _resultValue.hostMaintenancePolicies = hostMaintenancePolicies;

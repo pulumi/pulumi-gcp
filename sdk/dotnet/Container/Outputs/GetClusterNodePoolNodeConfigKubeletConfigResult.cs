@@ -38,6 +38,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string CpuManagerPolicy;
         /// <summary>
+        /// Contains configuration options to modify node-level parameters for container restart behavior.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffResult> CrashLoopBackOffs;
+        /// <summary>
         /// Defines the maximum allowed grace period (in seconds) to use when terminating pods in response to a soft eviction threshold being met.
         /// </summary>
         public readonly int EvictionMaxPodGracePeriodSeconds;
@@ -108,6 +112,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string cpuManagerPolicy,
 
+            ImmutableArray<Outputs.GetClusterNodePoolNodeConfigKubeletConfigCrashLoopBackOffResult> crashLoopBackOffs,
+
             int evictionMaxPodGracePeriodSeconds,
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigKubeletConfigEvictionMinimumReclaimResult> evictionMinimumReclaims,
@@ -142,6 +148,7 @@ namespace Pulumi.Gcp.Container.Outputs
             CpuCfsQuota = cpuCfsQuota;
             CpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             CpuManagerPolicy = cpuManagerPolicy;
+            CrashLoopBackOffs = crashLoopBackOffs;
             EvictionMaxPodGracePeriodSeconds = evictionMaxPodGracePeriodSeconds;
             EvictionMinimumReclaims = evictionMinimumReclaims;
             EvictionSoftGracePeriods = evictionSoftGracePeriods;

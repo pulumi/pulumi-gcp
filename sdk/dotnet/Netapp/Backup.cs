@@ -181,7 +181,6 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Details of the ONTAP source volume and snapshot.
         /// Structure is documented below.
         /// </summary>
@@ -336,7 +335,6 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Details of the ONTAP source volume and snapshot.
         /// Structure is documented below.
         /// </summary>
@@ -464,7 +462,6 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Details of the ONTAP source volume and snapshot.
         /// Structure is documented below.
         /// </summary>

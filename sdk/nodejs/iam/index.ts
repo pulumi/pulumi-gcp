@@ -15,6 +15,11 @@ export type DenyPolicy = import("./denyPolicy").DenyPolicy;
 export const DenyPolicy: typeof import("./denyPolicy").DenyPolicy = null as any;
 utilities.lazyLoad(exports, ["DenyPolicy"], () => require("./denyPolicy"));
 
+export { FolderAccessPolicyArgs, FolderAccessPolicyState } from "./folderAccessPolicy";
+export type FolderAccessPolicy = import("./folderAccessPolicy").FolderAccessPolicy;
+export const FolderAccessPolicy: typeof import("./folderAccessPolicy").FolderAccessPolicy = null as any;
+utilities.lazyLoad(exports, ["FolderAccessPolicy"], () => require("./folderAccessPolicy"));
+
 export { FoldersPolicyBindingArgs, FoldersPolicyBindingState } from "./foldersPolicyBinding";
 export type FoldersPolicyBinding = import("./foldersPolicyBinding").FoldersPolicyBinding;
 export const FoldersPolicyBinding: typeof import("./foldersPolicyBinding").FoldersPolicyBinding = null as any;
@@ -69,6 +74,11 @@ export { PrincipalAccessBoundaryPolicyArgs, PrincipalAccessBoundaryPolicyState }
 export type PrincipalAccessBoundaryPolicy = import("./principalAccessBoundaryPolicy").PrincipalAccessBoundaryPolicy;
 export const PrincipalAccessBoundaryPolicy: typeof import("./principalAccessBoundaryPolicy").PrincipalAccessBoundaryPolicy = null as any;
 utilities.lazyLoad(exports, ["PrincipalAccessBoundaryPolicy"], () => require("./principalAccessBoundaryPolicy"));
+
+export { ProjectAccessPolicyArgs, ProjectAccessPolicyState } from "./projectAccessPolicy";
+export type ProjectAccessPolicy = import("./projectAccessPolicy").ProjectAccessPolicy;
+export const ProjectAccessPolicy: typeof import("./projectAccessPolicy").ProjectAccessPolicy = null as any;
+utilities.lazyLoad(exports, ["ProjectAccessPolicy"], () => require("./projectAccessPolicy"));
 
 export { ProjectsPolicyBindingArgs, ProjectsPolicyBindingState } from "./projectsPolicyBinding";
 export type ProjectsPolicyBinding = import("./projectsPolicyBinding").ProjectsPolicyBinding;
@@ -164,6 +174,8 @@ const _module = {
                 return new AccessBoundaryPolicy(name, <any>undefined, { urn })
             case "gcp:iam/denyPolicy:DenyPolicy":
                 return new DenyPolicy(name, <any>undefined, { urn })
+            case "gcp:iam/folderAccessPolicy:FolderAccessPolicy":
+                return new FolderAccessPolicy(name, <any>undefined, { urn })
             case "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding":
                 return new FoldersPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/oauthClient:OauthClient":
@@ -174,6 +186,8 @@ const _module = {
                 return new OrganizationsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy":
                 return new PrincipalAccessBoundaryPolicy(name, <any>undefined, { urn })
+            case "gcp:iam/projectAccessPolicy:ProjectAccessPolicy":
+                return new ProjectAccessPolicy(name, <any>undefined, { urn })
             case "gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding":
                 return new ProjectsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/workforcePool:WorkforcePool":
@@ -215,11 +229,13 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "iam/accessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/denyPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/folderAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/foldersPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/oauthClient", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/oauthClientCredential", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/organizationsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/principalAccessBoundaryPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/projectAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/projectsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolIamBinding", _module)

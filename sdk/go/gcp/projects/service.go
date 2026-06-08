@@ -86,6 +86,8 @@ type Service struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
+	// If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+	// Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
 	DeletionPolicy pulumi.StringOutput `pulumi:"deletionPolicy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -147,6 +149,8 @@ type serviceState struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
+	// If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+	// Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -176,6 +180,8 @@ type ServiceState struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
+	// If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+	// Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
 	DeletionPolicy pulumi.StringPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -209,6 +215,8 @@ type serviceArgs struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
+	// If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+	// Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -239,6 +247,8 @@ type ServiceArgs struct {
 	// When set to "ABANDON", the command will remove the resource from Terraform
 	// management without updating or deleting the resource in the API.
 	// When set to "DELETE", deleting the resource is allowed.
+	// If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+	// Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
 	DeletionPolicy pulumi.StringPtrInput
 	// If `true`, services that are enabled
 	// and which depend on this service should also be disabled when this service is
@@ -357,6 +367,8 @@ func (o ServiceOutput) CheckIfServiceHasUsageOnDestroy() pulumi.BoolPtrOutput {
 // When set to "ABANDON", the command will remove the resource from Terraform
 // management without updating or deleting the resource in the API.
 // When set to "DELETE", deleting the resource is allowed.
+// If `disableOnDestroy` is set to `false`, the service will still be enabled when the
+// Terraform resource is destroyed even if the `deletionPolicy` field is set to "DELETE".
 func (o ServiceOutput) DeletionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.DeletionPolicy }).(pulumi.StringOutput)
 }

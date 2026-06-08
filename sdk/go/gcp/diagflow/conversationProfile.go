@@ -134,11 +134,15 @@ import (
 //			}
 //			_, err = diagflow.NewConversationProfile(ctx, "bidi_profile", &diagflow.ConversationProfileArgs{
 //				DisplayName:      pulumi.String("dialogflow-profile-bidi"),
-//				Location:         pulumi.String("global"),
+//				Location:         pulumi.String("europe-west1"),
 //				LanguageCode:     pulumi.String("en-US"),
 //				UseBidiStreaming: pulumi.Bool(true),
 //				AutomatedAgentConfig: &diagflow.ConversationProfileAutomatedAgentConfigArgs{
 //					Agent: cesAppForAgent.ID(),
+//				},
+//				SipConfig: &diagflow.ConversationProfileSipConfigArgs{
+//					AllowVirtualAgentInteraction: pulumi.Bool(true),
+//					CreateConversationOnTheFly:   pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {
@@ -184,12 +188,12 @@ type ConversationProfile struct {
 	HumanAgentHandoffConfig ConversationProfileHumanAgentHandoffConfigPtrOutput `pulumi:"humanAgentHandoffConfig"`
 	// Language code for the conversation profile. This should be a BCP-47 language tag.
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
-	// desc
+	// The location of the conversation profile.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Defines logging behavior for conversation lifecycle events.
 	// Structure is documented below.
 	LoggingConfig ConversationProfileLoggingConfigPtrOutput `pulumi:"loggingConfig"`
-	// name
+	// Identifier. The unique identifier of this conversation profile.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -207,6 +211,10 @@ type ConversationProfile struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Name of the CX SecuritySettings reference for the agent.
 	SecuritySettings pulumi.StringPtrOutput `pulumi:"securitySettings"`
+	// (Optional, Beta)
+	// Configuration for SIP.
+	// Structure is documented below.
+	SipConfig ConversationProfileSipConfigPtrOutput `pulumi:"sipConfig"`
 	// Settings for speech transcription.
 	// Structure is documented below.
 	SttConfig ConversationProfileSttConfigPtrOutput `pulumi:"sttConfig"`
@@ -276,12 +284,12 @@ type conversationProfileState struct {
 	HumanAgentHandoffConfig *ConversationProfileHumanAgentHandoffConfig `pulumi:"humanAgentHandoffConfig"`
 	// Language code for the conversation profile. This should be a BCP-47 language tag.
 	LanguageCode *string `pulumi:"languageCode"`
-	// desc
+	// The location of the conversation profile.
 	Location *string `pulumi:"location"`
 	// Defines logging behavior for conversation lifecycle events.
 	// Structure is documented below.
 	LoggingConfig *ConversationProfileLoggingConfig `pulumi:"loggingConfig"`
-	// name
+	// Identifier. The unique identifier of this conversation profile.
 	Name *string `pulumi:"name"`
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -299,6 +307,10 @@ type conversationProfileState struct {
 	Project *string `pulumi:"project"`
 	// Name of the CX SecuritySettings reference for the agent.
 	SecuritySettings *string `pulumi:"securitySettings"`
+	// (Optional, Beta)
+	// Configuration for SIP.
+	// Structure is documented below.
+	SipConfig *ConversationProfileSipConfig `pulumi:"sipConfig"`
 	// Settings for speech transcription.
 	// Structure is documented below.
 	SttConfig *ConversationProfileSttConfig `pulumi:"sttConfig"`
@@ -333,12 +345,12 @@ type ConversationProfileState struct {
 	HumanAgentHandoffConfig ConversationProfileHumanAgentHandoffConfigPtrInput
 	// Language code for the conversation profile. This should be a BCP-47 language tag.
 	LanguageCode pulumi.StringPtrInput
-	// desc
+	// The location of the conversation profile.
 	Location pulumi.StringPtrInput
 	// Defines logging behavior for conversation lifecycle events.
 	// Structure is documented below.
 	LoggingConfig ConversationProfileLoggingConfigPtrInput
-	// name
+	// Identifier. The unique identifier of this conversation profile.
 	Name pulumi.StringPtrInput
 	// Pub/Sub topic on which to publish new agent assistant events.
 	// Expects the format "projects/<Project ID>/locations/<Location ID>/topics/<Topic ID>"
@@ -356,6 +368,10 @@ type ConversationProfileState struct {
 	Project pulumi.StringPtrInput
 	// Name of the CX SecuritySettings reference for the agent.
 	SecuritySettings pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Configuration for SIP.
+	// Structure is documented below.
+	SipConfig ConversationProfileSipConfigPtrInput
 	// Settings for speech transcription.
 	// Structure is documented below.
 	SttConfig ConversationProfileSttConfigPtrInput
@@ -394,7 +410,7 @@ type conversationProfileArgs struct {
 	HumanAgentHandoffConfig *ConversationProfileHumanAgentHandoffConfig `pulumi:"humanAgentHandoffConfig"`
 	// Language code for the conversation profile. This should be a BCP-47 language tag.
 	LanguageCode *string `pulumi:"languageCode"`
-	// desc
+	// The location of the conversation profile.
 	Location string `pulumi:"location"`
 	// Defines logging behavior for conversation lifecycle events.
 	// Structure is documented below.
@@ -415,6 +431,10 @@ type conversationProfileArgs struct {
 	Project *string `pulumi:"project"`
 	// Name of the CX SecuritySettings reference for the agent.
 	SecuritySettings *string `pulumi:"securitySettings"`
+	// (Optional, Beta)
+	// Configuration for SIP.
+	// Structure is documented below.
+	SipConfig *ConversationProfileSipConfig `pulumi:"sipConfig"`
 	// Settings for speech transcription.
 	// Structure is documented below.
 	SttConfig *ConversationProfileSttConfig `pulumi:"sttConfig"`
@@ -450,7 +470,7 @@ type ConversationProfileArgs struct {
 	HumanAgentHandoffConfig ConversationProfileHumanAgentHandoffConfigPtrInput
 	// Language code for the conversation profile. This should be a BCP-47 language tag.
 	LanguageCode pulumi.StringPtrInput
-	// desc
+	// The location of the conversation profile.
 	Location pulumi.StringInput
 	// Defines logging behavior for conversation lifecycle events.
 	// Structure is documented below.
@@ -471,6 +491,10 @@ type ConversationProfileArgs struct {
 	Project pulumi.StringPtrInput
 	// Name of the CX SecuritySettings reference for the agent.
 	SecuritySettings pulumi.StringPtrInput
+	// (Optional, Beta)
+	// Configuration for SIP.
+	// Structure is documented below.
+	SipConfig ConversationProfileSipConfigPtrInput
 	// Settings for speech transcription.
 	// Structure is documented below.
 	SttConfig ConversationProfileSttConfigPtrInput
@@ -615,7 +639,7 @@ func (o ConversationProfileOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// desc
+// The location of the conversation profile.
 func (o ConversationProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -626,7 +650,7 @@ func (o ConversationProfileOutput) LoggingConfig() ConversationProfileLoggingCon
 	return o.ApplyT(func(v *ConversationProfile) ConversationProfileLoggingConfigPtrOutput { return v.LoggingConfig }).(ConversationProfileLoggingConfigPtrOutput)
 }
 
-// name
+// Identifier. The unique identifier of this conversation profile.
 func (o ConversationProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConversationProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -666,6 +690,13 @@ func (o ConversationProfileOutput) Project() pulumi.StringOutput {
 // Name of the CX SecuritySettings reference for the agent.
 func (o ConversationProfileOutput) SecuritySettings() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConversationProfile) pulumi.StringPtrOutput { return v.SecuritySettings }).(pulumi.StringPtrOutput)
+}
+
+// (Optional, Beta)
+// Configuration for SIP.
+// Structure is documented below.
+func (o ConversationProfileOutput) SipConfig() ConversationProfileSipConfigPtrOutput {
+	return o.ApplyT(func(v *ConversationProfile) ConversationProfileSipConfigPtrOutput { return v.SipConfig }).(ConversationProfileSipConfigPtrOutput)
 }
 
 // Settings for speech transcription.

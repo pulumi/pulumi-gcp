@@ -164,12 +164,6 @@ import * as utilities from "../utilities";
  *         bucket: "my-bucket",
  *         rootPath: "/path",
  *     },
- *     forwardSshConnectivity: {
- *         hostname: "google.com",
- *         username: "my-user",
- *         port: 8022,
- *         password: "swordfish",
- *     },
  *     labels: {
  *         key: "value",
  *     },

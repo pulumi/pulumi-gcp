@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterAddonsConfig
     {
         /// <summary>
+        /// Configuration for the Agent Sandbox addon. Structure is documented below:
+        /// </summary>
+        public readonly Outputs.ClusterAddonsConfigAgentSandboxConfig? AgentSandboxConfig;
+        /// <summary>
         /// . Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterAddonsConfigCloudrunConfig? CloudrunConfig;
@@ -143,6 +147,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterAddonsConfig(
+            Outputs.ClusterAddonsConfigAgentSandboxConfig? agentSandboxConfig,
+
             Outputs.ClusterAddonsConfigCloudrunConfig? cloudrunConfig,
 
             Outputs.ClusterAddonsConfigConfigConnectorConfig? configConnectorConfig,
@@ -179,6 +185,7 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterAddonsConfigStatefulHaConfig? statefulHaConfig)
         {
+            AgentSandboxConfig = agentSandboxConfig;
             CloudrunConfig = cloudrunConfig;
             ConfigConnectorConfig = configConnectorConfig;
             DnsCacheConfig = dnsCacheConfig;

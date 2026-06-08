@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DataTableRow{}
 	case "gcp:chronicle/feed:Feed":
 		r = &Feed{}
+	case "gcp:chronicle/findingsRefinement:FindingsRefinement":
+		r = &FindingsRefinement{}
 	case "gcp:chronicle/nativeDashboard:NativeDashboard":
 		r = &NativeDashboard{}
 	case "gcp:chronicle/referenceList:ReferenceList":
@@ -86,6 +88,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/feed",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/findingsRefinement",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

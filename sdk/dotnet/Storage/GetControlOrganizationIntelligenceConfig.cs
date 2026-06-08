@@ -12,10 +12,8 @@ namespace Pulumi.Gcp.Storage
     public static class GetControlOrganizationIntelligenceConfig
     {
         /// <summary>
-        /// Use this data source to get information about a Organization Storage Intelligence config resource.
-        /// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-        /// and
-        /// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+        /// Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
+        /// 
         /// 
         /// 
         /// ## Example Usage
@@ -28,9 +26,9 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sample_config = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
+        ///     var @default = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
         ///     {
-        ///         Name = "123456789",
+        ///         Name = example.Name,
         ///     });
         /// 
         /// });
@@ -40,10 +38,8 @@ namespace Pulumi.Gcp.Storage
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlOrganizationIntelligenceConfigResult>("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", args ?? new GetControlOrganizationIntelligenceConfigArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get information about a Organization Storage Intelligence config resource.
-        /// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-        /// and
-        /// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+        /// Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
+        /// 
         /// 
         /// 
         /// ## Example Usage
@@ -56,9 +52,9 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sample_config = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
+        ///     var @default = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
         ///     {
-        ///         Name = "123456789",
+        ///         Name = example.Name,
         ///     });
         /// 
         /// });
@@ -68,10 +64,8 @@ namespace Pulumi.Gcp.Storage
             => global::Pulumi.Deployment.Instance.Invoke<GetControlOrganizationIntelligenceConfigResult>("gcp:storage/getControlOrganizationIntelligenceConfig:getControlOrganizationIntelligenceConfig", args ?? new GetControlOrganizationIntelligenceConfigInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Use this data source to get information about a Organization Storage Intelligence config resource.
-        /// See [the official documentation](https://cloud.google.com/storage/docs/storage-intelligence/overview#resource)
-        /// and
-        /// [API](https://cloud.google.com/storage/docs/json_api/v1/intelligenceConfig).
+        /// Get information about a Cloud Storage Control OrganizationIntelligenceConfig.
+        /// 
         /// 
         /// 
         /// ## Example Usage
@@ -84,9 +78,9 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sample_config = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
+        ///     var @default = Gcp.Storage.GetControlOrganizationIntelligenceConfig.Invoke(new()
         ///     {
-        ///         Name = "123456789",
+        ///         Name = example.Name,
         ///     });
         /// 
         /// });
@@ -100,7 +94,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class GetControlOrganizationIntelligenceConfigArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of GCP organization.
+        /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -114,7 +108,7 @@ namespace Pulumi.Gcp.Storage
     public sealed class GetControlOrganizationIntelligenceConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of GCP organization.
+        /// Identifier of the GCP Organization. For GCP org, this field should be organization number.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -315,28 +315,6 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// });
     /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Storage buckets can be imported using the `Name` or  `project/name`. If the project is not
-    /// passed to the import command it will be inferred from the provider block or environment variables.
-    /// If it cannot be inferred it will be queried from the Compute API (this will fail if the API is
-    /// not enabled).
-    /// 
-    /// * `{{project_id}}/{{bucket}}`
-    /// * `{{bucket}}`
-    /// 
-    /// When using the `pulumi import` command, Storage buckets can be imported using one of the formats above. For example:
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:storage/bucket:Bucket default {{bucket}}
-    /// $ pulumi import gcp:storage/bucket:Bucket default {{project_id}}/{{bucket}}
-    /// ```
-    /// 
-    /// &gt; **Note:** Terraform will import this resource with `ForceDestroy` set to
-    /// `False` in state. If you've set it to `True` in config, run `pulumi up` to
-    /// update the value set in state. If you delete this resource before updating the
-    /// value, objects in the bucket will not be destroyed.
     /// </summary>
     [GcpResourceType("gcp:storage/bucket:Bucket")]
     public partial class Bucket : global::Pulumi.CustomResource

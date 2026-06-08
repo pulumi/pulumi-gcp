@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateNetworkInterfaceAccessConfig;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateNetworkInterfaceAliasIpRange;
+import com.pulumi.gcp.compute.outputs.InstanceTemplateNetworkInterfaceAliasIpv6Range;
 import com.pulumi.gcp.compute.outputs.InstanceTemplateNetworkInterfaceIpv6AccessConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -33,6 +34,13 @@ public final class InstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+    /**
+     * @return [Beta] An
+     * array of alias IPv6 ranges for this network interface. Can only be specified for network
+     * interfaces on subnet-mode networks. Structure documented below.
+     * 
+     */
+    private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges;
     /**
      * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
      * 
@@ -144,6 +152,15 @@ public final class InstanceTemplateNetworkInterface {
      */
     public List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges() {
         return this.aliasIpRanges == null ? List.of() : this.aliasIpRanges;
+    }
+    /**
+     * @return [Beta] An
+     * array of alias IPv6 ranges for this network interface. Can only be specified for network
+     * interfaces on subnet-mode networks. Structure documented below.
+     * 
+     */
+    public List<InstanceTemplateNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges() {
+        return this.aliasIpv6Ranges == null ? List.of() : this.aliasIpv6Ranges;
     }
     /**
      * @return Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
@@ -278,6 +295,7 @@ public final class InstanceTemplateNetworkInterface {
     public static final class Builder {
         private @Nullable List<InstanceTemplateNetworkInterfaceAccessConfig> accessConfigs;
         private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges;
+        private @Nullable List<InstanceTemplateNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges;
         private @Nullable String igmpQuery;
         private @Nullable Integer internalIpv6PrefixLength;
         private @Nullable List<InstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs;
@@ -299,6 +317,7 @@ public final class InstanceTemplateNetworkInterface {
     	      Objects.requireNonNull(defaults);
     	      this.accessConfigs = defaults.accessConfigs;
     	      this.aliasIpRanges = defaults.aliasIpRanges;
+    	      this.aliasIpv6Ranges = defaults.aliasIpv6Ranges;
     	      this.igmpQuery = defaults.igmpQuery;
     	      this.internalIpv6PrefixLength = defaults.internalIpv6PrefixLength;
     	      this.ipv6AccessConfigs = defaults.ipv6AccessConfigs;
@@ -334,6 +353,15 @@ public final class InstanceTemplateNetworkInterface {
         }
         public Builder aliasIpRanges(InstanceTemplateNetworkInterfaceAliasIpRange... aliasIpRanges) {
             return aliasIpRanges(List.of(aliasIpRanges));
+        }
+        @CustomType.Setter
+        public Builder aliasIpv6Ranges(@Nullable List<InstanceTemplateNetworkInterfaceAliasIpv6Range> aliasIpv6Ranges) {
+
+            this.aliasIpv6Ranges = aliasIpv6Ranges;
+            return this;
+        }
+        public Builder aliasIpv6Ranges(InstanceTemplateNetworkInterfaceAliasIpv6Range... aliasIpv6Ranges) {
+            return aliasIpv6Ranges(List.of(aliasIpv6Ranges));
         }
         @CustomType.Setter
         public Builder igmpQuery(@Nullable String igmpQuery) {
@@ -438,6 +466,7 @@ public final class InstanceTemplateNetworkInterface {
             final var _resultValue = new InstanceTemplateNetworkInterface();
             _resultValue.accessConfigs = accessConfigs;
             _resultValue.aliasIpRanges = aliasIpRanges;
+            _resultValue.aliasIpv6Ranges = aliasIpv6Ranges;
             _resultValue.igmpQuery = igmpQuery;
             _resultValue.internalIpv6PrefixLength = internalIpv6PrefixLength;
             _resultValue.ipv6AccessConfigs = ipv6AccessConfigs;

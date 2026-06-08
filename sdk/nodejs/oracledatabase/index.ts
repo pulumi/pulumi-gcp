@@ -75,6 +75,16 @@ export const getDbServers: typeof import("./getDbServers").getDbServers = null a
 export const getDbServersOutput: typeof import("./getDbServers").getDbServersOutput = null as any;
 utilities.lazyLoad(exports, ["getDbServers","getDbServersOutput"], () => require("./getDbServers"));
 
+export { GetGoldengateConnectionTypesArgs, GetGoldengateConnectionTypesResult, GetGoldengateConnectionTypesOutputArgs } from "./getGoldengateConnectionTypes";
+export const getGoldengateConnectionTypes: typeof import("./getGoldengateConnectionTypes").getGoldengateConnectionTypes = null as any;
+export const getGoldengateConnectionTypesOutput: typeof import("./getGoldengateConnectionTypes").getGoldengateConnectionTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getGoldengateConnectionTypes","getGoldengateConnectionTypesOutput"], () => require("./getGoldengateConnectionTypes"));
+
+export { GetGoldengateDeploymentEnvironmentsArgs, GetGoldengateDeploymentEnvironmentsResult, GetGoldengateDeploymentEnvironmentsOutputArgs } from "./getGoldengateDeploymentEnvironments";
+export const getGoldengateDeploymentEnvironments: typeof import("./getGoldengateDeploymentEnvironments").getGoldengateDeploymentEnvironments = null as any;
+export const getGoldengateDeploymentEnvironmentsOutput: typeof import("./getGoldengateDeploymentEnvironments").getGoldengateDeploymentEnvironmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getGoldengateDeploymentEnvironments","getGoldengateDeploymentEnvironmentsOutput"], () => require("./getGoldengateDeploymentEnvironments"));
+
 export { GetOdbNetworkArgs, GetOdbNetworkResult, GetOdbNetworkOutputArgs } from "./getOdbNetwork";
 export const getOdbNetwork: typeof import("./getOdbNetwork").getOdbNetwork = null as any;
 export const getOdbNetworkOutput: typeof import("./getOdbNetwork").getOdbNetworkOutput = null as any;
@@ -84,6 +94,21 @@ export { GetOdbSubnetArgs, GetOdbSubnetResult, GetOdbSubnetOutputArgs } from "./
 export const getOdbSubnet: typeof import("./getOdbSubnet").getOdbSubnet = null as any;
 export const getOdbSubnetOutput: typeof import("./getOdbSubnet").getOdbSubnetOutput = null as any;
 utilities.lazyLoad(exports, ["getOdbSubnet","getOdbSubnetOutput"], () => require("./getOdbSubnet"));
+
+export { GoldengateConnectionArgs, GoldengateConnectionState } from "./goldengateConnection";
+export type GoldengateConnection = import("./goldengateConnection").GoldengateConnection;
+export const GoldengateConnection: typeof import("./goldengateConnection").GoldengateConnection = null as any;
+utilities.lazyLoad(exports, ["GoldengateConnection"], () => require("./goldengateConnection"));
+
+export { GoldengateConnectionAssignmentArgs, GoldengateConnectionAssignmentState } from "./goldengateConnectionAssignment";
+export type GoldengateConnectionAssignment = import("./goldengateConnectionAssignment").GoldengateConnectionAssignment;
+export const GoldengateConnectionAssignment: typeof import("./goldengateConnectionAssignment").GoldengateConnectionAssignment = null as any;
+utilities.lazyLoad(exports, ["GoldengateConnectionAssignment"], () => require("./goldengateConnectionAssignment"));
+
+export { GoldengateDeploymentArgs, GoldengateDeploymentState } from "./goldengateDeployment";
+export type GoldengateDeployment = import("./goldengateDeployment").GoldengateDeployment;
+export const GoldengateDeployment: typeof import("./goldengateDeployment").GoldengateDeployment = null as any;
+utilities.lazyLoad(exports, ["GoldengateDeployment"], () => require("./goldengateDeployment"));
 
 export { OdbNetworkArgs, OdbNetworkState } from "./odbNetwork";
 export type OdbNetwork = import("./odbNetwork").OdbNetwork;
@@ -112,6 +137,12 @@ const _module = {
                 return new ExadbVmCluster(name, <any>undefined, { urn })
             case "gcp:oracledatabase/exascaleDbStorageVault:ExascaleDbStorageVault":
                 return new ExascaleDbStorageVault(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/goldengateConnection:GoldengateConnection":
+                return new GoldengateConnection(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/goldengateConnectionAssignment:GoldengateConnectionAssignment":
+                return new GoldengateConnectionAssignment(name, <any>undefined, { urn })
+            case "gcp:oracledatabase/goldengateDeployment:GoldengateDeployment":
+                return new GoldengateDeployment(name, <any>undefined, { urn })
             case "gcp:oracledatabase/odbNetwork:OdbNetwork":
                 return new OdbNetwork(name, <any>undefined, { urn })
             case "gcp:oracledatabase/odbSubnet:OdbSubnet":
@@ -127,5 +158,8 @@ pulumi.runtime.registerResourceModule("gcp", "oracledatabase/cloudVmCluster", _m
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/dbSystem", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/exadbVmCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/exascaleDbStorageVault", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/goldengateConnection", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/goldengateConnectionAssignment", _module)
+pulumi.runtime.registerResourceModule("gcp", "oracledatabase/goldengateDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbNetwork", _module)
 pulumi.runtime.registerResourceModule("gcp", "oracledatabase/odbSubnet", _module)

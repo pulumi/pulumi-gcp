@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
  *     displayName: "dbms_pc",
- *     location: "us-central1",
+ *     location: "us-west1",
  *     privateConnectionId: "my-connection",
  *     labels: {
  *         key: "value",
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.databasemigrationservice.PrivateConnection("default", {
  *     displayName: "dbms_pc",
- *     location: "us-central1",
+ *     location: "us-west1",
  *     privateConnectionId: "my-connection",
  *     labels: {
  *         key: "value",
@@ -61,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultNetworkAttachment = new gcp.compute.NetworkAttachment("default", {
  *     name: "my-attachment",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     connectionPreference: "ACCEPT_AUTOMATIC",
  *     subnetworks: [googleComputeSubnetwork["default"].id],
  * });
@@ -72,7 +72,7 @@ import * as utilities from "../utilities";
  * const defaultSubnetwork = new gcp.compute.Subnetwork("default", {
  *     name: "my-subnetwork",
  *     ipCidrRange: "10.0.0.0/16",
- *     region: "us-central1",
+ *     region: "us-west1",
  *     network: defaultNetwork.id,
  * });
  * ```

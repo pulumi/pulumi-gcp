@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("default", new()
     ///     {
     ///         Name = "my-subnetwork",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         Network = defaultNetwork.Id,
     ///         IpCidrRange = "10.0.0.0/16",
     ///     });
@@ -114,7 +114,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var defaultNetworkAttachment = new Gcp.Compute.NetworkAttachment("default", new()
     ///     {
     ///         Name = "my-network-attachment",
-    ///         Region = "us-central1",
+    ///         Region = "us-west1",
     ///         Description = "basic network attachment description",
     ///         ConnectionPreference = "ACCEPT_AUTOMATIC",
     ///         Subnetworks = new[]
@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.Datastream
     ///     var @default = new Gcp.Datastream.PrivateConnection("default", new()
     ///     {
     ///         DisplayName = "Connection profile",
-    ///         Location = "us-central1",
+    ///         Location = "us-west1",
     ///         PrivateConnectionId = "my-connection",
     ///         Labels = 
     ///         {

@@ -21,10 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:migrationcenter/assetsExportJob:AssetsExportJob":
+		r = &AssetsExportJob{}
+	case "gcp:migrationcenter/discoveryClient:DiscoveryClient":
+		r = &DiscoveryClient{}
 	case "gcp:migrationcenter/group:Group":
 		r = &Group{}
 	case "gcp:migrationcenter/preferenceSet:PreferenceSet":
 		r = &PreferenceSet{}
+	case "gcp:migrationcenter/report:Report":
+		r = &Report{}
+	case "gcp:migrationcenter/reportConfig:ReportConfig":
+		r = &ReportConfig{}
+	case "gcp:migrationcenter/settings:Settings":
+		r = &Settings{}
+	case "gcp:migrationcenter/source:Source":
+		r = &Source{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +52,42 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"migrationcenter/assetsExportJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"migrationcenter/discoveryClient",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"migrationcenter/group",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"migrationcenter/preferenceSet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"migrationcenter/report",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"migrationcenter/reportConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"migrationcenter/settings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"migrationcenter/source",
 		&module{version},
 	)
 }

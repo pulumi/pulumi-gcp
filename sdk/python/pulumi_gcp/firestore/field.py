@@ -47,7 +47,7 @@ class FieldArgs:
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         pulumi.set(__self__, "collection", collection)
@@ -149,7 +149,7 @@ class FieldArgs:
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> pulumi.Input[Optional['FieldTtlConfigArgs']]:
         """
-        The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         Structure is documented below.
         """
         return pulumi.get(self, "ttl_config")
@@ -191,7 +191,7 @@ class _FieldState:
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input['FieldTtlConfigArgs'] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         if collection is not None:
@@ -310,7 +310,7 @@ class _FieldState:
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> pulumi.Input[Optional['FieldTtlConfigArgs']]:
         """
-        The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         Structure is documented below.
         """
         return pulumi.get(self, "ttl_config")
@@ -368,7 +368,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__49547",
+            collection="chatrooms__48675",
             field="basic",
             index_config={
                 "indexes": [
@@ -380,6 +380,50 @@ class Field(pulumi.CustomResource):
                         "array_config": "CONTAINS",
                     },
                 ],
+            })
+        ```
+        ### Firestore Field Timestamp Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        timestamp_enterprise = gcp.firestore.Field("timestamp-enterprise",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms",
+            field="timestamp",
+            ttl_config={})
+        ```
+        ### Firestore Field Timestamp With Ttl Offset Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        timestamp_with_offset_enterprise = gcp.firestore.Field("timestamp-with-offset-enterprise",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms",
+            field="timestamp",
+            ttl_config={
+                "expiration_offset": "2592000s",
             })
         ```
         ### Firestore Field Timestamp
@@ -403,6 +447,29 @@ class Field(pulumi.CustomResource):
             ttl_config={},
             index_config={})
         ```
+        ### Firestore Field Timestamp With Ttl Offset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        timestamp_with_offset = gcp.firestore.Field("timestamp-with-offset",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms",
+            field="timestamp",
+            ttl_config={
+                "expiration_offset": "2592000s",
+            },
+            index_config={})
+        ```
         ### Firestore Field Match Override
 
         ```python
@@ -419,7 +486,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__48675",
+            collection="chatrooms__42702",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -451,7 +518,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__42702",
+            collection="chatrooms__37426",
             field="*",
             index_config={
                 "indexes": [
@@ -497,7 +564,7 @@ class Field(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         ...
@@ -540,7 +607,7 @@ class Field(pulumi.CustomResource):
         basic = gcp.firestore.Field("basic",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__49547",
+            collection="chatrooms__48675",
             field="basic",
             index_config={
                 "indexes": [
@@ -552,6 +619,50 @@ class Field(pulumi.CustomResource):
                         "array_config": "CONTAINS",
                     },
                 ],
+            })
+        ```
+        ### Firestore Field Timestamp Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        timestamp_enterprise = gcp.firestore.Field("timestamp-enterprise",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms",
+            field="timestamp",
+            ttl_config={})
+        ```
+        ### Firestore Field Timestamp With Ttl Offset Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            database_edition="ENTERPRISE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        timestamp_with_offset_enterprise = gcp.firestore.Field("timestamp-with-offset-enterprise",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms",
+            field="timestamp",
+            ttl_config={
+                "expiration_offset": "2592000s",
             })
         ```
         ### Firestore Field Timestamp
@@ -575,6 +686,29 @@ class Field(pulumi.CustomResource):
             ttl_config={},
             index_config={})
         ```
+        ### Firestore Field Timestamp With Ttl Offset
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE")
+        timestamp_with_offset = gcp.firestore.Field("timestamp-with-offset",
+            project="my-project-name",
+            database=database.name,
+            collection="chatrooms",
+            field="timestamp",
+            ttl_config={
+                "expiration_offset": "2592000s",
+            },
+            index_config={})
+        ```
         ### Firestore Field Match Override
 
         ```python
@@ -591,7 +725,7 @@ class Field(pulumi.CustomResource):
         match_override = gcp.firestore.Field("match_override",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__48675",
+            collection="chatrooms__42702",
             field="field_with_same_configuration_as_ancestor",
             index_config={
                 "indexes": [
@@ -623,7 +757,7 @@ class Field(pulumi.CustomResource):
         wildcard = gcp.firestore.Field("wildcard",
             project="my-project-name",
             database=database.name,
-            collection="chatrooms__42702",
+            collection="chatrooms__37426",
             field="*",
             index_config={
                 "indexes": [
@@ -737,7 +871,7 @@ class Field(pulumi.CustomResource):
                `projects/{{project}}/databases/{{database}}/collectionGroups/{{collection}}/fields/{{field}}`
         :param pulumi.Input[_builtins.str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        :param pulumi.Input[Union['FieldTtlConfigArgs', 'FieldTtlConfigArgsDict']] ttl_config: The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
                Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -825,7 +959,7 @@ class Field(pulumi.CustomResource):
     @pulumi.getter(name="ttlConfig")
     def ttl_config(self) -> pulumi.Output[Optional['outputs.FieldTtlConfig']]:
         """
-        The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
+        The TTL configuration for this Field. If set to an empty (i.e. `ttl_config {}`) or non-empty block, a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
         Structure is documented below.
         """
         return pulumi.get(self, "ttl_config")

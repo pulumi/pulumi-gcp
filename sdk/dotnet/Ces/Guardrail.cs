@@ -226,6 +226,62 @@ namespace Pulumi.Gcp.Ces
     /// 
     /// });
     /// ```
+    /// ### Ces Guardrail Llm Prompt Security Fail Open
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cesAppForGuardrail = new Gcp.Ces.App("ces_app_for_guardrail", new()
+    ///     {
+    ///         AppId = "app-id",
+    ///         Location = "us",
+    ///         Description = "App used as parent for CES Toolset example",
+    ///         DisplayName = "my-app",
+    ///         LanguageSettings = new Gcp.Ces.Inputs.AppLanguageSettingsArgs
+    ///         {
+    ///             DefaultLanguageCode = "en-US",
+    ///             SupportedLanguageCodes = new[]
+    ///             {
+    ///                 "es-ES",
+    ///                 "fr-FR",
+    ///             },
+    ///             EnableMultilingualSupport = true,
+    ///             FallbackAction = "escalate",
+    ///         },
+    ///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+    ///         {
+    ///             TimeZone = "America/Los_Angeles",
+    ///         },
+    ///     });
+    /// 
+    ///     var cesGuardrailLlmPromptSecurityFailOpen = new Gcp.Ces.Guardrail("ces_guardrail_llm_prompt_security_fail_open", new()
+    ///     {
+    ///         GuardrailId = "guardrail-id",
+    ///         Location = cesAppForGuardrail.Location,
+    ///         App = cesAppForGuardrail.AppId,
+    ///         DisplayName = "my-guardrail",
+    ///         Description = "Guardrail description",
+    ///         Action = new Gcp.Ces.Inputs.GuardrailActionArgs
+    ///         {
+    ///             GenerativeAnswer = new Gcp.Ces.Inputs.GuardrailActionGenerativeAnswerArgs
+    ///             {
+    ///                 Prompt = "example_prompt",
+    ///             },
+    ///         },
+    ///         Enabled = true,
+    ///         LlmPromptSecurity = new Gcp.Ces.Inputs.GuardrailLlmPromptSecurityArgs
+    ///         {
+    ///             FailOpen = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Ces Guardrail Code Callback
     /// 
     /// ```csharp

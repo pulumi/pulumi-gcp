@@ -958,6 +958,8 @@ class DataProductAccessGroupPrincipal(dict):
         suggest = None
         if key == "googleGroup":
             suggest = "google_group"
+        elif key == "serviceAccount":
+            suggest = "service_account"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DataProductAccessGroupPrincipal. Access the value via the '{suggest}' property getter instead.")
@@ -971,12 +973,16 @@ class DataProductAccessGroupPrincipal(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 google_group: Optional[_builtins.str] = None):
+                 google_group: Optional[_builtins.str] = None,
+                 service_account: Optional[_builtins.str] = None):
         """
         :param _builtins.str google_group: Email of the Google Group.
+        :param _builtins.str service_account: Specifies the email of the producer service account.
         """
         if google_group is not None:
             pulumi.set(__self__, "google_group", google_group)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
 
     @_builtins.property
     @pulumi.getter(name="googleGroup")
@@ -985,6 +991,14 @@ class DataProductAccessGroupPrincipal(dict):
         Email of the Google Group.
         """
         return pulumi.get(self, "google_group")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[_builtins.str]:
+        """
+        Specifies the email of the producer service account.
+        """
+        return pulumi.get(self, "service_account")
 
 
 @pulumi.output_type

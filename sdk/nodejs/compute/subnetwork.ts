@@ -257,6 +257,64 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Subnetwork With Secondary Ipv6 Range
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom_test = new gcp.compute.Network("custom-test", {
+ *     name: "network-with-secondary-ranges",
+ *     autoCreateSubnetworks: false,
+ *     enableUlaInternalIpv6: true,
+ * });
+ * const ipv6Pap = new gcp.compute.PublicAdvertisedPrefix("ipv6_pap", {
+ *     name: "pap-for-secondary-ranges",
+ *     ipCidrRange: "2001:db8::/40",
+ *     pdpScope: "REGIONAL",
+ *     ipv6AccessType: "INTERNAL",
+ *     description: "GOOGLE_INTERNAL_TEST_PREFIX",
+ * });
+ * const ipv6Pdp = new gcp.compute.PublicDelegatedPrefix("ipv6_pdp", {
+ *     name: "pdp-for-secondary-ranges",
+ *     region: "us-central1",
+ *     description: "PDP in internal subnet mode",
+ *     ipCidrRange: "2001:db8::/48",
+ *     parentPrefix: ipv6Pap.id,
+ *     mode: "DELEGATION",
+ * });
+ * const ipv6SubPdp = new gcp.compute.PublicDelegatedPrefix("ipv6_sub_pdp", {
+ *     name: "sub-pdp-for-secondary-ranges",
+ *     region: "us-central1",
+ *     ipCidrRange: "2001:db8::/56",
+ *     parentPrefix: ipv6Pdp.id,
+ *     mode: "INTERNAL_IPV6_SUBNETWORK_CREATION",
+ * });
+ * const subnetworkWithSecondaryIpv6Range = new gcp.compute.Subnetwork("subnetwork_with_secondary_ipv6_range", {
+ *     name: "subnet-with-secondary-ranges",
+ *     region: "us-central1",
+ *     network: custom_test.id,
+ *     stackType: "IPV6_ONLY",
+ *     ipv6AccessType: "INTERNAL",
+ *     secondaryIpRanges: [
+ *         {
+ *             rangeName: "v6-ula",
+ *             ipVersion: "IPV6",
+ *         },
+ *         {
+ *             rangeName: "v6-byogua-auto",
+ *             ipVersion: "IPV6",
+ *             ipCollection: ipv6SubPdp.selfLink,
+ *         },
+ *         {
+ *             rangeName: "v6-byogua-manual",
+ *             ipVersion: "IPV6",
+ *             ipCollection: ipv6SubPdp.selfLink,
+ *             ipCidrRange: "2001:db8:0:2::/64",
+ *         },
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *

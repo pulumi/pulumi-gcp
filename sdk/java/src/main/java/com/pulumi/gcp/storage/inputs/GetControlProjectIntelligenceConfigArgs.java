@@ -15,14 +15,14 @@ public final class GetControlProjectIntelligenceConfigArgs extends com.pulumi.re
     public static final GetControlProjectIntelligenceConfigArgs Empty = new GetControlProjectIntelligenceConfigArgs();
 
     /**
-     * The name or number of the GCP project.
+     * Identifier of the GCP project. For GCP project, this field can be project name or project number.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name or number of the GCP project.
+     * @return Identifier of the GCP project. For GCP project, this field can be project name or project number.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class GetControlProjectIntelligenceConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The name or number of the GCP project.
+         * @param name Identifier of the GCP project. For GCP project, this field can be project name or project number.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetControlProjectIntelligenceConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param name The name or number of the GCP project.
+         * @param name Identifier of the GCP project. For GCP project, this field can be project name or project number.
          * 
          * @return builder
          * 

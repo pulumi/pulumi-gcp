@@ -24,17 +24,37 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Inputs
         [Input("kmsKeyServiceAccount")]
         public Input<string>? KmsKeyServiceAccount { get; set; }
 
-        /// <summary>
-        /// (Optional)
-        /// </summary>
         [Input("rawKey")]
-        public Input<string>? RawKey { get; set; }
+        private Input<string>? _rawKey;
 
         /// <summary>
-        /// (Optional)
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
+        public Input<string>? RawKey
+        {
+            get => _rawKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rawKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         [Input("rsaEncryptedKey")]
-        public Input<string>? RsaEncryptedKey { get; set; }
+        private Input<string>? _rsaEncryptedKey;
+
+        /// <summary>
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
+        /// </summary>
+        public Input<string>? RsaEncryptedKey
+        {
+            get => _rsaEncryptedKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _rsaEncryptedKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public RestoreWorkloadDiskRestorePropertiesDiskEncryptionKeyArgs()
         {

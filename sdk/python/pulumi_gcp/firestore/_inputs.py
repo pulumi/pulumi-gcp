@@ -305,6 +305,10 @@ class FieldIndexConfigIndexArgs:
 
 
 class FieldTtlConfigArgsDict(TypedDict):
+    expiration_offset: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+    """
     state: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Output)
@@ -314,13 +318,29 @@ class FieldTtlConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FieldTtlConfigArgs:
     def __init__(__self__, *,
+                 expiration_offset: pulumi.Input[Optional[_builtins.str]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None):
         """
+        :param pulumi.Input[_builtins.str] expiration_offset: The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
         :param pulumi.Input[_builtins.str] state: (Output)
                The state of TTL (time-to-live) configuration for documents that have this Field set.
         """
+        if expiration_offset is not None:
+            pulumi.set(__self__, "expiration_offset", expiration_offset)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationOffset")
+    def expiration_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The offset, relative to the timestamp value from the field, used to determine the document's expiration time. Formatted as the number of seconds followed by 's'. For example, "60s" represents an offset of one minute. The number of seconds must be between 1 and 2147483647 inclusive. To configure no offset, omit this field.
+        """
+        return pulumi.get(self, "expiration_offset")
+
+    @expiration_offset.setter
+    def expiration_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "expiration_offset", value)
 
     @_builtins.property
     @pulumi.getter

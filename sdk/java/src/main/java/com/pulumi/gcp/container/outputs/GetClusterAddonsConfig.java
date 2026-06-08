@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigAgentSandboxConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigCloudrunConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigConfigConnectorConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigDnsCacheConfig;
@@ -28,6 +29,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterAddonsConfig {
+    /**
+     * @return The status of the Agent Sandbox addon. It is disabled by default. Set enabled = true to enable.
+     * 
+     */
+    private List<GetClusterAddonsConfigAgentSandboxConfig> agentSandboxConfigs;
     /**
      * @return The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
      * 
@@ -120,6 +126,13 @@ public final class GetClusterAddonsConfig {
     private List<GetClusterAddonsConfigStatefulHaConfig> statefulHaConfigs;
 
     private GetClusterAddonsConfig() {}
+    /**
+     * @return The status of the Agent Sandbox addon. It is disabled by default. Set enabled = true to enable.
+     * 
+     */
+    public List<GetClusterAddonsConfigAgentSandboxConfig> agentSandboxConfigs() {
+        return this.agentSandboxConfigs;
+    }
     /**
      * @return The status of the CloudRun addon. It is disabled by default. Set disabled = false to enable.
      * 
@@ -256,6 +269,7 @@ public final class GetClusterAddonsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterAddonsConfigAgentSandboxConfig> agentSandboxConfigs;
         private List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs;
         private List<GetClusterAddonsConfigConfigConnectorConfig> configConnectorConfigs;
         private List<GetClusterAddonsConfigDnsCacheConfig> dnsCacheConfigs;
@@ -277,6 +291,7 @@ public final class GetClusterAddonsConfig {
         public Builder() {}
         public Builder(GetClusterAddonsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.agentSandboxConfigs = defaults.agentSandboxConfigs;
     	      this.cloudrunConfigs = defaults.cloudrunConfigs;
     	      this.configConnectorConfigs = defaults.configConnectorConfigs;
     	      this.dnsCacheConfigs = defaults.dnsCacheConfigs;
@@ -297,6 +312,17 @@ public final class GetClusterAddonsConfig {
     	      this.statefulHaConfigs = defaults.statefulHaConfigs;
         }
 
+        @CustomType.Setter
+        public Builder agentSandboxConfigs(List<GetClusterAddonsConfigAgentSandboxConfig> agentSandboxConfigs) {
+            if (agentSandboxConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "agentSandboxConfigs");
+            }
+            this.agentSandboxConfigs = agentSandboxConfigs;
+            return this;
+        }
+        public Builder agentSandboxConfigs(GetClusterAddonsConfigAgentSandboxConfig... agentSandboxConfigs) {
+            return agentSandboxConfigs(List.of(agentSandboxConfigs));
+        }
         @CustomType.Setter
         public Builder cloudrunConfigs(List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs) {
             if (cloudrunConfigs == null) {
@@ -497,6 +523,7 @@ public final class GetClusterAddonsConfig {
         }
         public GetClusterAddonsConfig build() {
             final var _resultValue = new GetClusterAddonsConfig();
+            _resultValue.agentSandboxConfigs = agentSandboxConfigs;
             _resultValue.cloudrunConfigs = cloudrunConfigs;
             _resultValue.configConnectorConfigs = configConnectorConfigs;
             _resultValue.dnsCacheConfigs = dnsCacheConfigs;

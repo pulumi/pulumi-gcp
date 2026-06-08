@@ -11,10 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to get details about a datastore resource.
-//
-// To get more information about datastore, see:
-// * [API documentation](https://docs.cloud.google.com/vmware-engine/docs/vmware-ecosystem/concepts-nfs-datastores-overview)
+// Get information about a Cloud VMware Engine Datastore.
 //
 // ## Example Usage
 //
@@ -31,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.LookupDatastore(ctx, &vmwareengine.LookupDatastoreArgs{
-//				Name:     "example-ds",
-//				Location: "us-west2",
+//				Location: exampleThirdparty.Location,
+//				Name:     exampleThirdparty.Name,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -54,10 +51,21 @@ func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pul
 
 // A collection of arguments for invoking getDatastore.
 type LookupDatastoreArgs struct {
-	// either regional or zonal location of the resource.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location string `pulumi:"location"`
-	// Name of the resource.
-	Name    string  `pulumi:"name"`
+	// The user-provided identifier of the datastore to be created.
+	// This identifier must be unique among each `Datastore` within the parent
+	// and becomes the final token in the name URI.
+	// The identifier must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+	//   (section 3.5)
+	Name string `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -89,10 +97,21 @@ func LookupDatastoreOutput(ctx *pulumi.Context, args LookupDatastoreOutputArgs, 
 
 // A collection of arguments for invoking getDatastore.
 type LookupDatastoreOutputArgs struct {
-	// either regional or zonal location of the resource.
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
 	Location pulumi.StringInput `pulumi:"location"`
-	// Name of the resource.
-	Name    pulumi.StringInput    `pulumi:"name"`
+	// The user-provided identifier of the datastore to be created.
+	// This identifier must be unique among each `Datastore` within the parent
+	// and becomes the final token in the name URI.
+	// The identifier must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034)
+	//   (section 3.5)
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 

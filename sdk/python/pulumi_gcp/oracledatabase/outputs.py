@@ -31,6 +31,7 @@ __all__ = [
     'CloudExadataInfrastructureProperties',
     'CloudExadataInfrastructurePropertiesCustomerContact',
     'CloudExadataInfrastructurePropertiesMaintenanceWindow',
+    'CloudVmClusterIdentityConnector',
     'CloudVmClusterProperties',
     'CloudVmClusterPropertiesDiagnosticsDataCollectionOptions',
     'CloudVmClusterPropertiesTimeZone',
@@ -51,6 +52,61 @@ __all__ = [
     'ExascaleDbStorageVaultProperties',
     'ExascaleDbStorageVaultPropertiesExascaleDbStorageDetails',
     'ExascaleDbStorageVaultPropertiesTimeZone',
+    'GoldengateConnectionAssignmentProperties',
+    'GoldengateConnectionProperties',
+    'GoldengateConnectionPropertiesAmazonKinesisConnectionProperties',
+    'GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties',
+    'GoldengateConnectionPropertiesAmazonS3ConnectionProperties',
+    'GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties',
+    'GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties',
+    'GoldengateConnectionPropertiesDatabricksConnectionProperties',
+    'GoldengateConnectionPropertiesDb2ConnectionProperties',
+    'GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute',
+    'GoldengateConnectionPropertiesElasticsearchConnectionProperties',
+    'GoldengateConnectionPropertiesGenericConnectionProperties',
+    'GoldengateConnectionPropertiesGoldengateConnectionProperties',
+    'GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties',
+    'GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties',
+    'GoldengateConnectionPropertiesGooglePubsubConnectionProperties',
+    'GoldengateConnectionPropertiesHdfsConnectionProperties',
+    'GoldengateConnectionPropertiesIcebergConnectionProperties',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage',
+    'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage',
+    'GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties',
+    'GoldengateConnectionPropertiesKafkaConnectionProperties',
+    'GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer',
+    'GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties',
+    'GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties',
+    'GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties',
+    'GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute',
+    'GoldengateConnectionPropertiesMongodbConnectionProperties',
+    'GoldengateConnectionPropertiesMysqlConnectionProperties',
+    'GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute',
+    'GoldengateConnectionPropertiesOciObjectStorageConnectionProperties',
+    'GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties',
+    'GoldengateConnectionPropertiesOracleConnectionProperties',
+    'GoldengateConnectionPropertiesOracleNosqlConnectionProperties',
+    'GoldengateConnectionPropertiesPostgresqlConnectionProperties',
+    'GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute',
+    'GoldengateConnectionPropertiesRedisConnectionProperties',
+    'GoldengateConnectionPropertiesSnowflakeConnectionProperties',
+    'GoldengateDeploymentProperties',
+    'GoldengateDeploymentPropertiesBackupSchedule',
+    'GoldengateDeploymentPropertiesDeploymentDiagnosticData',
+    'GoldengateDeploymentPropertiesIngressIp',
+    'GoldengateDeploymentPropertiesLock',
+    'GoldengateDeploymentPropertiesMaintenanceConfig',
+    'GoldengateDeploymentPropertiesMaintenanceWindow',
+    'GoldengateDeploymentPropertiesOggData',
+    'GoldengateDeploymentPropertiesOggDataGroupRolesMapping',
+    'GoldengateDeploymentPropertiesPlacement',
     'GetAutonomousDatabasePropertyResult',
     'GetAutonomousDatabasePropertyApexDetailResult',
     'GetAutonomousDatabasePropertyConnectionStringResult',
@@ -83,10 +139,12 @@ __all__ = [
     'GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyResult',
     'GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyCustomerContactResult',
     'GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanceWindowResult',
+    'GetCloudVmClusterIdentityConnectorResult',
     'GetCloudVmClusterPropertyResult',
     'GetCloudVmClusterPropertyDiagnosticsDataCollectionOptionResult',
     'GetCloudVmClusterPropertyTimeZoneResult',
     'GetCloudVmClustersCloudVmClusterResult',
+    'GetCloudVmClustersCloudVmClusterIdentityConnectorResult',
     'GetCloudVmClustersCloudVmClusterPropertyResult',
     'GetCloudVmClustersCloudVmClusterPropertyDiagnosticsDataCollectionOptionResult',
     'GetCloudVmClustersCloudVmClusterPropertyTimeZoneResult',
@@ -94,6 +152,8 @@ __all__ = [
     'GetDbNodesDbNodePropertyResult',
     'GetDbServersDbServerResult',
     'GetDbServersDbServerPropertyResult',
+    'GetGoldengateConnectionTypesGoldengateConnectionTypeResult',
+    'GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentResult',
 ]
 
 @pulumi.output_type
@@ -2887,6 +2947,72 @@ class CloudExadataInfrastructurePropertiesMaintenanceWindow(dict):
 
 
 @pulumi.output_type
+class CloudVmClusterIdentityConnector(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionState":
+            suggest = "connection_state"
+        elif key == "serviceAgentEmail":
+            suggest = "service_agent_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudVmClusterIdentityConnector. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudVmClusterIdentityConnector.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudVmClusterIdentityConnector.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_state: Optional[_builtins.str] = None,
+                 service_agent_email: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_state: (Output)
+               The connection state of the identity connector.
+               Possible values:
+               CONNECTION_STATE_UNSPECIFIED
+               CONNECTED
+               PARTIALLY_CONNECTED
+               DISCONNECTED
+               UNKNOWN
+        :param _builtins.str service_agent_email: (Output)
+               A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        if connection_state is not None:
+            pulumi.set(__self__, "connection_state", connection_state)
+        if service_agent_email is not None:
+            pulumi.set(__self__, "service_agent_email", service_agent_email)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The connection state of the identity connector.
+        Possible values:
+        CONNECTION_STATE_UNSPECIFIED
+        CONNECTED
+        PARTIALLY_CONNECTED
+        DISCONNECTED
+        UNKNOWN
+        """
+        return pulumi.get(self, "connection_state")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentEmail")
+    def service_agent_email(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        return pulumi.get(self, "service_agent_email")
+
+
+@pulumi.output_type
 class CloudVmClusterProperties(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5527,6 +5653,7670 @@ class ExascaleDbStorageVaultPropertiesTimeZone(dict):
         IANA Time Zone Database version number. For example "2019a".
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GoldengateConnectionAssignmentProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "goldengateConnection":
+            suggest = "goldengate_connection"
+        elif key == "goldengateDeployment":
+            suggest = "goldengate_deployment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionAssignmentProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionAssignmentProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionAssignmentProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 goldengate_connection: _builtins.str,
+                 goldengate_deployment: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 ocid: Optional[_builtins.str] = None,
+                 state: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str goldengate_connection: The GoldengateConnection resource to be assigned.
+               Format:
+               projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+        :param _builtins.str goldengate_deployment: The GoldenGateDeployment to assign the connection to.
+               Format:
+               projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+        :param _builtins.str alias: (Output)
+               Credential store alias.
+        :param _builtins.str ocid: (Output)
+               The
+               [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+               of the connection assignment being referenced.
+        :param _builtins.str state: (Output)
+               The lifecycle state of the connection assignment.
+               Possible values:
+               CREATING
+               ACTIVE
+               FAILED
+               UPDATING
+               DELETING
+        """
+        pulumi.set(__self__, "goldengate_connection", goldengate_connection)
+        pulumi.set(__self__, "goldengate_deployment", goldengate_deployment)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if ocid is not None:
+            pulumi.set(__self__, "ocid", ocid)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter(name="goldengateConnection")
+    def goldengate_connection(self) -> _builtins.str:
+        """
+        The GoldengateConnection resource to be assigned.
+        Format:
+        projects/{project}/locations/{location}/goldengateConnections/{goldengate_connection}
+        """
+        return pulumi.get(self, "goldengate_connection")
+
+    @_builtins.property
+    @pulumi.getter(name="goldengateDeployment")
+    def goldengate_deployment(self) -> _builtins.str:
+        """
+        The GoldenGateDeployment to assign the connection to.
+        Format:
+        projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+        """
+        return pulumi.get(self, "goldengate_deployment")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Credential store alias.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The
+        [OCID](https://docs.cloud.oracle.com/Content/General/Concepts/identifiers.htm)
+        of the connection assignment being referenced.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The lifecycle state of the connection assignment.
+        Possible values:
+        CREATING
+        ACTIVE
+        FAILED
+        UPDATING
+        DELETING
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GoldengateConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionType":
+            suggest = "connection_type"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "amazonKinesisConnectionProperties":
+            suggest = "amazon_kinesis_connection_properties"
+        elif key == "amazonRedshiftConnectionProperties":
+            suggest = "amazon_redshift_connection_properties"
+        elif key == "amazonS3ConnectionProperties":
+            suggest = "amazon_s3_connection_properties"
+        elif key == "azureDataLakeStorageConnectionProperties":
+            suggest = "azure_data_lake_storage_connection_properties"
+        elif key == "azureSynapseAnalyticsConnectionProperties":
+            suggest = "azure_synapse_analytics_connection_properties"
+        elif key == "databricksConnectionProperties":
+            suggest = "databricks_connection_properties"
+        elif key == "db2ConnectionProperties":
+            suggest = "db2_connection_properties"
+        elif key == "elasticsearchConnectionProperties":
+            suggest = "elasticsearch_connection_properties"
+        elif key == "genericConnectionProperties":
+            suggest = "generic_connection_properties"
+        elif key == "goldengateConnectionProperties":
+            suggest = "goldengate_connection_properties"
+        elif key == "googleBigQueryConnectionProperties":
+            suggest = "google_big_query_connection_properties"
+        elif key == "googleCloudStorageConnectionProperties":
+            suggest = "google_cloud_storage_connection_properties"
+        elif key == "googlePubsubConnectionProperties":
+            suggest = "google_pubsub_connection_properties"
+        elif key == "hdfsConnectionProperties":
+            suggest = "hdfs_connection_properties"
+        elif key == "icebergConnectionProperties":
+            suggest = "iceberg_connection_properties"
+        elif key == "ingressIpAddresses":
+            suggest = "ingress_ip_addresses"
+        elif key == "javaMessageServiceConnectionProperties":
+            suggest = "java_message_service_connection_properties"
+        elif key == "kafkaConnectionProperties":
+            suggest = "kafka_connection_properties"
+        elif key == "kafkaSchemaRegistryConnectionProperties":
+            suggest = "kafka_schema_registry_connection_properties"
+        elif key == "lifecycleDetails":
+            suggest = "lifecycle_details"
+        elif key == "lifecycleState":
+            suggest = "lifecycle_state"
+        elif key == "microsoftFabricConnectionProperties":
+            suggest = "microsoft_fabric_connection_properties"
+        elif key == "microsoftSqlserverConnectionProperties":
+            suggest = "microsoft_sqlserver_connection_properties"
+        elif key == "mongodbConnectionProperties":
+            suggest = "mongodb_connection_properties"
+        elif key == "mysqlConnectionProperties":
+            suggest = "mysql_connection_properties"
+        elif key == "ociObjectStorageConnectionProperties":
+            suggest = "oci_object_storage_connection_properties"
+        elif key == "oracleAiDataPlatformConnectionProperties":
+            suggest = "oracle_ai_data_platform_connection_properties"
+        elif key == "oracleConnectionProperties":
+            suggest = "oracle_connection_properties"
+        elif key == "oracleNosqlConnectionProperties":
+            suggest = "oracle_nosql_connection_properties"
+        elif key == "postgresqlConnectionProperties":
+            suggest = "postgresql_connection_properties"
+        elif key == "redisConnectionProperties":
+            suggest = "redis_connection_properties"
+        elif key == "routingMethod":
+            suggest = "routing_method"
+        elif key == "snowflakeConnectionProperties":
+            suggest = "snowflake_connection_properties"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_type: _builtins.str,
+                 display_name: _builtins.str,
+                 amazon_kinesis_connection_properties: Optional['outputs.GoldengateConnectionPropertiesAmazonKinesisConnectionProperties'] = None,
+                 amazon_redshift_connection_properties: Optional['outputs.GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties'] = None,
+                 amazon_s3_connection_properties: Optional['outputs.GoldengateConnectionPropertiesAmazonS3ConnectionProperties'] = None,
+                 azure_data_lake_storage_connection_properties: Optional['outputs.GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties'] = None,
+                 azure_synapse_analytics_connection_properties: Optional['outputs.GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties'] = None,
+                 databricks_connection_properties: Optional['outputs.GoldengateConnectionPropertiesDatabricksConnectionProperties'] = None,
+                 db2_connection_properties: Optional['outputs.GoldengateConnectionPropertiesDb2ConnectionProperties'] = None,
+                 description: Optional[_builtins.str] = None,
+                 elasticsearch_connection_properties: Optional['outputs.GoldengateConnectionPropertiesElasticsearchConnectionProperties'] = None,
+                 generic_connection_properties: Optional['outputs.GoldengateConnectionPropertiesGenericConnectionProperties'] = None,
+                 goldengate_connection_properties: Optional['outputs.GoldengateConnectionPropertiesGoldengateConnectionProperties'] = None,
+                 google_big_query_connection_properties: Optional['outputs.GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties'] = None,
+                 google_cloud_storage_connection_properties: Optional['outputs.GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties'] = None,
+                 google_pubsub_connection_properties: Optional['outputs.GoldengateConnectionPropertiesGooglePubsubConnectionProperties'] = None,
+                 hdfs_connection_properties: Optional['outputs.GoldengateConnectionPropertiesHdfsConnectionProperties'] = None,
+                 iceberg_connection_properties: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionProperties'] = None,
+                 ingress_ip_addresses: Optional[Sequence[_builtins.str]] = None,
+                 java_message_service_connection_properties: Optional['outputs.GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties'] = None,
+                 kafka_connection_properties: Optional['outputs.GoldengateConnectionPropertiesKafkaConnectionProperties'] = None,
+                 kafka_schema_registry_connection_properties: Optional['outputs.GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties'] = None,
+                 lifecycle_details: Optional[_builtins.str] = None,
+                 lifecycle_state: Optional[_builtins.str] = None,
+                 microsoft_fabric_connection_properties: Optional['outputs.GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties'] = None,
+                 microsoft_sqlserver_connection_properties: Optional['outputs.GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties'] = None,
+                 mongodb_connection_properties: Optional['outputs.GoldengateConnectionPropertiesMongodbConnectionProperties'] = None,
+                 mysql_connection_properties: Optional['outputs.GoldengateConnectionPropertiesMysqlConnectionProperties'] = None,
+                 oci_object_storage_connection_properties: Optional['outputs.GoldengateConnectionPropertiesOciObjectStorageConnectionProperties'] = None,
+                 ocid: Optional[_builtins.str] = None,
+                 oracle_ai_data_platform_connection_properties: Optional['outputs.GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties'] = None,
+                 oracle_connection_properties: Optional['outputs.GoldengateConnectionPropertiesOracleConnectionProperties'] = None,
+                 oracle_nosql_connection_properties: Optional['outputs.GoldengateConnectionPropertiesOracleNosqlConnectionProperties'] = None,
+                 postgresql_connection_properties: Optional['outputs.GoldengateConnectionPropertiesPostgresqlConnectionProperties'] = None,
+                 redis_connection_properties: Optional['outputs.GoldengateConnectionPropertiesRedisConnectionProperties'] = None,
+                 routing_method: Optional[_builtins.str] = None,
+                 snowflake_connection_properties: Optional['outputs.GoldengateConnectionPropertiesSnowflakeConnectionProperties'] = None,
+                 update_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_type: The connection type.
+               Possible values:
+               GOLDENGATE
+               KAFKA
+               KAFKA_SCHEMA_REGISTRY
+               MYSQL
+               JAVA_MESSAGE_SERVICE
+               MICROSOFT_SQLSERVER
+               OCI_OBJECT_STORAGE
+               ORACLE
+               AZURE_DATA_LAKE_STORAGE
+               POSTGRESQL
+               AZURE_SYNAPSE_ANALYTICS
+               SNOWFLAKE
+               AMAZON_S3
+               HDFS
+               ORACLE_AI_DATA_PLATFORM
+               ORACLE_NOSQL
+               MONGODB
+               AMAZON_KINESIS
+               AMAZON_REDSHIFT
+               DB2
+               REDIS
+               ELASTICSEARCH
+               GENERIC
+               GOOGLE_CLOUD_STORAGE
+               GOOGLE_BIGQUERY
+               DATABRICKS
+               GOOGLE_PUBSUB
+               MICROSOFT_FABRIC
+               ICEBERG
+        :param _builtins.str display_name: An object's Display Name.
+        :param 'GoldengateConnectionPropertiesAmazonKinesisConnectionPropertiesArgs' amazon_kinesis_connection_properties: The properties of GoldengateAmazonKinesisConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesAmazonRedshiftConnectionPropertiesArgs' amazon_redshift_connection_properties: The properties of GoldengateAmazonRedshiftConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesAmazonS3ConnectionPropertiesArgs' amazon_s3_connection_properties: The properties of GoldengateAmazonS3Connection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesAzureDataLakeStorageConnectionPropertiesArgs' azure_data_lake_storage_connection_properties: The properties of GoldengateAzureDataLakeStorageConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionPropertiesArgs' azure_synapse_analytics_connection_properties: The properties of GoldengateAzureSynapseAnalyticsConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesDatabricksConnectionPropertiesArgs' databricks_connection_properties: The properties of GoldengateDatabricksConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesDb2ConnectionPropertiesArgs' db2_connection_properties: The properties of GoldengateDb2Connection.
+               Structure is documented below.
+        :param _builtins.str description: Metadata about this specific object.
+        :param 'GoldengateConnectionPropertiesElasticsearchConnectionPropertiesArgs' elasticsearch_connection_properties: The properties of GoldengateElasticsearchConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesGenericConnectionPropertiesArgs' generic_connection_properties: The properties of GoldengateGenericConnectionProperties.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesGoldengateConnectionPropertiesArgs' goldengate_connection_properties: The properties of GoldengateGoldengateConnectionProperties.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesGoogleBigQueryConnectionPropertiesArgs' google_big_query_connection_properties: The properties of GoldengateGoogleBigQueryConnectionProperties.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesGoogleCloudStorageConnectionPropertiesArgs' google_cloud_storage_connection_properties: The properties of GoldengateGoogleCloudStorageConnectionProperties.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesGooglePubsubConnectionPropertiesArgs' google_pubsub_connection_properties: The properties of GoldengateGooglePubsubConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesHdfsConnectionPropertiesArgs' hdfs_connection_properties: The properties of GoldengateHdfsConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesArgs' iceberg_connection_properties: The properties of GoldengateIcebergConnection.
+               Structure is documented below.
+        :param Sequence[_builtins.str] ingress_ip_addresses: (Output)
+               The Ingress IPs of the GoldengateConnection.
+        :param 'GoldengateConnectionPropertiesJavaMessageServiceConnectionPropertiesArgs' java_message_service_connection_properties: The properties of GoldengateJavaMessageServiceConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesKafkaConnectionPropertiesArgs' kafka_connection_properties: The properties of GoldengateKafkaConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionPropertiesArgs' kafka_schema_registry_connection_properties: The properties of GoldengateKafkaSchemaRegistryConnection.
+               Structure is documented below.
+        :param _builtins.str lifecycle_details: (Output)
+               Describes the object's current state in detail. For example, it can be
+               used to provide actionable information for a resource in a Failed state.
+        :param _builtins.str lifecycle_state: (Output)
+               The lifecycle state of the connection.
+               Possible values:
+               CREATING
+               ACTIVE
+               UPDATING
+               DELETING
+               DELETED
+               FAILED
+        :param 'GoldengateConnectionPropertiesMicrosoftFabricConnectionPropertiesArgs' microsoft_fabric_connection_properties: The properties of GoldengateMicrosoftFabricConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesArgs' microsoft_sqlserver_connection_properties: The properties of GoldengateMicrosoftSqlserverConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesMongodbConnectionPropertiesArgs' mongodb_connection_properties: The properties of GoldengateMongodbConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesMysqlConnectionPropertiesArgs' mysql_connection_properties: Properties of GoldengateMysqlConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesOciObjectStorageConnectionPropertiesArgs' oci_object_storage_connection_properties: The properties of GoldengateOciObjectStorageConnection.
+               Structure is documented below.
+        :param _builtins.str ocid: (Output)
+               The [OCID] of the connection being
+               referenced.
+        :param 'GoldengateConnectionPropertiesOracleAiDataPlatformConnectionPropertiesArgs' oracle_ai_data_platform_connection_properties: The properties of GoldengateOracleAIDataPlatformConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesOracleConnectionPropertiesArgs' oracle_connection_properties: The properties of Goldengate Oracle Database Connection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesOracleNosqlConnectionPropertiesArgs' oracle_nosql_connection_properties: The properties of GoldengateOracleNosqlConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesPostgresqlConnectionPropertiesArgs' postgresql_connection_properties: The properties of GoldengatePostgresqlConnection.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesRedisConnectionPropertiesArgs' redis_connection_properties: The properties of GoldengateRedisConnection.
+               Structure is documented below.
+        :param _builtins.str routing_method: The routing method for the GoldengateConnection.
+               Possible values:
+               SHARED_DEPLOYMENT_ENDPOINT
+               DEDICATED_ENDPOINT
+        :param 'GoldengateConnectionPropertiesSnowflakeConnectionPropertiesArgs' snowflake_connection_properties: The properties of GoldengateSnowflakeConnection.
+               Structure is documented below.
+        :param _builtins.str update_time: (Output)
+               The time the resource was last updated.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "display_name", display_name)
+        if amazon_kinesis_connection_properties is not None:
+            pulumi.set(__self__, "amazon_kinesis_connection_properties", amazon_kinesis_connection_properties)
+        if amazon_redshift_connection_properties is not None:
+            pulumi.set(__self__, "amazon_redshift_connection_properties", amazon_redshift_connection_properties)
+        if amazon_s3_connection_properties is not None:
+            pulumi.set(__self__, "amazon_s3_connection_properties", amazon_s3_connection_properties)
+        if azure_data_lake_storage_connection_properties is not None:
+            pulumi.set(__self__, "azure_data_lake_storage_connection_properties", azure_data_lake_storage_connection_properties)
+        if azure_synapse_analytics_connection_properties is not None:
+            pulumi.set(__self__, "azure_synapse_analytics_connection_properties", azure_synapse_analytics_connection_properties)
+        if databricks_connection_properties is not None:
+            pulumi.set(__self__, "databricks_connection_properties", databricks_connection_properties)
+        if db2_connection_properties is not None:
+            pulumi.set(__self__, "db2_connection_properties", db2_connection_properties)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if elasticsearch_connection_properties is not None:
+            pulumi.set(__self__, "elasticsearch_connection_properties", elasticsearch_connection_properties)
+        if generic_connection_properties is not None:
+            pulumi.set(__self__, "generic_connection_properties", generic_connection_properties)
+        if goldengate_connection_properties is not None:
+            pulumi.set(__self__, "goldengate_connection_properties", goldengate_connection_properties)
+        if google_big_query_connection_properties is not None:
+            pulumi.set(__self__, "google_big_query_connection_properties", google_big_query_connection_properties)
+        if google_cloud_storage_connection_properties is not None:
+            pulumi.set(__self__, "google_cloud_storage_connection_properties", google_cloud_storage_connection_properties)
+        if google_pubsub_connection_properties is not None:
+            pulumi.set(__self__, "google_pubsub_connection_properties", google_pubsub_connection_properties)
+        if hdfs_connection_properties is not None:
+            pulumi.set(__self__, "hdfs_connection_properties", hdfs_connection_properties)
+        if iceberg_connection_properties is not None:
+            pulumi.set(__self__, "iceberg_connection_properties", iceberg_connection_properties)
+        if ingress_ip_addresses is not None:
+            pulumi.set(__self__, "ingress_ip_addresses", ingress_ip_addresses)
+        if java_message_service_connection_properties is not None:
+            pulumi.set(__self__, "java_message_service_connection_properties", java_message_service_connection_properties)
+        if kafka_connection_properties is not None:
+            pulumi.set(__self__, "kafka_connection_properties", kafka_connection_properties)
+        if kafka_schema_registry_connection_properties is not None:
+            pulumi.set(__self__, "kafka_schema_registry_connection_properties", kafka_schema_registry_connection_properties)
+        if lifecycle_details is not None:
+            pulumi.set(__self__, "lifecycle_details", lifecycle_details)
+        if lifecycle_state is not None:
+            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        if microsoft_fabric_connection_properties is not None:
+            pulumi.set(__self__, "microsoft_fabric_connection_properties", microsoft_fabric_connection_properties)
+        if microsoft_sqlserver_connection_properties is not None:
+            pulumi.set(__self__, "microsoft_sqlserver_connection_properties", microsoft_sqlserver_connection_properties)
+        if mongodb_connection_properties is not None:
+            pulumi.set(__self__, "mongodb_connection_properties", mongodb_connection_properties)
+        if mysql_connection_properties is not None:
+            pulumi.set(__self__, "mysql_connection_properties", mysql_connection_properties)
+        if oci_object_storage_connection_properties is not None:
+            pulumi.set(__self__, "oci_object_storage_connection_properties", oci_object_storage_connection_properties)
+        if ocid is not None:
+            pulumi.set(__self__, "ocid", ocid)
+        if oracle_ai_data_platform_connection_properties is not None:
+            pulumi.set(__self__, "oracle_ai_data_platform_connection_properties", oracle_ai_data_platform_connection_properties)
+        if oracle_connection_properties is not None:
+            pulumi.set(__self__, "oracle_connection_properties", oracle_connection_properties)
+        if oracle_nosql_connection_properties is not None:
+            pulumi.set(__self__, "oracle_nosql_connection_properties", oracle_nosql_connection_properties)
+        if postgresql_connection_properties is not None:
+            pulumi.set(__self__, "postgresql_connection_properties", postgresql_connection_properties)
+        if redis_connection_properties is not None:
+            pulumi.set(__self__, "redis_connection_properties", redis_connection_properties)
+        if routing_method is not None:
+            pulumi.set(__self__, "routing_method", routing_method)
+        if snowflake_connection_properties is not None:
+            pulumi.set(__self__, "snowflake_connection_properties", snowflake_connection_properties)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> _builtins.str:
+        """
+        The connection type.
+        Possible values:
+        GOLDENGATE
+        KAFKA
+        KAFKA_SCHEMA_REGISTRY
+        MYSQL
+        JAVA_MESSAGE_SERVICE
+        MICROSOFT_SQLSERVER
+        OCI_OBJECT_STORAGE
+        ORACLE
+        AZURE_DATA_LAKE_STORAGE
+        POSTGRESQL
+        AZURE_SYNAPSE_ANALYTICS
+        SNOWFLAKE
+        AMAZON_S3
+        HDFS
+        ORACLE_AI_DATA_PLATFORM
+        ORACLE_NOSQL
+        MONGODB
+        AMAZON_KINESIS
+        AMAZON_REDSHIFT
+        DB2
+        REDIS
+        ELASTICSEARCH
+        GENERIC
+        GOOGLE_CLOUD_STORAGE
+        GOOGLE_BIGQUERY
+        DATABRICKS
+        GOOGLE_PUBSUB
+        MICROSOFT_FABRIC
+        ICEBERG
+        """
+        return pulumi.get(self, "connection_type")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        An object's Display Name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="amazonKinesisConnectionProperties")
+    def amazon_kinesis_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesAmazonKinesisConnectionProperties']:
+        """
+        The properties of GoldengateAmazonKinesisConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "amazon_kinesis_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="amazonRedshiftConnectionProperties")
+    def amazon_redshift_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties']:
+        """
+        The properties of GoldengateAmazonRedshiftConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "amazon_redshift_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="amazonS3ConnectionProperties")
+    def amazon_s3_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesAmazonS3ConnectionProperties']:
+        """
+        The properties of GoldengateAmazonS3Connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "amazon_s3_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="azureDataLakeStorageConnectionProperties")
+    def azure_data_lake_storage_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties']:
+        """
+        The properties of GoldengateAzureDataLakeStorageConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "azure_data_lake_storage_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="azureSynapseAnalyticsConnectionProperties")
+    def azure_synapse_analytics_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties']:
+        """
+        The properties of GoldengateAzureSynapseAnalyticsConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "azure_synapse_analytics_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="databricksConnectionProperties")
+    def databricks_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesDatabricksConnectionProperties']:
+        """
+        The properties of GoldengateDatabricksConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "databricks_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="db2ConnectionProperties")
+    def db2_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesDb2ConnectionProperties']:
+        """
+        The properties of GoldengateDb2Connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "db2_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Metadata about this specific object.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="elasticsearchConnectionProperties")
+    def elasticsearch_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesElasticsearchConnectionProperties']:
+        """
+        The properties of GoldengateElasticsearchConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "elasticsearch_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="genericConnectionProperties")
+    def generic_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesGenericConnectionProperties']:
+        """
+        The properties of GoldengateGenericConnectionProperties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "generic_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="goldengateConnectionProperties")
+    def goldengate_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesGoldengateConnectionProperties']:
+        """
+        The properties of GoldengateGoldengateConnectionProperties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "goldengate_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="googleBigQueryConnectionProperties")
+    def google_big_query_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties']:
+        """
+        The properties of GoldengateGoogleBigQueryConnectionProperties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_big_query_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloudStorageConnectionProperties")
+    def google_cloud_storage_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties']:
+        """
+        The properties of GoldengateGoogleCloudStorageConnectionProperties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_cloud_storage_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="googlePubsubConnectionProperties")
+    def google_pubsub_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesGooglePubsubConnectionProperties']:
+        """
+        The properties of GoldengateGooglePubsubConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_pubsub_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="hdfsConnectionProperties")
+    def hdfs_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesHdfsConnectionProperties']:
+        """
+        The properties of GoldengateHdfsConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "hdfs_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="icebergConnectionProperties")
+    def iceberg_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionProperties']:
+        """
+        The properties of GoldengateIcebergConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "iceberg_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressIpAddresses")
+    def ingress_ip_addresses(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The Ingress IPs of the GoldengateConnection.
+        """
+        return pulumi.get(self, "ingress_ip_addresses")
+
+    @_builtins.property
+    @pulumi.getter(name="javaMessageServiceConnectionProperties")
+    def java_message_service_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties']:
+        """
+        The properties of GoldengateJavaMessageServiceConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "java_message_service_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaConnectionProperties")
+    def kafka_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesKafkaConnectionProperties']:
+        """
+        The properties of GoldengateKafkaConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kafka_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="kafkaSchemaRegistryConnectionProperties")
+    def kafka_schema_registry_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties']:
+        """
+        The properties of GoldengateKafkaSchemaRegistryConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kafka_schema_registry_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleDetails")
+    def lifecycle_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        Describes the object's current state in detail. For example, it can be
+        used to provide actionable information for a resource in a Failed state.
+        """
+        return pulumi.get(self, "lifecycle_details")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The lifecycle state of the connection.
+        Possible values:
+        CREATING
+        ACTIVE
+        UPDATING
+        DELETING
+        DELETED
+        FAILED
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @_builtins.property
+    @pulumi.getter(name="microsoftFabricConnectionProperties")
+    def microsoft_fabric_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties']:
+        """
+        The properties of GoldengateMicrosoftFabricConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "microsoft_fabric_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="microsoftSqlserverConnectionProperties")
+    def microsoft_sqlserver_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties']:
+        """
+        The properties of GoldengateMicrosoftSqlserverConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "microsoft_sqlserver_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="mongodbConnectionProperties")
+    def mongodb_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesMongodbConnectionProperties']:
+        """
+        The properties of GoldengateMongodbConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mongodb_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="mysqlConnectionProperties")
+    def mysql_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesMysqlConnectionProperties']:
+        """
+        Properties of GoldengateMysqlConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "mysql_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="ociObjectStorageConnectionProperties")
+    def oci_object_storage_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesOciObjectStorageConnectionProperties']:
+        """
+        The properties of GoldengateOciObjectStorageConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oci_object_storage_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The [OCID] of the connection being
+        referenced.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter(name="oracleAiDataPlatformConnectionProperties")
+    def oracle_ai_data_platform_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties']:
+        """
+        The properties of GoldengateOracleAIDataPlatformConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_ai_data_platform_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="oracleConnectionProperties")
+    def oracle_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesOracleConnectionProperties']:
+        """
+        The properties of Goldengate Oracle Database Connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="oracleNosqlConnectionProperties")
+    def oracle_nosql_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesOracleNosqlConnectionProperties']:
+        """
+        The properties of GoldengateOracleNosqlConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "oracle_nosql_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="postgresqlConnectionProperties")
+    def postgresql_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesPostgresqlConnectionProperties']:
+        """
+        The properties of GoldengatePostgresqlConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "postgresql_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="redisConnectionProperties")
+    def redis_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesRedisConnectionProperties']:
+        """
+        The properties of GoldengateRedisConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "redis_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="routingMethod")
+    def routing_method(self) -> Optional[_builtins.str]:
+        """
+        The routing method for the GoldengateConnection.
+        Possible values:
+        SHARED_DEPLOYMENT_ENDPOINT
+        DEDICATED_ENDPOINT
+        """
+        return pulumi.get(self, "routing_method")
+
+    @_builtins.property
+    @pulumi.getter(name="snowflakeConnectionProperties")
+    def snowflake_connection_properties(self) -> Optional['outputs.GoldengateConnectionPropertiesSnowflakeConnectionProperties']:
+        """
+        The properties of GoldengateSnowflakeConnection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "snowflake_connection_properties")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time the resource was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesAmazonKinesisConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "awsRegion":
+            suggest = "aws_region"
+        elif key == "secretAccessKeySecret":
+            suggest = "secret_access_key_secret"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesAmazonKinesisConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesAmazonKinesisConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesAmazonKinesisConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: Optional[_builtins.str] = None,
+                 aws_region: Optional[_builtins.str] = None,
+                 endpoint: Optional[_builtins.str] = None,
+                 secret_access_key_secret: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_key_id: Access key ID to access the Amazon Kinesis.
+        :param _builtins.str aws_region: The name of the AWS region.
+               If not provided, Goldengate will default to 'us-west-1'.
+        :param _builtins.str endpoint: The endpoint URL of the Amazon Kinesis service.
+               e.g.: 'https://kinesis.us-east-1.amazonaws.com'
+               If not provided, Goldengate will default to
+               'https://kinesis..amazonaws.com'.
+        :param _builtins.str secret_access_key_secret: Secret access key to access the Amazon Kinesis.
+        :param _builtins.str technology_type: The technology type of AmazonKinesisConnection.
+        """
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if aws_region is not None:
+            pulumi.set(__self__, "aws_region", aws_region)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if secret_access_key_secret is not None:
+            pulumi.set(__self__, "secret_access_key_secret", secret_access_key_secret)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[_builtins.str]:
+        """
+        Access key ID to access the Amazon Kinesis.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> Optional[_builtins.str]:
+        """
+        The name of the AWS region.
+        If not provided, Goldengate will default to 'us-west-1'.
+        """
+        return pulumi.get(self, "aws_region")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        The endpoint URL of the Amazon Kinesis service.
+        e.g.: 'https://kinesis.us-east-1.amazonaws.com'
+        If not provided, Goldengate will default to
+        'https://kinesis..amazonaws.com'.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKeySecret")
+    def secret_access_key_secret(self) -> Optional[_builtins.str]:
+        """
+        Secret access key to access the Amazon Kinesis.
+        """
+        return pulumi.get(self, "secret_access_key_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of AmazonKinesisConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionUrl":
+            suggest = "connection_url"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesAmazonRedshiftConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_url: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_url: Connection URL.
+               e.g.:
+               'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for Amazon Redshift connection
+               in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for Amazon Redshift connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str technology_type: The technology type of AmazonS3Connection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect the associated system of
+               the given technology.
+               
+               <a name="nested_properties_amazon_s3_connection_properties"></a>The `amazon_s3_connection_properties` block supports:
+        """
+        if connection_url is not None:
+            pulumi.set(__self__, "connection_url", connection_url)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionUrl")
+    def connection_url(self) -> Optional[_builtins.str]:
+        """
+        Connection URL.
+        e.g.:
+        'jdbc:redshift://aws-redshift-instance.aaaaaaaaaaaa.us-east-2.redshift.amazonaws.com:5439/mydb'
+        """
+        return pulumi.get(self, "connection_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for Amazon Redshift connection
+        in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for Amazon Redshift connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of AmazonS3Connection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect the associated system of
+        the given technology.
+
+        <a name="nested_properties_amazon_s3_connection_properties"></a>The `amazon_s3_connection_properties` block supports:
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesAmazonS3ConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKeySecret":
+            suggest = "secret_access_key_secret"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesAmazonS3ConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesAmazonS3ConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesAmazonS3ConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: Optional[_builtins.str] = None,
+                 endpoint: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 secret_access_key_secret: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_key_id: Access key ID to access the Amazon S3 bucket.
+        :param _builtins.str endpoint: The Amazon Endpoint for S3.
+        :param _builtins.str region: The name of the AWS region where the bucket is created.
+        :param _builtins.str secret_access_key_secret: Secret access key to access the Amazon S3 bucket.
+        :param _builtins.str technology_type: The technology type of AmazonS3Connection.
+        """
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if secret_access_key_secret is not None:
+            pulumi.set(__self__, "secret_access_key_secret", secret_access_key_secret)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[_builtins.str]:
+        """
+        Access key ID to access the Amazon S3 bucket.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        The Amazon Endpoint for S3.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The name of the AWS region where the bucket is created.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKeySecret")
+    def secret_access_key_secret(self) -> Optional[_builtins.str]:
+        """
+        Secret access key to access the Amazon S3 bucket.
+        """
+        return pulumi.get(self, "secret_access_key_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of AmazonS3Connection.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountKeySecret":
+            suggest = "account_key_secret"
+        elif key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "azureAuthorityHost":
+            suggest = "azure_authority_host"
+        elif key == "azureTenantId":
+            suggest = "azure_tenant_id"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "sasTokenSecret":
+            suggest = "sas_token_secret"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesAzureDataLakeStorageConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 account: Optional[_builtins.str] = None,
+                 account_key_secret: Optional[_builtins.str] = None,
+                 authentication_type: Optional[_builtins.str] = None,
+                 azure_authority_host: Optional[_builtins.str] = None,
+                 azure_tenant_id: Optional[_builtins.str] = None,
+                 client_id: Optional[_builtins.str] = None,
+                 client_secret: Optional[_builtins.str] = None,
+                 endpoint: Optional[_builtins.str] = None,
+                 sas_token_secret: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str account: Sets the Azure storage account name.
+        :param _builtins.str account_key_secret: Azure storage account key. This property is required when
+               'authentication_type' is set to 'SHARED_KEY'.
+        :param _builtins.str authentication_type: Authentication mechanism to access Azure Data Lake Storage.
+               Possible values:
+               SHARED_KEY
+               SHARED_ACCESS_SIGNATURE
+               AZURE_ACTIVE_DIRECTORY
+        :param _builtins.str azure_authority_host: The endpoint used for authentication with Microsoft Entra ID (formerly
+               Azure Active Directory). Default value:
+               https://login.microsoftonline.com
+        :param _builtins.str azure_tenant_id: Azure tenant ID of the application. This property is required when
+               'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+        :param _builtins.str client_id: Azure client ID of the application. This property is required when
+               'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+        :param _builtins.str client_secret: Azure client secret (aka application password) for authentication.
+        :param _builtins.str endpoint: Azure Storage service endpoint.
+               e.g: https://test.blob.core.windows.net
+        :param _builtins.str sas_token_secret: Credential that uses a shared access signature (SAS) to authenticate to
+               an Azure Service.
+        :param _builtins.str technology_type: The technology type of AzureDataLakeStorageConnection.
+        """
+        if account is not None:
+            pulumi.set(__self__, "account", account)
+        if account_key_secret is not None:
+            pulumi.set(__self__, "account_key_secret", account_key_secret)
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if azure_authority_host is not None:
+            pulumi.set(__self__, "azure_authority_host", azure_authority_host)
+        if azure_tenant_id is not None:
+            pulumi.set(__self__, "azure_tenant_id", azure_tenant_id)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if sas_token_secret is not None:
+            pulumi.set(__self__, "sas_token_secret", sas_token_secret)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def account(self) -> Optional[_builtins.str]:
+        """
+        Sets the Azure storage account name.
+        """
+        return pulumi.get(self, "account")
+
+    @_builtins.property
+    @pulumi.getter(name="accountKeySecret")
+    def account_key_secret(self) -> Optional[_builtins.str]:
+        """
+        Azure storage account key. This property is required when
+        'authentication_type' is set to 'SHARED_KEY'.
+        """
+        return pulumi.get(self, "account_key_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[_builtins.str]:
+        """
+        Authentication mechanism to access Azure Data Lake Storage.
+        Possible values:
+        SHARED_KEY
+        SHARED_ACCESS_SIGNATURE
+        AZURE_ACTIVE_DIRECTORY
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="azureAuthorityHost")
+    def azure_authority_host(self) -> Optional[_builtins.str]:
+        """
+        The endpoint used for authentication with Microsoft Entra ID (formerly
+        Azure Active Directory). Default value:
+        https://login.microsoftonline.com
+        """
+        return pulumi.get(self, "azure_authority_host")
+
+    @_builtins.property
+    @pulumi.getter(name="azureTenantId")
+    def azure_tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Azure tenant ID of the application. This property is required when
+        'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+        """
+        return pulumi.get(self, "azure_tenant_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        Azure client ID of the application. This property is required when
+        'authentication_type' is set to 'AZURE_ACTIVE_DIRECTORY'.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[_builtins.str]:
+        """
+        Azure client secret (aka application password) for authentication.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        Azure Storage service endpoint.
+        e.g: https://test.blob.core.windows.net
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="sasTokenSecret")
+    def sas_token_secret(self) -> Optional[_builtins.str]:
+        """
+        Credential that uses a shared access signature (SAS) to authenticate to
+        an Azure Service.
+        """
+        return pulumi.get(self, "sas_token_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of AzureDataLakeStorageConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesAzureSynapseAnalyticsConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_string: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_string: JDBC connection string.
+               e.g.:
+               'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
+               connection in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for Azure Synapse Analytics
+               connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str technology_type: The technology type of AzureSynapseAnalyticsConnection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect the associated system of
+               the given technology.
+        """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[_builtins.str]:
+        """
+        JDBC connection string.
+        e.g.:
+        'jdbc:sqlserver://.sql.azuresynapse.net:1433;database=;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.sql.azuresynapse.net;loginTimeout=300;'
+        """
+        return pulumi.get(self, "connection_string")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for Azure Synapse Analytics
+        connection in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for Azure Synapse Analytics
+        connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of AzureSynapseAnalyticsConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect the associated system of
+        the given technology.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesDatabricksConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "connectionUrl":
+            suggest = "connection_url"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "storageCredential":
+            suggest = "storage_credential"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesDatabricksConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesDatabricksConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesDatabricksConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_type: Optional[_builtins.str] = None,
+                 client_id: Optional[_builtins.str] = None,
+                 client_secret: Optional[_builtins.str] = None,
+                 connection_url: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 storage_credential: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authentication_type: Authentication type for Databricks.
+               Possible values:
+               PERSONAL_ACCESS_TOKEN
+               OAUTH_M2M
+        :param _builtins.str client_id: OAuth client id, only applicable for authentication_type == OAUTH_M2M
+        :param _builtins.str client_secret: OAuth client secret, only applicable for authentication_type == OAUTH_M2M
+        :param _builtins.str connection_url: Connection URL.
+               e.g.:
+               'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for Db2 connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str storage_credential: External storage credential name to access files on object
+               storage such as ADLS Gen2, S3 or Cloud Storage.
+        :param _builtins.str technology_type: The technology type of Db2Connection.
+        """
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if connection_url is not None:
+            pulumi.set(__self__, "connection_url", connection_url)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if storage_credential is not None:
+            pulumi.set(__self__, "storage_credential", storage_credential)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[_builtins.str]:
+        """
+        Authentication type for Databricks.
+        Possible values:
+        PERSONAL_ACCESS_TOKEN
+        OAUTH_M2M
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        OAuth client id, only applicable for authentication_type == OAUTH_M2M
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[_builtins.str]:
+        """
+        OAuth client secret, only applicable for authentication_type == OAUTH_M2M
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionUrl")
+    def connection_url(self) -> Optional[_builtins.str]:
+        """
+        Connection URL.
+        e.g.:
+        'jdbc:databricks://adb-33934.4.azuredatabricks.net:443/default;transportMode=http;ssl=1;httpPath=sql/protocolv1/o/3393########44/0##3-7-hlrb'
+        """
+        return pulumi.get(self, "connection_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for Db2 connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="storageCredential")
+    def storage_credential(self) -> Optional[_builtins.str]:
+        """
+        External storage credential name to access files on object
+        storage such as ADLS Gen2, S3 or Cloud Storage.
+        """
+        return pulumi.get(self, "storage_credential")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of Db2Connection.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesDb2ConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalAttributes":
+            suggest = "additional_attributes"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "sslClientKeystashFile":
+            suggest = "ssl_client_keystash_file"
+        elif key == "sslClientKeystoredbFile":
+            suggest = "ssl_client_keystoredb_file"
+        elif key == "sslServerCertificateFile":
+            suggest = "ssl_server_certificate_file"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesDb2ConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesDb2ConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesDb2ConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_attributes: Optional[Sequence['outputs.GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute']] = None,
+                 database: Optional[_builtins.str] = None,
+                 host: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 ssl_client_keystash_file: Optional[_builtins.str] = None,
+                 ssl_client_keystoredb_file: Optional[_builtins.str] = None,
+                 ssl_server_certificate_file: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttributeArgs'] additional_attributes: An array of name-value pair attribute entries.
+               Used as additional parameters in connection string.
+        :param _builtins.str database: The name of the database.
+        :param _builtins.str host: The name or address of a host.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for Db2 connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.int port: The port of an endpoint usually specified for a connection.
+        :param _builtins.str security_protocol: Security protocol for the DB2 database.
+               Possible values:
+               PLAIN
+               TLS
+        :param _builtins.str ssl_client_keystash_file: The keystash file which contains the encrypted password to
+               the key database file. Not supported for IBM Db2 for i.
+        :param _builtins.str ssl_client_keystoredb_file: The keystore file created at the client containing the
+               server certificate / CA root certificate. Not supported for IBM Db2 for i.
+        :param _builtins.str ssl_server_certificate_file: The file which contains the self-signed server certificate
+               / Certificate Authority (CA) certificate.
+        :param _builtins.str technology_type: The technology type of Db2Connection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect to the DB2 database.
+        """
+        if additional_attributes is not None:
+            pulumi.set(__self__, "additional_attributes", additional_attributes)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if ssl_client_keystash_file is not None:
+            pulumi.set(__self__, "ssl_client_keystash_file", ssl_client_keystash_file)
+        if ssl_client_keystoredb_file is not None:
+            pulumi.set(__self__, "ssl_client_keystoredb_file", ssl_client_keystoredb_file)
+        if ssl_server_certificate_file is not None:
+            pulumi.set(__self__, "ssl_server_certificate_file", ssl_server_certificate_file)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> Optional[Sequence['outputs.GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute']]:
+        """
+        An array of name-value pair attribute entries.
+        Used as additional parameters in connection string.
+        """
+        return pulumi.get(self, "additional_attributes")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        The name of the database.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The name or address of a host.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for Db2 connection in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for Db2 connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port of an endpoint usually specified for a connection.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security protocol for the DB2 database.
+        Possible values:
+        PLAIN
+        TLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="sslClientKeystashFile")
+    def ssl_client_keystash_file(self) -> Optional[_builtins.str]:
+        """
+        The keystash file which contains the encrypted password to
+        the key database file. Not supported for IBM Db2 for i.
+        """
+        return pulumi.get(self, "ssl_client_keystash_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslClientKeystoredbFile")
+    def ssl_client_keystoredb_file(self) -> Optional[_builtins.str]:
+        """
+        The keystore file created at the client containing the
+        server certificate / CA root certificate. Not supported for IBM Db2 for i.
+        """
+        return pulumi.get(self, "ssl_client_keystoredb_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslServerCertificateFile")
+    def ssl_server_certificate_file(self) -> Optional[_builtins.str]:
+        """
+        The file which contains the self-signed server certificate
+        / Certificate Authority (CA) certificate.
+        """
+        return pulumi.get(self, "ssl_server_certificate_file")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of Db2Connection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect to the DB2 database.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesDb2ConnectionPropertiesAdditionalAttribute(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The name of the property entry.
+        :param _builtins.str value: The value of the property entry.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The name of the property entry.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the property entry.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesElasticsearchConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesElasticsearchConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesElasticsearchConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesElasticsearchConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_type: Optional[_builtins.str] = None,
+                 fingerprint: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 servers: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authentication_type: Authentication type for Elasticsearch.
+               Possible values:
+               NONE
+               BASIC
+        :param _builtins.str fingerprint: Fingerprint required by TLS security protocol.
+               Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for Elastic Search connection
+               in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for Elastic Search connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str security_protocol: Security protocol for Elasticsearch.
+               Possible values:
+               PLAIN
+               TLS
+        :param _builtins.str servers: Comma separated list of Elasticsearch server addresses, specified as
+               host:port entries, where :port is optional. If port is not specified, it
+               defaults to 9200. Example:
+               "server1.example.com:4000,server2.example.com:4000"
+        :param _builtins.str technology_type: The technology type of ElasticsearchConnection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect the associated system of
+               the given technology.
+        """
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[_builtins.str]:
+        """
+        Authentication type for Elasticsearch.
+        Possible values:
+        NONE
+        BASIC
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[_builtins.str]:
+        """
+        Fingerprint required by TLS security protocol.
+        Eg.: '6152b2dfbff200f973c5074a5b91d06ab3b472c07c09a1ea57bb7fd406cdce9c'
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for Elastic Search connection
+        in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for Elastic Search connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security protocol for Elasticsearch.
+        Possible values:
+        PLAIN
+        TLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Optional[_builtins.str]:
+        """
+        Comma separated list of Elasticsearch server addresses, specified as
+        host:port entries, where :port is optional. If port is not specified, it
+        defaults to 9200. Example:
+        "server1.example.com:4000,server2.example.com:4000"
+        """
+        return pulumi.get(self, "servers")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of ElasticsearchConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect the associated system of
+        the given technology.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesGenericConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesGenericConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesGenericConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesGenericConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str host: The host of the GenericConnection.
+        :param _builtins.str technology_type: The technology type.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The host of the GenericConnection.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesGoldengateConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "goldengateDeploymentId":
+            suggest = "goldengate_deployment_id"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesGoldengateConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesGoldengateConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesGoldengateConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 goldengate_deployment_id: Optional[_builtins.str] = None,
+                 host: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str goldengate_deployment_id: The name of the GoldengateDeployment associated with the
+               GoldengateConnection.
+               Format:
+               projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+        :param _builtins.str host: The host of the GoldengateConnection.
+        :param _builtins.str password: Input only. The password used to connect to the Oracle Goldengate in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password used to connect to the Oracle Goldengate.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.int port: The port of the GoldengateConnection.
+        :param _builtins.str technology_type: The technology type.
+        :param _builtins.str username: The username credential.
+        """
+        if goldengate_deployment_id is not None:
+            pulumi.set(__self__, "goldengate_deployment_id", goldengate_deployment_id)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="goldengateDeploymentId")
+    def goldengate_deployment_id(self) -> Optional[_builtins.str]:
+        """
+        The name of the GoldengateDeployment associated with the
+        GoldengateConnection.
+        Format:
+        projects/{project}/locations/{location}/goldengateDeployments/{goldengate_deployment}
+        """
+        return pulumi.get(self, "goldengate_deployment_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The host of the GoldengateConnection.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password used to connect to the Oracle Goldengate in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password used to connect to the Oracle Goldengate.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port of the GoldengateConnection.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username credential.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountKeyFile":
+            suggest = "service_account_key_file"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesGoogleBigQueryConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_key_file: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service_account_key_file: The service account key file Cloud Storage containing the
+               credentials required to use Google BigQuery.
+        :param _builtins.str technology_type: The technology type.
+        """
+        if service_account_key_file is not None:
+            pulumi.set(__self__, "service_account_key_file", service_account_key_file)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyFile")
+    def service_account_key_file(self) -> Optional[_builtins.str]:
+        """
+        The service account key file Cloud Storage containing the
+        credentials required to use Google BigQuery.
+        """
+        return pulumi.get(self, "service_account_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountKeyFile":
+            suggest = "service_account_key_file"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesGoogleCloudStorageConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_key_file: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service_account_key_file: The service account key Cloud Storage file containing the
+               credentials required to use Google Cloud Storage.
+        :param _builtins.str technology_type: The technology type.
+        """
+        if service_account_key_file is not None:
+            pulumi.set(__self__, "service_account_key_file", service_account_key_file)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyFile")
+    def service_account_key_file(self) -> Optional[_builtins.str]:
+        """
+        The service account key Cloud Storage file containing the
+        credentials required to use Google Cloud Storage.
+        """
+        return pulumi.get(self, "service_account_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesGooglePubsubConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountKeyFile":
+            suggest = "service_account_key_file"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesGooglePubsubConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesGooglePubsubConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesGooglePubsubConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_key_file: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str service_account_key_file: The content of the service account key file containing the
+               credentials required to use Google Pub/Sub.
+        :param _builtins.str technology_type: The technology type of GooglePubsubConnection.
+        """
+        if service_account_key_file is not None:
+            pulumi.set(__self__, "service_account_key_file", service_account_key_file)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyFile")
+    def service_account_key_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the service account key file containing the
+        credentials required to use Google Pub/Sub.
+        """
+        return pulumi.get(self, "service_account_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of GooglePubsubConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesHdfsConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coreSiteXml":
+            suggest = "core_site_xml"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesHdfsConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesHdfsConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesHdfsConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 core_site_xml: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str core_site_xml: The content of the Hadoop Distributed File System
+               configuration file (core-site.xml).
+        :param _builtins.str technology_type: The technology type of HdfsConnection.
+        """
+        if core_site_xml is not None:
+            pulumi.set(__self__, "core_site_xml", core_site_xml)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter(name="coreSiteXml")
+    def core_site_xml(self) -> Optional[_builtins.str]:
+        """
+        The content of the Hadoop Distributed File System
+        configuration file (core-site.xml).
+        """
+        return pulumi.get(self, "core_site_xml")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of HdfsConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog: 'outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog',
+                 storage: 'outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage',
+                 technology_type: _builtins.str):
+        """
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogArgs' catalog: The Iceberg catalog details.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageArgs' storage: The Iceberg storage details.
+               Structure is documented below.
+        :param _builtins.str technology_type: The technology type of Iceberg connection.
+        """
+        pulumi.set(__self__, "catalog", catalog)
+        pulumi.set(__self__, "storage", storage)
+        pulumi.set(__self__, "technology_type", technology_type)
+
+    @_builtins.property
+    @pulumi.getter
+    def catalog(self) -> 'outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog':
+        """
+        The Iceberg catalog details.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter
+    def storage(self) -> 'outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage':
+        """
+        The Iceberg storage details.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "storage")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> _builtins.str:
+        """
+        The technology type of Iceberg connection.
+        """
+        return pulumi.get(self, "technology_type")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "catalogType":
+            suggest = "catalog_type"
+        elif key == "glueIcebergCatalog":
+            suggest = "glue_iceberg_catalog"
+        elif key == "nessieIcebergCatalog":
+            suggest = "nessie_iceberg_catalog"
+        elif key == "polarisIcebergCatalog":
+            suggest = "polaris_iceberg_catalog"
+        elif key == "restIcebergCatalog":
+            suggest = "rest_iceberg_catalog"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 catalog_type: _builtins.str,
+                 glue_iceberg_catalog: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog'] = None,
+                 nessie_iceberg_catalog: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog'] = None,
+                 polaris_iceberg_catalog: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog'] = None,
+                 rest_iceberg_catalog: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog'] = None):
+        """
+        :param _builtins.str catalog_type: The type of Iceberg catalog.
+               Possible values:
+               GLUE
+               HADOOP
+               NESSIE
+               POLARIS
+               REST
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalogArgs' glue_iceberg_catalog: The Glue Iceberg catalog.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalogArgs' nessie_iceberg_catalog: The Nessie Iceberg catalog.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalogArgs' polaris_iceberg_catalog: The Polaris Iceberg catalog.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalogArgs' rest_iceberg_catalog: The REST Iceberg catalog.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "catalog_type", catalog_type)
+        if glue_iceberg_catalog is not None:
+            pulumi.set(__self__, "glue_iceberg_catalog", glue_iceberg_catalog)
+        if nessie_iceberg_catalog is not None:
+            pulumi.set(__self__, "nessie_iceberg_catalog", nessie_iceberg_catalog)
+        if polaris_iceberg_catalog is not None:
+            pulumi.set(__self__, "polaris_iceberg_catalog", polaris_iceberg_catalog)
+        if rest_iceberg_catalog is not None:
+            pulumi.set(__self__, "rest_iceberg_catalog", rest_iceberg_catalog)
+
+    @_builtins.property
+    @pulumi.getter(name="catalogType")
+    def catalog_type(self) -> _builtins.str:
+        """
+        The type of Iceberg catalog.
+        Possible values:
+        GLUE
+        HADOOP
+        NESSIE
+        POLARIS
+        REST
+        """
+        return pulumi.get(self, "catalog_type")
+
+    @_builtins.property
+    @pulumi.getter(name="glueIcebergCatalog")
+    def glue_iceberg_catalog(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog']:
+        """
+        The Glue Iceberg catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "glue_iceberg_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="nessieIcebergCatalog")
+    def nessie_iceberg_catalog(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog']:
+        """
+        The Nessie Iceberg catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nessie_iceberg_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="polarisIcebergCatalog")
+    def polaris_iceberg_catalog(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog']:
+        """
+        The Polaris Iceberg catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "polaris_iceberg_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="restIcebergCatalog")
+    def rest_iceberg_catalog(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog']:
+        """
+        The REST Iceberg catalog.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rest_iceberg_catalog")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "glueId":
+            suggest = "glue_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogGlueIcebergCatalog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 glue_id: _builtins.str):
+        """
+        :param _builtins.str glue_id: The catalog ID of Glue.
+        """
+        pulumi.set(__self__, "glue_id", glue_id)
+
+    @_builtins.property
+    @pulumi.getter(name="glueId")
+    def glue_id(self) -> _builtins.str:
+        """
+        The catalog ID of Glue.
+        """
+        return pulumi.get(self, "glue_id")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogNessieIcebergCatalog(dict):
+    def __init__(__self__, *,
+                 branch: _builtins.str,
+                 uri: _builtins.str):
+        """
+        :param _builtins.str branch: The Nessie branch.
+        :param _builtins.str uri: The Nessie uri.
+        """
+        pulumi.set(__self__, "branch", branch)
+        pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def branch(self) -> _builtins.str:
+        """
+        The Nessie branch.
+        """
+        return pulumi.get(self, "branch")
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        The Nessie uri.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "polarisCatalog":
+            suggest = "polaris_catalog"
+        elif key == "principalRole":
+            suggest = "principal_role"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogPolarisIcebergCatalog.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: _builtins.str,
+                 polaris_catalog: _builtins.str,
+                 principal_role: _builtins.str,
+                 uri: _builtins.str,
+                 client_secret: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str client_id: The Polaris client ID.
+        :param _builtins.str polaris_catalog: The catalog name within Polaris.
+        :param _builtins.str principal_role: The Polaris principal role.
+        :param _builtins.str uri: The Polaris uri.
+        :param _builtins.str client_secret: The Polaris client secret.
+        """
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "polaris_catalog", polaris_catalog)
+        pulumi.set(__self__, "principal_role", principal_role)
+        pulumi.set(__self__, "uri", uri)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The Polaris client ID.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="polarisCatalog")
+    def polaris_catalog(self) -> _builtins.str:
+        """
+        The catalog name within Polaris.
+        """
+        return pulumi.get(self, "polaris_catalog")
+
+    @_builtins.property
+    @pulumi.getter(name="principalRole")
+    def principal_role(self) -> _builtins.str:
+        """
+        The Polaris principal role.
+        """
+        return pulumi.get(self, "principal_role")
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        The Polaris uri.
+        """
+        return pulumi.get(self, "uri")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[_builtins.str]:
+        """
+        The Polaris client secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesCatalogRestIcebergCatalog(dict):
+    def __init__(__self__, *,
+                 uri: _builtins.str,
+                 properties: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str uri: The REST uri.
+        :param _builtins.str properties: The content of the configuration file containing additional properties for
+               the REST catalog.
+        """
+        pulumi.set(__self__, "uri", uri)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        The REST uri.
+        """
+        return pulumi.get(self, "uri")
+
+    @_builtins.property
+    @pulumi.getter
+    def properties(self) -> Optional[_builtins.str]:
+        """
+        The content of the configuration file containing additional properties for
+        the REST catalog.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageType":
+            suggest = "storage_type"
+        elif key == "amazonS3IcebergStorage":
+            suggest = "amazon_s3_iceberg_storage"
+        elif key == "azureDataLakeStorageIcebergStorage":
+            suggest = "azure_data_lake_storage_iceberg_storage"
+        elif key == "googleCloudStorageIcebergStorage":
+            suggest = "google_cloud_storage_iceberg_storage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 storage_type: _builtins.str,
+                 amazon_s3_iceberg_storage: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage'] = None,
+                 azure_data_lake_storage_iceberg_storage: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage'] = None,
+                 google_cloud_storage_iceberg_storage: Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage'] = None):
+        """
+        :param _builtins.str storage_type: The type of Iceberg storage.
+               Possible values:
+               AMAZON_S3
+               GOOGLE_CLOUD_STORAGE
+               AZURE_DATA_LAKE_STORAGE
+               
+               
+               <a name="nested_properties_iceberg_connection_properties_storage_amazon_s3_iceberg_storage"></a>The `amazon_s3_iceberg_storage` block supports:
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorageArgs' amazon_s3_iceberg_storage: The Amazon S3 Iceberg storage.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorageArgs' azure_data_lake_storage_iceberg_storage: The Azure Data Lake Storage Iceberg storage.
+               Structure is documented below.
+        :param 'GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorageArgs' google_cloud_storage_iceberg_storage: The Google Cloud Storage Iceberg storage.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "storage_type", storage_type)
+        if amazon_s3_iceberg_storage is not None:
+            pulumi.set(__self__, "amazon_s3_iceberg_storage", amazon_s3_iceberg_storage)
+        if azure_data_lake_storage_iceberg_storage is not None:
+            pulumi.set(__self__, "azure_data_lake_storage_iceberg_storage", azure_data_lake_storage_iceberg_storage)
+        if google_cloud_storage_iceberg_storage is not None:
+            pulumi.set(__self__, "google_cloud_storage_iceberg_storage", google_cloud_storage_iceberg_storage)
+
+    @_builtins.property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> _builtins.str:
+        """
+        The type of Iceberg storage.
+        Possible values:
+        AMAZON_S3
+        GOOGLE_CLOUD_STORAGE
+        AZURE_DATA_LAKE_STORAGE
+
+
+        <a name="nested_properties_iceberg_connection_properties_storage_amazon_s3_iceberg_storage"></a>The `amazon_s3_iceberg_storage` block supports:
+        """
+        return pulumi.get(self, "storage_type")
+
+    @_builtins.property
+    @pulumi.getter(name="amazonS3IcebergStorage")
+    def amazon_s3_iceberg_storage(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage']:
+        """
+        The Amazon S3 Iceberg storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "amazon_s3_iceberg_storage")
+
+    @_builtins.property
+    @pulumi.getter(name="azureDataLakeStorageIcebergStorage")
+    def azure_data_lake_storage_iceberg_storage(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage']:
+        """
+        The Azure Data Lake Storage Iceberg storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "azure_data_lake_storage_iceberg_storage")
+
+    @_builtins.property
+    @pulumi.getter(name="googleCloudStorageIcebergStorage")
+    def google_cloud_storage_iceberg_storage(self) -> Optional['outputs.GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage']:
+        """
+        The Google Cloud Storage Iceberg storage.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "google_cloud_storage_iceberg_storage")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "schemeType":
+            suggest = "scheme_type"
+        elif key == "secretAccessKeySecret":
+            suggest = "secret_access_key_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAmazonS3IcebergStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: _builtins.str,
+                 bucket: _builtins.str,
+                 region: _builtins.str,
+                 scheme_type: _builtins.str,
+                 endpoint: Optional[_builtins.str] = None,
+                 secret_access_key_secret: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_key_id: The access key ID of Amazon S3.
+        :param _builtins.str bucket: The bucket of Amazon S3.
+        :param _builtins.str region: The region of Amazon S3.
+        :param _builtins.str scheme_type: The scheme type of Amazon S3.
+               Possible values:
+               S3
+               S3A
+        :param _builtins.str endpoint: The endpoint of Amazon S3.
+        :param _builtins.str secret_access_key_secret: The secret access key of Amazon S3.
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "scheme_type", scheme_type)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if secret_access_key_secret is not None:
+            pulumi.set(__self__, "secret_access_key_secret", secret_access_key_secret)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> _builtins.str:
+        """
+        The access key ID of Amazon S3.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The bucket of Amazon S3.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region of Amazon S3.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="schemeType")
+    def scheme_type(self) -> _builtins.str:
+        """
+        The scheme type of Amazon S3.
+        Possible values:
+        S3
+        S3A
+        """
+        return pulumi.get(self, "scheme_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        The endpoint of Amazon S3.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKeySecret")
+    def secret_access_key_secret(self) -> Optional[_builtins.str]:
+        """
+        The secret access key of Amazon S3.
+        """
+        return pulumi.get(self, "secret_access_key_secret")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureAccount":
+            suggest = "azure_account"
+        elif key == "accountKeySecret":
+            suggest = "account_key_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageAzureDataLakeStorageIcebergStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 azure_account: _builtins.str,
+                 container: _builtins.str,
+                 account_key_secret: Optional[_builtins.str] = None,
+                 endpoint: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str azure_account: The account of Azure Data Lake Storage.
+        :param _builtins.str container: The container of Azure Data Lake Storage.
+        :param _builtins.str account_key_secret: The account key of Azure Data Lake Storage.
+        :param _builtins.str endpoint: The endpoint of Azure Data Lake Storage.
+        """
+        pulumi.set(__self__, "azure_account", azure_account)
+        pulumi.set(__self__, "container", container)
+        if account_key_secret is not None:
+            pulumi.set(__self__, "account_key_secret", account_key_secret)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+
+    @_builtins.property
+    @pulumi.getter(name="azureAccount")
+    def azure_account(self) -> _builtins.str:
+        """
+        The account of Azure Data Lake Storage.
+        """
+        return pulumi.get(self, "azure_account")
+
+    @_builtins.property
+    @pulumi.getter
+    def container(self) -> _builtins.str:
+        """
+        The container of Azure Data Lake Storage.
+        """
+        return pulumi.get(self, "container")
+
+    @_builtins.property
+    @pulumi.getter(name="accountKeySecret")
+    def account_key_secret(self) -> Optional[_builtins.str]:
+        """
+        The account key of Azure Data Lake Storage.
+        """
+        return pulumi.get(self, "account_key_secret")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        The endpoint of Azure Data Lake Storage.
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "serviceAccountKeyFile":
+            suggest = "service_account_key_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesIcebergConnectionPropertiesStorageGoogleCloudStorageIcebergStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 project_id: _builtins.str,
+                 service_account_key_file: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str bucket: The bucket of Google Cloud Storage.
+        :param _builtins.str project_id: The project ID of Google Cloud Storage.
+        :param _builtins.str service_account_key_file: The service account key file of Google Cloud Storage.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "project_id", project_id)
+        if service_account_key_file is not None:
+            pulumi.set(__self__, "service_account_key_file", service_account_key_file)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        The bucket of Google Cloud Storage.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        """
+        The project ID of Google Cloud Storage.
+        """
+        return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountKeyFile")
+    def service_account_key_file(self) -> Optional[_builtins.str]:
+        """
+        The service account key file of Google Cloud Storage.
+        """
+        return pulumi.get(self, "service_account_key_file")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectionFactory":
+            suggest = "connection_factory"
+        elif key == "connectionUrl":
+            suggest = "connection_url"
+        elif key == "jndiConnectionFactory":
+            suggest = "jndi_connection_factory"
+        elif key == "jndiInitialContextFactory":
+            suggest = "jndi_initial_context_factory"
+        elif key == "jndiProviderUrl":
+            suggest = "jndi_provider_url"
+        elif key == "jndiSecurityCredentialsSecret":
+            suggest = "jndi_security_credentials_secret"
+        elif key == "jndiSecurityPrincipal":
+            suggest = "jndi_security_principal"
+        elif key == "keyStoreFile":
+            suggest = "key_store_file"
+        elif key == "keyStorePassword":
+            suggest = "key_store_password"
+        elif key == "keyStorePasswordSecretVersion":
+            suggest = "key_store_password_secret_version"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "sslKeyPassword":
+            suggest = "ssl_key_password"
+        elif key == "sslKeyPasswordSecretVersion":
+            suggest = "ssl_key_password_secret_version"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "trustStoreFile":
+            suggest = "trust_store_file"
+        elif key == "trustStorePassword":
+            suggest = "trust_store_password"
+        elif key == "trustStorePasswordSecretVersion":
+            suggest = "trust_store_password_secret_version"
+        elif key == "useJndi":
+            suggest = "use_jndi"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesJavaMessageServiceConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_type: Optional[_builtins.str] = None,
+                 connection_factory: Optional[_builtins.str] = None,
+                 connection_url: Optional[_builtins.str] = None,
+                 jndi_connection_factory: Optional[_builtins.str] = None,
+                 jndi_initial_context_factory: Optional[_builtins.str] = None,
+                 jndi_provider_url: Optional[_builtins.str] = None,
+                 jndi_security_credentials_secret: Optional[_builtins.str] = None,
+                 jndi_security_principal: Optional[_builtins.str] = None,
+                 key_store_file: Optional[_builtins.str] = None,
+                 key_store_password: Optional[_builtins.str] = None,
+                 key_store_password_secret_version: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 ssl_key_password: Optional[_builtins.str] = None,
+                 ssl_key_password_secret_version: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 trust_store_file: Optional[_builtins.str] = None,
+                 trust_store_password: Optional[_builtins.str] = None,
+                 trust_store_password_secret_version: Optional[_builtins.str] = None,
+                 use_jndi: Optional[_builtins.bool] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authentication_type: Authentication type for Java Message Service.
+               Possible values:
+               NONE
+               BASIC
+        :param _builtins.str connection_factory: The Java class implementing javax.jms.ConnectionFactory interface supplied
+               by the JMS provider.
+        :param _builtins.str connection_url: Connection URL of the Java Message Service, specifying the protocol, host,
+               and port. e.g.: 'mq://myjms.host.domain:7676'
+        :param _builtins.str jndi_connection_factory: The Connection Factory can be looked up using this name.
+               e.g.: 'ConnectionFactory'
+        :param _builtins.str jndi_initial_context_factory: The implementation of javax.naming.spi.InitialContextFactory interface
+               used to obtain initial naming context.
+        :param _builtins.str jndi_provider_url: The URL that Java Message Service will use to contact the JNDI provider.
+               e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+        :param _builtins.str jndi_security_credentials_secret: The password associated to the principal.
+        :param _builtins.str jndi_security_principal: Specifies the identity of the principal (user) to be authenticated.
+        :param _builtins.str key_store_file: The content of the KeyStore file.
+        :param _builtins.str key_store_password: Input only. The KeyStore password in plain text.
+        :param _builtins.str key_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the KeyStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses to connect the Java Message Service
+               in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses to connect the associated Java
+               Message Service.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str security_protocol: Security protocol for Java Message Service.
+               Possible values:
+               PLAIN
+               TLS
+               MTLS
+        :param _builtins.str ssl_key_password: Input only. The password for the cert inside of the KeyStore in plain text.
+        :param _builtins.str ssl_key_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password for the cert inside of the KeyStore.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str technology_type: The technology type of JavaMessageServiceConnection.
+        :param _builtins.str trust_store_file: The content of the TrustStore file.
+        :param _builtins.str trust_store_password: Input only. The TrustStore password in plain text.
+        :param _builtins.str trust_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the TrustStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.bool use_jndi: If set to true, Java Naming and Directory Interface (JNDI) properties
+               should be provided.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect to the Java Message
+               Service.
+        """
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if connection_factory is not None:
+            pulumi.set(__self__, "connection_factory", connection_factory)
+        if connection_url is not None:
+            pulumi.set(__self__, "connection_url", connection_url)
+        if jndi_connection_factory is not None:
+            pulumi.set(__self__, "jndi_connection_factory", jndi_connection_factory)
+        if jndi_initial_context_factory is not None:
+            pulumi.set(__self__, "jndi_initial_context_factory", jndi_initial_context_factory)
+        if jndi_provider_url is not None:
+            pulumi.set(__self__, "jndi_provider_url", jndi_provider_url)
+        if jndi_security_credentials_secret is not None:
+            pulumi.set(__self__, "jndi_security_credentials_secret", jndi_security_credentials_secret)
+        if jndi_security_principal is not None:
+            pulumi.set(__self__, "jndi_security_principal", jndi_security_principal)
+        if key_store_file is not None:
+            pulumi.set(__self__, "key_store_file", key_store_file)
+        if key_store_password is not None:
+            pulumi.set(__self__, "key_store_password", key_store_password)
+        if key_store_password_secret_version is not None:
+            pulumi.set(__self__, "key_store_password_secret_version", key_store_password_secret_version)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if ssl_key_password is not None:
+            pulumi.set(__self__, "ssl_key_password", ssl_key_password)
+        if ssl_key_password_secret_version is not None:
+            pulumi.set(__self__, "ssl_key_password_secret_version", ssl_key_password_secret_version)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if trust_store_file is not None:
+            pulumi.set(__self__, "trust_store_file", trust_store_file)
+        if trust_store_password is not None:
+            pulumi.set(__self__, "trust_store_password", trust_store_password)
+        if trust_store_password_secret_version is not None:
+            pulumi.set(__self__, "trust_store_password_secret_version", trust_store_password_secret_version)
+        if use_jndi is not None:
+            pulumi.set(__self__, "use_jndi", use_jndi)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[_builtins.str]:
+        """
+        Authentication type for Java Message Service.
+        Possible values:
+        NONE
+        BASIC
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionFactory")
+    def connection_factory(self) -> Optional[_builtins.str]:
+        """
+        The Java class implementing javax.jms.ConnectionFactory interface supplied
+        by the JMS provider.
+        """
+        return pulumi.get(self, "connection_factory")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionUrl")
+    def connection_url(self) -> Optional[_builtins.str]:
+        """
+        Connection URL of the Java Message Service, specifying the protocol, host,
+        and port. e.g.: 'mq://myjms.host.domain:7676'
+        """
+        return pulumi.get(self, "connection_url")
+
+    @_builtins.property
+    @pulumi.getter(name="jndiConnectionFactory")
+    def jndi_connection_factory(self) -> Optional[_builtins.str]:
+        """
+        The Connection Factory can be looked up using this name.
+        e.g.: 'ConnectionFactory'
+        """
+        return pulumi.get(self, "jndi_connection_factory")
+
+    @_builtins.property
+    @pulumi.getter(name="jndiInitialContextFactory")
+    def jndi_initial_context_factory(self) -> Optional[_builtins.str]:
+        """
+        The implementation of javax.naming.spi.InitialContextFactory interface
+        used to obtain initial naming context.
+        """
+        return pulumi.get(self, "jndi_initial_context_factory")
+
+    @_builtins.property
+    @pulumi.getter(name="jndiProviderUrl")
+    def jndi_provider_url(self) -> Optional[_builtins.str]:
+        """
+        The URL that Java Message Service will use to contact the JNDI provider.
+        e.g.: 'tcp://myjms.host.domain:61616?jms.prefetchPolicy.all=1000'
+        """
+        return pulumi.get(self, "jndi_provider_url")
+
+    @_builtins.property
+    @pulumi.getter(name="jndiSecurityCredentialsSecret")
+    def jndi_security_credentials_secret(self) -> Optional[_builtins.str]:
+        """
+        The password associated to the principal.
+        """
+        return pulumi.get(self, "jndi_security_credentials_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="jndiSecurityPrincipal")
+    def jndi_security_principal(self) -> Optional[_builtins.str]:
+        """
+        Specifies the identity of the principal (user) to be authenticated.
+        """
+        return pulumi.get(self, "jndi_security_principal")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStoreFile")
+    def key_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the KeyStore file.
+        """
+        return pulumi.get(self, "key_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePassword")
+    def key_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The KeyStore password in plain text.
+        """
+        return pulumi.get(self, "key_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePasswordSecretVersion")
+    def key_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the KeyStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "key_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses to connect the Java Message Service
+        in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses to connect the associated Java
+        Message Service.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security protocol for Java Message Service.
+        Possible values:
+        PLAIN
+        TLS
+        MTLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyPassword")
+    def ssl_key_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password for the cert inside of the KeyStore in plain text.
+        """
+        return pulumi.get(self, "ssl_key_password")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyPasswordSecretVersion")
+    def ssl_key_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password for the cert inside of the KeyStore.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "ssl_key_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of JavaMessageServiceConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStoreFile")
+    def trust_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the TrustStore file.
+        """
+        return pulumi.get(self, "trust_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePassword")
+    def trust_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The TrustStore password in plain text.
+        """
+        return pulumi.get(self, "trust_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePasswordSecretVersion")
+    def trust_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the TrustStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "trust_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="useJndi")
+    def use_jndi(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, Java Naming and Directory Interface (JNDI) properties
+        should be provided.
+        """
+        return pulumi.get(self, "use_jndi")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect to the Java Message
+        Service.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesKafkaConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootstrapServers":
+            suggest = "bootstrap_servers"
+        elif key == "clusterId":
+            suggest = "cluster_id"
+        elif key == "consumerPropertiesFile":
+            suggest = "consumer_properties_file"
+        elif key == "keyStoreFile":
+            suggest = "key_store_file"
+        elif key == "keyStorePassword":
+            suggest = "key_store_password"
+        elif key == "keyStorePasswordSecretVersion":
+            suggest = "key_store_password_secret_version"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "producerPropertiesFile":
+            suggest = "producer_properties_file"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "sslKeyPassword":
+            suggest = "ssl_key_password"
+        elif key == "sslKeyPasswordSecretVersion":
+            suggest = "ssl_key_password_secret_version"
+        elif key == "streamPoolId":
+            suggest = "stream_pool_id"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "trustStoreFile":
+            suggest = "trust_store_file"
+        elif key == "trustStorePassword":
+            suggest = "trust_store_password"
+        elif key == "trustStorePasswordSecretVersion":
+            suggest = "trust_store_password_secret_version"
+        elif key == "useResourcePrincipal":
+            suggest = "use_resource_principal"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesKafkaConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesKafkaConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesKafkaConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bootstrap_servers: Optional[Sequence['outputs.GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer']] = None,
+                 cluster_id: Optional[_builtins.str] = None,
+                 consumer_properties_file: Optional[_builtins.str] = None,
+                 key_store_file: Optional[_builtins.str] = None,
+                 key_store_password: Optional[_builtins.str] = None,
+                 key_store_password_secret_version: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 producer_properties_file: Optional[_builtins.str] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 ssl_key_password: Optional[_builtins.str] = None,
+                 ssl_key_password_secret_version: Optional[_builtins.str] = None,
+                 stream_pool_id: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 trust_store_file: Optional[_builtins.str] = None,
+                 trust_store_password: Optional[_builtins.str] = None,
+                 trust_store_password_secret_version: Optional[_builtins.str] = None,
+                 use_resource_principal: Optional[_builtins.bool] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServerArgs'] bootstrap_servers: Kafka bootstrap. Equivalent of bootstrap.servers configuration property
+               in Kafka: list of KafkaBootstrapServer objects specified by host/port.
+               Used for establishing the initial connection to the Kafka cluster.
+               Example: "server1.example.com:9092,server2.example.com:9092"
+               Structure is documented below.
+        :param _builtins.str cluster_id: The OCID of the Kafka cluster being referenced from OCI Streaming with
+               Apache Kafka.
+        :param _builtins.str consumer_properties_file: The content of the consumer.properties file.
+        :param _builtins.str key_store_file: The content of the KeyStore file.
+        :param _builtins.str key_store_password: Input only. The KeyStore password in plain text.
+        :param _builtins.str key_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the KeyStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str password: Input only. The password for Kafka basic/SASL auth in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password for Kafka basic/SASL auth.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str producer_properties_file: The content of the producer.properties file.
+        :param _builtins.str security_protocol: Security Type for Kafka.
+               Possible values:
+               SSL
+               SASL_SSL
+               PLAINTEXT
+               SASL_PLAINTEXT
+        :param _builtins.str ssl_key_password: Input only. The password for the cert inside of the KeyStore in plain text.
+        :param _builtins.str ssl_key_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password for the cert inside of the KeyStore.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str stream_pool_id: The OCID of the stream pool being referenced.
+        :param _builtins.str technology_type: The technology type of KafkaConnection.
+        :param _builtins.str trust_store_file: The content of the TrustStore file.
+        :param _builtins.str trust_store_password: Input only. The TrustStore password in plain text.
+        :param _builtins.str trust_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the TrustStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.bool use_resource_principal: Specifies that the user intends to authenticate to the instance using a
+               resource principal. Applicable only for OCI Streaming connections.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect the associated system of
+               the given technology.
+        """
+        if bootstrap_servers is not None:
+            pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
+        if cluster_id is not None:
+            pulumi.set(__self__, "cluster_id", cluster_id)
+        if consumer_properties_file is not None:
+            pulumi.set(__self__, "consumer_properties_file", consumer_properties_file)
+        if key_store_file is not None:
+            pulumi.set(__self__, "key_store_file", key_store_file)
+        if key_store_password is not None:
+            pulumi.set(__self__, "key_store_password", key_store_password)
+        if key_store_password_secret_version is not None:
+            pulumi.set(__self__, "key_store_password_secret_version", key_store_password_secret_version)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if producer_properties_file is not None:
+            pulumi.set(__self__, "producer_properties_file", producer_properties_file)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if ssl_key_password is not None:
+            pulumi.set(__self__, "ssl_key_password", ssl_key_password)
+        if ssl_key_password_secret_version is not None:
+            pulumi.set(__self__, "ssl_key_password_secret_version", ssl_key_password_secret_version)
+        if stream_pool_id is not None:
+            pulumi.set(__self__, "stream_pool_id", stream_pool_id)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if trust_store_file is not None:
+            pulumi.set(__self__, "trust_store_file", trust_store_file)
+        if trust_store_password is not None:
+            pulumi.set(__self__, "trust_store_password", trust_store_password)
+        if trust_store_password_secret_version is not None:
+            pulumi.set(__self__, "trust_store_password_secret_version", trust_store_password_secret_version)
+        if use_resource_principal is not None:
+            pulumi.set(__self__, "use_resource_principal", use_resource_principal)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="bootstrapServers")
+    def bootstrap_servers(self) -> Optional[Sequence['outputs.GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer']]:
+        """
+        Kafka bootstrap. Equivalent of bootstrap.servers configuration property
+        in Kafka: list of KafkaBootstrapServer objects specified by host/port.
+        Used for establishing the initial connection to the Kafka cluster.
+        Example: "server1.example.com:9092,server2.example.com:9092"
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bootstrap_servers")
+
+    @_builtins.property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the Kafka cluster being referenced from OCI Streaming with
+        Apache Kafka.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="consumerPropertiesFile")
+    def consumer_properties_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the consumer.properties file.
+        """
+        return pulumi.get(self, "consumer_properties_file")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStoreFile")
+    def key_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the KeyStore file.
+        """
+        return pulumi.get(self, "key_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePassword")
+    def key_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The KeyStore password in plain text.
+        """
+        return pulumi.get(self, "key_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePasswordSecretVersion")
+    def key_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the KeyStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "key_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password for Kafka basic/SASL auth in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password for Kafka basic/SASL auth.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="producerPropertiesFile")
+    def producer_properties_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the producer.properties file.
+        """
+        return pulumi.get(self, "producer_properties_file")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security Type for Kafka.
+        Possible values:
+        SSL
+        SASL_SSL
+        PLAINTEXT
+        SASL_PLAINTEXT
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyPassword")
+    def ssl_key_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password for the cert inside of the KeyStore in plain text.
+        """
+        return pulumi.get(self, "ssl_key_password")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyPasswordSecretVersion")
+    def ssl_key_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password for the cert inside of the KeyStore.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "ssl_key_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="streamPoolId")
+    def stream_pool_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the stream pool being referenced.
+        """
+        return pulumi.get(self, "stream_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of KafkaConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStoreFile")
+    def trust_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the TrustStore file.
+        """
+        return pulumi.get(self, "trust_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePassword")
+    def trust_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The TrustStore password in plain text.
+        """
+        return pulumi.get(self, "trust_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePasswordSecretVersion")
+    def trust_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the TrustStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "trust_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="useResourcePrincipal")
+    def use_resource_principal(self) -> Optional[_builtins.bool]:
+        """
+        Specifies that the user intends to authenticate to the instance using a
+        resource principal. Applicable only for OCI Streaming connections.
+        """
+        return pulumi.get(self, "use_resource_principal")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect the associated system of
+        the given technology.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateIpAddress":
+            suggest = "private_ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesKafkaConnectionPropertiesBootstrapServer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: _builtins.str,
+                 port: Optional[_builtins.int] = None,
+                 private_ip_address: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str host: The name or address of a host.
+        :param _builtins.int port: The port of an endpoint usually specified for a connection.
+        :param _builtins.str private_ip_address: The private IP address of the connection's endpoint in the customer's VCN,
+               typically a database endpoint or a big data endpoint (e.g. Kafka bootstrap
+               server). In case the privateIp is provided, the subnetId must also be
+               provided. In case the privateIp (and the subnetId) is not provided it is
+               assumed the datasource is publicly accessible. In case the connection is
+               accessible only privately, the lack of privateIp will result in not being
+               able to access the connection.
+        """
+        pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> _builtins.str:
+        """
+        The name or address of a host.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port of an endpoint usually specified for a connection.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[_builtins.str]:
+        """
+        The private IP address of the connection's endpoint in the customer's VCN,
+        typically a database endpoint or a big data endpoint (e.g. Kafka bootstrap
+        server). In case the privateIp is provided, the subnetId must also be
+        provided. In case the privateIp (and the subnetId) is not provided it is
+        assumed the datasource is publicly accessible. In case the connection is
+        accessible only privately, the lack of privateIp will result in not being
+        able to access the connection.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "keyStoreFile":
+            suggest = "key_store_file"
+        elif key == "keyStorePassword":
+            suggest = "key_store_password"
+        elif key == "keyStorePasswordSecretVersion":
+            suggest = "key_store_password_secret_version"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "sslKeyPassword":
+            suggest = "ssl_key_password"
+        elif key == "sslKeyPasswordSecretVersion":
+            suggest = "ssl_key_password_secret_version"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "trustStoreFile":
+            suggest = "trust_store_file"
+        elif key == "trustStorePassword":
+            suggest = "trust_store_password"
+        elif key == "trustStorePasswordSecretVersion":
+            suggest = "trust_store_password_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesKafkaSchemaRegistryConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_type: Optional[_builtins.str] = None,
+                 key_store_file: Optional[_builtins.str] = None,
+                 key_store_password: Optional[_builtins.str] = None,
+                 key_store_password_secret_version: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 ssl_key_password: Optional[_builtins.str] = None,
+                 ssl_key_password_secret_version: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 trust_store_file: Optional[_builtins.str] = None,
+                 trust_store_password: Optional[_builtins.str] = None,
+                 trust_store_password_secret_version: Optional[_builtins.str] = None,
+                 url: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authentication_type: Used authentication mechanism to access Schema Registry.
+               Possible values:
+               NONE
+               BASIC
+               MUTUAL
+        :param _builtins.str key_store_file: The content of the KeyStore file.
+        :param _builtins.str key_store_password: Input only. The KeyStore password in plain text.
+        :param _builtins.str key_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the KeyStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str password: Input only. The password to access Schema Registry in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password to access Schema Registry using basic authentication.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str ssl_key_password: Input only. The password for the cert inside the KeyStore in plain text.
+        :param _builtins.str ssl_key_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password for the cert inside the KeyStore.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str technology_type: The technology type of KafkaSchemaRegistryConnection.
+        :param _builtins.str trust_store_file: The content of the TrustStore file.
+        :param _builtins.str trust_store_password: Input only. The TrustStore password in plain text.
+        :param _builtins.str trust_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the TrustStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str url: Kafka Schema Registry URL.
+               e.g.: 'https://server1.us.oracle.com:8081'
+        :param _builtins.str username: The username to access Schema Registry using basic authentication.
+               This value is injected into
+               'schema.registry.basic.auth.user.info=user:password' configuration
+               property.
+        """
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if key_store_file is not None:
+            pulumi.set(__self__, "key_store_file", key_store_file)
+        if key_store_password is not None:
+            pulumi.set(__self__, "key_store_password", key_store_password)
+        if key_store_password_secret_version is not None:
+            pulumi.set(__self__, "key_store_password_secret_version", key_store_password_secret_version)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if ssl_key_password is not None:
+            pulumi.set(__self__, "ssl_key_password", ssl_key_password)
+        if ssl_key_password_secret_version is not None:
+            pulumi.set(__self__, "ssl_key_password_secret_version", ssl_key_password_secret_version)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if trust_store_file is not None:
+            pulumi.set(__self__, "trust_store_file", trust_store_file)
+        if trust_store_password is not None:
+            pulumi.set(__self__, "trust_store_password", trust_store_password)
+        if trust_store_password_secret_version is not None:
+            pulumi.set(__self__, "trust_store_password_secret_version", trust_store_password_secret_version)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[_builtins.str]:
+        """
+        Used authentication mechanism to access Schema Registry.
+        Possible values:
+        NONE
+        BASIC
+        MUTUAL
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStoreFile")
+    def key_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the KeyStore file.
+        """
+        return pulumi.get(self, "key_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePassword")
+    def key_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The KeyStore password in plain text.
+        """
+        return pulumi.get(self, "key_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePasswordSecretVersion")
+    def key_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the KeyStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "key_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password to access Schema Registry in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password to access Schema Registry using basic authentication.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyPassword")
+    def ssl_key_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password for the cert inside the KeyStore in plain text.
+        """
+        return pulumi.get(self, "ssl_key_password")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyPasswordSecretVersion")
+    def ssl_key_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password for the cert inside the KeyStore.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "ssl_key_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of KafkaSchemaRegistryConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStoreFile")
+    def trust_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the TrustStore file.
+        """
+        return pulumi.get(self, "trust_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePassword")
+    def trust_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The TrustStore password in plain text.
+        """
+        return pulumi.get(self, "trust_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePasswordSecretVersion")
+    def trust_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the TrustStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "trust_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        Kafka Schema Registry URL.
+        e.g.: 'https://server1.us.oracle.com:8081'
+        """
+        return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username to access Schema Registry using basic authentication.
+        This value is injected into
+        'schema.registry.basic.auth.user.info=user:password' configuration
+        property.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "tenantId":
+            suggest = "tenant_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesMicrosoftFabricConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_id: Optional[_builtins.str] = None,
+                 client_secret: Optional[_builtins.str] = None,
+                 endpoint: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 tenant_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str client_id: Azure client ID of the application.
+        :param _builtins.str client_secret: Client secret associated with the client id.
+        :param _builtins.str endpoint: Optional Microsoft Fabric service endpoint.
+               Default value: https://onelake.dfs.fabric.microsoft.com
+        :param _builtins.str technology_type: The technology type of MicrosoftFabricConnection.
+        :param _builtins.str tenant_id: Azure tenant ID of the application.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[_builtins.str]:
+        """
+        Azure client ID of the application.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[_builtins.str]:
+        """
+        Client secret associated with the client id.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> Optional[_builtins.str]:
+        """
+        Optional Microsoft Fabric service endpoint.
+        Default value: https://onelake.dfs.fabric.microsoft.com
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of MicrosoftFabricConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[_builtins.str]:
+        """
+        Azure tenant ID of the application.
+        """
+        return pulumi.get(self, "tenant_id")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalAttributes":
+            suggest = "additional_attributes"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "serverCertificateValidationRequired":
+            suggest = "server_certificate_validation_required"
+        elif key == "sslCaFile":
+            suggest = "ssl_ca_file"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesMicrosoftSqlserverConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_attributes: Optional[Sequence['outputs.GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute']] = None,
+                 database: Optional[_builtins.str] = None,
+                 host: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 server_certificate_validation_required: Optional[_builtins.bool] = None,
+                 ssl_ca_file: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttributeArgs'] additional_attributes: An array of name-value pair attribute entries.
+               Used as additional parameters in connection string.
+               Structure is documented below.
+        :param _builtins.str database: The name of the database.
+        :param _builtins.str host: The name or address of a host.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
+               in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for Microsoft SQL Server
+               connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.int port: The port of an endpoint usually specified for a connection.
+        :param _builtins.str security_protocol: Security Type for Microsoft SQL Server.
+               Possible values:
+               PLAIN
+               TLS
+        :param _builtins.bool server_certificate_validation_required: If set to true, the driver validates the certificate that is sent by the
+               database server.
+        :param _builtins.str ssl_ca_file: Database Certificate - The content of a .pem or .crt file
+               containing the server public key (for 1-way SSL).
+        :param _builtins.str technology_type: The technology type of MicrosoftSqlserverConnection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect to the Microsoft SQL
+               Server.
+        """
+        if additional_attributes is not None:
+            pulumi.set(__self__, "additional_attributes", additional_attributes)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if server_certificate_validation_required is not None:
+            pulumi.set(__self__, "server_certificate_validation_required", server_certificate_validation_required)
+        if ssl_ca_file is not None:
+            pulumi.set(__self__, "ssl_ca_file", ssl_ca_file)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> Optional[Sequence['outputs.GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute']]:
+        """
+        An array of name-value pair attribute entries.
+        Used as additional parameters in connection string.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_attributes")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        The name of the database.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The name or address of a host.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for Microsoft SQL Server connection
+        in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for Microsoft SQL Server
+        connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port of an endpoint usually specified for a connection.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security Type for Microsoft SQL Server.
+        Possible values:
+        PLAIN
+        TLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="serverCertificateValidationRequired")
+    def server_certificate_validation_required(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, the driver validates the certificate that is sent by the
+        database server.
+        """
+        return pulumi.get(self, "server_certificate_validation_required")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCaFile")
+    def ssl_ca_file(self) -> Optional[_builtins.str]:
+        """
+        Database Certificate - The content of a .pem or .crt file
+        containing the server public key (for 1-way SSL).
+        """
+        return pulumi.get(self, "ssl_ca_file")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of MicrosoftSqlserverConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect to the Microsoft SQL
+        Server.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesMicrosoftSqlserverConnectionPropertiesAdditionalAttribute(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The name of the property entry.
+        :param _builtins.str value: The value of the property entry.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The name of the property entry.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the property entry.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesMongodbConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionString":
+            suggest = "connection_string"
+        elif key == "databaseId":
+            suggest = "database_id"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "tlsCaFile":
+            suggest = "tls_ca_file"
+        elif key == "tlsCertificateKeyFile":
+            suggest = "tls_certificate_key_file"
+        elif key == "tlsCertificateKeyFilePassword":
+            suggest = "tls_certificate_key_file_password"
+        elif key == "tlsCertificateKeyFilePasswordSecretVersion":
+            suggest = "tls_certificate_key_file_password_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesMongodbConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesMongodbConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesMongodbConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_string: Optional[_builtins.str] = None,
+                 database_id: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 tls_ca_file: Optional[_builtins.str] = None,
+                 tls_certificate_key_file: Optional[_builtins.str] = None,
+                 tls_certificate_key_file_password: Optional[_builtins.str] = None,
+                 tls_certificate_key_file_password_secret_version: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_string: MongoDB connection string.
+               e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+        :param _builtins.str database_id: The OCID of the Oracle Autonomous Json Database.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
+               plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses to connect the Mongodb connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str security_protocol: Security Type for MongoDB.
+               Possible values:
+               PLAIN
+               TLS
+               MTLS
+        :param _builtins.str technology_type: The technology type of MongodbConnection.
+        :param _builtins.str tls_ca_file: Database Certificate - The content of a .pem file,
+               containing the server public key (for 1 and 2-way SSL).
+        :param _builtins.str tls_certificate_key_file: Client Certificate - The content of a .pem file, containing
+               the client public key (for 2-way SSL).
+        :param _builtins.str tls_certificate_key_file_password: Input only. The Client Certificate key file password in plain text.
+        :param _builtins.str tls_certificate_key_file_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the Client Certificate key file password in Secret Manager.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect to the database.
+        """
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if tls_ca_file is not None:
+            pulumi.set(__self__, "tls_ca_file", tls_ca_file)
+        if tls_certificate_key_file is not None:
+            pulumi.set(__self__, "tls_certificate_key_file", tls_certificate_key_file)
+        if tls_certificate_key_file_password is not None:
+            pulumi.set(__self__, "tls_certificate_key_file_password", tls_certificate_key_file_password)
+        if tls_certificate_key_file_password_secret_version is not None:
+            pulumi.set(__self__, "tls_certificate_key_file_password_secret_version", tls_certificate_key_file_password_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[_builtins.str]:
+        """
+        MongoDB connection string.
+        e.g.: 'mongodb://mongodb0.example.com:27017/recordsrecords'
+        """
+        return pulumi.get(self, "connection_string")
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the Oracle Autonomous Json Database.
+        """
+        return pulumi.get(self, "database_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses to connect the Mongodb connection in
+        plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses to connect the Mongodb connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security Type for MongoDB.
+        Possible values:
+        PLAIN
+        TLS
+        MTLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of MongodbConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCaFile")
+    def tls_ca_file(self) -> Optional[_builtins.str]:
+        """
+        Database Certificate - The content of a .pem file,
+        containing the server public key (for 1 and 2-way SSL).
+        """
+        return pulumi.get(self, "tls_ca_file")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCertificateKeyFile")
+    def tls_certificate_key_file(self) -> Optional[_builtins.str]:
+        """
+        Client Certificate - The content of a .pem file, containing
+        the client public key (for 2-way SSL).
+        """
+        return pulumi.get(self, "tls_certificate_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCertificateKeyFilePassword")
+    def tls_certificate_key_file_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The Client Certificate key file password in plain text.
+        """
+        return pulumi.get(self, "tls_certificate_key_file_password")
+
+    @_builtins.property
+    @pulumi.getter(name="tlsCertificateKeyFilePasswordSecretVersion")
+    def tls_certificate_key_file_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the Client Certificate key file password in Secret Manager.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "tls_certificate_key_file_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect to the database.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesMysqlConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalAttributes":
+            suggest = "additional_attributes"
+        elif key == "dbSystemId":
+            suggest = "db_system_id"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "sslCaFile":
+            suggest = "ssl_ca_file"
+        elif key == "sslCertFile":
+            suggest = "ssl_cert_file"
+        elif key == "sslCrlFile":
+            suggest = "ssl_crl_file"
+        elif key == "sslKeyFile":
+            suggest = "ssl_key_file"
+        elif key == "sslMode":
+            suggest = "ssl_mode"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesMysqlConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesMysqlConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesMysqlConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_attributes: Optional[Sequence['outputs.GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute']] = None,
+                 database: Optional[_builtins.str] = None,
+                 db_system_id: Optional[_builtins.str] = None,
+                 host: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 ssl_ca_file: Optional[_builtins.str] = None,
+                 ssl_cert_file: Optional[_builtins.str] = None,
+                 ssl_crl_file: Optional[_builtins.str] = None,
+                 ssl_key_file: Optional[_builtins.str] = None,
+                 ssl_mode: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttributeArgs'] additional_attributes: An array of name-value pair attribute entries.
+               Used as additional parameters in connection string.
+               Structure is documented below.
+        :param _builtins.str database: The name of the database.
+        :param _builtins.str db_system_id: The OCID of the database system being referenced.
+        :param _builtins.str host: The name or address of a host.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses to connect to MySQL.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.int port: The port of an endpoint usually specified for a connection.
+        :param _builtins.str security_protocol: Security Type for MySQL.
+               Possible values:
+               PLAIN
+               TLS
+               MTLS
+        :param _builtins.str ssl_ca_file: Database Certificate - The content of a .pem or .crt file
+               containing the server public key (for 1 and 2-way SSL).
+        :param _builtins.str ssl_cert_file: Client Certificate - The content of a .pem or .crt file
+               containing the client public key (for 2-way SSL).
+        :param _builtins.str ssl_crl_file: The list of certificates revoked by the trusted
+               certificate authorities (Trusted CA).
+        :param _builtins.str ssl_key_file: Client Key - The content of a .pem or .crt file containing
+               the client private key (for 2-way SSL).
+        :param _builtins.str ssl_mode: SSL modes for MySQL.
+               Possible values:
+               DISABLED
+               PREFERRED
+               REQUIRED
+               VERIFY_CA
+               VERIFY_IDENTITY
+        :param _builtins.str technology_type: The technology type of MysqlConnection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect the associated system of
+               the given technology.
+        """
+        if additional_attributes is not None:
+            pulumi.set(__self__, "additional_attributes", additional_attributes)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if db_system_id is not None:
+            pulumi.set(__self__, "db_system_id", db_system_id)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if ssl_ca_file is not None:
+            pulumi.set(__self__, "ssl_ca_file", ssl_ca_file)
+        if ssl_cert_file is not None:
+            pulumi.set(__self__, "ssl_cert_file", ssl_cert_file)
+        if ssl_crl_file is not None:
+            pulumi.set(__self__, "ssl_crl_file", ssl_crl_file)
+        if ssl_key_file is not None:
+            pulumi.set(__self__, "ssl_key_file", ssl_key_file)
+        if ssl_mode is not None:
+            pulumi.set(__self__, "ssl_mode", ssl_mode)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> Optional[Sequence['outputs.GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute']]:
+        """
+        An array of name-value pair attribute entries.
+        Used as additional parameters in connection string.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_attributes")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        The name of the database.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="dbSystemId")
+    def db_system_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the database system being referenced.
+        """
+        return pulumi.get(self, "db_system_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The name or address of a host.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses to connect to MySQL in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses to connect to MySQL.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port of an endpoint usually specified for a connection.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security Type for MySQL.
+        Possible values:
+        PLAIN
+        TLS
+        MTLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCaFile")
+    def ssl_ca_file(self) -> Optional[_builtins.str]:
+        """
+        Database Certificate - The content of a .pem or .crt file
+        containing the server public key (for 1 and 2-way SSL).
+        """
+        return pulumi.get(self, "ssl_ca_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCertFile")
+    def ssl_cert_file(self) -> Optional[_builtins.str]:
+        """
+        Client Certificate - The content of a .pem or .crt file
+        containing the client public key (for 2-way SSL).
+        """
+        return pulumi.get(self, "ssl_cert_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCrlFile")
+    def ssl_crl_file(self) -> Optional[_builtins.str]:
+        """
+        The list of certificates revoked by the trusted
+        certificate authorities (Trusted CA).
+        """
+        return pulumi.get(self, "ssl_crl_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyFile")
+    def ssl_key_file(self) -> Optional[_builtins.str]:
+        """
+        Client Key - The content of a .pem or .crt file containing
+        the client private key (for 2-way SSL).
+        """
+        return pulumi.get(self, "ssl_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> Optional[_builtins.str]:
+        """
+        SSL modes for MySQL.
+        Possible values:
+        DISABLED
+        PREFERRED
+        REQUIRED
+        VERIFY_CA
+        VERIFY_IDENTITY
+        """
+        return pulumi.get(self, "ssl_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of MysqlConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect the associated system of
+        the given technology.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesMysqlConnectionPropertiesAdditionalAttribute(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The name of the property entry.
+        :param _builtins.str value: The value of the property entry.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The name of the property entry.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the property entry.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesOciObjectStorageConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKeyFile":
+            suggest = "private_key_file"
+        elif key == "privateKeyPassphraseSecret":
+            suggest = "private_key_passphrase_secret"
+        elif key == "publicKeyFingerprint":
+            suggest = "public_key_fingerprint"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "tenancyId":
+            suggest = "tenancy_id"
+        elif key == "useResourcePrincipal":
+            suggest = "use_resource_principal"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesOciObjectStorageConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesOciObjectStorageConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesOciObjectStorageConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_key_file: Optional[_builtins.str] = None,
+                 private_key_passphrase_secret: Optional[_builtins.str] = None,
+                 public_key_fingerprint: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 tenancy_id: Optional[_builtins.str] = None,
+                 use_resource_principal: Optional[_builtins.bool] = None,
+                 user_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str private_key_file: The content of the private key file (PEM file)
+               corresponding to the API key of the fingerprint.
+        :param _builtins.str private_key_passphrase_secret: The passphrase of the private key.
+        :param _builtins.str public_key_fingerprint: The fingerprint of the API Key of the user specified by the userId.
+        :param _builtins.str region: The name of the region of OCI Object Storage. e.g.: us-ashburn-1
+               If the region is not provided, backend will default to the default region.
+        :param _builtins.str technology_type: The technology type of OciObjectStorageConnection.
+        :param _builtins.str tenancy_id: The OCID of the related OCI tenancy.
+        :param _builtins.bool use_resource_principal: Specifies that the user intends to authenticate to the instance using a
+               resource principal.
+        :param _builtins.str user_id: The OCID of the OCI user who will access the Object Storage.
+               The user must have write access to the bucket they want to connect to.
+        """
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+        if private_key_passphrase_secret is not None:
+            pulumi.set(__self__, "private_key_passphrase_secret", private_key_passphrase_secret)
+        if public_key_fingerprint is not None:
+            pulumi.set(__self__, "public_key_fingerprint", public_key_fingerprint)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if tenancy_id is not None:
+            pulumi.set(__self__, "tenancy_id", tenancy_id)
+        if use_resource_principal is not None:
+            pulumi.set(__self__, "use_resource_principal", use_resource_principal)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the private key file (PEM file)
+        corresponding to the API key of the fingerprint.
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyPassphraseSecret")
+    def private_key_passphrase_secret(self) -> Optional[_builtins.str]:
+        """
+        The passphrase of the private key.
+        """
+        return pulumi.get(self, "private_key_passphrase_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="publicKeyFingerprint")
+    def public_key_fingerprint(self) -> Optional[_builtins.str]:
+        """
+        The fingerprint of the API Key of the user specified by the userId.
+        """
+        return pulumi.get(self, "public_key_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The name of the region of OCI Object Storage. e.g.: us-ashburn-1
+        If the region is not provided, backend will default to the default region.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of OciObjectStorageConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tenancyId")
+    def tenancy_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the related OCI tenancy.
+        """
+        return pulumi.get(self, "tenancy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="useResourcePrincipal")
+    def use_resource_principal(self) -> Optional[_builtins.bool]:
+        """
+        Specifies that the user intends to authenticate to the instance using a
+        resource principal.
+        """
+        return pulumi.get(self, "use_resource_principal")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the OCI user who will access the Object Storage.
+        The user must have write access to the bucket they want to connect to.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionUrl":
+            suggest = "connection_url"
+        elif key == "privateKeyFile":
+            suggest = "private_key_file"
+        elif key == "privateKeyPassphraseSecret":
+            suggest = "private_key_passphrase_secret"
+        elif key == "publicKeyFingerprint":
+            suggest = "public_key_fingerprint"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "tenancyId":
+            suggest = "tenancy_id"
+        elif key == "useResourcePrincipal":
+            suggest = "use_resource_principal"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesOracleAiDataPlatformConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_url: Optional[_builtins.str] = None,
+                 private_key_file: Optional[_builtins.str] = None,
+                 private_key_passphrase_secret: Optional[_builtins.str] = None,
+                 public_key_fingerprint: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 tenancy_id: Optional[_builtins.str] = None,
+                 use_resource_principal: Optional[_builtins.bool] = None,
+                 user_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str connection_url: Connection URL. It must start with 'jdbc:spark://'
+        :param _builtins.str private_key_file: The content of the private key file (PEM file)
+               corresponding to the API key of the fingerprint.
+        :param _builtins.str private_key_passphrase_secret: The passphrase of the private key.
+        :param _builtins.str public_key_fingerprint: The fingerprint of the API Key of the user specified by the user_id.
+        :param _builtins.str region: The name of the region. e.g.: us-ashburn-1
+        :param _builtins.str technology_type: The technology type of OracleAiDataPlatformConnection.
+        :param _builtins.str tenancy_id: The OCID of the related OCI tenancy.
+        :param _builtins.bool use_resource_principal: Specifies that the user intends to authenticate to the instance using a
+               resource principal.
+        :param _builtins.str user_id: The OCID of the OCI user who will access.
+        """
+        if connection_url is not None:
+            pulumi.set(__self__, "connection_url", connection_url)
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+        if private_key_passphrase_secret is not None:
+            pulumi.set(__self__, "private_key_passphrase_secret", private_key_passphrase_secret)
+        if public_key_fingerprint is not None:
+            pulumi.set(__self__, "public_key_fingerprint", public_key_fingerprint)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if tenancy_id is not None:
+            pulumi.set(__self__, "tenancy_id", tenancy_id)
+        if use_resource_principal is not None:
+            pulumi.set(__self__, "use_resource_principal", use_resource_principal)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionUrl")
+    def connection_url(self) -> Optional[_builtins.str]:
+        """
+        Connection URL. It must start with 'jdbc:spark://'
+        """
+        return pulumi.get(self, "connection_url")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the private key file (PEM file)
+        corresponding to the API key of the fingerprint.
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyPassphraseSecret")
+    def private_key_passphrase_secret(self) -> Optional[_builtins.str]:
+        """
+        The passphrase of the private key.
+        """
+        return pulumi.get(self, "private_key_passphrase_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="publicKeyFingerprint")
+    def public_key_fingerprint(self) -> Optional[_builtins.str]:
+        """
+        The fingerprint of the API Key of the user specified by the user_id.
+        """
+        return pulumi.get(self, "public_key_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The name of the region. e.g.: us-ashburn-1
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of OracleAiDataPlatformConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tenancyId")
+    def tenancy_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the related OCI tenancy.
+        """
+        return pulumi.get(self, "tenancy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="useResourcePrincipal")
+    def use_resource_principal(self) -> Optional[_builtins.bool]:
+        """
+        Specifies that the user intends to authenticate to the instance using a
+        resource principal.
+        """
+        return pulumi.get(self, "use_resource_principal")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the OCI user who will access.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesOracleConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationMode":
+            suggest = "authentication_mode"
+        elif key == "connectionString":
+            suggest = "connection_string"
+        elif key == "gcpOracleDatabaseId":
+            suggest = "gcp_oracle_database_id"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "sessionMode":
+            suggest = "session_mode"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "walletFile":
+            suggest = "wallet_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesOracleConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesOracleConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesOracleConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_mode: Optional[_builtins.str] = None,
+                 connection_string: Optional[_builtins.str] = None,
+                 gcp_oracle_database_id: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 session_mode: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None,
+                 wallet_file: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authentication_mode: Authentication mode.
+               Possible values:
+               TLS
+               MTLS
+        :param _builtins.str connection_string: Connect descriptor or Easy Connect Naming method used to connect to a
+               database.
+        :param _builtins.str gcp_oracle_database_id: Database instance id of database in Oracle Database @ Google Cloud.
+               If gcp_oracle_database_id is provided, connection_string must be empty.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str session_mode: The mode of the database connection session to be established by the data
+               client.
+               Possible values:
+               DIRECT
+               REDIRECT
+        :param _builtins.str technology_type: The technology type.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect.
+        :param _builtins.str wallet_file: The wallet contents Oracle Goldengate uses to make connections to a
+               database.
+        """
+        if authentication_mode is not None:
+            pulumi.set(__self__, "authentication_mode", authentication_mode)
+        if connection_string is not None:
+            pulumi.set(__self__, "connection_string", connection_string)
+        if gcp_oracle_database_id is not None:
+            pulumi.set(__self__, "gcp_oracle_database_id", gcp_oracle_database_id)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if session_mode is not None:
+            pulumi.set(__self__, "session_mode", session_mode)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+        if wallet_file is not None:
+            pulumi.set(__self__, "wallet_file", wallet_file)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationMode")
+    def authentication_mode(self) -> Optional[_builtins.str]:
+        """
+        Authentication mode.
+        Possible values:
+        TLS
+        MTLS
+        """
+        return pulumi.get(self, "authentication_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionString")
+    def connection_string(self) -> Optional[_builtins.str]:
+        """
+        Connect descriptor or Easy Connect Naming method used to connect to a
+        database.
+        """
+        return pulumi.get(self, "connection_string")
+
+    @_builtins.property
+    @pulumi.getter(name="gcpOracleDatabaseId")
+    def gcp_oracle_database_id(self) -> Optional[_builtins.str]:
+        """
+        Database instance id of database in Oracle Database @ Google Cloud.
+        If gcp_oracle_database_id is provided, connection_string must be empty.
+        """
+        return pulumi.get(self, "gcp_oracle_database_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionMode")
+    def session_mode(self) -> Optional[_builtins.str]:
+        """
+        The mode of the database connection session to be established by the data
+        client.
+        Possible values:
+        DIRECT
+        REDIRECT
+        """
+        return pulumi.get(self, "session_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect.
+        """
+        return pulumi.get(self, "username")
+
+    @_builtins.property
+    @pulumi.getter(name="walletFile")
+    def wallet_file(self) -> Optional[_builtins.str]:
+        """
+        The wallet contents Oracle Goldengate uses to make connections to a
+        database.
+        """
+        return pulumi.get(self, "wallet_file")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesOracleNosqlConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKeyFile":
+            suggest = "private_key_file"
+        elif key == "privateKeyPassphraseSecret":
+            suggest = "private_key_passphrase_secret"
+        elif key == "publicKeyFingerprint":
+            suggest = "public_key_fingerprint"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "tenancyId":
+            suggest = "tenancy_id"
+        elif key == "useResourcePrincipal":
+            suggest = "use_resource_principal"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesOracleNosqlConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesOracleNosqlConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesOracleNosqlConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_key_file: Optional[_builtins.str] = None,
+                 private_key_passphrase_secret: Optional[_builtins.str] = None,
+                 public_key_fingerprint: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 tenancy_id: Optional[_builtins.str] = None,
+                 use_resource_principal: Optional[_builtins.bool] = None,
+                 user_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str private_key_file: The content of the private key file (PEM file)
+               corresponding to the API key of the fingerprint.
+        :param _builtins.str private_key_passphrase_secret: The passphrase of the private key.
+        :param _builtins.str public_key_fingerprint: The fingerprint of the API Key of the user specified by the userId.
+        :param _builtins.str region: The name of the region. e.g.: us-ashburn-1
+        :param _builtins.str technology_type: The technology type of OracleNosqlConnection.
+        :param _builtins.str tenancy_id: The OCID of the OCI tenancy.
+        :param _builtins.bool use_resource_principal: Specifies that the user intends to authenticate to the instance using a
+               resource principal.
+        :param _builtins.str user_id: The OCID of the OCI user who will access the Oracle NoSQL database.
+        """
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+        if private_key_passphrase_secret is not None:
+            pulumi.set(__self__, "private_key_passphrase_secret", private_key_passphrase_secret)
+        if public_key_fingerprint is not None:
+            pulumi.set(__self__, "public_key_fingerprint", public_key_fingerprint)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if tenancy_id is not None:
+            pulumi.set(__self__, "tenancy_id", tenancy_id)
+        if use_resource_principal is not None:
+            pulumi.set(__self__, "use_resource_principal", use_resource_principal)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the private key file (PEM file)
+        corresponding to the API key of the fingerprint.
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyPassphraseSecret")
+    def private_key_passphrase_secret(self) -> Optional[_builtins.str]:
+        """
+        The passphrase of the private key.
+        """
+        return pulumi.get(self, "private_key_passphrase_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="publicKeyFingerprint")
+    def public_key_fingerprint(self) -> Optional[_builtins.str]:
+        """
+        The fingerprint of the API Key of the user specified by the userId.
+        """
+        return pulumi.get(self, "public_key_fingerprint")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The name of the region. e.g.: us-ashburn-1
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of OracleNosqlConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="tenancyId")
+    def tenancy_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the OCI tenancy.
+        """
+        return pulumi.get(self, "tenancy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="useResourcePrincipal")
+    def use_resource_principal(self) -> Optional[_builtins.bool]:
+        """
+        Specifies that the user intends to authenticate to the instance using a
+        resource principal.
+        """
+        return pulumi.get(self, "use_resource_principal")
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the OCI user who will access the Oracle NoSQL database.
+        """
+        return pulumi.get(self, "user_id")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesPostgresqlConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalAttributes":
+            suggest = "additional_attributes"
+        elif key == "dbSystemId":
+            suggest = "db_system_id"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "sslCaFile":
+            suggest = "ssl_ca_file"
+        elif key == "sslCertFile":
+            suggest = "ssl_cert_file"
+        elif key == "sslCrlFile":
+            suggest = "ssl_crl_file"
+        elif key == "sslKeyFile":
+            suggest = "ssl_key_file"
+        elif key == "sslMode":
+            suggest = "ssl_mode"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesPostgresqlConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesPostgresqlConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesPostgresqlConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_attributes: Optional[Sequence['outputs.GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute']] = None,
+                 database: Optional[_builtins.str] = None,
+                 db_system_id: Optional[_builtins.str] = None,
+                 host: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 port: Optional[_builtins.int] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 ssl_ca_file: Optional[_builtins.str] = None,
+                 ssl_cert_file: Optional[_builtins.str] = None,
+                 ssl_crl_file: Optional[_builtins.str] = None,
+                 ssl_key_file: Optional[_builtins.str] = None,
+                 ssl_mode: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param Sequence['GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttributeArgs'] additional_attributes: An array of name-value pair attribute entries.
+               Used as additional parameters in connection string.
+               Structure is documented below.
+        :param _builtins.str database: The name of the database.
+        :param _builtins.str db_system_id: The OCID of the database system being referenced.
+        :param _builtins.str host: The name or address of a host.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
+               text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for PostgreSQL connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.int port: The port of an endpoint usually specified for a connection.
+        :param _builtins.str security_protocol: Security protocol for PostgreSQL.
+               Possible values:
+               PLAIN
+               TLS
+               MTLS
+        :param _builtins.str ssl_ca_file: The certificate of the trusted certificate authorities
+               (Trusted CA) for PostgreSQL.
+        :param _builtins.str ssl_cert_file: The certificate of the PostgreSQL server.
+        :param _builtins.str ssl_crl_file: The list of certificates revoked by the trusted
+               certificate authorities (Trusted CA).
+        :param _builtins.str ssl_key_file: The private key of the PostgreSQL server.
+        :param _builtins.str ssl_mode: SSL modes for PostgreSQL.
+               Possible values:
+               PREFER
+               REQUIRE
+               VERIFY_CA
+               VERIFY_FULL
+        :param _builtins.str technology_type: The technology type of PostgresqlConnection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect the associated system of
+               the given technology.
+        """
+        if additional_attributes is not None:
+            pulumi.set(__self__, "additional_attributes", additional_attributes)
+        if database is not None:
+            pulumi.set(__self__, "database", database)
+        if db_system_id is not None:
+            pulumi.set(__self__, "db_system_id", db_system_id)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if ssl_ca_file is not None:
+            pulumi.set(__self__, "ssl_ca_file", ssl_ca_file)
+        if ssl_cert_file is not None:
+            pulumi.set(__self__, "ssl_cert_file", ssl_cert_file)
+        if ssl_crl_file is not None:
+            pulumi.set(__self__, "ssl_crl_file", ssl_crl_file)
+        if ssl_key_file is not None:
+            pulumi.set(__self__, "ssl_key_file", ssl_key_file)
+        if ssl_mode is not None:
+            pulumi.set(__self__, "ssl_mode", ssl_mode)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="additionalAttributes")
+    def additional_attributes(self) -> Optional[Sequence['outputs.GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute']]:
+        """
+        An array of name-value pair attribute entries.
+        Used as additional parameters in connection string.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "additional_attributes")
+
+    @_builtins.property
+    @pulumi.getter
+    def database(self) -> Optional[_builtins.str]:
+        """
+        The name of the database.
+        """
+        return pulumi.get(self, "database")
+
+    @_builtins.property
+    @pulumi.getter(name="dbSystemId")
+    def db_system_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the database system being referenced.
+        """
+        return pulumi.get(self, "db_system_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> Optional[_builtins.str]:
+        """
+        The name or address of a host.
+        """
+        return pulumi.get(self, "host")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for PostgreSQL connection in plain
+        text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for PostgreSQL connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> Optional[_builtins.int]:
+        """
+        The port of an endpoint usually specified for a connection.
+        """
+        return pulumi.get(self, "port")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security protocol for PostgreSQL.
+        Possible values:
+        PLAIN
+        TLS
+        MTLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCaFile")
+    def ssl_ca_file(self) -> Optional[_builtins.str]:
+        """
+        The certificate of the trusted certificate authorities
+        (Trusted CA) for PostgreSQL.
+        """
+        return pulumi.get(self, "ssl_ca_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCertFile")
+    def ssl_cert_file(self) -> Optional[_builtins.str]:
+        """
+        The certificate of the PostgreSQL server.
+        """
+        return pulumi.get(self, "ssl_cert_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslCrlFile")
+    def ssl_crl_file(self) -> Optional[_builtins.str]:
+        """
+        The list of certificates revoked by the trusted
+        certificate authorities (Trusted CA).
+        """
+        return pulumi.get(self, "ssl_crl_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslKeyFile")
+    def ssl_key_file(self) -> Optional[_builtins.str]:
+        """
+        The private key of the PostgreSQL server.
+        """
+        return pulumi.get(self, "ssl_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="sslMode")
+    def ssl_mode(self) -> Optional[_builtins.str]:
+        """
+        SSL modes for PostgreSQL.
+        Possible values:
+        PREFER
+        REQUIRE
+        VERIFY_CA
+        VERIFY_FULL
+        """
+        return pulumi.get(self, "ssl_mode")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of PostgresqlConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect the associated system of
+        the given technology.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesPostgresqlConnectionPropertiesAdditionalAttribute(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The name of the property entry.
+        :param _builtins.str value: The value of the property entry.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The name of the property entry.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The value of the property entry.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesRedisConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "keyStoreFile":
+            suggest = "key_store_file"
+        elif key == "keyStorePassword":
+            suggest = "key_store_password"
+        elif key == "keyStorePasswordSecretVersion":
+            suggest = "key_store_password_secret_version"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "redisClusterId":
+            suggest = "redis_cluster_id"
+        elif key == "securityProtocol":
+            suggest = "security_protocol"
+        elif key == "technologyType":
+            suggest = "technology_type"
+        elif key == "trustStoreFile":
+            suggest = "trust_store_file"
+        elif key == "trustStorePassword":
+            suggest = "trust_store_password"
+        elif key == "trustStorePasswordSecretVersion":
+            suggest = "trust_store_password_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesRedisConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesRedisConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesRedisConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_type: Optional[_builtins.str] = None,
+                 key_store_file: Optional[_builtins.str] = None,
+                 key_store_password: Optional[_builtins.str] = None,
+                 key_store_password_secret_version: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 redis_cluster_id: Optional[_builtins.str] = None,
+                 security_protocol: Optional[_builtins.str] = None,
+                 servers: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 trust_store_file: Optional[_builtins.str] = None,
+                 trust_store_password: Optional[_builtins.str] = None,
+                 trust_store_password_secret_version: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authentication_type: Authentication type for Redis.
+               Possible values:
+               NONE
+               BASIC
+        :param _builtins.str key_store_file: The content of the KeyStore file.
+        :param _builtins.str key_store_password: Input only. The KeyStore password in plain text.
+        :param _builtins.str key_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the KeyStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses for Redis connection in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses for Redis connection.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str redis_cluster_id: The OCID of the Redis cluster.
+        :param _builtins.str security_protocol: Security protocol for Redis.
+               Possible values:
+               PLAIN
+               TLS
+               MTLS
+        :param _builtins.str servers: Comma separated list of Redis server addresses, specified as host:port
+               entries, where :port is optional. If port is not specified, it defaults
+               to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
+        :param _builtins.str technology_type: The technology type of RedisConnection.
+        :param _builtins.str trust_store_file: The content of the TrustStore file.
+        :param _builtins.str trust_store_password: Input only. The TrustStore password in plain text.
+        :param _builtins.str trust_store_password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the TrustStore password.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect the associated system of
+               the given technology.
+        """
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if key_store_file is not None:
+            pulumi.set(__self__, "key_store_file", key_store_file)
+        if key_store_password is not None:
+            pulumi.set(__self__, "key_store_password", key_store_password)
+        if key_store_password_secret_version is not None:
+            pulumi.set(__self__, "key_store_password_secret_version", key_store_password_secret_version)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if redis_cluster_id is not None:
+            pulumi.set(__self__, "redis_cluster_id", redis_cluster_id)
+        if security_protocol is not None:
+            pulumi.set(__self__, "security_protocol", security_protocol)
+        if servers is not None:
+            pulumi.set(__self__, "servers", servers)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if trust_store_file is not None:
+            pulumi.set(__self__, "trust_store_file", trust_store_file)
+        if trust_store_password is not None:
+            pulumi.set(__self__, "trust_store_password", trust_store_password)
+        if trust_store_password_secret_version is not None:
+            pulumi.set(__self__, "trust_store_password_secret_version", trust_store_password_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[_builtins.str]:
+        """
+        Authentication type for Redis.
+        Possible values:
+        NONE
+        BASIC
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStoreFile")
+    def key_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the KeyStore file.
+        """
+        return pulumi.get(self, "key_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePassword")
+    def key_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The KeyStore password in plain text.
+        """
+        return pulumi.get(self, "key_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="keyStorePasswordSecretVersion")
+    def key_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the KeyStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "key_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses for Redis connection in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses for Redis connection.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="redisClusterId")
+    def redis_cluster_id(self) -> Optional[_builtins.str]:
+        """
+        The OCID of the Redis cluster.
+        """
+        return pulumi.get(self, "redis_cluster_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityProtocol")
+    def security_protocol(self) -> Optional[_builtins.str]:
+        """
+        Security protocol for Redis.
+        Possible values:
+        PLAIN
+        TLS
+        MTLS
+        """
+        return pulumi.get(self, "security_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def servers(self) -> Optional[_builtins.str]:
+        """
+        Comma separated list of Redis server addresses, specified as host:port
+        entries, where :port is optional. If port is not specified, it defaults
+        to 6379. Example: "server1.example.com:6379,server2.example.com:6379"
+        """
+        return pulumi.get(self, "servers")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of RedisConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStoreFile")
+    def trust_store_file(self) -> Optional[_builtins.str]:
+        """
+        The content of the TrustStore file.
+        """
+        return pulumi.get(self, "trust_store_file")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePassword")
+    def trust_store_password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The TrustStore password in plain text.
+        """
+        return pulumi.get(self, "trust_store_password")
+
+    @_builtins.property
+    @pulumi.getter(name="trustStorePasswordSecretVersion")
+    def trust_store_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the TrustStore password.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "trust_store_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect the associated system of
+        the given technology.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateConnectionPropertiesSnowflakeConnectionProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authenticationType":
+            suggest = "authentication_type"
+        elif key == "connectionUrl":
+            suggest = "connection_url"
+        elif key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+        elif key == "privateKeyFile":
+            suggest = "private_key_file"
+        elif key == "privateKeyPassphraseSecret":
+            suggest = "private_key_passphrase_secret"
+        elif key == "technologyType":
+            suggest = "technology_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateConnectionPropertiesSnowflakeConnectionProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateConnectionPropertiesSnowflakeConnectionProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateConnectionPropertiesSnowflakeConnectionProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authentication_type: Optional[_builtins.str] = None,
+                 connection_url: Optional[_builtins.str] = None,
+                 password: Optional[_builtins.str] = None,
+                 password_secret_version: Optional[_builtins.str] = None,
+                 private_key_file: Optional[_builtins.str] = None,
+                 private_key_passphrase_secret: Optional[_builtins.str] = None,
+                 technology_type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authentication_type: Used authentication mechanism to access Snowflake.
+               Possible values:
+               BASIC
+               KEY_PAIR
+        :param _builtins.str connection_url: JDBC connection URL.
+               e.g.:
+               'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
+        :param _builtins.str password: Input only. The password Oracle Goldengate uses to connect to Snowflake platform
+               in plain text.
+        :param _builtins.str password_secret_version: Input only. The resource name of a secret version in Secret Manager which contains
+               the password Oracle Goldengate uses to connect to Snowflake platform.
+               Format: projects/{project}/secrets/{secret}/versions/{version}.
+        :param _builtins.str private_key_file: The content of private key file in PEM format.
+        :param _builtins.str private_key_passphrase_secret: Password if the private key file is encrypted.
+        :param _builtins.str technology_type: The technology type of SnowflakeConnection.
+        :param _builtins.str username: The username Oracle Goldengate uses to connect to Snowflake.
+        """
+        if authentication_type is not None:
+            pulumi.set(__self__, "authentication_type", authentication_type)
+        if connection_url is not None:
+            pulumi.set(__self__, "connection_url", connection_url)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if private_key_file is not None:
+            pulumi.set(__self__, "private_key_file", private_key_file)
+        if private_key_passphrase_secret is not None:
+            pulumi.set(__self__, "private_key_passphrase_secret", private_key_passphrase_secret)
+        if technology_type is not None:
+            pulumi.set(__self__, "technology_type", technology_type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="authenticationType")
+    def authentication_type(self) -> Optional[_builtins.str]:
+        """
+        Used authentication mechanism to access Snowflake.
+        Possible values:
+        BASIC
+        KEY_PAIR
+        """
+        return pulumi.get(self, "authentication_type")
+
+    @_builtins.property
+    @pulumi.getter(name="connectionUrl")
+    def connection_url(self) -> Optional[_builtins.str]:
+        """
+        JDBC connection URL.
+        e.g.:
+        'jdbc:snowflake://.snowflakecomputing.com/?warehouse=&db='
+        """
+        return pulumi.get(self, "connection_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        Input only. The password Oracle Goldengate uses to connect to Snowflake platform
+        in plain text.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The resource name of a secret version in Secret Manager which contains
+        the password Oracle Goldengate uses to connect to Snowflake platform.
+        Format: projects/{project}/secrets/{secret}/versions/{version}.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyFile")
+    def private_key_file(self) -> Optional[_builtins.str]:
+        """
+        The content of private key file in PEM format.
+        """
+        return pulumi.get(self, "private_key_file")
+
+    @_builtins.property
+    @pulumi.getter(name="privateKeyPassphraseSecret")
+    def private_key_passphrase_secret(self) -> Optional[_builtins.str]:
+        """
+        Password if the private key file is encrypted.
+        """
+        return pulumi.get(self, "private_key_passphrase_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyType")
+    def technology_type(self) -> Optional[_builtins.str]:
+        """
+        The technology type of SnowflakeConnection.
+        """
+        return pulumi.get(self, "technology_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username Oracle Goldengate uses to connect to Snowflake.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoldengateDeploymentProperties(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deploymentType":
+            suggest = "deployment_type"
+        elif key == "oggData":
+            suggest = "ogg_data"
+        elif key == "backupSchedule":
+            suggest = "backup_schedule"
+        elif key == "cpuCoreCount":
+            suggest = "cpu_core_count"
+        elif key == "deploymentBackupId":
+            suggest = "deployment_backup_id"
+        elif key == "deploymentDiagnosticData":
+            suggest = "deployment_diagnostic_data"
+        elif key == "deploymentRole":
+            suggest = "deployment_role"
+        elif key == "deploymentUrl":
+            suggest = "deployment_url"
+        elif key == "environmentType":
+            suggest = "environment_type"
+        elif key == "ingressIps":
+            suggest = "ingress_ips"
+        elif key == "isAutoScalingEnabled":
+            suggest = "is_auto_scaling_enabled"
+        elif key == "isLatestVersion":
+            suggest = "is_latest_version"
+        elif key == "isPublic":
+            suggest = "is_public"
+        elif key == "isStorageUtilizationLimitExceeded":
+            suggest = "is_storage_utilization_limit_exceeded"
+        elif key == "lastBackupScheduleTime":
+            suggest = "last_backup_schedule_time"
+        elif key == "licenseModel":
+            suggest = "license_model"
+        elif key == "lifecycleDetails":
+            suggest = "lifecycle_details"
+        elif key == "lifecycleState":
+            suggest = "lifecycle_state"
+        elif key == "lifecycleSubState":
+            suggest = "lifecycle_sub_state"
+        elif key == "loadBalancerId":
+            suggest = "load_balancer_id"
+        elif key == "loadBalancerSubnetId":
+            suggest = "load_balancer_subnet_id"
+        elif key == "maintenanceConfig":
+            suggest = "maintenance_config"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "nextBackupScheduleTime":
+            suggest = "next_backup_schedule_time"
+        elif key == "nextMaintenanceActionType":
+            suggest = "next_maintenance_action_type"
+        elif key == "nextMaintenanceDescription":
+            suggest = "next_maintenance_description"
+        elif key == "nextMaintenanceTime":
+            suggest = "next_maintenance_time"
+        elif key == "nsgIds":
+            suggest = "nsg_ids"
+        elif key == "oggVersionSupportEndTime":
+            suggest = "ogg_version_support_end_time"
+        elif key == "privateIpAddress":
+            suggest = "private_ip_address"
+        elif key == "publicIpAddress":
+            suggest = "public_ip_address"
+        elif key == "roleChangeTime":
+            suggest = "role_change_time"
+        elif key == "storageUtilizationBytes":
+            suggest = "storage_utilization_bytes"
+        elif key == "updateTime":
+            suggest = "update_time"
+        elif key == "upgradeRequiredTime":
+            suggest = "upgrade_required_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentProperties. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentProperties.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentProperties.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deployment_type: _builtins.str,
+                 ogg_data: 'outputs.GoldengateDeploymentPropertiesOggData',
+                 backup_schedule: Optional['outputs.GoldengateDeploymentPropertiesBackupSchedule'] = None,
+                 category: Optional[_builtins.str] = None,
+                 cpu_core_count: Optional[_builtins.int] = None,
+                 deployment_backup_id: Optional[_builtins.str] = None,
+                 deployment_diagnostic_data: Optional['outputs.GoldengateDeploymentPropertiesDeploymentDiagnosticData'] = None,
+                 deployment_role: Optional[_builtins.str] = None,
+                 deployment_url: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 environment_type: Optional[_builtins.str] = None,
+                 fqdn: Optional[_builtins.str] = None,
+                 healthy: Optional[_builtins.bool] = None,
+                 ingress_ips: Optional[Sequence['outputs.GoldengateDeploymentPropertiesIngressIp']] = None,
+                 is_auto_scaling_enabled: Optional[_builtins.bool] = None,
+                 is_latest_version: Optional[_builtins.bool] = None,
+                 is_public: Optional[_builtins.bool] = None,
+                 is_storage_utilization_limit_exceeded: Optional[_builtins.bool] = None,
+                 last_backup_schedule_time: Optional[_builtins.str] = None,
+                 license_model: Optional[_builtins.str] = None,
+                 lifecycle_details: Optional[_builtins.str] = None,
+                 lifecycle_state: Optional[_builtins.str] = None,
+                 lifecycle_sub_state: Optional[_builtins.str] = None,
+                 load_balancer_id: Optional[_builtins.str] = None,
+                 load_balancer_subnet_id: Optional[_builtins.str] = None,
+                 locks: Optional[Sequence['outputs.GoldengateDeploymentPropertiesLock']] = None,
+                 maintenance_config: Optional['outputs.GoldengateDeploymentPropertiesMaintenanceConfig'] = None,
+                 maintenance_window: Optional['outputs.GoldengateDeploymentPropertiesMaintenanceWindow'] = None,
+                 next_backup_schedule_time: Optional[_builtins.str] = None,
+                 next_maintenance_action_type: Optional[_builtins.str] = None,
+                 next_maintenance_description: Optional[_builtins.str] = None,
+                 next_maintenance_time: Optional[_builtins.str] = None,
+                 nsg_ids: Optional[Sequence[_builtins.str]] = None,
+                 ocid: Optional[_builtins.str] = None,
+                 ogg_version_support_end_time: Optional[_builtins.str] = None,
+                 placements: Optional[Sequence['outputs.GoldengateDeploymentPropertiesPlacement']] = None,
+                 private_ip_address: Optional[_builtins.str] = None,
+                 public_ip_address: Optional[_builtins.str] = None,
+                 role_change_time: Optional[_builtins.str] = None,
+                 storage_utilization_bytes: Optional[_builtins.str] = None,
+                 update_time: Optional[_builtins.str] = None,
+                 upgrade_required_time: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str deployment_type: A valid Goldengate Deployment type. For a list of supported types, use
+               the `ListGoldengateDeploymentTypes` operation.
+        :param 'GoldengateDeploymentPropertiesOggDataArgs' ogg_data: The Ogg data of the GoldengateDeployment.
+               Structure is documented below.
+        :param 'GoldengateDeploymentPropertiesBackupScheduleArgs' backup_schedule: The backup schedule of the GoldengateDeployment.
+               Structure is documented below.
+        :param _builtins.str category: (Output)
+               The category of the GoldengateDeployment.
+               Possible values:
+               DATA_REPLICATION
+               DATA_TRANSFORMS
+        :param _builtins.int cpu_core_count: The Minimum number of OCPUs to be made available for this Deployment.
+        :param _builtins.str deployment_backup_id: (Output)
+               The deployment backup id of the GoldengateDeployment.
+        :param 'GoldengateDeploymentPropertiesDeploymentDiagnosticDataArgs' deployment_diagnostic_data: The deployment diagnostic data.
+               Structure is documented below.
+        :param _builtins.str deployment_role: (Output)
+               The deployment role of the GoldengateDeployment.
+               Possible values:
+               PRIMARY
+               STANDBY
+        :param _builtins.str deployment_url: (Output)
+               The deployment url of the GoldengateDeployment.
+        :param _builtins.str description: The description of the GoldengateDeployment.
+        :param _builtins.str environment_type: The environment type of the GoldengateDeployment.
+        :param _builtins.str fqdn: (Output)
+               The Fully Qualified Domain Name of the GoldengateDeployment.
+        :param _builtins.bool healthy: (Output)
+               Whether the GoldengateDeployment is healthy.
+        :param Sequence['GoldengateDeploymentPropertiesIngressIpArgs'] ingress_ips: (Output)
+               The ingress ips of the GoldengateDeployment.
+               Structure is documented below.
+        :param _builtins.bool is_auto_scaling_enabled: Indicates if auto scaling is enabled for the Deployment's CPU core count.
+        :param _builtins.bool is_latest_version: (Output)
+               Whether the GoldengateDeployment is of the latest version.
+        :param _builtins.bool is_public: (Output)
+               Whether the GoldengateDeployment is public.
+        :param _builtins.bool is_storage_utilization_limit_exceeded: (Output)
+               Whether storage utilization limit is exceeded of the GoldengateDeployment.
+        :param _builtins.str last_backup_schedule_time: (Output)
+               The time last backup scheduled of the GoldengateDeployment.
+        :param _builtins.str license_model: The Oracle license model that applies to a Deployment.
+               Possible values:
+               LICENSE_INCLUDED
+               BRING_YOUR_OWN_LICENSE
+        :param _builtins.str lifecycle_details: (Output)
+               The lifecycle details of the GoldengateDeployment.
+        :param _builtins.str lifecycle_state: (Output)
+               State of the GoldengateDeployment.
+               Possible values:
+               CREATING
+               UPDATING
+               ACTIVE
+               INACTIVE
+               DELETING
+               DELETED
+               FAILED
+               NEEDS_ATTENTION
+               IN_PROGRESS
+               CANCELLING
+               CANCELLED
+               SUCCEEDED
+               WAITING
+        :param _builtins.str lifecycle_sub_state: (Output)
+               The lifecycle sub-state of the GoldengateDeployment.
+               Possible values:
+               RECOVERING
+               STARTING
+               STOPPING
+               MOVING
+               UPGRADING
+               RESTORING
+               BACKING_UP
+               ROLLING_BACK
+        :param _builtins.str load_balancer_id: (Output)
+               The load balancer id of the GoldengateDeployment.
+        :param _builtins.str load_balancer_subnet_id: (Output)
+               The load balancer subnet id of the GoldengateDeployment.
+        :param Sequence['GoldengateDeploymentPropertiesLockArgs'] locks: (Output)
+               The locks of the GoldengateDeployment.
+               Structure is documented below.
+        :param 'GoldengateDeploymentPropertiesMaintenanceConfigArgs' maintenance_config: The maintenance configuration of the GoldengateDeployment.
+               Structure is documented below.
+        :param 'GoldengateDeploymentPropertiesMaintenanceWindowArgs' maintenance_window: The maintenance window of the GoldengateDeployment.
+               Structure is documented below.
+        :param _builtins.str next_backup_schedule_time: (Output)
+               The time next backup scheduled of the GoldengateDeployment.
+        :param _builtins.str next_maintenance_action_type: (Output)
+               The next maintenance action type of the GoldengateDeployment.
+               Possible values:
+               UPGRADE
+        :param _builtins.str next_maintenance_description: (Output)
+               The next maintenance description of the GoldengateDeployment.
+        :param _builtins.str next_maintenance_time: (Output)
+               The time of next maintenance of the GoldengateDeployment.
+        :param Sequence[_builtins.str] nsg_ids: (Output)
+               The nsg ids of the GoldengateDeployment.
+        :param _builtins.str ocid: (Output)
+               OCID of the GoldengateDeployment.
+        :param _builtins.str ogg_version_support_end_time: (Output)
+               The time ogg version supported until of the GoldengateDeployment.
+        :param Sequence['GoldengateDeploymentPropertiesPlacementArgs'] placements: (Output)
+               The placements of the GoldengateDeployment.
+               Structure is documented below.
+        :param _builtins.str private_ip_address: (Output)
+               The private ip address of the GoldengateDeployment.
+        :param _builtins.str public_ip_address: (Output)
+               The public ip address of the GoldengateDeployment.
+        :param _builtins.str role_change_time: (Output)
+               The time when the role of the GoldengateDeployment was changed.
+        :param _builtins.str storage_utilization_bytes: (Output)
+               The storage utilization in bytes of the GoldengateDeployment.
+        :param _builtins.str update_time: (Output)
+               The time the GoldengateDeployment was updated.
+        :param _builtins.str upgrade_required_time: (Output)
+               The time upgrade required of the GoldengateDeployment.
+        """
+        pulumi.set(__self__, "deployment_type", deployment_type)
+        pulumi.set(__self__, "ogg_data", ogg_data)
+        if backup_schedule is not None:
+            pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if cpu_core_count is not None:
+            pulumi.set(__self__, "cpu_core_count", cpu_core_count)
+        if deployment_backup_id is not None:
+            pulumi.set(__self__, "deployment_backup_id", deployment_backup_id)
+        if deployment_diagnostic_data is not None:
+            pulumi.set(__self__, "deployment_diagnostic_data", deployment_diagnostic_data)
+        if deployment_role is not None:
+            pulumi.set(__self__, "deployment_role", deployment_role)
+        if deployment_url is not None:
+            pulumi.set(__self__, "deployment_url", deployment_url)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if environment_type is not None:
+            pulumi.set(__self__, "environment_type", environment_type)
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if healthy is not None:
+            pulumi.set(__self__, "healthy", healthy)
+        if ingress_ips is not None:
+            pulumi.set(__self__, "ingress_ips", ingress_ips)
+        if is_auto_scaling_enabled is not None:
+            pulumi.set(__self__, "is_auto_scaling_enabled", is_auto_scaling_enabled)
+        if is_latest_version is not None:
+            pulumi.set(__self__, "is_latest_version", is_latest_version)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if is_storage_utilization_limit_exceeded is not None:
+            pulumi.set(__self__, "is_storage_utilization_limit_exceeded", is_storage_utilization_limit_exceeded)
+        if last_backup_schedule_time is not None:
+            pulumi.set(__self__, "last_backup_schedule_time", last_backup_schedule_time)
+        if license_model is not None:
+            pulumi.set(__self__, "license_model", license_model)
+        if lifecycle_details is not None:
+            pulumi.set(__self__, "lifecycle_details", lifecycle_details)
+        if lifecycle_state is not None:
+            pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        if lifecycle_sub_state is not None:
+            pulumi.set(__self__, "lifecycle_sub_state", lifecycle_sub_state)
+        if load_balancer_id is not None:
+            pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        if load_balancer_subnet_id is not None:
+            pulumi.set(__self__, "load_balancer_subnet_id", load_balancer_subnet_id)
+        if locks is not None:
+            pulumi.set(__self__, "locks", locks)
+        if maintenance_config is not None:
+            pulumi.set(__self__, "maintenance_config", maintenance_config)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if next_backup_schedule_time is not None:
+            pulumi.set(__self__, "next_backup_schedule_time", next_backup_schedule_time)
+        if next_maintenance_action_type is not None:
+            pulumi.set(__self__, "next_maintenance_action_type", next_maintenance_action_type)
+        if next_maintenance_description is not None:
+            pulumi.set(__self__, "next_maintenance_description", next_maintenance_description)
+        if next_maintenance_time is not None:
+            pulumi.set(__self__, "next_maintenance_time", next_maintenance_time)
+        if nsg_ids is not None:
+            pulumi.set(__self__, "nsg_ids", nsg_ids)
+        if ocid is not None:
+            pulumi.set(__self__, "ocid", ocid)
+        if ogg_version_support_end_time is not None:
+            pulumi.set(__self__, "ogg_version_support_end_time", ogg_version_support_end_time)
+        if placements is not None:
+            pulumi.set(__self__, "placements", placements)
+        if private_ip_address is not None:
+            pulumi.set(__self__, "private_ip_address", private_ip_address)
+        if public_ip_address is not None:
+            pulumi.set(__self__, "public_ip_address", public_ip_address)
+        if role_change_time is not None:
+            pulumi.set(__self__, "role_change_time", role_change_time)
+        if storage_utilization_bytes is not None:
+            pulumi.set(__self__, "storage_utilization_bytes", storage_utilization_bytes)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if upgrade_required_time is not None:
+            pulumi.set(__self__, "upgrade_required_time", upgrade_required_time)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> _builtins.str:
+        """
+        A valid Goldengate Deployment type. For a list of supported types, use
+        the `ListGoldengateDeploymentTypes` operation.
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="oggData")
+    def ogg_data(self) -> 'outputs.GoldengateDeploymentPropertiesOggData':
+        """
+        The Ogg data of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ogg_data")
+
+    @_builtins.property
+    @pulumi.getter(name="backupSchedule")
+    def backup_schedule(self) -> Optional['outputs.GoldengateDeploymentPropertiesBackupSchedule']:
+        """
+        The backup schedule of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_schedule")
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The category of the GoldengateDeployment.
+        Possible values:
+        DATA_REPLICATION
+        DATA_TRANSFORMS
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="cpuCoreCount")
+    def cpu_core_count(self) -> Optional[_builtins.int]:
+        """
+        The Minimum number of OCPUs to be made available for this Deployment.
+        """
+        return pulumi.get(self, "cpu_core_count")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentBackupId")
+    def deployment_backup_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The deployment backup id of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "deployment_backup_id")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentDiagnosticData")
+    def deployment_diagnostic_data(self) -> Optional['outputs.GoldengateDeploymentPropertiesDeploymentDiagnosticData']:
+        """
+        The deployment diagnostic data.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deployment_diagnostic_data")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentRole")
+    def deployment_role(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The deployment role of the GoldengateDeployment.
+        Possible values:
+        PRIMARY
+        STANDBY
+        """
+        return pulumi.get(self, "deployment_role")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentUrl")
+    def deployment_url(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The deployment url of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "deployment_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        The description of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentType")
+    def environment_type(self) -> Optional[_builtins.str]:
+        """
+        The environment type of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "environment_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def fqdn(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The Fully Qualified Domain Name of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @_builtins.property
+    @pulumi.getter
+    def healthy(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether the GoldengateDeployment is healthy.
+        """
+        return pulumi.get(self, "healthy")
+
+    @_builtins.property
+    @pulumi.getter(name="ingressIps")
+    def ingress_ips(self) -> Optional[Sequence['outputs.GoldengateDeploymentPropertiesIngressIp']]:
+        """
+        (Output)
+        The ingress ips of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ingress_ips")
+
+    @_builtins.property
+    @pulumi.getter(name="isAutoScalingEnabled")
+    def is_auto_scaling_enabled(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if auto scaling is enabled for the Deployment's CPU core count.
+        """
+        return pulumi.get(self, "is_auto_scaling_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="isLatestVersion")
+    def is_latest_version(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether the GoldengateDeployment is of the latest version.
+        """
+        return pulumi.get(self, "is_latest_version")
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether the GoldengateDeployment is public.
+        """
+        return pulumi.get(self, "is_public")
+
+    @_builtins.property
+    @pulumi.getter(name="isStorageUtilizationLimitExceeded")
+    def is_storage_utilization_limit_exceeded(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        Whether storage utilization limit is exceeded of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "is_storage_utilization_limit_exceeded")
+
+    @_builtins.property
+    @pulumi.getter(name="lastBackupScheduleTime")
+    def last_backup_schedule_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time last backup scheduled of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "last_backup_schedule_time")
+
+    @_builtins.property
+    @pulumi.getter(name="licenseModel")
+    def license_model(self) -> Optional[_builtins.str]:
+        """
+        The Oracle license model that applies to a Deployment.
+        Possible values:
+        LICENSE_INCLUDED
+        BRING_YOUR_OWN_LICENSE
+        """
+        return pulumi.get(self, "license_model")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleDetails")
+    def lifecycle_details(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The lifecycle details of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "lifecycle_details")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        State of the GoldengateDeployment.
+        Possible values:
+        CREATING
+        UPDATING
+        ACTIVE
+        INACTIVE
+        DELETING
+        DELETED
+        FAILED
+        NEEDS_ATTENTION
+        IN_PROGRESS
+        CANCELLING
+        CANCELLED
+        SUCCEEDED
+        WAITING
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @_builtins.property
+    @pulumi.getter(name="lifecycleSubState")
+    def lifecycle_sub_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The lifecycle sub-state of the GoldengateDeployment.
+        Possible values:
+        RECOVERING
+        STARTING
+        STOPPING
+        MOVING
+        UPGRADING
+        RESTORING
+        BACKING_UP
+        ROLLING_BACK
+        """
+        return pulumi.get(self, "lifecycle_sub_state")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The load balancer id of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerSubnetId")
+    def load_balancer_subnet_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The load balancer subnet id of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "load_balancer_subnet_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def locks(self) -> Optional[Sequence['outputs.GoldengateDeploymentPropertiesLock']]:
+        """
+        (Output)
+        The locks of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "locks")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceConfig")
+    def maintenance_config(self) -> Optional['outputs.GoldengateDeploymentPropertiesMaintenanceConfig']:
+        """
+        The maintenance configuration of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_config")
+
+    @_builtins.property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional['outputs.GoldengateDeploymentPropertiesMaintenanceWindow']:
+        """
+        The maintenance window of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maintenance_window")
+
+    @_builtins.property
+    @pulumi.getter(name="nextBackupScheduleTime")
+    def next_backup_schedule_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time next backup scheduled of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "next_backup_schedule_time")
+
+    @_builtins.property
+    @pulumi.getter(name="nextMaintenanceActionType")
+    def next_maintenance_action_type(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The next maintenance action type of the GoldengateDeployment.
+        Possible values:
+        UPGRADE
+        """
+        return pulumi.get(self, "next_maintenance_action_type")
+
+    @_builtins.property
+    @pulumi.getter(name="nextMaintenanceDescription")
+    def next_maintenance_description(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The next maintenance description of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "next_maintenance_description")
+
+    @_builtins.property
+    @pulumi.getter(name="nextMaintenanceTime")
+    def next_maintenance_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time of next maintenance of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "next_maintenance_time")
+
+    @_builtins.property
+    @pulumi.getter(name="nsgIds")
+    def nsg_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        (Output)
+        The nsg ids of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "nsg_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def ocid(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        OCID of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "ocid")
+
+    @_builtins.property
+    @pulumi.getter(name="oggVersionSupportEndTime")
+    def ogg_version_support_end_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time ogg version supported until of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "ogg_version_support_end_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def placements(self) -> Optional[Sequence['outputs.GoldengateDeploymentPropertiesPlacement']]:
+        """
+        (Output)
+        The placements of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "placements")
+
+    @_builtins.property
+    @pulumi.getter(name="privateIpAddress")
+    def private_ip_address(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The private ip address of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "private_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="publicIpAddress")
+    def public_ip_address(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The public ip address of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "public_ip_address")
+
+    @_builtins.property
+    @pulumi.getter(name="roleChangeTime")
+    def role_change_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time when the role of the GoldengateDeployment was changed.
+        """
+        return pulumi.get(self, "role_change_time")
+
+    @_builtins.property
+    @pulumi.getter(name="storageUtilizationBytes")
+    def storage_utilization_bytes(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The storage utilization in bytes of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "storage_utilization_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time the GoldengateDeployment was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @_builtins.property
+    @pulumi.getter(name="upgradeRequiredTime")
+    def upgrade_required_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time upgrade required of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "upgrade_required_time")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesBackupSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupScheduledTime":
+            suggest = "backup_scheduled_time"
+        elif key == "compartmentId":
+            suggest = "compartment_id"
+        elif key == "frequencyBackupScheduled":
+            suggest = "frequency_backup_scheduled"
+        elif key == "metadataOnly":
+            suggest = "metadata_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesBackupSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesBackupSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesBackupSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_scheduled_time: Optional[_builtins.str] = None,
+                 bucket: Optional[_builtins.str] = None,
+                 compartment_id: Optional[_builtins.str] = None,
+                 frequency_backup_scheduled: Optional[_builtins.str] = None,
+                 metadata_only: Optional[_builtins.bool] = None,
+                 namespace: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str backup_scheduled_time: (Output)
+               The timestamp of when the backup was scheduled.
+        :param _builtins.str bucket: (Output)
+               The bucket name.
+        :param _builtins.str compartment_id: (Output)
+               The compartment id.
+        :param _builtins.str frequency_backup_scheduled: (Output)
+               The frequency backup scheduled.
+               Possible values:
+               DAILY
+               WEEKLY
+               MONTHLY
+        :param _builtins.bool metadata_only: (Output)
+               If metadata only.
+        :param _builtins.str namespace: (Output)
+               The namespace name.
+        """
+        if backup_scheduled_time is not None:
+            pulumi.set(__self__, "backup_scheduled_time", backup_scheduled_time)
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if compartment_id is not None:
+            pulumi.set(__self__, "compartment_id", compartment_id)
+        if frequency_backup_scheduled is not None:
+            pulumi.set(__self__, "frequency_backup_scheduled", frequency_backup_scheduled)
+        if metadata_only is not None:
+            pulumi.set(__self__, "metadata_only", metadata_only)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+
+    @_builtins.property
+    @pulumi.getter(name="backupScheduledTime")
+    def backup_scheduled_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The timestamp of when the backup was scheduled.
+        """
+        return pulumi.get(self, "backup_scheduled_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="compartmentId")
+    def compartment_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The compartment id.
+        """
+        return pulumi.get(self, "compartment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="frequencyBackupScheduled")
+    def frequency_backup_scheduled(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The frequency backup scheduled.
+        Possible values:
+        DAILY
+        WEEKLY
+        MONTHLY
+        """
+        return pulumi.get(self, "frequency_backup_scheduled")
+
+    @_builtins.property
+    @pulumi.getter(name="metadataOnly")
+    def metadata_only(self) -> Optional[_builtins.bool]:
+        """
+        (Output)
+        If metadata only.
+        """
+        return pulumi.get(self, "metadata_only")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The namespace name.
+        """
+        return pulumi.get(self, "namespace")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesDeploymentDiagnosticData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diagnosticEndTime":
+            suggest = "diagnostic_end_time"
+        elif key == "diagnosticStartTime":
+            suggest = "diagnostic_start_time"
+        elif key == "diagnosticState":
+            suggest = "diagnostic_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesDeploymentDiagnosticData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesDeploymentDiagnosticData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesDeploymentDiagnosticData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: Optional[_builtins.str] = None,
+                 diagnostic_end_time: Optional[_builtins.str] = None,
+                 diagnostic_start_time: Optional[_builtins.str] = None,
+                 diagnostic_state: Optional[_builtins.str] = None,
+                 namespace: Optional[_builtins.str] = None,
+                 object: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str bucket: (Output)
+               The bucket name.
+        :param _builtins.str diagnostic_end_time: (Output)
+               The time diagnostic end.
+        :param _builtins.str diagnostic_start_time: (Output)
+               The time diagnostic start.
+        :param _builtins.str diagnostic_state: (Output)
+               The diagnostic state.
+               Possible values:
+               IN_PROGRESS
+               SUCCEEDED
+               FAILED
+        :param _builtins.str namespace: (Output)
+               The namespace name.
+        :param _builtins.str object: (Output)
+               The object name.
+               
+               <a name="nested_properties_ingress_ips"></a>The `ingress_ips` block contains:
+        """
+        if bucket is not None:
+            pulumi.set(__self__, "bucket", bucket)
+        if diagnostic_end_time is not None:
+            pulumi.set(__self__, "diagnostic_end_time", diagnostic_end_time)
+        if diagnostic_start_time is not None:
+            pulumi.set(__self__, "diagnostic_start_time", diagnostic_start_time)
+        if diagnostic_state is not None:
+            pulumi.set(__self__, "diagnostic_state", diagnostic_state)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if object is not None:
+            pulumi.set(__self__, "object", object)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The bucket name.
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter(name="diagnosticEndTime")
+    def diagnostic_end_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time diagnostic end.
+        """
+        return pulumi.get(self, "diagnostic_end_time")
+
+    @_builtins.property
+    @pulumi.getter(name="diagnosticStartTime")
+    def diagnostic_start_time(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The time diagnostic start.
+        """
+        return pulumi.get(self, "diagnostic_start_time")
+
+    @_builtins.property
+    @pulumi.getter(name="diagnosticState")
+    def diagnostic_state(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The diagnostic state.
+        Possible values:
+        IN_PROGRESS
+        SUCCEEDED
+        FAILED
+        """
+        return pulumi.get(self, "diagnostic_state")
+
+    @_builtins.property
+    @pulumi.getter
+    def namespace(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The namespace name.
+        """
+        return pulumi.get(self, "namespace")
+
+    @_builtins.property
+    @pulumi.getter
+    def object(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The object name.
+
+        <a name="nested_properties_ingress_ips"></a>The `ingress_ips` block contains:
+        """
+        return pulumi.get(self, "object")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesIngressIp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressIpAddress":
+            suggest = "ingress_ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesIngressIp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesIngressIp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesIngressIp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ingress_ip_address: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str ingress_ip_address: The ingress IP.
+        """
+        if ingress_ip_address is not None:
+            pulumi.set(__self__, "ingress_ip_address", ingress_ip_address)
+
+    @_builtins.property
+    @pulumi.getter(name="ingressIpAddress")
+    def ingress_ip_address(self) -> Optional[_builtins.str]:
+        """
+        The ingress IP.
+        """
+        return pulumi.get(self, "ingress_ip_address")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesLock(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compartmentId":
+            suggest = "compartment_id"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "relatedResourceId":
+            suggest = "related_resource_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesLock. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesLock.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesLock.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 compartment_id: Optional[_builtins.str] = None,
+                 create_time: Optional[_builtins.str] = None,
+                 message: Optional[_builtins.str] = None,
+                 related_resource_id: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str compartment_id: The compartment id.
+        :param _builtins.str create_time: The date and time that the GoldengateDeployment was created.
+        :param _builtins.str message: The message.
+        :param _builtins.str related_resource_id: The related resource id.
+        :param _builtins.str type: The type of lock.
+               Possible values:
+               FULL
+               DELETE
+        """
+        if compartment_id is not None:
+            pulumi.set(__self__, "compartment_id", compartment_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if related_resource_id is not None:
+            pulumi.set(__self__, "related_resource_id", related_resource_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="compartmentId")
+    def compartment_id(self) -> Optional[_builtins.str]:
+        """
+        The compartment id.
+        """
+        return pulumi.get(self, "compartment_id")
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[_builtins.str]:
+        """
+        The date and time that the GoldengateDeployment was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> Optional[_builtins.str]:
+        """
+        The message.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter(name="relatedResourceId")
+    def related_resource_id(self) -> Optional[_builtins.str]:
+        """
+        The related resource id.
+        """
+        return pulumi.get(self, "related_resource_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The type of lock.
+        Possible values:
+        FULL
+        DELETE
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesMaintenanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bundleReleaseUpgradePeriodDays":
+            suggest = "bundle_release_upgrade_period_days"
+        elif key == "interimReleaseUpgradePeriodDays":
+            suggest = "interim_release_upgrade_period_days"
+        elif key == "isInterimReleaseAutoUpgradeEnabled":
+            suggest = "is_interim_release_auto_upgrade_enabled"
+        elif key == "majorReleaseUpgradePeriodDays":
+            suggest = "major_release_upgrade_period_days"
+        elif key == "securityPatchUpgradePeriodDays":
+            suggest = "security_patch_upgrade_period_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesMaintenanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesMaintenanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesMaintenanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bundle_release_upgrade_period_days: Optional[_builtins.int] = None,
+                 interim_release_upgrade_period_days: Optional[_builtins.int] = None,
+                 is_interim_release_auto_upgrade_enabled: Optional[_builtins.bool] = None,
+                 major_release_upgrade_period_days: Optional[_builtins.int] = None,
+                 security_patch_upgrade_period_days: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int bundle_release_upgrade_period_days: Defines auto upgrade period for bundle releases. Manually configured period
+               cannot be longer than service defined period for bundle releases. This
+               period must be shorter or equal to major release upgrade period. Not
+               passing this field during create will equate to using the service default.
+        :param _builtins.int interim_release_upgrade_period_days: Defines auto upgrade period for interim releases. This period must be
+               shorter or equal to bundle release upgrade period.
+        :param _builtins.bool is_interim_release_auto_upgrade_enabled: By default auto upgrade for interim releases are not enabled. If
+               auto-upgrade is enabled for interim release,  you have to specify
+               interim_release_upgrade_period_days too.
+        :param _builtins.int major_release_upgrade_period_days: Defines auto upgrade period for major releases. Manually configured period
+               cannot be longer than service defined period for major releases. Not
+               passing this field during create will equate to using the service default.
+        :param _builtins.int security_patch_upgrade_period_days: Defines auto upgrade period for releases with security fix. Manually
+               configured period cannot be longer than service defined period for security
+               releases. Not passing this field during create will equate to using the
+               service default.
+        """
+        if bundle_release_upgrade_period_days is not None:
+            pulumi.set(__self__, "bundle_release_upgrade_period_days", bundle_release_upgrade_period_days)
+        if interim_release_upgrade_period_days is not None:
+            pulumi.set(__self__, "interim_release_upgrade_period_days", interim_release_upgrade_period_days)
+        if is_interim_release_auto_upgrade_enabled is not None:
+            pulumi.set(__self__, "is_interim_release_auto_upgrade_enabled", is_interim_release_auto_upgrade_enabled)
+        if major_release_upgrade_period_days is not None:
+            pulumi.set(__self__, "major_release_upgrade_period_days", major_release_upgrade_period_days)
+        if security_patch_upgrade_period_days is not None:
+            pulumi.set(__self__, "security_patch_upgrade_period_days", security_patch_upgrade_period_days)
+
+    @_builtins.property
+    @pulumi.getter(name="bundleReleaseUpgradePeriodDays")
+    def bundle_release_upgrade_period_days(self) -> Optional[_builtins.int]:
+        """
+        Defines auto upgrade period for bundle releases. Manually configured period
+        cannot be longer than service defined period for bundle releases. This
+        period must be shorter or equal to major release upgrade period. Not
+        passing this field during create will equate to using the service default.
+        """
+        return pulumi.get(self, "bundle_release_upgrade_period_days")
+
+    @_builtins.property
+    @pulumi.getter(name="interimReleaseUpgradePeriodDays")
+    def interim_release_upgrade_period_days(self) -> Optional[_builtins.int]:
+        """
+        Defines auto upgrade period for interim releases. This period must be
+        shorter or equal to bundle release upgrade period.
+        """
+        return pulumi.get(self, "interim_release_upgrade_period_days")
+
+    @_builtins.property
+    @pulumi.getter(name="isInterimReleaseAutoUpgradeEnabled")
+    def is_interim_release_auto_upgrade_enabled(self) -> Optional[_builtins.bool]:
+        """
+        By default auto upgrade for interim releases are not enabled. If
+        auto-upgrade is enabled for interim release,  you have to specify
+        interim_release_upgrade_period_days too.
+        """
+        return pulumi.get(self, "is_interim_release_auto_upgrade_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="majorReleaseUpgradePeriodDays")
+    def major_release_upgrade_period_days(self) -> Optional[_builtins.int]:
+        """
+        Defines auto upgrade period for major releases. Manually configured period
+        cannot be longer than service defined period for major releases. Not
+        passing this field during create will equate to using the service default.
+        """
+        return pulumi.get(self, "major_release_upgrade_period_days")
+
+    @_builtins.property
+    @pulumi.getter(name="securityPatchUpgradePeriodDays")
+    def security_patch_upgrade_period_days(self) -> Optional[_builtins.int]:
+        """
+        Defines auto upgrade period for releases with security fix. Manually
+        configured period cannot be longer than service defined period for security
+        releases. Not passing this field during create will equate to using the
+        service default.
+        """
+        return pulumi.get(self, "security_patch_upgrade_period_days")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startHour":
+            suggest = "start_hour"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day: _builtins.str,
+                 start_hour: _builtins.int):
+        """
+        :param _builtins.str day: Possible values:
+               MONDAY
+               TUESDAY
+               WEDNESDAY
+               THURSDAY
+               FRIDAY
+               SATURDAY
+               SUNDAY
+        :param _builtins.int start_hour: Start hour for maintenance period. Hour is in UTC.
+        """
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "start_hour", start_hour)
+
+    @_builtins.property
+    @pulumi.getter
+    def day(self) -> _builtins.str:
+        """
+        Possible values:
+        MONDAY
+        TUESDAY
+        WEDNESDAY
+        THURSDAY
+        FRIDAY
+        SATURDAY
+        SUNDAY
+        """
+        return pulumi.get(self, "day")
+
+    @_builtins.property
+    @pulumi.getter(name="startHour")
+    def start_hour(self) -> _builtins.int:
+        """
+        Start hour for maintenance period. Hour is in UTC.
+        """
+        return pulumi.get(self, "start_hour")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesOggData(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminUsername":
+            suggest = "admin_username"
+        elif key == "adminPassword":
+            suggest = "admin_password"
+        elif key == "adminPasswordSecretVersion":
+            suggest = "admin_password_secret_version"
+        elif key == "credentialStore":
+            suggest = "credential_store"
+        elif key == "groupRolesMapping":
+            suggest = "group_roles_mapping"
+        elif key == "identityDomainId":
+            suggest = "identity_domain_id"
+        elif key == "oggVersion":
+            suggest = "ogg_version"
+        elif key == "passwordSecretId":
+            suggest = "password_secret_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesOggData. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesOggData.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesOggData.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_username: _builtins.str,
+                 deployment: _builtins.str,
+                 admin_password: Optional[_builtins.str] = None,
+                 admin_password_secret_version: Optional[_builtins.str] = None,
+                 certificate: Optional[_builtins.str] = None,
+                 credential_store: Optional[_builtins.str] = None,
+                 group_roles_mapping: Optional['outputs.GoldengateDeploymentPropertiesOggDataGroupRolesMapping'] = None,
+                 identity_domain_id: Optional[_builtins.str] = None,
+                 ogg_version: Optional[_builtins.str] = None,
+                 password_secret_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str admin_username: The Goldengate deployment console username.
+        :param _builtins.str deployment: The name given to the Goldengate service deployment. The name must be 1 to
+               32 characters long, must contain only alphanumeric characters and must
+               start with a letter.
+        :param _builtins.str admin_password: The Goldengate deployment console password in plain text.
+        :param _builtins.str admin_password_secret_version: Input only. The Goldengate deployment console password secret version.
+        :param _builtins.str certificate: (Output)
+               The certificate of the GoldengateDeployment.
+        :param _builtins.str credential_store: (Output)
+               The credential store of the GoldengateDeployment.
+               Possible values:
+               GOLDENGATE
+               IAM
+        :param 'GoldengateDeploymentPropertiesOggDataGroupRolesMappingArgs' group_roles_mapping: The group to roles mapping of the GoldengateDeployment.
+               Structure is documented below.
+        :param _builtins.str identity_domain_id: (Output)
+               The identity domain id of the GoldengateDeployment.
+        :param _builtins.str ogg_version: Version of OGG
+        :param _builtins.str password_secret_id: (Output)
+               The password secret id of the GoldengateDeployment.
+        """
+        pulumi.set(__self__, "admin_username", admin_username)
+        pulumi.set(__self__, "deployment", deployment)
+        if admin_password is not None:
+            pulumi.set(__self__, "admin_password", admin_password)
+        if admin_password_secret_version is not None:
+            pulumi.set(__self__, "admin_password_secret_version", admin_password_secret_version)
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if credential_store is not None:
+            pulumi.set(__self__, "credential_store", credential_store)
+        if group_roles_mapping is not None:
+            pulumi.set(__self__, "group_roles_mapping", group_roles_mapping)
+        if identity_domain_id is not None:
+            pulumi.set(__self__, "identity_domain_id", identity_domain_id)
+        if ogg_version is not None:
+            pulumi.set(__self__, "ogg_version", ogg_version)
+        if password_secret_id is not None:
+            pulumi.set(__self__, "password_secret_id", password_secret_id)
+
+    @_builtins.property
+    @pulumi.getter(name="adminUsername")
+    def admin_username(self) -> _builtins.str:
+        """
+        The Goldengate deployment console username.
+        """
+        return pulumi.get(self, "admin_username")
+
+    @_builtins.property
+    @pulumi.getter
+    def deployment(self) -> _builtins.str:
+        """
+        The name given to the Goldengate service deployment. The name must be 1 to
+        32 characters long, must contain only alphanumeric characters and must
+        start with a letter.
+        """
+        return pulumi.get(self, "deployment")
+
+    @_builtins.property
+    @pulumi.getter(name="adminPassword")
+    def admin_password(self) -> Optional[_builtins.str]:
+        """
+        The Goldengate deployment console password in plain text.
+        """
+        return pulumi.get(self, "admin_password")
+
+    @_builtins.property
+    @pulumi.getter(name="adminPasswordSecretVersion")
+    def admin_password_secret_version(self) -> Optional[_builtins.str]:
+        """
+        Input only. The Goldengate deployment console password secret version.
+        """
+        return pulumi.get(self, "admin_password_secret_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def certificate(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The certificate of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "certificate")
+
+    @_builtins.property
+    @pulumi.getter(name="credentialStore")
+    def credential_store(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The credential store of the GoldengateDeployment.
+        Possible values:
+        GOLDENGATE
+        IAM
+        """
+        return pulumi.get(self, "credential_store")
+
+    @_builtins.property
+    @pulumi.getter(name="groupRolesMapping")
+    def group_roles_mapping(self) -> Optional['outputs.GoldengateDeploymentPropertiesOggDataGroupRolesMapping']:
+        """
+        The group to roles mapping of the GoldengateDeployment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "group_roles_mapping")
+
+    @_builtins.property
+    @pulumi.getter(name="identityDomainId")
+    def identity_domain_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The identity domain id of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "identity_domain_id")
+
+    @_builtins.property
+    @pulumi.getter(name="oggVersion")
+    def ogg_version(self) -> Optional[_builtins.str]:
+        """
+        Version of OGG
+        """
+        return pulumi.get(self, "ogg_version")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordSecretId")
+    def password_secret_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The password secret id of the GoldengateDeployment.
+        """
+        return pulumi.get(self, "password_secret_id")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesOggDataGroupRolesMapping(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "administratorGroupId":
+            suggest = "administrator_group_id"
+        elif key == "operatorGroupId":
+            suggest = "operator_group_id"
+        elif key == "securityGroupId":
+            suggest = "security_group_id"
+        elif key == "userGroupId":
+            suggest = "user_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesOggDataGroupRolesMapping. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesOggDataGroupRolesMapping.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesOggDataGroupRolesMapping.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 administrator_group_id: Optional[_builtins.str] = None,
+                 operator_group_id: Optional[_builtins.str] = None,
+                 security_group_id: Optional[_builtins.str] = None,
+                 user_group_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str administrator_group_id: (Output)
+               The administrator group id.
+        :param _builtins.str operator_group_id: (Output)
+               The operator group id.
+        :param _builtins.str security_group_id: (Output)
+               The security group id.
+        :param _builtins.str user_group_id: (Output)
+               The user group id.
+               
+               <a name="nested_properties_placements"></a>The `placements` block contains:
+        """
+        if administrator_group_id is not None:
+            pulumi.set(__self__, "administrator_group_id", administrator_group_id)
+        if operator_group_id is not None:
+            pulumi.set(__self__, "operator_group_id", operator_group_id)
+        if security_group_id is not None:
+            pulumi.set(__self__, "security_group_id", security_group_id)
+        if user_group_id is not None:
+            pulumi.set(__self__, "user_group_id", user_group_id)
+
+    @_builtins.property
+    @pulumi.getter(name="administratorGroupId")
+    def administrator_group_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The administrator group id.
+        """
+        return pulumi.get(self, "administrator_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="operatorGroupId")
+    def operator_group_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The operator group id.
+        """
+        return pulumi.get(self, "operator_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityGroupId")
+    def security_group_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The security group id.
+        """
+        return pulumi.get(self, "security_group_id")
+
+    @_builtins.property
+    @pulumi.getter(name="userGroupId")
+    def user_group_id(self) -> Optional[_builtins.str]:
+        """
+        (Output)
+        The user group id.
+
+        <a name="nested_properties_placements"></a>The `placements` block contains:
+        """
+        return pulumi.get(self, "user_group_id")
+
+
+@pulumi.output_type
+class GoldengateDeploymentPropertiesPlacement(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityDomain":
+            suggest = "availability_domain"
+        elif key == "faultDomain":
+            suggest = "fault_domain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoldengateDeploymentPropertiesPlacement. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoldengateDeploymentPropertiesPlacement.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoldengateDeploymentPropertiesPlacement.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 availability_domain: Optional[_builtins.str] = None,
+                 fault_domain: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str availability_domain: The availability domain.
+        :param _builtins.str fault_domain: The fault domain.
+        """
+        if availability_domain is not None:
+            pulumi.set(__self__, "availability_domain", availability_domain)
+        if fault_domain is not None:
+            pulumi.set(__self__, "fault_domain", fault_domain)
+
+    @_builtins.property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> Optional[_builtins.str]:
+        """
+        The availability domain.
+        """
+        return pulumi.get(self, "availability_domain")
+
+    @_builtins.property
+    @pulumi.getter(name="faultDomain")
+    def fault_domain(self) -> Optional[_builtins.str]:
+        """
+        The fault domain.
+        """
+        return pulumi.get(self, "fault_domain")
 
 
 @pulumi.output_type
@@ -10316,6 +18106,47 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructurePropertyMaintenanc
 
 
 @pulumi.output_type
+class GetCloudVmClusterIdentityConnectorResult(dict):
+    def __init__(__self__, *,
+                 connection_state: _builtins.str,
+                 service_agent_email: _builtins.str):
+        """
+        :param _builtins.str connection_state: The connection state of the identity connector.
+               Possible values:
+               CONNECTION_STATE_UNSPECIFIED
+               CONNECTED
+               PARTIALLY_CONNECTED
+               DISCONNECTED
+               UNKNOWN
+        :param _builtins.str service_agent_email: A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        pulumi.set(__self__, "connection_state", connection_state)
+        pulumi.set(__self__, "service_agent_email", service_agent_email)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> _builtins.str:
+        """
+        The connection state of the identity connector.
+        Possible values:
+        CONNECTION_STATE_UNSPECIFIED
+        CONNECTED
+        PARTIALLY_CONNECTED
+        DISCONNECTED
+        UNKNOWN
+        """
+        return pulumi.get(self, "connection_state")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentEmail")
+    def service_agent_email(self) -> _builtins.str:
+        """
+        A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        return pulumi.get(self, "service_agent_email")
+
+
+@pulumi.output_type
 class GetCloudVmClusterPropertyResult(dict):
     def __init__(__self__, *,
                  cluster_name: _builtins.str,
@@ -10803,6 +18634,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                  effective_labels: Mapping[str, _builtins.str],
                  exadata_infrastructure: _builtins.str,
                  gcp_oracle_zone: _builtins.str,
+                 identity_connectors: Sequence['outputs.GetCloudVmClustersCloudVmClusterIdentityConnectorResult'],
                  labels: Mapping[str, _builtins.str],
                  location: _builtins.str,
                  name: _builtins.str,
@@ -10837,6 +18669,8 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}
         :param _builtins.str gcp_oracle_zone: GCP location where Oracle Exadata is hosted. It is same as GCP Oracle zone
                of Exadata infrastructure.
+        :param Sequence['GetCloudVmClustersCloudVmClusterIdentityConnectorArgs'] identity_connectors: The identity connector details which will allow OCI to securely access
+               the resources in the customer project.
         :param Mapping[str, _builtins.str] labels: Labels or tags associated with the VM Cluster. 
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -10873,6 +18707,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
         pulumi.set(__self__, "gcp_oracle_zone", gcp_oracle_zone)
+        pulumi.set(__self__, "identity_connectors", identity_connectors)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "name", name)
@@ -10985,6 +18820,15 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         return pulumi.get(self, "gcp_oracle_zone")
 
     @_builtins.property
+    @pulumi.getter(name="identityConnectors")
+    def identity_connectors(self) -> Sequence['outputs.GetCloudVmClustersCloudVmClusterIdentityConnectorResult']:
+        """
+        The identity connector details which will allow OCI to securely access
+        the resources in the customer project.
+        """
+        return pulumi.get(self, "identity_connectors")
+
+    @_builtins.property
     @pulumi.getter
     def labels(self) -> Mapping[str, _builtins.str]:
         """
@@ -11070,6 +18914,47 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
          and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+
+@pulumi.output_type
+class GetCloudVmClustersCloudVmClusterIdentityConnectorResult(dict):
+    def __init__(__self__, *,
+                 connection_state: _builtins.str,
+                 service_agent_email: _builtins.str):
+        """
+        :param _builtins.str connection_state: The connection state of the identity connector.
+               Possible values:
+               CONNECTION_STATE_UNSPECIFIED
+               CONNECTED
+               PARTIALLY_CONNECTED
+               DISCONNECTED
+               UNKNOWN
+        :param _builtins.str service_agent_email: A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        pulumi.set(__self__, "connection_state", connection_state)
+        pulumi.set(__self__, "service_agent_email", service_agent_email)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> _builtins.str:
+        """
+        The connection state of the identity connector.
+        Possible values:
+        CONNECTION_STATE_UNSPECIFIED
+        CONNECTED
+        PARTIALLY_CONNECTED
+        DISCONNECTED
+        UNKNOWN
+        """
+        return pulumi.get(self, "connection_state")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAgentEmail")
+    def service_agent_email(self) -> _builtins.str:
+        """
+        A google managed service account on which customers can grant roles to access resources in the customer project.
+        """
+        return pulumi.get(self, "service_agent_email")
 
 
 @pulumi.output_type
@@ -11806,5 +19691,173 @@ class GetDbServersDbServerPropertyResult(dict):
         Output only
         """
         return pulumi.get(self, "vm_count")
+
+
+@pulumi.output_type
+class GetGoldengateConnectionTypesGoldengateConnectionTypeResult(dict):
+    def __init__(__self__, *,
+                 connection_type: _builtins.str,
+                 name: _builtins.str,
+                 technology_types: Sequence[_builtins.str]):
+        """
+        :param _builtins.str connection_type: The connection type of the Goldengate Connection Type resource.
+        :param _builtins.str name: The name of the Goldengate Connection Type resource.
+        :param Sequence[_builtins.str] technology_types: An array of technologyTypes supported for the connection type.
+        """
+        pulumi.set(__self__, "connection_type", connection_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "technology_types", technology_types)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> _builtins.str:
+        """
+        The connection type of the Goldengate Connection Type resource.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Goldengate Connection Type resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="technologyTypes")
+    def technology_types(self) -> Sequence[_builtins.str]:
+        """
+        An array of technologyTypes supported for the connection type.
+        """
+        return pulumi.get(self, "technology_types")
+
+
+@pulumi.output_type
+class GetGoldengateDeploymentEnvironmentsGoldengateDeploymentEnvironmentResult(dict):
+    def __init__(__self__, *,
+                 auto_scaling_enabled: _builtins.bool,
+                 category: _builtins.str,
+                 default_cpu_core_count: _builtins.int,
+                 display_name: _builtins.str,
+                 environment_type: _builtins.str,
+                 max_cpu_core_count: _builtins.int,
+                 memory_gb_per_cpu_core: _builtins.int,
+                 min_cpu_core_count: _builtins.int,
+                 name: _builtins.str,
+                 network_bandwidth_gbps_per_cpu_core: _builtins.int,
+                 storage_usage_limit_gb_per_cpu_core: _builtins.int):
+        """
+        :param _builtins.bool auto_scaling_enabled: Whether auto scaling is enabled by default for the Goldengate Deployment Environment resource.
+        :param _builtins.str category: The category of the Goldengate Deployment Environment resource.
+        :param _builtins.int default_cpu_core_count: The default CPU core count of the Goldengate Deployment Environment resource.
+        :param _builtins.str display_name: The display name of the Goldengate Deployment Environment resource.
+        :param _builtins.str environment_type: The environment type of the Goldengate Deployment Environment resource.
+        :param _builtins.int max_cpu_core_count: The max CPU core count of the Goldengate Deployment Environment resource.
+        :param _builtins.int memory_gb_per_cpu_core: The memory per CPU core in GBs of the Goldengate Deployment Environment resource.
+        :param _builtins.int min_cpu_core_count: The min CPU core count of the Goldengate Deployment Environment resource.
+        :param _builtins.str name: The name of the Goldengate Deployment Environment resource.
+        :param _builtins.int network_bandwidth_gbps_per_cpu_core: The network bandwidth per CPU core in Gbps of the Goldengate Deployment Environment resource.
+        :param _builtins.int storage_usage_limit_gb_per_cpu_core: The storage usage limit per CPU core in GBs of the Goldengate Deployment Environment resource.
+        """
+        pulumi.set(__self__, "auto_scaling_enabled", auto_scaling_enabled)
+        pulumi.set(__self__, "category", category)
+        pulumi.set(__self__, "default_cpu_core_count", default_cpu_core_count)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "environment_type", environment_type)
+        pulumi.set(__self__, "max_cpu_core_count", max_cpu_core_count)
+        pulumi.set(__self__, "memory_gb_per_cpu_core", memory_gb_per_cpu_core)
+        pulumi.set(__self__, "min_cpu_core_count", min_cpu_core_count)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_bandwidth_gbps_per_cpu_core", network_bandwidth_gbps_per_cpu_core)
+        pulumi.set(__self__, "storage_usage_limit_gb_per_cpu_core", storage_usage_limit_gb_per_cpu_core)
+
+    @_builtins.property
+    @pulumi.getter(name="autoScalingEnabled")
+    def auto_scaling_enabled(self) -> _builtins.bool:
+        """
+        Whether auto scaling is enabled by default for the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "auto_scaling_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def category(self) -> _builtins.str:
+        """
+        The category of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "category")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultCpuCoreCount")
+    def default_cpu_core_count(self) -> _builtins.int:
+        """
+        The default CPU core count of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "default_cpu_core_count")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The display name of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentType")
+    def environment_type(self) -> _builtins.str:
+        """
+        The environment type of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "environment_type")
+
+    @_builtins.property
+    @pulumi.getter(name="maxCpuCoreCount")
+    def max_cpu_core_count(self) -> _builtins.int:
+        """
+        The max CPU core count of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "max_cpu_core_count")
+
+    @_builtins.property
+    @pulumi.getter(name="memoryGbPerCpuCore")
+    def memory_gb_per_cpu_core(self) -> _builtins.int:
+        """
+        The memory per CPU core in GBs of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "memory_gb_per_cpu_core")
+
+    @_builtins.property
+    @pulumi.getter(name="minCpuCoreCount")
+    def min_cpu_core_count(self) -> _builtins.int:
+        """
+        The min CPU core count of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "min_cpu_core_count")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="networkBandwidthGbpsPerCpuCore")
+    def network_bandwidth_gbps_per_cpu_core(self) -> _builtins.int:
+        """
+        The network bandwidth per CPU core in Gbps of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "network_bandwidth_gbps_per_cpu_core")
+
+    @_builtins.property
+    @pulumi.getter(name="storageUsageLimitGbPerCpuCore")
+    def storage_usage_limit_gb_per_cpu_core(self) -> _builtins.int:
+        """
+        The storage usage limit per CPU core in GBs of the Goldengate Deployment Environment resource.
+        """
+        return pulumi.get(self, "storage_usage_limit_gb_per_cpu_core")
 
 

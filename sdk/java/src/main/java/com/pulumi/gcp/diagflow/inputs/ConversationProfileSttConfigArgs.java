@@ -19,7 +19,7 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
 
     /**
      * Audio encoding of the audio content to process.
-     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
      * 
      */
     @Import(name="audioEncoding")
@@ -27,7 +27,7 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
 
     /**
      * @return Audio encoding of the audio content to process.
-     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+     * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
      * 
      */
     public Optional<Output<String>> audioEncoding() {
@@ -114,14 +114,14 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     @Import(name="useTimeoutBasedEndpointing")
     private @Nullable Output<Boolean> useTimeoutBasedEndpointing;
 
     /**
-     * @return Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     public Optional<Output<Boolean>> useTimeoutBasedEndpointing() {
@@ -160,7 +160,7 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
 
         /**
          * @param audioEncoding Audio encoding of the audio content to process.
-         * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+         * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
 
         /**
          * @param audioEncoding Audio encoding of the audio content to process.
-         * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIOENCODING_SPEEX_WITH_HEADER_BYTE`.
+         * Possible values are: `AUDIO_ENCODING_UNSPECIFIED`, `AUDIO_ENCODING_LINEAR_16`, `AUDIO_ENCODING_FLAC`, `AUDIO_ENCODING_MULAW`, `AUDIO_ENCODING_AMR`, `AUDIO_ENCODING_AMR_WB`, `AUDIO_ENCODING_OGG_OPUS`, `AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class ConversationProfileSttConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          * 
          * @return builder
          * 

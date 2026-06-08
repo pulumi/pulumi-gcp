@@ -25,6 +25,10 @@ import com.pulumi.gcp.oracledatabase.inputs.GetDbNodesArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbNodesPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbServersArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetDbServersPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesPlainArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
+import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbNetworkPlainArgs;
 import com.pulumi.gcp.oracledatabase.inputs.GetOdbSubnetArgs;
@@ -37,6 +41,8 @@ import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClusterResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClustersResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetDbNodesResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetDbServersResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateConnectionTypesResult;
+import com.pulumi.gcp.oracledatabase.outputs.GetGoldengateDeploymentEnvironmentsResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbNetworkResult;
 import com.pulumi.gcp.oracledatabase.outputs.GetOdbSubnetResult;
 import java.util.concurrent.CompletableFuture;
@@ -2186,6 +2192,656 @@ public final class OracledatabaseFunctions {
      */
     public static CompletableFuture<GetDbServersResult> getDbServersPlain(GetDbServersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getDbServers:getDbServers", TypeShape.of(GetDbServersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Connection Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateConnectionTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myConnectionTypes = OracledatabaseFunctions.getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateConnectionTypes` - List of GoldenGate Connection Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateConnectionTypes&#34;&gt;&lt;/a&gt; The `goldengateConnectionTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Connection Type resource. Format: `projects/{project}/locations/{location}/goldenGateConnectionTypes/{golden_gate_connection_type}`
+     * 
+     * * `connectionType` - The connection type of the GoldenGate Connection Type resource.
+     * 
+     * * `technologyTypes` - An array of technologyTypes supported for the connection type.
+     * 
+     */
+    public static Output<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs args) {
+        return getGoldengateConnectionTypes(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all GoldenGate Connection Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateConnectionTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myConnectionTypes = OracledatabaseFunctions.getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateConnectionTypes` - List of GoldenGate Connection Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateConnectionTypes&#34;&gt;&lt;/a&gt; The `goldengateConnectionTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Connection Type resource. Format: `projects/{project}/locations/{location}/goldenGateConnectionTypes/{golden_gate_connection_type}`
+     * 
+     * * `connectionType` - The connection type of the GoldenGate Connection Type resource.
+     * 
+     * * `technologyTypes` - An array of technologyTypes supported for the connection type.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypesPlain(GetGoldengateConnectionTypesPlainArgs args) {
+        return getGoldengateConnectionTypesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all GoldenGate Connection Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateConnectionTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myConnectionTypes = OracledatabaseFunctions.getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateConnectionTypes` - List of GoldenGate Connection Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateConnectionTypes&#34;&gt;&lt;/a&gt; The `goldengateConnectionTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Connection Type resource. Format: `projects/{project}/locations/{location}/goldenGateConnectionTypes/{golden_gate_connection_type}`
+     * 
+     * * `connectionType` - The connection type of the GoldenGate Connection Type resource.
+     * 
+     * * `technologyTypes` - An array of technologyTypes supported for the connection type.
+     * 
+     */
+    public static Output<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateConnectionTypes:getGoldengateConnectionTypes", TypeShape.of(GetGoldengateConnectionTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Connection Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateConnectionTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myConnectionTypes = OracledatabaseFunctions.getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateConnectionTypes` - List of GoldenGate Connection Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateConnectionTypes&#34;&gt;&lt;/a&gt; The `goldengateConnectionTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Connection Type resource. Format: `projects/{project}/locations/{location}/goldenGateConnectionTypes/{golden_gate_connection_type}`
+     * 
+     * * `connectionType` - The connection type of the GoldenGate Connection Type resource.
+     * 
+     * * `technologyTypes` - An array of technologyTypes supported for the connection type.
+     * 
+     */
+    public static Output<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateConnectionTypes:getGoldengateConnectionTypes", TypeShape.of(GetGoldengateConnectionTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Connection Types in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateConnectionTypes).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateConnectionTypesArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myConnectionTypes = OracledatabaseFunctions.getGoldengateConnectionTypes(GetGoldengateConnectionTypesArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateConnectionTypes` - List of GoldenGate Connection Types. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateConnectionTypes&#34;&gt;&lt;/a&gt; The `goldengateConnectionTypes` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Connection Type resource. Format: `projects/{project}/locations/{location}/goldenGateConnectionTypes/{golden_gate_connection_type}`
+     * 
+     * * `connectionType` - The connection type of the GoldenGate Connection Type resource.
+     * 
+     * * `technologyTypes` - An array of technologyTypes supported for the connection type.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateConnectionTypesResult> getGoldengateConnectionTypesPlain(GetGoldengateConnectionTypesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getGoldengateConnectionTypes:getGoldengateConnectionTypes", TypeShape.of(GetGoldengateConnectionTypesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Deployment Environments in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentEnvironments).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnvironments = OracledatabaseFunctions.getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentEnvironments` - List of GoldenGate Deployment Environments. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentEnvironments&#34;&gt;&lt;/a&gt; The `goldengateDeploymentEnvironments` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Environment resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentEnvironments/{golden_gate_deployment_environment}`
+     * 
+     * * `category` - The category of the GoldenGate Deployment Environment resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Environment resource.
+     * 
+     * * `defaultCpuCoreCount` - The default CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `environmentType` - The environment type of the GoldenGate Deployment Environment resource.
+     * 
+     * * `autoScalingEnabled` - Whether auto scaling is enabled by default for the GoldenGate Deployment Environment resource.
+     * 
+     * * `maxCpuCoreCount` - The max CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `memoryGbPerCpuCore` - The memory per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     * * `minCpuCoreCount` - The min CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `networkBandwidthGbpsPerCpuCore` - The network bandwidth per CPU core in Gbps of the GoldenGate Deployment Environment resource.
+     * 
+     * * `storageUsageLimitGbPerCpuCore` - The storage usage limit per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs args) {
+        return getGoldengateDeploymentEnvironments(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all GoldenGate Deployment Environments in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentEnvironments).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnvironments = OracledatabaseFunctions.getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentEnvironments` - List of GoldenGate Deployment Environments. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentEnvironments&#34;&gt;&lt;/a&gt; The `goldengateDeploymentEnvironments` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Environment resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentEnvironments/{golden_gate_deployment_environment}`
+     * 
+     * * `category` - The category of the GoldenGate Deployment Environment resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Environment resource.
+     * 
+     * * `defaultCpuCoreCount` - The default CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `environmentType` - The environment type of the GoldenGate Deployment Environment resource.
+     * 
+     * * `autoScalingEnabled` - Whether auto scaling is enabled by default for the GoldenGate Deployment Environment resource.
+     * 
+     * * `maxCpuCoreCount` - The max CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `memoryGbPerCpuCore` - The memory per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     * * `minCpuCoreCount` - The min CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `networkBandwidthGbpsPerCpuCore` - The network bandwidth per CPU core in Gbps of the GoldenGate Deployment Environment resource.
+     * 
+     * * `storageUsageLimitGbPerCpuCore` - The storage usage limit per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironmentsPlain(GetGoldengateDeploymentEnvironmentsPlainArgs args) {
+        return getGoldengateDeploymentEnvironmentsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * List all GoldenGate Deployment Environments in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentEnvironments).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnvironments = OracledatabaseFunctions.getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentEnvironments` - List of GoldenGate Deployment Environments. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentEnvironments&#34;&gt;&lt;/a&gt; The `goldengateDeploymentEnvironments` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Environment resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentEnvironments/{golden_gate_deployment_environment}`
+     * 
+     * * `category` - The category of the GoldenGate Deployment Environment resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Environment resource.
+     * 
+     * * `defaultCpuCoreCount` - The default CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `environmentType` - The environment type of the GoldenGate Deployment Environment resource.
+     * 
+     * * `autoScalingEnabled` - Whether auto scaling is enabled by default for the GoldenGate Deployment Environment resource.
+     * 
+     * * `maxCpuCoreCount` - The max CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `memoryGbPerCpuCore` - The memory per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     * * `minCpuCoreCount` - The min CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `networkBandwidthGbpsPerCpuCore` - The network bandwidth per CPU core in Gbps of the GoldenGate Deployment Environment resource.
+     * 
+     * * `storageUsageLimitGbPerCpuCore` - The storage usage limit per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments", TypeShape.of(GetGoldengateDeploymentEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Deployment Environments in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentEnvironments).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnvironments = OracledatabaseFunctions.getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentEnvironments` - List of GoldenGate Deployment Environments. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentEnvironments&#34;&gt;&lt;/a&gt; The `goldengateDeploymentEnvironments` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Environment resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentEnvironments/{golden_gate_deployment_environment}`
+     * 
+     * * `category` - The category of the GoldenGate Deployment Environment resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Environment resource.
+     * 
+     * * `defaultCpuCoreCount` - The default CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `environmentType` - The environment type of the GoldenGate Deployment Environment resource.
+     * 
+     * * `autoScalingEnabled` - Whether auto scaling is enabled by default for the GoldenGate Deployment Environment resource.
+     * 
+     * * `maxCpuCoreCount` - The max CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `memoryGbPerCpuCore` - The memory per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     * * `minCpuCoreCount` - The min CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `networkBandwidthGbpsPerCpuCore` - The network bandwidth per CPU core in Gbps of the GoldenGate Deployment Environment resource.
+     * 
+     * * `storageUsageLimitGbPerCpuCore` - The storage usage limit per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     */
+    public static Output<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments", TypeShape.of(GetGoldengateDeploymentEnvironmentsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * List all GoldenGate Deployment Environments in a location.
+     * 
+     * For more information see the
+     * [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.goldengateDeploymentEnvironments).
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.oracledatabase.OracledatabaseFunctions;
+     * import com.pulumi.gcp.oracledatabase.inputs.GetGoldengateDeploymentEnvironmentsArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myEnvironments = OracledatabaseFunctions.getGoldengateDeploymentEnvironments(GetGoldengateDeploymentEnvironmentsArgs.builder()
+     *             .location("us-east4")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ## Attributes reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `goldengateDeploymentEnvironments` - List of GoldenGate Deployment Environments. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nestedGoldengateDeploymentEnvironments&#34;&gt;&lt;/a&gt; The `goldengateDeploymentEnvironments` block supports:
+     * 
+     * * `name` - The name of the GoldenGate Deployment Environment resource. Format: `projects/{project}/locations/{location}/goldenGateDeploymentEnvironments/{golden_gate_deployment_environment}`
+     * 
+     * * `category` - The category of the GoldenGate Deployment Environment resource.
+     * 
+     * * `displayName` - The display name of the GoldenGate Deployment Environment resource.
+     * 
+     * * `defaultCpuCoreCount` - The default CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `environmentType` - The environment type of the GoldenGate Deployment Environment resource.
+     * 
+     * * `autoScalingEnabled` - Whether auto scaling is enabled by default for the GoldenGate Deployment Environment resource.
+     * 
+     * * `maxCpuCoreCount` - The max CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `memoryGbPerCpuCore` - The memory per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     * * `minCpuCoreCount` - The min CPU core count of the GoldenGate Deployment Environment resource.
+     * 
+     * * `networkBandwidthGbpsPerCpuCore` - The network bandwidth per CPU core in Gbps of the GoldenGate Deployment Environment resource.
+     * 
+     * * `storageUsageLimitGbPerCpuCore` - The storage usage limit per CPU core in GBs of the GoldenGate Deployment Environment resource.
+     * 
+     */
+    public static CompletableFuture<GetGoldengateDeploymentEnvironmentsResult> getGoldengateDeploymentEnvironmentsPlain(GetGoldengateDeploymentEnvironmentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:oracledatabase/getGoldengateDeploymentEnvironments:getGoldengateDeploymentEnvironments", TypeShape.of(GetGoldengateDeploymentEnvironmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information about an ODB Network.

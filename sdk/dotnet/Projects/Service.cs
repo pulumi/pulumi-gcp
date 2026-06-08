@@ -81,6 +81,8 @@ namespace Pulumi.Gcp.Projects
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
+        /// If `DisableOnDestroy` is set to `False`, the service will still be enabled when the
+        /// Terraform resource is destroyed even if the `DeletionPolicy` field is set to "DELETE".
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string> DeletionPolicy { get; private set; } = null!;
@@ -177,6 +179,8 @@ namespace Pulumi.Gcp.Projects
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
+        /// If `DisableOnDestroy` is set to `False`, the service will still be enabled when the
+        /// Terraform resource is destroyed even if the `DeletionPolicy` field is set to "DELETE".
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -235,6 +239,8 @@ namespace Pulumi.Gcp.Projects
         /// When set to "ABANDON", the command will remove the resource from Terraform
         /// management without updating or deleting the resource in the API.
         /// When set to "DELETE", deleting the resource is allowed.
+        /// If `DisableOnDestroy` is set to `False`, the service will still be enabled when the
+        /// Terraform resource is destroyed even if the `DeletionPolicy` field is set to "DELETE".
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

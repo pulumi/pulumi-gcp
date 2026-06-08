@@ -12,7 +12,9 @@ namespace Pulumi.Gcp.Iap
     public static class GetClient
     {
         /// <summary>
-        /// Get info about a Google Cloud IAP Client.
+        /// Get information about a Identity-Aware Proxy Client.
+        /// 
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -24,15 +26,10 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+        ///     var @default = Gcp.Iap.GetClient.Invoke(new()
         ///     {
-        ///         ProjectId = "foobar",
-        ///     });
-        /// 
-        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
-        ///     {
-        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
-        ///         ClientId = apps.Googleusercontent.Com,
+        ///         Brand = projectClient.Brand,
+        ///         ClientId = projectClient.ClientId,
         ///     });
         /// 
         /// });
@@ -42,7 +39,9 @@ namespace Pulumi.Gcp.Iap
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get info about a Google Cloud IAP Client.
+        /// Get information about a Identity-Aware Proxy Client.
+        /// 
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -54,15 +53,10 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+        ///     var @default = Gcp.Iap.GetClient.Invoke(new()
         ///     {
-        ///         ProjectId = "foobar",
-        ///     });
-        /// 
-        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
-        ///     {
-        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
-        ///         ClientId = apps.Googleusercontent.Com,
+        ///         Brand = projectClient.Brand,
+        ///         ClientId = projectClient.ClientId,
         ///     });
         /// 
         /// });
@@ -72,7 +66,9 @@ namespace Pulumi.Gcp.Iap
             => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get info about a Google Cloud IAP Client.
+        /// Get information about a Identity-Aware Proxy Client.
+        /// 
+        /// 
         /// 
         /// ## Example Usage
         /// 
@@ -84,15 +80,10 @@ namespace Pulumi.Gcp.Iap
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+        ///     var @default = Gcp.Iap.GetClient.Invoke(new()
         ///     {
-        ///         ProjectId = "foobar",
-        ///     });
-        /// 
-        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
-        ///     {
-        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
-        ///         ClientId = apps.Googleusercontent.Com,
+        ///         Brand = projectClient.Brand,
+        ///         ClientId = projectClient.ClientId,
         ///     });
         /// 
         /// });
@@ -106,13 +97,15 @@ namespace Pulumi.Gcp.Iap
     public sealed class GetClientArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the brand.
+        /// Identifier of the brand to which this client
+        /// is attached to. The format is
+        /// `projects/{project_number}/brands/{brand_id}`.
         /// </summary>
         [Input("brand", required: true)]
         public string Brand { get; set; } = null!;
 
         /// <summary>
-        /// The ClientId of the brand.
+        /// Output only. Unique identifier of the OAuth client.
         /// </summary>
         [Input("clientId", required: true)]
         public string ClientId { get; set; } = null!;
@@ -126,13 +119,15 @@ namespace Pulumi.Gcp.Iap
     public sealed class GetClientInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the brand.
+        /// Identifier of the brand to which this client
+        /// is attached to. The format is
+        /// `projects/{project_number}/brands/{brand_id}`.
         /// </summary>
         [Input("brand", required: true)]
         public Input<string> Brand { get; set; } = null!;
 
         /// <summary>
-        /// The ClientId of the brand.
+        /// Output only. Unique identifier of the OAuth client.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;

@@ -53,7 +53,7 @@ public final class ConversationProfileHumanAgentAssistantConfigArgs extends com.
     }
 
     /**
-     * desc
+     * Configuration for analyzing conversation messages.
      * Structure is documented below.
      * 
      */
@@ -61,7 +61,7 @@ public final class ConversationProfileHumanAgentAssistantConfigArgs extends com.
     private @Nullable Output<ConversationProfileHumanAgentAssistantConfigMessageAnalysisConfigArgs> messageAnalysisConfig;
 
     /**
-     * @return desc
+     * @return Configuration for analyzing conversation messages.
      * Structure is documented below.
      * 
      */
@@ -162,7 +162,7 @@ public final class ConversationProfileHumanAgentAssistantConfigArgs extends com.
         }
 
         /**
-         * @param messageAnalysisConfig desc
+         * @param messageAnalysisConfig Configuration for analyzing conversation messages.
          * Structure is documented below.
          * 
          * @return builder
@@ -174,7 +174,7 @@ public final class ConversationProfileHumanAgentAssistantConfigArgs extends com.
         }
 
         /**
-         * @param messageAnalysisConfig desc
+         * @param messageAnalysisConfig Configuration for analyzing conversation messages.
          * Structure is documented below.
          * 
          * @return builder
